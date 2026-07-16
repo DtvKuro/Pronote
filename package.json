@@ -1,0 +1,12 @@
+{
+  "name": "note-website",
+  "version": "1.0.0",
+  "description": "Static website for dev notes",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "marked": "^15.0.0",
+    "highlight.js": "^11.0.0"
+  }
+}

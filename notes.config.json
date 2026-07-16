@@ -1,0 +1,23 @@
+{
+  "notes": [
+    { "file": "html.md", "title": "HTML", "category": "Frontend", "order": 1 },
+    { "file": "css.md", "title": "CSS", "category": "Frontend", "order": 2 },
+    { "file": "javascript.md", "title": "JavaScript", "category": "Frontend", "order": 3 },
+    { "file": "dom.md", "title": "DOM", "category": "Frontend", "order": 4 },
+    { "file": "web-design.md", "title": "Web Design", "category": "Design", "order": 5 },
+    { "file": "node-js.md", "title": "Node.js", "category": "Backend", "order": 6 },
+    { "file": "express.md", "title": "Express", "category": "Backend", "order": 7 },
+    { "file": "EJS.md", "title": "EJS", "category": "Backend", "order": 8 },
+    { "file": "API.md", "title": "API", "category": "Backend", "order": 9 },
+    { "file": "backend.md", "title": "Backend", "category": "Backend", "order": 10 },
+    { "file": "gitbash.md", "title": "Git & Bash", "category": "Tools", "order": 11 },
+    { "file": "github.md", "title": "GitHub", "category": "Tools", "order": 12 },
+    { "file": "bash-shortcuts.md", "title": "Bash Shortcuts", "category": "Tools", "order": 13 }
+  ],
+  "site": {
+    "title": "Dev Notes",
+    "description": "Web development notes and references",
+    "author": "FxKuroo",
+    "sourceDir": "C:/FxKuroo/Codes/Learning/UDEMY/Notes"
+  }
+}

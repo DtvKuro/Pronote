@@ -1,0 +1,27 @@
+<button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<div class="notes-menu-overlay"></div>
+<aside class="notes-menu">
+  <div class="notes-menu-header">
+    <h3>All Notes</h3>
+    <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="notes-menu-body">
+    {{NOTES_MENU}}
+  </div>
+</aside>
+<article class="note-page">
+  <div class="note-header">
+    <a href="../index.html" class="back-link">← Back to Notes</a>
+    <span class="note-category-badge">{{CATEGORY}}</span>
+  </div>
+  <h1 class="note-title">{{TITLE}}</h1>
+  <div class="note-content">
+    {{NOTE_CONTENT}}
+  </div>
+  <div class="note-nav">
+    {{PREV_LINK}}
+    {{NEXT_LINK}}
+  </div>
+</article>
