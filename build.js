@@ -5,12 +5,6 @@ const path = require('path');
 const { marked } = require('marked');
 const hljs = require('highlight.js');
 
-// ---------------------------------------------------------------------------
-// Configure marked v15 with highlight.js via renderer override.
-// marked v15 dropped the `highlight` option from setOptions; the correct
-// approach is marked.use({ renderer: { code(token) { ... } } }).
-// The renderer.code method receives a Tokens.Code object: { text, lang }.
-// ---------------------------------------------------------------------------
 marked.use({
   gfm: true,
   breaks: true,
@@ -25,10 +19,6 @@ marked.use({
     },
   },
 });
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
 
 function rmrf(dir) {
   if (fs.existsSync(dir)) {
@@ -55,11 +45,10 @@ function copyDir(src, dest) {
 }
 
 function slugify(filename) {
-  // e.g. "node-js.md" → "node-js", "EJS.md" → "EJS"
   return path.basename(filename, '.md');
 }
 
-const NOTES_MENU_TOGGLE_BTN =
+const MENU_BTN =
   '<button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false">' +
   '<span></span><span></span><span></span>' +
   '</button>';
@@ -72,12 +61,7 @@ function applyLayout(layout, { pageTitle, basePath, content, notesMenuToggle = '
     .replace(/\{\{CONTENT\}\}/g, content);
 }
 
-// ---------------------------------------------------------------------------
-// Tech logos — inline SVG per note title
-// ---------------------------------------------------------------------------
-
 const LOGOS = {
-  // HTML5 — orange shield with a clean "5" notch shape
   'HTML': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <polygon points="4,2 36,2 33,35 20,39 7,35" fill="#e44d26"/>
     <polygon points="20,4 20,37 30,34 32.5,4" fill="#f16529"/>
@@ -89,7 +73,6 @@ const LOGOS = {
     <polygon points="27,20 20,23 20,29 26.5,27" fill="#fff"/>
   </svg>`,
 
-  // CSS3 — blue shield with a simplified C-curve cutout
   'CSS': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <polygon points="4,2 36,2 33,35 20,39 7,35" fill="#264de4"/>
     <polygon points="20,4 20,37 30,34 32.5,4" fill="#2965f1"/>
@@ -97,14 +80,12 @@ const LOGOS = {
     <path d="M20,11 v5 h6 l-0.5,3 H20 v5 h4.5 l-0.8,6 L20,31 v3.5 L24.2,33 L25,27 H21 v-3 h4.5 L26.5,16 H20 z" fill="#fff"/>
   </svg>`,
 
-  // JavaScript — yellow square, bold "JS" lettering as paths
   'JavaScript': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <rect width="40" height="40" fill="#f7df1e"/>
     <path d="M11,31 l2.2,-1.4 c0.4,0.9 0.8,1.6 1.8,1.6 c0.9,0 1.4,-0.4 1.4,-1.9 V17 h3 v12.5 c0,3.1 -1.8,4.5 -4.4,4.5 C13,34 11.7,32.8 11,31 z" fill="#323330"/>
     <path d="M22,30.6 l2.2,-1.3 c0.6,1 1.3,1.7 2.7,1.7 c1.1,0 1.8,-0.6 1.8,-1.4 c0,-0.9 -0.7,-1.3 -2,-1.9 l-0.7,-0.3 c-2,-0.85 -3.3,-1.9 -3.3,-4.2 c0,-2.1 1.6,-3.7 4,-3.7 c1.8,0 3,0.6 3.9,2.2 l-2.1,1.4 c-0.5,-0.8 -1,-1.1 -1.8,-1.1 c-0.8,0 -1.4,0.5 -1.4,1.1 c0,0.8 0.5,1.1 1.7,1.7 l0.7,0.3 c2.4,1 3.7,2.1 3.7,4.5 c0,2.5 -2,3.9 -4.7,3.9 C24.4,34 22.9,32.7 22,30.6 z" fill="#323330"/>
   </svg>`,
 
-  // DOM — tree hierarchy: one root node, three child nodes connected by lines
   'DOM': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <circle cx="20" cy="7" r="5" fill="#6366f1"/>
     <circle cx="8" cy="26" r="5" fill="#8b5cf6"/>
@@ -116,7 +97,6 @@ const LOGOS = {
     <circle cx="20" cy="7" r="2.5" fill="#fff" opacity="0.4"/>
   </svg>`,
 
-  // Web Design — browser wireframe with nav bar + layout blocks
   'Web Design': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <rect x="2" y="5" width="36" height="30" rx="3" fill="#0284c7"/>
     <rect x="2" y="5" width="36" height="8" rx="3" fill="#0369a1"/>
@@ -128,14 +108,12 @@ const LOGOS = {
     <rect x="19" y="25" width="15" height="6" rx="2" fill="#bae6fd"/>
   </svg>`,
 
-  // Node.js — green hexagon with small lightning-bolt path inside
   'Node.js': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <polygon points="20,2 35,11 35,29 20,38 5,29 5,11" fill="#3c873a"/>
     <polygon points="20,2 35,11 35,29 20,38 5,29 5,11" fill="none" stroke="#4caf50" stroke-width="1.5"/>
     <path d="M17,13 h7 l-4,7 h4 l-8,8 l2,-7 h-4 z" fill="#fff" opacity="0.9"/>
   </svg>`,
 
-  // Express — dark rounded rect with three horizontal route-style lines + dots
   'Express': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <rect width="40" height="40" rx="6" fill="#1a1a1a"/>
     <rect x="6" y="13" width="18" height="2.5" rx="1.25" fill="#ffffff"/>
@@ -146,7 +124,6 @@ const LOGOS = {
     <circle cx="28" cy="26.25" r="3.5" fill="#555555"/>
   </svg>`,
 
-  // EJS — document icon with a green tag-bracket badge in the corner
   'EJS': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <path d="M6,3 H25 L34,12 V37 H6 z" rx="2" fill="#e2e8f0"/>
     <path d="M25,3 L34,12 H25 z" fill="#94a3b8"/>
@@ -159,7 +136,6 @@ const LOGOS = {
     <line x1="27.5" y1="29" x2="24.5" y2="35" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
   </svg>`,
 
-  // API — globe with latitude/longitude grid lines
   'API': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <circle cx="20" cy="20" r="16" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
     <ellipse cx="20" cy="20" rx="6" ry="16" fill="none" stroke="#0ea5e9" stroke-width="1.5"/>
@@ -168,7 +144,6 @@ const LOGOS = {
     <path d="M6,27 Q20,31 34,27" fill="none" stroke="#0ea5e9" stroke-width="1.2"/>
   </svg>`,
 
-  // Backend — three stacked server rack bars with LEDs
   'Backend': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <rect x="4" y="4" width="32" height="9" rx="2.5" fill="#475569"/>
     <rect x="4" y="15" width="32" height="9" rx="2.5" fill="#334155"/>
@@ -184,7 +159,6 @@ const LOGOS = {
     <circle cx="25" cy="30.5" r="2" fill="#fbbf24"/>
   </svg>`,
 
-  // Git & Bash — red square, clean git-branch fork shape (3 circles + connecting lines)
   'Git & Bash': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <rect width="40" height="40" rx="6" fill="#f05133"/>
     <circle cx="13" cy="10" r="4" fill="#fff"/>
@@ -194,13 +168,11 @@ const LOGOS = {
     <path d="M13,14 Q13,18 29,18" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
   </svg>`,
 
-  // GitHub — dark square with simplified octocat silhouette path
   'GitHub': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <rect width="40" height="40" rx="6" fill="#24292e"/>
     <path d="M20,5 C11.7,5 5,11.7 5,20 c0,6.6 4.3,12.2 10.2,14.2 c0.75,0.14 1.02,-0.32 1.02,-0.72 l-0.01,-2.52 c-4.17,0.91 -5.05,-2.01 -5.05,-2.01 c-0.68,-1.73 -1.67,-2.19 -1.67,-2.19 c-1.36,-0.93 0.1,-0.91 0.1,-0.91 c1.5,0.1 2.3,1.54 2.3,1.54 c1.33,2.28 3.5,1.62 4.35,1.24 c0.14,-0.97 0.52,-1.62 0.95,-2 C14.05,26.4 10.22,25 10.22,18.68 c0,-1.63 0.58,-2.96 1.54,-4 c-0.15,-0.38 -0.67,-1.89 0.15,-3.95 c0,0 1.26,-0.4 4.12,1.53 c1.2,-0.33 2.48,-0.5 3.77,-0.5 c1.28,0 2.57,0.17 3.77,0.5 c2.86,-1.93 4.12,-1.53 4.12,-1.53 c0.82,2.06 0.3,3.57 0.15,3.95 c0.96,1.04 1.54,2.37 1.54,4 c0,5.33 -3.84,6.5 -7.5,6.85 c0.59,0.51 1.11,1.5 1.11,3.03 l-0.02,4.5 c0,0.4 0.27,0.87 1.03,0.72 C30.7,32.2 35,26.6 35,20 C35,11.7 28.3,5 20,5 z" fill="#fff"/>
   </svg>`,
 
-  // Bash Shortcuts — dark terminal screen with prompt chevron + keyboard keys
   'Bash Shortcuts': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <rect width="40" height="40" rx="6" fill="#1e1e1e"/>
     <rect x="4" y="5" width="32" height="20" rx="3" fill="#2d2d2d"/>
@@ -218,34 +190,22 @@ const LOGOS = {
   </svg>`,
 };
 
-// ---------------------------------------------------------------------------
-// Main build
-// ---------------------------------------------------------------------------
-
 const PROJECT_ROOT = __dirname;
 const DIST_DIR = path.join(PROJECT_ROOT, 'docs');
 const DIST_NOTES_DIR = path.join(DIST_DIR, 'notes');
 
-// 1. Clean dist/
 rmrf(DIST_DIR);
 mkdirp(DIST_DIR);
 mkdirp(DIST_NOTES_DIR);
 
-// 2. Read config
 const config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'notes.config.json'), 'utf8'));
 const { notes, site } = config;
 
-// Sort by order
 notes.sort((a, b) => a.order - b.order);
 
-// 3. Read templates
 const layoutTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'layout.html'), 'utf8');
 const homeTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'home.html'), 'utf8');
 const noteTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'note.html'), 'utf8');
-
-// ---------------------------------------------------------------------------
-// 5. Build each note page
-// ---------------------------------------------------------------------------
 
 const builtNotes = [];
 
@@ -259,11 +219,8 @@ for (let i = 0; i < notes.length; i++) {
   }
 
   const mdSource = fs.readFileSync(mdPath, 'utf8');
-
-  // Convert markdown → HTML
   let noteHtml = marked(mdSource);
 
-  // Rewrite image paths: Images/ → ../images/
   noteHtml = noteHtml.replace(/Images\//g, '../images/');
 
   const slug = slugify(note.file);
@@ -277,7 +234,6 @@ for (let i = 0; i < notes.length; i++) {
     ? `<a href="${slugify(next.file)}.html" class="note-nav-next">${next.title} →</a>`
     : '';
 
-  // Build the notes menu HTML grouped by category
   const menuCategoryMap = new Map();
   for (const n of notes) {
     if (!menuCategoryMap.has(n.category)) {
@@ -315,7 +271,7 @@ for (let i = 0; i < notes.length; i++) {
     pageTitle: note.title,
     basePath: '../',
     content: noteBody,
-    notesMenuToggle: NOTES_MENU_TOGGLE_BTN,
+    notesMenuToggle: MENU_BTN,
   });
 
   const outPath = path.join(DIST_NOTES_DIR, `${slug}.html`);
@@ -324,11 +280,6 @@ for (let i = 0; i < notes.length; i++) {
   builtNotes.push({ ...note, slug });
 }
 
-// ---------------------------------------------------------------------------
-// 6. Generate homepage
-// ---------------------------------------------------------------------------
-
-// Group by category preserving insertion order
 const categoryMap = new Map();
 for (const note of builtNotes) {
   if (!categoryMap.has(note.category)) {
@@ -365,10 +316,6 @@ const homePage = applyLayout(layoutTpl, {
 
 fs.writeFileSync(path.join(DIST_DIR, 'index.html'), homePage, 'utf8');
 
-// ---------------------------------------------------------------------------
-// 7. Copy static assets
-// ---------------------------------------------------------------------------
-
 copyDir(path.join(PROJECT_ROOT, 'src', 'css'), path.join(DIST_DIR, 'css'));
 copyDir(path.join(PROJECT_ROOT, 'src', 'js'), path.join(DIST_DIR, 'js'));
 
@@ -377,9 +324,5 @@ if (fs.existsSync(imagesSource)) {
   copyDir(imagesSource, path.join(DIST_DIR, 'images'));
   console.log('  Copied images directory.');
 }
-
-// ---------------------------------------------------------------------------
-// 8. Summary
-// ---------------------------------------------------------------------------
 
 console.log(`Built ${builtNotes.length} notes, output at docs/`);
