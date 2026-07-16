@@ -792,23 +792,21 @@ code.hljs {
    NOTES SIDEBAR MENU
    ============================================================ */
 
-/* Toggle button — fixed bottom-left floating action button */
+/* Toggle button — inline nav element on note pages */
 .notes-menu-toggle {
-  position: fixed;
-  bottom: 2rem;
-  left: 2rem;
-  width: 48px;
-  height: 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  background-color: var(--bg-secondary);
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  background-color: transparent;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
   transition: background-color 0.15s, border-color 0.15s;
-  z-index: 200;
 }
 
 .notes-menu-toggle:hover {
@@ -1035,11 +1033,6 @@ code.hljs {
   .back-to-top {
     bottom: 1rem;
     right: 1rem;
-  }
-
-  .notes-menu-toggle {
-    bottom: 1rem;
-    left: 1rem;
   }
 
   /* Single-column cards on mobile */
