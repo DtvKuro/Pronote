@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Express — Dev Notes</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">Dev Notes</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </nav>
+  <main class="main">
+    <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<div class="notes-menu-overlay"></div>
+<aside class="notes-menu">
+  <div class="notes-menu-header">
+    <h3>All Notes</h3>
+    <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="notes-menu-body">
+    <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Frontend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="html.html" class="notes-menu-link">HTML</a></li>
+        <li><a href="css.html" class="notes-menu-link">CSS</a></li>
+        <li><a href="javascript.html" class="notes-menu-link">JavaScript</a></li>
+        <li><a href="dom.html" class="notes-menu-link">DOM</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Design</h4>
+  <ul class="notes-menu-list">
+        <li><a href="web-design.html" class="notes-menu-link">Web Design</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Backend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="node-js.html" class="notes-menu-link">Node.js</a></li>
+        <li><a href="express.html" class="notes-menu-link active">Express</a></li>
+        <li><a href="EJS.html" class="notes-menu-link">EJS</a></li>
+        <li><a href="API.html" class="notes-menu-link">API</a></li>
+        <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Tools</h4>
+  <ul class="notes-menu-list">
+        <li><a href="gitbash.html" class="notes-menu-link">Git & Bash</a></li>
+        <li><a href="github.html" class="notes-menu-link">GitHub</a></li>
+        <li><a href="bash-shortcuts.html" class="notes-menu-link">Bash Shortcuts</a></li>
+  </ul>
+</div>
+
+  </div>
+</aside>
+<article class="note-page">
+  <div class="note-header">
+    <a href="../index.html" class="back-link">← Back to Notes</a>
+    <span class="note-category-badge">Backend</span>
+  </div>
+  <h1 class="note-title">Express</h1>
+  <div class="note-content">
+    <h2>INTRODUCTION TO EXPRESS</h2>
+<p><strong>Express</strong> is a JS Framework which is used for backend<br>and <strong>Node</strong> is a runtime environment that allows Javascript be used on the pc itself.<br>Instead of just being in a website.</p>
+<p>Express + Node = Full</p>
+<p>Express allows us to use JS and Node much faster and easier.</p>
+<p>Creating the server side using express and node. As in the application which the server calls out.<br>The application will be done using Express + Node.</p>
+<p><strong>Localhost</strong> is server hosted locally making our computer the server of website</p>
+<p><em>localhost:portnumber</em></p>
+<p>port is a door in a computer with number.</p>
+<p>once you set the server to listen to that port, when we access localhost.<br>Its gonna look in the computer for portnumber, then through that port it can find the application thats listening and ready to respond to any request like sending HTML, CSS or JS.</p>
+<p>A Server has alot of ports(or a door in this case) is because the server must take multiple amounts of request without interfering with each other.</p>
+<hr>
+<h2>HTTP</h2>
+<p><strong>HTTP</strong> - Hyper Text Transfer Protocol</p>
+<p>is a language that allows computers to connect to other computer.</p>
+<h3>Request Vocab</h3>
+<p><strong>GET</strong> - Request resource (HTML,CSS, JS, etc.)<br><strong>POST</strong> - Sending resource to the server (User&#39;s Input to the server)<br>UPDATING{<br><strong>PUT</strong> - Replacing resource.<br><strong>PATCH</strong> - Patch up a resource. // specific resource that wants to be sent or replaced.<br>}<br><strong>DELETE</strong> - Deletes resource from DB, client, or server.</p>
+<hr>
+<h2>CREATING A SERVER</h2>
+<pre><code class="hljs language-js"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>; <span class="hljs-comment">//in order to use express functions</span>
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>(); <span class="hljs-comment">//getting hold of express function as constant variable</span>
+<span class="hljs-keyword">const</span> port = <span class="hljs-number">3000</span>; <span class="hljs-comment">//setting the port that client request to.</span>
+
+<span class="hljs-comment">//When localhost:3000 is ran it GET&#x27;S &quot;/&quot; or root which then executes everything inside this function</span>
+
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>);
+});
+
+app.<span class="hljs-title function_">listen</span>(port,<span class="hljs-function">()=&gt;</span>{ <span class="hljs-comment">// 3000 is the port</span>
+ <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Server running on port <span class="hljs-subst">${port}</span>.`</span>); <span class="hljs-comment">// Callback</span>
+});</code></pre>
+<hr>
+<h2>HOW TO KILL A SERVER</h2>
+<p>You first have to find it with this:</p>
+<pre><code class="hljs language-bash">netstat -ano | findstr :portnum</code></pre>
+<p>Then you find the PID then write it here</p>
+<pre><code class="hljs language-bash">taskkill /PID PIDHere /F &lt;This is <span class="hljs-keyword">for</span> terminal use&gt;
+taskkill -PID PIDHere -F &lt;This also works and its short&gt;
+taskkill //PID PIDHere //F &lt;This is <span class="hljs-keyword">for</span> GitBash Terminal&gt;</code></pre>
+<hr>
+<h2>ENDPOINTS</h2>
+<p><strong>/Endpoint</strong> - where you want something to go.</p>
+<pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+<span class="hljs-comment">//In here you are targeting the root which is / equivalent to &quot;localhot:3001/&quot;</span>
+res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>
+);
+});</code></pre>
+<p>you can do more like this</p>
+<pre><code class="hljs language-js">    app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/about&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> { <span class="hljs-comment">//which would be &quot;localhost:3001/about&quot;</span>
+    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>);
+
+});</code></pre>
+<hr>
+<h2>POSTMAN</h2>
+<p><strong>HOW TO MAKE REQUEST.</strong></p>
+<p>CLIENT to HTTP to DATABASE &gt; SERVER &gt; APPLICATION</p>
+<h3>HTTP Response Status</h3>
+<p>Informational responses (100 – 199)<br>Successful responses (200 – 299)<br>Redirection messages (300 – 399)<br>Client error responses (400 – 499)<br>Server error responses (500 – 599)</p>
+<p>What if you wanna work on backend first so you can test it and pass it to frontend.</p>
+<p>You can use <strong>POSTMAN</strong>.</p>
+<h3>Postman Practice - Testing Different Routes</h3>
+<pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;&lt;h1&gt;Home Page&lt;/h1&gt;&quot;</span>);
+});
+
+app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/register&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+<span class="hljs-comment">//You Are Sending a DATA.</span>
+res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">201</span>); <span class="hljs-comment">//201 means resource was created</span>
+});
+
+app.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;/user/angela&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> { <span class="hljs-comment">//Put will replace all of data in angela rather than just updating the outdated one</span>
+res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">200</span>); <span class="hljs-comment">//So you have to fetch data first, and have to put all updated info before PUT</span>
+});
+
+app.<span class="hljs-title function_">patch</span>(<span class="hljs-string">&quot;/user/angela&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> { <span class="hljs-comment">// You can change a single thing in the data.</span>
+res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">200</span>);
+});
+
+app.<span class="hljs-title function_">delete</span>(<span class="hljs-string">&quot;/user/angela&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> { <span class="hljs-comment">//It will delete the data.</span>
+res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">200</span>);
+});</code></pre>
+<p><strong>sendStatus(code)</strong> - sends just the HTTP status code as the response (e.g. 200, 201).<br><strong>PUT</strong> replaces ALL data so you need to send everything. <strong>PATCH</strong> only updates what you specify.</p>
+<hr>
+<h2>MIDDLEWARE</h2>
+<p>Server ---&gt; Middleware ----&gt; GET, PUT, POST, PATCH, DELETE</p>
+<p>Middleware can be used for the following:</p>
+<p><strong>preprocess the request</strong> - middleware can change modify the request before it comes to final route.<br><strong>logging the request</strong> - request time, what type of request, request status.<br><strong>Authentication</strong> - it can check if the request came from client that is authorized.<br><strong>Identify Errors</strong> - before it goes to the handler.</p>
+<hr>
+<h3>Body-Parser</h3>
+<p>Example of middleware is <strong>body-parser</strong><br>Body-parses is already in the Express Library.</p>
+<p>which can be accessed like this:</p>
+<pre><code class="hljs language-js">app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">urlencoded</span>({ <span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span> }));</code></pre>
+<p><em>Example of parse.</em></p>
+<p>//Action is the route that i want the server to handle</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span> =<span class="hljs-string">&quot;/login&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;POST&quot;</span>&gt;</span> //Method is how i want the data to be processed.
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span>Email<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>//label where we label the next input.
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">required</span>&gt;</span>//input has type and name which is what the user inputted. //And then required where the input cannot be submitted if theres no data inputted.
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span>Password<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">required</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Submit&quot;</span>&gt;</span> //Submit type which is typically a button.
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></code></pre>
+<p>Make a public folder in the project and thats where the static files likes HTML, CSS, Images, things that dont need to change.</p>
+<h3>Getting Root Directory</h3>
+<p>Getting the root directory (important for cloud projects, not just local):</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">import</span> { dirname } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;path&quot;</span>;
+<span class="hljs-keyword">import</span> { fileURLToPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;url&quot;</span>;
+<span class="hljs-keyword">const</span> __dirname = <span class="hljs-title function_">dirname</span>(<span class="hljs-title function_">fileURLToPath</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span>)); <span class="hljs-comment">//converts the file URL to an actual directory path</span></code></pre>
+<h3>res.sendFile vs res.send</h3>
+<p><strong>res.send(&quot;text&quot;)</strong> - sends text/HTML as the response.<br><strong>res.sendFile(__dirname + &quot;/public/index.html&quot;)</strong> - sends an actual file from the directory as the response.</p>
+<pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+res.<span class="hljs-title function_">sendFile</span>(__dirname + <span class="hljs-string">&quot;/public/index.html&quot;</span>);
+});
+
+app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/submit&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(req.<span class="hljs-property">body</span>); <span class="hljs-comment">//req.body contains the data sent from the form (parsed by body-parser/urlencoded middleware)</span>
+});</code></pre>
+<hr>
+<h2>MIDDLEWARE TYPES</h2>
+<p><strong>Pre-processing</strong> = body-parsing(integrated in express.)<br><strong>Auth</strong><br><strong>Logging</strong> = morgan(package)<br><strong>Error</strong></p>
+<hr>
+<h2>MORGAN</h2>
+<p><strong>Morgan</strong> is used to log the route and get info like Get, or status code or OS or browser and many more.<br>It is used like this,</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">import</span> morgan <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;morgan&quot;</span>; <span class="hljs-comment">//Importing Morgan</span></code></pre>
+<h3>Predefined Log Formats</h3>
+<p>Like in the example above, you have five predefined formats that you can use in order to easily get the info you need. They are:</p>
+<p><strong>&quot;combined&quot;</strong>: which gives you the Apache standard combined format for your logs.<br><strong>&quot;common&quot;</strong>: referencing the Apache standard common format.<br><strong>&quot;dev&quot;</strong>: A color-coded (by request status) log format.<br><strong>&quot;short&quot;</strong>: Shorter than the default format, including just the few items you&#39;d expect a request logline would have.<br><strong>&quot;tiny&quot;</strong>: Even shorter, just the response time and a few extra items.</p>
+<h3>How To Use The Log Formats</h3>
+<pre><code class="hljs language-js"><span class="hljs-title class_">Import</span> morgan <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;morgan&quot;</span>;
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
+
+app.<span class="hljs-title function_">use</span>(morgan.(<span class="hljs-string">&quot;combined.&quot;</span>));</code></pre>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Remote Addr</th>
+<th>User</th>
+<th>Timestamp</th>
+<th>Method/URL</th>
+<th>Status</th>
+<th>Size</th>
+<th>Referrer</th>
+<th>User Agent</th>
+<th>Response Time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>combined</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>common</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>short</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>tiny</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>combined</strong> - Standard Apache combined log output.</p>
+<pre><code class="hljs"><span class="hljs-symbol">:remote-addr</span> - <span class="hljs-symbol">:remote-user</span> [<span class="hljs-symbol">:date</span>[clf]] <span class="hljs-string">&quot;:method :url HTTP/:http-version&quot;</span> <span class="hljs-symbol">:status</span> <span class="hljs-symbol">:res</span>[content-length] <span class="hljs-string">&quot;:referrer&quot;</span> <span class="hljs-string">&quot;:user-agent&quot;</span></code></pre>
+<p><em>will output</em></p>
+<pre><code class="hljs"><span class="hljs-meta">::1 - - [27/Nov/2024:06:21:42</span> +0000] &quot;GET /combined HTTP/1.1&quot; 200 2 &quot;-&quot; &quot;curl/8.7.1&quot;</code></pre>
+<p><strong>common</strong> - Standard Apache common log output.</p>
+<pre><code class="hljs"><span class="hljs-meta">:remote-addr - :remote-user</span> [:date[clf]] &quot;:method :url HTTP/:http-version&quot; :status :res[content-length]</code></pre>
+<p><em>will output</em></p>
+<pre><code class="hljs"><span class="hljs-meta">::1 - - [27/Nov/2024:06:21:46</span> +0000] &quot;GET /common HTTP/1.1&quot; 200 2</code></pre>
+<p><strong>dev</strong> - Concise output colored by response status for development use. The :status token will be colored green for success codes, red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for information codes.</p>
+<pre><code class="hljs"><span class="hljs-meta">:method :url</span> :status :response-time ms - :res[content-length]</code></pre>
+<p><em>will output</em></p>
+<pre><code class="hljs"><span class="hljs-attribute">GET</span> /dev <span class="hljs-number">200</span> <span class="hljs-number">0</span>.<span class="hljs-number">224</span> ms - <span class="hljs-number">2</span></code></pre>
+<p><strong>short</strong> - Shorter than default, also including response time.</p>
+<pre><code class="hljs"><span class="hljs-symbol">:remote-addr</span> <span class="hljs-symbol">:remote-user</span> <span class="hljs-symbol">:method</span> <span class="hljs-symbol">:url</span> <span class="hljs-title class_">HTTP</span>/<span class="hljs-symbol">:http-version</span> <span class="hljs-symbol">:status</span> <span class="hljs-symbol">:res</span>[content-length] - <span class="hljs-symbol">:response-time</span> ms</code></pre>
+<p><em>will output</em></p>
+<pre><code class="hljs"><span class="hljs-number">::1</span> - GET /short HTTP/<span class="hljs-number">1.1 200 2</span> - <span class="hljs-number">0</span>.<span class="hljs-number">283</span> ms</code></pre>
+<p><strong>tiny</strong> - The minimal output.</p>
+<pre><code class="hljs"><span class="hljs-meta">:method :url</span> :status :res[content-length] - :response-time ms</code></pre>
+<p><em>will output</em></p>
+<pre><code class="hljs"><span class="hljs-attribute">GET</span> /tiny <span class="hljs-number">200</span> <span class="hljs-number">2</span> - <span class="hljs-number">0</span>.<span class="hljs-number">188</span> ms</code></pre>
+<hr>
+<h2>MIDDLEWARE ORDER MATTERS</h2>
+<p>Express runs middleware in the order you write them, top to bottom.</p>
+<p>The proper structure is:</p>
+<ol>
+<li><strong>app.use()</strong> - global middleware (body-parser, morgan, auth, etc.)</li>
+<li><strong>app.get() / app.post() / app.put() / app.patch() / app.delete()</strong> - route handlers</li>
+<li><strong>app.listen()</strong> - always last, starts the server</li>
+</ol>
+<p><em>Example:</em></p>
+<pre><code class="hljs language-js">app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">urlencoded</span>({ <span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span> })); <span class="hljs-comment">// 1st - parse the body</span>
+app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">morgan</span>(<span class="hljs-string">&quot;tiny&quot;</span>)); <span class="hljs-comment">// 2nd - log the request</span>
+app.<span class="hljs-title function_">use</span>(authMiddleware); <span class="hljs-comment">// 3rd - check if user is allowed</span>
+
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> { <span class="hljs-comment">// 4th - handle the route</span>
+res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Home&quot;</span>);
+});
+
+app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>); <span class="hljs-comment">// Last - start server</span></code></pre>
+<h3>Why Order Matters</h3>
+<ul>
+<li>Express processes middleware top to bottom using next().</li>
+<li>If auth middleware is placed AFTER a route, that route runs without auth check = security risk.</li>
+<li>If body-parser is placed AFTER a POST route, req.body will be undefined because the body wasnt parsed yet.</li>
+<li>If morgan is placed AFTER routes, it wont log requests that were already handled.</li>
+</ul>
+<p>Think of it like a checklist before the request reaches the route:<br><em>parse body -&gt; log it -&gt; check auth -&gt; THEN handle the route.</em></p>
+<p>Morgan (logging) goes near the top, not the bottom.<br>Even though it tracks response time, it works by starting a timer when the request enters and stopping when the response is sent. So it needs to be placed early to catch everything.</p>
+<hr>
+<h2>CUSTOM MIDDLEWARE</h2>
+<p>we use <strong>app.use()</strong> method to specify a middleware</p>
+<pre><code class="hljs language-js">app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> { <span class="hljs-comment">//Inside the app.use we can pass a function that has req, res, and next.</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request Method: &quot;</span>. req.<span class="hljs-property">method</span>);
+<span class="hljs-title function_">next</span>() <span class="hljs-comment">//The next function determines when we should move on from the middleware into the next function.</span>
+});</code></pre>
+<p>This is how you make custom logger.<br>by making a function then console logging it.<br>then calling next() function to move on.</p>
+<p>If you dont put the next function then the website will never reach the next code that is below.</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> logger = <span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>){
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request Method: &quot;</span> + req.<span class="hljs-property">method</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request URL: localhost:&quot;</span> + port + req.<span class="hljs-property">url</span>);
+<span class="hljs-title function_">next</span>()
+}
+
+app.<span class="hljs-title function_">use</span>(logger);</code></pre>
+<hr>
+<h2>WHY MIDDLEWARE NEEDS 3 PARAMETERS (req, res, next)</h2>
+<p>Middleware functions always take 3 inputs: (req, res, next).<br>This is NOT just convention — Express actually checks how many parameters your function has to know what it is.</p>
+<ul>
+<li><strong>2 params (req, res)</strong> = route handler</li>
+<li><strong>3 params (req, res, next)</strong> = middleware</li>
+<li><strong>4 params (err, req, res, next)</strong> = error-handling middleware</li>
+</ul>
+<h3>What Each One Is For</h3>
+<p><strong>req</strong> - the request object. Lets you read what the user sent (URL, method, body, headers, etc.)</p>
+<p><strong>res</strong> - the response object. Middleware sometimes needs to END the request early.<br>For example, if a user isnt authorized, the middleware can send back a 401 and stop the chain right there.</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">checkAuth</span>(<span class="hljs-params">req, res, next</span>) {
+<span class="hljs-keyword">if</span> (!req.<span class="hljs-property">headers</span>.<span class="hljs-property">authorization</span>) {
+res.<span class="hljs-title function_">status</span>(<span class="hljs-number">401</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Not allowed&quot;</span>); <span class="hljs-comment">// stops here, never reaches the route</span>
+<span class="hljs-keyword">return</span>;
+}
+<span class="hljs-title function_">next</span>();
+}</code></pre>
+<p>Without res, middleware couldnt reject requests, send errors, or redirect users.</p>
+<p><strong>next</strong> - a callback function that Express gives you. You didnt create it, Express did.<br>When you call next(), it tells Express &quot;im done, pass the request to the next middleware or route.&quot;<br>If you dont call next(), the request hangs forever and eventually times out.</p>
+<p>The key thing: next is a PARAMETER (input) because Express injects it into your function when it calls your middleware.<br>Express internally does something like: yourMiddleware(req, res, functionThatRunsTheNextMiddleware);<br>That third argument is a function Express built that knows which middleware comes next in the chain.</p>
+<p>Think of middleware as a chain of checkpoints:</p>
+<p><em>Request -&gt; [Logger] -&gt; [Auth Check] -&gt; [Rate Limiter] -&gt; [Route Handler] -&gt; Response</em></p>
+<p>At each checkpoint, the middleware can either:</p>
+<ol>
+<li>Call <strong>next()</strong> - pass to the next checkpoint</li>
+<li>Use <strong>res</strong> to respond - stop the chain, send something back</li>
+</ol>
+<p>The 3 parameter signature is ONLY for middleware. Regular route handlers just use (req, res) since they are the end of the chain.</p>
+
+  </div>
+  <div class="note-nav">
+    <a href="node-js.html" class="note-nav-prev">← Node.js</a>
+    <a href="EJS.html" class="note-nav-next">EJS →</a>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+    <p>Made by FxKuroo</p>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

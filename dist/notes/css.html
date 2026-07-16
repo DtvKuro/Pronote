@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS — Dev Notes</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">Dev Notes</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </nav>
+  <main class="main">
+    <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<div class="notes-menu-overlay"></div>
+<aside class="notes-menu">
+  <div class="notes-menu-header">
+    <h3>All Notes</h3>
+    <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="notes-menu-body">
+    <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Frontend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="html.html" class="notes-menu-link">HTML</a></li>
+        <li><a href="css.html" class="notes-menu-link active">CSS</a></li>
+        <li><a href="javascript.html" class="notes-menu-link">JavaScript</a></li>
+        <li><a href="dom.html" class="notes-menu-link">DOM</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Design</h4>
+  <ul class="notes-menu-list">
+        <li><a href="web-design.html" class="notes-menu-link">Web Design</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Backend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="node-js.html" class="notes-menu-link">Node.js</a></li>
+        <li><a href="express.html" class="notes-menu-link">Express</a></li>
+        <li><a href="EJS.html" class="notes-menu-link">EJS</a></li>
+        <li><a href="API.html" class="notes-menu-link">API</a></li>
+        <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Tools</h4>
+  <ul class="notes-menu-list">
+        <li><a href="gitbash.html" class="notes-menu-link">Git & Bash</a></li>
+        <li><a href="github.html" class="notes-menu-link">GitHub</a></li>
+        <li><a href="bash-shortcuts.html" class="notes-menu-link">Bash Shortcuts</a></li>
+  </ul>
+</div>
+
+  </div>
+</aside>
+<article class="note-page">
+  <div class="note-header">
+    <a href="../index.html" class="back-link">← Back to Notes</a>
+    <span class="note-category-badge">Frontend</span>
+  </div>
+  <h1 class="note-title">CSS</h1>
+  <div class="note-content">
+    <h2>INTRODUCTION TO CSS</h2>
+<h4>Cascading Style Sheets</h4>
+<p>//Style Sheet Language</p>
+<p>CSS<br>SAS<br>LESS</p>
+<p><strong>Hakon Wium Lie</strong></p>
+<p>Father of Cascading Style Sheets</p>
+<hr>
+<h2>CSS TYPES</h2>
+<h3>Inline (For Single Element or For Testing)</h3>
+<p><em>example:</em></p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color:blue&quot;</span>&gt;</span> Send <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre>
+<h3>Internal (For Single Webpage)</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+    <span class="hljs-selector-class">.button</span>
+    {
+      <span class="hljs-attribute">color</span>: blue;
+    }
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Send<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre>
+<h3>External (For Multi Page)</h3>
+<p>in head of html</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span>&gt;</span></code></pre>
+<p>In css file</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">button</span>
+{
+<span class="hljs-attribute">color</span>: blue;
+}</code></pre>
+<hr>
+<h2>CSS SELECTOR</h2>
+<h3>Element Selector</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>green<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">h2</span>
+{
+  <span class="hljs-attribute">color</span>: red;
+}</code></pre>
+<p>//Theyre all red since h2 is <strong>&quot;Element Selector&quot;</strong> You select all h2.</p>
+<h3>Class Selector (Multiple Elements)</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class:</span>&quot;<span class="hljs-attr">red-text</span>&quot;&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>green<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.red-tex</span>{
+<span class="hljs-attribute">color</span>: red;
+}</code></pre>
+<h3>ID Selector (Only For One Element)</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Main&quot;</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>green<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre>
+<pre><code class="hljs language-css"><span class="hljs-selector-id">#main</span>{
+<span class="hljs-attribute">color</span>:red;
+}</code></pre>
+<h3>Attribute Selector</h3>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">P</span><span class="hljs-selector-attr">[draggable]</span>{ //its gonna edit <span class="hljs-attribute">all</span> paragraph that is draggable.
+<span class="hljs-attribute">color</span> : red;
+}
+
+<span class="hljs-selector-tag">P</span><span class="hljs-selector-attr">[draggable=<span class="hljs-string">&quot;false&quot;</span>]</span>{ //Same concept but now it edits things that arent draggable.
+<span class="hljs-attribute">color</span>: red;
+}</code></pre>
+<h3>Universal Selector</h3>
+<p>It select all</p>
+<pre><code class="hljs language-css">*{
+<span class="hljs-attribute">color</span>: red;
+}</code></pre>
+<hr>
+<h2>RESPONSIVE WEBSITES</h2>
+<h3>1. Media Query</h3>
+<pre><code class="hljs language-css"><span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">600px</span>) {
+// CSS for screens below <span class="hljs-number">600px</span>
+}</code></pre>
+<h3>2. CSS Grid</h3>
+<p>Main container = display Grid</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">1</span>fr <span class="hljs-number">1</span>fr;(max screen(theres <span class="hljs-number">1</span>fr + <span class="hljs-number">1</span>fr basically the both of them will split for full screen))
+<span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-number">100px</span> <span class="hljs-number">200px</span> <span class="hljs-number">200px</span>;
+<span class="hljs-attribute">gap</span>: <span class="hljs-number">30px</span>;
+
+<span class="hljs-selector-class">.first</span>{
+<span class="hljs-attribute">grid-column</span>: span <span class="hljs-number">2</span>; //This item will occupy <span class="hljs-number">2</span> <span class="hljs-attribute">columns</span>
+}</code></pre>
+<h3>3. CSS Flexbox</h3>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.flex-container</span>{
+<span class="hljs-attribute">display</span>:flex;
+}
+
+<span class="hljs-selector-class">.first</span>{
+<span class="hljs-attribute">flex</span>: <span class="hljs-number">2</span>; (this is like <span class="hljs-attribute">grid</span>&#x27;s <span class="hljs-number">1</span>fr <span class="hljs-number">1</span>fr; but simplier)
+}
+
+<span class="hljs-selector-class">.second</span>{
+<span class="hljs-attribute">flex</span>: <span class="hljs-number">0.5</span>; //half of the screen.
+}</code></pre>
+<h3>4. External Framework e.g Bootstrap Framework</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span> //the width is 12 columns so we can use the class to use it easier (Import Bootstrap).
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card col-6&quot;</span>&gt;</span>Card<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card col-2&quot;</span>&gt;</span>Card<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card col-4&quot;</span>&gt;</span>Card<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<hr>
+<h2>FLEXBOX</h2>
+<p><strong>Flex-direction: row;</strong></p>
+<p>----------------------------&gt;&gt;&gt;</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">100px</span>; //will set the items inside the <span class="hljs-attribute">container</span> <span class="hljs-selector-tag">to</span> have <span class="hljs-number">100px</span> <span class="hljs-attribute">width</span>(row)</code></pre>
+<p><strong>Flex-direciton: column;</strong><br>l<br>l<br>l<br>l<br>l<br>l<br>V<br>v<br>v</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">100px</span> //sets item to have <span class="hljs-number">100px</span> <span class="hljs-built_in">height</span>(column)</code></pre>
+<h3>Flex-Basis</h3>
+<p>Targets the items instead of parents.</p>
+<p>flex-wrap: nowrap; = align-items //works</p>
+<p>flex-wrap: wrap; = align-content // works</p>
+<p><strong>FLEX: 1 1 0;</strong> ==== SHORTER VERSION <strong>FLEX: 1;</strong><br><strong>FLEX</strong> = GROW SHRINK BASIS;</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">400px</span>;</code></pre>
+<hr>
+<h2>GRID LAYOUT</h2>
+<p><strong>grid-column: span 2</strong> //It means that it will occupy 2 spaces in the column</p>
+<p>which is short For</p>
+<p><strong>grid-column-start: 1;</strong> which line the grid will start from.<br><strong>grid-column-end: 3;</strong> //where the content will end</p>
+<p>so basically its occupying two spaces</p>
+<p>1 (here) 2 (and here) 3 4 -1</p>
+<p>one thing to take note is that the very right is -1 incase you want something to fill the whole screen.</p>
+<p>You can do the same in ROW</p>
+<h3>Moving A Content</h3>
+<p>Now in order to move a content somwhere you can use</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">grid-column-start</span>: <span class="hljs-number">1</span>;
+<span class="hljs-attribute">grid-column-end</span>: <span class="hljs-number">3</span>;
+<span class="hljs-attribute">grid-row-start</span>: <span class="hljs-number">2</span>;
+<span class="hljs-attribute">grid-row-end</span>: <span class="hljs-number">3</span>;</code></pre>
+<p>1 2 3 4 -1</p>
+<p>2<br> its here<br>column 1-3<br>row 2-3<br>3</p>
+<p>You can also shorten it to</p>
+<p><strong>grid-area:</strong> row-start / column-start / row-end / column-end;<br><em>grid-area: 2 / 1 / 3 / 3;</em></p>
+<hr>
+<h2>BOOTSTRAP NOTATION</h2>
+<h3>Display Utility Classes</h3>
+<p>Notation<br>Display utility classes that apply to all breakpoints, from xs to xxl, have no breakpoint abbreviation in them.<br>This is because those classes are applied from min-width: 0; and up, and thus are not bound by a media query.<br>The remaining breakpoints, however, do include a breakpoint abbreviation.</p>
+<p>As such, the classes are named using the format:</p>
+<p><strong>.d-{value}</strong> for xs<br><strong>.d-{breakpoint}-{value}</strong> for sm, md, lg, xl, and xxl.<br>Where value is one of:</p>
+<p>none<br>inline<br>inline-block<br>block<br>grid<br>inline-grid<br>table<br>table-cell<br>table-row<br>flex<br>inline-flex<br>The display values can be altered by changing the display values defined in $utilities and recompiling the SCSS.</p>
+<p>The media queries affect screen widths with the given breakpoint or larger.<br><em>For example, .d-lg-none sets display: none; on lg, xl, and xxl screens.</em></p>
+<h3>Class Names In Bootstrap</h3>
+<p><strong>{Property}-{sides}-{size}</strong> for xs<br><strong>{Property}-{sides}{breakpoint}-{size}</strong> for sm, md, lg, xl, and xxl.</p>
+<p><strong>property</strong> is</p>
+<p><strong>m</strong> - margin<br><strong>p</strong> - padding</p>
+<p><strong>sides</strong> is</p>
+<p><strong>t</strong> - top<br><strong>b</strong> - bottom<br><strong>s</strong> - start<br><strong>e</strong> - end<br><strong>x</strong> - classes that sets both *-left and -*right<br><strong>y</strong> - classes that sets both *-top and -*bottom</p>
+<p><strong>size</strong></p>
+<p>0-5 and auto</p>
+<p><em>example</em></p>
+<pre><code class="hljs language-html"> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col mb-3&quot;</span>&gt;</span></code></pre>
+<p>margin bottom 3</p>
+<hr>
+<h2>DARK MODE</h2>
+<pre><code class="hljs language-html">  <span class="hljs-meta">&lt;!doctype <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span> <span class="hljs-attr">data-bs-theme</span>=<span class="hljs-string">&quot;dark&quot;</span>&gt;</span> &lt;&lt;&lt;&lt;&lt;&lt;----------- this changes the website to dark mode
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Bootstrap demo<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB&quot;</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, world!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js&quot;</span> <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI&quot;</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<p>You can find bootstrap template for your website online for free.</p>
+<hr>
+<h2>BOX MODEL</h2>
+<p>Every HTML element is a box made of 4 layers:</p>
+<p><strong>Content</strong> (the actual text/image)<br>|<br><strong>Padding</strong> (space between content and border)<br>|<br><strong>Border</strong> (the visible edge)<br>|<br><strong>Margin</strong> (space outside the border, between other elements)</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>; //<span class="hljs-attribute">all</span> sides
+<span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>; //<span class="hljs-attribute">top</span>-<span class="hljs-attribute">bottom</span> <span class="hljs-attribute">left</span>-<span class="hljs-attribute">right</span>
+<span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span> <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>; //<span class="hljs-attribute">top</span> <span class="hljs-attribute">right</span> <span class="hljs-attribute">bottom</span> <span class="hljs-attribute">left</span> (clockwise)</code></pre>
+<p>margin works the same way.</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto; //centers <span class="hljs-selector-tag">a</span> block element horizontally
+//<span class="hljs-number">0</span> = no <span class="hljs-attribute">top</span>/<span class="hljs-attribute">bottom</span> <span class="hljs-attribute">margin</span>, auto = equal <span class="hljs-attribute">left</span>-<span class="hljs-attribute">right</span> <span class="hljs-attribute">margin</span></code></pre>
+<hr>
+<h2>DISPLAY PROPERTY</h2>
+<p><strong>display: block;</strong> //takes full width, stacks vertically<br><strong>display: inline;</strong> //only takes needed width, stays on the same line, CANT set width/height<br><strong>display: inline-block;</strong> //stays on same line BUT you CAN set width/height<br><strong>display: none;</strong> //hides the element completely</p>
+<p>//inline-block is the key to putting things side by side before flexbox/grid.<br>//you can make cards sit next to each other with inline-block.</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.card</span> {
+<span class="hljs-attribute">display</span>: inline-block;
+<span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;
+<span class="hljs-attribute">vertical-align</span>: top; //aligns them at the <span class="hljs-attribute">top</span> instead of baseline
+}</code></pre>
+<p>//problem: inline-block has a small gap between elements caused by whitespace in HTML.<br>//flexbox and grid dont have this problem.</p>
+<hr>
+<h2>VERTICAL-ALIGN</h2>
+<p><strong>vertical-align: top;</strong> //aligns inline-block elements to the top<br><strong>vertical-align: middle;</strong> //aligns to the middle</p>
+<p>//only works on inline and inline-block elements.<br>//useful when you have a paragraph and a button on the same line.</p>
+<hr>
+<h2>BOX-SHADOW</h2>
+<p><strong>box-shadow:</strong> 0 1px 5px rgba(0,0,0,0.15);</p>
+<p>//gives the floating card effect.<br>//rgba(0,0,0,0.15) is black with 15% opacity for a subtle shadow.</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">6px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.1</span>); //Google search bar style</code></pre>
+<p>//format: <em>x-offset y-offset blur-radius color</em></p>
+<hr>
+<h2>OBJECT-FIT AND OBJECT-POSITION</h2>
+<p><strong>object-fit: cover;</strong> //crops image to fill the box without stretching<br><strong>object-fit: contain;</strong> //fits the whole image inside the box (may leave gaps)</p>
+<p><strong>object-position: center;</strong> //where the crop focuses</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">img</span> {
+<span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+<span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+<span class="hljs-attribute">object-fit</span>: cover;
+<span class="hljs-attribute">object-position</span>: center;
+<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">100px</span>;
+}</code></pre>
+<p>//this makes a circular profile picture. object-fit cover is the key<br>//so the image doesnt get squished into the square.</p>
+<p><strong>border-radius: 10px;</strong> //rounded corners<br><strong>border-radius: 100px;</strong> //full circle (if width and height are equal)<br><strong>border-radius: 50%;</strong> //also makes circle, works for any size</p>
+<hr>
+<h2>HOVER AND ACTIVE STATES</h2>
+<p><strong>:hover</strong> = when the mouse is over the element<br><strong>:active</strong> = when the element is being clicked</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:hover</span> {
+<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#333</span>;
+<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.8</span>;
+}
+
+<span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:active</span> {
+<span class="hljs-attribute">background-color</span>: gray;
+}</code></pre>
+<p>//hover is for visual feedback. active is for click feedback.</p>
+<hr>
+<h2>TRANSITIONS</h2>
+<p><strong>transition: all 0.2s;</strong> //smoothly animates ALL property changes over 0.2 seconds</p>
+<p>//without transition, hover changes are instant. with it, they fade smoothly.</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">button</span> {
+<span class="hljs-attribute">background-color</span>: black;
+<span class="hljs-attribute">color</span>: white;
+<span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>;
+<span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.15s</span>;
+}
+
+<span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:hover</span> {
+<span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">30px</span>; //<span class="hljs-selector-tag">button</span> stretches on hover
+}
+
+<span class="hljs-selector-tag">button</span><span class="hljs-selector-pseudo">:active</span> {
+<span class="hljs-attribute">box-shadow</span>: none; //shadow disappears when clicked
+}</code></pre>
+<p>//you can also target specific properties:</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">transition</span>: background-color <span class="hljs-number">0.2s</span>;
+<span class="hljs-attribute">transition</span>: opacity <span class="hljs-number">0.15s</span>;
+<span class="hljs-attribute">transition</span>: box-shadow <span class="hljs-number">0.2s</span>;</code></pre>
+<hr>
+<h2>CURSOR</h2>
+<p><strong>cursor: pointer;</strong> //shows the hand icon when hovering</p>
+<p>//always add this to clickable elements that arent already links or buttons.<br>//buttons have pointer by default but divs and spans dont.</p>
+<hr>
+<h2>OPACITY</h2>
+<p><strong>opacity: 1;</strong> //fully visible<br><strong>opacity: 0.5;</strong> //50% transparent<br><strong>opacity: 0;</strong> //invisible but still takes up space</p>
+<p>//different from display:none which removes the element from the layout entirely.</p>
+<p>//commonly used for hover effects:</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:hover</span> {
+<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.8</span>;
+}</code></pre>
+<hr>
+<h2>STYLING INPUTS</h2>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">input</span> {
+<span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid gray;
+<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
+<span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">15px</span>;
+}</code></pre>
+<p>//to remove the default border completely:</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">input</span> {
+<span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+<span class="hljs-attribute">outline</span>: none; //removes the blue glow on focus
+<span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">6px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.1</span>); //subtle shadow instead
+}</code></pre>
+<p>//this is how Google styles their search bar.</p>
+<hr>
+<h2>GOOGLE FONTS</h2>
+<p>Step 1: Go to <em>fonts.google.com</em><br>Step 2: Pick a font <em>(example: Montserrat, Roboto)</em><br>Step 3: Copy the <link> tag and paste it in your <head></p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></code></pre>
+<p>Step 4: Use it in CSS</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">body</span> {
+<span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Montserrat&quot;</span>, sans-serif;
+}</code></pre>
+<p>//wght@400;700 means you&#39;re loading regular (400) and bold (700) weights.<br>//sans-serif is the fallback if the font fails to load.</p>
+<hr>
+<h2>UNIVERSAL SELECTOR RESET</h2>
+<pre><code class="hljs language-css">* {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">font-family</span>: Arial, sans-serif;
+}</code></pre>
+<p>//* selects ALL elements on the page.<br>//this removes default browser spacing and sets a consistent font.<br>//most websites start with some version of this reset.</p>
+<hr>
+<h2>NESTED FLEX</h2>
+<p>//you can put flex containers inside flex containers.<br>//this is how you build complex layouts like email inboxes or social media posts.</p>
+<p>//outer flex = row (profile pic on left, content on right)<br>//content flex = column (header on top, text below)<br>//header flex = row with space-between (name on left, time on right)</p>
+<p><strong>flex-shrink: 0;</strong> //prevents an item from shrinking when the container gets small<br>//useful for profile pictures that should stay the same size.</p>
+<hr>
+<h2>POSITION</h2>
+<p><strong>position: static;</strong> //default. element flows normally in the document.</p>
+<h3>Fixed</h3>
+<p><strong>position: fixed;</strong> //stays in place even when you scroll.</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.header</span> {
+<span class="hljs-attribute">position</span>: fixed;
+<span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+<span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+<span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>; //stretches full <span class="hljs-attribute">width</span>
+}</code></pre>
+<p>//fixed removes the element from normal flow.<br>//the page scrolls but the fixed element stays put.<br>//used for: headers, sidebars, floating buttons, modals.</p>
+<h3>Absolute</h3>
+<p><strong>position: absolute;</strong> //positions relative to the nearest positioned parent.</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.close-btn</span> {
+<span class="hljs-attribute">position</span>: absolute;
+<span class="hljs-attribute">top</span>: <span class="hljs-number">5px</span>;
+<span class="hljs-attribute">right</span>: <span class="hljs-number">5px</span>;
+}</code></pre>
+<p>//if no parent has position set, it positions relative to the whole page.<br>//<strong>IMPORTANT:</strong> the parent needs position: relative; for absolute to work relative to it.</p>
+<h3>Relative</h3>
+<p><strong>position: relative;</strong> //the element stays in normal flow but you can nudge it.</p>
+<p>//mostly used as a PARENT for absolute children.</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.card</span> {
+<span class="hljs-attribute">position</span>: relative; //this is the reference point
+}
+
+<span class="hljs-selector-class">.badge</span> {
+<span class="hljs-attribute">position</span>: absolute; //this positions relative <span class="hljs-selector-tag">to</span> <span class="hljs-selector-class">.card</span>
+<span class="hljs-attribute">top</span>: -<span class="hljs-number">10px</span>;
+<span class="hljs-attribute">right</span>: -<span class="hljs-number">10px</span>;
+}</code></pre>
+<p>//this is how you make sale badges, close buttons, timestamps on thumbnails, etc.</p>
+<h3>Inset Shorthand</h3>
+<p><strong>inset: 0;</strong> //same as top:0; right:0; bottom:0; left:0;</p>
+<p>//useful for full-screen overlays.</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.overlay</span> {
+<span class="hljs-attribute">position</span>: fixed;
+<span class="hljs-attribute">inset</span>: <span class="hljs-number">0</span>;
+<span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.5</span>);
+}</code></pre>
+<hr>
+<h2>Z-INDEX</h2>
+<p><strong>z-index</strong> controls which element appears on top when they overlap.</p>
+<p>higher z-index = on top<br>lower z-index = behind</p>
+<p>//only works on positioned elements (relative, absolute, fixed).</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.modal</span> {
+<span class="hljs-attribute">z-index</span>: <span class="hljs-number">100</span>;
+}
+
+<span class="hljs-selector-class">.shade</span> {
+<span class="hljs-attribute">z-index</span>: <span class="hljs-number">99</span>;
+}</code></pre>
+<p>//modal sits on top of the shade because 100 &gt; 99.</p>
+<hr>
+<h2>MODAL (POPUP)</h2>
+<p>A modal is a box that appears on top of everything with a dark background behind it.</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.shade</span> {
+<span class="hljs-attribute">position</span>: fixed;
+<span class="hljs-attribute">inset</span>: <span class="hljs-number">0</span>;
+<span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.5</span>);
+<span class="hljs-attribute">display</span>: flex;
+<span class="hljs-attribute">justify-content</span>: center;
+<span class="hljs-attribute">align-items</span>: center;
+}
+
+<span class="hljs-selector-class">.modal</span> {
+<span class="hljs-attribute">background-color</span>: white;
+<span class="hljs-attribute">padding</span>: <span class="hljs-number">30px</span>;
+<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">10px</span>;
+}</code></pre>
+<p>//the shade covers the whole screen and centers the modal using flexbox.<br>//rgba(0,0,0,0.5) is black at 50% opacity so you can still see the page behind it.</p>
+<hr>
+<h2>HOVER OVERLAY</h2>
+<p>//when you hover over a product image, a semi-transparent overlay appears with an &quot;Add to Cart&quot; button.</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.product</span> {
+<span class="hljs-attribute">position</span>: relative;
+}
+
+<span class="hljs-selector-class">.overlay</span> {
+<span class="hljs-attribute">position</span>: absolute;
+<span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+<span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+<span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+<span class="hljs-attribute">height</span>: <span class="hljs-number">40%</span>;
+<span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.7</span>);
+<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+<span class="hljs-attribute">transition</span>: opacity <span class="hljs-number">0.3s</span>;
+<span class="hljs-attribute">display</span>: flex;
+<span class="hljs-attribute">align-items</span>: center;
+<span class="hljs-attribute">justify-content</span>: center;
+}
+
+<span class="hljs-selector-class">.product</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-class">.overlay</span> {
+<span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+}</code></pre>
+<p>//the overlay is always there but invisible (opacity: 0).<br>//on hover, opacity becomes 1 and it fades in.<br>//the button inside the overlay becomes clickable.</p>
+
+  </div>
+  <div class="note-nav">
+    <a href="html.html" class="note-nav-prev">← HTML</a>
+    <a href="javascript.html" class="note-nav-next">JavaScript →</a>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+    <p>Made by FxKuroo</p>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

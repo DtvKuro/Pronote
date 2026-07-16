@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Design — Dev Notes</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">Dev Notes</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </nav>
+  <main class="main">
+    <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<div class="notes-menu-overlay"></div>
+<aside class="notes-menu">
+  <div class="notes-menu-header">
+    <h3>All Notes</h3>
+    <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="notes-menu-body">
+    <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Frontend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="html.html" class="notes-menu-link">HTML</a></li>
+        <li><a href="css.html" class="notes-menu-link">CSS</a></li>
+        <li><a href="javascript.html" class="notes-menu-link">JavaScript</a></li>
+        <li><a href="dom.html" class="notes-menu-link">DOM</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Design</h4>
+  <ul class="notes-menu-list">
+        <li><a href="web-design.html" class="notes-menu-link active">Web Design</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Backend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="node-js.html" class="notes-menu-link">Node.js</a></li>
+        <li><a href="express.html" class="notes-menu-link">Express</a></li>
+        <li><a href="EJS.html" class="notes-menu-link">EJS</a></li>
+        <li><a href="API.html" class="notes-menu-link">API</a></li>
+        <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Tools</h4>
+  <ul class="notes-menu-list">
+        <li><a href="gitbash.html" class="notes-menu-link">Git & Bash</a></li>
+        <li><a href="github.html" class="notes-menu-link">GitHub</a></li>
+        <li><a href="bash-shortcuts.html" class="notes-menu-link">Bash Shortcuts</a></li>
+  </ul>
+</div>
+
+  </div>
+</aside>
+<article class="note-page">
+  <div class="note-header">
+    <a href="../index.html" class="back-link">← Back to Notes</a>
+    <span class="note-category-badge">Design</span>
+  </div>
+  <h1 class="note-title">Web Design</h1>
+  <div class="note-content">
+    <h2>WEBDESIGN PRINCIPLES</h2>
+<h4>4 Pillars of Web-Design</h4>
+<p>Colour Theory<br>Typography<br>User Interface Design (UI)<br>User Experience Design</p>
+<hr>
+<h2>COLOR THEORY</h2>
+<p><strong>Mood of color</strong> - <em>(IMPORTANT)</em> Tells a story or conveys message.</p>
+<p><em>Examples:</em><br><strong>Red</strong> - Intensity or Energetic<br><strong>Yellow</strong> - Joy or Attention Grabbing &lt;Bad for long term usage, too attention grabbing&gt;<br><strong>Green</strong> - Fresh or Safety<br><strong>Blue</strong> - Stability or Trust <GCash or Paypal><br><strong>Purple</strong> - Royalty, Wealth and Femininity</p>
+<h3>Combining Colors</h3>
+<p><strong>ANALOGOUS COLORS</strong> - Colors that are next to each other on the color wheel. <em>(DOESNT STAND OUT)</em><br>Good for navigation bars, logo and backgrounds.<br><strong>COMPLEMENTARY COLORS</strong> - Colors that are opposite each other on the color wheel. <em>(STANDS OUT)</em><br>Dont use for text and text background.</p>
+<p><strong>ADOBE COLOR WHEEL</strong> - <em><a href="https://color.adobe.com/create/color-wheel">https://color.adobe.com/create/color-wheel</a></em><br>You can create your own color palette using the color wheel.</p>
+<p><strong>COLOR HUNT</strong> - <em><a href="https://colorhunt.co/">https://colorhunt.co/</a></em><br>You can find color palettes that are already made by other people.</p>
+<hr>
+<h2>TYPOGRAPHY</h2>
+<p><strong>Serif</strong> has feet - <em>(Times New Roman)</em><br>Serious, Old, Authoritative, Traditional, Stable, Respectable</p>
+<p><strong>Sans Serif</strong> - <em>(Arial)</em><br>Sensible, Simple, Straightforward. Soft, Friendly, Readable</p>
+<p>Stick to 2 FONTS FOR CLEANER READABILITY<br>AND RELATE THE FONTS TO THE MOOD &amp; TIME ERA.</p>
+<p>AND CONTRAST TO SERIFNESS. Heading is serif and sans serif to the body. USE WEIGHT TO CONTRAST THE FONTS.</p>
+<hr>
+<h2>USER INTERFACE (UI) DESIGN</h2>
+<p>Manage ATTENTION with effective User Interface (UI) Design.</p>
+<ol>
+<li><strong>Hierarchy</strong> - can be conveyed through<br>Color, Size,</li>
+<li><strong>Layout</strong> - Create different positions to make it interesting<br>Text Length</li>
+<li><strong>Alignment</strong> - Aligning to make everything look connected.<br>In order to look professional, reduce the alignment point.</li>
+<li><strong>White Space</strong> - Indicate Importance or Luxury.</li>
+<li><strong>Audience</strong> - You will design based on your target audience.</li>
+</ol>
+<hr>
+<h2>USER EXPERIENCE (UX) DESIGN</h2>
+<ol>
+<li><strong>Simplicity</strong> - Ease the user by not making user feel overwhelm.</li>
+<li><strong>Consistency</strong> - Function and Design consistent</li>
+<li><strong>Reading Pattern</strong> - People usually reads in F pattern or Z Pattern(Faster viewing). Identify how user reads your website.</li>
+<li><strong>All Platform Design</strong> - Design for Mobile too. Mobile Responsive.</li>
+<li><strong>Dont use your Powers for evil</strong> - Tricks the user to do something they dont want to.</li>
+</ol>
+
+  </div>
+  <div class="note-nav">
+    <a href="dom.html" class="note-nav-prev">← DOM</a>
+    <a href="node-js.html" class="note-nav-next">Node.js →</a>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+    <p>Made by FxKuroo</p>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

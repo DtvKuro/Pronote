@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM — Dev Notes</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">Dev Notes</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </nav>
+  <main class="main">
+    <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<div class="notes-menu-overlay"></div>
+<aside class="notes-menu">
+  <div class="notes-menu-header">
+    <h3>All Notes</h3>
+    <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="notes-menu-body">
+    <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Frontend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="html.html" class="notes-menu-link">HTML</a></li>
+        <li><a href="css.html" class="notes-menu-link">CSS</a></li>
+        <li><a href="javascript.html" class="notes-menu-link">JavaScript</a></li>
+        <li><a href="dom.html" class="notes-menu-link active">DOM</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Design</h4>
+  <ul class="notes-menu-list">
+        <li><a href="web-design.html" class="notes-menu-link">Web Design</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Backend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="node-js.html" class="notes-menu-link">Node.js</a></li>
+        <li><a href="express.html" class="notes-menu-link">Express</a></li>
+        <li><a href="EJS.html" class="notes-menu-link">EJS</a></li>
+        <li><a href="API.html" class="notes-menu-link">API</a></li>
+        <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Tools</h4>
+  <ul class="notes-menu-list">
+        <li><a href="gitbash.html" class="notes-menu-link">Git & Bash</a></li>
+        <li><a href="github.html" class="notes-menu-link">GitHub</a></li>
+        <li><a href="bash-shortcuts.html" class="notes-menu-link">Bash Shortcuts</a></li>
+  </ul>
+</div>
+
+  </div>
+</aside>
+<article class="note-page">
+  <div class="note-header">
+    <a href="../index.html" class="back-link">← Back to Notes</a>
+    <span class="note-category-badge">Frontend</span>
+  </div>
+  <h1 class="note-title">DOM</h1>
+  <div class="note-content">
+    <h2>WAYS TO USE JAVASCRIPT</h2>
+<h3>1. Inline Javascript</h3>
+<p>//onload is when body loaded up it<br>will alert the message &#39;Hello World!&#39; but inline javascript is not recommended<br>since its hard to debug just like css.</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">onload</span>=<span class="hljs-string">&quot;alert(&#x27;Hello World!&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre>
+<h3>2. Script Tag</h3>
+<p>//you use a script tag to write js inside in it.</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript">
+  <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello World!&quot;</span>);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<h3>3. External Source</h3>
+<p>//you create a index.js file and script src that file from<br>the html. //you put it in the end before body so that it loads up everything<br>before modifying.</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<hr>
+<h2>DOM</h2>
+<h4>Document Object Model</h4>
+<pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;h1&quot;</span>).<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;Goodbye&quot;</span>; <span class="hljs-comment">//document.querySelector()</span></code></pre>
+<p>looks for element inside the (). //.innerHTML = &quot;Blah&quot;; .innerHTML allows you to<br>replace the one inside the () to be &quot;Blah&quot;;</p>
+<p><strong>DOM</strong> converts elements into a tree structure. Which allows us to access or manipulate the elements.<br>It also maps out the connection to others through the tree diagram.</p>
+<pre><code class="hljs">    DOCUMENT
+       |
+      HTML
+      /   \
+    HEAD   BODY
+     |     |
+   TITLE  BUTTON
+     |     |
+  <span class="hljs-string">&quot;DOM&quot;</span>  <span class="hljs-string">&quot;Click Me&quot;</span>
+
+In console <span class="hljs-keyword">of</span> dev tools, you can type document <span class="hljs-built_in">to</span> see <span class="hljs-keyword">the</span> <span class="hljs-keyword">whole</span> document object model.
+<span class="hljs-comment">#document //entire html file.</span>
+
+<span class="hljs-keyword">in</span> order <span class="hljs-built_in">to</span> navigate <span class="hljs-keyword">it</span> tho you have <span class="hljs-built_in">to</span> <span class="hljs-built_in">do</span>
+**document.firstElementChild;**<span class="hljs-comment"> //this will give you the first element which is HTML and everything inside of it.</span>
+
+Then you went even farther which is <span class="hljs-keyword">the</span> <span class="hljs-keyword">first</span> <span class="hljs-built_in">folder</span> <span class="hljs-keyword">of</span> html which is head
+**document.firstElementChild.firstElementChild;**<span class="hljs-comment"> //you will get head and everything inside of it.</span>
+
+<span class="hljs-keyword">and</span> you can use this <span class="hljs-keyword">for</span> <span class="hljs-keyword">the</span> body
+**document.firstElementChild.lastElementChild;**<span class="hljs-comment"> //you will get body and everything inside of it.</span></code></pre>
+<p>HTML<br>L HEAD - TITLE<br>|<br>|<br>L BODY - H1</p>
+<p>In order to access the H1</p>
+<p><strong>document.firstElementChild.lastElementChild.firstElementChild;</strong></p>
+<pre><code class="hljs"> <span class="hljs-selector-tag">HTML</span>                        <span class="hljs-selector-tag">BODY</span>              <span class="hljs-selector-tag">H1</span>
+
+ You can manipulate the <span class="hljs-selector-tag">H1</span> by making it <span class="hljs-selector-tag">a</span> variable.</code></pre>
+<pre><code class="hljs language-js">     <span class="hljs-keyword">var</span> heading = <span class="hljs-variable language_">document</span>.<span class="hljs-property">firstElementChild</span>.<span class="hljs-property">lastElementChild</span>.<span class="hljs-property">firstElementChild</span>;
+     heading.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;Goodbye&quot;</span>; <span class="hljs-comment">//this will manipulate the HTML elements like this.</span>
+    <span class="hljs-comment">// DOM To Goodbye</span></code></pre>
+<pre><code class="hljs">![changingvariable](..<span class="hljs-regexp">/../images/</span>NEWFILE.png);
+
+you can <span class="hljs-keyword">do</span> variety of manipulation <span class="hljs-keyword">in</span> the element like styling.</code></pre>
+<pre><code class="hljs language-js">    heading.<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = <span class="hljs-string">&quot;red&quot;</span>; <span class="hljs-comment">//changing text color to red.</span></code></pre>
+<pre><code class="hljs language-html">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;checker&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span>&gt;</span>Click Me<span class="hljs-tag">&lt;/<span class="hljs-name">input</span>&gt;</span></code></pre>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;input&quot;</span>).<span class="hljs-property">click</span>; <span class="hljs-comment">//this will click the checkbox for you.</span></code></pre>
+<hr>
+<h2>PROPERTY AND METHOD</h2>
+<pre><code class="hljs">An element <span class="hljs-keyword">has</span> **<span class="hljs-keyword">property</span>** <span class="hljs-keyword">and</span> **<span class="hljs-keyword">method</span>**.</code></pre>
+<h3>Property</h3>
+<pre><code class="hljs">  property <span class="hljs-built_in">is</span> something that describes the element like <span class="hljs-built_in">color</span>, size, etc.
+    _Examples:<span class="hljs-symbol">_</span>
+      .innerHTML
+      .<span class="hljs-built_in">style</span>
+      .firstelementChild</code></pre>
+<h3>Method</h3>
+<pre><code class="hljs">  <span class="hljs-keyword">method</span> <span class="hljs-keyword">is</span> something that the element can <span class="hljs-keyword">do</span> <span class="hljs-keyword">like</span> click, focus, etc.
+    _Examples:_
+      .click()
+      .appendChild() //<span class="hljs-keyword">add</span> another child
+      .setAttribute() //<span class="hljs-keyword">set</span> an <span class="hljs-keyword">attribute</span> <span class="hljs-keyword">to</span> the element <span class="hljs-keyword">like</span> id, <span class="hljs-keyword">class</span>, etc.
+
+  **getter <span class="hljs-keyword">of</span> property** = className.propety; // button.color; which will extract the color <span class="hljs-keyword">of</span> the element <span class="hljs-keyword">with</span> <span class="hljs-keyword">class</span> checker.
+  **setter <span class="hljs-keyword">of</span> property** = className.property = &quot;value&quot;; // button.color = &quot;red&quot;; which will change the color <span class="hljs-keyword">of</span> the element <span class="hljs-keyword">to</span> red.
+
+  **<span class="hljs-keyword">Call</span> <span class="hljs-keyword">Method</span>** = className.<span class="hljs-keyword">method</span>(); // button.click(); which will click the button element.
+
+  **<span class="hljs-keyword">Method</span>** <span class="hljs-keyword">is</span> something that an <span class="hljs-keyword">object</span> can <span class="hljs-keyword">do</span> <span class="hljs-keyword">like</span> click, focus, etc.</code></pre>
+<hr>
+<h2>DEFER VS ASYNC (SCRIPT LOADING)</h2>
+<pre><code class="hljs">When you link <span class="hljs-keyword">an</span> external script <span class="hljs-keyword">with</span> &lt;script src=<span class="hljs-string">&quot;&quot;</span>&gt;, <span class="hljs-keyword">the</span> browser normally
+STOPS parsing <span class="hljs-keyword">the</span> HTML, downloads <span class="hljs-keyword">the</span> script, runs <span class="hljs-keyword">it</span>, <span class="hljs-keyword">then</span> continues parsing.
+This is why we <span class="hljs-built_in">put</span> scripts <span class="hljs-keyword">at</span> <span class="hljs-keyword">the</span> bottom <span class="hljs-keyword">of</span> &lt;body&gt;.
+
+But there are <span class="hljs-literal">two</span> attributes that let <span class="hljs-keyword">the</span> browser keep parsing <span class="hljs-keyword">while</span> downloading:</code></pre>
+<h3>defer</h3>
+<pre><code class="hljs">  - <span class="hljs-keyword">Browser </span>downloads the <span class="hljs-keyword">script </span>in the <span class="hljs-keyword">background </span>while parsing HTML.
+  - <span class="hljs-keyword">Script </span><span class="hljs-keyword">WAITS </span>to execute until the HTML is fully parsed.
+  - <span class="hljs-keyword">Multiple </span>defer <span class="hljs-keyword">scripts </span>run in the <span class="hljs-keyword">ORDER </span>they appear in the HTML.
+  - Acts like placing your <span class="hljs-keyword">script </span><span class="hljs-built_in">at</span> the <span class="hljs-keyword">bottom </span>of &lt;<span class="hljs-keyword">body&gt;, </span><span class="hljs-keyword">but </span>starts downloading earlier.</code></pre>
+<pre><code class="hljs language-html">      <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;app.js&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<pre><code class="hljs">  _Use when:_
+    - Your <span class="hljs-keyword">script </span>needs DOM elements (<span class="hljs-keyword">buttons, </span><span class="hljs-keyword">divs, </span>etc.)
+    - <span class="hljs-keyword">Script </span><span class="hljs-keyword">order </span>matters (e.g., <span class="hljs-keyword">jQuery </span>must load <span class="hljs-keyword">before </span>a plugin that uses it)</code></pre>
+<h3>async</h3>
+<pre><code class="hljs">  - Browser downloads <span class="hljs-keyword">the</span> <span class="hljs-keyword">script</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> background <span class="hljs-keyword">while</span> parsing HTML.
+  - Script runs IMMEDIATELY <span class="hljs-keyword">after</span> download finishes, even <span class="hljs-keyword">if</span> HTML <span class="hljs-keyword">isn&#x27;t</span> done parsing.
+  - Multiple async scripts <span class="hljs-built_in">run</span> <span class="hljs-keyword">in</span> whatever order they finish downloading (no guaranteed order).</code></pre>
+<pre><code class="hljs language-html">      <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;tracker.js&quot;</span> <span class="hljs-attr">async</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<pre><code class="hljs">  _Use <span class="hljs-keyword">when</span>:_
+    - The script <span class="hljs-built_in">is</span> independent (doesn<span class="hljs-comment">&#x27;t touch the DOM or rely on other scripts)</span>
+    - _Examples: analytics, ads, tracking pixels_</code></pre>
+<h3>Why NOT Put Scripts At The Bottom of Body (Old Approach)</h3>
+<pre><code class="hljs">  - Putting &lt;script&gt; <span class="hljs-keyword">at</span> <span class="hljs-keyword">the</span> bottom means <span class="hljs-keyword">the</span> browser waits <span class="hljs-keyword">until</span> <span class="hljs-keyword">the</span> ENTIRE HTML
+    is parsed <span class="hljs-keyword">before</span> <span class="hljs-keyword">it</span> even STARTS downloading <span class="hljs-keyword">the</span> script.
+  - On large websites this is slow. If <span class="hljs-keyword">a</span> page takes more than <span class="hljs-number">2</span> <span class="hljs-built_in">seconds</span> <span class="hljs-built_in">to</span> <span class="hljs-built_in">load</span>,
+    users leave.
+  - The better approach: <span class="hljs-built_in">put</span> scripts <span class="hljs-keyword">in</span> &lt;head&gt; <span class="hljs-keyword">with</span> defer <span class="hljs-keyword">or</span> async so <span class="hljs-keyword">the</span> browser
+    starts downloading them immediately <span class="hljs-keyword">while</span> still parsing HTML.</code></pre>
+<h3>The Modern Approach</h3>
+<pre><code class="hljs">  Put your <span class="hljs-keyword">scripts </span>in &lt;head&gt; <span class="hljs-keyword">and </span>use defer <span class="hljs-keyword">or </span>async.
+  This gives you the <span class="hljs-keyword">best </span>of <span class="hljs-keyword">both </span>worlds:
+    - <span class="hljs-keyword">Scripts </span>start downloading right away (not <span class="hljs-keyword">waiting </span>for full HTML parse)
+    - HTML parsing is not <span class="hljs-keyword">blocked</span></code></pre>
+<pre><code class="hljs language-html">      <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;app.js&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>       //for DOM-dependent scripts
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;analytics.js&quot;</span> <span class="hljs-attr">async</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>  //for independent scripts
+      <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></code></pre>
+<h3>type=&quot;module&quot;</h3>
+<pre><code class="hljs">  Scripts <span class="hljs-keyword">with</span> <span class="hljs-keyword">type</span>=&quot;module&quot; automatically behave <span class="hljs-keyword">like</span> defer (loaded <span class="hljs-keyword">in</span> <span class="hljs-keyword">order</span>,
+  executed <span class="hljs-keyword">after</span> HTML <span class="hljs-keyword">is</span> parsed). <span class="hljs-keyword">No</span> need <span class="hljs-keyword">to</span> <span class="hljs-keyword">add</span> defer manually.</code></pre>
+<pre><code class="hljs language-html">      <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;app-module.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<h3>Summary Table</h3>
+<pre><code class="hljs">  Feature         | <span class="hljs-type">defer</span>                          | <span class="hljs-type">async</span>
+  Blocks parsing? | <span class="hljs-type">No</span>                             | <span class="hljs-type">No</span>
+  Runs when?      | <span class="hljs-type">After</span> HTML is fully parsed      | <span class="hljs-type">As</span> soon <span class="hljs-built_in">as</span> download finishes
+  <span class="hljs-keyword">Script</span> order?   | <span class="hljs-type">Preserved</span> (runs <span class="hljs-built_in">in</span> order)       | <span class="hljs-type">Not</span> guaranteed
+  Best <span class="hljs-keyword">for</span>?       | <span class="hljs-type">DOM</span>-<span class="hljs-built_in">dependent</span> scripts (UI, app) | <span class="hljs-type">Independent</span> scripts (ads, analytics)</code></pre>
+<hr>
+<h2>GETELEMENT COMMANDS</h2>
+<pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&quot;li&quot;</span>); <span class="hljs-comment">// will show an Array of li elements and their content.</span></code></pre>
+<p>Putting [] after the (&quot;li&quot;) allows you to choose which in the array you will modify.<br><em>Example:</em></p>
+<pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementByTagName</span>(<span class="hljs-string">&quot;li&quot;</span>)[<span class="hljs-number">2</span>].<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = <span class="hljs-string">&quot;black&quot;</span>;</code></pre>
+<pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByClassName</span>(<span class="hljs-string">&quot;ClassName&quot;</span>); <span class="hljs-comment">// it&#x27;ll still show as Array even if theres only since element in the class.</span></code></pre>
+<p>You have to use [] (Array call out), in order to use the content inside.</p>
+<pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;Id&quot;</span>).<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = <span class="hljs-string">&quot;Whitesmoke&quot;</span>; <span class="hljs-comment">// Id is only for single element so this will not show up as an Array.</span></code></pre>
+<hr>
+<h2>MODERN SELECTORS</h2>
+<h3>querySelector</h3>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(); <span class="hljs-comment">// this works for tag, id, class, etc. The name is the same as CSS combining names also works for child and parent.</span></code></pre>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(); <span class="hljs-comment">// this will work if you want to target all elements inside the (); It will show as an array. And use [] to specify which will be used.</span></code></pre>
+<h3>classList</h3>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>).<span class="hljs-property">classList</span>; <span class="hljs-comment">// This will give an array of classnames that has uses a button</span>
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>).<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&quot;Invisible&quot;</span>); <span class="hljs-comment">// you can addd another class which can now be accessible in CSS after this command</span></code></pre>
+<pre><code class="hljs"><span class="hljs-attribute">IN CSS</span></code></pre>
+<pre><code class="hljs language-css">    <span class="hljs-selector-class">.Invisible</span>{
+      <span class="hljs-attribute">visibility</span>: hidden;
+    }</code></pre>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>).<span class="hljs-property">classList</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&quot;invisible&quot;</span>); <span class="hljs-comment">// you can make the button reappear by removing the class again.</span></code></pre>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>).<span class="hljs-property">classList</span>.<span class="hljs-title function_">toggle</span>(<span class="hljs-string">&quot;invisible&quot;</span>); <span class="hljs-comment">// if the button is invisible then it will make it visible but if the button is visible then its gonna be invisible.</span></code></pre>
+<pre><code class="hljs">  Whenever you <span class="hljs-keyword">put</span> this command <span class="hljs-keyword">it</span> will <span class="hljs-built_in">log</span> <span class="hljs-keyword">in</span> console <span class="hljs-keyword">as</span> <span class="hljs-literal">true</span> <span class="hljs-keyword">or</span> <span class="hljs-literal">false</span>. This <span class="hljs-keyword">is</span> <span class="hljs-keyword">for</span> debugging <span class="hljs-keyword">the</span> behaviour. Take note <span class="hljs-keyword">that</span> there must be css style targetting <span class="hljs-string">&quot;invisible&quot;</span> so <span class="hljs-keyword">that</span> whenever you use <span class="hljs-keyword">the</span> toggle command <span class="hljs-keyword">the</span> style you did will work.</code></pre>
+<hr>
+<h2>MANIPULATING CONTENT</h2>
+<pre><code class="hljs">  You can manipulate the content on HTML <span class="hljs-keyword">using</span> two <span class="hljs-keyword">command</span>s.</code></pre>
+<pre><code class="hljs language-js">      <span class="hljs-comment">// 1.</span>
+      <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;h1&quot;</span>).<span class="hljs-property">innerHTML</span>; <span class="hljs-comment">// This is good however if you put span inside it. The result will include the &lt;span&gt; and any other HTML tags inside the h1.</span>
+      <span class="hljs-comment">// A great use for this is putting HTML tags inside. like span for example:</span>
+      <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;h1&quot;</span>).<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;&lt;em&gt;Wowwers&lt;/em&gt;&quot;</span>; <span class="hljs-comment">//This will put the emphasis on h1.</span>
+
+      <span class="hljs-comment">// 2.</span>
+      <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;h1&quot;</span>).<span class="hljs-property">textContent</span>; <span class="hljs-comment">// This will output the textContent only. Also usable through manipulation</span></code></pre>
+<hr>
+<h2>MANIPULATING HTML ELEMENT ATTRIBUTES</h2>
+<pre><code class="hljs">_Examples of attributes: id, class, href, <span class="hljs-built_in">style</span>, <span class="hljs-built_in">title</span>, img, etc.<span class="hljs-symbol">_</span></code></pre>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;a&quot;</span>).<span class="hljs-property">attributes</span>; <span class="hljs-comment">// This will show all attributes that are inside all &lt;a&gt;. // for example since its a, there should be href. That will be the output.</span></code></pre>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;a&quot;</span>).<span class="hljs-title function_">getAttribute</span>(<span class="hljs-string">&quot;href&quot;</span>); <span class="hljs-comment">// This will allow you to get the content of href, after viewing what attribute is in a.</span></code></pre>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;a&quot;</span>).<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&quot;href&quot;</span>, <span class="hljs-string">&quot;https://www.roblox.com&quot;</span>); <span class="hljs-comment">//This will allow you to change the content of the attribute by first putting the target attribute which in this case is href then comma, the content you wanna change it to.</span></code></pre>
+<hr>
+<h2>EVENT LISTENER</h2>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>).<span class="hljs-title function_">addListener</span>(type, listener)</code></pre>
+<pre><code class="hljs">  **<span class="hljs-keyword">Type</span>** could be an event like click, scroll up, etc.
+  **Listener** <span class="hljs-keyword">is</span> the <span class="hljs-keyword">function</span> <span class="hljs-title">that</span> would be called if click <span class="hljs-keyword">is</span> detected.
+
+    _Example:_</code></pre>
+<pre><code class="hljs language-js">          <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, handleClick); <span class="hljs-comment">//The function dont have () because thats auto call. Its bare so that it only activates when click happens.</span>
+
+          <span class="hljs-keyword">function</span> <span class="hljs-title function_">handleClick</span>(<span class="hljs-params"></span>){
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Clicked&quot;</span>);
+          }</code></pre>
+<pre><code class="hljs">    _Another example <span class="hljs-keyword">on</span> how <span class="hljs-keyword">to</span> <span class="hljs-keyword">use</span> addeventlistener:_</code></pre>
+<h3>Anonymous Function</h3>
+<pre><code class="hljs language-js">            <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Clicked&quot;</span>);
+
+            <span class="hljs-comment">//Inside of what will happen.</span>
+
+            } );</code></pre>
+<h3>How To Use Loop In A Function</h3>
+<pre><code class="hljs language-js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i&lt;<span class="hljs-number">7</span>; i++){
+<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;button&quot;</span>)[i].<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;You got clicked mr sir&quot;</span>);
+});
+}</code></pre>
+<hr>
+<h2>DEBUGGER</h2>
+<pre><code class="hljs language-js">    <span class="hljs-keyword">debugger</span>;
+    <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>); <span class="hljs-comment">//hold shift and enter.</span></code></pre>
+<p>This shows the step by step process of the function you called.</p>
+<hr>
+<h2>HIGHER ORDER FUNCTIONS</h2>
+<pre><code class="hljs">  **higher <span class="hljs-keyword">order</span> <span class="hljs-keyword">functions</span>** are <span class="hljs-keyword">functions</span> that can take other <span class="hljs-keyword">functions</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">input</span>.
+
+    _Example:_</code></pre>
+<pre><code class="hljs language-js">          <span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">num1, num2</span>){
+            <span class="hljs-keyword">return</span> num1 + num2;
+          }
+          <span class="hljs-keyword">function</span> <span class="hljs-title function_">multiply</span>(<span class="hljs-params">num1, num2</span>){
+            <span class="hljs-keyword">return</span> num1 * num2;
+          }
+          <span class="hljs-keyword">function</span> <span class="hljs-title function_">divide</span>(<span class="hljs-params">num1, num2</span>){
+            <span class="hljs-keyword">return</span> num1 / num2;
+          }
+          <span class="hljs-keyword">function</span> <span class="hljs-title function_">minus</span>(<span class="hljs-params">num1, num2</span>){
+            <span class="hljs-keyword">return</span> num1 - num2;
+          }
+
+          <span class="hljs-keyword">function</span> <span class="hljs-title function_">calcu</span>(<span class="hljs-params">num1, num2, operator</span>){
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">operator</span>(num1,num2); <span class="hljs-comment">//This way you can use the calcu function to call the add function.</span>
+          }</code></pre>
+<hr>
+<h2>PLAYING SOUNDS ON JAVASCRIPT</h2>
+<pre><code class="hljs language-js">        <span class="hljs-keyword">var</span> audio = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Audio</span>(<span class="hljs-string">&#x27;./sounds/tom-1.mp3&#x27;</span>)
+        audio.<span class="hljs-title function_">play</span>();</code></pre>
+<pre><code class="hljs">  command: **<span class="hljs-keyword">this</span>** <span class="hljs-comment">// this command identifies which button was clicked.</span></code></pre>
+<hr>
+<h2>SWITCH STATEMENT</h2>
+<pre><code class="hljs">  <span class="hljs-keyword">For</span> multiple choices where theres so many <span class="hljs-keyword">options</span> that <span class="hljs-keyword">if</span> <span class="hljs-keyword">else</span> will become too <span class="hljs-keyword">long</span>, you can use **<span class="hljs-keyword">Switch</span>**.</code></pre>
+<pre><code class="hljs language-js">      <span class="hljs-keyword">switch</span>(input){
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;condition&quot;</span>:
+          blahblah
+          <span class="hljs-keyword">break</span>;
+
+          <span class="hljs-attr">default</span>: }</code></pre>
+<hr>
+<h2>OBJECTS</h2>
+<h3>Assigning Objects</h3>
+<pre><code class="hljs language-js">          <span class="hljs-keyword">var</span> bellBoy1 = {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Cy&quot;</span>,
+            <span class="hljs-attr">age</span>: <span class="hljs-number">19</span>,
+            <span class="hljs-attr">hasWorkPermit</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">languages</span>: [<span class="hljs-string">&quot;French&quot;</span>, <span class="hljs-string">&quot;English&quot;</span>]
+          }
+
+          <span class="hljs-comment">//access</span>
+
+          bellBoy1.<span class="hljs-property">name</span>
+          bellBoy1.<span class="hljs-property">age</span>
+          bellBoy1.<span class="hljs-property">languagess</span>[<span class="hljs-number">0</span>]</code></pre>
+<h3>Dot Notation vs Bracket Notation</h3>
+<pre><code class="hljs">        **Dot notation** <span class="hljs-keyword">only</span> works <span class="hljs-keyword">when</span> you <span class="hljs-keyword">type</span> the property <span class="hljs-type">name</span> directly.</code></pre>
+<pre><code class="hljs language-js">            bellBoy1.<span class="hljs-property">name</span> <span class="hljs-comment">// works — you&#x27;re typing &quot;name&quot; directly</span></code></pre>
+<pre><code class="hljs">        **Bracket notation** lets you <span class="hljs-keyword">use</span> a <span class="hljs-keyword">variable</span> <span class="hljs-keyword">to</span> decide which <span class="hljs-keyword">property</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">access</span>.</code></pre>
+<pre><code class="hljs language-js">            <span class="hljs-keyword">var</span> key = <span class="hljs-string">&quot;name&quot;</span>;
+            bellBoy1[key] <span class="hljs-comment">// works — looks for the property &quot;name&quot;</span>
+            bellBoy1.<span class="hljs-property">key</span>  <span class="hljs-comment">// WRONG — looks for a property literally called &quot;key&quot;, not &quot;name&quot;</span></code></pre>
+<pre><code class="hljs">        Use bracket notation <span class="hljs-keyword">when</span> the property <span class="hljs-type">name</span> <span class="hljs-keyword">is</span> stored <span class="hljs-keyword">in</span> a variable (e.g., <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">input</span> <span class="hljs-keyword">or</span> a <span class="hljs-keyword">function</span> parameter).</code></pre>
+<hr>
+<h3>Constructor Function</h3>
+<pre><code class="hljs">// Basically like <span class="hljs-keyword">a</span> factory <span class="hljs-built_in">to</span> <span class="hljs-built_in">create</span> <span class="hljs-keyword">an</span> Object.
+
+  The <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-string">&#x27;s first letter must be capital so it can be identified as **Constructor Function**.</span></span></code></pre>
+<pre><code class="hljs language-js">      <span class="hljs-keyword">function</span> <span class="hljs-title function_">BellBoy</span> (<span class="hljs-params">name, age, hasWorkPermit, languages</span>){
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> = age;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">hasWorkPermit</span> = hasWorkPermit;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">languages</span> = languages;
+      }</code></pre>
+<h3>Initialising Object</h3>
+<pre><code class="hljs language-js">     <span class="hljs-keyword">var</span> bellBoy1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BellBoy</span>(<span class="hljs-string">&quot;Cy&quot;</span>, <span class="hljs-number">19</span>, <span class="hljs-literal">true</span>, [<span class="hljs-string">&quot;Japanese&quot;</span>, <span class="hljs-string">&quot;English&quot;</span>, <span class="hljs-string">&quot;Tagalog&quot;</span>]);</code></pre>
+<hr>
+<h2>METHODS</h2>
+<p><strong>Method</strong> = function inside an object</p>
+<pre><code class="hljs language-js">    <span class="hljs-keyword">var</span> bellBoy1 = {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Cy&quot;</span>,
+      <span class="hljs-attr">age</span>: <span class="hljs-number">19</span>,
+      <span class="hljs-attr">hasWorkPermit</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">languages</span>: [<span class="hljs-string">&quot;French&quot;</span>, <span class="hljs-string">&quot;English&quot;</span>]
+        <span class="hljs-attr">moveSuitcase</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+          <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;May i take your suitcase?&quot;</span>);
+          <span class="hljs-title function_">pickupSuitcase</span>();
+          <span class="hljs-title function_">move</span>();
+        }
+    }</code></pre>
+<pre><code class="hljs"><span class="hljs-emphasis">_Calling method_</span></code></pre>
+<pre><code class="hljs language-js">    bellBoy1.<span class="hljs-title function_">moveSuitcase</span>();</code></pre>
+<pre><code class="hljs">You can use this Method <span class="hljs-keyword">in</span> <span class="hljs-function"><span class="hljs-keyword">Constructor</span> <span class="hljs-title">Function</span> <span class="hljs-title">the</span> <span class="hljs-title">same</span> <span class="hljs-title">way</span>.</span></code></pre>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">this</span>.<span class="hljs-property">moveSuitcase</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+          <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;May i take your suitcase?&quot;</span>);
+          <span class="hljs-title function_">pickupSuitcase</span>();
+          <span class="hljs-title function_">move</span>();
+        }</code></pre>
+<hr>
+<h2>KEYBOARD AS EVENTLISTENER</h2>
+<pre><code class="hljs language-js">    <span class="hljs-comment">//its document because the event will listen to the whole page for keyboard. Unlike for the mouse clicks which only targetted the button.</span>
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;keydown&quot;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) <span class="hljs-comment">//this input lets us know what was pressed so that the function was executed.</span>
+    {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(key);
+    })</code></pre>
+<hr>
+<h2>UNDERSTANDING CALLBACKS</h2>
+<h3>How To Respond To Events</h3>
+<pre><code class="hljs">**addEventListener()** <span class="hljs-keyword">is</span> a Higher <span class="hljs-keyword">Order</span> <span class="hljs-keyword">Function</span> because it can take <span class="hljs-keyword">function</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">input</span>, The &quot;respondToKey&quot;</code></pre>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;keypress&quot;</span>, <span class="hljs-title function_">respondToKey</span>(event)); <span class="hljs-comment">// the function taking input is called **Callback Function**, allowing us to wait for something to happen before executing.</span></code></pre>
+<pre><code class="hljs">You can access the event through callback <span class="hljs-keyword">like</span> <span class="hljs-keyword">this</span></code></pre>
+<pre><code class="hljs language-js">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-title function_">respondToKey</span>(event));
+
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">respondToKey</span>(<span class="hljs-params">event</span>){ <span class="hljs-comment">// you can use event as _event, evt or e_</span>
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event); <span class="hljs-comment">//you will get information about the event that happened, namely click. You can get things like location of click on screen and client, or if its trusted, if ctrl was used while clicking, alt key, and many more.</span>
+    }</code></pre>
+<h3>How addEventListener Works Under The Hood</h3>
+<pre><code class="hljs language-js">    <span class="hljs-keyword">function</span> <span class="hljs-title function_">anotherAddEventListener</span>(<span class="hljs-params">typeofEvent, callback</span>){
+
+      <span class="hljs-comment">//detects the event</span>
+
+      <span class="hljs-keyword">var</span> eventThatHappened = {
+        <span class="hljs-attr">eventType</span>: <span class="hljs-string">&quot;click&quot;</span>,
+        key : <span class="hljs-string">&#x27;p&#x27;</span>,
+        <span class="hljs-attr">pressDuration</span>: <span class="hljs-number">.2</span>
+      }
+
+      <span class="hljs-keyword">if</span> (eventThatHappened.<span class="hljs-property">eventType</span> === typeofEvent){
+        <span class="hljs-title function_">callback</span>(eventThatHappened)
+      }
+
+    }</code></pre>
+<hr>
+<h2>SETTIMEOUT</h2>
+<pre><code class="hljs language-js">    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-comment">///what you wanna happen</span>
+    }, timeout <span class="hljs-keyword">in</span> millisecond)
+
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>){
+      activatedDrum.<span class="hljs-property">classList</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&quot;pressed&quot;</span>);
+    }, <span class="hljs-number">1000</span>);</code></pre>
+
+  </div>
+  <div class="note-nav">
+    <a href="javascript.html" class="note-nav-prev">← JavaScript</a>
+    <a href="web-design.html" class="note-nav-next">Web Design →</a>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+    <p>Made by FxKuroo</p>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

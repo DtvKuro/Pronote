@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub — Dev Notes</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">Dev Notes</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </nav>
+  <main class="main">
+    <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<div class="notes-menu-overlay"></div>
+<aside class="notes-menu">
+  <div class="notes-menu-header">
+    <h3>All Notes</h3>
+    <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="notes-menu-body">
+    <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Frontend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="html.html" class="notes-menu-link">HTML</a></li>
+        <li><a href="css.html" class="notes-menu-link">CSS</a></li>
+        <li><a href="javascript.html" class="notes-menu-link">JavaScript</a></li>
+        <li><a href="dom.html" class="notes-menu-link">DOM</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Design</h4>
+  <ul class="notes-menu-list">
+        <li><a href="web-design.html" class="notes-menu-link">Web Design</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Backend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="node-js.html" class="notes-menu-link">Node.js</a></li>
+        <li><a href="express.html" class="notes-menu-link">Express</a></li>
+        <li><a href="EJS.html" class="notes-menu-link">EJS</a></li>
+        <li><a href="API.html" class="notes-menu-link">API</a></li>
+        <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Tools</h4>
+  <ul class="notes-menu-list">
+        <li><a href="gitbash.html" class="notes-menu-link">Git & Bash</a></li>
+        <li><a href="github.html" class="notes-menu-link active">GitHub</a></li>
+        <li><a href="bash-shortcuts.html" class="notes-menu-link">Bash Shortcuts</a></li>
+  </ul>
+</div>
+
+  </div>
+</aside>
+<article class="note-page">
+  <div class="note-header">
+    <a href="../index.html" class="back-link">← Back to Notes</a>
+    <span class="note-category-badge">Tools</span>
+  </div>
+  <h1 class="note-title">GitHub</h1>
+  <div class="note-content">
+    <h2>INTRODUCTION TO GIT</h2>
+<h4>Version Control</h4>
+<p>Making a savepoint or a version.<br>So that if something happens, and your code is bugged.<br>You can load the previous version.</p>
+<p>You can return to any version as long you know what version you want.</p>
+<pre><code class="hljs language-bash">git init
+git add file
+git commit -m <span class="hljs-string">&quot;message&quot;</span>
+
+git status
+git <span class="hljs-built_in">log</span></code></pre>
+<p>You can initialize a git repo by doing git init in the root folder, where you want everything to be track</p>
+<p>and now in Work directory, you can git add . the file to add the files into the Staging area which will then Commit the file into Git repository.</p>
+<p>now that our file is inside the local repository.<br>and that version is given a name through commit message.</p>
+<p>So even if we mess up the file, we can still use the last version under version control using the command:</p>
+<p><em>git checkout <file></em> to revert back to the last position in the repository</p>
+<p><em>git diff <file></em> this is used to check the difference on both versions, so you can compare.</p>
+<hr>
+<h2>GIT REMOTE REPOSITORY</h2>
+<p>Create and push to a remote repository using Github.</p>
+<pre><code class="hljs language-bash">gh repo create
+git remote add origin &lt;LINK&gt;
+git push -u origin main</code></pre>
+<p><strong>gh repo create</strong> - to create a repo.<br><strong>git remote add origin <LINK></strong> - We are gonna make a connection from our local repository to our git repository,<br><em>(remote name)</em><br><strong>git push -u origin main</strong> - push the files from our local repository into the git repository<br><em>(remote) (branch)</em></p>
+<h3>Basically</h3>
+<p>Working Directory<br>to <em>&quot;git add&quot;</em><br>Staging Area<br>to <em>&quot;git commit&quot;</em><br>Local Repository (Git)<br>to <em>&quot;git push&quot;</em><br>Remote Repository (Github)</p>
+<p>In local repository we can make a timeline which is the main branch of what you are doing and compare it to remote repository<br>and sync the local and remote by pushing the main branch from local to remote.</p>
+<hr>
+<h2>GIT IGNORE</h2>
+<p>You create gitignore so that files you dont wanna share wont be share.<br>Like passwords, Api, etc.</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">touch</span> .gitignore</code></pre>
+<pre><code class="hljs language-bash">git <span class="hljs-built_in">rm</span> --cached -r .</code></pre>
+<p>Inside .gitignore</p>
+<p>{<br>.gitignore<br>secrets.txt<br>.useless.txt</p>
+<p>#You can comment</p>
+<p>#you can also use _ which means all, example _.txt which means all text file will be ignored.<br>}</p>
+<hr>
+<h2>CLONING</h2>
+<p>How to download and create a copy of a repository</p>
+<p>Basically how to download from github repo to local repo. which is called cloning.</p>
+<pre><code class="hljs language-bash">git <span class="hljs-built_in">clone</span> &lt;<span class="hljs-built_in">link</span>&gt;</code></pre>
+<p><strong>git clone <link></strong> - Allows to clone the version and commit history and store to own working directory.</p>
+<p>This is used to continue where the other person left off, or if you want to rework it, or change or correct something.</p>
+<hr>
+<h2>GIT BRANCH</h2>
+<h4>Feature Development With Branches</h4>
+<p>MAIN BRANCH---<em>---</em>-------<em>-------We can also work on main branch while working on the branch<br>\ /<br><em>---</em>---</em> This is a branch to experiment some new feature.</p>
+<pre><code class="hljs language-bash">git branch name-of-branch
+git checkout name-of-branch
+git checkout -b name-of-branch</code></pre>
+<p><strong>git branch name-of-branch</strong> - creates a new branch<br><strong>git checkout name-of-branch</strong> - switch to that branch (or <em>git switch name-of-branch</em>)<br>OR<br><strong>git checkout -b name-of-branch</strong> - if you want to create and switch to that branch in one liner.</p>
+<p>You can check your branches with: <em>&quot;git branch&quot;</em><br>and whatever has * at the start means thats the branch you are currently on.</p>
+<p>You can do this if you want to test something out before committing and pushing to main.</p>
+<p>On the branch, you only commit locally. No need to push the branch.</p>
+<h3>Merging</h3>
+<p>To merge: switch to the branch you want to RECEIVE the changes first, then merge the other one in.</p>
+<pre><code class="hljs language-bash">git checkout main
+git merge name-of-branch</code></pre>
+<p>If both main and the branch have new commits, Git creates a <strong>merge commit</strong> and opens Vim for a message.<br>In Vim: press Esc, then type one of these, then press Enter:<br><em>:wq</em> - save the message and quit<br><em>:q!</em> - quit without saving (Git still uses the default message, so either works)<br>To avoid Vim entirely: <em>git config --global core.editor &quot;notepad&quot;</em></p>
+<p>If only the branch has new commits (main didn&#39;t change), Git does a <strong>&quot;fast-forward&quot;</strong> — just a straight line, no fork shape.<br>The fork-and-rejoin shape only happens when both sides have new commits since the branch point.</p>
+<p>Then check to see if theres any conflict with the main branch, if there is then edit it.</p>
+<p>After merging, push main:</p>
+<pre><code class="hljs language-bash">git push origin main</code></pre>
+<hr>
+<h2>SETTING UP A NEW REPO FROM SCRATCH</h2>
+<pre><code class="hljs language-bash">git init
+git add .
+git commit -m <span class="hljs-string">&quot;message&quot;</span>
+gh repo create repo-name --public --<span class="hljs-built_in">source</span>=. --push</code></pre>
+<p><strong>git init</strong> - creates a local-only repo (no connection to GitHub yet)<br><strong>git add .</strong><br><strong>git commit -m &quot;message&quot;</strong><br><strong>gh repo create repo-name --public --source=. --push</strong> - creates GitHub repo, adds remote, pushes, and sets up tracking all in one</p>
+<p>Or manually:</p>
+<pre><code class="hljs language-bash">git remote add origin &lt;LINK&gt;
+git push --set-upstream origin main</code></pre>
+<p><strong>git remote add origin <LINK></strong><br><strong>git push --set-upstream origin main</strong> - only needed the FIRST push of a new branch (links local branch to remote)<br>After that, plain <em>&quot;git push&quot;</em> works fine.</p>
+<p>When you <em>&quot;git clone&quot;</em> a repo, upstream tracking is set up automatically — thats why you never needed --set-upstream before.</p>
+<hr>
+<h2>FORKING AND PULL REQUESTS</h2>
+<p>How to suggest code changes and contribute to an open source project.</p>
+<p>Best way to contribute and work with team.</p>
+<p><strong>Forking</strong> - you can copy the repo of the person you are working with and make changes on your own code instead of having access on the original repo.</p>
+<p>its different from <strong>git clone</strong> which only clones the files to your desktop not the repo.</p>
+<p>So now that people have forked the repo, they can now git clone to get edit access to your own version of repo.<br>You can now make changes on your files. then push it to forked-repo.</p>
+<p>If you want your changes to be encorporated you have to make a <strong>pull request</strong>.</p>
+
+  </div>
+  <div class="note-nav">
+    <a href="gitbash.html" class="note-nav-prev">← Git & Bash</a>
+    <a href="bash-shortcuts.html" class="note-nav-next">Bash Shortcuts →</a>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+    <p>Made by FxKuroo</p>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

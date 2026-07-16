@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML — Dev Notes</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">Dev Notes</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </nav>
+  <main class="main">
+    <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<div class="notes-menu-overlay"></div>
+<aside class="notes-menu">
+  <div class="notes-menu-header">
+    <h3>All Notes</h3>
+    <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="notes-menu-body">
+    <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Frontend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="html.html" class="notes-menu-link active">HTML</a></li>
+        <li><a href="css.html" class="notes-menu-link">CSS</a></li>
+        <li><a href="javascript.html" class="notes-menu-link">JavaScript</a></li>
+        <li><a href="dom.html" class="notes-menu-link">DOM</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Design</h4>
+  <ul class="notes-menu-list">
+        <li><a href="web-design.html" class="notes-menu-link">Web Design</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Backend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="node-js.html" class="notes-menu-link">Node.js</a></li>
+        <li><a href="express.html" class="notes-menu-link">Express</a></li>
+        <li><a href="EJS.html" class="notes-menu-link">EJS</a></li>
+        <li><a href="API.html" class="notes-menu-link">API</a></li>
+        <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Tools</h4>
+  <ul class="notes-menu-list">
+        <li><a href="gitbash.html" class="notes-menu-link">Git & Bash</a></li>
+        <li><a href="github.html" class="notes-menu-link">GitHub</a></li>
+        <li><a href="bash-shortcuts.html" class="notes-menu-link">Bash Shortcuts</a></li>
+  </ul>
+</div>
+
+  </div>
+</aside>
+<article class="note-page">
+  <div class="note-header">
+    <a href="../index.html" class="back-link">← Back to Notes</a>
+    <span class="note-category-badge">Frontend</span>
+  </div>
+  <h1 class="note-title">HTML</h1>
+  <div class="note-content">
+    <h2>INTRODUCTION TO HTML</h2>
+<h4>HyperText Markup Language</h4>
+<p>//Markup Language (not a programming language)</p>
+<p><strong>Tim Berners-Lee</strong></p>
+<p>Father of HTML and the World Wide Web</p>
+<hr>
+<h2>HTML STRUCTURE</h2>
+<pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>  //tells the browser its an HTML5 document
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Page Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>  //the text that shows up on the browser tab
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    //everything visible goes here
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<p><strong>head</strong> = metadata, links, title (stuff the user doesnt see directly)<br><strong>body</strong> = everything the user actually sees on the page</p>
+<hr>
+<h2>BASIC HTML ELEMENTS</h2>
+<h3>Headings</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Biggest<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Second<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Third<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>Fourth<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h5</span>&gt;</span>Fifth<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span>Smallest<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span></code></pre>
+<p>//h1 is the main heading. Only use ONE h1 per page for SEO.<br>//h2-h6 for subheadings.</p>
+<h3>Paragraph</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+<p>//block element. takes full width and starts on a new line.</p>
+<h3>Anchor (Links)</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://google.com&quot;</span>&gt;</span>Go to Google<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
+<p><strong>href</strong> = the URL where the link goes.</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://google.com&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span>Google<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
+<p><strong>target=&quot;_blank&quot;</strong> = opens the link in a new tab.</p>
+<h3>Buttons</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Click Me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre>
+<p>//buttons dont do anything by themselves. you need JS or a form for that.</p>
+<hr>
+<h2>INLINE VS BLOCK</h2>
+<p><strong>BLOCK</strong> elements take the full width and start on a new line.</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></code></pre>
+<p><strong>INLINE</strong> elements only take as much width as they need and stay on the same line.</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">img</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">input</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span></code></pre>
+<p><em>example:</em></p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color:red&quot;</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> text<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+<p>//span is used to style a piece of text inside a block element without breaking the line.</p>
+<hr>
+<h2>TEXT FORMATTING</h2>
+<p><strong><strong>Bold</strong></strong>  //semantic bold (important text)<br><strong><b>Bold</b></strong>  //visual bold only (not semantic)</p>
+<p><strong><em>Italic</em></strong>  //semantic italic (emphasized)<br><strong><i>Italic</i></strong>  //visual italic only</p>
+<p><strong><br></strong>  //line break (self closing, no </br>)</p>
+<p>//use strong and em over b and i because search engines understand them better.</p>
+<hr>
+<h2>HTML ENTITIES</h2>
+<p>Special characters that cant be typed directly in HTML.</p>
+<pre><code class="hljs language-html"><span class="hljs-symbol">&amp;#62;</span>  = &gt;
+<span class="hljs-symbol">&amp;#60;</span>  = &lt;
+<span class="hljs-symbol">&amp;#183;</span> = middle dot
+<span class="hljs-symbol">&amp;#10003;</span> = checkmark
+<span class="hljs-symbol">&amp;amp;</span>  = &amp;
+<span class="hljs-symbol">&amp;copy;</span> = copyright symbol</code></pre>
+<p>//useful when you need symbols that HTML would interpret as code.</p>
+<hr>
+<h2>LISTS</h2>
+<h3>Unordered List (Bullets)</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Item 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Item 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Item 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
+<h3>Ordered List (Numbered)</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>First<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Second<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Third<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span></code></pre>
+<p>//li = list item. always wrapped inside ul or ol.</p>
+<hr>
+<h2>IMAGES</h2>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;image.jpg&quot;</span>&gt;</span></code></pre>
+<p>//self closing tag. no </img> needed.</p>
+<p><em>important attributes:</em></p>
+<p><strong>src</strong> = the path or URL to the image<br><strong>alt</strong> = text shown if image fails to load (also for accessibility)<br><strong>width</strong> = sets width<br><strong>height</strong> = sets height</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;kaoru.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Kaoru&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;200px&quot;</span>&gt;</span></code></pre>
+<p>//if you only set width, height auto adjusts to keep the ratio.</p>
+<hr>
+<h2>DIV</h2>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Content here<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<p>//the most used HTML element. its a container that groups other elements together.<br>//div is a block element by default (takes full width).<br>//by itself it does nothing visible. you style it with CSS.</p>
+<h3>Nesting Divs</h3>
+<p>You can put divs inside divs to build complex layouts.</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;profile-section&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;pfp.jpg&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-section&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;name&quot;</span>&gt;</span>Kuroo<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>@FxKuroo<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;action-section&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Follow<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<p>//think of it like boxes inside boxes.<br>//the outer div is the whole card, inner divs organize the sections.</p>
+<hr>
+<h2>INPUTS</h2>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter your name&quot;</span>&gt;</span></code></pre>
+<p><strong>type</strong> determines what kind of input it is:</p>
+<p><strong>text</strong> = regular text<br><strong>password</strong> = hides the characters<br><strong>email</strong> = validates email format<br><strong>number</strong> = only numbers<br><strong>checkbox</strong> = a toggle box<br><strong>radio</strong> = pick one from a group</p>
+<p><strong>placeholder</strong> = gray hint text shown before user types</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Search...&quot;</span>&gt;</span></code></pre>
+<p>//input is self closing. no </input>.</p>
+<hr>
+<h2>LINKING CSS AND JS</h2>
+<h3>External CSS</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;style.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></code></pre>
+<h3>External JS</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  //content here
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;script.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>  //put script at the bottom of body
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre>
+<p>//putting script at the bottom makes sure the HTML loads first before JS runs.</p>
+<h3>Google Fonts Link</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></code></pre>
+<hr>
+<h2>META TAGS</h2>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>  //character encoding so special characters display properly
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span>  //makes the page responsive on mobile</code></pre>
+<p>//viewport meta is required for responsive design. without it, mobile browsers zoom out the page.</p>
+<hr>
+<h2>PROJECTS BUILT</h2>
+<ol>
+<li>Buttons (Subscribe, Join, Tweet) - learned hover, active, transitions</li>
+<li>YouTube Video Card - learned text styling, spans, Google Fonts</li>
+<li>Simple Webpage - first HTML page with links and buttons</li>
+<li>Google Homepage Clone - centered layout, search input styling, box-shadow</li>
+<li>Facebook Friend Suggestions - inline-block cards, profile pics, hover effects</li>
+<li>Twitter/X Post - nested flexbox, profile + content layout</li>
+<li>Email Inbox - flex rows with space-between, bold subjects, time display</li>
+<li>Discord Sidebar - fixed positioning, dual sidebars, hover effects on icons</li>
+<li>Product Cards with Overlays - absolute positioning, hover opacity transitions</li>
+<li>Modal Popup - fixed overlay with flex-centered card</li>
+</ol>
+
+  </div>
+  <div class="note-nav">
+    
+    <a href="css.html" class="note-nav-next">CSS →</a>
+  </div>
+</article>
+
+  </main>
+  <footer class="footer">
+    <p>Made by FxKuroo</p>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
