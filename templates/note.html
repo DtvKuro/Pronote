@@ -1,19 +1,23 @@
-<div class="notes-menu-overlay"></div>
-<aside class="notes-menu">
-  <div class="notes-menu-header">
-    <h3>All Notes</h3>
-    <button class="notes-menu-close" aria-label="Close menu">&times;</button>
-  </div>
-  <div class="notes-menu-body">
-    {{NOTES_MENU}}
-  </div>
-</aside>
 <article class="note-page">
   <div class="note-header">
-    <a href="../index.html" class="back-link">← Back to Notes</a>
-    <span class="note-category-badge">{{CATEGORY}}</span>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>{{CATEGORY}}</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">{{TITLE}}</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
   </div>
   <h1 class="note-title">{{TITLE}}</h1>
+  <p class="note-meta">Last updated: {{LAST_UPDATED}}{{VERSION_MARKUP}}</p>
   <div class="note-content">
     {{NOTE_CONTENT}}
   </div>
