@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
-  <title>{{PAGE_TITLE}}</title>
-  <link rel="stylesheet" href="{{BASE_PATH}}css/style.css">
+  <title>404 — Pronote</title>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
-<body data-page-type="{{PAGE_TYPE}}">
+<body data-page-type="error">
   <div class="progress-bar" id="progressBar"></div>
   <nav class="nav">
     <div class="nav-container">
-      {{NOTES_MENU_TOGGLE}}
-      <a href="{{BASE_PATH}}index.html" class="nav-logo">Pronote</a>
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="./index.html" class="nav-logo">Pronote</a>
       <div class="nav-search" id="navSearch">
         <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
         <div class="search-nav-panel" id="searchNavPanel" style="display:none">
@@ -36,7 +36,35 @@
       <button class="notes-menu-close" aria-label="Close menu">&times;</button>
     </div>
     <div class="notes-menu-body">
-      {{NOTES_MENU}}
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Frontend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="notes/html.html" class="notes-menu-link" data-preview="INTRODUCTION TO HTML HyperText Markup Language Markup Language (not a programming language) Tim Bern">HTML</a></li>
+        <li><a href="notes/css.html" class="notes-menu-link" data-preview="INTRODUCTION TO CSS Cascading Style Sheets Style Sheet Language CSS SAS LESS Hakon Wium Lie Father o">CSS</a></li>
+        <li><a href="notes/javascript.html" class="notes-menu-link" data-preview="INTRODUCTION TO JAVASCRIPT Brendan Eich created Javascript within 10days. JS is Interpreted Language">JavaScript</a></li>
+        <li><a href="notes/dom.html" class="notes-menu-link" data-preview="WAYS TO USE JAVASCRIPT 1. Inline Javascript onload is when body loaded up it will alert the message ">DOM</a></li>
+        <li><a href="notes/web-design.html" class="notes-menu-link" data-preview="WEBDESIGN PRINCIPLES 4 Pillars of Web-Design Colour Theory Typography User Interface Design (UI) Use">Web Design</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Backend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="notes/node-js.html" class="notes-menu-link" data-preview="INTRODUCTION TO NODE.JS Framework is commonly use components. Reuse components. Reduce overhead. Nod">Node.js</a></li>
+        <li><a href="notes/express.html" class="notes-menu-link" data-preview="INTRODUCTION TO EXPRESS Express is a JS Framework which is used for backend and Node is a runtime en">Express</a></li>
+        <li><a href="notes/EJS.html" class="notes-menu-link" data-preview="INTRODUCTION TO EJS From Submitting &amp;quot;name&amp;quot; with app.post how do we get the &amp;quot;name&amp;quot">EJS</a></li>
+        <li><a href="notes/API.html" class="notes-menu-link" data-preview="INTRODUCTION TO API Application Programming Interface (API) When theres 2 Programs with different la">API</a></li>
+        <li><a href="notes/backend.html" class="notes-menu-link" data-preview="INTRODUCTION TO BACKEND What Backend Contains Server - Computer thats on 24/7 so that user can acces">Backend</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Tools</h4>
+  <ul class="notes-menu-list">
+        <li><a href="notes/gitbash.html" class="notes-menu-link" data-preview="INTRODUCTION TO COMMAND LINE Understanding Command Lines Bash shell. Kernel is the Operating System(">Git & Bash</a></li>
+        <li><a href="notes/github.html" class="notes-menu-link" data-preview="INTRODUCTION TO GIT Version Control Making a savepoint or a version. So that if something happens, a">GitHub</a></li>
+        <li><a href="notes/bash-shortcuts.html" class="notes-menu-link" data-preview="Bash Shortcuts (.bashrc) Copy the raw bashrc block below into ~/.bashrc on any new device to replica">Bash Shortcuts</a></li>
+  </ul>
+</div>
+
     </div>
   </aside>
 
@@ -47,26 +75,31 @@
       <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
       <div class="skeleton-bar skeleton-bar--text"></div>
     </div>
-    {{CONTENT}}
+    <div class="error-page">
+  <h1 class="error-code">404</h1>
+  <p class="error-message">This page doesn't exist.</p>
+  <a href="./index.html" class="error-home-link">Back to Pronote</a>
+</div>
+
   </main>
 
   <footer class="footer">
     <div class="footer-content">
-      <p class="footer-copyright">{{COPYRIGHT}} &middot; <a href="{{BASE_PATH}}sitemap.html" class="footer-sitemap-link">Sitemap</a></p>
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp. &middot; <a href="./sitemap.html" class="footer-sitemap-link">Sitemap</a></p>
       <div class="footer-social">
-        <a href="{{SOCIAL_INSTAGRAM}}" target="_blank" rel="noopener" aria-label="Instagram">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
-        <a href="{{SOCIAL_GITHUB}}" target="_blank" rel="noopener" aria-label="GitHub">
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         </a>
-        <a href="{{SOCIAL_FACEBOOK}}" target="_blank" rel="noopener" aria-label="Facebook">
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
         </a>
       </div>
     </div>
   </footer>
 
-  <script src="{{BASE_PATH}}js/main.js"></script>
+  <script src="./js/main.js"></script>
 </body>
 </html>

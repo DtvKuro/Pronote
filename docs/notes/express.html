@@ -1,52 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Express — WebNote</title>
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | Express</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
   <nav class="nav">
     <div class="nav-container">
       <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
-      <a href="../index.html" class="nav-logo">WebNote</a>
-      <button class="nav-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-links">
-        <a href="../index.html">Home</a>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
       </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
     </div>
   </nav>
-  <main class="main">
-    <div class="notes-menu-overlay"></div>
-<aside class="notes-menu">
-  <div class="notes-menu-header">
-    <h3>All Notes</h3>
-    <button class="notes-menu-close" aria-label="Close menu">&times;</button>
-  </div>
-  <div class="notes-menu-body">
-    <div class="notes-menu-category">
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
   <h4 class="notes-menu-category-title">Frontend</h4>
   <ul class="notes-menu-list">
-        <li><a href="html.html" class="notes-menu-link">HTML</a></li>
-        <li><a href="css.html" class="notes-menu-link">CSS</a></li>
-        <li><a href="javascript.html" class="notes-menu-link">JavaScript</a></li>
-        <li><a href="dom.html" class="notes-menu-link">DOM</a></li>
-  </ul>
-</div>
-<div class="notes-menu-category">
-  <h4 class="notes-menu-category-title">Design</h4>
-  <ul class="notes-menu-list">
-        <li><a href="web-design.html" class="notes-menu-link">Web Design</a></li>
+        <li><a href="html.html" class="notes-menu-link" data-preview="INTRODUCTION TO HTML HyperText Markup Language Markup Language (not a programming language) Tim Bern">HTML</a></li>
+        <li><a href="css.html" class="notes-menu-link" data-preview="INTRODUCTION TO CSS Cascading Style Sheets Style Sheet Language CSS SAS LESS Hakon Wium Lie Father o">CSS</a></li>
+        <li><a href="javascript.html" class="notes-menu-link" data-preview="INTRODUCTION TO JAVASCRIPT Brendan Eich created Javascript within 10days. JS is Interpreted Language">JavaScript</a></li>
+        <li><a href="dom.html" class="notes-menu-link" data-preview="WAYS TO USE JAVASCRIPT 1. Inline Javascript onload is when body loaded up it will alert the message ">DOM</a></li>
+        <li><a href="web-design.html" class="notes-menu-link" data-preview="WEBDESIGN PRINCIPLES 4 Pillars of Web-Design Colour Theory Typography User Interface Design (UI) Use">Web Design</a></li>
   </ul>
 </div>
 <div class="notes-menu-category">
   <h4 class="notes-menu-category-title">Backend</h4>
   <ul class="notes-menu-list">
-        <li><a href="node-js.html" class="notes-menu-link">Node.js</a></li>
-        <li><a href="express.html" class="notes-menu-link active">Express</a></li>
+        <li><a href="node-js.html" class="notes-menu-link" data-preview="INTRODUCTION TO NODE.JS Framework is commonly use components. Reuse components. Reduce overhead. Nod">Node.js</a></li>
+        <li><a href="express.html" class="notes-menu-link active" data-preview="INTRODUCTION TO EXPRESS Express is a JS Framework which is used for backend and Node is a runtime en">Express</a></li>
         <li><a href="EJS.html" class="notes-menu-link">EJS</a></li>
         <li><a href="API.html" class="notes-menu-link">API</a></li>
         <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
@@ -61,14 +65,36 @@
   </ul>
 </div>
 
-  </div>
-</aside>
-<article class="note-page">
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
   <div class="note-header">
-    <a href="../index.html" class="back-link">← Back to Notes</a>
-    <span class="note-category-badge">Backend</span>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>Backend</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Express</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
   </div>
   <h1 class="note-title">Express</h1>
+  <p class="note-meta">Last updated: July 17, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h2>INTRODUCTION TO EXPRESS</h2>
 <p><strong>Express</strong> is a JS Framework which is used for backend<br>and <strong>Node</strong> is a runtime environment that allows Javascript be used on the pc itself.<br>Instead of just being in a website.</p>
@@ -85,122 +111,122 @@
 <p><strong>HTTP</strong> - Hyper Text Transfer Protocol</p>
 <p>is a language that allows computers to connect to other computer.</p>
 <h3>Request Vocab</h3>
-<p><strong>GET</strong> - Request resource (HTML,CSS, JS, etc.)<br><strong>POST</strong> - Sending resource to the server (User&#39;s Input to the server)<br>UPDATING{<br><strong>PUT</strong> - Replacing resource.<br><strong>PATCH</strong> - Patch up a resource. // specific resource that wants to be sent or replaced.<br>}<br><strong>DELETE</strong> - Deletes resource from DB, client, or server.</p>
+<p><strong>GET</strong> - Request resource (HTML,CSS, JS, etc.)<br><strong>POST</strong> - Sending resource to the server (User&#39;s Input to the server)<br>UPDATING{<br><strong>PUT</strong> - Replacing resource.<br><strong>PATCH</strong> - Patch up a resource. Specific resource that wants to be sent or replaced.<br>}<br><strong>DELETE</strong> - Deletes resource from DB, client, or server.</p>
 <hr>
 <h2>CREATING A SERVER</h2>
-<pre><code class="hljs language-js"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>; <span class="hljs-comment">//in order to use express functions</span>
-<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>(); <span class="hljs-comment">//getting hold of express function as constant variable</span>
-<span class="hljs-keyword">const</span> port = <span class="hljs-number">3000</span>; <span class="hljs-comment">//setting the port that client request to.</span>
-
-<span class="hljs-comment">//When localhost:3000 is ran it GET&#x27;S &quot;/&quot; or root which then executes everything inside this function</span>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
+<span class="hljs-keyword">const</span> port = <span class="hljs-number">3000</span>;
 
 app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>);
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>);
 });
 
-app.<span class="hljs-title function_">listen</span>(port,<span class="hljs-function">()=&gt;</span>{ <span class="hljs-comment">// 3000 is the port</span>
- <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Server running on port <span class="hljs-subst">${port}</span>.`</span>); <span class="hljs-comment">// Callback</span>
-});</code></pre>
+app.<span class="hljs-title function_">listen</span>(port,<span class="hljs-function">()=&gt;</span>{
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Server running on port <span class="hljs-subst">${port}</span>.`</span>);
+});</code></pre></div>
+<p><code>import express from &quot;express&quot;;</code> in order to use express functions.<br><code>const app = express();</code> getting hold of express function as constant variable.<br><code>const port = 3000;</code> setting the port that client request to.<br>When <code>localhost:3000</code> is ran it GET&#39;S &quot;/&quot; or root which then executes everything inside the function.<br><code>app.listen</code> starts the server on port 3000 with a callback that logs a message.</p>
 <hr>
 <h2>HOW TO KILL A SERVER</h2>
 <p>You first have to find it with this:</p>
-<pre><code class="hljs language-bash">netstat -ano | findstr :portnum</code></pre>
+<div class="code-block-wrapper"><span class="code-lang-label">BASH</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-bash">netstat -ano | findstr :portnum</code></pre></div>
 <p>Then you find the PID then write it here</p>
-<pre><code class="hljs language-bash">taskkill /PID PIDHere /F &lt;This is <span class="hljs-keyword">for</span> terminal use&gt;
-taskkill -PID PIDHere -F &lt;This also works and its short&gt;
-taskkill //PID PIDHere //F &lt;This is <span class="hljs-keyword">for</span> GitBash Terminal&gt;</code></pre>
+<div class="code-block-wrapper"><span class="code-lang-label">BASH</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-bash">taskkill /PID PIDHere /F           <span class="hljs-comment"># for terminal use</span>
+taskkill -PID PIDHere -F           <span class="hljs-comment"># also works, short version</span>
+taskkill //PID PIDHere //F         <span class="hljs-comment"># for GitBash Terminal</span></code></pre></div>
 <hr>
 <h2>ENDPOINTS</h2>
 <p><strong>/Endpoint</strong> - where you want something to go.</p>
-<pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-<span class="hljs-comment">//In here you are targeting the root which is / equivalent to &quot;localhot:3001/&quot;</span>
-res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>
-);
-});</code></pre>
-<p>you can do more like this</p>
-<pre><code class="hljs language-js">    app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/about&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> { <span class="hljs-comment">//which would be &quot;localhost:3001/about&quot;</span>
-    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>);
-
-});</code></pre>
+<p>In here you are targeting the root which is / equivalent to <code>localhost:3001/</code></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>);
+});</code></pre></div>
+<p>you can do more like this. This would be <code>localhost:3001/about</code></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/about&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>);
+});</code></pre></div>
 <hr>
 <h2>POSTMAN</h2>
 <p><strong>HOW TO MAKE REQUEST.</strong></p>
 <p>CLIENT to HTTP to DATABASE &gt; SERVER &gt; APPLICATION</p>
 <h3>HTTP Response Status</h3>
-<p>Informational responses (100 – 199)<br>Successful responses (200 – 299)<br>Redirection messages (300 – 399)<br>Client error responses (400 – 499)<br>Server error responses (500 – 599)</p>
+<p>Informational responses (100 -- 199)<br>Successful responses (200 -- 299)<br>Redirection messages (300 -- 399)<br>Client error responses (400 -- 499)<br>Server error responses (500 -- 599)</p>
 <p>What if you wanna work on backend first so you can test it and pass it to frontend.</p>
 <p>You can use <strong>POSTMAN</strong>.</p>
 <h3>Postman Practice - Testing Different Routes</h3>
-<pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;&lt;h1&gt;Home Page&lt;/h1&gt;&quot;</span>);
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;&lt;h1&gt;Home Page&lt;/h1&gt;&quot;</span>);
 });
 
 app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/register&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-<span class="hljs-comment">//You Are Sending a DATA.</span>
-res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">201</span>); <span class="hljs-comment">//201 means resource was created</span>
+  res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">201</span>); <span class="hljs-comment">// 201 means resource was created</span>
 });
 
-app.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;/user/angela&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> { <span class="hljs-comment">//Put will replace all of data in angela rather than just updating the outdated one</span>
-res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">200</span>); <span class="hljs-comment">//So you have to fetch data first, and have to put all updated info before PUT</span>
+app.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;/user/angela&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">200</span>);
 });
 
-app.<span class="hljs-title function_">patch</span>(<span class="hljs-string">&quot;/user/angela&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> { <span class="hljs-comment">// You can change a single thing in the data.</span>
-res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">200</span>);
+app.<span class="hljs-title function_">patch</span>(<span class="hljs-string">&quot;/user/angela&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">200</span>);
 });
 
-app.<span class="hljs-title function_">delete</span>(<span class="hljs-string">&quot;/user/angela&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> { <span class="hljs-comment">//It will delete the data.</span>
-res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">200</span>);
-});</code></pre>
-<p><strong>sendStatus(code)</strong> - sends just the HTTP status code as the response (e.g. 200, 201).<br><strong>PUT</strong> replaces ALL data so you need to send everything. <strong>PATCH</strong> only updates what you specify.</p>
+app.<span class="hljs-title function_">delete</span>(<span class="hljs-string">&quot;/user/angela&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">sendStatus</span>(<span class="hljs-number">200</span>);
+});</code></pre></div>
+<p>You are sending a DATA with POST.<br>Put will replace all of data in angela rather than just updating the outdated one. So you have to fetch data first, and have to put all updated info before PUT.<br>PATCH lets you change a single thing in the data.<br>DELETE will delete the data.</p>
+<p><code>sendStatus(code)</code> - sends just the HTTP status code as the response (e.g. 200, 201).<br><strong>PUT</strong> replaces ALL data so you need to send everything. <strong>PATCH</strong> only updates what you specify.</p>
 <hr>
 <h2>MIDDLEWARE</h2>
-<p>Server ---&gt; Middleware ----&gt; GET, PUT, POST, PATCH, DELETE</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">S<span class="hljs-function"><span class="hljs-title">erver</span> ---&gt;</span> M<span class="hljs-function"><span class="hljs-title">iddleware</span> ----&gt;</span> GET, PUT, POST, PATCH, DELETE</code></pre></div>
 <p>Middleware can be used for the following:</p>
 <p><strong>preprocess the request</strong> - middleware can change modify the request before it comes to final route.<br><strong>logging the request</strong> - request time, what type of request, request status.<br><strong>Authentication</strong> - it can check if the request came from client that is authorized.<br><strong>Identify Errors</strong> - before it goes to the handler.</p>
 <hr>
 <h3>Body-Parser</h3>
 <p>Example of middleware is <strong>body-parser</strong><br>Body-parses is already in the Express Library.</p>
 <p>which can be accessed like this:</p>
-<pre><code class="hljs language-js">app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">urlencoded</span>({ <span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span> }));</code></pre>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">urlencoded</span>({ <span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span> }));</code></pre></div>
 <p><em>Example of parse.</em></p>
-<p>//Action is the route that i want the server to handle</p>
-<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span> =<span class="hljs-string">&quot;/login&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;POST&quot;</span>&gt;</span> //Method is how i want the data to be processed.
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span>Email<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>//label where we label the next input.
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">required</span>&gt;</span>//input has type and name which is what the user inputted. //And then required where the input cannot be submitted if theres no data inputted.
+<p>Action is the route that i want the server to handle. Method is how i want the data to be processed.</p>
+<div class="code-block-wrapper"><span class="code-lang-label">HTML</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span> =<span class="hljs-string">&quot;/login&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;POST&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span>Email<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">required</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span>Password<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">required</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Submit&quot;</span>&gt;</span> //Submit type which is typically a button.
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></code></pre>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Submit&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></code></pre></div>
+<p><code>label</code> is where we label the next input.<br><code>input</code> has type and name which is what the user inputted. <code>required</code> means the input cannot be submitted if theres no data inputted.<br><code>submit</code> type is typically a button.</p>
 <p>Make a public folder in the project and thats where the static files likes HTML, CSS, Images, things that dont need to change.</p>
 <h3>Getting Root Directory</h3>
 <p>Getting the root directory (important for cloud projects, not just local):</p>
-<pre><code class="hljs language-js"><span class="hljs-keyword">import</span> { dirname } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;path&quot;</span>;
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> { dirname } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;path&quot;</span>;
 <span class="hljs-keyword">import</span> { fileURLToPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;url&quot;</span>;
-<span class="hljs-keyword">const</span> __dirname = <span class="hljs-title function_">dirname</span>(<span class="hljs-title function_">fileURLToPath</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span>)); <span class="hljs-comment">//converts the file URL to an actual directory path</span></code></pre>
+<span class="hljs-keyword">const</span> __dirname = <span class="hljs-title function_">dirname</span>(<span class="hljs-title function_">fileURLToPath</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span>));</code></pre></div>
+<p>converts the file URL to an actual directory path.</p>
 <h3>res.sendFile vs res.send</h3>
-<p><strong>res.send(&quot;text&quot;)</strong> - sends text/HTML as the response.<br><strong>res.sendFile(__dirname + &quot;/public/index.html&quot;)</strong> - sends an actual file from the directory as the response.</p>
-<pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-res.<span class="hljs-title function_">sendFile</span>(__dirname + <span class="hljs-string">&quot;/public/index.html&quot;</span>);
+<p><code>res.send(&quot;text&quot;)</code> - sends text/HTML as the response.<br><code>res.sendFile(__dirname + &quot;/public/index.html&quot;)</code> - sends an actual file from the directory as the response.</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">sendFile</span>(__dirname + <span class="hljs-string">&quot;/public/index.html&quot;</span>);
 });
 
 app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/submit&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(req.<span class="hljs-property">body</span>); <span class="hljs-comment">//req.body contains the data sent from the form (parsed by body-parser/urlencoded middleware)</span>
-});</code></pre>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(req.<span class="hljs-property">body</span>);
+});</code></pre></div>
+<p><code>req.body</code> contains the data sent from the form (parsed by body-parser/urlencoded middleware).</p>
 <hr>
 <h2>MIDDLEWARE TYPES</h2>
 <p><strong>Pre-processing</strong> = body-parsing(integrated in express.)<br><strong>Auth</strong><br><strong>Logging</strong> = morgan(package)<br><strong>Error</strong></p>
 <hr>
 <h2>MORGAN</h2>
 <p><strong>Morgan</strong> is used to log the route and get info like Get, or status code or OS or browser and many more.<br>It is used like this,</p>
-<pre><code class="hljs language-js"><span class="hljs-keyword">import</span> morgan <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;morgan&quot;</span>; <span class="hljs-comment">//Importing Morgan</span></code></pre>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> morgan <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;morgan&quot;</span>;</code></pre></div>
 <h3>Predefined Log Formats</h3>
 <p>Like in the example above, you have five predefined formats that you can use in order to easily get the info you need. They are:</p>
 <p><strong>&quot;combined&quot;</strong>: which gives you the Apache standard combined format for your logs.<br><strong>&quot;common&quot;</strong>: referencing the Apache standard common format.<br><strong>&quot;dev&quot;</strong>: A color-coded (by request status) log format.<br><strong>&quot;short&quot;</strong>: Shorter than the default format, including just the few items you&#39;d expect a request logline would have.<br><strong>&quot;tiny&quot;</strong>: Even shorter, just the response time and a few extra items.</p>
 <h3>How To Use The Log Formats</h3>
-<pre><code class="hljs language-js"><span class="hljs-title class_">Import</span> morgan <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;morgan&quot;</span>;
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-title class_">Import</span> morgan <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;morgan&quot;</span>;
 <span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
 
-app.<span class="hljs-title function_">use</span>(morgan.(<span class="hljs-string">&quot;combined.&quot;</span>));</code></pre>
+app.<span class="hljs-title function_">use</span>(morgan.(<span class="hljs-string">&quot;combined.&quot;</span>));</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -279,72 +305,73 @@ app.<span class="hljs-title function_">use</span>(morgan.(<span class="hljs-stri
 </tbody></table>
 <hr>
 <p><strong>combined</strong> - Standard Apache combined log output.</p>
-<pre><code class="hljs"><span class="hljs-symbol">:remote-addr</span> - <span class="hljs-symbol">:remote-user</span> [<span class="hljs-symbol">:date</span>[clf]] <span class="hljs-string">&quot;:method :url HTTP/:http-version&quot;</span> <span class="hljs-symbol">:status</span> <span class="hljs-symbol">:res</span>[content-length] <span class="hljs-string">&quot;:referrer&quot;</span> <span class="hljs-string">&quot;:user-agent&quot;</span></code></pre>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-symbol">:remote-addr</span> - <span class="hljs-symbol">:remote-user</span> [<span class="hljs-symbol">:date</span>[clf]] <span class="hljs-string">&quot;:method :url HTTP/:http-version&quot;</span> <span class="hljs-symbol">:status</span> <span class="hljs-symbol">:res</span>[content-length] <span class="hljs-string">&quot;:referrer&quot;</span> <span class="hljs-string">&quot;:user-agent&quot;</span></code></pre></div>
 <p><em>will output</em></p>
-<pre><code class="hljs"><span class="hljs-meta">::1 - - [27/Nov/2024:06:21:42</span> +0000] &quot;GET /combined HTTP/1.1&quot; 200 2 &quot;-&quot; &quot;curl/8.7.1&quot;</code></pre>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-meta">::1 - - [27/Nov/2024:06:21:42</span> +0000] &quot;GET /combined HTTP/1.1&quot; 200 2 &quot;-&quot; &quot;curl/8.7.1&quot;</code></pre></div>
 <p><strong>common</strong> - Standard Apache common log output.</p>
-<pre><code class="hljs"><span class="hljs-meta">:remote-addr - :remote-user</span> [:date[clf]] &quot;:method :url HTTP/:http-version&quot; :status :res[content-length]</code></pre>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-meta">:remote-addr - :remote-user</span> [:date[clf]] &quot;:method :url HTTP/:http-version&quot; :status :res[content-length]</code></pre></div>
 <p><em>will output</em></p>
-<pre><code class="hljs"><span class="hljs-meta">::1 - - [27/Nov/2024:06:21:46</span> +0000] &quot;GET /common HTTP/1.1&quot; 200 2</code></pre>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-meta">::1 - - [27/Nov/2024:06:21:46</span> +0000] &quot;GET /common HTTP/1.1&quot; 200 2</code></pre></div>
 <p><strong>dev</strong> - Concise output colored by response status for development use. The :status token will be colored green for success codes, red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for information codes.</p>
-<pre><code class="hljs"><span class="hljs-meta">:method :url</span> :status :response-time ms - :res[content-length]</code></pre>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-meta">:method :url</span> :status :response-time ms - :res[content-length]</code></pre></div>
 <p><em>will output</em></p>
-<pre><code class="hljs"><span class="hljs-attribute">GET</span> /dev <span class="hljs-number">200</span> <span class="hljs-number">0</span>.<span class="hljs-number">224</span> ms - <span class="hljs-number">2</span></code></pre>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-attribute">GET</span> /dev <span class="hljs-number">200</span> <span class="hljs-number">0</span>.<span class="hljs-number">224</span> ms - <span class="hljs-number">2</span></code></pre></div>
 <p><strong>short</strong> - Shorter than default, also including response time.</p>
-<pre><code class="hljs"><span class="hljs-symbol">:remote-addr</span> <span class="hljs-symbol">:remote-user</span> <span class="hljs-symbol">:method</span> <span class="hljs-symbol">:url</span> <span class="hljs-title class_">HTTP</span>/<span class="hljs-symbol">:http-version</span> <span class="hljs-symbol">:status</span> <span class="hljs-symbol">:res</span>[content-length] - <span class="hljs-symbol">:response-time</span> ms</code></pre>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-symbol">:remote-addr</span> <span class="hljs-symbol">:remote-user</span> <span class="hljs-symbol">:method</span> <span class="hljs-symbol">:url</span> <span class="hljs-title class_">HTTP</span>/<span class="hljs-symbol">:http-version</span> <span class="hljs-symbol">:status</span> <span class="hljs-symbol">:res</span>[content-length] - <span class="hljs-symbol">:response-time</span> ms</code></pre></div>
 <p><em>will output</em></p>
-<pre><code class="hljs"><span class="hljs-number">::1</span> - GET /short HTTP/<span class="hljs-number">1.1 200 2</span> - <span class="hljs-number">0</span>.<span class="hljs-number">283</span> ms</code></pre>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-number">::1</span> - GET /short HTTP/<span class="hljs-number">1.1 200 2</span> - <span class="hljs-number">0</span>.<span class="hljs-number">283</span> ms</code></pre></div>
 <p><strong>tiny</strong> - The minimal output.</p>
-<pre><code class="hljs"><span class="hljs-meta">:method :url</span> :status :res[content-length] - :response-time ms</code></pre>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-meta">:method :url</span> :status :res[content-length] - :response-time ms</code></pre></div>
 <p><em>will output</em></p>
-<pre><code class="hljs"><span class="hljs-attribute">GET</span> /tiny <span class="hljs-number">200</span> <span class="hljs-number">2</span> - <span class="hljs-number">0</span>.<span class="hljs-number">188</span> ms</code></pre>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-attribute">GET</span> /tiny <span class="hljs-number">200</span> <span class="hljs-number">2</span> - <span class="hljs-number">0</span>.<span class="hljs-number">188</span> ms</code></pre></div>
 <hr>
 <h2>MIDDLEWARE ORDER MATTERS</h2>
 <p>Express runs middleware in the order you write them, top to bottom.</p>
 <p>The proper structure is:</p>
 <ol>
-<li><strong>app.use()</strong> - global middleware (body-parser, morgan, auth, etc.)</li>
-<li><strong>app.get() / app.post() / app.put() / app.patch() / app.delete()</strong> - route handlers</li>
-<li><strong>app.listen()</strong> - always last, starts the server</li>
+<li><code>app.use()</code> - global middleware (body-parser, morgan, auth, etc.)</li>
+<li><code>app.get() / app.post() / app.put() / app.patch() / app.delete()</code> - route handlers</li>
+<li><code>app.listen()</code> - always last, starts the server</li>
 </ol>
 <p><em>Example:</em></p>
-<pre><code class="hljs language-js">app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">urlencoded</span>({ <span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span> })); <span class="hljs-comment">// 1st - parse the body</span>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">urlencoded</span>({ <span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span> })); <span class="hljs-comment">// 1st - parse the body</span>
 app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">morgan</span>(<span class="hljs-string">&quot;tiny&quot;</span>)); <span class="hljs-comment">// 2nd - log the request</span>
 app.<span class="hljs-title function_">use</span>(authMiddleware); <span class="hljs-comment">// 3rd - check if user is allowed</span>
 
 app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> { <span class="hljs-comment">// 4th - handle the route</span>
-res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Home&quot;</span>);
+  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Home&quot;</span>);
 });
 
-app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>); <span class="hljs-comment">// Last - start server</span></code></pre>
+app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>); <span class="hljs-comment">// Last - start server</span></code></pre></div>
 <h3>Why Order Matters</h3>
 <ul>
-<li>Express processes middleware top to bottom using next().</li>
+<li>Express processes middleware top to bottom using <code>next()</code>.</li>
 <li>If auth middleware is placed AFTER a route, that route runs without auth check = security risk.</li>
-<li>If body-parser is placed AFTER a POST route, req.body will be undefined because the body wasnt parsed yet.</li>
+<li>If body-parser is placed AFTER a POST route, <code>req.body</code> will be undefined because the body wasnt parsed yet.</li>
 <li>If morgan is placed AFTER routes, it wont log requests that were already handled.</li>
 </ul>
 <p>Think of it like a checklist before the request reaches the route:<br><em>parse body -&gt; log it -&gt; check auth -&gt; THEN handle the route.</em></p>
 <p>Morgan (logging) goes near the top, not the bottom.<br>Even though it tracks response time, it works by starting a timer when the request enters and stopping when the response is sent. So it needs to be placed early to catch everything.</p>
 <hr>
 <h2>CUSTOM MIDDLEWARE</h2>
-<p>we use <strong>app.use()</strong> method to specify a middleware</p>
-<pre><code class="hljs language-js">app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> { <span class="hljs-comment">//Inside the app.use we can pass a function that has req, res, and next.</span>
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request Method: &quot;</span>. req.<span class="hljs-property">method</span>);
-<span class="hljs-title function_">next</span>() <span class="hljs-comment">//The next function determines when we should move on from the middleware into the next function.</span>
-});</code></pre>
-<p>This is how you make custom logger.<br>by making a function then console logging it.<br>then calling next() function to move on.</p>
+<p>we use <code>app.use()</code> method to specify a middleware</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request Method: &quot;</span>. req.<span class="hljs-property">method</span>);
+  <span class="hljs-title function_">next</span>()
+});</code></pre></div>
+<p>Inside the <code>app.use</code> we can pass a function that has req, res, and next.<br>The <code>next()</code> function determines when we should move on from the middleware into the next function.</p>
+<p>This is how you make custom logger.<br>by making a function then console logging it.<br>then calling <code>next()</code> function to move on.</p>
 <p>If you dont put the next function then the website will never reach the next code that is below.</p>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> logger = <span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>){
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request Method: &quot;</span> + req.<span class="hljs-property">method</span>);
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request URL: localhost:&quot;</span> + port + req.<span class="hljs-property">url</span>);
-<span class="hljs-title function_">next</span>()
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> logger = <span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>){
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request Method: &quot;</span> + req.<span class="hljs-property">method</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request URL: localhost:&quot;</span> + port + req.<span class="hljs-property">url</span>);
+  <span class="hljs-title function_">next</span>()
 }
 
-app.<span class="hljs-title function_">use</span>(logger);</code></pre>
+app.<span class="hljs-title function_">use</span>(logger);</code></pre></div>
 <hr>
 <h2>WHY MIDDLEWARE NEEDS 3 PARAMETERS (req, res, next)</h2>
-<p>Middleware functions always take 3 inputs: (req, res, next).<br>This is NOT just convention — Express actually checks how many parameters your function has to know what it is.</p>
+<p>Middleware functions always take 3 inputs: (req, res, next).<br>This is NOT just convention -- Express actually checks how many parameters your function has to know what it is.</p>
 <ul>
 <li><strong>2 params (req, res)</strong> = route handler</li>
 <li><strong>3 params (req, res, next)</strong> = middleware</li>
@@ -353,22 +380,23 @@ app.<span class="hljs-title function_">use</span>(logger);</code></pre>
 <h3>What Each One Is For</h3>
 <p><strong>req</strong> - the request object. Lets you read what the user sent (URL, method, body, headers, etc.)</p>
 <p><strong>res</strong> - the response object. Middleware sometimes needs to END the request early.<br>For example, if a user isnt authorized, the middleware can send back a 401 and stop the chain right there.</p>
-<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">checkAuth</span>(<span class="hljs-params">req, res, next</span>) {
-<span class="hljs-keyword">if</span> (!req.<span class="hljs-property">headers</span>.<span class="hljs-property">authorization</span>) {
-res.<span class="hljs-title function_">status</span>(<span class="hljs-number">401</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Not allowed&quot;</span>); <span class="hljs-comment">// stops here, never reaches the route</span>
-<span class="hljs-keyword">return</span>;
-}
-<span class="hljs-title function_">next</span>();
-}</code></pre>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">checkAuth</span>(<span class="hljs-params">req, res, next</span>) {
+  <span class="hljs-keyword">if</span> (!req.<span class="hljs-property">headers</span>.<span class="hljs-property">authorization</span>) {
+    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">401</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Not allowed&quot;</span>);
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-title function_">next</span>();
+}</code></pre></div>
+<p>stops here, never reaches the route if not authorized.</p>
 <p>Without res, middleware couldnt reject requests, send errors, or redirect users.</p>
-<p><strong>next</strong> - a callback function that Express gives you. You didnt create it, Express did.<br>When you call next(), it tells Express &quot;im done, pass the request to the next middleware or route.&quot;<br>If you dont call next(), the request hangs forever and eventually times out.</p>
-<p>The key thing: next is a PARAMETER (input) because Express injects it into your function when it calls your middleware.<br>Express internally does something like: yourMiddleware(req, res, functionThatRunsTheNextMiddleware);<br>That third argument is a function Express built that knows which middleware comes next in the chain.</p>
+<p><strong>next</strong> - a callback function that Express gives you. You didnt create it, Express did.<br>When you call <code>next()</code>, it tells Express &quot;im done, pass the request to the next middleware or route.&quot;<br>If you dont call <code>next()</code>, the request hangs forever and eventually times out.</p>
+<p>The key thing: next is a PARAMETER (input) because Express injects it into your function when it calls your middleware.<br>Express internally does something like: <code>yourMiddleware(req, res, functionThatRunsTheNextMiddleware);</code><br>That third argument is a function Express built that knows which middleware comes next in the chain.</p>
 <p>Think of middleware as a chain of checkpoints:</p>
-<p><em>Request -&gt; [Logger] -&gt; [Auth Check] -&gt; [Rate Limiter] -&gt; [Route Handler] -&gt; Response</em></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">R<span class="hljs-function"><span class="hljs-title">equest</span> -&gt;</span> [L<span class="hljs-function"><span class="hljs-title">ogger</span>] -&gt;</span> [A<span class="hljs-function"><span class="hljs-title">uth</span> Check] -&gt;</span> [R<span class="hljs-function"><span class="hljs-title">ate</span> Limiter] -&gt;</span> [R<span class="hljs-function"><span class="hljs-title">oute</span> Handler] -&gt;</span> Response</code></pre></div>
 <p>At each checkpoint, the middleware can either:</p>
 <ol>
-<li>Call <strong>next()</strong> - pass to the next checkpoint</li>
-<li>Use <strong>res</strong> to respond - stop the chain, send something back</li>
+<li>Call <code>next()</code> - pass to the next checkpoint</li>
+<li>Use <code>res</code> to respond - stop the chain, send something back</li>
 </ol>
 <p>The 3 parameter signature is ONLY for middleware. Regular route handlers just use (req, res) since they are the end of the chain.</p>
 
@@ -380,9 +408,24 @@ res.<span class="hljs-title function_">status</span>(<span class="hljs-number">4
 </article>
 
   </main>
+
   <footer class="footer">
-    <p>Made by FxKuroo</p>
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp. &middot; <a href="../sitemap.html" class="footer-sitemap-link">Sitemap</a></p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
   </footer>
+
   <script src="../js/main.js"></script>
 </body>
 </html>

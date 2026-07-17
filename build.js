@@ -15,7 +15,10 @@ marked.use({
         ? hljs.highlight(text, { language }).value
         : hljs.highlightAuto(text).value;
       const langClass = language ? ` class="hljs language-${language}"` : ' class="hljs"';
-      return `<pre><code${langClass}>${highlighted}</code></pre>\n`;
+      const displayLang = language ? language.toUpperCase() : '';
+      const labelHtml = displayLang ? `<span class="code-lang-label">${displayLang}</span>` : '';
+      const copyBtn = `<button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>`;
+      return `<div class="code-block-wrapper">${labelHtml}${copyBtn}<pre><code${langClass}>${highlighted}</code></pre></div>\n`;
     },
   },
 });
@@ -48,45 +51,84 @@ function slugify(filename) {
   return path.basename(filename, '.md');
 }
 
+function formatDate(date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function escapeAttr(str) {
+  return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 const MENU_BTN =
   '<button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false">' +
   '<span></span><span></span><span></span>' +
   '</button>';
 
-function applyLayout(layout, { pageTitle, basePath, content, notesMenuToggle = '' }) {
+function applyLayout(layout, {
+  pageTitle,
+  basePath,
+  pageType,
+  content,
+  notesMenuToggle = '',
+  notesMenu = '',
+  copyright = '',
+  socialInstagram = '',
+  socialGithub = '',
+  socialFacebook = '',
+}) {
   return layout
     .replace(/\{\{PAGE_TITLE\}\}/g, pageTitle)
     .replace(/\{\{BASE_PATH\}\}/g, basePath)
+    .replace(/\{\{PAGE_TYPE\}\}/g, pageType || '')
     .replace(/\{\{NOTES_MENU_TOGGLE\}\}/g, notesMenuToggle)
+    .replace(/\{\{NOTES_MENU\}\}/g, notesMenu)
+    .replace(/\{\{COPYRIGHT\}\}/g, copyright)
+    .replace(/\{\{SOCIAL_INSTAGRAM\}\}/g, socialInstagram)
+    .replace(/\{\{SOCIAL_GITHUB\}\}/g, socialGithub)
+    .replace(/\{\{SOCIAL_FACEBOOK\}\}/g, socialFacebook)
     .replace(/\{\{CONTENT\}\}/g, content);
 }
 
+function buildNotesMenu(notes, activeSlug, linkPrefix, previewMap) {
+  linkPrefix = linkPrefix || '';
+  previewMap = previewMap || {};
+  const categoryMap = new Map();
+  for (const n of notes) {
+    if (!categoryMap.has(n.category)) {
+      categoryMap.set(n.category, []);
+    }
+    categoryMap.get(n.category).push(n);
+  }
+
+  let html = '';
+  for (const [cat, catNotes] of categoryMap) {
+    const items = catNotes
+      .map((n) => {
+        const nSlug = slugify(n.file);
+        const activeClass = nSlug === activeSlug ? ' active' : '';
+        const preview = previewMap[nSlug] ? ` data-preview="${escapeAttr(previewMap[nSlug])}"` : '';
+        return `<li><a href="${linkPrefix}${nSlug}.html" class="notes-menu-link${activeClass}"${preview}>${n.title}</a></li>`;
+      })
+      .join('\n        ');
+    html += `<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">${cat}</h4>
+  <ul class="notes-menu-list">
+        ${items}
+  </ul>
+</div>\n`;
+  }
+  return html;
+}
+
 const LOGOS = {
-  'HTML': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
-    <polygon points="4,2 36,2 33,35 20,39 7,35" fill="#e44d26"/>
-    <polygon points="20,4 20,37 30,34 32.5,4" fill="#f16529"/>
-    <polygon points="11,10 12,22 20,24.5 20,10" fill="#ebebeb"/>
-    <polygon points="29,10 20,10 20,24.5 28,22" fill="#fff"/>
-    <polygon points="12.5,12 13,18 20,18 20,12" fill="#e44d26"/>
-    <polygon points="27.5,12 20,12 20,18 27,18" fill="#c0392b"/>
-    <polygon points="13,20 13.5,27 20,29 20,23" fill="#ebebeb"/>
-    <polygon points="27,20 20,23 20,29 26.5,27" fill="#fff"/>
-  </svg>`,
+  'HTML': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path fill="#E44D26" d="M19.037 113.876L9.032 1.661h109.936l-10.016 112.198-45.019 12.48z"/><path fill="#F16529" d="M64 116.8l36.378-10.086 8.559-95.878H64z"/><path fill="#EBEBEB" d="M64 52.455H45.788L44.53 38.361H64V24.599H29.489l.33 3.692 3.382 37.927H64zm0 35.743l-.061.017-15.327-4.14-.979-10.975H33.816l1.928 21.609 28.193 7.826.063-.017z"/><path fill="#fff" d="M63.952 52.455v13.763h16.947l-1.597 17.849-15.35 4.143v14.319l28.215-7.82.207-2.325 3.234-36.233.335-3.696h-3.708zm0-27.856v13.762h33.244l.276-3.092.628-6.978.329-3.692z"/></svg>`,
 
-  'CSS': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
-    <polygon points="4,2 36,2 33,35 20,39 7,35" fill="#264de4"/>
-    <polygon points="20,4 20,37 30,34 32.5,4" fill="#2965f1"/>
-    <path d="M27,11 H13 l1,5 h7 v3 H14 l1,5 h5 l0.3,3 L20,28.5 l-0.3,0 L19.4,27 H15 l0.8,6 L20,34.5 L24.2,33 L25,27 H21 v-3 h4.5 z" fill="#ebebeb"/>
-    <path d="M20,11 v5 h6 l-0.5,3 H20 v5 h4.5 l-0.8,6 L20,31 v3.5 L24.2,33 L25,27 H21 v-3 h4.5 L26.5,16 H20 z" fill="#fff"/>
-  </svg>`,
+  'CSS': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><path fill="#1572B6" d="M18.814 114.123L8.76 1.352h110.48l-10.064 112.754-45.243 12.543z"/><path fill="#33A9DC" d="M64.001 117.062l36.559-10.136 8.601-96.354h-45.16z"/><path fill="#fff" d="M64.001 51.429h18.302l1.264-14.163H64.001V23.435h34.682l-.332 3.711-3.4 38.114H64.001z"/><path fill="#EBEBEB" d="M64.083 87.349l-.061.018-15.403-4.159-.985-11.031H33.752l1.937 21.717 28.331 7.863.063-.018z"/><path fill="#fff" d="M81.127 64.675l-1.666 18.522-15.426 4.164v14.39l28.354-7.858.208-2.337 2.406-26.881z"/><path fill="#EBEBEB" d="M64.048 23.435v13.831H30.64l-.277-3.108-.63-7.012-.331-3.711zm-.047 27.994v13.831H48.792l-.277-3.108-.631-7.012-.33-3.711z"/></svg>`,
 
-  'JavaScript': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
-    <rect width="40" height="40" fill="#f7df1e"/>
-    <path d="M11,31 l2.2,-1.4 c0.4,0.9 0.8,1.6 1.8,1.6 c0.9,0 1.4,-0.4 1.4,-1.9 V17 h3 v12.5 c0,3.1 -1.8,4.5 -4.4,4.5 C13,34 11.7,32.8 11,31 z" fill="#323330"/>
-    <path d="M22,30.6 l2.2,-1.3 c0.6,1 1.3,1.7 2.7,1.7 c1.1,0 1.8,-0.6 1.8,-1.4 c0,-0.9 -0.7,-1.3 -2,-1.9 l-0.7,-0.3 c-2,-0.85 -3.3,-1.9 -3.3,-4.2 c0,-2.1 1.6,-3.7 4,-3.7 c1.8,0 3,0.6 3.9,2.2 l-2.1,1.4 c-0.5,-0.8 -1,-1.1 -1.8,-1.1 c-0.8,0 -1.4,0.5 -1.4,1.1 c0,0.8 0.5,1.1 1.7,1.7 l0.7,0.3 c2.4,1 3.7,2.1 3.7,4.5 c0,2.5 -2,3.9 -4.7,3.9 C24.4,34 22.9,32.7 22,30.6 z" fill="#323330"/>
-  </svg>`,
+  'JavaScript': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><rect width="128" height="128" rx="10" fill="#F7DF1E"/><text x="100" y="110" font-family="Arial,Helvetica,sans-serif" font-weight="bold" font-size="75" fill="#323330" text-anchor="end">JS</text></svg>`,
 
   'DOM': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
+    <rect width="40" height="40" rx="6" fill="#1e1b4b"/>
     <circle cx="20" cy="7" r="5" fill="#6366f1"/>
     <circle cx="8" cy="26" r="5" fill="#8b5cf6"/>
     <circle cx="20" cy="26" r="5" fill="#8b5cf6"/>
@@ -108,33 +150,11 @@ const LOGOS = {
     <rect x="19" y="25" width="15" height="6" rx="2" fill="#bae6fd"/>
   </svg>`,
 
-  'Node.js': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
-    <polygon points="20,2 35,11 35,29 20,38 5,29 5,11" fill="#3c873a"/>
-    <polygon points="20,2 35,11 35,29 20,38 5,29 5,11" fill="none" stroke="#4caf50" stroke-width="1.5"/>
-    <path d="M17,13 h7 l-4,7 h4 l-8,8 l2,-7 h-4 z" fill="#fff" opacity="0.9"/>
-  </svg>`,
+  'Node.js': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><rect width="128" height="128" rx="10" fill="#333"/><path fill="#689f63" d="M64 95.4c-1.1 0-2.1-.3-3-.8L51.6 89c-1.4-.8-.7-1.1-.3-1.2 1.9-.7 2.3-.8 4.3-2 .2-.1.5-.1.7 0l7.1 4.2c.3.1.6.1.8 0l27.7-16c.3-.1.4-.4.4-.7V41.3c0-.3-.2-.6-.4-.7L64.2 24.6c-.3-.1-.6-.1-.8 0L35.7 40.6c-.3.1-.4.4-.4.7v32c0 .3.2.5.4.7l7.6 4.4c4.1 2.1 6.6-.4 6.6-2.8V44.1c0-.4.3-.7.7-.7h3c.4 0 .7.3.7.7v31.5c0 5.5-3 8.7-8.2 8.7-1.6 0-2.9 0-6.4-1.7l-7.3-4.2c-1.9-1.1-3-3.1-3-5.3v-32c0-2.2 1.1-4.2 3-5.3l27.7-16c1.8-1 4.2-1 6 0l27.7 16c1.9 1.1 3 3.1 3 5.3v32c0 2.2-1.1 4.2-3 5.3L67 94.6c-.9.5-1.9.8-3 .8z"/><path fill="#689f63" d="M72.4 73.1c-12.1 0-14.6-5.6-14.6-10.2 0-.4.3-.7.7-.7h3.1c.3 0 .6.2.7.6.5 3.2 1.8 4.8 8.1 4.8 5 0 7.1-1.1 7.1-3.8 0-1.5-.6-2.7-8.4-3.4-6.5-.7-10.5-2.1-10.5-7.2 0-4.7 4-7.6 10.7-7.6 7.5 0 11.2 2.6 11.7 8.2 0 .2-.1.4-.2.5-.1.1-.3.2-.5.2h-3.1c-.3 0-.6-.2-.7-.5-.7-3.3-2.6-4.4-7.2-4.4-5.3 0-5.9 1.8-5.9 3.2 0 1.7.7 2.1 8.1 3.1 7.3 1 10.8 2.4 10.8 7.5 0 5.1-4.3 8.1-11.7 8.1z"/></svg>`,
 
-  'Express': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
-    <rect width="40" height="40" rx="6" fill="#1a1a1a"/>
-    <rect x="6" y="13" width="18" height="2.5" rx="1.25" fill="#ffffff"/>
-    <rect x="6" y="19" width="13" height="2.5" rx="1.25" fill="#888888"/>
-    <rect x="6" y="25" width="16" height="2.5" rx="1.25" fill="#555555"/>
-    <circle cx="30" cy="14.25" r="3.5" fill="#ffffff"/>
-    <circle cx="25" cy="20.25" r="3.5" fill="#888888"/>
-    <circle cx="28" cy="26.25" r="3.5" fill="#555555"/>
-  </svg>`,
+  'Express': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><rect width="128" height="128" rx="10" fill="#f0f0f0"/><path d="M126.67 98.44c-4.56 1.16-7.38.05-9.91-3.75-5.68-8.51-11.95-16.63-18-24.9-.78-1.07-1.59-2.12-2.6-3.45C89 76 81.85 85.2 75.14 94.77c-2.4 3.42-4.92 4.91-9.22 3.71l26.5-33.63-25.34-32.05c4.45-1.03 7.26-.16 9.81 3.61 5.67 8.39 11.85 16.43 17.93 24.52.56.74 1.13 1.48 1.9 2.48 6.49-8.78 12.74-17.2 19.28-25.88 2.34-3.11 5-4.46 9.08-3.22L100.3 62.1l26.37 36.34z"/><path d="M1.33 61.74c.72-3.61 1.2-7.29 2.2-10.83 6-21.43 30.6-30.34 47.5-17.06C60.93 42.08 64 54.83 63.33 69H5.6c-.91 28.68 17.5 44.59 43.35 32.85 7.55-3.42 11.5-10.2 13.22-18.14.55-2.57 1.66-3.11 4.07-2.35-.63 5.72-1.81 11.25-4.86 16.2-5.97 9.68-14.78 14.38-25.88 14.84-14.63.6-26.27-6.4-31.42-19.27-2.72-6.77-3.43-13.88-3.12-21.15.03-.69.36-1.39.37-2.24zM5.68 64.66h53.22c-.35-18.34-10.69-31.27-24.81-31.4C18.39 33.12 6.62 46.32 5.68 64.66z"/></svg>`,
 
-  'EJS': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
-    <path d="M6,3 H25 L34,12 V37 H6 z" rx="2" fill="#e2e8f0"/>
-    <path d="M25,3 L34,12 H25 z" fill="#94a3b8"/>
-    <rect x="10" y="17" width="14" height="2" rx="1" fill="#94a3b8"/>
-    <rect x="10" y="21" width="10" height="2" rx="1" fill="#94a3b8"/>
-    <rect x="10" y="25" width="12" height="2" rx="1" fill="#94a3b8"/>
-    <rect x="18" y="26" width="18" height="12" rx="3" fill="#10b981"/>
-    <path d="M22,29.5 l-2.5,2.5 l2.5,2.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <path d="M30,29.5 l2.5,2.5 l-2.5,2.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <line x1="27.5" y1="29" x2="24.5" y2="35" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
-  </svg>`,
+  'EJS': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><rect width="128" height="128" rx="10" fill="#B4CA65"/><text x="64" y="78" font-family="Arial,sans-serif" font-weight="bold" font-size="48" fill="#fff" text-anchor="middle">EJS</text></svg>`,
 
   'API': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <circle cx="20" cy="20" r="16" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="2"/>
@@ -159,19 +179,9 @@ const LOGOS = {
     <circle cx="25" cy="30.5" r="2" fill="#fbbf24"/>
   </svg>`,
 
-  'Git & Bash': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
-    <rect width="40" height="40" rx="6" fill="#f05133"/>
-    <circle cx="13" cy="10" r="4" fill="#fff"/>
-    <circle cx="13" cy="30" r="4" fill="#fff"/>
-    <circle cx="29" cy="18" r="4" fill="#fff"/>
-    <line x1="13" y1="14" x2="13" y2="26" stroke="#fff" stroke-width="2.5"/>
-    <path d="M13,14 Q13,18 29,18" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-  </svg>`,
+  'Git & Bash': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><rect width="128" height="128" rx="10" fill="#f05133"/><path fill="#fff" d="M113.8 57.7L70.3 14.2c-2.5-2.5-6.6-2.5-9.1 0l-9 9 11.5 11.5c2.7-.9 5.7-.3 7.9 1.8 2.1 2.1 2.7 5.2 1.8 7.9l11.1 11.1c2.7-.9 5.8-.3 7.9 1.8 3 3 3 7.8 0 10.8-3 3-7.8 3-10.8 0-2.3-2.3-2.8-5.6-1.7-8.3L69.5 49l0 27.2c.7.4 1.4.8 2 1.4 3 3 3 7.8 0 10.8-3 3-7.8 3-10.8 0-3-3-3-7.8 0-10.8.8-.8 1.7-1.3 2.5-1.7V48.7c-.8-.3-1.7-.8-2.5-1.7-2.3-2.3-2.8-5.6-1.6-8.4L47.8 27.5 14.2 61.1c-2.5 2.5-2.5 6.6 0 9.1l43.5 43.5c2.5 2.5 6.6 2.5 9.1 0l43.4-43.4c2.5-2.5 2.5-6.6 0-9.1z"/></svg>`,
 
-  'GitHub': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
-    <rect width="40" height="40" rx="6" fill="#24292e"/>
-    <path d="M20,5 C11.7,5 5,11.7 5,20 c0,6.6 4.3,12.2 10.2,14.2 c0.75,0.14 1.02,-0.32 1.02,-0.72 l-0.01,-2.52 c-4.17,0.91 -5.05,-2.01 -5.05,-2.01 c-0.68,-1.73 -1.67,-2.19 -1.67,-2.19 c-1.36,-0.93 0.1,-0.91 0.1,-0.91 c1.5,0.1 2.3,1.54 2.3,1.54 c1.33,2.28 3.5,1.62 4.35,1.24 c0.14,-0.97 0.52,-1.62 0.95,-2 C14.05,26.4 10.22,25 10.22,18.68 c0,-1.63 0.58,-2.96 1.54,-4 c-0.15,-0.38 -0.67,-1.89 0.15,-3.95 c0,0 1.26,-0.4 4.12,1.53 c1.2,-0.33 2.48,-0.5 3.77,-0.5 c1.28,0 2.57,0.17 3.77,0.5 c2.86,-1.93 4.12,-1.53 4.12,-1.53 c0.82,2.06 0.3,3.57 0.15,3.95 c0.96,1.04 1.54,2.37 1.54,4 c0,5.33 -3.84,6.5 -7.5,6.85 c0.59,0.51 1.11,1.5 1.11,3.03 l-0.02,4.5 c0,0.4 0.27,0.87 1.03,0.72 C30.7,32.2 35,26.6 35,20 C35,11.7 28.3,5 20,5 z" fill="#fff"/>
-  </svg>`,
+  'GitHub': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><rect width="128" height="128" rx="10" fill="#24292e"/><path fill="#fff" d="M64 16C37.5 16 16 37.5 16 64c0 21.2 13.8 39.2 32.9 45.6 2.4.4 3.3-1 3.3-2.3 0-1.1 0-4.8-.1-8.7-13.4 2.9-16.2-5.7-16.2-5.7-2.2-5.6-5.3-7-5.3-7-4.4-3 .3-2.9.3-2.9 4.8.3 7.4 5 7.4 5 4.3 7.4 11.3 5.2 14 4 .4-3.1 1.7-5.2 3.1-6.4-10.7-1.2-21.9-5.3-21.9-23.8 0-5.3 1.9-9.5 5-12.9-.5-1.2-2.2-6.1.5-12.7 0 0 4-1.3 13.2 4.9 3.8-1.1 7.9-1.6 12-1.6 4.1 0 8.2.5 12 1.6 9.2-6.2 13.2-4.9 13.2-4.9 2.6 6.6 1 11.5.5 12.7 3.1 3.4 5 7.6 5 12.9 0 18.5-11.3 22.6-22 23.8 1.7 1.5 3.3 4.4 3.3 8.9 0 6.4-.1 11.6-.1 13.2 0 1.3.9 2.8 3.3 2.3C98.2 103.2 112 85.2 112 64c0-26.5-21.5-48-48-48z"/></svg>`,
 
   'Bash Shortcuts': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
     <rect width="40" height="40" rx="6" fill="#1e1e1e"/>
@@ -200,14 +210,18 @@ mkdirp(DIST_NOTES_DIR);
 
 const config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'notes.config.json'), 'utf8'));
 const { notes, site } = config;
+const categoryColors = config.categoryColors || {};
 
 notes.sort((a, b) => a.order - b.order);
 
 const layoutTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'layout.html'), 'utf8');
 const homeTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'home.html'), 'utf8');
 const noteTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'note.html'), 'utf8');
+const notFoundTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', '404.html'), 'utf8');
+const sitemapTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'sitemap.html'), 'utf8');
 
 const builtNotes = [];
+const previewMap = {};
 
 for (let i = 0; i < notes.length; i++) {
   const note = notes[i];
@@ -223,7 +237,13 @@ for (let i = 0; i < notes.length; i++) {
 
   noteHtml = noteHtml.replace(/Images\//g, '../images/');
 
+  // Plain text for search index and preview
+  const plainText = noteHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  const previewText = plainText.slice(0, 100);
+
   const slug = slugify(note.file);
+  previewMap[slug] = previewText;
+
   const prev = notes[i - 1] || null;
   const next = notes[i + 1] || null;
 
@@ -234,50 +254,41 @@ for (let i = 0; i < notes.length; i++) {
     ? `<a href="${slugify(next.file)}.html" class="note-nav-next">${next.title} →</a>`
     : '';
 
-  const menuCategoryMap = new Map();
-  for (const n of notes) {
-    if (!menuCategoryMap.has(n.category)) {
-      menuCategoryMap.set(n.category, []);
-    }
-    menuCategoryMap.get(n.category).push(n);
-  }
+  // Last updated date from file mtime
+  const mtime = fs.statSync(mdPath).mtime;
+  const formattedDate = formatDate(mtime);
 
-  let notesMenuHtml = '';
-  for (const [cat, catNotes] of menuCategoryMap) {
-    const items = catNotes
-      .map((n) => {
-        const nSlug = slugify(n.file);
-        const activeClass = nSlug === slug ? ' active' : '';
-        return `<li><a href="${nSlug}.html" class="notes-menu-link${activeClass}">${n.title}</a></li>`;
-      })
-      .join('\n        ');
-    notesMenuHtml += `<div class="notes-menu-category">
-  <h4 class="notes-menu-category-title">${cat}</h4>
-  <ul class="notes-menu-list">
-        ${items}
-  </ul>
-</div>\n`;
-  }
+  // Version badge
+  const versionMarkup = note.version
+    ? ` &middot; <span class="note-version-badge">${note.version}</span>`
+    : '';
 
   const noteBody = noteTpl
     .replace(/\{\{CATEGORY\}\}/g, note.category)
     .replace(/\{\{TITLE\}\}/g, note.title)
+    .replace(/\{\{LAST_UPDATED\}\}/g, formattedDate)
+    .replace(/\{\{VERSION_MARKUP\}\}/g, versionMarkup)
     .replace(/\{\{NOTE_CONTENT\}\}/g, noteHtml)
     .replace(/\{\{PREV_LINK\}\}/g, prevLink)
-    .replace(/\{\{NEXT_LINK\}\}/g, nextLink)
-    .replace(/\{\{NOTES_MENU\}\}/g, notesMenuHtml);
+    .replace(/\{\{NEXT_LINK\}\}/g, nextLink);
 
   const fullPage = applyLayout(layoutTpl, {
-    pageTitle: note.title,
+    pageTitle: `Pronote | ${note.title}`,
     basePath: '../',
+    pageType: 'note',
     content: noteBody,
     notesMenuToggle: MENU_BTN,
+    notesMenu: buildNotesMenu(notes, slug, '', previewMap),
+    copyright: site.copyright,
+    socialInstagram: site.social.instagram,
+    socialGithub: site.social.github,
+    socialFacebook: site.social.facebook,
   });
 
   const outPath = path.join(DIST_NOTES_DIR, `${slug}.html`);
   fs.writeFileSync(outPath, fullPage, 'utf8');
 
-  builtNotes.push({ ...note, slug });
+  builtNotes.push({ ...note, slug, plainText });
 }
 
 const categoryMap = new Map();
@@ -288,33 +299,118 @@ for (const note of builtNotes) {
   categoryMap.get(note.category).push(note);
 }
 
+// C. Skills banner — one badge per note
+let skillsBannerHtml = '<div class="skills-banner">';
+for (const note of builtNotes) {
+  const svg = LOGOS[note.title] || '';
+  skillsBannerHtml += `<div class="skill-badge"><span class="skill-badge-icon">${svg}</span><span class="skill-badge-label">${note.title}</span></div>`;
+}
+skillsBannerHtml += '</div>';
+
+// D. Category tabs from config.categoryTabs
+let categoryTabsHtml = '<div class="category-tabs">';
+for (let i = 0; i < config.categoryTabs.length; i++) {
+  const tab = config.categoryTabs[i];
+  const label = tab.charAt(0) + tab.slice(1).toLowerCase();
+  const activeClass = i === 0 ? ' active' : '';
+  categoryTabsHtml += `<button class="category-tab${activeClass}" data-filter="${tab}">${label}</button>`;
+}
+categoryTabsHtml += '</div>';
+
+// E. Category sections with data-category attribute
 let categoriesHtml = '';
 for (const [category, categoryNotes] of categoryMap) {
+  const accentColor = categoryColors[category] || '';
+  const sectionStyle = accentColor ? ` style="--category-accent: ${accentColor}"` : '';
+
   const cards = categoryNotes
     .map((n) => {
       const svgIcon = LOGOS[n.title] || '';
-      return `<a href="notes/${n.slug}.html" class="card" data-title="${n.title}"><div class="card-logo">${svgIcon}</div><h3>${n.title}</h3><span class="card-category">${n.category}</span></a>`;
+      const cardAccentColor = categoryColors[n.category] || '';
+      const cardAccentStyle = cardAccentColor ? ` style="--category-accent: ${cardAccentColor}"` : '';
+      return `<a href="notes/${n.slug}.html" class="card" data-title="${n.title}"${cardAccentStyle}><div class="card-logo">${svgIcon}</div><h3>${n.title}</h3><p class="card-description">${n.description || ''}</p><div class="card-badges"><span class="card-category">${n.category}</span><span class="card-difficulty card-difficulty--${(n.difficulty || 'beginner').toLowerCase()}">${n.difficulty || ''}</span></div></a>`;
     })
     .join('\n        ');
 
   categoriesHtml += `
-<section class="category-section">
-  <h2 class="category-heading">${category}</h2>
+<section class="category-section" data-category="${category.toUpperCase()}"${sectionStyle}>
+  <h2 class="category-heading"${sectionStyle}>${category}</h2>
   <div class="card-grid">
         ${cards}
   </div>
 </section>`;
 }
 
-const homeBody = homeTpl.replace(/\{\{CATEGORIES\}\}/g, categoriesHtml);
+// F. Home page build
+const homeBody = homeTpl
+  .replace(/\{\{SKILLS_BANNER\}\}/g, skillsBannerHtml)
+  .replace(/\{\{CATEGORY_TABS\}\}/g, categoryTabsHtml)
+  .replace(/\{\{CATEGORIES\}\}/g, categoriesHtml);
 
 const homePage = applyLayout(layoutTpl, {
   pageTitle: site.title,
   basePath: './',
+  pageType: 'home',
   content: homeBody,
+  notesMenuToggle: MENU_BTN,
+  notesMenu: buildNotesMenu(notes, null, 'notes/', previewMap),
+  copyright: site.copyright,
+  socialInstagram: site.social.instagram,
+  socialGithub: site.social.github,
+  socialFacebook: site.social.facebook,
 });
 
 fs.writeFileSync(path.join(DIST_DIR, 'index.html'), homePage, 'utf8');
+
+// G. Search index
+const searchIndex = builtNotes.map(n => ({
+  slug: n.slug,
+  title: n.title,
+  category: n.category,
+  content: n.plainText.slice(0, 500),
+}));
+fs.writeFileSync(path.join(DIST_DIR, 'search-index.json'), JSON.stringify(searchIndex));
+
+// H. 404 page
+const notFoundBody = notFoundTpl.replace(/\{\{BASE_PATH\}\}/g, './');
+const notFoundPage = applyLayout(layoutTpl, {
+  pageTitle: '404 — Pronote',
+  basePath: './',
+  pageType: 'error',
+  content: notFoundBody,
+  notesMenuToggle: MENU_BTN,
+  notesMenu: buildNotesMenu(notes, null, 'notes/', previewMap),
+  copyright: site.copyright,
+  socialInstagram: site.social.instagram,
+  socialGithub: site.social.github,
+  socialFacebook: site.social.facebook,
+});
+fs.writeFileSync(path.join(DIST_DIR, '404.html'), notFoundPage, 'utf8');
+
+// I. Sitemap page
+let sitemapContent = '';
+for (const [category, categoryNotes] of categoryMap) {
+  sitemapContent += `<div class="sitemap-column"><h2 class="sitemap-category">${category}</h2><ul class="sitemap-list">`;
+  for (const n of categoryNotes) {
+    sitemapContent += `<li><a href="notes/${n.slug}.html" class="sitemap-link">${n.title}</a></li>`;
+  }
+  sitemapContent += '</ul></div>';
+}
+
+const sitemapBody = sitemapTpl.replace(/\{\{SITEMAP_CONTENT\}\}/g, sitemapContent);
+const sitemapPage = applyLayout(layoutTpl, {
+  pageTitle: 'Sitemap — Pronote',
+  basePath: './',
+  pageType: 'sitemap',
+  content: sitemapBody,
+  notesMenuToggle: MENU_BTN,
+  notesMenu: buildNotesMenu(notes, null, 'notes/', previewMap),
+  copyright: site.copyright,
+  socialInstagram: site.social.instagram,
+  socialGithub: site.social.github,
+  socialFacebook: site.social.facebook,
+});
+fs.writeFileSync(path.join(DIST_DIR, 'sitemap.html'), sitemapPage, 'utf8');
 
 copyDir(path.join(PROJECT_ROOT, 'src', 'css'), path.join(DIST_DIR, 'css'));
 copyDir(path.join(PROJECT_ROOT, 'src', 'js'), path.join(DIST_DIR, 'js'));

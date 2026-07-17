@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Sitemap — Pronote</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page-type="sitemap">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="./index.html" class="nav-logo">Pronote</a>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Frontend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="notes/html.html" class="notes-menu-link" data-preview="INTRODUCTION TO HTML HyperText Markup Language Markup Language (not a programming language) Tim Bern">HTML</a></li>
+        <li><a href="notes/css.html" class="notes-menu-link" data-preview="INTRODUCTION TO CSS Cascading Style Sheets Style Sheet Language CSS SAS LESS Hakon Wium Lie Father o">CSS</a></li>
+        <li><a href="notes/javascript.html" class="notes-menu-link" data-preview="INTRODUCTION TO JAVASCRIPT Brendan Eich created Javascript within 10days. JS is Interpreted Language">JavaScript</a></li>
+        <li><a href="notes/dom.html" class="notes-menu-link" data-preview="WAYS TO USE JAVASCRIPT 1. Inline Javascript onload is when body loaded up it will alert the message ">DOM</a></li>
+        <li><a href="notes/web-design.html" class="notes-menu-link" data-preview="WEBDESIGN PRINCIPLES 4 Pillars of Web-Design Colour Theory Typography User Interface Design (UI) Use">Web Design</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Backend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="notes/node-js.html" class="notes-menu-link" data-preview="INTRODUCTION TO NODE.JS Framework is commonly use components. Reuse components. Reduce overhead. Nod">Node.js</a></li>
+        <li><a href="notes/express.html" class="notes-menu-link" data-preview="INTRODUCTION TO EXPRESS Express is a JS Framework which is used for backend and Node is a runtime en">Express</a></li>
+        <li><a href="notes/EJS.html" class="notes-menu-link" data-preview="INTRODUCTION TO EJS From Submitting &amp;quot;name&amp;quot; with app.post how do we get the &amp;quot;name&amp;quot">EJS</a></li>
+        <li><a href="notes/API.html" class="notes-menu-link" data-preview="INTRODUCTION TO API Application Programming Interface (API) When theres 2 Programs with different la">API</a></li>
+        <li><a href="notes/backend.html" class="notes-menu-link" data-preview="INTRODUCTION TO BACKEND What Backend Contains Server - Computer thats on 24/7 so that user can acces">Backend</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Tools</h4>
+  <ul class="notes-menu-list">
+        <li><a href="notes/gitbash.html" class="notes-menu-link" data-preview="INTRODUCTION TO COMMAND LINE Understanding Command Lines Bash shell. Kernel is the Operating System(">Git & Bash</a></li>
+        <li><a href="notes/github.html" class="notes-menu-link" data-preview="INTRODUCTION TO GIT Version Control Making a savepoint or a version. So that if something happens, a">GitHub</a></li>
+        <li><a href="notes/bash-shortcuts.html" class="notes-menu-link" data-preview="Bash Shortcuts (.bashrc) Copy the raw bashrc block below into ~/.bashrc on any new device to replica">Bash Shortcuts</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <div class="sitemap-page">
+  <h1 class="sitemap-title">Sitemap</h1>
+  <div class="sitemap-grid"><div class="sitemap-column"><h2 class="sitemap-category">Frontend</h2><ul class="sitemap-list"><li><a href="notes/html.html" class="sitemap-link">HTML</a></li><li><a href="notes/css.html" class="sitemap-link">CSS</a></li><li><a href="notes/javascript.html" class="sitemap-link">JavaScript</a></li><li><a href="notes/dom.html" class="sitemap-link">DOM</a></li><li><a href="notes/web-design.html" class="sitemap-link">Web Design</a></li></ul></div><div class="sitemap-column"><h2 class="sitemap-category">Backend</h2><ul class="sitemap-list"><li><a href="notes/node-js.html" class="sitemap-link">Node.js</a></li><li><a href="notes/express.html" class="sitemap-link">Express</a></li><li><a href="notes/EJS.html" class="sitemap-link">EJS</a></li><li><a href="notes/API.html" class="sitemap-link">API</a></li><li><a href="notes/backend.html" class="sitemap-link">Backend</a></li></ul></div><div class="sitemap-column"><h2 class="sitemap-category">Tools</h2><ul class="sitemap-list"><li><a href="notes/gitbash.html" class="sitemap-link">Git & Bash</a></li><li><a href="notes/github.html" class="sitemap-link">GitHub</a></li><li><a href="notes/bash-shortcuts.html" class="sitemap-link">Bash Shortcuts</a></li></ul></div></div>
+</div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp. &middot; <a href="./sitemap.html" class="footer-sitemap-link">Sitemap</a></p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

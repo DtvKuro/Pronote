@@ -1,44 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScript — WebNote</title>
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | JavaScript</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
   <nav class="nav">
     <div class="nav-container">
       <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
-      <a href="../index.html" class="nav-logo">WebNote</a>
-      <button class="nav-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-links">
-        <a href="../index.html">Home</a>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
       </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
     </div>
   </nav>
-  <main class="main">
-    <div class="notes-menu-overlay"></div>
-<aside class="notes-menu">
-  <div class="notes-menu-header">
-    <h3>All Notes</h3>
-    <button class="notes-menu-close" aria-label="Close menu">&times;</button>
-  </div>
-  <div class="notes-menu-body">
-    <div class="notes-menu-category">
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
   <h4 class="notes-menu-category-title">Frontend</h4>
   <ul class="notes-menu-list">
-        <li><a href="html.html" class="notes-menu-link">HTML</a></li>
-        <li><a href="css.html" class="notes-menu-link">CSS</a></li>
-        <li><a href="javascript.html" class="notes-menu-link active">JavaScript</a></li>
+        <li><a href="html.html" class="notes-menu-link" data-preview="INTRODUCTION TO HTML HyperText Markup Language Markup Language (not a programming language) Tim Bern">HTML</a></li>
+        <li><a href="css.html" class="notes-menu-link" data-preview="INTRODUCTION TO CSS Cascading Style Sheets Style Sheet Language CSS SAS LESS Hakon Wium Lie Father o">CSS</a></li>
+        <li><a href="javascript.html" class="notes-menu-link active" data-preview="INTRODUCTION TO JAVASCRIPT Brendan Eich created Javascript within 10days. JS is Interpreted Language">JavaScript</a></li>
         <li><a href="dom.html" class="notes-menu-link">DOM</a></li>
-  </ul>
-</div>
-<div class="notes-menu-category">
-  <h4 class="notes-menu-category-title">Design</h4>
-  <ul class="notes-menu-list">
         <li><a href="web-design.html" class="notes-menu-link">Web Design</a></li>
   </ul>
 </div>
@@ -61,22 +65,44 @@
   </ul>
 </div>
 
-  </div>
-</aside>
-<article class="note-page">
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
   <div class="note-header">
-    <a href="../index.html" class="back-link">← Back to Notes</a>
-    <span class="note-category-badge">Frontend</span>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>Frontend</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">JavaScript</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
   </div>
   <h1 class="note-title">JavaScript</h1>
+  <p class="note-meta">Last updated: July 17, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h2>INTRODUCTION TO JAVASCRIPT</h2>
 <p><strong>Brendan Eich</strong> created Javascript within 10days.</p>
 <p>JS is <strong>Interpreted Language</strong>.</p>
 <p>Interpreted Language is executed line by line unlike Compiled Language.</p>
-<pre><code class="hljs language-js">windows.<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>);</code></pre>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">windows.<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>);</code></pre></div>
 <p>OR</p>
-<pre><code class="hljs language-js"><span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>); <span class="hljs-comment">//shorter</span></code></pre>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello, World&quot;</span>); <span class="hljs-comment">//shorter</span></code></pre></div>
 <p>^ ^ ^<br>function Message End</p>
 <p>if its not obvious enough &quot;&quot; is for string</p>
 <p>&quot;&quot; and &#39;&#39; works the same way in JS</p>
@@ -85,71 +111,56 @@
 <p><em><a href="https://github.com/rwaldron/idiomatic.js">https://github.com/rwaldron/idiomatic.js</a></em></p>
 <hr>
 <h2>DATA TYPES</h2>
-<pre><code class="hljs">**string** (<span class="hljs-type">text</span>) - &quot;hello&quot;, <span class="hljs-string">&#x27;a&#x27;</span> (<span class="hljs-keyword">no</span> separate <span class="hljs-type">char</span> <span class="hljs-keyword">type</span>, a single letter <span class="hljs-keyword">is</span> just a string)
-**number** (<span class="hljs-keyword">any</span> number) - <span class="hljs-number">42</span>, <span class="hljs-number">3.14</span> (<span class="hljs-keyword">no</span> separate <span class="hljs-type">int</span>/<span class="hljs-type">float</span>, JS treats <span class="hljs-keyword">all</span> numbers the same)
-**<span class="hljs-type">boolean</span>** (<span class="hljs-keyword">true</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">false</span>)
-**undefined** (variable declared but <span class="hljs-keyword">no</span> <span class="hljs-keyword">value</span> assigned)
-**<span class="hljs-keyword">null</span>** (intentionally empty)
-**<span class="hljs-type">bigint</span>** (huge numbers) - <span class="hljs-number">9007199254740991</span>n
-**symbol** (<span class="hljs-keyword">unique</span> identifier) - Symbol(&quot;id&quot;)</code></pre>
-<pre><code class="hljs language-js"><span class="hljs-title function_">typeof</span>(<span class="hljs-number">23</span>);
+<p><strong>string</strong> (text) - &quot;hello&quot;, &#39;a&#39; (no separate char type, a single letter is just a string)<br><strong>number</strong> (any number) - 42, 3.14 (no separate int/float, JS treats all numbers the same)<br><strong>boolean</strong> (true or false)<br><strong>undefined</strong> (variable declared but no value assigned)<br><strong>null</strong> (intentionally empty)<br><strong>bigint</strong> (huge numbers) - 9007199254740991n<br><strong>symbol</strong> (unique identifier) - Symbol(&quot;id&quot;)</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-title function_">typeof</span>(<span class="hljs-number">23</span>);
 <span class="hljs-title function_">typeof</span>(<span class="hljs-literal">true</span>);
-<span class="hljs-title function_">typeof</span>(<span class="hljs-string">&quot;Kuro&quot;</span>);</code></pre>
+<span class="hljs-title function_">typeof</span>(<span class="hljs-string">&quot;Kuro&quot;</span>);</code></pre></div>
 <p><strong>typeof</strong> identifies the datatype of whatever is inside.</p>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> myName = <span class="hljs-string">&quot;Cy&quot;</span>;</code></pre>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> myName = <span class="hljs-string">&quot;Cy&quot;</span>;</code></pre></div>
 <p>keyword</p>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> <span class="hljs-title class_">Race</span> = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;Whats your race?&quot;</span>);</code></pre>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> <span class="hljs-title class_">Race</span> = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;Whats your race?&quot;</span>);</code></pre></div>
 <p>you now store the data when you enter it.</p>
-<pre><code class="hljs language-js"><span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;you are a &quot;</span> + <span class="hljs-title class_">Race</span>);</code></pre>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;you are a &quot;</span> + <span class="hljs-title class_">Race</span>);</code></pre></div>
 <hr>
 <h2>TEMPLATE LITERALS (BACKTICKS)</h2>
-<pre><code class="hljs">`` <span class="hljs-keyword">is</span> the key under Esc. lets you drop variables <span class="hljs-keyword">into</span> a <span class="hljs-built_in">string</span> <span class="hljs-keyword">using</span> ${}.
-cleaner than gluing <span class="hljs-keyword">with</span> +.</code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> port = <span class="hljs-number">3000</span>;
+<p><code>`</code> is the key under Esc. lets you drop variables into a string using <code>${}</code>.<br>cleaner than gluing with +.</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> port = <span class="hljs-number">3000</span>;
 
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Server running on port <span class="hljs-subst">${port}</span>.`</span>);  <span class="hljs-comment">// Server running on port 3000.</span>
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Server on port &quot;</span> + port + <span class="hljs-string">&quot;.&quot;</span>);     <span class="hljs-comment">// old way, messier</span></code></pre>
-<pre><code class="hljs"><span class="hljs-string">${</span>} runs any expression inside, <span class="hljs-keyword">not</span> just variables.</code></pre>
-<pre><code class="hljs language-js"><span class="hljs-string">`Total: <span class="hljs-subst">${<span class="hljs-number">5</span> + <span class="hljs-number">3</span>}</span>`</span>   <span class="hljs-comment">// Total: 8</span></code></pre>
-<pre><code class="hljs">${} <span class="hljs-keyword">only</span> works <span class="hljs-keyword">in</span> backticks. <span class="hljs-keyword">in</span> &quot;&quot; <span class="hljs-keyword">or</span> <span class="hljs-string">&#x27;&#x27;</span> it prints <span class="hljs-keyword">as</span> plain <span class="hljs-type">text</span>.
-backticks <span class="hljs-keyword">also</span> allow multi-<span class="hljs-type">line</span> strings <span class="hljs-keyword">and</span> apostrophes (What<span class="hljs-string">&#x27;s) without breaking.</span></code></pre>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Server on port &quot;</span> + port + <span class="hljs-string">&quot;.&quot;</span>);     <span class="hljs-comment">// old way, messier</span></code></pre></div>
+<p><code>${}</code> runs any expression inside, not just variables.</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-string">`Total: <span class="hljs-subst">${<span class="hljs-number">5</span> + <span class="hljs-number">3</span>}</span>`</span>   <span class="hljs-comment">// Total: 8</span></code></pre></div>
+<p><code>${}</code> only works in backticks. in &quot;&quot; or &#39;&#39; it prints as plain text.<br>backticks also allow multi-line strings and apostrophes (What&#39;s) without breaking.</p>
 <hr>
 <h2>WORD COUNTING</h2>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;Cy&quot;</span>;
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;Cy&quot;</span>;
 
-name.<span class="hljs-property">length</span>; <span class="hljs-comment">// which will show 2</span></code></pre>
-<pre><code class="hljs"><span class="hljs-emphasis">_example of usage:_</span></code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> text = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;Paste a text here&quot;</span>);
+name.<span class="hljs-property">length</span>; <span class="hljs-comment">// which will show 2</span></code></pre></div>
+<p><em>example of usage:</em></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> text = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;Paste a text here&quot;</span>);
 
-<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;you have written &quot;</span> + text.<span class="hljs-property">length</span> + <span class="hljs-string">&quot; Characters, you have &quot;</span> + (<span class="hljs-number">140</span> - textCount) + <span class="hljs-string">&quot; Characters left!&quot;</span>)</code></pre>
+<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;you have written &quot;</span> + text.<span class="hljs-property">length</span> + <span class="hljs-string">&quot; Characters, you have &quot;</span> + (<span class="hljs-number">140</span> - textCount) + <span class="hljs-string">&quot; Characters left!&quot;</span>)</code></pre></div>
 <hr>
 <h2>SLICE</h2>
-<pre><code class="hljs language-js"><span class="hljs-comment">//var.slice(x,y);</span>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-comment">//var.slice(x,y);</span>
 
 <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;Kuroo&quot;</span>;
-name.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>);</code></pre>
-<pre><code class="hljs">    (<span class="hljs-number">0</span>) = the <span class="hljs-keyword">start</span> <span class="hljs-keyword">of</span> the word you wanna <span class="hljs-keyword">include</span>
-    (<span class="hljs-number">4</span>) = up <span class="hljs-keyword">to</span> but <span class="hljs-keyword">not</span> including <span class="hljs-number">4.</span>
-
-(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>) = Kuro
-
-_TIP_
-
-(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>) = <span class="hljs-number">4</span><span class="hljs-number">-0</span> = <span class="hljs-number">4</span> letters (Kuro);
-(<span class="hljs-number">2</span>,<span class="hljs-number">5</span>) = <span class="hljs-number">5</span><span class="hljs-number">-2</span> - <span class="hljs-number">3</span> letters (roo);
-
-
-### <span class="hljs-keyword">Slice</span> <span class="hljs-keyword">Usage</span></code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> text = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;Tweet here!&quot;</span>);
+name.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>);</code></pre></div>
+<p>(0) = the start of the word you wanna include<br>(4) = up to but not including 4.</p>
+<p>(0,4) = Kuro</p>
+<p><em>TIP</em></p>
+<p>(0,4) = 4-0 = 4 letters (Kuro);<br>(2,5) = 5-2 - 3 letters (roo);</p>
+<h3>Slice Usage</h3>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> text = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;Tweet here!&quot;</span>);
 <span class="hljs-keyword">var</span> newtext = text.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>,<span class="hljs-number">140</span>);
 
 <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;you have written &quot;</span> + newtext.<span class="hljs-property">length</span> + <span class="hljs-string">&quot; Characters, you have &quot;</span> + (<span class="hljs-number">140</span> - newtext.<span class="hljs-property">length</span>) + <span class="hljs-string">&quot; Characters left&quot;</span>)
-<span class="hljs-title function_">alert</span>(newtext);</code></pre>
-<pre><code class="hljs"><span class="hljs-attribute">OR SHORTER</span></code></pre>
-<pre><code class="hljs language-js"><span class="hljs-title function_">alert</span>(<span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;Tweet here&quot;</span>).<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>,<span class="hljs-number">140</span>));</code></pre>
+<span class="hljs-title function_">alert</span>(newtext);</code></pre></div>
+<p>OR SHORTER</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-title function_">alert</span>(<span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;Tweet here&quot;</span>).<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>,<span class="hljs-number">140</span>));</code></pre></div>
 <hr>
 <h2>LOWERCASE AND UPPERCASING</h2>
-<pre><code class="hljs language-js"><span class="hljs-comment">//Makes the first name capital and the rest lowercase.</span>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-comment">//Makes the first name capital and the rest lowercase.</span>
 
 <span class="hljs-keyword">var</span> name = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;What&#x27;s your name? &quot;</span>);
 
@@ -159,19 +170,13 @@ _TIP_
 <span class="hljs-keyword">var</span> restofname = lowername.<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>,lowername.<span class="hljs-property">length</span>);
 <span class="hljs-keyword">var</span> wholename = firstCharUpper + restofname;
 
-<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello, &quot;</span> + wholename +<span class="hljs-string">&quot;.&quot;</span>);</code></pre>
+<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello, &quot;</span> + wholename +<span class="hljs-string">&quot;.&quot;</span>);</code></pre></div>
 <hr>
 <h2>FUNCTIONS</h2>
 <h3>Function 1</h3>
-<pre><code class="hljs">Creating function <span class="hljs-comment">-- function GoDoIt(){ blah }</span>
-Calling funciton <span class="hljs-comment">-- GoDoIt();</span>
-a series <span class="hljs-keyword">of</span> actions <span class="hljs-keyword">that</span> individually <span class="hljs-keyword">does</span> something,
-<span class="hljs-keyword">but</span> <span class="hljs-keyword">to</span> achieve efficiency you only need <span class="hljs-keyword">to</span> <span class="hljs-built_in">write</span> <span class="hljs-keyword">it</span> once,
-package <span class="hljs-keyword">it</span> <span class="hljs-keyword">into</span> a function, <span class="hljs-keyword">and</span> whenever you call <span class="hljs-keyword">it</span>
-<span class="hljs-keyword">it</span> will complete <span class="hljs-keyword">that</span> whole complicated series <span class="hljs-keyword">of</span> steps <span class="hljs-keyword">for</span> you.
-
-_basically: <span class="hljs-built_in">write</span> once, use forever._</code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params"></span>) {
+<p>Creating function -- <code>function GoDoIt(){ blah }</code><br>Calling funciton -- <code>GoDoIt();</code><br>a series of actions that individually does something,<br>but to achieve efficiency you only need to write it once,<br>package it into a function, and whenever you call it<br>it will complete that whole complicated series of steps for you.</p>
+<p><em>basically: write once, use forever.</em></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params"></span>) {
     <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Step 1: Wake up&quot;</span>);
     <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Step 2: Brush teeth&quot;</span>);
     <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Step 3: Make coffee&quot;</span>);
@@ -196,37 +201,34 @@ _basically: <span class="hljs-built_in">write</span> once, use forever._</code><
 
 <span class="hljs-comment">// the (name) part is called a **parameter**.</span>
 <span class="hljs-comment">// its like a placeholder that gets replaced</span>
-<span class="hljs-comment">// with whatever you pass in when you call it.</span></code></pre>
-<pre><code class="hljs">Console.<span class="hljs-keyword">log</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">only</span> <span class="hljs-keyword">for</span> debugging, <span class="hljs-keyword">only</span> developer can see <span class="hljs-keyword">not</span> the <span class="hljs-keyword">user</span>.</code></pre>
+<span class="hljs-comment">// with whatever you pass in when you call it.</span></code></pre></div>
+<p><code>Console.log</code> is only for debugging, only developer can see not the user.</p>
 <hr>
 <h3>Function 2 - Parameters And Arguments</h3>
-<pre><code class="hljs">Creating <span class="hljs-keyword">function</span>:</code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params">coffee</span>){
+<p>Creating function:</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params">coffee</span>){
     <span class="hljs-keyword">var</span> cost = coffee * <span class="hljs-number">1</span> <span class="hljs-comment">//(how much a coffee cost)</span>
-}</code></pre>
-<pre><code class="hljs">calling <span class="hljs-keyword">a</span> <span class="hljs-function"><span class="hljs-keyword">function</span>:</span></code></pre>
-<pre><code class="hljs language-js"><span class="hljs-title class_">GoDoIt</span>(<span class="hljs-number">2</span>); <span class="hljs-comment">// basically saying that i will make 2 coffees</span></code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params"></span>) {
+}</code></pre></div>
+<p>calling a function:</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-title class_">GoDoIt</span>(<span class="hljs-number">2</span>); <span class="hljs-comment">// basically saying that i will make 2 coffees</span></code></pre></div>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params"></span>) {
     <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Step 1: Wake up&quot;</span>);
     <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Step 2: Brush teeth&quot;</span>);
     <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Step 3: Make coffee&quot;</span>);
     <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Step 4: Start coding&quot;</span>);
-}</code></pre>
-<pre><code class="hljs">Another <span class="hljs-keyword">type</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">function</span>
-
-<span class="hljs-keyword">Input</span> <span class="hljs-keyword">is</span> <span class="hljs-type">money</span> <span class="hljs-keyword">and</span> the <span class="hljs-type">money</span> determines how many coffee can be bought
-<span class="hljs-keyword">cost</span> <span class="hljs-keyword">of</span> coffee <span class="hljs-keyword">is</span> <span class="hljs-number">1.5</span>
-
-**Math.floor(x);** // you can round down a number <span class="hljs-keyword">by</span> <span class="hljs-keyword">using</span> this.</code></pre>
+}</code></pre></div>
+<p>Another type of function</p>
+<p>Input is money and the money determines how many coffee can be bought<br>cost of coffee is 1.5</p>
+<p><code>Math.floor(x);</code> // you can round down a number by using this.</p>
 <hr>
 <h3>Function 3 - Return Function</h3>
-<pre><code class="hljs">Creating <span class="hljs-keyword">a</span> <span class="hljs-function"><span class="hljs-keyword">function</span>:</span></code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params">coffee</span>){
+<p>Creating a function:</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params">coffee</span>){
     <span class="hljs-keyword">return</span> money % <span class="hljs-number">1.5</span>;
-}</code></pre>
-<pre><code class="hljs">Calling <span class="hljs-keyword">a</span> <span class="hljs-function"><span class="hljs-keyword">function</span>:</span></code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> change = <span class="hljs-title class_">GoDoIt</span>(<span class="hljs-number">6</span>);</code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params">money</span>) {
+}</code></pre></div>
+<p>Calling a function:</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> change = <span class="hljs-title class_">GoDoIt</span>(<span class="hljs-number">6</span>);</code></pre></div>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params">money</span>) {
     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Wake up&quot;</span>);
     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Brush teeth&quot;</span>);
 
@@ -238,21 +240,15 @@ _basically: <span class="hljs-built_in">write</span> once, use forever._</code><
     <span class="hljs-keyword">return</span> money % <span class="hljs-number">1.5</span>;
 }
 
-<span class="hljs-title class_">GoDoIt</span>(<span class="hljs-number">11</span>);</code></pre>
-<pre><code class="hljs">The <span class="hljs-type">money</span> will <span class="hljs-keyword">return</span> the remaining <span class="hljs-type">money</span>.
-
-so that means we can use it <span class="hljs-keyword">as</span> fetching <span class="hljs-keyword">like</span></code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> change = <span class="hljs-title class_">GoDoIt</span>(<span class="hljs-number">5</span>);</code></pre>
-<pre><code class="hljs"><span class="hljs-keyword">if</span> we buy coffee <span class="hljs-number">5</span> times, the <span class="hljs-keyword">return</span> will be the change.
-
-**THATS THE <span class="hljs-number">3</span> <span class="hljs-keyword">TYPES</span> <span class="hljs-keyword">OF</span> <span class="hljs-keyword">FUNCTIONS</span>. <span class="hljs-number">3</span>RD <span class="hljs-keyword">IS</span> THE MOST COMPLEX**
-
-_Example <span class="hljs-keyword">of</span> the <span class="hljs-number">3</span>rd <span class="hljs-keyword">function</span>._
-
-This shows that <span class="hljs-keyword">functions</span> can <span class="hljs-keyword">CALL</span> other <span class="hljs-keyword">functions</span> <span class="hljs-keyword">and</span> USE their <span class="hljs-keyword">return</span> <span class="hljs-keyword">value</span>.
-<span class="hljs-keyword">Instead</span> <span class="hljs-keyword">of</span> doing <span class="hljs-keyword">all</span> the math inside GoDoIt, we split the coffee calculation
-<span class="hljs-keyword">into</span> its own <span class="hljs-keyword">function</span> (bottlecalc) <span class="hljs-keyword">and</span> the change calculation <span class="hljs-keyword">into</span> another (calcMoney).</code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params">money, costPerBottle</span>){
+<span class="hljs-title class_">GoDoIt</span>(<span class="hljs-number">11</span>);</code></pre></div>
+<p>The money will return the remaining money.</p>
+<p>so that means we can use it as fetching like</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> change = <span class="hljs-title class_">GoDoIt</span>(<span class="hljs-number">5</span>);</code></pre></div>
+<p>if we buy coffee 5 times, the return will be the change.</p>
+<p><strong>THATS THE 3 TYPES OF FUNCTIONS. 3RD IS THE MOST COMPLEX</strong></p>
+<p><em>Example of the 3rd function.</em></p>
+<p>This shows that functions can CALL other functions and USE their return value.<br>Instead of doing all the math inside GoDoIt, we split the coffee calculation<br>into its own function (bottlecalc) and the change calculation into another (calcMoney).</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">GoDoIt</span>(<span class="hljs-params">money, costPerBottle</span>){
     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Wake up&quot;</span>);
     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Brush teeth&quot;</span>);
 
@@ -273,48 +269,51 @@ This shows that <span class="hljs-keyword">functions</span> can <span class="hlj
     <span class="hljs-keyword">return</span> change;
 }
 
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Sup Cy, Here is your &quot;</span> + <span class="hljs-title class_">GoDoIt</span>(<span class="hljs-number">5</span>, <span class="hljs-number">1.5</span>) + <span class="hljs-string">&quot; change&quot;</span>);</code></pre>
-<pre><code class="hljs">_What happens step <span class="hljs-keyword">by</span> step <span class="hljs-keyword">when</span> that last <span class="hljs-type">line</span> runs:_
-
-    GoDoIt(<span class="hljs-number">5</span>, <span class="hljs-number">1.5</span>) <span class="hljs-keyword">is</span> <span class="hljs-keyword">called</span>.
-    - <span class="hljs-number">5</span> <span class="hljs-keyword">is</span> your <span class="hljs-type">money</span>. It goes <span class="hljs-keyword">into</span> the &quot;money&quot; parameter.
-    - <span class="hljs-number">1.5</span> <span class="hljs-keyword">is</span> the <span class="hljs-keyword">cost</span> per coffee. It goes <span class="hljs-keyword">into</span> the &quot;costPerBottle&quot; parameter.
-
-    <span class="hljs-number">1.</span> &quot;Wake up&quot; prints
-    <span class="hljs-number">2.</span> &quot;Brush teeth&quot; prints
-    <span class="hljs-number">3.</span> JS hits bottlecalc(<span class="hljs-type">money</span>, costPerBottle) — which <span class="hljs-keyword">is</span> bottlecalc(<span class="hljs-number">5</span>, <span class="hljs-number">1.5</span>)
-       - JS pauses GoDoIt <span class="hljs-keyword">and</span> jumps <span class="hljs-keyword">into</span> bottlecalc
-       - <span class="hljs-number">5</span> goes <span class="hljs-keyword">into</span> &quot;startingMoney&quot;, <span class="hljs-number">1.5</span> goes <span class="hljs-keyword">into</span> &quot;costPerBottle&quot;
-       - Math.floor(<span class="hljs-number">5</span> / <span class="hljs-number">1.5</span>) = Math.floor(<span class="hljs-number">3.33</span>) = <span class="hljs-number">3</span>
-       - bottlecalc <span class="hljs-keyword">returns</span> <span class="hljs-number">3</span> back <span class="hljs-keyword">to</span> GoDoIt
-       - That <span class="hljs-type">line</span> becomes: &quot;Buy &quot; + <span class="hljs-number">3</span> + &quot; coffee&quot; → prints &quot;Buy 3 coffee&quot;
-    <span class="hljs-number">4.</span> &quot;Start coding&quot; prints
-    <span class="hljs-number">5.</span> JS hits calcMoney(<span class="hljs-type">money</span>, costPerBottle) — which <span class="hljs-keyword">is</span> calcMoney(<span class="hljs-number">5</span>, <span class="hljs-number">1.5</span>)
-       - JS pauses GoDoIt <span class="hljs-keyword">and</span> jumps <span class="hljs-keyword">into</span> calcMoney
-       - <span class="hljs-number">5</span> goes <span class="hljs-keyword">into</span> &quot;StartingAmount&quot;, <span class="hljs-number">1.5</span> goes <span class="hljs-keyword">into</span> &quot;costPerBottle&quot;
-       - <span class="hljs-number">5</span> % <span class="hljs-number">1.5</span> = <span class="hljs-number">0.5</span> (% gives the remainder — you spent <span class="hljs-number">4.5</span> <span class="hljs-keyword">on</span> <span class="hljs-number">3</span> coffees, <span class="hljs-number">0.5</span> <span class="hljs-keyword">is</span> left)
-       - calcMoney <span class="hljs-keyword">returns</span> <span class="hljs-number">0.5</span> back <span class="hljs-keyword">to</span> GoDoIt
-    <span class="hljs-number">6.</span> GoDoIt <span class="hljs-keyword">returns</span> that <span class="hljs-number">0.5</span> back <span class="hljs-keyword">to</span> the console.<span class="hljs-keyword">log</span> that <span class="hljs-keyword">called</span> it
-    <span class="hljs-number">7.</span> Final output: &quot;Sup Cy, Here is your 0.5 change&quot;
-
-The <span class="hljs-type">point</span>: **<span class="hljs-keyword">return</span>** lets <span class="hljs-keyword">functions</span> talk <span class="hljs-keyword">to</span> <span class="hljs-keyword">each</span> other.
-bottlecalc does one job (count the coffees), calcMoney does another (<span class="hljs-keyword">get</span> the change),
-<span class="hljs-keyword">and</span> GoDoIt ties them <span class="hljs-keyword">all</span> together. <span class="hljs-keyword">Each</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">is</span> simple <span class="hljs-keyword">and</span> reusable <span class="hljs-keyword">on</span> its own.</code></pre>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Sup Cy, Here is your &quot;</span> + <span class="hljs-title class_">GoDoIt</span>(<span class="hljs-number">5</span>, <span class="hljs-number">1.5</span>) + <span class="hljs-string">&quot; change&quot;</span>);</code></pre></div>
+<p><em>What happens step by step when that last line runs:</em></p>
+<p><code>GoDoIt(5, 1.5)</code> is called.</p>
+<ul>
+<li>5 is your money. It goes into the &quot;money&quot; parameter.</li>
+<li>1.5 is the cost per coffee. It goes into the &quot;costPerBottle&quot; parameter.</li>
+</ul>
+<ol>
+<li>&quot;Wake up&quot; prints</li>
+<li>&quot;Brush teeth&quot; prints</li>
+<li>JS hits <code>bottlecalc(money, costPerBottle)</code> -- which is <code>bottlecalc(5, 1.5)</code><ul>
+<li>JS pauses GoDoIt and jumps into bottlecalc</li>
+<li>5 goes into &quot;startingMoney&quot;, 1.5 goes into &quot;costPerBottle&quot;</li>
+<li><code>Math.floor(5 / 1.5)</code> = <code>Math.floor(3.33)</code> = 3</li>
+<li>bottlecalc returns 3 back to GoDoIt</li>
+<li>That line becomes: &quot;Buy &quot; + 3 + &quot; coffee&quot; -&gt; prints &quot;Buy 3 coffee&quot;</li>
+</ul>
+</li>
+<li>&quot;Start coding&quot; prints</li>
+<li>JS hits <code>calcMoney(money, costPerBottle)</code> -- which is <code>calcMoney(5, 1.5)</code><ul>
+<li>JS pauses GoDoIt and jumps into calcMoney</li>
+<li>5 goes into &quot;StartingAmount&quot;, 1.5 goes into &quot;costPerBottle&quot;</li>
+<li>5 % 1.5 = 0.5 (% gives the remainder -- you spent 4.5 on 3 coffees, 0.5 is left)</li>
+<li>calcMoney returns 0.5 back to GoDoIt</li>
+</ul>
+</li>
+<li>GoDoIt returns that 0.5 back to the console.log that called it</li>
+<li>Final output: &quot;Sup Cy, Here is your 0.5 change&quot;</li>
+</ol>
+<p>The point: <strong>return</strong> lets functions talk to each other.<br>bottlecalc does one job (count the coffees), calcMoney does another (get the change),<br>and GoDoIt ties them all together. Each function is simple and reusable on its own.</p>
 <hr>
 <h2>MATH</h2>
 <p>Another math</p>
-<p>This allows user to multiply x to howmany times it is inputted after the comma &quot;,&quot;<br><strong>Math.pow(x, 2);</strong></p>
-<p>as it said, it generates random number from 0 to 0.999999... up to 16 decimal.<br><strong>Math.random();</strong></p>
+<p>This allows user to multiply x to howmany times it is inputted after the comma &quot;,&quot;<br><code>Math.pow(x, 2);</code></p>
+<p>as it said, it generates random number from 0 to 0.999999... up to 16 decimal.<br><code>Math.random();</code></p>
 <p><em>how to create a pseudo random generator.</em></p>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> n = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>();
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> n = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>();
 n = n * <span class="hljs-number">6</span>; <span class="hljs-comment">// 6 is the range that we need cause we need it for dice roll.</span>
 n = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(n) + <span class="hljs-number">1</span>; <span class="hljs-comment">// you add 1 because it only works for 0-5. we need to make it 1-6.</span>
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(n);</code></pre>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(n);</code></pre></div>
 <p>pseudorandom number is not random, its a pattern. If you repeat it long enough it will repeat itself.<br>it depends on the size of the seed needed to generate random number.</p>
 <p>thats why as technology advance, so does the seed because of security.</p>
 <hr>
 <h2>CONTROL STATEMENTS</h2>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> loveScore = <span class="hljs-title function_">myRandomGen</span>();  <span class="hljs-comment">// i made it a var because i cant access the chance alone since its a local variable inside the function.</span>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> loveScore = <span class="hljs-title function_">myRandomGen</span>();  <span class="hljs-comment">// i made it a var because i cant access the chance alone since its a local variable inside the function.</span>
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">myRandomGen</span>(<span class="hljs-params"></span>)
 {
@@ -331,23 +330,14 @@ n = <span class="hljs-title class_">Math</span>.<span class="hljs-title function
 }
 <span class="hljs-keyword">else</span> {
     <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;There&#x27;s still a chance, but you might wanna work harder.&quot;</span>);
-}</code></pre>
+}</code></pre></div>
 <hr>
 <h2>COMPARATORS AND EQUALITY</h2>
-<pre><code class="hljs">**===** <span class="hljs-keyword">equal</span> <span class="hljs-keyword">to</span> (checks data type, Exact <span class="hljs-keyword">equal</span>)
-**==** <span class="hljs-keyword">equal</span> <span class="hljs-keyword">to</span> (<span class="hljs-keyword">does</span> <span class="hljs-keyword">not</span> check datatype)
-**!==** <span class="hljs-keyword">not</span> <span class="hljs-keyword">equal</span> <span class="hljs-keyword">to</span>
-**&gt;** <span class="hljs-keyword">greater than</span>
-**&lt;** <span class="hljs-keyword">less than</span>
-**&gt;=** greater <span class="hljs-keyword">or</span> <span class="hljs-keyword">equal</span> <span class="hljs-keyword">to</span>
-**&lt;=** lesser <span class="hljs-keyword">or</span> <span class="hljs-keyword">equal</span> <span class="hljs-keyword">to</span></code></pre>
+<p><code>===</code> equal to (checks data type, Exact equal)<br><code>==</code> equal to (does not check datatype)<br><code>!==</code> not equal to<br><code>&gt;</code> greater than<br><code>&lt;</code> less than<br><code>&gt;=</code> greater or equal to<br><code>&lt;=</code> lesser or equal to</p>
 <h3>Combining Comparators</h3>
-<pre><code class="hljs"><span class="hljs-strong">**&amp;&amp;**</span> AND
-<span class="hljs-strong">**||**</span> OR ( Shift + \ )
-<span class="hljs-strong">**!**</span>  NOT
-
-<span class="hljs-emphasis">_Example:_</span></code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">if</span> (loveScore == <span class="hljs-number">100</span>){
+<p><code>&amp;&amp;</code> AND<br><code>||</code> OR ( Shift + \ )<br><code>!</code> NOT</p>
+<p><em>Example:</em></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">if</span> (loveScore == <span class="hljs-number">100</span>){
     <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;You guys are meant to be.&quot;</span>);
 }
 <span class="hljs-keyword">if</span> (loveScore &gt;= <span class="hljs-number">90</span> &amp;&amp; loveScore &lt; <span class="hljs-number">100</span> ) {
@@ -361,11 +351,10 @@ n = <span class="hljs-title class_">Math</span>.<span class="hljs-title function
 }
 <span class="hljs-keyword">else</span> {
     <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Your score didnt even reach 2 digits, you should quit right now.&quot;</span>);
-}</code></pre>
-<pre><code class="hljs">_Another Example(This one <span class="hljs-keyword">is</span> a nightmare):_
-
-    **<span class="hljs-number">1</span>. Cramped Nested <span class="hljs-keyword">If</span><span class="hljs-symbol">&#x27;s</span>**</code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">myLeap</span>(<span class="hljs-params">year</span>) {
+}</code></pre></div>
+<p><em>Another Example(This one is a nightmare):</em></p>
+<p><strong>1. Cramped Nested If&#39;s</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">myLeap</span>(<span class="hljs-params">year</span>) {
     <span class="hljs-keyword">if</span> (year % <span class="hljs-number">4</span> == <span class="hljs-number">0</span>) {
         <span class="hljs-keyword">if</span> (year % <span class="hljs-number">100</span> == <span class="hljs-number">0</span>) {
             <span class="hljs-keyword">if</span> (year % <span class="hljs-number">400</span> == <span class="hljs-number">0</span>) {
@@ -376,9 +365,9 @@ n = <span class="hljs-title class_">Math</span>.<span class="hljs-title function
         <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Leap year.&quot;</span>;
     }
     <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Not leap year.&quot;</span>;
-}</code></pre>
-<pre><code class="hljs">    **<span class="hljs-number">2</span>. <span class="hljs-attribute">Normal</span> way**</code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">if</span> (year % <span class="hljs-number">400</span> == <span class="hljs-number">0</span>) {
+}</code></pre></div>
+<p><strong>2. Normal way</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">if</span> (year % <span class="hljs-number">400</span> == <span class="hljs-number">0</span>) {
     <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Leap year.&quot;</span>;
 }
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (year % <span class="hljs-number">100</span> == <span class="hljs-number">0</span>) {
@@ -388,21 +377,17 @@ n = <span class="hljs-title class_">Math</span>.<span class="hljs-title function
     <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Leap year.&quot;</span>;
 }
 
-<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Not leap year.&quot;</span>;</code></pre>
+<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Not leap year.&quot;</span>;</code></pre></div>
 <hr>
 <h2>ARRAYS</h2>
-<pre><code class="hljs"><span class="hljs-comment">//Collection of items that are related.</span>
-**[]** - sign that <span class="hljs-keyword">its</span> a collection type of <span class="hljs-meta">data</span></code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> number = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
+<p>Collection of items that are related.<br><code>[]</code> - sign that its a collection type of data</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> number = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
 
-<span class="hljs-keyword">var</span> myNumber = number[<span class="hljs-number">0</span>]; <span class="hljs-comment">// you call out the contents inside the array through this method.</span></code></pre>
-<pre><code class="hljs">**number.length;** // counts the length of<span class="hljs-built_in"> array
-</span>**number.includes(4);** // this code will<span class="hljs-built_in"> check </span>the<span class="hljs-built_in"> array </span>if it includes 4 in boolean output.
-**number.push(5);** // pushes the content into the end of the array.
-**number.pop;** // removes the last content in the array.</code></pre>
+<span class="hljs-keyword">var</span> myNumber = number[<span class="hljs-number">0</span>]; <span class="hljs-comment">// you call out the contents inside the array through this method.</span></code></pre></div>
+<p><code>number.length;</code> // counts the length of array<br><code>number.includes(4);</code> // this code will check the array if it includes 4 in boolean output.<br><code>number.push(5);</code> // pushes the content into the end of the array.<br><code>number.pop;</code> // removes the last content in the array.</p>
 <hr>
 <h3>Iteration On Array</h3>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> number = [];
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> number = [];
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">fizzbuzz</span>(<span class="hljs-params"></span>){
     <span class="hljs-keyword">var</span> num;
@@ -414,27 +399,25 @@ n = <span class="hljs-title class_">Math</span>.<span class="hljs-title function
     }
     number.<span class="hljs-title function_">push</span>(num);
     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(number);
-}</code></pre>
+}</code></pre></div>
 <hr>
 <h2>LOOPS</h2>
 <h3>While Loop</h3>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;
 
 <span class="hljs-keyword">while</span> (i&lt;<span class="hljs-number">2</span>){
     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);
 
     i++;
-}</code></pre>
+}</code></pre></div>
 <h3>For Loop</h3>
-<pre><code class="hljs">    <span class="hljs-comment">// 3 i&#x27;s in for loop</span>
-    <span class="hljs-comment">// _initialize; iterate; increment;_</span></code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i&lt;<span class="hljs-number">2</span>; i++){
+<p>// 3 i&#39;s in for loop<br>// <em>initialize; iterate; increment;</em></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i&lt;<span class="hljs-number">2</span>; i++){
     <span class="hljs-comment">//do something</span>
-}</code></pre>
-<pre><code class="hljs">    _EXAMPLE <span class="hljs-keyword">OF</span> <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">LOOP</span>:_
-
-        **FIBONACCI <span class="hljs-keyword">SEQUENCE</span>**</code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fibonacciGenerator</span> (<span class="hljs-params">n</span>) {
+}</code></pre></div>
+<p><em>EXAMPLE OF FOR LOOP:</em></p>
+<p><strong>FIBONACCI SEQUENCE</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fibonacciGenerator</span> (<span class="hljs-params">n</span>) {
     <span class="hljs-keyword">var</span> db = [];
     <span class="hljs-keyword">var</span> first;
     <span class="hljs-keyword">var</span> second;
@@ -449,14 +432,11 @@ n = <span class="hljs-title class_">Math</span>.<span class="hljs-title function
         }
     }
     <span class="hljs-keyword">return</span> db;
-}</code></pre>
+}</code></pre></div>
 <h3>forEach Loop</h3>
-<pre><code class="hljs">    // <span class="hljs-keyword">forEach</span> <span class="hljs-keyword">is</span> basically a <span class="hljs-keyword">for</span> <span class="hljs-keyword">loop</span> but cleaner
-    // it goes through EVERY element <span class="hljs-keyword">in</span> an <span class="hljs-keyword">array</span>, <span class="hljs-keyword">no</span> <span class="hljs-keyword">index</span> tracking needed
-    // the <span class="hljs-keyword">function</span> inside gets <span class="hljs-keyword">called</span> once per element
-
-    // syntax: <span class="hljs-keyword">array</span>.<span class="hljs-keyword">forEach</span>(<span class="hljs-keyword">function</span>(singleItem) { <span class="hljs-keyword">do</span> something })</code></pre>
-<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> fruits = [<span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Banana&quot;</span>, <span class="hljs-string">&quot;Cherry&quot;</span>];
+<p>// forEach is basically a for loop but cleaner<br>// it goes through EVERY element in an array, no index tracking needed<br>// the function inside gets called once per element</p>
+<p>// syntax: <code>array.forEach(function(singleItem) { do something })</code></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> fruits = [<span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Banana&quot;</span>, <span class="hljs-string">&quot;Cherry&quot;</span>];
 
 fruits.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">fruit</span>) {
     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fruit);
@@ -470,15 +450,14 @@ fruits.<span class="hljs-title function_">forEach</span>(<span class="hljs-funct
 <span class="hljs-comment">// you can also get the index if needed</span>
 fruits.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">fruit, index</span>) =&gt;</span> {
     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(index + <span class="hljs-string">&quot;: &quot;</span> + fruit);
-});</code></pre>
-<pre><code class="hljs">    // **NAMING CONVENTION:** use singular of the<span class="hljs-built_in"> array </span>name
-    // items.forEach((item) =&gt; {})
-    // users.forEach((user) =&gt; {})
-
-    // **LIMITS:**
-    // - can&#x27;t break<span class="hljs-built_in"> or </span>continue (it ALWAYS goes through everything)
-    // - can&#x27;t loop backwards<span class="hljs-built_in"> or </span>skip indices
-    // - for those cases, use a regular for loop</code></pre>
+});</code></pre></div>
+<p><strong>NAMING CONVENTION:</strong> use singular of the array name<br><code>items.forEach((item) =&gt; {})</code><br><code>users.forEach((user) =&gt; {})</code></p>
+<p><strong>LIMITS:</strong></p>
+<ul>
+<li>can&#39;t break or continue (it ALWAYS goes through everything)</li>
+<li>can&#39;t loop backwards or skip indices</li>
+<li>for those cases, use a regular for loop</li>
+</ul>
 
   </div>
   <div class="note-nav">
@@ -488,9 +467,24 @@ fruits.<span class="hljs-title function_">forEach</span>(<span class="hljs-funct
 </article>
 
   </main>
+
   <footer class="footer">
-    <p>Made by FxKuroo</p>
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp. &middot; <a href="../sitemap.html" class="footer-sitemap-link">Sitemap</a></p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
   </footer>
+
   <script src="../js/main.js"></script>
 </body>
 </html>

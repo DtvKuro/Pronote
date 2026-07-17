@@ -1,54 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>API — WebNote</title>
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | API</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
   <nav class="nav">
     <div class="nav-container">
       <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
-      <a href="../index.html" class="nav-logo">WebNote</a>
-      <button class="nav-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-links">
-        <a href="../index.html">Home</a>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
       </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
     </div>
   </nav>
-  <main class="main">
-    <div class="notes-menu-overlay"></div>
-<aside class="notes-menu">
-  <div class="notes-menu-header">
-    <h3>All Notes</h3>
-    <button class="notes-menu-close" aria-label="Close menu">&times;</button>
-  </div>
-  <div class="notes-menu-body">
-    <div class="notes-menu-category">
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
   <h4 class="notes-menu-category-title">Frontend</h4>
   <ul class="notes-menu-list">
-        <li><a href="html.html" class="notes-menu-link">HTML</a></li>
-        <li><a href="css.html" class="notes-menu-link">CSS</a></li>
-        <li><a href="javascript.html" class="notes-menu-link">JavaScript</a></li>
-        <li><a href="dom.html" class="notes-menu-link">DOM</a></li>
-  </ul>
-</div>
-<div class="notes-menu-category">
-  <h4 class="notes-menu-category-title">Design</h4>
-  <ul class="notes-menu-list">
-        <li><a href="web-design.html" class="notes-menu-link">Web Design</a></li>
+        <li><a href="html.html" class="notes-menu-link" data-preview="INTRODUCTION TO HTML HyperText Markup Language Markup Language (not a programming language) Tim Bern">HTML</a></li>
+        <li><a href="css.html" class="notes-menu-link" data-preview="INTRODUCTION TO CSS Cascading Style Sheets Style Sheet Language CSS SAS LESS Hakon Wium Lie Father o">CSS</a></li>
+        <li><a href="javascript.html" class="notes-menu-link" data-preview="INTRODUCTION TO JAVASCRIPT Brendan Eich created Javascript within 10days. JS is Interpreted Language">JavaScript</a></li>
+        <li><a href="dom.html" class="notes-menu-link" data-preview="WAYS TO USE JAVASCRIPT 1. Inline Javascript onload is when body loaded up it will alert the message ">DOM</a></li>
+        <li><a href="web-design.html" class="notes-menu-link" data-preview="WEBDESIGN PRINCIPLES 4 Pillars of Web-Design Colour Theory Typography User Interface Design (UI) Use">Web Design</a></li>
   </ul>
 </div>
 <div class="notes-menu-category">
   <h4 class="notes-menu-category-title">Backend</h4>
   <ul class="notes-menu-list">
-        <li><a href="node-js.html" class="notes-menu-link">Node.js</a></li>
-        <li><a href="express.html" class="notes-menu-link">Express</a></li>
-        <li><a href="EJS.html" class="notes-menu-link">EJS</a></li>
-        <li><a href="API.html" class="notes-menu-link active">API</a></li>
+        <li><a href="node-js.html" class="notes-menu-link" data-preview="INTRODUCTION TO NODE.JS Framework is commonly use components. Reuse components. Reduce overhead. Nod">Node.js</a></li>
+        <li><a href="express.html" class="notes-menu-link" data-preview="INTRODUCTION TO EXPRESS Express is a JS Framework which is used for backend and Node is a runtime en">Express</a></li>
+        <li><a href="EJS.html" class="notes-menu-link" data-preview="INTRODUCTION TO EJS From Submitting &amp;quot;name&amp;quot; with app.post how do we get the &amp;quot;name&amp;quot">EJS</a></li>
+        <li><a href="API.html" class="notes-menu-link active" data-preview="INTRODUCTION TO API Application Programming Interface (API) When theres 2 Programs with different la">API</a></li>
         <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
   </ul>
 </div>
@@ -61,16 +65,38 @@
   </ul>
 </div>
 
-  </div>
-</aside>
-<article class="note-page">
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
   <div class="note-header">
-    <a href="../index.html" class="back-link">← Back to Notes</a>
-    <span class="note-category-badge">Backend</span>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>Backend</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">API</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
   </div>
   <h1 class="note-title">API</h1>
+  <p class="note-meta">Last updated: July 17, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
-    <h2>INTRODUCTION TO API</h2>
+    <h1>INTRODUCTION TO API</h1>
 <h4>Application Programming Interface (API)</h4>
 <p>When theres 2 Programs with different language<br>API acts as the bridge so they know how to interact to each other.</p>
 <p><em>Example:</em></p>
@@ -78,7 +104,10 @@
 <p>and there is an open sourced WeatherProgram that stores weather data.<br>the WeatherProgram will create an API that tells you how to interact with their services.</p>
 <p>Now what you need is to make request from your website through API,<br>and using the API you can now know how to interaact with their services<br>to get what you requested for and apply to your website.</p>
 <hr>
-<p>. (GET REQUEST)<br>Your website ------------&gt; API -----------------&gt; WeatherProgram<br>Your website &lt;------------ API &lt;----------------- WeatherProgram<br>. (RESPONSE/DATA)</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">         <span class="hljs-comment">(GET REQUEST)</span>
+<span class="hljs-comment">Your website</span> <span class="hljs-literal">------------</span>&gt; <span class="hljs-comment">API</span> <span class="hljs-literal">-----------------</span>&gt; <span class="hljs-comment">WeatherProgram</span>
+<span class="hljs-comment">Your website</span> &lt;<span class="hljs-literal">------------</span> <span class="hljs-comment">API</span> &lt;<span class="hljs-literal">-----------------</span> <span class="hljs-comment">WeatherProgram</span>
+         <span class="hljs-comment">(RESPONSE/DATA)</span></code></pre></div>
 <hr>
 <p><em>So basically API is a set of rules that you can follow.</em></p>
 <p>Types of API:</p>
@@ -88,18 +117,20 @@
 <p>You use HTTP Protocol to interact with the API.<br>so its using GET, POST, PUT, PATCH, DELETE.</p>
 <h2>API FORMATTING STRUCTURE</h2>
 <p>Endpoints, Path Parameters, and Query Parameters.</p>
-<p>Frontend -----(GET REQUEST)-----&gt; Your server</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">Frontend -----(<span class="hljs-keyword">GET</span> <span class="hljs-built_in">REQUEST</span>)-----&gt; Your <span class="hljs-built_in">server</span></code></pre></div>
 <p>This is same thing as API, called &quot;Private API&quot;<br>So this is basically the structure</p>
-<p>---------------------------(GET REQUEST)-------------&gt;&gt;&gt;<br><img src="../images/APIDiagram.png" alt="ApiDiagram"><br>&lt;&lt;&lt;------------------------(RESPONSE)----------------------------</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-literal">---------------------------</span><span class="hljs-comment">(GET REQUEST)</span><span class="hljs-literal">-------------</span>&gt;&gt;&gt;</code></pre></div>
+<p><img src="../images/APIDiagram.png" alt="ApiDiagram"></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">&lt;&lt;&lt;<span class="hljs-literal">------------------------</span><span class="hljs-comment">(RESPONSE)</span><span class="hljs-literal">----------------------------</span></code></pre></div>
 <p><strong>Private API</strong>: Something you dont want documented or not something that can be shared.<br>Public API: Something that is open for the public use.</p>
 <h2>API ENDPOINTS</h2>
-<p>baseurl/Endpoint</p>
+<p><code>baseurl/Endpoint</code></p>
 <p>the endpoint is the route on the API Provider Server.</p>
 <h3>Query Parameter</h3>
-<p><em>baseURL/endpoint + ?query=value</em></p>
+<p><code>baseURL/endpoint + ?query=value</code></p>
 <p>You start all query with a question mark then value of it.</p>
 <p>Normally you hit API for filtering, searching, sorting.<br>you can also do multiple query via &amp;</p>
-<p><em>baseURL/endpoint?query=value&amp;query2=value</em></p>
+<p><code>baseURL/endpoint?query=value&amp;query2=value</code></p>
 <hr>
 <p><strong>so for this Practice API documentation:</strong><br><em><a href="https://bored-api.appbrewery.com/">https://bored-api.appbrewery.com/</a></em></p>
 <p><img src="../images/filterapizoom.png" alt="API_Filter"></p>
@@ -108,7 +139,7 @@
 <p>so for example:<br>GET <em><a href="https://bored-api.appbrewery.com/filter?type=education&participants=1">https://bored-api.appbrewery.com/filter?type=education&amp;participants=1</a>;</em></p>
 <p>on the image above the one who will show up is those who have education type and 1 participants.</p>
 <h3>Path Parameter</h3>
-<p><em>baseURL/endpoint/ {path-parameter}</em></p>
+<p><code>baseURL/endpoint/{path-parameter}</code></p>
 <p>endpoint is a <em>fixed</em> path and cannot change.<br>but path-parameter is the path that does change.<br>it could be an <em>id</em>, or <em>username</em>.</p>
 <p>so its something very specific that can help identify any resource on the API.</p>
 <p>So to differentiate,</p>
@@ -122,64 +153,60 @@
 <p>Its a way to format data that can be sent over the internet in a readable and efficient way.</p>
 <p>Its structure <em>very similar to JS Object</em>.</p>
 <p><strong>Javascript Object</strong></p>
-<pre><code class="hljs">const <span class="hljs-attr">servant</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">{</span>
-<span class="hljs-symbol">  name:</span> <span class="hljs-string">&quot;Lau&quot;</span>,
-<span class="hljs-symbol">  age:</span> <span class="hljs-number">18</span>,
-<span class="hljs-symbol">  city:</span> <span class="hljs-string">&quot;Pasay&quot;</span>,
-<span class="hljs-symbol">  education:</span> [
-    <span class="hljs-punctuation">{</span>
-<span class="hljs-symbol">      degree:</span> <span class="hljs-string">&quot;Criminology&quot;</span>,
-<span class="hljs-symbol">      university:</span> <span class="hljs-string">&quot;Philippine National Police Academy&quot;</span>,
-    <span class="hljs-punctuation">}</span>,
-    <span class="hljs-punctuation">{</span>
-<span class="hljs-symbol">      degree:</span> <span class="hljs-string">&quot;BS Aeronautics&quot;</span>,
-<span class="hljs-symbol">      university:</span> <span class="hljs-string">&quot;Philippine National Aeronautics State University&quot;</span>,
-    <span class="hljs-punctuation">}</span>,
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> servant = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Lau&quot;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>,
+  <span class="hljs-attr">city</span>: <span class="hljs-string">&quot;Pasay&quot;</span>,
+  <span class="hljs-attr">education</span>: [
+    {
+      <span class="hljs-attr">degree</span>: <span class="hljs-string">&quot;Criminology&quot;</span>,
+      <span class="hljs-attr">university</span>: <span class="hljs-string">&quot;Philippine National Police Academy&quot;</span>,
+    },
+    {
+      <span class="hljs-attr">degree</span>: <span class="hljs-string">&quot;BS Aeronautics&quot;</span>,
+      <span class="hljs-attr">university</span>: <span class="hljs-string">&quot;Philippine National Aeronautics State University&quot;</span>,
+    },
   ],
-<span class="hljs-punctuation">};</span></code></pre>
+};</code></pre></div>
 <p><em>This is an object, Its a structured template for repeating data. And in here you can nest an object inside another object.</em></p>
 <p><strong>JSON</strong></p>
-<pre><code class="hljs">{
-  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Jade Japos&quot;</span>,
-  <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">18</span>,
-  <span class="hljs-string">&quot;city&quot;</span>: <span class="hljs-string">&quot;Valenzuela&quot;</span>,
-  <span class="hljs-string">&quot;education&quot;</span>: [
-    {
-      <span class="hljs-string">&quot;degree&quot;</span>: <span class="hljs-string">&quot;B.S. Information Technology&quot;</span>,
-      <span class="hljs-string">&quot;school&quot;</span>: <span class="hljs-string">&quot;Pamantasang Lungsod ng Valenzuela&quot;</span>
-    },
-    {
-      <span class="hljs-string">&quot;degree&quot;</span>: <span class="hljs-string">&quot;B.S. Computer Science&quot;</span>,
-      <span class="hljs-string">&quot;school&quot;</span>: <span class="hljs-string">&quot;University of the Philippines&quot;</span>
-    },
-  ]
-}</code></pre>
+<div class="code-block-wrapper"><span class="code-lang-label">JSON</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Jade Japos&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;age&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">18</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;city&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Valenzuela&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;education&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;degree&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;B.S. Information Technology&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;school&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Pamantasang Lungsod ng Valenzuela&quot;</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;degree&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;B.S. Computer Science&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;school&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;University of the Philippines&quot;</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre></div>
 <p><em>This is the way to structure a JSON.</em></p>
 <p>Difference:</p>
 <p>The changes is that the Javascript keys (example: name) has turned into a string.<br>Every keys is a string and the value can be string, numbers, or array.</p>
 <p>When you encounter <strong>JSON</strong> its because some <em>data are being transferred</em> across internet.<br><strong>Javascript Object</strong> has a more relax notation because <em>it can be interpreted by the editor or by the code interpreter themselves</em>.</p>
 <h4>Reason why JSON is used:</h4>
 <p>Its because it makes it easier to transfer data by compressing it.</p>
-<pre><code class="hljs">      This <span class="hljs-keyword">is</span> JS <span class="hljs-built_in">Object</span>                                         <span class="hljs-keyword">and</span> this <span class="hljs-keyword">is</span> <span class="hljs-built_in">JSON</span></code></pre>
-<div style="display: flex; gap: 1rem;">
-<pre><code>
-const wardrobe = {
-  doors: 2,
-  drawers: 2,
-  color: "red",                                         
-}; 
-</code></pre>
-<pre><code> 
-  {"doors":2,"drawers": 2,"color":"red",}                   
-</code></pre>
-</div>
+<p>This is JS Object and this is JSON</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-comment">// JS Object</span>
+<span class="hljs-keyword">const</span> wardrobe = {
+  <span class="hljs-attr">doors</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">drawers</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;red&quot;</span>,
+};
 
-<p> then when JSON is transferred to internet, it is expanded again in usable format like JS Object if it is needed.</p>
-<p> Sometimes JSON is hard to read because it is sent in its flat pack notation, so use JSON Visualizer online.</p>
-<p> <em>jsonviewer.stack.hu</em></p>
+<span class="hljs-comment">// JSON (flat packed)</span>
+{<span class="hljs-string">&quot;doors&quot;</span>:<span class="hljs-number">2</span>,<span class="hljs-string">&quot;drawers&quot;</span>: <span class="hljs-number">2</span>,<span class="hljs-string">&quot;color&quot;</span>:<span class="hljs-string">&quot;red&quot;</span>}</code></pre></div>
+<p>then when JSON is transferred to internet, it is expanded again in usable format like JS Object if it is needed.</p>
+<p>Sometimes JSON is hard to read because it is sent in its flat pack notation, so use JSON Visualizer online.</p>
+<p><em>jsonviewer.stack.hu</em></p>
 <hr>
 <h2>JS Object ---&gt; JSON</h2>
-<p> This is called <strong>Serialization</strong></p>
+<p>This is called <strong>Serialization</strong></p>
 <p>Turning an object into a JSON.</p>
 <p>in order to turn them using code you would need the JSON module</p>
 <p><code>const jsonData = JSON.stringify(data);</code></p>
@@ -187,7 +214,166 @@ const wardrobe = {
 <h2>JSON ---&gt; JS Object</h2>
 <p>This is how you reverse the process of turning JSON back to JS Object<br><code>const data = JSON.parse(jsonData);</code></p>
 <p>You paste the JSON on jsonData.</p>
-<p><em>then you can now use the JSON on the ejs by calling it &lt;% array.category.division.name %&gt;</em></p>
+<p><em>then you can now use the JSON on the ejs by calling it <code>&lt;% array.category.division.name %&gt;</code></em></p>
+<hr>
+<h2>SERVER-SIDE API REQUEST USING NATIVE NODE &amp; EJS</h2>
+<h4>Making requests from your server using Node and Axios</h4>
+<p>What if we want to create an app where we need our server to make the API request?<br>This is one of the most common needs in node and express Backend.</p>
+<p>This is basically what we are trying to do.</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">**REQUEST**<span class="hljs-comment">-------------------------------------------&gt;</span></code></pre></div>
+<p><img src="../images/publicAPI.png" alt="publicAPI"></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">&lt;-<span class="hljs-comment">------------------------------------------ **RESPONSE**</span></code></pre></div>
+<p>The code for this would be very long and complicated by using native node such as https module.</p>
+<hr>
+<h2>OUR SERVER MAKING REQUEST TO API</h2>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> https <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;https&quot;</span>;
+
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> options = {
+    <span class="hljs-attr">hostname</span>: <span class="hljs-string">&quot;bored-api.appbrewery.com&quot;</span>,
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/random&quot;</span>,
+    <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;GET&quot;</span>,
+  };
+
+<span class="hljs-keyword">const</span> req = https.<span class="hljs-title function_">request</span>(options, <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+  <span class="hljs-keyword">let</span> data = <span class="hljs-string">&#x27;&#x27;</span>;
+  res.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">chunk</span>) =&gt;</span> {
+    data += chunk;
+  });
+
+  res.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> result = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(data);
+      res.<span class="hljs-title function_">render</span>(<span class="hljs-string">&quot;index.ejs&quot;</span>, {activity : data})
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Failed to parse response: &quot;</span>, error.<span class="hljs-property">message</span>);
+      res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Failed to fetch activity. Please try again.&quot;</span>)
+    }
+  });
+});
+
+req.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Network Request Error:&#x27;</span>, error.<span class="hljs-property">message</span>);
+  res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Failed to fetch activity. Please try again.&quot;</span>)
+});
+
+  req.<span class="hljs-title function_">end</span>();
+
+});</code></pre></div>
+<hr>
+<p><em>Explanation:</em></p>
+<p><em>We set the setting for the following:</em></p>
+<ul>
+<li>base URL for where API is posted</li>
+<li>The path which is endpoint we are trying to access.</li>
+<li>Method for how we wanna interact with the API.</li>
+</ul>
+<p><strong>Which is this:</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> options = {
+    <span class="hljs-attr">hostname</span>: <span class="hljs-string">&quot;bored-api.appbrewery.com&quot;</span>,
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/random&quot;</span>,
+    <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;GET&quot;</span>,
+  };</code></pre></div>
+<p>Now we will put that options into the request which will use <code>https.request</code></p>
+<p><strong>You put the options as input</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> req = https.<span class="hljs-title function_">request</span>(options, <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+  <span class="hljs-keyword">let</span> data = <span class="hljs-string">&#x27;&#x27;</span>;
+  res.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">chunk</span>) =&gt;</span> {   <span class="hljs-comment">//Pack from here</span>
+    data += chunk;              <span class="hljs-comment">// to</span>
+  });                           <span class="hljs-comment">// here</span></code></pre></div>
+<p><em>Response is a callback</em> which is in a pack.</p>
+<p>then <em>add each chunk</em> as a data string which was the<br><code>(chunk) Input then data += chunk</code> = Which is adding each chunk as data string.</p>
+<h4>And once we receive the word &quot;end&quot; from our request</h4>
+<p> <strong>We can now use the data collected.</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">  res.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> result = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(data);              <span class="hljs-comment">//We first convert the data we got from the API into usable format.</span>
+      res.<span class="hljs-title function_">render</span>(<span class="hljs-string">&quot;index.ejs&quot;</span>, {activity : result})   <span class="hljs-comment">//Now we can use that data we got into frontend or backend.</span>
+    } <span class="hljs-keyword">catch</span> (error) {                             <span class="hljs-comment">// Catch block so that if theres an error we can log the error.</span>
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Failed to parse response: &quot;</span>, error.<span class="hljs-property">message</span>);
+      res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Failed to fetch activity. Please try again.&quot;</span>)
+    }
+  });
+});</code></pre></div>
+<h2>Next is the Error catching</h2>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">req.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {  <span class="hljs-comment">//If there was an error from request we have a callback to handle the error.</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Network Request Error:&#x27;</span>, error.<span class="hljs-property">message</span>);
+  res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Failed to fetch activity. Please try again.&quot;</span>)
+});</code></pre></div>
+<p>The last is ending the access portal.</p>
+<p><code>req.end(); });</code> You end the API-request.</p>
+<p><em>This is usable HOWEVER, It is pretty long, unlike AXIOS</em></p>
+<h2>AXIOS</h2>
+<p><code>npm i axios</code> to import axios</p>
+<p>Axios makes it easier and simplifies the code.</p>
+<p>from that paragraph type of coding into this</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;axios&quot;</span>;
+
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-title function_">async</span> (req, res) =&gt; {
+  <span class="hljs-keyword">try</span> {                   <span class="hljs-comment">//below, we use get axios.&quot;GET&quot; method to make a request to API Endpoint</span>
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;https://bored-api.appbrewery.com/random&quot;</span>);
+    res.<span class="hljs-title function_">render</span>(<span class="hljs-string">&quot;index.ejs&quot;</span>, {<span class="hljs-attr">activity</span>: response.<span class="hljs-property">data</span>});
+  }<span class="hljs-keyword">catch</span> (error){
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Failed to make request: &quot;</span>, error.<span class="hljs-property">message</span>);
+    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Failed to fetch activity. Please try again.&quot;</span>);
+  }
+})</code></pre></div>
+<p><em>It has been sliced noticeable short.</em></p>
+<h3>Why Axios is shorter than Native Node</h3>
+<ol>
+<li><p><strong>No manual JSON parsing</strong> -- Axios automatically detects JSON responses and parses them into JS Objects for you. With native node you had to do <code>JSON.parse(data)</code> yourself.</p>
+</li>
+<li><p><strong>No chunk collecting</strong> -- Native node sends data in pieces (chunks) that you have to collect manually. Axios handles all of that behind the scenes.</p>
+</li>
+<li><p><strong>Cleaner error handling</strong> -- One try/catch instead of multiple <code>.on(&#39;error&#39;)</code> listeners.</p>
+</li>
+</ol>
+<h3>Axios Response Object</h3>
+<p>When you do <code>axios.get()</code>, it does NOT give you the raw JSON body directly.<br>Axios wraps everything in its own response object:</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">{
+  <span class="hljs-attr">data</span>: { <span class="hljs-attr">activity</span>: <span class="hljs-string">&quot;...&quot;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;diy&quot;</span>, ... },   <span class="hljs-comment">// &lt;- the actual JSON body lives here</span>
+  <span class="hljs-attr">status</span>: <span class="hljs-number">200</span>,
+  <span class="hljs-attr">statusText</span>: <span class="hljs-string">&quot;OK&quot;</span>,
+  <span class="hljs-attr">headers</span>: { ... },
+  <span class="hljs-attr">config</span>: { ... },
+}</code></pre></div>
+<p>So <code>response</code> is the <strong>axios wrapper</strong>, not your data.<br>That&#39;s why you need <code>response.data</code> to access the actual JSON body.</p>
+<ul>
+<li><code>response.activity</code> -&gt; <code>undefined</code> (axios wrapper has no .activity)</li>
+<li><code>response.data.activity</code> -&gt; <code>&quot;Make a scrapbook...&quot;</code> (correct)</li>
+</ul>
+<p>You can store it in a variable to avoid writing <code>.data</code> every time:</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> result = response.<span class="hljs-property">data</span>;
+result.<span class="hljs-property">activity</span>    <span class="hljs-comment">// works</span>
+result.<span class="hljs-property">type</span>        <span class="hljs-comment">// works</span></code></pre></div>
+<h1>API AUTHENTICATION</h1>
+<h2>Authenticating yourself with the API Provider.</h2>
+<p>This is the ability to prove that you have the rights to access their particular API.</p>
+<p>Some people dont want to share their API.<br>Because Resource or Data is valuable.</p>
+<h2>How to authenticate</h2>
+<p>How to authenticate the user or the client making the API request or if theyre authorized to make that request.</p>
+<p>We can send them the data or not give them access.</p>
+<hr>
+<h3>TIERS OF AUTHENTICATION</h3>
+<p><strong>0. No Authentication</strong><br><strong>1. Basic Authentication</strong><br><strong>2. API Key Authorization</strong><br><strong>3. Token Based Authentication</strong></p>
+<hr>
+<h2>No Authentication</h2>
+<p>Api that you can access on your own. Everyone can use No Authentication API .<br>Since its free you must have safety measures such as <strong>Rate Limit</strong></p>
+<p>For example:<br><img src="./../images/ratelimit.png" alt="RateLimit"><br>Reference: <em><a href="https://bored-api.appbrewery.com/">https://bored-api.appbrewery.com/</a></em></p>
+<p>In this API Documentation it has RateLimit to 100 Request/15 minutes.<br>You can limit it by <em>checking each IP address</em>, how many request they are making per minute.</p>
+<hr>
+<h2>Basic Authentication</h2>
+<p>In here you provide a <em>username</em> and <em>password</em> when making API Request.<br>So you are authenticating yourself to the provider.</p>
+<p>Usual way to do Basic Authentication is by passing over a Base64 encoded string in the Header of the request.</p>
+<p>But How?</p>
+<p>So first you turn your characters into Binary<br><img src="./../images/base64.png" alt="Binary"></p>
+<p>Which you can then turn into a Base64:</p>
+<p>In here the binary word is <strong>fred</strong> which turned into <strong>ZnJlZA==</strong><br><img src="./../images/binarytobase.png" alt="Base64"></p>
+<p>But what is it that we put on the header?</p>
+<p><em>its the account information.</em><br><strong>Username: Password</strong></p>
+<p>You will now add this into an Authorization header,<br>which you can pass the data along when you make a request.</p>
+<hr>
 
   </div>
   <div class="note-nav">
@@ -197,9 +383,24 @@ const wardrobe = {
 </article>
 
   </main>
+
   <footer class="footer">
-    <p>Made by FxKuroo</p>
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp. &middot; <a href="../sitemap.html" class="footer-sitemap-link">Sitemap</a></p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
   </footer>
+
   <script src="../js/main.js"></script>
 </body>
 </html>

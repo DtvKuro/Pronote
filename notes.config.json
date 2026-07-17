@@ -1,23 +1,40 @@
 {
+  "categoryTabs": ["ALL", "FRONTEND", "BACKEND", "TOOLS"],
+  "categoryColors": {
+    "Frontend": "#7c3aed",
+    "Backend": "#3b82f6",
+    "Tools": "#f97316"
+  },
   "notes": [
-    { "file": "html.md", "title": "HTML", "category": "Frontend", "order": 1 },
-    { "file": "css.md", "title": "CSS", "category": "Frontend", "order": 2 },
-    { "file": "javascript.md", "title": "JavaScript", "category": "Frontend", "order": 3 },
-    { "file": "dom.md", "title": "DOM", "category": "Frontend", "order": 4 },
-    { "file": "web-design.md", "title": "Web Design", "category": "Design", "order": 5 },
-    { "file": "node-js.md", "title": "Node.js", "category": "Backend", "order": 6 },
-    { "file": "express.md", "title": "Express", "category": "Backend", "order": 7 },
-    { "file": "EJS.md", "title": "EJS", "category": "Backend", "order": 8 },
-    { "file": "API.md", "title": "API", "category": "Backend", "order": 9 },
-    { "file": "backend.md", "title": "Backend", "category": "Backend", "order": 10 },
-    { "file": "gitbash.md", "title": "Git & Bash", "category": "Tools", "order": 11 },
-    { "file": "github.md", "title": "GitHub", "category": "Tools", "order": 12 },
-    { "file": "bash-shortcuts.md", "title": "Bash Shortcuts", "category": "Tools", "order": 13 }
+    { "file": "html.md", "title": "HTML", "category": "Frontend", "order": 1, "description": "Foundations of web structure — elements, attributes, forms, and semantic markup", "difficulty": "Low", "version": "v1" },
+    { "file": "css.md", "title": "CSS", "category": "Frontend", "order": 2, "description": "Styling fundamentals — selectors, box model, flexbox, grid, positioning, and responsive design", "difficulty": "Low", "version": "v1" },
+    { "file": "javascript.md", "title": "JavaScript", "category": "Frontend", "order": 3, "description": "Core language concepts — variables, functions, loops, arrays, objects, and control flow", "difficulty": "Hard", "version": "v1" },
+    { "file": "dom.md", "title": "DOM", "category": "Frontend", "order": 4, "description": "Document Object Model — selecting elements, event listeners, manipulating content and attributes", "difficulty": "Extreme", "version": "v1" },
+    { "file": "web-design.md", "title": "Web Design", "category": "Frontend", "order": 5, "description": "Design principles — color theory, typography, UI/UX fundamentals", "difficulty": "Low", "version": "v1" },
+    { "file": "node-js.md", "title": "Node.js", "category": "Backend", "order": 6, "description": "Server-side JavaScript runtime — REPL, modules, NPM package management", "difficulty": "Mid", "version": "v1" },
+    { "file": "express.md", "title": "Express", "category": "Backend", "order": 7, "description": "Backend framework — routing, middleware, HTTP methods, request/response handling", "difficulty": "Hard", "version": "v1" },
+    { "file": "EJS.md", "title": "EJS", "category": "Backend", "order": 8, "description": "Templating engine — rendering dynamic HTML, passing data, partials, and layouts", "difficulty": "Low", "version": "v1" },
+    { "file": "API.md", "title": "API", "category": "Backend", "order": 9, "description": "APIs and data exchange — endpoints, JSON, authentication, Axios, and server-side requests", "difficulty": "Hard", "version": "v1" },
+    { "file": "backend.md", "title": "Backend", "category": "Backend", "order": 10, "description": "Backend overview — servers, applications, databases, and full-stack architecture", "difficulty": "Low", "version": "v1" },
+    { "file": "gitbash.md", "title": "Git & Bash", "category": "Tools", "order": 11, "description": "Version control and CLI — git commands, branching, merging, remotes, and pull requests", "difficulty": "Mid", "version": "v1" },
+    { "file": "github.md", "title": "GitHub", "category": "Tools", "order": 12, "description": "Remote repositories — pushing, cloning, forking, pull requests, and collaboration", "difficulty": "Hard", "version": "v1" },
+    { "file": "bash-shortcuts.md", "title": "Bash Shortcuts", "category": "Tools", "order": 13, "description": "Custom bash aliases and functions for faster terminal workflow", "difficulty": "Mid", "version": "v1" }
+  ],
+  "skills": [
+    "HTML", "CSS", "JavaScript", "DOM", "Web Design",
+    "Node.js", "Express", "EJS", "API", "Backend",
+    "Git & Bash", "GitHub", "Bash Shortcuts"
   ],
   "site": {
-    "title": "Dev Notes",
+    "title": "Pronote",
     "description": "Web development notes and references",
-    "author": "FxKuroo",
-    "sourceDir": "C:/FxKuroo/Codes/Learning/UDEMY/Notes"
+    "author": "DtvKuro",
+    "copyright": "© 2026 DtvKuro, Tarub Corp.",
+    "sourceDir": "C:/FxKuroo/Codes/Learning/UDEMY/Notes",
+    "social": {
+      "instagram": "https://www.instagram.com/dtvkuroo/",
+      "github": "https://github.com/DtvKuro?tab=repositories",
+      "facebook": "https://www.facebook.com/joachimjade.japos"
+    }
   }
 }
