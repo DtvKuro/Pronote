@@ -94,14 +94,14 @@
     </div>
   </div>
   <h1 class="note-title">EJS</h1>
-  <p class="note-meta">Last updated: July 17, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <p class="note-meta">Last updated: July 20, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h2>INTRODUCTION TO EJS</h2>
 <p>From Submitting &quot;name&quot; with app.post</p>
 <p>how do we get the &quot;name&quot; from the app.post<br>into a new html, using the name in it?</p>
 <p>That is done using <strong>Templating</strong>.</p>
 <p>Tho we can do it via <code>res.send(&quot;coding&quot;);</code><br>but if the code is already complex page of html then its gonna be clustered, making the js file full with HTML.</p>
-<h3>Separation of Concern</h3>
+<h4>Separation of Concern</h4>
 <div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">Frontend          Backend
 CSS (Style)    |
 <span class="hljs-type">HTML</span>(<span class="hljs-keyword">Structure</span>)| <span class="hljs-type">JS</span>(Functionality)</code></pre></div>
@@ -240,7 +240,7 @@ res.<span class="hljs-property">locals</span> = { <span class="hljs-attr">name</
 <p><strong>locals</strong> is an object that holds all the variables passed to the template. if nothing was passed, <code>locals.name</code> is just undefined instead of throwing an error. its like a safe way to check &quot;did the server send me this?&quot;</p>
 <hr>
 <h2>EJS PARTIALS AND LAYOUTS</h2>
-<h3>Reusing EJS Code</h3>
+<h4>Reusing EJS Code</h4>
 <p>linking Static files like css on EJS wont work.<br>we have to use a middle ware for css to be used.</p>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-title class_">App</span>.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">static</span>(<span class="hljs-string">&quot;public&quot;</span>));</code></pre></div>
 <div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">public</span> -&gt; style

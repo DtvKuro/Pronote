@@ -94,10 +94,10 @@
     </div>
   </div>
   <h1 class="note-title">GitHub</h1>
-  <p class="note-meta">Last updated: July 17, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <p class="note-meta">Last updated: July 20, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h2>INTRODUCTION TO GIT</h2>
-<h4>Version Control</h4>
+<h3>Version Control</h3>
 <p>Making a savepoint or a version.<br>So that if something happens, and your code is bugged.<br>You can load the previous version.</p>
 <p>You can return to any version as long you know what version you want.</p>
 <div class="code-block-wrapper"><span class="code-lang-label">BASH</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-bash">git init
@@ -119,7 +119,7 @@ git <span class="hljs-built_in">log</span></code></pre></div>
 git remote add origin &lt;LINK&gt;
 git push -u origin main</code></pre></div>
 <p><code>gh repo create</code> - to create a repo.<br><code>git remote add origin &lt;LINK&gt;</code> - We are gonna make a connection from our local repository to our git repository,<br><em>(remote name)</em><br><code>git push -u origin main</code> - push the files from our local repository into the git repository<br><em>(remote) (branch)</em></p>
-<h3>Basically</h3>
+<h4>Basically</h4>
 <div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">Working Directory
   <span class="hljs-keyword">to</span> <span class="hljs-string">&quot;git add&quot;</span>
 Staging Area
@@ -150,7 +150,7 @@ secrets.txt
 <p>This is used to continue where the other person left off, or if you want to rework it, or change or correct something.</p>
 <hr>
 <h2>GIT BRANCH</h2>
-<h4>Feature Development With Branches</h4>
+<h3>Feature Development With Branches</h3>
 <div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">MAIN BRANCH---<span class="hljs-symbol">_</span>---<span class="hljs-symbol">_</span>-------<span class="hljs-symbol">_</span>-------We can also work on main branch <span class="hljs-keyword">while</span> working on the branch
                 \               /
                  <span class="hljs-symbol">_</span>---<span class="hljs-symbol">_</span>---<span class="hljs-symbol">_</span> This <span class="hljs-built_in">is</span> a branch to experiment <span class="hljs-built_in">some</span> <span class="hljs-built_in">new</span> <span class="hljs-built_in">feature</span>.</code></pre></div>

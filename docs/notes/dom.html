@@ -94,7 +94,7 @@
     </div>
   </div>
   <h1 class="note-title">DOM</h1>
-  <p class="note-meta">Last updated: July 17, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <p class="note-meta">Last updated: July 20, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h2>WAYS TO USE JAVASCRIPT</h2>
 <h3>1. Inline Javascript</h3>
@@ -110,7 +110,7 @@
 <div class="code-block-wrapper"><span class="code-lang-label">HTML</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
 <hr>
 <h2>DOM</h2>
-<h4>Document Object Model</h4>
+<h3>Document Object Model</h3>
 <p><code>document.querySelector()</code> looks for element inside the ().</p>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;h1&quot;</span>).<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;Goodbye&quot;</span>;</code></pre></div>
 <p><code>.innerHTML = &quot;Blah&quot;;</code> allows you to replace the one inside the () to be &quot;Blah&quot;;</p>
@@ -171,7 +171,8 @@ heading.<span class="hljs-property">innerHTML</span> = <span class="hljs-string"
 <h2>DEFER VS ASYNC (SCRIPT LOADING)</h2>
 <p>When you link an external script with <code>&lt;script src=&quot;&quot;&gt;</code>, the browser normally<br>STOPS parsing the HTML, downloads the script, runs it, then continues parsing.<br>This is why we put scripts at the bottom of <code>&lt;body&gt;</code>.</p>
 <p>But there are two attributes that let the browser keep parsing while downloading:</p>
-<h3>defer</h3>
+<h3>Loading Attributes</h3>
+<h4>defer</h4>
 <ul>
 <li>Browser downloads the script in the background while parsing HTML.</li>
 <li>Script WAITS to execute until the HTML is fully parsed.</li>
@@ -184,7 +185,7 @@ heading.<span class="hljs-property">innerHTML</span> = <span class="hljs-string"
 <li>Your script needs DOM elements (buttons, divs, etc.)</li>
 <li>Script order matters (e.g., jQuery must load before a plugin that uses it)</li>
 </ul>
-<h3>async</h3>
+<h4>async</h4>
 <ul>
 <li>Browser downloads the script in the background while parsing HTML.</li>
 <li>Script runs IMMEDIATELY after download finishes, even if HTML isn&#39;t done parsing.</li>
@@ -196,13 +197,14 @@ heading.<span class="hljs-property">innerHTML</span> = <span class="hljs-string"
 <li>The script is independent (doesn&#39;t touch the DOM or rely on other scripts)</li>
 <li><em>Examples: analytics, ads, tracking pixels</em></li>
 </ul>
-<h3>Why NOT Put Scripts At The Bottom of Body (Old Approach)</h3>
+<h3>Best Practices For Script Placement</h3>
+<h4>Why NOT Put Scripts At The Bottom of Body (Old Approach)</h4>
 <ul>
 <li>Putting <code>&lt;script&gt;</code> at the bottom means the browser waits until the ENTIRE HTML<br>is parsed before it even STARTS downloading the script.</li>
 <li>On large websites this is slow. If a page takes more than 2 seconds to load,<br>users leave.</li>
 <li>The better approach: put scripts in <code>&lt;head&gt;</code> with defer or async so the browser<br>starts downloading them immediately while still parsing HTML.</li>
 </ul>
-<h3>The Modern Approach</h3>
+<h4>The Modern Approach</h4>
 <p>Put your scripts in <code>&lt;head&gt;</code> and use defer or async.<br>This gives you the best of both worlds:</p>
 <ul>
 <li>Scripts start downloading right away (not waiting for full HTML parse)</li>
@@ -212,7 +214,7 @@ heading.<span class="hljs-property">innerHTML</span> = <span class="hljs-string"
   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;app.js&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>       <span class="hljs-comment">&lt;!-- for DOM-dependent scripts --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;analytics.js&quot;</span> <span class="hljs-attr">async</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>  <span class="hljs-comment">&lt;!-- for independent scripts --&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></code></pre></div>
-<h3>type=&quot;module&quot;</h3>
+<h4>Module Scripts</h4>
 <p>Scripts with <code>type=&quot;module&quot;</code> automatically behave like defer (loaded in order,<br>executed after HTML is parsed). No need to add defer manually.</p>
 <div class="code-block-wrapper"><span class="code-lang-label">HTML</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;app-module.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
 <h3>Summary Table</h3>
@@ -284,11 +286,11 @@ Best <span class="hljs-keyword">for</span>?       | <span class="hljs-type">DOM<
   <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Clicked&quot;</span>);
 }</code></pre></div>
 <p><em>Another example on how to use addeventlistener:</em></p>
-<h3>Anonymous Function</h3>
+<h4>Anonymous Function</h4>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
   <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Clicked&quot;</span>);
 });</code></pre></div>
-<h3>How To Use Loop In A Function</h3>
+<h4>How To Use Loop In A Function</h4>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i&lt;<span class="hljs-number">7</span>; i++){
   <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;button&quot;</span>)[i].<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
     <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;You got clicked mr sir&quot;</span>);
@@ -357,7 +359,8 @@ bellBoy1[key]  <span class="hljs-comment">// works, looks for the property &quot
 bellBoy1.<span class="hljs-property">key</span>   <span class="hljs-comment">// WRONG, looks for a property literally called &quot;key&quot;, not &quot;name&quot;</span></code></pre></div>
 <p>Use bracket notation when the property name is stored in a variable (e.g., from user input or a function parameter).</p>
 <hr>
-<h3>Constructor Function</h3>
+<h3>Creating Objects With Constructor</h3>
+<h4>Constructor Function</h4>
 <p>Basically like a factory to create an Object.</p>
 <p>The function&#39;s first letter must be capital so it can be identified as <strong>Constructor Function</strong>.</p>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">BellBoy</span> (<span class="hljs-params">name, age, hasWorkPermit, languages</span>){
@@ -366,7 +369,7 @@ bellBoy1.<span class="hljs-property">key</span>   <span class="hljs-comment">// 
   <span class="hljs-variable language_">this</span>.<span class="hljs-property">hasWorkPermit</span> = hasWorkPermit;
   <span class="hljs-variable language_">this</span>.<span class="hljs-property">languages</span> = languages;
 }</code></pre></div>
-<h3>Initialising Object</h3>
+<h4>Initialising Object</h4>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> bellBoy1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BellBoy</span>(<span class="hljs-string">&quot;Cy&quot;</span>, <span class="hljs-number">19</span>, <span class="hljs-literal">true</span>, [<span class="hljs-string">&quot;Japanese&quot;</span>, <span class="hljs-string">&quot;English&quot;</span>, <span class="hljs-string">&quot;Tagalog&quot;</span>]);</code></pre></div>
 <hr>
 <h2>METHODS</h2>
@@ -399,7 +402,7 @@ bellBoy1.<span class="hljs-property">key</span>   <span class="hljs-comment">// 
 })</code></pre></div>
 <hr>
 <h2>UNDERSTANDING CALLBACKS</h2>
-<h3>How To Respond To Events</h3>
+<h4>How To Respond To Events</h4>
 <p><code>addEventListener()</code> is a Higher Order Function because it can take function as input, The &quot;respondToKey&quot;</p>
 <p>The function taking input is called <strong>Callback Function</strong>, allowing us to wait for something to happen before executing.</p>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;keypress&quot;</span>, <span class="hljs-title function_">respondToKey</span>(event));</code></pre></div>
@@ -410,7 +413,7 @@ bellBoy1.<span class="hljs-property">key</span>   <span class="hljs-comment">// 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">respondToKey</span>(<span class="hljs-params">event</span>){
   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event);
 }</code></pre></div>
-<h3>How addEventListener Works Under The Hood</h3>
+<h4>How addEventListener Works Under The Hood</h4>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">anotherAddEventListener</span>(<span class="hljs-params">typeofEvent, callback</span>){
 
   <span class="hljs-comment">// detects the event</span>

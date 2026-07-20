@@ -94,7 +94,7 @@
     </div>
   </div>
   <h1 class="note-title">Express</h1>
-  <p class="note-meta">Last updated: July 17, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <p class="note-meta">Last updated: July 20, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h2>INTRODUCTION TO EXPRESS</h2>
 <p><strong>Express</strong> is a JS Framework which is used for backend<br>and <strong>Node</strong> is a runtime environment that allows Javascript be used on the pc itself.<br>Instead of just being in a website.</p>
@@ -196,13 +196,13 @@ app.<span class="hljs-title function_">delete</span>(<span class="hljs-string">&
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></code></pre></div>
 <p><code>label</code> is where we label the next input.<br><code>input</code> has type and name which is what the user inputted. <code>required</code> means the input cannot be submitted if theres no data inputted.<br><code>submit</code> type is typically a button.</p>
 <p>Make a public folder in the project and thats where the static files likes HTML, CSS, Images, things that dont need to change.</p>
-<h3>Getting Root Directory</h3>
+<h4>Getting Root Directory</h4>
 <p>Getting the root directory (important for cloud projects, not just local):</p>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> { dirname } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;path&quot;</span>;
 <span class="hljs-keyword">import</span> { fileURLToPath } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;url&quot;</span>;
 <span class="hljs-keyword">const</span> __dirname = <span class="hljs-title function_">dirname</span>(<span class="hljs-title function_">fileURLToPath</span>(<span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span>));</code></pre></div>
 <p>converts the file URL to an actual directory path.</p>
-<h3>res.sendFile vs res.send</h3>
+<h4>res.sendFile vs res.send</h4>
 <p><code>res.send(&quot;text&quot;)</code> - sends text/HTML as the response.<br><code>res.sendFile(__dirname + &quot;/public/index.html&quot;)</code> - sends an actual file from the directory as the response.</p>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
   res.<span class="hljs-title function_">sendFile</span>(__dirname + <span class="hljs-string">&quot;/public/index.html&quot;</span>);
@@ -219,10 +219,10 @@ app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&qu
 <h2>MORGAN</h2>
 <p><strong>Morgan</strong> is used to log the route and get info like Get, or status code or OS or browser and many more.<br>It is used like this,</p>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> morgan <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;morgan&quot;</span>;</code></pre></div>
-<h3>Predefined Log Formats</h3>
+<h4>Predefined Log Formats</h4>
 <p>Like in the example above, you have five predefined formats that you can use in order to easily get the info you need. They are:</p>
 <p><strong>&quot;combined&quot;</strong>: which gives you the Apache standard combined format for your logs.<br><strong>&quot;common&quot;</strong>: referencing the Apache standard common format.<br><strong>&quot;dev&quot;</strong>: A color-coded (by request status) log format.<br><strong>&quot;short&quot;</strong>: Shorter than the default format, including just the few items you&#39;d expect a request logline would have.<br><strong>&quot;tiny&quot;</strong>: Even shorter, just the response time and a few extra items.</p>
-<h3>How To Use The Log Formats</h3>
+<h4>How To Use The Log Formats</h4>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-title class_">Import</span> morgan <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;morgan&quot;</span>;
 <span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
 
@@ -343,7 +343,7 @@ app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quo
 });
 
 app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>); <span class="hljs-comment">// Last - start server</span></code></pre></div>
-<h3>Why Order Matters</h3>
+<h4>Why Order Matters</h4>
 <ul>
 <li>Express processes middleware top to bottom using <code>next()</code>.</li>
 <li>If auth middleware is placed AFTER a route, that route runs without auth check = security risk.</li>
@@ -377,7 +377,7 @@ app.<span class="hljs-title function_">use</span>(logger);</code></pre></div>
 <li><strong>3 params (req, res, next)</strong> = middleware</li>
 <li><strong>4 params (err, req, res, next)</strong> = error-handling middleware</li>
 </ul>
-<h3>What Each One Is For</h3>
+<h4>What Each One Is For</h4>
 <p><strong>req</strong> - the request object. Lets you read what the user sent (URL, method, body, headers, etc.)</p>
 <p><strong>res</strong> - the response object. Middleware sometimes needs to END the request early.<br>For example, if a user isnt authorized, the middleware can send back a 401 and stop the chain right there.</p>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">checkAuth</span>(<span class="hljs-params">req, res, next</span>) {

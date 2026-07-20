@@ -94,7 +94,7 @@
     </div>
   </div>
   <h1 class="note-title">JavaScript</h1>
-  <p class="note-meta">Last updated: July 17, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <p class="note-meta">Last updated: July 20, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h2>INTRODUCTION TO JAVASCRIPT</h2>
 <p><strong>Brendan Eich</strong> created Javascript within 10days.</p>
@@ -150,7 +150,7 @@ name.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0
 <p>(0,4) = Kuro</p>
 <p><em>TIP</em></p>
 <p>(0,4) = 4-0 = 4 letters (Kuro);<br>(2,5) = 5-2 - 3 letters (roo);</p>
-<h3>Slice Usage</h3>
+<h4>Slice Usage</h4>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> text = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;Tweet here!&quot;</span>);
 <span class="hljs-keyword">var</span> newtext = text.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>,<span class="hljs-number">140</span>);
 
@@ -334,7 +334,7 @@ n = <span class="hljs-title class_">Math</span>.<span class="hljs-title function
 <hr>
 <h2>COMPARATORS AND EQUALITY</h2>
 <p><code>===</code> equal to (checks data type, Exact equal)<br><code>==</code> equal to (does not check datatype)<br><code>!==</code> not equal to<br><code>&gt;</code> greater than<br><code>&lt;</code> less than<br><code>&gt;=</code> greater or equal to<br><code>&lt;=</code> lesser or equal to</p>
-<h3>Combining Comparators</h3>
+<h4>Combining Comparators</h4>
 <p><code>&amp;&amp;</code> AND<br><code>||</code> OR ( Shift + \ )<br><code>!</code> NOT</p>
 <p><em>Example:</em></p>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">if</span> (loveScore == <span class="hljs-number">100</span>){
@@ -386,7 +386,7 @@ n = <span class="hljs-title class_">Math</span>.<span class="hljs-title function
 <span class="hljs-keyword">var</span> myNumber = number[<span class="hljs-number">0</span>]; <span class="hljs-comment">// you call out the contents inside the array through this method.</span></code></pre></div>
 <p><code>number.length;</code> // counts the length of array<br><code>number.includes(4);</code> // this code will check the array if it includes 4 in boolean output.<br><code>number.push(5);</code> // pushes the content into the end of the array.<br><code>number.pop;</code> // removes the last content in the array.</p>
 <hr>
-<h3>Iteration On Array</h3>
+<h4>Iteration On Array</h4>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">var</span> number = [];
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">fizzbuzz</span>(<span class="hljs-params"></span>){
