@@ -1378,6 +1378,20 @@ button {
   display: flex;
 }
 
+.toc-heading-glow {
+  background-color: var(--accent-bg);
+  border-radius: 4px;
+  box-shadow: 0 0 12px var(--accent-glow);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  animation: toc-glow-fade 2s ease-out forwards;
+}
+
+@keyframes toc-glow-fade {
+  0% { background-color: var(--accent-bg); box-shadow: 0 0 12px var(--accent-glow); }
+  70% { background-color: var(--accent-bg); box-shadow: 0 0 12px var(--accent-glow); }
+  100% { background-color: transparent; box-shadow: none; }
+}
+
 .toc-item--has-children {
   display: flex;
   flex-wrap: wrap;

@@ -445,11 +445,13 @@
             const targetId = link.getAttribute('href').slice(1);
             const target = document.getElementById(targetId);
             if (target) {
-              const navHeight = 56;
-              const padding = 24;
-              const y = target.getBoundingClientRect().top + window.scrollY - navHeight - padding;
+              const y = target.getBoundingClientRect().top + window.scrollY - (window.innerHeight / 2) + (target.offsetHeight / 2);
               window.scrollTo({ top: y, behavior: 'smooth' });
               history.pushState(null, '', '#' + targetId);
+
+              // Temporary glow on the heading after scroll finishes
+              target.classList.add('toc-heading-glow');
+              setTimeout(() => target.classList.remove('toc-heading-glow'), 2000);
             }
           });
         });
