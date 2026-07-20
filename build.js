@@ -218,7 +218,6 @@ const layoutTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'layout.h
 const homeTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'home.html'), 'utf8');
 const noteTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'note.html'), 'utf8');
 const notFoundTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', '404.html'), 'utf8');
-const sitemapTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'sitemap.html'), 'utf8');
 
 const builtNotes = [];
 const previewMap = {};
@@ -387,30 +386,6 @@ const notFoundPage = applyLayout(layoutTpl, {
 });
 fs.writeFileSync(path.join(DIST_DIR, '404.html'), notFoundPage, 'utf8');
 
-// I. Sitemap page
-let sitemapContent = '';
-for (const [category, categoryNotes] of categoryMap) {
-  sitemapContent += `<div class="sitemap-column"><h2 class="sitemap-category">${category}</h2><ul class="sitemap-list">`;
-  for (const n of categoryNotes) {
-    sitemapContent += `<li><a href="notes/${n.slug}.html" class="sitemap-link">${n.title}</a></li>`;
-  }
-  sitemapContent += '</ul></div>';
-}
-
-const sitemapBody = sitemapTpl.replace(/\{\{SITEMAP_CONTENT\}\}/g, sitemapContent);
-const sitemapPage = applyLayout(layoutTpl, {
-  pageTitle: 'Sitemap — Pronote',
-  basePath: './',
-  pageType: 'sitemap',
-  content: sitemapBody,
-  notesMenuToggle: MENU_BTN,
-  notesMenu: buildNotesMenu(notes, null, 'notes/', previewMap),
-  copyright: site.copyright,
-  socialInstagram: site.social.instagram,
-  socialGithub: site.social.github,
-  socialFacebook: site.social.facebook,
-});
-fs.writeFileSync(path.join(DIST_DIR, 'sitemap.html'), sitemapPage, 'utf8');
 
 copyDir(path.join(PROJECT_ROOT, 'src', 'css'), path.join(DIST_DIR, 'css'));
 copyDir(path.join(PROJECT_ROOT, 'src', 'js'), path.join(DIST_DIR, 'js'));

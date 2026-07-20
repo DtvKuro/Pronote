@@ -19,24 +19,27 @@
   --accent-border: rgba(124, 58, 237, 0.25);
   --card-shadow: rgba(0, 0, 0, 0.4);
   --overlay-bg: rgba(0, 0, 0, 0.5);
+  --bg-texture: url('../images/asfalt-light.png');
 }
 
 [data-theme="light"] {
-  --bg-primary: #f8f9fc;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #f0f1f5;
-  --bg-code: #f5f5f7;
-  --text-primary: #1a1a2e;
-  --text-secondary: #64748b;
-  --text-code: #334155;
-  --border: #e2e8f0;
+  --bg-primary: #e0ded5;
+  --bg-secondary: #eae8e0;
+  --bg-tertiary: #d4d2c9;
+  --bg-code: #c7c5bc;
+  --bg-footer: #b8b6ad;
+  --text-primary: #1c1c1c;
+  --text-secondary: #5c5c5c;
+  --text-code: #2a2a2a;
+  --border: #aca9a0;
   --accent: #7c3aed;
   --accent-hover: #6d28d9;
-  --accent-glow: rgba(124, 58, 237, 0.15);
-  --accent-bg: rgba(124, 58, 237, 0.08);
-  --accent-border: rgba(124, 58, 237, 0.2);
-  --card-shadow: rgba(0, 0, 0, 0.08);
-  --overlay-bg: rgba(0, 0, 0, 0.3);
+  --accent-glow: rgba(200, 130, 40, 0.25);
+  --accent-bg: rgba(124, 58, 237, 0.1);
+  --accent-border: rgba(124, 58, 237, 0.3);
+  --card-shadow: rgba(60, 55, 45, 0.25);
+  --overlay-bg: rgba(0, 0, 0, 0.35);
+  --bg-texture: url('../images/asfalt-dark.png');
 }
 
 /* ============================================================
@@ -61,6 +64,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji";
   background-color: var(--bg-primary);
+  background-image: var(--bg-texture, none);
+  background-repeat: repeat;
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
@@ -1236,10 +1241,25 @@ button {
    ============================================================ */
 
 .footer {
+  position: relative;
   border-top: 1px solid var(--border);
   padding: 1.5rem 1.25rem;
   color: var(--text-secondary);
   font-size: 0.875rem;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--bg-footer, var(--bg-primary));
+  opacity: 0.75;
+  z-index: 0;
+}
+
+.footer > * {
+  position: relative;
+  z-index: 1;
 }
 
 .footer-content {
@@ -1275,15 +1295,6 @@ button {
   color: var(--accent);
 }
 
-.footer-sitemap-link {
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.footer-sitemap-link:hover {
-  color: var(--accent);
-}
 
 /* ============================================================
    Back to top button
@@ -1385,6 +1396,10 @@ button {
 
 .toc-heading-glow {
   text-shadow: 0 0 12px #facc15, 0 0 24px #facc1580;
+}
+
+[data-theme="light"] .toc-heading-glow {
+  text-shadow: 0 0 10px #7c3aed, 0 0 20px rgba(124, 58, 237, 0.5);
 }
 
 .toc-item--has-children {
@@ -1503,69 +1518,6 @@ button {
 
 .error-home-link:hover {
   background: var(--accent-hover);
-}
-
-/* ============================================================
-   Sitemap page
-   ============================================================ */
-
-.sitemap-page {
-  padding: 2rem 0;
-}
-
-.sitemap-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: var(--text-primary);
-}
-
-.sitemap-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.sitemap-column {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1.25rem;
-}
-
-.sitemap-category {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--accent);
-}
-
-.sitemap-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sitemap-link {
-  display: block;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  text-decoration: none;
-  border-left: 2px solid var(--border);
-  margin-bottom: 0.25rem;
-  transition: all 0.15s;
-}
-
-.sitemap-link:hover {
-  color: var(--accent);
-  border-left-color: var(--accent);
-  background: var(--accent-bg);
-  border-radius: 0 4px 4px 0;
 }
 
 /* ============================================================
