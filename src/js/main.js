@@ -384,6 +384,9 @@
         const tocList = document.createElement('ul');
         tocList.className = 'toc-list';
 
+        let currentH2Item = null;
+        let currentSubList = null;
+
         headings.forEach(heading => {
           const item = document.createElement('li');
           item.className = 'toc-item toc-item--' + heading.tagName.toLowerCase();
@@ -393,8 +396,36 @@
           link.href = '#' + heading.id;
           link.textContent = heading.textContent;
 
-          item.appendChild(link);
-          tocList.appendChild(item);
+          if (heading.tagName === 'H2') {
+            item.appendChild(link);
+            tocList.appendChild(item);
+            currentH2Item = item;
+            currentSubList = null;
+          } else if (heading.tagName === 'H3' && currentH2Item) {
+            if (!currentSubList) {
+              currentSubList = document.createElement('ul');
+              currentSubList.className = 'toc-sublist';
+              currentH2Item.appendChild(currentSubList);
+
+              // Add toggle arrow to the parent h2 item
+              const toggle = document.createElement('span');
+              toggle.className = 'toc-toggle';
+              toggle.textContent = '\u25B8';
+              const parentItem = currentH2Item;
+              parentItem.querySelector('.toc-link').prepend(toggle);
+
+              toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                parentItem.classList.toggle('toc-item--expanded');
+              });
+            }
+            item.appendChild(link);
+            currentSubList.appendChild(item);
+          } else {
+            item.appendChild(link);
+            tocList.appendChild(item);
+          }
         });
 
         toc.appendChild(tocList);
@@ -407,6 +438,20 @@
 
         const tocLinks = toc.querySelectorAll('.toc-link');
 
+        // Scroll heading to center of viewport on TOC click
+        tocLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').slice(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+              const y = target.getBoundingClientRect().top + window.scrollY - (window.innerHeight / 2) + (target.offsetHeight / 2);
+              window.scrollTo({ top: y, behavior: 'smooth' });
+              history.pushState(null, '', '#' + targetId);
+            }
+          });
+        });
+
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach(entry => {
@@ -417,6 +462,12 @@
                 );
                 if (activeLink) {
                   activeLink.classList.add('toc-link--active');
+
+                  // Auto-expand parent if active link is inside a sublist
+                  const parentH2Item = activeLink.closest('.toc-sublist')?.closest('.toc-item--h2');
+                  if (parentH2Item) {
+                    parentH2Item.classList.add('toc-item--expanded');
+                  }
                 }
               }
             });
