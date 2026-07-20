@@ -2,7 +2,8 @@
    CSS Custom Properties
    ============================================================ */
 
-:root {
+:root,
+[data-theme="dark"] {
   --bg-primary: #0d1117;
   --bg-secondary: #161b22;
   --bg-tertiary: #21262d;
@@ -18,13 +19,10 @@
   --accent-border: rgba(124, 58, 237, 0.25);
   --card-shadow: rgba(0, 0, 0, 0.4);
   --overlay-bg: rgba(0, 0, 0, 0.5);
-}
-
-[data-theme="dark"] {
   --bg-texture: url('../images/asfalt-light.png');
 }
 
-[data-theme="light"] {
+html[data-theme="light"] {
   --bg-primary: #e0ded5;
   --bg-secondary: #eae8e0;
   --bg-tertiary: #d4d2c9;
