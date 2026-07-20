@@ -20,10 +20,6 @@
   --overlay-bg: rgba(0, 0, 0, 0.5);
 }
 
-html[data-theme="dark"] {
-  --bg-texture: url('../images/asfalt-light.png');
-}
-
 html[data-theme="light"] {
   --bg-primary: #e0ded5;
   --bg-secondary: #eae8e0;
@@ -41,7 +37,6 @@ html[data-theme="light"] {
   --accent-border: rgba(124, 58, 237, 0.3);
   --card-shadow: rgba(60, 55, 45, 0.25);
   --overlay-bg: rgba(0, 0, 0, 0.35);
-  --bg-texture: url('../images/asfalt-dark.png');
 }
 
 /* ============================================================
@@ -67,7 +62,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji";
   background-color: var(--bg-primary);
-  background-image: var(--bg-texture, none);
   background-repeat: repeat;
   color: var(--text-primary);
   line-height: 1.6;
@@ -75,6 +69,14 @@ body {
   display: flex;
   flex-direction: column;
   transition: none;
+}
+
+html[data-theme="dark"] body {
+  background-image: url('../images/asfalt-light.png');
+}
+
+html[data-theme="light"] body {
+  background-image: url('../images/asfalt-dark.png');
 }
 
 img,
