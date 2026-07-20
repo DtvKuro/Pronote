@@ -71,7 +71,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  transition: background-color 0.2s, color 0.2s;
+  transition: none;
 }
 
 img,
