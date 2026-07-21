@@ -187,10 +187,6 @@ const LOGOS = {
   </svg>`,
 };
 
-// -------------------------------------------------------
-// Build
-// -------------------------------------------------------
-
 const PROJECT_ROOT = __dirname;
 const DIST = path.join(PROJECT_ROOT, 'docs');
 const DIST_NOTES = path.join(DIST, 'notes');

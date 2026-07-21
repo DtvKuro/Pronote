@@ -155,8 +155,6 @@
     }
   }, { passive: true });
 
-  // ---- HOME PAGE ----
-
   if (pageType === 'home') {
     const tabs = document.querySelectorAll('.category-tab');
     const sections = document.querySelectorAll('.category-section');
@@ -219,8 +217,6 @@
       searchInput.addEventListener('input', applyFilters);
     }
   }
-
-  // ---- NOTE PAGE ----
 
   if (pageType === 'note') {
     const noteContent = document.querySelector('.note-content');
