@@ -252,6 +252,7 @@ const social = {
 };
 
 let totalNotes = 0;
+let buildHadErrors = false;
 
 for (const collection of collections) {
   const {
@@ -464,16 +465,26 @@ for (const collection of collections) {
 
   // per-collection note images
   if (imageDirs.length) {
-    // Each folder keeps its name, e.g. images/pic-to-notes/9.png
+    // Look inside the repo first (src/note-images) so the site never depends on
+    // a folder outside it, then fall back to the note source folders.
     for (const dir of imageDirs) {
-      for (const src of sourceDirs) {
-        const from = path.join(src, dir);
-        if (fs.existsSync(from)) {
-          copyDir(from, path.join(outRoot, 'images', dir));
-          console.log(`  [${id}] copied images/${dir}`);
-          break;
-        }
+      const candidates = [
+        path.join(PROJECT_ROOT, 'src', 'note-images', dir),
+        ...sourceDirs.map((s) => path.join(s, dir)),
+      ];
+      const from = candidates.find((p) => fs.existsSync(p));
+
+      if (!from) {
+        console.error(`  ERROR [${id}]: image folder "${dir}" not found. Looked in:`);
+        for (const c of candidates) console.error(`      ${c}`);
+        console.error(`      -> images in these notes WILL be broken.`);
+        buildHadErrors = true;
+        continue;
       }
+
+      copyDir(from, path.join(outRoot, 'images', dir));
+      const n = fs.readdirSync(from).length;
+      console.log(`  [${id}] copied images/${dir} (${n} files)`);
     }
   } else {
     // Dev notes share one flat Images/ folder alongside the markdown.
@@ -512,4 +523,46 @@ copyDir(path.join(PROJECT_ROOT, 'src', 'css'), path.join(DIST, 'css'));
 copyDir(path.join(PROJECT_ROOT, 'src', 'js'), path.join(DIST, 'js'));
 copyDir(path.join(PROJECT_ROOT, 'src', 'images'), path.join(DIST, 'images'));
 
+// --- verify every local <img> actually resolves on disk ---------------------
+// A missing source folder used to fail silently and ship a page full of broken
+// images. Now the build refuses to finish quietly.
+
+function walkHtml(dir, out = []) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, entry.name);
+    if (entry.isDirectory()) walkHtml(p, out);
+    else if (entry.name.endsWith('.html')) out.push(p);
+  }
+  return out;
+}
+
+let checked = 0;
+const broken = [];
+
+for (const page of walkHtml(DIST)) {
+  const html = fs.readFileSync(page, 'utf8');
+  for (const m of html.matchAll(/<img[^>]+src="([^"]+)"/g)) {
+    const src = m[1];
+    if (/^(https?:)?\/\//.test(src) || src.startsWith('data:')) continue;
+    checked++;
+    const target = path.resolve(path.dirname(page), src);
+    if (!fs.existsSync(target)) {
+      broken.push(`${path.relative(DIST, page)}  ->  ${src}`);
+    }
+  }
+}
+
+if (broken.length) {
+  console.error(`\nBROKEN IMAGES (${broken.length} of ${checked}):`);
+  for (const b of broken) console.error(`  ${b}`);
+  buildHadErrors = true;
+} else {
+  console.log(`All ${checked} local images resolve.`);
+}
+
 console.log(`Built ${totalNotes} notes across ${collections.length} collections, output at docs/`);
+
+if (buildHadErrors) {
+  console.error('\nBuild finished WITH ERRORS — do not deploy this output.');
+  process.exit(1);
+}
