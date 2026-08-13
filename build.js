@@ -410,7 +410,7 @@ for (const collection of collections) {
         // School entries are horizontal rows led by the course code.
         if (n.code) {
           const units = n.units ? `<span class="card-units">${n.units}</span>` : '';
-          return `<a href="notes/${n.slug}.html" class="card" data-title="${n.title}"${cardStyle}><div class="card-code">${n.code}</div><div class="card-body"><h3>${n.title}</h3><p class="card-description">${n.description || ''}</p></div><div class="card-badges">${units}${categoryBadge}${difficulty}</div></a>`;
+          return `<a href="notes/${n.slug}.html" class="card" data-title="${n.title}"${cardStyle}><div class="card-code">${n.code}</div><div class="card-body"><h3>${n.title}</h3>${n.description ? `<p class="card-description">${n.description}</p>` : ''}</div><div class="card-badges">${units}${categoryBadge}${difficulty}</div></a>`;
         }
 
         // Dev cards keep their original stacked layout.
