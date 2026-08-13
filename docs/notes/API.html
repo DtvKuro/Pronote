@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-mode="dev">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,7 @@
     <div class="nav-container">
       <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
       <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../index.html" class="mode-switch-btn active" data-mode-target="dev">Dev</a><a href="../school/index.html" class="mode-switch-btn" data-mode-target="school">School</a></div>
       <div class="nav-search" id="navSearch">
         <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
         <div class="search-nav-panel" id="searchNavPanel" style="display:none">
@@ -93,8 +94,9 @@
       </button>
     </div>
   </div>
+  
   <h1 class="note-title">API</h1>
-  <p class="note-meta">Last updated: July 21, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <p class="note-meta">Last updated: August 13, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h1>INTRODUCTION TO API</h1>
 <h2>Application Programming Interface (API)</h2>
@@ -532,6 +534,135 @@ result.<span class="hljs-property">type</span>        <span class="hljs-comment"
 });</code></pre></div>
 <p><em>Its that simple. You just put <code>Bearer</code> followed by your token in the Authorization header.</em></p>
 <hr>
+<h2>REST API</h2>
+<p><strong>Making GET, POST, PUT, PATCH, and DELETE API Requests</strong></p>
+<p>Using Axios were gonna use REST API fully by using range of requests including post, put, patch and delete.</p>
+<p>Previously we used GET request using Axios by putting it inside a &quot;try-catch-block&quot;  </p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">try</span>{
+  <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> axios.<span class="hljs-keyword">get</span>(<span class="hljs-string">&quot;URL&quot;</span>, {
+    <span class="hljs-keyword">params</span>: {
+      ID: <span class="hljs-number">12345</span>,
+    },
+    headers: {
+      Authorization: <span class="hljs-string">&#x27;Bearer ${yourBearerToken}&#x27;</span>,
+    },
+    data:{
+
+    },   <span class="hljs-comment">// and many more settings.</span>
+  });
+}<span class="hljs-keyword">catch</span> (error){
+}</code></pre></div>
+<p>to learn more about axios read this: <em>axios-http.com/docs/example</em></p>
+<p>One thing to take note is that you can actually chain commands.</p>
+<p>For Example:</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">import axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span>;
+
+axios
+  .<span class="hljs-title function_ invoke__">get</span>(<span class="hljs-string">&quot;URL&quot;</span>, {
+    <span class="hljs-attr">params</span>: {
+      <span class="hljs-attr">ID</span>: <span class="hljs-number">1234</span>,
+    },
+  })
+  .<span class="hljs-title function_ invoke__">then</span>(function (response){
+    res.<span class="hljs-title function_ invoke__">json</span>({<span class="hljs-attr">data</span>: response.data})
+  })
+  .<span class="hljs-keyword">catch</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>)</span>{
+    res.<span class="hljs-title function_ invoke__">status</span>(<span class="hljs-number">404</span>).<span class="hljs-title function_ invoke__">send</span>(error.response.data);
+  })</code></pre></div>
+<p><em>We chained .get, .then, .catch or even .finally</em></p>
+<hr>
+<h3>Difference of Function Chaining vs Marking async then using await axios.get()</h3>
+<h4>Javascript Promises API</h4>
+<p><strong>Function Chaining</strong><br><code>.get().then().then()</code><br>This is basically in-order action, it will wait till the previous is done before executing the next one. </p>
+<p>The alternative is the modern approach, introduced on 2017 as part of ES8 upgrade to Javascript.</p>
+<p><strong>Async and Await keyword</strong></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-function">function <span class="hljs-keyword">async</span> <span class="hljs-title">blarb</span>()</span>{
+  <span class="hljs-keyword">await</span> axios.<span class="hljs-keyword">get</span>();
+}</code></pre></div>
+<p>The function is marked as <strong>async</strong> while the process inside will be marked as <strong>await</strong>.<br><strong>Await</strong> means that the the function will <em>wait till that line of code is done</em> before moving to next line(down).</p>
+<p>If you are still confused feel free to read: <em>axios-http.com/docs/example</em></p>
+<hr>
+<h3>REST:API - HTTP Protocol for Axios</h3>
+<h4>GET REQUEST</h4>
+<p><code>axios.get(&quot;URL&quot;, config)</code></p>
+<p><strong>GET</strong> is pretty simple, you just provide the <em>URL</em><br>and <em>config</em> which is the 2nd argument to customize your HTTP request.</p>
+<p>things like data, params, header, etc.</p>
+<h4>POST REQUEST</h4>
+<p><code>axios.post(&quot;URL&quot;, data, config);</code><br>Data is added in the middle<br>which is body of your form data.</p>
+<p>so its something like this:</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-class"><span class="hljs-keyword">data</span>{
+  <span class="hljs-title">username</span>: <span class="hljs-title">randomjade</span>
+  <span class="hljs-title">password</span>: <span class="hljs-title">randomPass</span>
+}</span></code></pre></div>
+<p>You are passing a body or data using post form.</p>
+<h4>PUT REQUEST</h4>
+<p><em>Just to remind you:</em><br>PUT allows you to completely replace an existing resource<br>or create a new resource if it doesnt exist yet.</p>
+<p>basically PUT is used for updating data, but it replaces the entire resource. So you should only use it when you have the complete data, otherwise any missing fields will be lost.</p>
+<p>And the conditions on put request is pretty much same as post request.<br><code>axios.put(&quot;URL&quot;, data, config);</code></p>
+<h4>PATCH REQUEST</h4>
+<p>PATCH is for partial updates. Unlike PUT, you only send the fields you want to change.<br>If a resource has <code>secret</code>, <code>score</code>, and <code>username</code> — and you only want to update <code>score</code>,<br>you just send <code>{ score: 99 }</code> and the rest stays the same.</p>
+<p><code>axios.patch(&quot;URL&quot;, data, config);</code></p>
+<p>same structure as PUT and POST. The difference is how the <strong>backend</strong> treats it.</p>
+<h4>DELETE REQUEST</h4>
+<p>DELETE removes a resource. No body needed, just the URL and config.</p>
+<p><code>axios.delete(&quot;URL&quot;, config);</code></p>
+<p>Notice theres no <code>data</code> argument — its the same structure as GET.<br>You just point to the resource you want to delete via the URL.</p>
+<hr>
+<h3>PUT vs PATCH</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>PUT</th>
+<th>PATCH</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Sends</strong></td>
+<td>All fields (complete replacement)</td>
+<td>Only fields you want to change</td>
+</tr>
+<tr>
+<td><strong>Missing fields</strong></td>
+<td>Will be lost/overwritten</td>
+<td>Stay untouched</td>
+</tr>
+<tr>
+<td><strong>Use when</strong></td>
+<td>You have the full data</td>
+<td>You only want to update specific fields</td>
+</tr>
+</tbody></table>
+<p>Both use the same code structure: <code>axios.method(url, data, config)</code><br>The real difference is on the <strong>backend</strong> — PUT replaces the whole thing, PATCH only updates whats sent.</p>
+<hr>
+<h3>req.body handles it for you</h3>
+<p>You dont need to manually check which fields are filled.<br><code>req.body</code> only contains what the user actually submitted from the form.</p>
+<ul>
+<li>If user fills <code>score</code> only → <code>req.body</code> = <code>{ score: 95 }</code></li>
+<li>If user fills both → <code>req.body</code> = <code>{ secret: &quot;abc&quot;, score: 95 }</code></li>
+</ul>
+<p>So for both PUT and PATCH you can just do:</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">put</span>(url, req.<span class="hljs-property">body</span>, config);
+<span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">patch</span>(url, req.<span class="hljs-property">body</span>, config);</code></pre></div>
+<p>No if/else needed. Just send <code>req.body</code> and let the backend handle the rest.</p>
+<hr>
+<h3>Separating id from the body</h3>
+<p>In real APIs, <code>id</code> belongs in the <strong>URL</strong> not in the <strong>body</strong>.<br>URL identifies <em>which</em> resource, body contains <em>what</em> to change.</p>
+<p>Sending <code>id</code> in both can cause conflicts — URL says <code>/secrets/42</code> but body says <code>{ id: 55 }</code>, which one wins?</p>
+<p>To strip <code>id</code> from the body before sending:</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> { id, ...data } = req.<span class="hljs-property">body</span>;
+<span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">put</span>(<span class="hljs-variable constant_">API_URL</span> + <span class="hljs-string">&quot;/secrets/&quot;</span> + id, data, config);</code></pre></div>
+<p>This is called <strong>destructuring with rest syntax</strong>.</p>
+<ul>
+<li><code>id</code> gets pulled out as its own variable</li>
+<li><code>...data</code> catches <strong>everything else</strong> into a new object</li>
+</ul>
+<p>So if <code>req.body</code> is <code>{ id: 42, secret: &quot;abc&quot;, score: 95 }</code>:</p>
+<ul>
+<li><code>id</code> = <code>42</code></li>
+<li><code>data</code> = <code>{ secret: &quot;abc&quot;, score: 95 }</code></li>
+</ul>
+<p>No manual picking needed. For learning APIs its fine to skip this,<br>but for real-world APIs keep <code>id</code> in the URL only.</p>
 
   </div>
   <div class="note-nav">

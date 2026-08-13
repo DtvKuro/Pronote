@@ -1,36 +1,63 @@
 {
-  "categoryTabs": ["ALL", "FRONTEND", "BACKEND", "TOOLS"],
-  "categoryColors": {
-    "Frontend": "#7c3aed",
-    "Backend": "#3b82f6",
-    "Tools": "#f97316"
-  },
-  "notes": [
-    { "file": "html.md", "title": "HTML", "category": "Frontend", "order": 1, "description": "Foundations of web structure — elements, attributes, forms, and semantic markup", "difficulty": "Low", "version": "v1" },
-    { "file": "css.md", "title": "CSS", "category": "Frontend", "order": 2, "description": "Styling fundamentals — selectors, box model, flexbox, grid, positioning, and responsive design", "difficulty": "Low", "version": "v1" },
-    { "file": "javascript.md", "title": "JavaScript", "category": "Frontend", "order": 3, "description": "Core language concepts — variables, functions, loops, arrays, objects, and control flow", "difficulty": "Hard", "version": "v1" },
-    { "file": "dom.md", "title": "DOM", "category": "Frontend", "order": 4, "description": "Document Object Model — selecting elements, event listeners, manipulating content and attributes", "difficulty": "Extreme", "version": "v1" },
-    { "file": "web-design.md", "title": "Web Design", "category": "Frontend", "order": 5, "description": "Design principles — color theory, typography, UI/UX fundamentals", "difficulty": "Low", "version": "v1" },
-    { "file": "node-js.md", "title": "Node.js", "category": "Backend", "order": 6, "description": "Server-side JavaScript runtime — REPL, modules, NPM package management", "difficulty": "Mid", "version": "v1" },
-    { "file": "express.md", "title": "Express", "category": "Backend", "order": 7, "description": "Backend framework — routing, middleware, HTTP methods, request/response handling", "difficulty": "Hard", "version": "v1" },
-    { "file": "EJS.md", "title": "EJS", "category": "Backend", "order": 8, "description": "Templating engine — rendering dynamic HTML, passing data, partials, and layouts", "difficulty": "Low", "version": "v1" },
-    { "file": "API.md", "title": "API", "category": "Backend", "order": 9, "description": "APIs and data exchange — endpoints, JSON, authentication, Axios, and server-side requests", "difficulty": "Hard", "version": "v1" },
-    { "file": "backend.md", "title": "Backend", "category": "Backend", "order": 10, "description": "Backend overview — servers, applications, databases, and full-stack architecture", "difficulty": "Low", "version": "v1" },
-    { "file": "gitbash.md", "title": "Git & Bash", "category": "Tools", "order": 11, "description": "Version control and CLI — git commands, branching, merging, remotes, and pull requests", "difficulty": "Mid", "version": "v1" },
-    { "file": "github.md", "title": "GitHub", "category": "Tools", "order": 12, "description": "Remote repositories — pushing, cloning, forking, pull requests, and collaboration", "difficulty": "Hard", "version": "v1" },
-    { "file": "bash-shortcuts.md", "title": "Bash Shortcuts", "category": "Tools", "order": 13, "description": "Custom bash aliases and functions for faster terminal workflow", "difficulty": "Mid", "version": "v1" }
-  ],
-  "skills": [
-    "HTML", "CSS", "JavaScript", "DOM", "Web Design",
-    "Node.js", "Express", "EJS", "API", "Backend",
-    "Git & Bash", "GitHub", "Bash Shortcuts"
+  "collections": [
+    {
+      "id": "dev",
+      "label": "Dev",
+      "output": "",
+      "homeTemplate": "home.html",
+      "skillsBanner": true,
+      "categoryTabs": ["ALL", "FRONTEND", "BACKEND", "TOOLS"],
+      "categoryColors": {
+        "Frontend": "#7c3aed",
+        "Backend": "#3b82f6",
+        "Tools": "#f97316"
+      },
+      "sourceDirs": ["C:/FXKuroo/Codes/UDEMY/Notes"],
+      "notes": [
+        { "file": "html.md", "title": "HTML", "category": "Frontend", "order": 1, "description": "Foundations of web structure — elements, attributes, forms, and semantic markup", "difficulty": "Low", "version": "v1" },
+        { "file": "css.md", "title": "CSS", "category": "Frontend", "order": 2, "description": "Styling fundamentals — selectors, box model, flexbox, grid, positioning, and responsive design", "difficulty": "Low", "version": "v1" },
+        { "file": "javascript.md", "title": "JavaScript", "category": "Frontend", "order": 3, "description": "Core language concepts — variables, functions, loops, arrays, objects, and control flow", "difficulty": "Hard", "version": "v1" },
+        { "file": "dom.md", "title": "DOM", "category": "Frontend", "order": 4, "description": "Document Object Model — selecting elements, event listeners, manipulating content and attributes", "difficulty": "Extreme", "version": "v1" },
+        { "file": "web-design.md", "title": "Web Design", "category": "Frontend", "order": 5, "description": "Design principles — color theory, typography, UI/UX fundamentals", "difficulty": "Low", "version": "v1" },
+        { "file": "node-js.md", "title": "Node.js", "category": "Backend", "order": 6, "description": "Server-side JavaScript runtime — REPL, modules, NPM package management", "difficulty": "Mid", "version": "v1" },
+        { "file": "express.md", "title": "Express", "category": "Backend", "order": 7, "description": "Backend framework — routing, middleware, HTTP methods, request/response handling", "difficulty": "Hard", "version": "v1" },
+        { "file": "EJS.md", "title": "EJS", "category": "Backend", "order": 8, "description": "Templating engine — rendering dynamic HTML, passing data, partials, and layouts", "difficulty": "Low", "version": "v1" },
+        { "file": "API.md", "title": "API", "category": "Backend", "order": 9, "description": "APIs and data exchange — endpoints, JSON, authentication, Axios, and server-side requests", "difficulty": "Hard", "version": "v1" },
+        { "file": "backend.md", "title": "Backend", "category": "Backend", "order": 10, "description": "Backend overview — servers, applications, databases, and full-stack architecture", "difficulty": "Low", "version": "v1" },
+        { "file": "gitbash.md", "title": "Git & Bash", "category": "Tools", "order": 11, "description": "Version control and CLI — git commands, branching, merging, remotes, and pull requests", "difficulty": "Mid", "version": "v1" },
+        { "file": "github.md", "title": "GitHub", "category": "Tools", "order": 12, "description": "Remote repositories — pushing, cloning, forking, pull requests, and collaboration", "difficulty": "Hard", "version": "v1" },
+        { "file": "bash-shortcuts.md", "title": "Bash Shortcuts", "category": "Tools", "order": 13, "description": "Custom bash aliases and functions for faster terminal workflow", "difficulty": "Mid", "version": "v1" }
+      ]
+    },
+    {
+      "id": "school",
+      "label": "School",
+      "output": "school",
+      "homeTemplate": "home-school.html",
+      "skillsBanner": false,
+      "categoryTabs": ["ALL", "MAJOR", "GEN-ED"],
+      "categoryColors": {
+        "Major": "#c8912f",
+        "Gen-Ed": "#4a8f7b"
+      },
+      "sourceDirs": ["C:/FXKuroo/Codes/school"],
+      "imageDirs": ["pic-to-notes", "mmwpic"],
+      "notes": [
+        { "file": "CC1_Introduction-To-Computing.md", "code": "CC1", "title": "Introduction to Computing", "category": "Major", "order": 1, "units": "3 units", "description": "Computer fundamentals, hardware, software, networks, multimedia, and number systems", "difficulty": "Low", "version": "v1" },
+        { "file": "CC2_Fundamentals-To-Programming.md", "code": "CC2", "title": "Fundamentals of Programming", "category": "Major", "order": 2, "units": "3 units", "description": "What programming is, how a computer system runs it, translators, and Java's JDK/JRE/JVM", "difficulty": "Mid", "version": "v1" },
+        { "file": "HCI101_Intro-To-Human-Computer-Interaction.md", "code": "HCI101", "title": "Intro to Human-Computer Interaction", "category": "Major", "order": 3, "units": "3 units", "description": "How people interact with systems — usability, interface design, and user-centered thinking", "difficulty": "Mid", "version": "v1" },
+        { "file": "GE4_Math-In-The-Modern-World.md", "code": "GE4", "title": "Math in the Modern World", "category": "Gen-Ed", "order": 4, "units": "3 units", "description": "Patterns, logic, statistics, and mathematical reasoning applied to everyday life", "difficulty": "Mid", "version": "v1" },
+        { "file": "GE5_Purposive-Communication.md", "code": "GE5", "title": "Purposive Communication", "category": "Gen-Ed", "order": 5, "units": "3 units", "description": "Writing, speaking, and presenting clearly across different audiences and purposes", "difficulty": "Low", "version": "v1" },
+        { "file": "GE6_Art-Appreciation.md", "code": "GE6", "title": "Art Appreciation", "category": "Gen-Ed", "order": 6, "units": "3 units", "description": "Reading and interpreting art — forms, mediums, movements, and cultural context", "difficulty": "Low", "version": "v1" },
+        { "file": "GE9_Philippine-History.md", "code": "GE9", "title": "Philippine History", "category": "Gen-Ed", "order": 7, "units": "3 units", "description": "Philippine history through primary sources and historical interpretation", "difficulty": "Low", "version": "v1" }
+      ]
+    }
   ],
   "site": {
     "title": "Pronote",
     "description": "Web development notes and references",
     "author": "DtvKuro",
     "copyright": "© 2026 DtvKuro, Tarub Corp.",
-    "sourceDir": "C:/FxKuroo/Codes/Learning/UDEMY/Notes",
     "social": {
       "instagram": "https://www.instagram.com/dtvkuroo/",
       "github": "https://github.com/DtvKuro?tab=repositories",

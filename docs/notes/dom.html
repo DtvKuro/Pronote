@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-mode="dev">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,7 @@
     <div class="nav-container">
       <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
       <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../index.html" class="mode-switch-btn active" data-mode-target="dev">Dev</a><a href="../school/index.html" class="mode-switch-btn" data-mode-target="school">School</a></div>
       <div class="nav-search" id="navSearch">
         <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
         <div class="search-nav-panel" id="searchNavPanel" style="display:none">
@@ -93,8 +94,9 @@
       </button>
     </div>
   </div>
+  
   <h1 class="note-title">DOM</h1>
-  <p class="note-meta">Last updated: July 20, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <p class="note-meta">Last updated: August 13, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h2>WAYS TO USE JAVASCRIPT</h2>
 <h3>1. Inline Javascript</h3>
@@ -144,7 +146,7 @@ heading.<span class="hljs-property">innerHTML</span> = <span class="hljs-string"
 <p>you can do variety of manipulation in the element like styling.</p>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">heading.<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = <span class="hljs-string">&quot;red&quot;</span>;</code></pre></div>
 <div class="code-block-wrapper"><span class="code-lang-label">HTML</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;checker&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span>&gt;</span>Click Me<span class="hljs-tag">&lt;/<span class="hljs-name">input</span>&gt;</span></code></pre></div>
-<p><code>document.querySelector(&quot;input&quot;).click;</code> will click the checkbox for you.</p>
+<p><code>document.querySelector(&quot;input&quot;).click();</code> will click the checkbox for you.</p>
 <hr>
 <h2>PROPERTY AND METHOD</h2>
 <p>An element has <strong>property</strong> and <strong>method</strong>.</p>
@@ -276,7 +278,7 @@ Best <span class="hljs-keyword">for</span>?       | <span class="hljs-type">DOM<
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;a&quot;</span>).<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&quot;href&quot;</span>, <span class="hljs-string">&quot;https://www.roblox.com&quot;</span>);</code></pre></div>
 <hr>
 <h2>EVENT LISTENER</h2>
-<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>).<span class="hljs-title function_">addListener</span>(type, listener)</code></pre></div>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>).<span class="hljs-title function_">addEventListener</span>(type, listener)</code></pre></div>
 <p><strong>Type</strong> could be an event like click, scroll up, etc.<br><strong>Listener</strong> is the function that would be called if click is detected.</p>
 <p><em>Example:</em></p>
 <p>The function dont have () because thats auto call. Its bare so that it only activates when click happens.</p>

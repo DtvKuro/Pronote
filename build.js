@@ -55,6 +55,15 @@ function escapeAttr(str) {
   return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+// Find a note's markdown across the collection's source directories.
+function resolveSource(dirs, file) {
+  for (const dir of dirs) {
+    const p = path.join(dir, file);
+    if (fs.existsSync(p)) return p;
+  }
+  return null;
+}
+
 const MENU_BTN =
   '<button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false">' +
   '<span></span><span></span><span></span>' +
@@ -65,6 +74,10 @@ function applyLayout(layout, vars) {
     .replace(/\{\{PAGE_TITLE\}\}/g, vars.pageTitle)
     .replace(/\{\{BASE_PATH\}\}/g, vars.basePath)
     .replace(/\{\{PAGE_TYPE\}\}/g, vars.pageType || '')
+    .replace(/\{\{MODE\}\}/g, vars.mode || 'dev')
+    .replace(/\{\{HOME_HREF\}\}/g, vars.homeHref || './index.html')
+    .replace(/\{\{EXTRA_CSS\}\}/g, vars.extraCss || '')
+    .replace(/\{\{MODE_SWITCH\}\}/g, vars.modeSwitch || '')
     .replace(/\{\{NOTES_MENU_TOGGLE\}\}/g, vars.notesMenuToggle || '')
     .replace(/\{\{NOTES_MENU\}\}/g, vars.notesMenu || '')
     .replace(/\{\{COPYRIGHT\}\}/g, vars.copyright || '')
@@ -91,7 +104,8 @@ function buildNotesMenu(notes, activeSlug, linkPrefix, previewMap) {
         const s = slugify(n.file);
         const active = s === activeSlug ? ' active' : '';
         const preview = previewMap[s] ? ` data-preview="${escapeAttr(previewMap[s])}"` : '';
-        return `<li><a href="${linkPrefix}${s}.html" class="notes-menu-link${active}"${preview}>${n.title}</a></li>`;
+        const label = n.code ? `<span class="notes-menu-code">${n.code}</span> ${n.title}` : n.title;
+        return `<li><a href="${linkPrefix}${s}.html" class="notes-menu-link${active}"${preview}>${label}</a></li>`;
       })
       .join('\n        ');
 
@@ -103,6 +117,17 @@ function buildNotesMenu(notes, activeSlug, linkPrefix, previewMap) {
 </div>\n`;
   }
   return html;
+}
+
+// Build the Dev / School switch. `hrefs` maps collection id -> relative url.
+function buildModeSwitch(collections, activeId, hrefs) {
+  const btns = collections
+    .map((c) => {
+      const active = c.id === activeId ? ' active' : '';
+      return `<a href="${hrefs[c.id]}" class="mode-switch-btn${active}" data-mode-target="${c.id}">${c.label}</a>`;
+    })
+    .join('');
+  return `<div class="mode-switch" role="group" aria-label="Switch notes collection">${btns}</div>`;
 }
 
 // --- SVG logos per note title ---
@@ -189,185 +214,291 @@ const LOGOS = {
 
 const PROJECT_ROOT = __dirname;
 const DIST = path.join(PROJECT_ROOT, 'docs');
-const DIST_NOTES = path.join(DIST, 'notes');
 
 rmrf(DIST);
 mkdirp(DIST);
-mkdirp(DIST_NOTES);
 
 const config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'notes.config.json'), 'utf8'));
-const { notes, site } = config;
-const categoryColors = config.categoryColors || {};
-
-notes.sort((a, b) => a.order - b.order);
+const { collections, site } = config;
 
 const layoutTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'layout.html'), 'utf8');
-const homeTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'home.html'), 'utf8');
 const noteTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'note.html'), 'utf8');
 const notFoundTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', '404.html'), 'utf8');
 
-const builtNotes = [];
-const previewMap = {};
+// Relative path from a page back to docs/ root.
+function upTo(depth) {
+  return depth === 0 ? './' : '../'.repeat(depth);
+}
 
-for (let i = 0; i < notes.length; i++) {
-  const note = notes[i];
-  const mdPath = path.join(site.sourceDir, note.file);
+// Where each collection's home page lives, as a docs-root-relative url.
+const homeOf = {};
+for (const c of collections) {
+  homeOf[c.id] = c.output ? `${c.output}/index.html` : 'index.html';
+}
 
-  if (!fs.existsSync(mdPath)) {
-    console.warn(`  WARN: missing source file ${mdPath} — skipping`);
-    continue;
+// Rewrite the hrefs of the mode switch for a page at the given depth.
+function switchHrefs(depth) {
+  const up = upTo(depth);
+  const hrefs = {};
+  for (const c of collections) hrefs[c.id] = up + homeOf[c.id];
+  return hrefs;
+}
+
+const social = {
+  copyright: site.copyright,
+  socialInstagram: site.social.instagram,
+  socialGithub: site.social.github,
+  socialFacebook: site.social.facebook,
+};
+
+let totalNotes = 0;
+
+for (const collection of collections) {
+  const {
+    id, label, output, notes, sourceDirs,
+    categoryTabs, homeTemplate, skillsBanner,
+  } = collection;
+  const categoryColors = collection.categoryColors || {};
+  const imageDirs = collection.imageDirs || [];
+
+  const outRoot = output ? path.join(DIST, output) : DIST;
+  const outNotes = path.join(outRoot, 'notes');
+  // Depth below docs/ — school notes sit two levels down, dev notes one.
+  const homeDepth = output ? 1 : 0;
+  const noteDepth = homeDepth + 1;
+
+  mkdirp(outRoot);
+  mkdirp(outNotes);
+
+  notes.sort((a, b) => a.order - b.order);
+
+  const extraCss = id === 'school'
+    ? `\n  <link rel="stylesheet" href="{{BASE_PATH}}css/school.css">`
+    : '';
+
+  const builtNotes = [];
+  const previewMap = {};
+
+  for (let i = 0; i < notes.length; i++) {
+    const note = notes[i];
+    const mdPath = resolveSource(sourceDirs, note.file);
+
+    if (!mdPath) {
+      console.warn(`  WARN [${id}]: no source found for ${note.file} — skipping`);
+      continue;
+    }
+
+    const raw = fs.readFileSync(mdPath, 'utf8');
+    let noteHtml = marked(raw);
+
+    if (imageDirs.length) {
+      // School notes reference images by folder, e.g. pic-to-notes/9.png
+      for (const dir of imageDirs) {
+        noteHtml = noteHtml.split(`src="${dir}/`).join(`src="../images/${dir}/`);
+      }
+    } else {
+      // Dev notes reference a flat Images/ folder.
+      noteHtml = noteHtml.replace(/Images\//g, '../images/');
+    }
+
+    if (!raw.trim()) {
+      noteHtml = '<p class="note-empty">Nothing written here yet.</p>';
+    }
+
+    const plainText = noteHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    const slug = slugify(note.file);
+    previewMap[slug] = plainText.slice(0, 100);
+
+    const prev = notes[i - 1] || null;
+    const next = notes[i + 1] || null;
+    const prevLink = prev
+      ? `<a href="${slugify(prev.file)}.html" class="note-nav-prev">← ${prev.code || prev.title}</a>`
+      : '';
+    const nextLink = next
+      ? `<a href="${slugify(next.file)}.html" class="note-nav-next">${next.code || next.title} →</a>`
+      : '';
+
+    const mtime = fs.statSync(mdPath).mtime;
+    const versionMarkup = note.version
+      ? ` &middot; <span class="note-version-badge">${note.version}</span>`
+      : '';
+    const eyebrow = note.code
+      ? `<p class="note-eyebrow"><span class="note-code">${note.code}</span>${note.units ? `<span class="note-units">${note.units}</span>` : ''}</p>`
+      : '';
+
+    const noteBody = noteTpl
+      .replace(/\{\{CATEGORY\}\}/g, note.category)
+      .replace(/\{\{TITLE\}\}/g, note.title)
+      .replace(/\{\{NOTE_EYEBROW\}\}/g, eyebrow)
+      .replace(/\{\{LAST_UPDATED\}\}/g, formatDate(mtime))
+      .replace(/\{\{VERSION_MARKUP\}\}/g, versionMarkup)
+      .replace(/\{\{NOTE_CONTENT\}\}/g, noteHtml)
+      .replace(/\{\{PREV_LINK\}\}/g, prevLink)
+      .replace(/\{\{NEXT_LINK\}\}/g, nextLink);
+
+    const basePath = upTo(noteDepth);
+    const fullPage = applyLayout(layoutTpl, {
+      pageTitle: `Pronote | ${note.title}`,
+      basePath,
+      pageType: 'note',
+      mode: id,
+      homeHref: '../index.html',
+      extraCss: extraCss.replace(/\{\{BASE_PATH\}\}/g, basePath),
+      modeSwitch: buildModeSwitch(collections, id, switchHrefs(noteDepth)),
+      content: noteBody,
+      notesMenuToggle: MENU_BTN,
+      notesMenu: buildNotesMenu(notes, slug, '', previewMap),
+      ...social,
+    });
+
+    fs.writeFileSync(path.join(outNotes, `${slug}.html`), fullPage, 'utf8');
+    builtNotes.push({ ...note, slug, plainText });
   }
 
-  const raw = fs.readFileSync(mdPath, 'utf8');
-  let noteHtml = marked(raw);
-  noteHtml = noteHtml.replace(/Images\//g, '../images/');
+  // group by category for the home page
+  const categoryMap = new Map();
+  for (const note of builtNotes) {
+    if (!categoryMap.has(note.category)) categoryMap.set(note.category, []);
+    categoryMap.get(note.category).push(note);
+  }
 
-  const plainText = noteHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-  const slug = slugify(note.file);
-  previewMap[slug] = plainText.slice(0, 100);
+  // skills banner (dev only)
+  let skillsBannerHtml = '';
+  if (skillsBanner) {
+    skillsBannerHtml = '<div class="skills-banner">';
+    for (const note of builtNotes) {
+      const svg = LOGOS[note.title] || '';
+      skillsBannerHtml += `<div class="skill-badge"><span class="skill-badge-icon">${svg}</span><span class="skill-badge-label">${note.title}</span></div>`;
+    }
+    skillsBannerHtml += '</div>';
+  }
 
-  const prev = notes[i - 1] || null;
-  const next = notes[i + 1] || null;
-  const prevLink = prev
-    ? `<a href="${slugify(prev.file)}.html" class="note-nav-prev">← ${prev.title}</a>`
-    : '';
-  const nextLink = next
-    ? `<a href="${slugify(next.file)}.html" class="note-nav-next">${next.title} →</a>`
-    : '';
+  // category tabs
+  let categoryTabsHtml = '<div class="category-tabs">';
+  for (let i = 0; i < categoryTabs.length; i++) {
+    const tab = categoryTabs[i];
+    const label = tab.charAt(0) + tab.slice(1).toLowerCase();
+    const active = i === 0 ? ' active' : '';
+    categoryTabsHtml += `<button class="category-tab${active}" data-filter="${tab}">${label}</button>`;
+  }
+  categoryTabsHtml += '</div>';
 
-  const mtime = fs.statSync(mdPath).mtime;
-  const versionMarkup = note.version
-    ? ` &middot; <span class="note-version-badge">${note.version}</span>`
-    : '';
+  // category sections
+  let categoriesHtml = '';
+  for (const [category, categoryNotes] of categoryMap) {
+    const accent = categoryColors[category] || '';
+    const sectionStyle = accent ? ` style="--category-accent: ${accent}"` : '';
 
-  const noteBody = noteTpl
-    .replace(/\{\{CATEGORY\}\}/g, note.category)
-    .replace(/\{\{TITLE\}\}/g, note.title)
-    .replace(/\{\{LAST_UPDATED\}\}/g, formatDate(mtime))
-    .replace(/\{\{VERSION_MARKUP\}\}/g, versionMarkup)
-    .replace(/\{\{NOTE_CONTENT\}\}/g, noteHtml)
-    .replace(/\{\{PREV_LINK\}\}/g, prevLink)
-    .replace(/\{\{NEXT_LINK\}\}/g, nextLink);
+    const cards = categoryNotes
+      .map((n) => {
+        const cardAccent = categoryColors[n.category] || '';
+        const cardStyle = cardAccent ? ` style="--category-accent: ${cardAccent}"` : '';
 
-  const fullPage = applyLayout(layoutTpl, {
-    pageTitle: `Pronote | ${note.title}`,
-    basePath: '../',
-    pageType: 'note',
-    content: noteBody,
-    notesMenuToggle: MENU_BTN,
-    notesMenu: buildNotesMenu(notes, slug, '', previewMap),
-    copyright: site.copyright,
-    socialInstagram: site.social.instagram,
-    socialGithub: site.social.github,
-    socialFacebook: site.social.facebook,
-  });
+        const difficulty = `<span class="card-difficulty card-difficulty--${(n.difficulty || 'beginner').toLowerCase()}">${n.difficulty || ''}</span>`;
 
-  fs.writeFileSync(path.join(DIST_NOTES, `${slug}.html`), fullPage, 'utf8');
-  builtNotes.push({ ...note, slug, plainText });
-}
+        // School entries are horizontal rows led by the course code.
+        if (n.code) {
+          const units = n.units ? `<span class="card-units">${n.units}</span>` : '';
+          return `<a href="notes/${n.slug}.html" class="card" data-title="${n.title}"${cardStyle}><div class="card-code">${n.code}</div><div class="card-body"><h3>${n.title}</h3><p class="card-description">${n.description || ''}</p></div><div class="card-badges">${units}<span class="card-category">${n.category}</span>${difficulty}</div></a>`;
+        }
 
-// group by category for home page
-const categoryMap = new Map();
-for (const note of builtNotes) {
-  if (!categoryMap.has(note.category)) categoryMap.set(note.category, []);
-  categoryMap.get(note.category).push(note);
-}
+        // Dev cards keep their original stacked layout.
+        const svg = LOGOS[n.title] || '';
+        return `<a href="notes/${n.slug}.html" class="card" data-title="${n.title}"${cardStyle}><div class="card-logo">${svg}</div><h3>${n.title}</h3><p class="card-description">${n.description || ''}</p><div class="card-badges"><span class="card-category">${n.category}</span>${difficulty}</div></a>`;
+      })
+      .join('\n        ');
 
-// skills banner
-let skillsBannerHtml = '<div class="skills-banner">';
-for (const note of builtNotes) {
-  const svg = LOGOS[note.title] || '';
-  skillsBannerHtml += `<div class="skill-badge"><span class="skill-badge-icon">${svg}</span><span class="skill-badge-label">${note.title}</span></div>`;
-}
-skillsBannerHtml += '</div>';
-
-// category tabs
-let categoryTabsHtml = '<div class="category-tabs">';
-for (let i = 0; i < config.categoryTabs.length; i++) {
-  const tab = config.categoryTabs[i];
-  const label = tab.charAt(0) + tab.slice(1).toLowerCase();
-  const active = i === 0 ? ' active' : '';
-  categoryTabsHtml += `<button class="category-tab${active}" data-filter="${tab}">${label}</button>`;
-}
-categoryTabsHtml += '</div>';
-
-// category sections
-let categoriesHtml = '';
-for (const [category, categoryNotes] of categoryMap) {
-  const accent = categoryColors[category] || '';
-  const sectionStyle = accent ? ` style="--category-accent: ${accent}"` : '';
-
-  const cards = categoryNotes
-    .map((n) => {
-      const svg = LOGOS[n.title] || '';
-      const cardAccent = categoryColors[n.category] || '';
-      const cardStyle = cardAccent ? ` style="--category-accent: ${cardAccent}"` : '';
-      return `<a href="notes/${n.slug}.html" class="card" data-title="${n.title}"${cardStyle}><div class="card-logo">${svg}</div><h3>${n.title}</h3><p class="card-description">${n.description || ''}</p><div class="card-badges"><span class="card-category">${n.category}</span><span class="card-difficulty card-difficulty--${(n.difficulty || 'beginner').toLowerCase()}">${n.difficulty || ''}</span></div></a>`;
-    })
-    .join('\n        ');
-
-  categoriesHtml += `
+    categoriesHtml += `
 <section class="category-section" data-category="${category.toUpperCase()}"${sectionStyle}>
   <h2 class="category-heading"${sectionStyle}>${category}</h2>
   <div class="card-grid">
         ${cards}
   </div>
 </section>`;
+  }
+
+  // home page
+  const homeTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', homeTemplate), 'utf8');
+  const homeBody = homeTpl
+    .replace(/\{\{SKILLS_BANNER\}\}/g, skillsBannerHtml)
+    .replace(/\{\{CATEGORY_TABS\}\}/g, categoryTabsHtml)
+    .replace(/\{\{CATEGORIES\}\}/g, categoriesHtml)
+    .replace(/\{\{NOTE_COUNT\}\}/g, String(builtNotes.length))
+    .replace(/\{\{COLLECTION_LABEL\}\}/g, label);
+
+  const homeBase = upTo(homeDepth);
+  const homePage = applyLayout(layoutTpl, {
+    pageTitle: output ? `${site.title} | ${label}` : site.title,
+    basePath: homeBase,
+    pageType: 'home',
+    mode: id,
+    homeHref: './index.html',
+    extraCss: extraCss.replace(/\{\{BASE_PATH\}\}/g, homeBase),
+    modeSwitch: buildModeSwitch(collections, id, switchHrefs(homeDepth)),
+    content: homeBody,
+    notesMenuToggle: MENU_BTN,
+    notesMenu: buildNotesMenu(notes, null, 'notes/', previewMap),
+    ...social,
+  });
+  fs.writeFileSync(path.join(outRoot, 'index.html'), homePage, 'utf8');
+
+  // search index (fetched relative to the home page)
+  const searchIndex = builtNotes.map((n) => ({
+    slug: n.slug,
+    title: n.title,
+    category: n.category,
+    content: n.plainText.slice(0, 500),
+  }));
+  fs.writeFileSync(path.join(outRoot, 'search-index.json'), JSON.stringify(searchIndex));
+
+  // per-collection note images
+  if (imageDirs.length) {
+    // Each folder keeps its name, e.g. images/pic-to-notes/9.png
+    for (const dir of imageDirs) {
+      for (const src of sourceDirs) {
+        const from = path.join(src, dir);
+        if (fs.existsSync(from)) {
+          copyDir(from, path.join(outRoot, 'images', dir));
+          console.log(`  [${id}] copied images/${dir}`);
+          break;
+        }
+      }
+    }
+  } else {
+    // Dev notes share one flat Images/ folder alongside the markdown.
+    for (const src of sourceDirs) {
+      const from = path.join(src, 'Images');
+      if (fs.existsSync(from)) {
+        copyDir(from, path.join(outRoot, 'images'));
+        console.log(`  [${id}] copied note images`);
+        break;
+      }
+    }
+  }
+
+  totalNotes += builtNotes.length;
+  console.log(`  [${id}] built ${builtNotes.length} notes -> docs/${output ? output + '/' : ''}`);
 }
 
-// home page
-const homeBody = homeTpl
-  .replace(/\{\{SKILLS_BANNER\}\}/g, skillsBannerHtml)
-  .replace(/\{\{CATEGORY_TABS\}\}/g, categoryTabsHtml)
-  .replace(/\{\{CATEGORIES\}\}/g, categoriesHtml);
-
-const homePage = applyLayout(layoutTpl, {
-  pageTitle: site.title,
-  basePath: './',
-  pageType: 'home',
-  content: homeBody,
-  notesMenuToggle: MENU_BTN,
-  notesMenu: buildNotesMenu(notes, null, 'notes/', previewMap),
-  copyright: site.copyright,
-  socialInstagram: site.social.instagram,
-  socialGithub: site.social.github,
-  socialFacebook: site.social.facebook,
-});
-fs.writeFileSync(path.join(DIST, 'index.html'), homePage, 'utf8');
-
-// search index
-const searchIndex = builtNotes.map(n => ({
-  slug: n.slug,
-  title: n.title,
-  category: n.category,
-  content: n.plainText.slice(0, 500),
-}));
-fs.writeFileSync(path.join(DIST, 'search-index.json'), JSON.stringify(searchIndex));
-
-// 404
+// 404 lives at the docs root and belongs to the default collection.
 const notFoundBody = notFoundTpl.replace(/\{\{BASE_PATH\}\}/g, './');
 const notFoundPage = applyLayout(layoutTpl, {
   pageTitle: '404 — Pronote',
   basePath: './',
   pageType: 'error',
+  mode: collections[0].id,
+  extraCss: '',
+  modeSwitch: buildModeSwitch(collections, collections[0].id, switchHrefs(0)),
   content: notFoundBody,
   notesMenuToggle: MENU_BTN,
-  notesMenu: buildNotesMenu(notes, null, 'notes/', previewMap),
-  copyright: site.copyright,
-  socialInstagram: site.social.instagram,
-  socialGithub: site.social.github,
-  socialFacebook: site.social.facebook,
+  notesMenu: '',
+  ...social,
 });
 fs.writeFileSync(path.join(DIST, '404.html'), notFoundPage, 'utf8');
 
-// static assets
+// static assets — images now live in src/ so a rebuild cannot lose them
 copyDir(path.join(PROJECT_ROOT, 'src', 'css'), path.join(DIST, 'css'));
 copyDir(path.join(PROJECT_ROOT, 'src', 'js'), path.join(DIST, 'js'));
+copyDir(path.join(PROJECT_ROOT, 'src', 'images'), path.join(DIST, 'images'));
 
-const imagesSource = path.join(site.sourceDir, 'Images');
-if (fs.existsSync(imagesSource)) {
-  copyDir(imagesSource, path.join(DIST, 'images'));
-  console.log('  Copied images directory.');
-}
-
-console.log(`Built ${builtNotes.length} notes, output at docs/`);
+console.log(`Built ${totalNotes} notes across ${collections.length} collections, output at docs/`);

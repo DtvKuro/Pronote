@@ -1361,3 +1361,77 @@ code.hljs { padding: 3px 5px; }
 @media (min-width: 1024px) {
   .main { padding-left: 2rem; padding-right: 2rem; }
 }
+
+/* Mode switch (Dev / School) */
+
+.mode-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+  padding: 3px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.mode-switch-btn {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.mode-switch-btn:hover { color: var(--text-primary); }
+
+.mode-switch-btn.active {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+[data-theme="light"] .mode-switch-btn.active { color: #fff; }
+
+/* Note eyebrow — course code and units above the title */
+
+.note-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.note-code {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.note-units {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.note-empty {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.notes-menu-code {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-right: 0.4rem;
+}
+
+@media (max-width: 640px) {
+  .mode-switch-btn { padding: 0.35rem 0.5rem; font-size: 0.75rem; }
+  .nav-search { max-width: none; }
+}

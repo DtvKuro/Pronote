@@ -1,0 +1,222 @@
+/* ==========================================================================
+   School mode
+   Loaded only on pages under /school. Recolors the shared shell to a brass
+   and ink palette and turns the card grid into horizontal course rows.
+   Keeps the paper texture and the light/dark swap from style.css.
+   ========================================================================== */
+
+/* --- Palette ------------------------------------------------------------ */
+
+[data-mode="school"][data-theme="dark"] {
+  --bg-primary: #11161b;
+  --bg-secondary: #1a2027;
+  --bg-tertiary: #232b33;
+  --bg-code: #161b21;
+  --text-primary: #e9e5db;
+  --text-secondary: #98a1a6;
+  --text-code: #d4cec1;
+  --border: #313a43;
+  --accent: #d9a441;
+  --accent-hover: #c08f2f;
+  --accent-glow: rgba(217, 164, 65, 0.18);
+  --accent-bg: rgba(217, 164, 65, 0.10);
+  --accent-border: rgba(217, 164, 65, 0.28);
+  --card-shadow: rgba(0, 0, 0, 0.45);
+  --overlay-bg: rgba(0, 0, 0, 0.55);
+  --bg-texture: url('../images/asfalt-light.png');
+}
+
+[data-mode="school"][data-theme="light"] {
+  --bg-primary: #e2e5df;
+  --bg-secondary: #eceee8;
+  --bg-tertiary: #d5d9d1;
+  --bg-code: #c9cec5;
+  --bg-footer: #bcc1b7;
+  --text-primary: #1a1d19;
+  --text-secondary: #55594f;
+  --text-code: #262a24;
+  --border: #adb2a6;
+  --accent: #8a6614;
+  --accent-hover: #6f5210;
+  --accent-glow: rgba(138, 102, 20, 0.22);
+  --accent-bg: rgba(138, 102, 20, 0.10);
+  --accent-border: rgba(138, 102, 20, 0.30);
+  --card-shadow: rgba(50, 52, 45, 0.22);
+  --overlay-bg: rgba(0, 0, 0, 0.35);
+  --bg-texture: url('../images/asfalt-dark.png');
+}
+
+/* Dev mode leans on a violet wash; school leans on brass. */
+[data-mode="school"] .card::before {
+  background: linear-gradient(135deg, var(--accent-bg) 0%, transparent 60%);
+}
+
+/* --- Hero --------------------------------------------------------------- */
+
+.school-hero {
+  padding: 2.5rem 0 1.75rem;
+  border-bottom: 2px solid var(--text-primary);
+  margin-bottom: 1.75rem;
+}
+
+.school-hero-eyebrow {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.school-hero-title {
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-size: clamp(2rem, 6vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.school-hero-sub {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  max-width: 34rem;
+  line-height: 1.6;
+}
+
+/* --- Category headings -------------------------------------------------- */
+
+[data-mode="school"] .category-heading {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* --- Horizontal course rows --------------------------------------------- */
+
+[data-mode="school"] .card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+[data-mode="school"] .card {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0 1.5rem;
+  padding: 1.1rem 1rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  overflow: visible;
+  transition: background-color 0.18s ease, padding-left 0.18s ease;
+}
+
+/* The accent bar replaces the dev card's lift-and-shadow hover. */
+[data-mode="school"] .card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--category-accent, var(--accent));
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.18s ease;
+}
+
+[data-mode="school"] .card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--border);
+  background-color: var(--accent-bg);
+  padding-left: 1.4rem;
+}
+
+[data-mode="school"] .card:hover::after { transform: scaleY(1); }
+
+[data-mode="school"] .card-code {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--category-accent, var(--accent));
+  font-variant-numeric: tabular-nums;
+}
+
+[data-mode="school"] .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+[data-mode="school"] .card h3 {
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+[data-mode="school"] .card-badges {
+  margin-top: 0;
+  justify-content: flex-end;
+  flex: none;
+}
+
+[data-mode="school"] .card-units {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+[data-mode="school"] .card-category { align-self: center; }
+
+/* --- Note pages --------------------------------------------------------- */
+
+[data-mode="school"] .note-title {
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  letter-spacing: -0.02em;
+}
+
+[data-mode="school"] .note-content h1,
+[data-mode="school"] .note-content h2,
+[data-mode="school"] .note-content h3 {
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  letter-spacing: -0.01em;
+}
+
+/* Lecture diagrams are light-background PNGs — give them a paper plate so
+   they don't glare against the dark theme. */
+[data-mode="school"] .note-content img {
+  background-color: #fbfbfa;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem;
+  margin: 1.25rem 0;
+}
+
+/* --- Narrow screens ----------------------------------------------------- */
+
+@media (max-width: 640px) {
+  [data-mode="school"] .card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.45rem;
+    padding: 1rem 0.9rem;
+  }
+
+  [data-mode="school"] .card:hover { padding-left: 1.2rem; }
+
+  [data-mode="school"] .card-badges { justify-content: flex-start; }
+
+  .school-hero { padding-top: 1.75rem; }
+}

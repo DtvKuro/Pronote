@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | School</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/school.css">
+</head>
+<body data-page-type="home">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="./index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Major</h4>
+  <ul class="notes-menu-list">
+        <li><a href="notes/CC1_Introduction-To-Computing.html" class="notes-menu-link" data-preview="CC101: Introduction To Computing Unit Count Lecture = 2 units Laboratory = 1 unit Total = 3 units Mi"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="notes/CC2_Fundamentals-To-Programming.html" class="notes-menu-link" data-preview="CC2: Fundamentals of Programming COMPUTER PROGRAMMING Programming is just writing instructions that "><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="notes/HCI101_Intro-To-Human-Computer-Interaction.html" class="notes-menu-link" data-preview="Nothing written here yet."><span class="notes-menu-code">HCI101</span> Intro to Human-Computer Interaction</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Gen-Ed</h4>
+  <ul class="notes-menu-list">
+        <li><a href="notes/GE4_Math-In-The-Modern-World.html" class="notes-menu-link" data-preview="Nothing written here yet."><span class="notes-menu-code">GE4</span> Math in the Modern World</a></li>
+        <li><a href="notes/GE5_Purposive-Communication.html" class="notes-menu-link" data-preview="Nothing written here yet."><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="notes/GE6_Art-Appreciation.html" class="notes-menu-link" data-preview="Nothing written here yet."><span class="notes-menu-code">GE6</span> Art Appreciation</a></li>
+        <li><a href="notes/GE9_Philippine-History.html" class="notes-menu-link" data-preview="Nothing written here yet."><span class="notes-menu-code">GE9</span> Philippine History</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <header class="school-hero">
+  <p class="school-hero-eyebrow">Coursework</p>
+  <h1 class="school-hero-title">School Notes</h1>
+  <p class="school-hero-sub">7 subjects — lectures, diagrams, and reviewers, written the way I actually understand them.</p>
+</header>
+<div class="category-tabs"><button class="category-tab active" data-filter="ALL">All</button><button class="category-tab" data-filter="MAJOR">Major</button><button class="category-tab" data-filter="GEN-ED">Gen-ed</button></div>
+
+<section class="category-section" data-category="MAJOR" style="--category-accent: #c8912f">
+  <h2 class="category-heading" style="--category-accent: #c8912f">Major</h2>
+  <div class="card-grid">
+        <a href="notes/CC1_Introduction-To-Computing.html" class="card" data-title="Introduction to Computing" style="--category-accent: #c8912f"><div class="card-code">CC1</div><div class="card-body"><h3>Introduction to Computing</h3><p class="card-description">Computer fundamentals, hardware, software, networks, multimedia, and number systems</p></div><div class="card-badges"><span class="card-units">3 units</span><span class="card-category">Major</span><span class="card-difficulty card-difficulty--low">Low</span></div></a>
+        <a href="notes/CC2_Fundamentals-To-Programming.html" class="card" data-title="Fundamentals of Programming" style="--category-accent: #c8912f"><div class="card-code">CC2</div><div class="card-body"><h3>Fundamentals of Programming</h3><p class="card-description">What programming is, how a computer system runs it, translators, and Java's JDK/JRE/JVM</p></div><div class="card-badges"><span class="card-units">3 units</span><span class="card-category">Major</span><span class="card-difficulty card-difficulty--mid">Mid</span></div></a>
+        <a href="notes/HCI101_Intro-To-Human-Computer-Interaction.html" class="card" data-title="Intro to Human-Computer Interaction" style="--category-accent: #c8912f"><div class="card-code">HCI101</div><div class="card-body"><h3>Intro to Human-Computer Interaction</h3><p class="card-description">How people interact with systems — usability, interface design, and user-centered thinking</p></div><div class="card-badges"><span class="card-units">3 units</span><span class="card-category">Major</span><span class="card-difficulty card-difficulty--mid">Mid</span></div></a>
+  </div>
+</section>
+<section class="category-section" data-category="GEN-ED" style="--category-accent: #4a8f7b">
+  <h2 class="category-heading" style="--category-accent: #4a8f7b">Gen-Ed</h2>
+  <div class="card-grid">
+        <a href="notes/GE4_Math-In-The-Modern-World.html" class="card" data-title="Math in the Modern World" style="--category-accent: #4a8f7b"><div class="card-code">GE4</div><div class="card-body"><h3>Math in the Modern World</h3><p class="card-description">Patterns, logic, statistics, and mathematical reasoning applied to everyday life</p></div><div class="card-badges"><span class="card-units">3 units</span><span class="card-category">Gen-Ed</span><span class="card-difficulty card-difficulty--mid">Mid</span></div></a>
+        <a href="notes/GE5_Purposive-Communication.html" class="card" data-title="Purposive Communication" style="--category-accent: #4a8f7b"><div class="card-code">GE5</div><div class="card-body"><h3>Purposive Communication</h3><p class="card-description">Writing, speaking, and presenting clearly across different audiences and purposes</p></div><div class="card-badges"><span class="card-units">3 units</span><span class="card-category">Gen-Ed</span><span class="card-difficulty card-difficulty--low">Low</span></div></a>
+        <a href="notes/GE6_Art-Appreciation.html" class="card" data-title="Art Appreciation" style="--category-accent: #4a8f7b"><div class="card-code">GE6</div><div class="card-body"><h3>Art Appreciation</h3><p class="card-description">Reading and interpreting art — forms, mediums, movements, and cultural context</p></div><div class="card-badges"><span class="card-units">3 units</span><span class="card-category">Gen-Ed</span><span class="card-difficulty card-difficulty--low">Low</span></div></a>
+        <a href="notes/GE9_Philippine-History.html" class="card" data-title="Philippine History" style="--category-accent: #4a8f7b"><div class="card-code">GE9</div><div class="card-body"><h3>Philippine History</h3><p class="card-description">Philippine history through primary sources and historical interpretation</p></div><div class="card-badges"><span class="card-units">3 units</span><span class="card-category">Gen-Ed</span><span class="card-difficulty card-difficulty--low">Low</span></div></a>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

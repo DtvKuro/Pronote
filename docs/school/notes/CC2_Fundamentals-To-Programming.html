@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | Fundamentals of Programming</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Major</h4>
+  <ul class="notes-menu-list">
+        <li><a href="CC1_Introduction-To-Computing.html" class="notes-menu-link" data-preview="CC101: Introduction To Computing Unit Count Lecture = 2 units Laboratory = 1 unit Total = 3 units Mi"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="CC2_Fundamentals-To-Programming.html" class="notes-menu-link active" data-preview="CC2: Fundamentals of Programming COMPUTER PROGRAMMING Programming is just writing instructions that "><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="HCI101_Intro-To-Human-Computer-Interaction.html" class="notes-menu-link"><span class="notes-menu-code">HCI101</span> Intro to Human-Computer Interaction</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Gen-Ed</h4>
+  <ul class="notes-menu-list">
+        <li><a href="GE4_Math-In-The-Modern-World.html" class="notes-menu-link"><span class="notes-menu-code">GE4</span> Math in the Modern World</a></li>
+        <li><a href="GE5_Purposive-Communication.html" class="notes-menu-link"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="GE6_Art-Appreciation.html" class="notes-menu-link"><span class="notes-menu-code">GE6</span> Art Appreciation</a></li>
+        <li><a href="GE9_Philippine-History.html" class="notes-menu-link"><span class="notes-menu-code">GE9</span> Philippine History</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>Major</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Fundamentals of Programming</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">CC2</span><span class="note-units">3 units</span></p>
+  <h1 class="note-title">Fundamentals of Programming</h1>
+  <p class="note-meta">Last updated: August 13, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <div class="note-content">
+    <h2>CC2: Fundamentals of Programming</h2>
+<hr>
+<h2>COMPUTER PROGRAMMING</h2>
+<p>Programming is just writing instructions that a computer follows.</p>
+<p>The computer is dumb. It does not think, it does not guess. It only does exactly what you<br>tell it, in the exact order you tell it. Programming is you telling it what to do.</p>
+<p>Design -&gt; Write -&gt; Test -&gt; Maintain. That&#39;s the whole job.<br>You dont just write it once, you keep fixing and updating it.</p>
+<p>Why do we need a language for this? Because you think in ideas and the computer only<br>understands on/off electricity. The programming language sits in the middle and translates<br>your idea into something the machine can run.</p>
+<p>You -&gt; Programming Language -&gt; Computer</p>
+<h3>Where you already see this</h3>
+<p>ATM - you insert a card, code checks the PIN, asks the bank&#39;s database if you have money,<br>counts out the cash, prints receipt. Every step is someone&#39;s code.</p>
+<p>Browsers and apps - Chrome or WhatsApp is code sending requests to a server, drawing text<br>and images on your screen, and reacting to your taps.</p>
+<p>Traffic lights - not magic, just a timer loop. Or sensors under the road detecting a car<br>then the code decides when to switch.</p>
+<p>Online shopping - code adds up your cart, applies tax and discount, talks to the card<br>company, then subtracts the item from warehouse stock.</p>
+<p>Point is: programming isnt just websites. Anything that reacts to input is running code.</p>
+<h3>Programmers</h3>
+<p>Programs dont appear on their own. Humans make them, we call them programmers.</p>
+<p>A programmer is someone who uses logic + a specialized language to boss the hardware<br>around. They write it, revise it, test it, update it. Thats the loop.</p>
+<hr>
+<h2>HOW COMPUTER PROGRAMS WORK</h2>
+<h3>Computer System</h3>
+<p>A computer is a programmable electronic machine.</p>
+<p>It takes INPUT (data) -&gt; PROCESSES it -&gt; gives OUTPUT in the format you wanted.</p>
+<p>Two words to remember there:</p>
+<ul>
+<li>Digital electronic machine - it runs on electricity, 0s and 1s.</li>
+<li>Needs to be programmed - by itself it does nothing. Its a body with no brain until you<br>give it instructions.</li>
+</ul>
+<p>A computer system = HARDWARE + SOFTWARE. You need both.</p>
+<h3>Hardware</h3>
+<p>Hardware is the physical stuff. If you can touch it, its hardware.<br>Keyboard, RAM, CPU, screen, cables.</p>
+<p>Easiest way to remember it:<br>If the computer is a human body, hardware is the bones, muscles, and organs.</p>
+<p>Hardware gives the computer the ability to do things. But it doesnt know WHAT to do.<br>A body with no instructions just sits there.</p>
+<p>&quot;Tangible components that work together with software to make the computer function.&quot;</p>
+<h3>Software</h3>
+<p>Software is the instructions. You cant touch it, you can only see it working on screen.</p>
+<p>Going back to the body analogy - if hardware is the body, software is the thoughts telling<br>the body to move.</p>
+<p>Why software matters:</p>
+<ul>
+<li>It tells the hardware how to actually do a task.</li>
+<li>It makes the computer useful (work, games, chatting).</li>
+<li>You can update or replace it WITHOUT buying new hardware. Same laptop, new Windows.</li>
+</ul>
+<p>&quot;The programs or instructions that tell hardware what to do.&quot;</p>
+<h3>The 4 units of a computer</h3>
+<p>By function, a computer is grouped into 4:</p>
+<ol>
+<li>Input Device - where data comes in (keyboard, mouse, mic)</li>
+<li>CPU - the brain, does the actual processing</li>
+<li>Memory / Storage - where data is kept</li>
+<li>Output Device - where the result comes out (screen, speaker, printer)</li>
+</ol>
+<p><img src="../images/pic-to-notes/9.png" alt="Conceptual overview of a computer system"></p>
+<p>Reading that diagram:</p>
+<p>DATA enters the Input unit -&gt; goes to the CPU -&gt; comes out as INFORMATION.</p>
+<p>Data vs Information - data is the raw stuff you typed in, information is the processed<br>result that actually means something.</p>
+<p>Inside the CPU:</p>
+<ul>
+<li>ALU (Arithmetic Logic Unit) - does the math and the comparisons</li>
+<li>Registers - super small super fast storage right beside the ALU</li>
+<li>CU (Control Unit) - the manager, tells everything else when to move</li>
+</ul>
+<p>Storage unit:</p>
+<ul>
+<li>Primary storage (RAM) - fast, temporary, dies when you shut down</li>
+<li>Secondary storage (HDD/SSD) - slower, permanent, survives shutdown</li>
+</ul>
+<p>Everything the CPU works on has to pass through primary storage first. Thats why the<br>arrows go Input -&gt; Primary storage -&gt; Output.</p>
+<hr>
+<h2>PROGRAMMING LANGUAGE</h2>
+<p>A programming language is the middle man between you and the machine.</p>
+<p>Instead of flipping millions of on/off switches yourself, you write statements that look<br>like English - read, write, add - and the language handles the switches for you.</p>
+<p>Thats why programming got easier over time. Old programmers actually had to think in<br>switches. Now you just type <code>print(&quot;hi&quot;)</code>.</p>
+<h3>Two types</h3>
+<p>LOW-LEVEL - close to the machine (Assembly). Fast, but painful to read.<br>HIGH-LEVEL - close to humans (Java, Python, C++). Easy to read, slightly slower.</p>
+<p>The rule of thumb: the closer to the machine, the faster it runs but the harder it is on<br>you. The closer to humans, the easier on you but you give up some control/speed.</p>
+<h3>Machine Language</h3>
+<p>The actual language the CPU speaks. Pure binary, only 0 and 1.<br>Also called machine code or object code.</p>
+<ul>
+<li>Humans basically cant read it in raw form.</li>
+<li>The CPU executes it directly, no translation needed. This is the finish line - every<br>language you write eventually becomes this.</li>
+</ul>
+<h3>Assembly Language</h3>
+<p>One step above binary. Still low-level, still talks directly to hardware.</p>
+<p>Instead of 0s and 1s it uses mnemonics - short word-ish symbols like Add, Sub, Mul.<br>So its readable by humans, barely.</p>
+<p>Its the middle step between a high-level language like C++ and pure binary.</p>
+<p>But the computer still doesnt understand it, so you need an ASSEMBLER to convert<br>assembly -&gt; machine code.</p>
+<h3>High-Level Language</h3>
+<p>The generation we actually use. Written so BOTH humans and computers can work with it.</p>
+<p>Easy for humans because it uses real words, symbols and phrases to express logic instead<br>of raw machine operations.</p>
+<p>Example: Java, Python, C++, JavaScript, Ruby</p>
+<h3>Common languages and what theyre used for</h3>
+<p><img src="../images/pic-to-notes/15.png" alt="JavaScript, Swift, C# and their uses"></p>
+<p>JAVASCRIPT - web dev and apps, server-side, mobile apps, machine learning, IoT, automation,<br>embedded systems, chatbots. Basically the language of the web that leaked everywhere else.</p>
+<p>SWIFT - iOS apps, macOS apps, deep learning, IoT, server-side, open-source, machine<br>learning, automation. Apple&#39;s language.</p>
+<p>C# - game development, web apps, IoT, backend services, Windows apps, robotics, cloud,<br>database programs. Microsoft&#39;s language, big in Unity.</p>
+<p><img src="../images/pic-to-notes/16.png" alt="Python, Java, C++ and their uses"></p>
+<p>PYTHON - data science, machine learning, web dev, automation, game dev, data analysis, data<br>visualization, AI. The easy one, king of data and AI.</p>
+<p>JAVA - android apps, server-side, enterprise apps, web apps, big data, game dev, IoT,<br>cloud. The corporate workhorse, runs anywhere.</p>
+<p>C++ - game dev, GUI apps, operating systems, database systems, embedded, networking, VR,<br>computer vision. The fast one, used when performance matters.</p>
+<p>Notice they overlap alot. Most languages CAN do most things - you pick based on what its<br>best at and what already has support for it.</p>
+<hr>
+<h2>TRANSLATORS</h2>
+<p>The computer only understands 0s and 1s. You dont write 0s and 1s.<br>So something has to convert your code. Thats a translator.</p>
+<p>Translator = a program that turns source code into machine code.</p>
+<p>Yes - a program that helps you make programs.</p>
+<h3>Source code vs Object code</h3>
+<p>SOURCE CODE - what you wrote. Human readable. The .java or .py file.<br>OBJECT CODE - what came out of the translator. Machine readable, executed by the CPU<br>directly.</p>
+<p>Source code -&gt; translator -&gt; object code</p>
+<p>You can read source code easily because its meant for humans.<br>You cant read object code because its stored in machine/binary format.</p>
+<hr>
+<h2>TYPES OF TRANSLATORS</h2>
+<h3>Assembler</h3>
+<p>Converts ASSEMBLY language -&gt; machine code.</p>
+<p><img src="../images/pic-to-notes/20.png" alt="Assembler diagram"></p>
+<p>Source Code (Assembly) -&gt; Assembler -&gt; Object Code (Machine Language)</p>
+<p><img src="../images/pic-to-notes/21.png" alt="Assembler steps"></p>
+<p>Step by step:</p>
+<ol>
+<li>Programmer writes instructions using mnemonics and symbols (assembly).</li>
+<li>Assembler translates those into machine code (0s and 1s) the CPU understands.</li>
+<li>What comes out is object code, and the computer can now run it.</li>
+</ol>
+<p>Remember: assembler is ONLY for assembly language. Its not for Python or Java.</p>
+<h3>Compiler</h3>
+<p>Converts the ENTIRE high-level source code into machine code all at once, BEFORE the<br>program runs.</p>
+<p>So: translate everything -&gt; then run.</p>
+<ul>
+<li>If your code breaks the language rules, it lists ALL the errors at once.</li>
+<li>Much faster to run than an interpreter, since translating is already done beforehand.</li>
+<li>Downside - getting 50 errors dumped on you at once is hard to debug.</li>
+</ul>
+<p>Compiled languages: C, C++, Objective C, Swift, Pascal</p>
+<h3>Interpreter</h3>
+<p>Same job as a compiler but it goes LINE BY LINE instead of all at once.</p>
+<ul>
+<li>It runs each line as it translates it.</li>
+<li>The moment it hits an error, it stops right there and reports it.</li>
+<li>Easy to debug because you know exactly which line died.</li>
+<li>But slower overall, because its translating while running.</li>
+</ul>
+<p>Interpreted languages: Python, Ruby, JavaScript, Perl</p>
+<p><img src="../images/pic-to-notes/24.png" alt="Interpreter loop"></p>
+<p>The loop in that diagram:</p>
+<p>Source Code -&gt; Interpreter -&gt; Executable Code / Output -&gt; Get Next Instruction -&gt; back to<br>Source Code, repeat until the program ends.</p>
+<ol>
+<li>Source code is what you wrote (Python, JavaScript).</li>
+<li>Interpreter reads ONE instruction, translates it to binary.</li>
+<li>That instruction runs on the CPU and produces output.</li>
+<li>Interpreter goes back and grabs the next line. Repeat.</li>
+</ol>
+<p>Quick comparison:</p>
+<p>COMPILER - translates all, then runs. Faster to run, errors come in one big pile.<br>INTERPRETER - translates and runs one line at a time. Slower, but errors are easy to find.</p>
+<h3>Hybrid</h3>
+<p>Combination of both. This is what Java does.</p>
+<p>It compiles your source code into BYTECODE (not machine code yet), then a runtime engine<br>interprets that bytecode. For Java that engine is the JVM (Java Virtual Machine).</p>
+<ul>
+<li>Like a compiler - it translates the whole program into an intermediate form first.</li>
+<li>Like an interpreter - it executes that intermediate code line-by-line at runtime.</li>
+</ul>
+<p><img src="../images/pic-to-notes/26.png" alt="Java hybrid flow"></p>
+<p>.java -&gt; Java Compiler -&gt; .class (bytecode) -&gt; JVM -&gt; Output</p>
+<ol>
+<li>You write .java - human readable, high level.</li>
+<li>Java Compiler turns it into .class bytecode. Note: bytecode is NOT object code yet, its<br>an in-between form.</li>
+<li>Bytecode gets passed to the JVM.</li>
+<li>JVM either interprets it line by line, or uses JIT (Just In Time) compilation to turn it<br>into native machine code for speed.</li>
+<li>JVM runs it and you get your output.</li>
+</ol>
+<p>More on bytecode:</p>
+<ul>
+<li>Bytecode is not the machine language of any specific computer, but its close to the<br>machine language of most computers.</li>
+<li>The JVM is the interpreter that translates and executes that bytecode.</li>
+<li>Because of this, Java bytecode runs on ANY computer that has a JVM. Thats the whole<br>&quot;write once, run anywhere&quot; thing.</li>
+<li>Thats also why you usually type two commands - one to compile into bytecode, one to run<br>it. The run command tells the JVM to execute the bytecode.</li>
+</ul>
+<p>Why do it this way? Because you compile once and the SAME .class file works on Windows,<br>Mac, Linux. With a normal compiler youd have to recompile for each one.</p>
+<hr>
+<h2>THE PROGRAM DEVELOPMENT PROCESS</h2>
+<p><img src="../images/pic-to-notes/29.png" alt="Phases of programming"></p>
+<p>Three phases:</p>
+<ol>
+<li>WRITE - you type the source code in a human-readable language (like Java) using a text<br>editor or IDE.</li>
+<li>COMPILE - a compiler converts your source into machine code or bytecode.</li>
+<li>RUN - the CPU executes it and you finally see the result.</li>
+</ol>
+<p>If you skip compile, theres nothing for the CPU to run. If compile fails, you go back to<br>write. You will do this loop hundreds of times.</p>
+<hr>
+<h2>HISTORY OF JAVA</h2>
+<ul>
+<li>Made by James Gosling in the early 1990s.</li>
+<li>The goal wasnt even computers - they wanted a language for digital devices like set-top<br>boxes and TVs. They considered using C++ but rejected it.</li>
+<li>Project name: the Green Project. Early language name: Greentalk, file extension .gt</li>
+<li>Renamed to Oak, after an oak tree Gosling could see from his office.</li>
+<li>Had to drop Oak too - Oak Technologies already trademarked it.</li>
+<li>Final name: JAVA, named after a type of espresso bean, because he thought of it while<br>drinking coffee near his office. Thats it. Thats the reason.</li>
+<li>Built on these principles: Robust, Portable, Platform Independent, High Performance,<br>Multithread.</li>
+<li>TIME MAGAZINE called it one of the Ten Best Products of 1995.</li>
+</ul>
+<h3>Java itself</h3>
+<ul>
+<li>General, all-purpose language. Class-based and object-oriented.</li>
+<li>Designed to have as few application dependencies as possible - meaning it doesnt need<br>much extra installed to run.</li>
+<li>Java 1.0 released 1995. Oracle calls the open version the JDK.</li>
+<li>As of August 2026 the latest is Java 26 (Java SE 26).</li>
+<li>Sun Microsystems made it, Oracle bought Sun in 2010 and now steers Java.</li>
+</ul>
+<hr>
+<h2>JDK, JRE, JVM</h2>
+<p>These three confuse everyone. Simplest version:</p>
+<p>JDK contains JRE. JRE contains JVM.</p>
+<p>JDK = for making Java programs<br>JRE = for running Java programs<br>JVM = the thing that actually executes them</p>
+<h3>JDK (Java Development Kit)</h3>
+<p>The full package for DEVELOPING Java apps. Contains the Java Compiler, dev tools,<br>libraries, and documentation.</p>
+<p>You need this if you want to write, compile, and build Java programs.<br>It includes the JRE too - obviously, since you need to run your app to test it.</p>
+<h3>JRE (Java Runtime Environment)</h3>
+<p>The package for RUNNING Java apps. Includes the JVM plus the libraries needed for<br>execution.</p>
+<p>This is for people who just want to run a Java app, not build one. No compiler here.</p>
+<h3>JVM (Java Virtual Machine)</h3>
+<p>The part that actually executes the bytecode.</p>
+<ul>
+<li>Its platform independent - write your Java once, run it on any system that has a JVM.</li>
+<li>It manages memory and handles garbage collection (automatically cleaning up memory you<br>arent using anymore).</li>
+<li>It provides the runtime services that keep your program running efficiently.</li>
+</ul>
+<h3>Summary</h3>
+<p>JRE gives the environment to execute Java apps.<br>JVM executes the bytecode and manages runtime stuff.<br>JDK is for developing, and it includes the compiler.<br>The compiler turns your readable Java into bytecode.<br>The JVM acts as the interpreter that executes that bytecode.</p>
+<hr>
+<h2>ERRORS AND DEBUGGING</h2>
+<p>Whenever the compiler or interpreter hits an invalid statement - a syntax error, or you<br>using the language wrong - it throws an error message at you.</p>
+<p>Then you fix it and translate again. Compile or interpret, see what breaks, fix, repeat.</p>
+<p>Finding and fixing all your syntax errors is the FIRST part of debugging.<br>Debugging = freeing the program of all errors.</p>
+<p>Note the word &quot;first part&quot; - syntax errors are the easy ones, the compiler literally points<br>at them. The harder ones are logic errors where the code runs fine but gives the wrong<br>answer. Nothing points those out for you.</p>
+<p>Write -&gt; Compile -&gt; Error -&gt; Fix -&gt; Compile -&gt; Run.<br>That loop IS programming. You will spend more time debugging than writing.</p>
+
+  </div>
+  <div class="note-nav">
+    <a href="CC1_Introduction-To-Computing.html" class="note-nav-prev">← CC1</a>
+    <a href="HCI101_Intro-To-Human-Computer-Interaction.html" class="note-nav-next">HCI101 →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

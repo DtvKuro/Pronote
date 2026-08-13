@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-mode="dev">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,7 @@
     <div class="nav-container">
       <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
       <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../index.html" class="mode-switch-btn active" data-mode-target="dev">Dev</a><a href="../school/index.html" class="mode-switch-btn" data-mode-target="school">School</a></div>
       <div class="nav-search" id="navSearch">
         <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
         <div class="search-nav-panel" id="searchNavPanel" style="display:none">
@@ -93,8 +94,9 @@
       </button>
     </div>
   </div>
+  
   <h1 class="note-title">CSS</h1>
-  <p class="note-meta">Last updated: July 20, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <p class="note-meta">Last updated: August 13, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h2>INTRODUCTION TO CSS</h2>
 <h3>Cascading Style Sheets</h3>
@@ -139,10 +141,10 @@
 }</code></pre></div>
 <p>Theyre all red since h2 is <strong>&quot;Element Selector&quot;</strong>. You select all h2.</p>
 <h3>Class Selector (Multiple Elements)</h3>
-<div class="code-block-wrapper"><span class="code-lang-label">HTML</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class:</span>&quot;<span class="hljs-attr">red-text</span>&quot;&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<div class="code-block-wrapper"><span class="code-lang-label">HTML</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;red-text&quot;</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>green<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></code></pre></div>
-<div class="code-block-wrapper"><span class="code-lang-label">CSS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-css"><span class="hljs-selector-class">.red-tex</span>{
+<div class="code-block-wrapper"><span class="code-lang-label">CSS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-css"><span class="hljs-selector-class">.red-text</span>{
 <span class="hljs-attribute">color</span>: red;
 }</code></pre></div>
 <h3>ID Selector (Only For One Element)</h3>
