@@ -35,21 +35,20 @@
       "output": "school",
       "homeTemplate": "home-school.html",
       "skillsBanner": false,
-      "categoryTabs": ["ALL", "MAJOR", "GEN-ED"],
+      "categoryTabs": [],
       "categoryColors": {
-        "Major": "#c8912f",
-        "Gen-Ed": "#4a8f7b"
+        "Subjects": "#c8912f"
       },
       "sourceDirs": ["C:/FXKuroo/Codes/school"],
       "imageDirs": ["pic-to-notes", "mmwpic"],
       "notes": [
-        { "file": "CC1_Introduction-To-Computing.md", "code": "CC1", "title": "Introduction to Computing", "category": "Major", "order": 1, "units": "3 units", "description": "Computer fundamentals, hardware, software, networks, multimedia, and number systems", "difficulty": "Low", "version": "v1" },
-        { "file": "CC2_Fundamentals-To-Programming.md", "code": "CC2", "title": "Fundamentals of Programming", "category": "Major", "order": 2, "units": "3 units", "description": "What programming is, how a computer system runs it, translators, and Java's JDK/JRE/JVM", "difficulty": "Mid", "version": "v1" },
-        { "file": "HCI101_Intro-To-Human-Computer-Interaction.md", "code": "HCI101", "title": "Intro to Human-Computer Interaction", "category": "Major", "order": 3, "units": "3 units", "description": "How people interact with systems — usability, interface design, and user-centered thinking", "difficulty": "Mid", "version": "v1" },
-        { "file": "GE4_Math-In-The-Modern-World.md", "code": "GE4", "title": "Math in the Modern World", "category": "Gen-Ed", "order": 4, "units": "3 units", "description": "Patterns, logic, statistics, and mathematical reasoning applied to everyday life", "difficulty": "Mid", "version": "v1" },
-        { "file": "GE5_Purposive-Communication.md", "code": "GE5", "title": "Purposive Communication", "category": "Gen-Ed", "order": 5, "units": "3 units", "description": "Writing, speaking, and presenting clearly across different audiences and purposes", "difficulty": "Low", "version": "v1" },
-        { "file": "GE6_Art-Appreciation.md", "code": "GE6", "title": "Art Appreciation", "category": "Gen-Ed", "order": 6, "units": "3 units", "description": "Reading and interpreting art — forms, mediums, movements, and cultural context", "difficulty": "Low", "version": "v1" },
-        { "file": "GE9_Philippine-History.md", "code": "GE9", "title": "Philippine History", "category": "Gen-Ed", "order": 7, "units": "3 units", "description": "Philippine history through primary sources and historical interpretation", "difficulty": "Low", "version": "v1" }
+        { "file": "CC1_Introduction-To-Computing.md", "code": "CC1", "title": "Introduction to Computing", "category": "Subjects", "order": 1, "units": "3 units", "description": "Computer fundamentals, hardware, software, networks, multimedia, and number systems", "version": "v1" },
+        { "file": "CC2_Fundamentals-To-Programming.md", "code": "CC2", "title": "Fundamentals of Programming", "category": "Subjects", "order": 2, "units": "3 units", "description": "What programming is, how a computer system runs it, translators, and Java's JDK/JRE/JVM", "version": "v1" },
+        { "file": "HCI101_Intro-To-Human-Computer-Interaction.md", "code": "HCI101", "title": "Intro to Human-Computer Interaction", "category": "Subjects", "order": 3, "units": "3 units", "description": "How people interact with systems — usability, interface design, and user-centered thinking", "version": "v1" },
+        { "file": "GE4_Math-In-The-Modern-World.md", "code": "GE4", "title": "Math in the Modern World", "category": "Subjects", "order": 4, "units": "3 units", "description": "Patterns, logic, statistics, and mathematical reasoning applied to everyday life", "version": "v1" },
+        { "file": "GE5_Purposive-Communication.md", "code": "GE5", "title": "Purposive Communication", "category": "Subjects", "order": 5, "units": "3 units", "description": "Writing, speaking, and presenting clearly across different audiences and purposes", "version": "v1" },
+        { "file": "GE6_Art-Appreciation.md", "code": "GE6", "title": "Art Appreciation", "category": "Subjects", "order": 6, "units": "3 units", "description": "Reading and interpreting art — forms, mediums, movements, and cultural context", "version": "v1" },
+        { "file": "GE9_Philippine-History.md", "code": "GE9", "title": "Philippine History", "category": "Subjects", "order": 7, "units": "3 units", "description": "Philippine history through primary sources and historical interpretation", "version": "v1" }
       ]
     }
   ],

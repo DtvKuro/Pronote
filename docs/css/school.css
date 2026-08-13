@@ -54,19 +54,7 @@
 /* --- Hero --------------------------------------------------------------- */
 
 .school-hero {
-  padding: 2.5rem 0 1.75rem;
-  border-bottom: 2px solid var(--text-primary);
-  margin-bottom: 1.75rem;
-}
-
-.school-hero-eyebrow {
-  font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
+  padding: 2.5rem 0 1.5rem;
 }
 
 .school-hero-title {
@@ -76,17 +64,20 @@
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin-bottom: 0.6rem;
 }
 
-.school-hero-sub {
-  font-size: 0.9375rem;
-  color: var(--text-secondary);
-  max-width: 34rem;
-  line-height: 1.6;
-}
+/* --- Panel -------------------------------------------------------------- */
+/* The page background is textured, so the list sits on its own solid panel
+   instead of floating directly on it. */
 
-/* --- Category headings -------------------------------------------------- */
+[data-mode="school"] .category-section {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem 1.6rem 0.4rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 14px var(--card-shadow);
+}
 
 [data-mode="school"] .category-heading {
   font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;
@@ -142,6 +133,9 @@
 }
 
 [data-mode="school"] .card:hover::after { transform: scaleY(1); }
+
+/* Last row sits flush against the panel's bottom padding. */
+[data-mode="school"] .card:last-child { border-bottom: none; }
 
 [data-mode="school"] .card-code {
   font-family: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", monospace;

@@ -373,15 +373,21 @@ for (const collection of collections) {
     skillsBannerHtml += '</div>';
   }
 
-  // category tabs
-  let categoryTabsHtml = '<div class="category-tabs">';
-  for (let i = 0; i < categoryTabs.length; i++) {
-    const tab = categoryTabs[i];
-    const label = tab.charAt(0) + tab.slice(1).toLowerCase();
-    const active = i === 0 ? ' active' : '';
-    categoryTabsHtml += `<button class="category-tab${active}" data-filter="${tab}">${label}</button>`;
+  // category tabs — skipped entirely when a collection has only one group
+  let categoryTabsHtml = '';
+  if (categoryTabs.length) {
+    categoryTabsHtml = '<div class="category-tabs">';
+    for (let i = 0; i < categoryTabs.length; i++) {
+      const tab = categoryTabs[i];
+      const label = tab.charAt(0) + tab.slice(1).toLowerCase();
+      const active = i === 0 ? ' active' : '';
+      categoryTabsHtml += `<button class="category-tab${active}" data-filter="${tab}">${label}</button>`;
+    }
+    categoryTabsHtml += '</div>';
   }
-  categoryTabsHtml += '</div>';
+
+  // With a single category the per-row badge just repeats the heading.
+  const showCategoryBadge = categoryMap.size > 1;
 
   // category sections
   let categoriesHtml = '';
@@ -394,17 +400,22 @@ for (const collection of collections) {
         const cardAccent = categoryColors[n.category] || '';
         const cardStyle = cardAccent ? ` style="--category-accent: ${cardAccent}"` : '';
 
-        const difficulty = `<span class="card-difficulty card-difficulty--${(n.difficulty || 'beginner').toLowerCase()}">${n.difficulty || ''}</span>`;
+        const difficulty = n.difficulty
+          ? `<span class="card-difficulty card-difficulty--${n.difficulty.toLowerCase()}">${n.difficulty}</span>`
+          : '';
+        const categoryBadge = showCategoryBadge
+          ? `<span class="card-category">${n.category}</span>`
+          : '';
 
         // School entries are horizontal rows led by the course code.
         if (n.code) {
           const units = n.units ? `<span class="card-units">${n.units}</span>` : '';
-          return `<a href="notes/${n.slug}.html" class="card" data-title="${n.title}"${cardStyle}><div class="card-code">${n.code}</div><div class="card-body"><h3>${n.title}</h3><p class="card-description">${n.description || ''}</p></div><div class="card-badges">${units}<span class="card-category">${n.category}</span>${difficulty}</div></a>`;
+          return `<a href="notes/${n.slug}.html" class="card" data-title="${n.title}"${cardStyle}><div class="card-code">${n.code}</div><div class="card-body"><h3>${n.title}</h3><p class="card-description">${n.description || ''}</p></div><div class="card-badges">${units}${categoryBadge}${difficulty}</div></a>`;
         }
 
         // Dev cards keep their original stacked layout.
         const svg = LOGOS[n.title] || '';
-        return `<a href="notes/${n.slug}.html" class="card" data-title="${n.title}"${cardStyle}><div class="card-logo">${svg}</div><h3>${n.title}</h3><p class="card-description">${n.description || ''}</p><div class="card-badges"><span class="card-category">${n.category}</span>${difficulty}</div></a>`;
+        return `<a href="notes/${n.slug}.html" class="card" data-title="${n.title}"${cardStyle}><div class="card-logo">${svg}</div><h3>${n.title}</h3><p class="card-description">${n.description || ''}</p><div class="card-badges">${categoryBadge}${difficulty}</div></a>`;
       })
       .join('\n        ');
 
