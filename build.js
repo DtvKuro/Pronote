@@ -185,6 +185,10 @@ const LOGOS = {
     <rect x="16" y="31.5" width="8" height="2" rx="1" fill="#6b7280"/>
     <rect x="30" y="31.5" width="4" height="2" rx="1" fill="#6b7280"/>
   </svg>`,
+
+  'Database': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><rect width="128" height="128" rx="10" fill="#1e3a5f"/><ellipse cx="64" cy="38" rx="36" ry="14" fill="none" stroke="#60a5fa" stroke-width="5"/><path d="M28 38v20c0 7.7 16.1 14 36 14s36-6.3 36-14V38" fill="none" stroke="#60a5fa" stroke-width="5"/><path d="M28 58v20c0 7.7 16.1 14 36 14s36-6.3 36-14V58" fill="none" stroke="#60a5fa" stroke-width="5"/><ellipse cx="64" cy="38" rx="36" ry="14" fill="#60a5fa" opacity="0.15"/></svg>`,
+
+  'SQL': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"><rect width="128" height="128" rx="10" fill="#2d1b69"/><ellipse cx="64" cy="44" rx="32" ry="12" fill="none" stroke="#a78bfa" stroke-width="4"/><path d="M32 44v16c0 6.6 14.3 12 32 12s32-5.4 32-12V44" fill="none" stroke="#a78bfa" stroke-width="4"/><path d="M32 60v16c0 6.6 14.3 12 32 12s32-5.4 32-12V60" fill="none" stroke="#a78bfa" stroke-width="4"/><ellipse cx="64" cy="44" rx="32" ry="12" fill="#a78bfa" opacity="0.15"/><text x="64" y="105" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#a78bfa" text-anchor="middle">SQL</text></svg>`,
 };
 
 const PROJECT_ROOT = __dirname;
@@ -368,6 +372,13 @@ const imagesSource = path.join(site.sourceDir, 'Images');
 if (fs.existsSync(imagesSource)) {
   copyDir(imagesSource, path.join(DIST, 'images'));
   console.log('  Copied images directory.');
+}
+
+// Copy CySQL playground
+const cysqlSource = path.join(PROJECT_ROOT, '..', 'SQL-Playground');
+if (fs.existsSync(cysqlSource)) {
+  copyDir(cysqlSource, path.join(DIST, 'cysql'));
+  console.log('  Copied CySQL playground.');
 }
 
 console.log(`Built ${builtNotes.length} notes, output at docs/`);

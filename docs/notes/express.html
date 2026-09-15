@@ -22,6 +22,10 @@
           <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
         </div>
       </div>
+      <a href="../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -43,7 +47,6 @@
         <li><a href="css.html" class="notes-menu-link" data-preview="INTRODUCTION TO CSS Cascading Style Sheets Style Sheet Language CSS SAS LESS Hakon Wium Lie Father o">CSS</a></li>
         <li><a href="javascript.html" class="notes-menu-link" data-preview="INTRODUCTION TO JAVASCRIPT Brendan Eich created Javascript within 10days. JS is Interpreted Language">JavaScript</a></li>
         <li><a href="dom.html" class="notes-menu-link" data-preview="WAYS TO USE JAVASCRIPT 1. Inline Javascript onload is when body loaded up it will alert the message ">DOM</a></li>
-        <li><a href="web-design.html" class="notes-menu-link" data-preview="WEBDESIGN PRINCIPLES 4 Pillars of Web-Design Colour Theory Typography User Interface Design (UI) Use">Web Design</a></li>
   </ul>
 </div>
 <div class="notes-menu-category">
@@ -53,7 +56,7 @@
         <li><a href="express.html" class="notes-menu-link active" data-preview="INTRODUCTION TO EXPRESS Express is a JS Framework which is used for backend and Node is a runtime en">Express</a></li>
         <li><a href="EJS.html" class="notes-menu-link">EJS</a></li>
         <li><a href="API.html" class="notes-menu-link">API</a></li>
-        <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
+        <li><a href="SQL.html" class="notes-menu-link">SQL</a></li>
   </ul>
 </div>
 <div class="notes-menu-category">
@@ -62,6 +65,14 @@
         <li><a href="gitbash.html" class="notes-menu-link">Git & Bash</a></li>
         <li><a href="github.html" class="notes-menu-link">GitHub</a></li>
         <li><a href="bash-shortcuts.html" class="notes-menu-link">Bash Shortcuts</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Concepts</h4>
+  <ul class="notes-menu-list">
+        <li><a href="web-design.html" class="notes-menu-link">Web Design</a></li>
+        <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
+        <li><a href="database.html" class="notes-menu-link">Database</a></li>
   </ul>
 </div>
 
@@ -94,7 +105,7 @@
     </div>
   </div>
   <h1 class="note-title">Express</h1>
-  <p class="note-meta">Last updated: July 20, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <p class="note-meta">Last updated: August 17, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h2>INTRODUCTION TO EXPRESS</h2>
 <p><strong>Express</strong> is a JS Framework which is used for backend<br>and <strong>Node</strong> is a runtime environment that allows Javascript be used on the pc itself.<br>Instead of just being in a website.</p>
@@ -213,8 +224,27 @@ app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&qu
 });</code></pre></div>
 <p><code>req.body</code> contains the data sent from the form (parsed by body-parser/urlencoded middleware).</p>
 <hr>
+<h2>STATIC FILES MIDDLEWARE</h2>
+<p>EJS handles templates but NOT static assets like CSS, images, or client-side JS.<br>To serve those, you need <code>express.static</code> middleware.</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">static</span>(<span class="hljs-string">&quot;public&quot;</span>));</code></pre></div>
+<p>This tells Express: &quot;anything in the public/ folder can be accessed directly by the browser.&quot;</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">project/
+├── <span class="hljs-keyword">index</span>.js
+├── views/
+│   └── <span class="hljs-keyword">index</span>.ejs        ← templates (rendered <span class="hljs-keyword">by</span> res.render)
+└── <span class="hljs-keyword">public</span>/
+    ├── styles/
+    │   └── main.css      ← <span class="hljs-keyword">static</span> files (served directly)
+    └── images/
+        └── logo.png</code></pre></div>
+<p>Once you add this middleware, in your EJS you reference files relative to public/ (public/ becomes the root):</p>
+<div class="code-block-wrapper"><span class="code-lang-label">HTML</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/styles/main.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/images/logo.png&quot;</span>&gt;</span></code></pre></div>
+<p>NOT <code>../public/styles/main.css</code> — that wont work because the browser doesnt know your folder structure. Express maps public/ to the root <code>/</code> so you just write <code>/styles/main.css</code>.</p>
+<p>Without <code>express.static(&quot;public&quot;)</code>, Express wont serve ANY files from that folder. Your CSS, images, and scripts will all 404.</p>
+<hr>
 <h2>MIDDLEWARE TYPES</h2>
-<p><strong>Pre-processing</strong> = body-parsing(integrated in express.)<br><strong>Auth</strong><br><strong>Logging</strong> = morgan(package)<br><strong>Error</strong></p>
+<p><strong>Pre-processing</strong> = body-parsing(integrated in express.)<br><strong>Static Files</strong> = express.static(integrated in express.)<br><strong>Auth</strong><br><strong>Logging</strong> = morgan(package)<br><strong>Error</strong></p>
 <hr>
 <h2>MORGAN</h2>
 <p><strong>Morgan</strong> is used to log the route and get info like Get, or status code or OS or browser and many more.<br>It is used like this,</p>
@@ -223,10 +253,10 @@ app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&qu
 <p>Like in the example above, you have five predefined formats that you can use in order to easily get the info you need. They are:</p>
 <p><strong>&quot;combined&quot;</strong>: which gives you the Apache standard combined format for your logs.<br><strong>&quot;common&quot;</strong>: referencing the Apache standard common format.<br><strong>&quot;dev&quot;</strong>: A color-coded (by request status) log format.<br><strong>&quot;short&quot;</strong>: Shorter than the default format, including just the few items you&#39;d expect a request logline would have.<br><strong>&quot;tiny&quot;</strong>: Even shorter, just the response time and a few extra items.</p>
 <h4>How To Use The Log Formats</h4>
-<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-title class_">Import</span> morgan <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;morgan&quot;</span>;
+<div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js"><span class="hljs-keyword">import</span> morgan <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;morgan&quot;</span>;
 <span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
 
-app.<span class="hljs-title function_">use</span>(morgan.(<span class="hljs-string">&quot;combined.&quot;</span>));</code></pre></div>
+app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">morgan</span>(<span class="hljs-string">&quot;combined&quot;</span>));</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -356,7 +386,7 @@ app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3
 <h2>CUSTOM MIDDLEWARE</h2>
 <p>we use <code>app.use()</code> method to specify a middleware</p>
 <div class="code-block-wrapper"><span class="code-lang-label">JS</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-js">app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> {
-  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request Method: &quot;</span>. req.<span class="hljs-property">method</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request Method: &quot;</span> + req.<span class="hljs-property">method</span>);
   <span class="hljs-title function_">next</span>()
 });</code></pre></div>
 <p>Inside the <code>app.use</code> we can pass a function that has req, res, and next.<br>The <code>next()</code> function determines when we should move on from the middleware into the next function.</p>

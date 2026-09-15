@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
-  <title>Pronote | Backend</title>
+  <title>Pronote | SQL</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body data-page-type="note">
@@ -56,22 +56,22 @@
         <li><a href="express.html" class="notes-menu-link" data-preview="INTRODUCTION TO EXPRESS Express is a JS Framework which is used for backend and Node is a runtime en">Express</a></li>
         <li><a href="EJS.html" class="notes-menu-link" data-preview="INTRODUCTION TO EJS From Submitting &amp;quot;name&amp;quot; with app.post how do we get the &amp;quot;name&amp;quot">EJS</a></li>
         <li><a href="API.html" class="notes-menu-link" data-preview="INTRODUCTION TO API Using Application Programming Interface (API) When theres 2 Programs with differ">API</a></li>
-        <li><a href="SQL.html" class="notes-menu-link" data-preview="SQL DATABASE Things you&amp;#39;ll be doing alot. CRUD or Create, Read, Update, Destroy. Place to test d">SQL</a></li>
+        <li><a href="SQL.html" class="notes-menu-link active" data-preview="SQL DATABASE Things you&amp;#39;ll be doing alot. CRUD or Create, Read, Update, Destroy. Place to test d">SQL</a></li>
   </ul>
 </div>
 <div class="notes-menu-category">
   <h4 class="notes-menu-category-title">Tools</h4>
   <ul class="notes-menu-list">
-        <li><a href="gitbash.html" class="notes-menu-link" data-preview="INTRODUCTION TO COMMAND LINE Understanding Command Lines Bash shell. Kernel is the Operating System(">Git & Bash</a></li>
-        <li><a href="github.html" class="notes-menu-link" data-preview="INTRODUCTION TO GIT Version Control Making a savepoint or a version. So that if something happens, a">GitHub</a></li>
-        <li><a href="bash-shortcuts.html" class="notes-menu-link" data-preview="Bash Shortcuts (.bashrc) Copy the raw bashrc block below into ~/.bashrc on any new device to replica">Bash Shortcuts</a></li>
+        <li><a href="gitbash.html" class="notes-menu-link">Git & Bash</a></li>
+        <li><a href="github.html" class="notes-menu-link">GitHub</a></li>
+        <li><a href="bash-shortcuts.html" class="notes-menu-link">Bash Shortcuts</a></li>
   </ul>
 </div>
 <div class="notes-menu-category">
   <h4 class="notes-menu-category-title">Concepts</h4>
   <ul class="notes-menu-list">
-        <li><a href="web-design.html" class="notes-menu-link" data-preview="WEBDESIGN PRINCIPLES 4 Pillars of Web-Design Colour Theory Typography User Interface Design (UI) Use">Web Design</a></li>
-        <li><a href="backend.html" class="notes-menu-link active" data-preview="INTRODUCTION TO BACKEND What Backend Contains Server - Computer thats on 24/7 so that user can acces">Backend</a></li>
+        <li><a href="web-design.html" class="notes-menu-link">Web Design</a></li>
+        <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
         <li><a href="database.html" class="notes-menu-link">Database</a></li>
   </ul>
 </div>
@@ -91,9 +91,9 @@
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <a href="../index.html">Home</a>
       <span class="breadcrumb-sep">&rsaquo;</span>
-      <span>Concepts</span>
+      <span>Backend</span>
       <span class="breadcrumb-sep">&rsaquo;</span>
-      <span class="breadcrumb-current">Backend</span>
+      <span class="breadcrumb-current">SQL</span>
     </nav>
     <div class="note-actions">
       <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
@@ -104,28 +104,51 @@
       </button>
     </div>
   </div>
-  <h1 class="note-title">Backend</h1>
-  <p class="note-meta">Last updated: July 20, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <h1 class="note-title">SQL</h1>
+  <p class="note-meta">Last updated: September 15, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
-    <h2>INTRODUCTION TO BACKEND</h2>
-<h3>What Backend Contains</h3>
-<p><strong>Server</strong> - Computer thats on 24/7 so that user can access it.<br><strong>Application</strong> - Logic that responds to request.<br><strong>Database</strong> - Where data&#39;s are stored, Persist storage so it cant be lost.</p>
-<p>HTML Creates design and aesthetic and once a function is used, they will request to the backend or the server, The server will then find application, and the application should know the responce the request and he will look for the response in databse.</p>
-<p><strong>Fullstack</strong> - Working with both Frontend and Backend.</p>
+    <h1>SQL DATABASE</h1>
+<p>Things you&#39;ll be doing alot.</p>
+<p><strong>CRUD</strong> or Create, Read, Update, Destroy.</p>
+<p>Place to test database.<br><em><a href="https://dtvkuro.github.io/Pronote/cysql/">sqliteonline.com</a></em></p>
+<h2>A. CREATE</h2>
+<p><img src="./../images/dbtable.png" alt="DB_Table"></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> products 
+(
+  ID <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>, <span class="hljs-comment">/*RT A1*/</span>
+  <span class="hljs-type">Name</span> string,
+  Price <span class="hljs-type">money</span>, <span class="hljs-comment">/*RT A2*/</span>
+  
+  <span class="hljs-keyword">PRIMARY KEY</span>(ID) <span class="hljs-comment">/*RT A3*/</span> 
+);</code></pre></div>
+<h3>A1 CONSTRAINT</h3>
+<p>This is like a requirement.<br>NOT NULL means that a table or a row will not be created without ID,<br>Especially Primary Key because its important to find an item.</p>
+<p><em>TIP: Making it <strong>PRIMARY KEY</strong> automatically means its <strong>NOT NULL</strong> so Pkey with NOT NULL is redundant.</em></p>
+<p>I only put the NOT NULL there to explain it.</p>
+<h3>A2 Datatypes</h3>
+<p>SQL has their own datatypes that are used within it.<br>like string, int, money, littlemoney, char, and many more</p>
+<p>to learn more: <em><a href="https://www.w3schools.com/sql/sql_datatypes.asp">https://www.w3schools.com/sql/sql_datatypes.asp</a></em></p>
+<h3>A3 Unique Key</h3>
+<p>This gives all table a unique ID only for that specific product.<br>And theres 2 way to make a ID column as primary key.</p>
+<p>SOLO KEY <code>ID int PRIMARY KEY</code><br>MULTIPLE <code>PRIMARY KEY(ID, Name)</code></p>
 <hr>
-<h2>BACKEND TOOLS AND TECHNOLOGY</h2>
-<h3>Front-end</h3>
-<p>HTML<br>CSS<br>Javascript</p>
-<p><em>Javascript frameworks: React, Angular, Vue</em></p>
-<h3>Back-end</h3>
-<p>Java<br>Ruby<br>php<br>C#<br>Python<br>JS</p>
-<h3>Back-end Frameworks</h3>
-<p><strong>Rails</strong> - Ruby<br><strong>Spring</strong> - Java<br><strong>ASP.NET</strong> - C#<br><strong>Laravel or cake</strong> - php<br><strong>Flask &amp; Django</strong> - Python<br><strong>Node</strong> - Javascript</p>
+<h3>INSERTING INTO THE DATABASE TABLE</h3>
+<p>FOR SPECIFIC INSERTING<br><code>INSERT INTO products (ID, Name, Price)</code><br><code>VALUES(1, &#39;Ballpen&#39;, 1.99)</code></p>
+<p>FOR ALL INSERT</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> products 
+<span class="hljs-keyword">VALUES</span>(<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;Ballpen&#x27;</span>, <span class="hljs-number">1.99</span>)</code></pre></div>
+<p>This will add a column into the Table.</p>
+<hr>
+<h2>B. READ</h2>
+<p>Most common keywoard to read is <code>SELECT</code></p>
+<p>Show the whole table:<br><code>SELECT * FROM &#39;products&#39;;</code></p>
+<p>Show whole table with custom column :<br><code>SELECT Name, Price FROM &#39;products&#39;;</code><br><em>This will still show all products but with only the Name and Price as the column, no ID.</em></p>
+<p>Show a specific row in the Database:<br><code>SELECT * FROM &#39;products&#39; WHERE ID=1;</code><br>This will show only the row with ID of 1 in the products table.</p>
 
   </div>
   <div class="note-nav">
-    <a href="web-design.html" class="note-nav-prev">← Web Design</a>
-    <a href="database.html" class="note-nav-next">Database →</a>
+    <a href="API.html" class="note-nav-prev">← API</a>
+    <a href="gitbash.html" class="note-nav-next">Git & Bash →</a>
   </div>
 </article>
 
