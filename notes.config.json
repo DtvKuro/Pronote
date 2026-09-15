@@ -13,7 +13,7 @@
         "Tools": "#f97316",
         "Concepts": "#22c55e"
       },
-      "sourceDirs": ["C:/FXKuroo/Codes/UDEMY/Notes"],
+      "sourceDirs": ["C:/FxKuroo/Codes/Learning/UDEMY/Notes"],
       "notes": [
         { "file": "html.md", "title": "HTML", "category": "Frontend", "order": 1, "description": "The skeleton of every webpage. Defines structure and content using tags and elements.", "difficulty": "Low", "version": "v1" },
         { "file": "css.md", "title": "CSS", "category": "Frontend", "order": 2, "description": "Controls how things look on screen — colors, layouts, spacing, and responsiveness.", "difficulty": "Low", "version": "v1" },

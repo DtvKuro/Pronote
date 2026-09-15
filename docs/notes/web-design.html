@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="dev">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | Web Design</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../index.html" class="mode-switch-btn active" data-mode-target="dev">Dev</a><a href="../school/index.html" class="mode-switch-btn" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <a href="../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Frontend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="html.html" class="notes-menu-link" data-preview="INTRODUCTION TO HTML HyperText Markup Language Markup Language (not a programming language) Tim Bern">HTML</a></li>
+        <li><a href="css.html" class="notes-menu-link" data-preview="INTRODUCTION TO CSS Cascading Style Sheets Style Sheet Language CSS SAS LESS Hakon Wium Lie Father o">CSS</a></li>
+        <li><a href="javascript.html" class="notes-menu-link" data-preview="INTRODUCTION TO JAVASCRIPT Brendan Eich created Javascript within 10days. JS is Interpreted Language">JavaScript</a></li>
+        <li><a href="dom.html" class="notes-menu-link" data-preview="WAYS TO USE JAVASCRIPT 1. Inline Javascript onload is when body loaded up it will alert the message ">DOM</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Backend</h4>
+  <ul class="notes-menu-list">
+        <li><a href="node-js.html" class="notes-menu-link" data-preview="INTRODUCTION TO NODE.JS Framework is commonly use components. Reuse components. Reduce overhead. Nod">Node.js</a></li>
+        <li><a href="express.html" class="notes-menu-link" data-preview="INTRODUCTION TO EXPRESS Express is a JS Framework which is used for backend and Node is a runtime en">Express</a></li>
+        <li><a href="EJS.html" class="notes-menu-link" data-preview="INTRODUCTION TO EJS From Submitting &amp;quot;name&amp;quot; with app.post how do we get the &amp;quot;name&amp;quot">EJS</a></li>
+        <li><a href="API.html" class="notes-menu-link" data-preview="INTRODUCTION TO API Using Application Programming Interface (API) When theres 2 Programs with differ">API</a></li>
+        <li><a href="SQL.html" class="notes-menu-link" data-preview="SQL DATABASE Things you&amp;#39;ll be doing alot. CRUD or Create, Read, Update, Destroy. Place to test d">SQL</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Tools</h4>
+  <ul class="notes-menu-list">
+        <li><a href="gitbash.html" class="notes-menu-link" data-preview="INTRODUCTION TO COMMAND LINE Understanding Command Lines Bash shell. Kernel is the Operating System(">Git & Bash</a></li>
+        <li><a href="github.html" class="notes-menu-link" data-preview="INTRODUCTION TO GIT Version Control Making a savepoint or a version. So that if something happens, a">GitHub</a></li>
+        <li><a href="bash-shortcuts.html" class="notes-menu-link" data-preview="Bash Shortcuts (.bashrc) Copy the raw bashrc block below into ~/.bashrc on any new device to replica">Bash Shortcuts</a></li>
+  </ul>
+</div>
+<div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Concepts</h4>
+  <ul class="notes-menu-list">
+        <li><a href="web-design.html" class="notes-menu-link active" data-preview="WEBDESIGN PRINCIPLES 4 Pillars of Web-Design Colour Theory Typography User Interface Design (UI) Use">Web Design</a></li>
+        <li><a href="backend.html" class="notes-menu-link">Backend</a></li>
+        <li><a href="database.html" class="notes-menu-link">Database</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>Concepts</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Web Design</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  
+  <h1 class="note-title">Web Design</h1>
+  <p class="note-meta">Last updated: July 20, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <div class="note-content">
+    <h2>WEBDESIGN PRINCIPLES</h2>
+<h3>4 Pillars of Web-Design</h3>
+<p>Colour Theory<br>Typography<br>User Interface Design (UI)<br>User Experience Design</p>
+<hr>
+<h2>COLOR THEORY</h2>
+<p><strong>Mood of color</strong> - <em>(IMPORTANT)</em> Tells a story or conveys message.</p>
+<p><em>Examples:</em><br><strong>Red</strong> - Intensity or Energetic<br><strong>Yellow</strong> - Joy or Attention Grabbing &lt;Bad for long term usage, too attention grabbing&gt;<br><strong>Green</strong> - Fresh or Safety<br><strong>Blue</strong> - Stability or Trust <GCash or Paypal><br><strong>Purple</strong> - Royalty, Wealth and Femininity</p>
+<h3>Combining Colors</h3>
+<p><strong>ANALOGOUS COLORS</strong> - Colors that are next to each other on the color wheel. <em>(DOESNT STAND OUT)</em><br>Good for navigation bars, logo and backgrounds.<br><strong>COMPLEMENTARY COLORS</strong> - Colors that are opposite each other on the color wheel. <em>(STANDS OUT)</em><br>Dont use for text and text background.</p>
+<p><strong>ADOBE COLOR WHEEL</strong> - <em><a href="https://color.adobe.com/create/color-wheel">https://color.adobe.com/create/color-wheel</a></em><br>You can create your own color palette using the color wheel.</p>
+<p><strong>COLOR HUNT</strong> - <em><a href="https://colorhunt.co/">https://colorhunt.co/</a></em><br>You can find color palettes that are already made by other people.</p>
+<hr>
+<h2>TYPOGRAPHY</h2>
+<p><strong>Serif</strong> has feet - <em>(Times New Roman)</em><br>Serious, Old, Authoritative, Traditional, Stable, Respectable</p>
+<p><strong>Sans Serif</strong> - <em>(Arial)</em><br>Sensible, Simple, Straightforward. Soft, Friendly, Readable</p>
+<p>Stick to 2 FONTS FOR CLEANER READABILITY<br>AND RELATE THE FONTS TO THE MOOD &amp; TIME ERA.</p>
+<p>AND CONTRAST TO SERIFNESS. Heading is serif and sans serif to the body. USE WEIGHT TO CONTRAST THE FONTS.</p>
+<hr>
+<h2>USER INTERFACE (UI) DESIGN</h2>
+<p>Manage ATTENTION with effective User Interface (UI) Design.</p>
+<ol>
+<li><strong>Hierarchy</strong> - can be conveyed through<br>Color, Size,</li>
+<li><strong>Layout</strong> - Create different positions to make it interesting<br>Text Length</li>
+<li><strong>Alignment</strong> - Aligning to make everything look connected.<br>In order to look professional, reduce the alignment point.</li>
+<li><strong>White Space</strong> - Indicate Importance or Luxury.</li>
+<li><strong>Audience</strong> - You will design based on your target audience.</li>
+</ol>
+<hr>
+<h2>USER EXPERIENCE (UX) DESIGN</h2>
+<ol>
+<li><strong>Simplicity</strong> - Ease the user by not making user feel overwhelm.</li>
+<li><strong>Consistency</strong> - Function and Design consistent</li>
+<li><strong>Reading Pattern</strong> - People usually reads in F pattern or Z Pattern(Faster viewing). Identify how user reads your website.</li>
+<li><strong>All Platform Design</strong> - Design for Mobile too. Mobile Responsive.</li>
+<li><strong>Dont use your Powers for evil</strong> - Tricks the user to do something they dont want to.</li>
+</ol>
+
+  </div>
+  <div class="note-nav">
+    <a href="bash-shortcuts.html" class="note-nav-prev">← Bash Shortcuts</a>
+    <a href="backend.html" class="note-nav-next">Backend →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
