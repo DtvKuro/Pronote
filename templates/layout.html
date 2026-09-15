@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-mode="{{MODE}}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
   <title>{{PAGE_TITLE}}</title>
-  <link rel="stylesheet" href="{{BASE_PATH}}css/style.css">
+  <link rel="stylesheet" href="{{BASE_PATH}}css/style.css">{{EXTRA_CSS}}
 </head>
 <body data-page-type="{{PAGE_TYPE}}">
   <div class="progress-bar" id="progressBar"></div>
   <nav class="nav">
     <div class="nav-container">
       {{NOTES_MENU_TOGGLE}}
-      <a href="{{BASE_PATH}}index.html" class="nav-logo">Pronote</a>
+      <a href="{{HOME_HREF}}" class="nav-logo">Pronote</a>
+      {{MODE_SWITCH}}
       <div class="nav-search" id="navSearch">
         <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
         <div class="search-nav-panel" id="searchNavPanel" style="display:none">
