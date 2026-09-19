@@ -720,7 +720,6 @@ table.results-table thead th {
   white-space: nowrap;
   z-index: 1;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
 }
 
 table.results-table tbody tr {
