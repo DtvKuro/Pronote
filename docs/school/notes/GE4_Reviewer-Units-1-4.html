@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | Reviewer: Units 1-4 (Patterns, Logic, Problem Solving, Modular Arithmetic)</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Subjects</h4>
+  <ul class="notes-menu-list">
+        <li><a href="CC1_Introduction-To-Computing.html" class="notes-menu-link" data-preview="CC101: Introduction To Computing Unit Count Lecture = 2 units Laboratory = 1 unit Total = 3 units Mi"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="CC1_Reviewer-Lesson-2.html" class="notes-menu-link" data-preview="📘 REVIEWER — Computer Hardware Fundamentals Covers: Lesson 2.1 (Hardware &amp;amp; Input Devices) · Les"><span class="notes-menu-code">CC1</span> Reviewer: Input, Keyboard & Output Devices</a></li>
+        <li><a href="CC2_Fundamentals-To-Programming.html" class="notes-menu-link" data-preview="CC2: Fundamentals of Programming COMPUTER PROGRAMMING Programming is just writing instructions that "><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="HCI101_Intro-To-Human-Computer-Interaction.html" class="notes-menu-link" data-preview="Nothing written here yet."><span class="notes-menu-code">HCI101</span> Intro to Human-Computer Interaction</a></li>
+        <li><a href="GE4_Math-In-The-Modern-World.html" class="notes-menu-link" data-preview="Nothing written here yet."><span class="notes-menu-code">GE4</span> Math in the Modern World</a></li>
+        <li><a href="GE4_Reviewer-Units-1-4.html" class="notes-menu-link active" data-preview="📐 REVIEWER — Mathematics in the Modern World (GE 4) Covers: Unit 1 (Nature of Mathematics) · Unit 2"><span class="notes-menu-code">GE4</span> Reviewer: Units 1-4 (Patterns, Logic, Problem Solving, Modular Arithmetic)</a></li>
+        <li><a href="GE5_Purposive-Communication.html" class="notes-menu-link"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="GE6_Art-Appreciation.html" class="notes-menu-link"><span class="notes-menu-code">GE6</span> Art Appreciation</a></li>
+        <li><a href="GE9_Philippine-History.html" class="notes-menu-link"><span class="notes-menu-code">GE9</span> Philippine History</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>Subjects</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Reviewer: Units 1-4 (Patterns, Logic, Problem Solving, Modular Arithmetic)</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">GE4</span><span class="note-units">Units 1-4</span></p>
+  <h1 class="note-title">Reviewer: Units 1-4 (Patterns, Logic, Problem Solving, Modular Arithmetic)</h1>
+  <p class="note-meta">Last updated: September 25, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <div class="note-content">
+    <h1>📐 REVIEWER — Mathematics in the Modern World (GE 4)</h1>
+<p><strong>Covers:</strong> Unit 1 (Nature of Mathematics) · Unit 2 (Logic) · Unit 3 (Problem Solving &amp; Reasoning) · Unit 4 (Mathematical Systems)</p>
+<blockquote>
+<p><strong>How to use this:</strong> Every math topic has 3 parts: <strong>① the idea in plain words → ② the rule/formula → ③ a worked example, step by step.</strong> If a practice problem in the slides had no answer, I solved it for you and marked it <strong>✍️ (my solution)</strong>. Check those with your teacher if something looks different.</p>
+</blockquote>
+<hr>
+<h1>UNIT 1 — THE NATURE OF MATHEMATICS</h1>
+<h2>1.1 Introduction</h2>
+<ul>
+<li>Math is <strong>everywhere</strong>. It <strong>was, is, and will always be</strong> part of daily life.</li>
+<li><strong>Everything around us involves math.</strong></li>
+<li>In this chapter: observe <strong>patterns</strong> and where they appear in <strong>nature</strong>, find out what math <strong>is</strong> and its <strong>role</strong> in the environment, and learn math&#39;s basic language: <strong>numbers</strong>.</li>
+</ul>
+<p><strong>Objectives:</strong></p>
+<ol>
+<li>Identify <strong>patterns and regularities</strong> in the world.</li>
+<li>Associate one&#39;s <strong>perspective</strong> towards mathematics.</li>
+<li>Express <strong>appreciation</strong> of mathematics&#39; existence in the environment.</li>
+<li>Identify <strong>patterns in numbers</strong>.</li>
+</ol>
+<h2>1.2 What is Mathematics (as defined in this course)?</h2>
+<table>
+<thead>
+<tr>
+<th>Common notions of Math</th>
+<th>→</th>
+<th>Mathematics in the Modern World</th>
+<th>→</th>
+<th>What it REALLY is about</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Numbers, Counting, Shapes, Figures, Mathematical Expressions, Variables, Basic Arithmetic</td>
+<td></td>
+<td></td>
+<td></td>
+<td>• What our <strong>eyes can see</strong>, <strong>ears can hear</strong>, and what we <strong>perceive</strong> in our physical environment<br>• A <strong>language</strong> in different forms: <strong>patterns, shapes, music</strong>, etc.<br>• The <strong>unbelievable patterns formed by nature and the universe</strong></td>
+</tr>
+</tbody></table>
+<h2>1.3 Where is Mathematics?</h2>
+<p>The slides ask you to look around campus:</p>
+<ul>
+<li>How many <strong>steps</strong> from the New Building lobby (Annex Campus) to the Engineering building? Have you ever <strong>counted your steps</strong>?</li>
+<li>What do you notice in your <strong>physical surroundings</strong>?</li>
+<li>What about the <strong>arrangement of floor tiles, walls, doors, windows, and lights</strong>? → All of these follow <strong>patterns</strong> = math.</li>
+</ul>
+<h2>1.4 What is a Pattern?</h2>
+<p><strong>Emoji example:</strong> 😊😁😍😕 😊😁😍😕 😊 → the 4 faces repeat (smiling eyes → grinning → heart eyes → confused). The last one typed is 😊, so the <strong>next is 😁 (grinning face with smiling eyes)</strong>.</p>
+<blockquote>
+<p>🔑 <strong>Patterns are regular, repeated, or recurring forms or designs.</strong><br>🔑 <strong>Observing patterns helps us identify relationships and find logical connections to form generalizations.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Pattern</strong> = a discernible regularity in the world or in a man-made design.</li>
+<li><strong>Regularity</strong> = the exact same thing happening in the exact same circumstances (Collins, 2018).</li>
+<li>Quote: <em>&quot;We live in a universe of patterns.&quot;</em> — <strong>Ian Stewart</strong>, <em>Nature by Numbers</em> (1995)</li>
+</ul>
+<h2>1.5 A. Patterns in Nature</h2>
+<p>The module focuses on <strong>4 patterns</strong>: <strong>Symmetry, Fractals, Spirals, Tessellations</strong>.</p>
+<h3>① Symmetry</h3>
+<ul>
+<li>You can draw an <strong>imaginary line</strong> across an object and the two parts are <strong>mirror images</strong> of each other.</li>
+<li>If it&#39;s symmetric about a line (like the dotted line down a &quot;+&quot; shape), that&#39;s <strong>line symmetry</strong> or <strong>bilateral symmetry</strong>.</li>
+<li>🔑 <strong>The type of symmetry depends on the number of sides or faces that are symmetrical.</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Tiger&#39;s face</strong></td>
+<td><strong>Bilateral</strong> symmetry (left = right)</td>
+</tr>
+<tr>
+<td><strong>Spiderwort flower</strong> (3 petals)</td>
+<td><strong>Three-fold</strong> symmetry</td>
+</tr>
+<tr>
+<td><strong>Starfish</strong> (5 arms)</td>
+<td><strong>Five-fold</strong> symmetry</td>
+</tr>
+</tbody></table>
+<h3>② Fractals</h3>
+<ul>
+<li><strong>Irregular patterns made of parts that are in some way similar to the whole.</strong></li>
+<li>A geometric shape that can be split into parts, <strong>each a reduced-scale (smaller) copy of the whole</strong> (Montana State University, 2011).</li>
+<li><strong>Benoit Mandelbrot</strong> was the <strong>first to coin the term &quot;fractals.&quot;</strong></li>
+<li>Examples: <strong>lightning</strong> and <strong>tree branches</strong>. The whole extends into parts, and from a single stem it extends into more stems the same way. Also: <strong>Romanesco broccoli</strong>.</li>
+</ul>
+<h3>③ Spirals</h3>
+<ul>
+<li>A pattern that <strong>winds around a center or pole</strong> and <strong>gradually recedes from or approaches it</strong> (Merriam-Webster).</li>
+<li>A shape made of <strong>curves, each one above or wider than the one before</strong> (Cambridge Dictionary).</li>
+<li>Examples: <strong>snail&#39;s shell, cabbage</strong> (also galaxies, hurricanes, nautilus shells, sunflowers, pinecones).</li>
+</ul>
+<h3>④ Tessellations</h3>
+<ul>
+<li><strong>Tiling</strong> that uses shapes to <strong>cover a surface with NO gaps and NO overlaps</strong>.</li>
+<li>🔑 A pattern is a tessellation <strong>if it can be repeated over and over again</strong> and has <strong>no gaps and no overlaps</strong>.</li>
+<li>Examples: <strong>kitchen floor tiles</strong> (squares with designs), <strong>honeycomb</strong>, <strong>pineapple</strong>.</li>
+<li><strong>The Rule:</strong> only specific <strong>regular polygons (squares, equilateral triangles, hexagons)</strong> can tessellate on their own. <strong>Circles</strong> always leave empty spaces.</li>
+<li><strong>In nature:</strong> the <strong>hexagonal chambers of a beehive</strong> use the least wax and the most space.</li>
+</ul>
+<p><strong>Practice (&quot;Identify the pattern in the pictures&quot;):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Picture</th>
+<th>Pattern</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cabbage (cross-section)</td>
+<td>Spiral</td>
+</tr>
+<tr>
+<td>Starfish</td>
+<td>Symmetry (five-fold)</td>
+</tr>
+<tr>
+<td>Bare tree branches</td>
+<td>Fractal</td>
+</tr>
+<tr>
+<td>Spiderwort flower</td>
+<td>Symmetry (three-fold)</td>
+</tr>
+</tbody></table>
+<h3>Extra slides: Kinds of Patterns</h3>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Sequential</strong></td>
+<td>The <strong>order of events and numbers</strong> (e.g., calendar, 1, 2, 3…)</td>
+</tr>
+<tr>
+<td><strong>Spatial</strong></td>
+<td><strong>Tessellations and geometric packing</strong> (e.g., honeycomb)</td>
+</tr>
+<tr>
+<td><strong>Temporal</strong></td>
+<td><strong>Cycles of time and astronomy</strong> (e.g., moon phases)</td>
+</tr>
+<tr>
+<td><strong>Linguistic</strong></td>
+<td>The <strong>hidden architecture of language</strong> (sentence structure)</td>
+</tr>
+</tbody></table>
+<p><strong>Nature&#39;s Geometry:</strong> Symmetry (butterfly, starfish) · Fractals (Romanesco) · Spirals (galaxy) · <strong>Spots &amp; Stripes</strong> (leopard spots, zebra stripes, cracked earth)</p>
+<h3>Math is a Lens AND an Engine</h3>
+<ul>
+<li><strong>The Lens → To Describe:</strong> unlocks the patterns, shapes, and sequences found in nature.</li>
+<li><strong>The Engine → To Construct:</strong> the tool of <strong>measurement and calculation</strong> that <strong>built modern civilization</strong>.</li>
+<li><strong>Nature&#39;s mathematical vocabulary:</strong> spots, spirals, stripes. Long before humans invented equations, <strong>nature was speaking math</strong>.</li>
+<li><strong>From natural to engineered:</strong> nature used math as a <strong>blueprint</strong>; humans learned to use it as an <strong>engine</strong> to build the modern world.</li>
+</ul>
+<hr>
+<h2>1.6 B. Patterns in Numbers — SEQUENCES</h2>
+<h3>What is a Sequence?</h3>
+<ul>
+<li><strong>An ordered list of numbers that follows a certain pattern (a specific rule).</strong></li>
+<li>Example: <strong>1, 3, 5, 7, …</strong> → each time <strong>+2</strong>.</li>
+<li>To find a missing term, we use the rule.</li>
+<li><em>Note: patterns in numbers are not limited to sequences. <strong>Any rule observed in a set of numbers</strong> counts as a pattern.</em></li>
+<li>This unit covers <strong>2 types: Arithmetic and Geometric</strong>.</li>
+</ul>
+<h3>Series</h3>
+<ul>
+<li><strong>The SUM of the terms of a sequence.</strong></li>
+<li>Sequence 1, 3, 5 → Series is <strong>1 + 3 + 5 = 9</strong>.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Sequence</strong> = the list (1, 3, 5). <strong>Series</strong> = the list added up (1 + 3 + 5 = 9).</p>
+</blockquote>
+<h3>Arithmetic vs Geometric (the Venn diagram)</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Arithmetic Sequence</strong></th>
+<th><strong>BOTH</strong></th>
+<th><strong>Geometric Sequence</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Uses <strong>addition / subtraction</strong></td>
+<td>A group of numbers that follow a pattern based on a specific rule</td>
+<td>Uses <strong>multiplication / division</strong></td>
+</tr>
+<tr>
+<td>Same number added each time = <strong>COMMON DIFFERENCE (d)</strong></td>
+<td></td>
+<td>Same number multiplied each time = <strong>COMMON RATIO (r)</strong></td>
+</tr>
+</tbody></table>
+<p><strong>🧠 How to tell them apart (easy test):</strong></p>
+<ul>
+<li><strong>Subtract</strong> neighbors: 2nd − 1st, 3rd − 2nd… <strong>Same answer every time? → ARITHMETIC</strong> (that answer is <strong>d</strong>).</li>
+<li><strong>Divide</strong> neighbors: 2nd ÷ 1st, 3rd ÷ 2nd… <strong>Same answer every time? → GEOMETRIC</strong> (that answer is <strong>r</strong>).</li>
+</ul>
+<h3>✅ Worked examples (from the slides)</h3>
+<table>
+<thead>
+<tr>
+<th>Given</th>
+<th>Check</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1, 5, 9, 13, 17, …</strong></td>
+<td>5−1=4, 9−5=4, 13−9=4</td>
+<td><strong>Arithmetic</strong>, d = <strong>+4</strong> → next is <strong>21</strong></td>
+</tr>
+<tr>
+<td><strong>3, 9, 27, 81, 243, …</strong></td>
+<td>9÷3=3, 27÷9=3</td>
+<td><strong>Geometric</strong>, r = <strong>×3</strong> → next is <strong>729</strong></td>
+</tr>
+<tr>
+<td><strong>5, −5, 5, −5, 5, …</strong></td>
+<td>−5÷5=−1, 5÷(−5)=−1</td>
+<td><strong>Geometric</strong>, r = <strong>×(−1)</strong> (tricky one!) → next is <strong>−5</strong></td>
+</tr>
+<tr>
+<td><strong>4, 2, 0, −2, −4, …</strong></td>
+<td>2−4=−2, 0−2=−2</td>
+<td><strong>Arithmetic</strong>, d = <strong>−2</strong> (subtract 2) → next is <strong>−6</strong></td>
+</tr>
+<tr>
+<td><strong>1, 3/2, 2, 5/2, 3, …</strong></td>
+<td>3/2−1=1/2, 2−3/2=1/2</td>
+<td><strong>Arithmetic</strong>, d = <strong>+1/2</strong> → next is <strong>7/2</strong></td>
+</tr>
+<tr>
+<td><strong>1/2, 1/4, 1/8, 1/16, 1/32, …</strong></td>
+<td>(1/4)÷(1/2)=1/2</td>
+<td><strong>Geometric</strong>, r = <strong>×1/2</strong> (or ÷2) → next is <strong>1/64</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 The slide says &quot;subtract <strong>−2</strong>&quot; for 4, 2, 0… It means <strong>subtract 2</strong> (or add −2).<br>💡 Tip for fractions: 1, 3/2, 2, 5/2, 3 = 2/2, 3/2, 4/2, 5/2, 6/2 → the top just goes up by 1!</p>
+</blockquote>
+<hr>
+<h2>1.7 The Fibonacci Sequence (&quot;The Sequence of Life&quot;)</h2>
+<ul>
+<li><strong>Origin:</strong> brought to <strong>Western Europe in 1202</strong> through the book <em><strong>Liber Abaci</strong></em> (by Leonardo of Pisa, <strong>Fibonacci</strong>).</li>
+<li><strong>The Rule:</strong> <strong>every number is the sum of the two numbers before it.</strong></li>
+</ul>
+<p><strong>1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, …</strong></p>
+<p><strong>Formula:</strong> F<sub>n</sub> = F<sub>n−1</sub> + F<sub>n−2</sub></p>
+<blockquote>
+<p>In plain words: <strong>&quot;next number = the last number + the one before it.&quot;</strong><br>1+1=2 → 1+2=3 → 2+3=5 → 3+5=8 → 5+8=13 → 8+13=21 …</p>
+</blockquote>
+<h3>The Rabbit Puzzle (Pisa, 1202)</h3>
+<p><strong>Premise:</strong></p>
+<ul>
+<li>Start with exactly <strong>ONE newborn male-female pair</strong> of rabbits.</li>
+<li>They need <strong>ONE month to mature</strong>.</li>
+<li>From the <strong>second month</strong>, each mature pair produces <strong>ONE new pair every month</strong>.</li>
+<li>Ideal conditions: <strong>rabbits never die</strong>.</li>
+</ul>
+<p><strong>Question:</strong> how many pairs after <strong>one year</strong>?</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pairs</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>8</td>
+<td>13</td>
+<td>21</td>
+<td>34</td>
+<td>55</td>
+<td>89</td>
+<td>144</td>
+<td><strong>233</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li>Why it&#39;s Fibonacci: <strong>F<sub>n</sub> = F<sub>n−1</sub> (existing pairs) + F<sub>n−2</sub> (newborns from mature adults)</strong>.</li>
+<li><strong>Conclusion:</strong> at the <strong>start of the 13th month (exactly one year later)</strong> there are <strong>233 pairs</strong>. This shows how explosive mathematical sequences can be.</li>
+</ul>
+<h3>The Golden Spiral &amp; Golden Ratio</h3>
+<ul>
+<li>Count the spirals on a <strong>pinecone</strong> or the petals on a <strong>flower</strong>: often <strong>5, 8, 13, 21, or 34</strong>, which are almost always <strong>Fibonacci numbers</strong>.</li>
+<li>Divide each Fibonacci number by the one before it (F<sub>n</sub> ÷ F<sub>n−1</sub>). The answer gets closer and closer to <strong>1.618…</strong> = the <strong>Golden Ratio (Φ, &quot;phi&quot;) = 1.61803…</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Division</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8 ÷ 5</td>
+<td>1.6</td>
+</tr>
+<tr>
+<td>13 ÷ 8</td>
+<td>1.625</td>
+</tr>
+<tr>
+<td>21 ÷ 13</td>
+<td>1.615…</td>
+</tr>
+<tr>
+<td>34 ÷ 21</td>
+<td>1.619…</td>
+</tr>
+<tr>
+<td>→ keeps getting closer to</td>
+<td><strong>1.618</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>&quot;The Convergence&quot;:</strong> as the numbers grow toward infinity, their ratio <strong>locks onto 1.618</strong>, the blueprint of biological growth.</li>
+</ul>
+<hr>
+<h1>UNIT 2 — LOGIC</h1>
+<h2>2.1 Introduction &amp; Objectives</h2>
+<ul>
+<li>Unit 1 = math speaks through <strong>forms and patterns in nature</strong>.</li>
+<li>Unit 2 = math also speaks through <strong>English statements</strong>. We translate them into <strong>symbols</strong>, apply <strong>rules and laws</strong>, and decide if they&#39;re <strong>true or false</strong>.</li>
+</ul>
+<p><strong>Objectives:</strong></p>
+<ol>
+<li>Use <strong>symbols</strong> to express logical statements.</li>
+<li>Build <strong>simple and compound statements</strong> and write them in <strong>symbolic form</strong>.</li>
+<li>Build a <strong>truth table</strong> and find its <strong>truth values</strong>.</li>
+<li>Translate an <strong>argument</strong> into <strong>logical notation</strong>.</li>
+</ol>
+<h2>2.2 The Language of Mathematics</h2>
+<ul>
+<li><strong>The Language, Symbols, Syntax and Rules of Math:</strong> the system mathematicians use to <strong>communicate math ideas</strong> to each other. It&#39;s built on a natural language, using <strong>technical terms and grammar conventions special to math</strong>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Math Symbols</strong></td>
+<td>Express a <strong>formula</strong> or represent a <strong>constant</strong></td>
+</tr>
+<tr>
+<td><strong>Math Syntax</strong></td>
+<td>Makes an expression <strong>well-formed</strong>, so characters/symbols are <strong>clear and valid</strong> and <strong>don&#39;t break the rules</strong></td>
+</tr>
+<tr>
+<td><strong>Math Convention</strong></td>
+<td><strong>Dictates the meaning</strong>. A <strong>fact, name, notation, or usage generally agreed upon by mathematicians</strong></td>
+</tr>
+</tbody></table>
+<p><strong>The language of math is:</strong></p>
+<ul>
+<li><strong>a. Precise:</strong> able to make <strong>very fine distinctions</strong></li>
+<li><strong>b. Concise:</strong> able to say things <strong>briefly</strong></li>
+<li><strong>c. Powerful:</strong> able to express <strong>complex thoughts with relative ease</strong></li>
+</ul>
+<p><strong>Expressions:</strong> <strong>Numbers, sets, and functions</strong> are common expressions. One number can have many names:</p>
+<blockquote>
+<p>10/2 = 5 = 2+3 = 1+1+1+1+1 = (6−2)+1 → <strong>all look different but are the SAME number (5).</strong></p>
+</blockquote>
+<p><strong>Writing math as an Expression or Sentence:</strong></p>
+<ul>
+<li>An expression = a <strong>finite combination of symbols</strong> that is <strong>well-formed</strong> according to rules that depend on the context. A <strong>correct arrangement of math symbols</strong> representing a math object.</li>
+<li><strong>Most common mistake: forgetting parentheses &quot;( )&quot;!</strong><ul>
+<li>1 / (x+1) → &quot;1 divided by (x+1)&quot;</li>
+<li>1 / x+1 → the system reads it as <strong>(1/x) + 1</strong>, which is DIFFERENT!</li>
+</ul>
+</li>
+</ul>
+<h2>2.3 What is Logic?</h2>
+<ul>
+<li><p><strong>David W. Kueker (2009):</strong> logic is <strong>the analysis of methods of reasoning</strong>. Logic cares about the <strong>FORM rather than the CONTENT</strong> of an argument. Originally, it&#39;s the <strong>study of reasoning used in mathematics</strong>.</p>
+</li>
+<li><p>Examples:</p>
+<ol>
+<li>All men are mortal. Luke is a man. Hence, Luke is mortal.</li>
+<li>All dogs like fish. Cyber is a dog. Hence, Cyber likes fish.</li>
+</ol>
+<p><em>(Same form, different content. Logic looks at the form.)</em></p>
+</li>
+</ul>
+<h2>2.4 Simple vs Compound Statements</h2>
+<ul>
+<li><strong>Simple statement:</strong> does <strong>NOT contain another statement</strong> inside it.</li>
+<li><strong>Compound statement:</strong> <strong>made of 2+ statements</strong> joined by connectives (and, or, if…then, if and only if, not).</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Simple</th>
+<th>Compound</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Manila City is the oldest city in Metro Manila.</td>
+<td>Today is Monday <strong>and</strong> it is raining.</td>
+</tr>
+<tr>
+<td>Valenzuela City was once a part of Cavite.</td>
+<td>You will study harder <strong>or</strong> fail your class.</td>
+</tr>
+<tr>
+<td>DepEd supports &quot;No Homework Policy Bill.&quot;</td>
+<td><strong>If</strong> a polygon has three sides, <strong>then</strong> it is a triangle.</td>
+</tr>
+<tr>
+<td>Angelica bought a new laptop and a cellphone.*</td>
+<td>A polygon is a triangle <strong>if and only if</strong> it has three sides.</td>
+</tr>
+<tr>
+<td>The 16th president of the Philippines is Leni Robredo.</td>
+<td>Leaves will soon grow from the bareness of trees <strong>and</strong> all will be alright in time.</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ <strong>Take note: a statement does NOT always need to be TRUE.</strong> (That&#39;s why &quot;Leni Robredo is the 16th president&quot; is still a statement.)<br>*The slide lists &quot;Angelica bought a new laptop and a cellphone&quot; as simple: &quot;and&quot; joins two <strong>objects</strong>, not two complete statements.</p>
+</blockquote>
+<h2>2.5 Connectives — THE BIG TABLE (memorize!)</h2>
+<p>We study 4 connectives (<strong>and, or, if-then, if and only if</strong>) plus <strong>not</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Statement</th>
+<th>Connective</th>
+<th>Symbol</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>not p</td>
+<td>not</td>
+<td><strong>~p</strong></td>
+<td><strong>Negation</strong></td>
+</tr>
+<tr>
+<td>p and q</td>
+<td>and</td>
+<td><strong>p ∧ q</strong></td>
+<td><strong>Conjunction</strong></td>
+</tr>
+<tr>
+<td>p or q</td>
+<td>or</td>
+<td><strong>p ∨ q</strong></td>
+<td><strong>Disjunction</strong></td>
+</tr>
+<tr>
+<td>If p, then q</td>
+<td>if, then</td>
+<td><strong>p → q</strong></td>
+<td><strong>Conditional</strong></td>
+</tr>
+<tr>
+<td>p if and only if q</td>
+<td>if and only if</td>
+<td><strong>p ↔ q</strong></td>
+<td><strong>Biconditional</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🧠 Memory tricks:</p>
+<ul>
+<li><strong>∧ looks like an &quot;A&quot;</strong> → <strong>A</strong>nd → Con<strong>junction</strong> (joined together)</li>
+<li><strong>∨ is the opposite</strong> → <strong>or</strong> → <strong>Dis</strong>junction</li>
+<li><strong>~</strong> is a squiggle &quot;no&quot; → <strong>not</strong></li>
+<li><strong>→</strong> one-way arrow = if…then. <strong>↔</strong> two-way arrow = if and only if (works both ways)</li>
+</ul>
+</blockquote>
+<p><strong>Symbolic logic examples:</strong></p>
+<ul>
+<li>&quot;I have read the book <strong>and</strong> I understood it.&quot; → <strong>p ∧ q</strong></li>
+<li>&quot;I will go to church <strong>or</strong> I will watch a movie.&quot; → <strong>p ∨ q</strong></li>
+</ul>
+<h2>2.6 The 5 Truth Tables (the heart of this unit)</h2>
+<blockquote>
+<p>💡 <strong>How to set up ANY 2-variable truth table:</strong> always 4 rows, in this order:<br>p: <strong>T, T, F, F</strong><br>q: <strong>T, F, T, F</strong></p>
+</blockquote>
+<h3>① Negation (~p): <strong>flip it</strong></h3>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>~p</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Every statement p has a negation ~p.</li>
+<li>&quot;Today is Friday&quot; → &quot;Not today is Friday&quot; sounds awkward. Better: <strong>&quot;It is not the case that today is Friday.&quot;</strong></li>
+<li><strong>Worked example:</strong> negate &quot;Her aunt&#39;s name is Lucia.&quot;<ul>
+<li>Insert <em>not</em>: <strong>Her aunt&#39;s name is not Lucia.</strong></li>
+<li>Prefix &quot;It is not the case that&quot;: <strong>It is not the case that her aunt&#39;s name is Lucia.</strong></li>
+</ul>
+</li>
+</ul>
+<h3>② Conjunction (p ∧ q): <strong>TRUE only if BOTH are true</strong></h3>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p ∧ q</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>T</td>
+<td><strong>T</strong></td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+</tbody></table>
+<h3>③ Disjunction (p ∨ q): <strong>FALSE only if BOTH are false</strong></h3>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p ∨ q</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td><strong>F</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li>True when <strong>at least one</strong> is true.</li>
+</ul>
+<h3>④ Conditional (p → q): <strong>FALSE only when T → F</strong></h3>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p → q</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td><strong>F</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Read: <strong>&quot;If p, then q.&quot;</strong> p = <strong>hypothesis</strong>, q = <strong>conclusion</strong>.</li>
+<li>Example: &quot;If <strong>it rains</strong> (hypothesis), then <strong>the ground is wet</strong> (conclusion).&quot;</li>
+<li>🧠 Think of it as a <strong>promise</strong>: &quot;If it rains, the ground is wet.&quot; The only way the promise is <strong>broken</strong> is if it rains (T) and the ground is NOT wet (F).</li>
+</ul>
+<h3>⑤ Biconditional (p ↔ q): <strong>TRUE when both are the SAME</strong></h3>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p ↔ q</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>T</td>
+<td><strong>T</strong></td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td><strong>T</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li>Read: <strong>&quot;p if and only if q.&quot;</strong> It works only if p → q can be <strong>switched</strong> to q → p.</li>
+<li>True if <strong>both true OR both false</strong>. False if one is true and the other false.</li>
+<li>Example: &quot;Skating is permitted <strong>if and only if</strong> the ice is 6 inches thick.&quot; → biconditional.</li>
+</ul>
+<p><strong>Polygon examples:</strong></p>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p ↔ q</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A polygon has three sides. (T)</td>
+<td>It is a triangle. (T)</td>
+<td>…has three sides iff it is a triangle</td>
+<td><strong>TRUE</strong></td>
+</tr>
+<tr>
+<td>A polygon has four sides. (F)</td>
+<td>It is a triangle. (T)</td>
+<td>…has four sides iff it is a triangle</td>
+<td><strong>FALSE</strong> (one T, one F)</td>
+</tr>
+<tr>
+<td>A polygon has four sides. (F)</td>
+<td>It is not a triangle. (F)</td>
+<td>…has four sides iff it is not a triangle</td>
+<td><strong>TRUE</strong> (both F!)</td>
+</tr>
+</tbody></table>
+<h3>🔑 Truth table cheat sheet (one line each)</h3>
+<table>
+<thead>
+<tr>
+<th>Connective</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>~p</td>
+<td>Opposite of p</td>
+</tr>
+<tr>
+<td>∧ (and)</td>
+<td>T only if <strong>both T</strong></td>
+</tr>
+<tr>
+<td>∨ (or)</td>
+<td>F only if <strong>both F</strong></td>
+</tr>
+<tr>
+<td>→ (if-then)</td>
+<td>F only if <strong>T → F</strong></td>
+</tr>
+<tr>
+<td>↔ (iff)</td>
+<td>T if <strong>same</strong>, F if <strong>different</strong></td>
+</tr>
+</tbody></table>
+<h2>2.7 Worked Examples from the Slides</h2>
+<p><strong>A. Simple or compound? (If compound, what type?)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Statement</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a. My friend took his master&#39;s degree in Spain.</td>
+<td><strong>Simple</strong></td>
+</tr>
+<tr>
+<td>b. Roses are red, and violets are blue.</td>
+<td>Compound: <strong>conjunction</strong></td>
+</tr>
+<tr>
+<td>c. You are entitled to a 30% discount if you are a member.</td>
+<td>Compound: <strong>conditional</strong></td>
+</tr>
+<tr>
+<td>d. Roel was on time, and Tom was late.</td>
+<td>Compound: <strong>conjunction</strong></td>
+</tr>
+<tr>
+<td>e. Either he watches a movie or dines with his friends.</td>
+<td>Compound: <strong>disjunction</strong></td>
+</tr>
+<tr>
+<td>f. If it is an acute angle, then it is an acute angle.</td>
+<td>Compound: <strong>conditional</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 In (c), the &quot;if&quot; part comes second. &quot;You get a discount <strong>if</strong> you are a member&quot; = &quot;<strong>If</strong> you are a member, <strong>then</strong> you get a discount.&quot;</p>
+</blockquote>
+<p><strong>B. Words → Symbols</strong> (p = &quot;He has green thumb&quot;, q = &quot;He is a senior citizen&quot;)</p>
+<table>
+<thead>
+<tr>
+<th>Words</th>
+<th>Symbols</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a. He has green thumb and he is a senior citizen.</td>
+<td><strong>p ∧ q</strong></td>
+</tr>
+<tr>
+<td>b. He does not have green thumb or he is not a senior citizen.</td>
+<td><strong>~p ∨ ~q</strong></td>
+</tr>
+<tr>
+<td>c. It is not the case that he has green thumb or is a senior citizen.</td>
+<td><strong>~(p ∨ q)</strong></td>
+</tr>
+<tr>
+<td>d. If he has green thumb, then he is not a senior citizen.</td>
+<td><strong>p → ~q</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ Notice the difference: <strong>~p ∨ ~q</strong> (each part negated) vs <strong>~(p ∨ q)</strong> (&quot;it is not the case that…&quot; negates the WHOLE thing).</p>
+</blockquote>
+<p><strong>C. Symbols → Words</strong> (p = &quot;Robin can swim&quot;, q = &quot;Tom plays the guitar&quot;)</p>
+<table>
+<thead>
+<tr>
+<th>Symbols</th>
+<th>Words</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a. p ∨ q</td>
+<td>Robin can swim or Tom plays the guitar.</td>
+</tr>
+<tr>
+<td>b. p ∧ ~q</td>
+<td>Robin can swim and Tom cannot play the guitar.</td>
+</tr>
+<tr>
+<td>c. ~(p ∨ q)</td>
+<td>It is not the case that Robin can swim or Tom can play the guitar.</td>
+</tr>
+<tr>
+<td>d. ~(p ∧ q)</td>
+<td>It is not the case that Robin can swim and Tom can play the guitar.</td>
+</tr>
+</tbody></table>
+<p><strong>D. Build truth tables ✍️ (my solution; the slides left them blank)</strong></p>
+<p>🧠 <strong>Method:</strong> do the <strong>inside first</strong>, then the outside. Make one column per step.</p>
+<p><strong>a. ~(p ∧ q)</strong></p>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p ∧ q</th>
+<th>~(p ∧ q)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+<td><strong>F</strong></td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td><strong>T</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+<td><strong>T</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td><strong>T</strong></td>
+</tr>
+</tbody></table>
+<p><strong>b. ~(p ∨ q)</strong></p>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p ∨ q</th>
+<th>~(p ∨ q)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+<td><strong>F</strong></td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td><strong>F</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+<td><strong>F</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td><strong>T</strong></td>
+</tr>
+</tbody></table>
+<p><strong>c. ~(p ∧ ~q)</strong></p>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>~q</th>
+<th>p ∧ ~q</th>
+<th>~(p ∧ ~q)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td><strong>T</strong></td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+<td><strong>F</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td><strong>T</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+<td><strong>T</strong></td>
+</tr>
+</tbody></table>
+<h2>2.8 Unit 2 Problem Set ✍️ (my solutions)</h2>
+<p><strong>I. Write in words</strong> (p = Today is Monday, q = Yesterday was Sunday)</p>
+<table>
+<thead>
+<tr>
+<th>Symbols</th>
+<th>Words</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a. p ∧ q</td>
+<td>Today is Monday and yesterday was Sunday.</td>
+</tr>
+<tr>
+<td>b. ~p ∨ q</td>
+<td>Today is not Monday or yesterday was Sunday.</td>
+</tr>
+<tr>
+<td>c. p → ~q</td>
+<td>If today is Monday, then yesterday was not Sunday.</td>
+</tr>
+<tr>
+<td>d. ~p ↔ ~q</td>
+<td>Today is not Monday if and only if yesterday was not Sunday.</td>
+</tr>
+<tr>
+<td>e. ~p ∧ ~q</td>
+<td>Today is not Monday and yesterday was not Sunday.</td>
+</tr>
+<tr>
+<td>f. p → (p ∧ ~q)</td>
+<td>If today is Monday, then today is Monday and yesterday was not Sunday.</td>
+</tr>
+</tbody></table>
+<p><strong>II. Identify the type.</strong> Tip: find the <strong>MAIN</strong> connective, the one that joins the two biggest parts.</p>
+<table>
+<thead>
+<tr>
+<th>Statement</th>
+<th>Main connective</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a. (Tony is absent or Raquel is absent), <strong>and</strong> it is examination day.</td>
+<td>and</td>
+<td><strong>Conjunction</strong></td>
+</tr>
+<tr>
+<td>b. Either Jay passed the test, <strong>or</strong> (Lina passed the test and Jon failed).</td>
+<td>or</td>
+<td><strong>Disjunction</strong></td>
+</tr>
+<tr>
+<td>c. <strong>It is false that</strong> (if I go on vacation, then I have received my 13th month pay).</td>
+<td>not</td>
+<td><strong>Negation</strong></td>
+</tr>
+<tr>
+<td>d. <strong>If</strong> (my brother pays the rental and I pay the electricity), <strong>then</strong> my father pays the tuition fees.</td>
+<td>if-then</td>
+<td><strong>Conditional</strong></td>
+</tr>
+</tbody></table>
+<p><strong>III. Truth tables</strong><br><strong>a. p ∨ ~q</strong></p>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>~q</th>
+<th>p ∨ ~q</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td><strong>T</strong></td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td><strong>T</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+<td><strong>F</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+<td><strong>T</strong></td>
+</tr>
+</tbody></table>
+<p><strong>b. q ∧ ~(p ∨ q)</strong></p>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p ∨ q</th>
+<th>~(p ∨ q)</th>
+<th>q ∧ ~(p ∨ q)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td><strong>F</strong></td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+<td><strong>F</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td><strong>F</strong></td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+<td><strong>F</strong></td>
+</tr>
+<tr>
+<td><em>(Always false! Makes sense: q can&#39;t be true while &quot;neither p nor q&quot; is also true.)</em></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h1>UNIT 3 — PROBLEM SOLVING AND REASONING</h1>
+<h2>3.1 Introduction &amp; Objectives</h2>
+<ul>
+<li>A main goal of math is to create <strong>critical thinkers and problem solvers</strong>. Math goes beyond the classroom and makes us <strong>rational individuals</strong>.</li>
+<li>This chapter covers problems with numbers AND <strong>real-life</strong> problems.</li>
+</ul>
+<p><strong>Objectives:</strong></p>
+<ol>
+<li>Use <strong>different types of reasoning</strong> to justify statements and arguments about math.</li>
+<li>Write <strong>clear and logical proofs</strong>.</li>
+<li><strong>Organize</strong> methods and approaches for proving and solving problems.</li>
+<li>Use <strong>word problem</strong> solving in <strong>real-life</strong> applications.</li>
+</ol>
+<p><strong>Key ideas:</strong></p>
+<ul>
+<li>Math isn&#39;t just numbers. <strong>Much of it is problem solving and reasoning</strong>, and the two are <strong>inseparable</strong>.</li>
+<li><strong>Logic and reasoning</strong> are very useful tools in <strong>decision making</strong>.</li>
+<li>People use <strong>deductive reasoning</strong> to show that <strong>conjectures</strong> are true (they follow logic rules).</li>
+<li><strong>Conjecture</strong> = a <strong>conclusion made from observing data</strong> (an educated guess).</li>
+<li><strong>Reasoning</strong> = stating ideas <strong>clearly and precisely</strong> to arrive at a <strong>conclusion</strong>. We make judgments from facts and observations, so we must know the ways to reach <strong>accurate conclusions</strong>.</li>
+</ul>
+<h2>3.2 Kinds of Reasoning (Zuela et al., 2009)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Kind</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>Intuition</strong></td>
+<td>Like <strong>guessing</strong>; reasoning by <strong>common sense</strong>. <strong>Less mental activity</strong>. Knowing something <strong>without proof, evidence, or conscious reasoning</strong>. <strong>Highly subjective.</strong></td>
+<td>&quot;I just feel it&#39;s the answer.&quot;</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Analogy</strong></td>
+<td>Reasoning by <strong>comparison</strong></td>
+<td>• Tree is to leaf as flower is to petal<br>• Hammer : nail :: comb : hair<br>• &quot;Finding a good man is like finding a needle in a haystack.&quot; (Dusty Springfield)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Inductive</strong></td>
+<td>Gathering <strong>specific information</strong> (through <strong>observation and measurement</strong>), then making a <strong>conjecture</strong> based on it</td>
+<td>2, 4, 6, 8 are even and each +2 → &quot;next is 10&quot;</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Deductive</strong></td>
+<td>Showing that statements follow <strong>logically from agreed-upon assumptions and proven facts</strong></td>
+<td>All men are mortal. Luke is a man. So Luke is mortal.</td>
+</tr>
+</tbody></table>
+<p><strong>🔁 Inductive vs Deductive (the cycle):</strong></p>
+<ul>
+<li><strong>Inductive:</strong> <strong>specific examples → general conclusion</strong> (bottom-up)</li>
+<li><strong>Deductive:</strong> <strong>general conclusion → specific examples/assumptions</strong> (top-down, &quot;narrowing down&quot;)</li>
+<li>In problem solving, <strong>both can happen at the same time.</strong></li>
+</ul>
+<blockquote>
+<p>🧠 <strong>IN</strong>ductive = look <strong>IN</strong>to examples → make a general rule.<br><strong>DE</strong>ductive = start from a rule → <strong>DE</strong>scend to the specific case.</p>
+</blockquote>
+<h2>3.3 Problem Solving</h2>
+<ul>
+<li><strong>Reisberg (2013):</strong> problem solving = <strong>cognitive processing aimed at a goal</strong> when the solver <strong>doesn&#39;t yet know a solution method</strong>.</li>
+<li>Methods differ, but here&#39;s one step-by-step procedure:</li>
+</ul>
+<h3>Polya&#39;s Four-Step Problem-Solving Strategy</h3>
+<p><strong>George Polya (1887–1985):</strong> born in <strong>Hungary</strong>, moved to the <strong>United States in 1940</strong> (Stanford University). Published <strong>10 books</strong> and many articles. His best-known book is <strong><em>How to Solve It</em> (1945)</strong>, which outlines his strategy.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Ask yourself</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. UNDERSTAND</strong></td>
+<td>What do I notice? What do I wonder? How can I estimate? What questions can I ask?</td>
+</tr>
+<tr>
+<td><strong>2. PLAN</strong></td>
+<td>What strategy should I use? What steps will I take to solve the problem?</td>
+</tr>
+<tr>
+<td><strong>3. SOLVE</strong></td>
+<td>How do I apply my strategy? Have I shown all my work? Is my voice loud and clear?</td>
+</tr>
+<tr>
+<td><strong>4. REVIEW</strong> (look back)</td>
+<td>Does my answer make sense? Did I check my work? Could someone see how I found my answer?</td>
+</tr>
+</tbody></table>
+<h3>4 Problem-Solving Strategies</h3>
+<ol>
+<li><strong>Searching for Patterns:</strong> recognizing patterns lets you see <strong>order or regularity</strong> and make sense of what&#39;s going on.</li>
+<li><strong>Working Backward:</strong> start at the <strong>end</strong> of the problem and work <strong>backward</strong>.</li>
+<li><strong>Drawing Pictures and Diagrams:</strong> use a <strong>figure, diagram, or graph</strong> to <strong>visualize</strong>, find relevant data, and see connections.</li>
+<li><strong>Making Lists and Tables:</strong> &quot;Make a Table&quot; helps with <strong>numerical relationships</strong>. Organized data makes <strong>patterns easier to spot</strong>.</li>
+</ol>
+<h2>3.4 Recreational Mathematics</h2>
+<ul>
+<li>Math done <strong>for recreation or as a hobby</strong>, meant to be <strong>fun</strong>: <strong>games or puzzles</strong> related to math (the term can cover other material too).</li>
+<li>Uses <strong>general logic and lateral thinking</strong>, NOT advanced math, so the <strong>average person</strong> can understand and appreciate the problem and its solution.</li>
+</ul>
+<h2>3.5 Practice Problems ✍️ (my solutions; the slides were blank)</h2>
+<p><strong>1. A police station has 25 vehicles (motorcycles and cars). Total wheels = 70. How many of each?</strong></p>
+<ul>
+<li>Motorcycle = 2 wheels, car = 4 wheels.</li>
+<li><strong>Trick (drawing/logic):</strong> pretend ALL 25 are motorcycles → 25 × 2 = <strong>50 wheels</strong>. We need 70, so <strong>20 wheels are missing</strong>. Each car adds <strong>2 extra</strong> wheels → 20 ÷ 2 = <strong>10 cars</strong>.</li>
+<li>Motorcycles = 25 − 10 = <strong>15</strong>.</li>
+<li>✅ Check: 15×2 + 10×4 = 30 + 40 = <strong>70</strong> ✓</li>
+<li><strong>Answer: 15 motorcycles, 10 cars.</strong></li>
+</ul>
+<p><strong>2a. 1, 5, 12, 22, 35, ___</strong></p>
+<ul>
+<li>Differences: 4, 7, 10, 13 → these go up by <strong>3</strong> each time → next difference = <strong>16</strong>.</li>
+<li>35 + 16 = <strong>51</strong></li>
+</ul>
+<p><strong>2b. 3, 7, 5, 10, 7, 13, ___</strong></p>
+<ul>
+<li>It&#39;s <strong>two sequences mixed together</strong> (take every other number):<ul>
+<li>1st, 3rd, 5th: <strong>3, 5, 7</strong> (+2)</li>
+<li>2nd, 4th, 6th: <strong>7, 10, 13</strong> (+3)</li>
+</ul>
+</li>
+<li>The next (7th) number continues the first list → <strong>9</strong></li>
+</ul>
+<p><strong>3. O, T, T, F, F, S, S, E, ___</strong></p>
+<ul>
+<li>First letters of <strong>O</strong>ne, <strong>T</strong>wo, <strong>T</strong>hree, <strong>F</strong>our, <strong>F</strong>ive, <strong>S</strong>ix, <strong>S</strong>even, <strong>E</strong>ight → <strong>N</strong> (Nine)</li>
+</ul>
+<p><strong>4. 1 cut → 2 pieces, 2 cuts → 3 pieces, 3 cuts → 4 pieces. How many pieces for 5 cuts? 21 cuts?</strong> (use a table!)</p>
+<table>
+<thead>
+<tr>
+<th>Cuts</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>…</th>
+<th>21</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pieces</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td><strong>6</strong></td>
+<td>…</td>
+<td><strong>22</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li>Pattern: <strong>pieces = cuts + 1</strong> → 5 cuts = <strong>6 pieces</strong>, 21 cuts = <strong>22 pieces</strong>.</li>
+</ul>
+<p><strong>5. John&#39;s age is below the retirement age (PH law: 60 optional / 65 compulsory). His digits add to 9, his age is a multiple of 6, and his age lies between two prime numbers. How old is he?</strong></p>
+<ul>
+<li>Multiples of 6 whose digits add to 9: <strong>18</strong> (1+8), <strong>36</strong> (3+6), <strong>54</strong> (5+4). (72 is too old.)</li>
+<li>Between two primes?<ul>
+<li>18 → 17 and 19 are <strong>both prime</strong> ✅</li>
+<li>36 → 35 is not prime (5×7) ❌</li>
+<li>54 → 55 is not prime (5×11) ❌</li>
+</ul>
+</li>
+<li><strong>Answer: 18 years old.</strong></li>
+</ul>
+<p><strong>6. Janie, Elaine, Leah live in adjacent apartments. Janie is in the middle. Jobs: grandmother, math teacher, socialite.</strong><br><strong>(a) The socialite watches Janie&#39;s apartment when Janie is on vacation. (b) The math teacher pounds on Leah&#39;s wall when Leah&#39;s TV is too loud. Find Janie&#39;s job.</strong></p>
+<ul>
+<li>From (a): the socialite is <strong>not Janie</strong>.</li>
+<li>From (b): the math teacher is <strong>not Leah</strong>, and must live <strong>next to Leah</strong>.</li>
+<li>Janie is in the middle, so Leah and Elaine are at the two ends. <strong>Only Janie is next to Leah.</strong></li>
+<li><strong>Answer: Janie is the math teacher.</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Leah</th>
+<th>Janie (middle)</th>
+<th>Elaine</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Socialite</td>
+<td>?</td>
+<td>✗</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Math Teacher</td>
+<td>✗</td>
+<td><strong>✓</strong></td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Grandmother</td>
+<td>?</td>
+<td>✗</td>
+<td>?</td>
+</tr>
+</tbody></table>
+<h3>Unit 3 Problem Set ✍️ (my solutions)</h3>
+<p><strong>1. J, F, M, A, M, J, J, A, ___?</strong> → months (<strong>J</strong>anuary, <strong>F</strong>ebruary…<strong>A</strong>ugust) → <strong>S</strong> (September)</p>
+<p><strong>2. Kianne, Rona Jane, Clarisse are sisters. Kianne is the oldest. Clarisse is not the oldest. Rona Jane is not the youngest. Who is the youngest?</strong></p>
+<ul>
+<li>Kianne = oldest. Rona Jane isn&#39;t youngest → she&#39;s in the middle. → <strong>Clarisse is the youngest.</strong></li>
+</ul>
+<p><strong>3. Alex is taller than Ban but shorter than Charlie. Daniel is taller than Edward but shorter than Alex. Who is the tallest?</strong></p>
+<ul>
+<li>Line up: Charlie &gt; Alex &gt; Ban, and Alex &gt; Daniel &gt; Edward → <strong>Charlie is the tallest.</strong></li>
+</ul>
+<hr>
+<h1>UNIT 4 — MATHEMATICAL SYSTEMS (Modular Arithmetic)</h1>
+<h2>4.1 Introduction &amp; Objectives</h2>
+<ul>
+<li>Time, day, and date are math. They help track <strong>future and past events</strong>.</li>
+<li>Products have numbers (<strong>barcodes</strong>). Are they <strong>legit or not</strong>?</li>
+</ul>
+<p><strong>Objectives — use Modular Arithmetic to:</strong></p>
+<ol>
+<li>Find a specific <strong>time, day of the week, and year</strong>.</li>
+<li>Check if a <strong>product is legit</strong> by solving <strong>missing numbers on its barcode</strong>.</li>
+</ol>
+<p><strong>Alarm example:</strong> it&#39;s <strong>10 PM</strong> and the alarm says &quot;will remind in <strong>7 hours</strong>&quot; → count 7 hours after 10 PM = <strong>5 AM</strong>. When counting by hand is too hard, we need <strong>Modular Arithmetic</strong>.</p>
+<h2>4.2 🔑 The ONE idea you need: &quot;mod&quot; = REMAINDER</h2>
+<blockquote>
+<p><strong>a mod n = the remainder when you divide a by n.</strong></p>
+<ul>
+<li>14 mod 12 = <strong>2</strong> (14 ÷ 12 = 1 remainder <strong>2</strong>)</li>
+<li>16 mod 7 = <strong>2</strong> (16 ÷ 7 = 2 remainder <strong>2</strong>)</li>
+<li>99 mod 10 = <strong>9</strong> (any number mod 10 = <strong>its last digit</strong>!)</li>
+</ul>
+</blockquote>
+<p><strong>Which number to divide by?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Problem about…</th>
+<th>Use mod</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Hours on a clock</strong></td>
+<td><strong>12</strong> (or <strong>24</strong> for 24-hr / AM-PM days)</td>
+<td>12 hours on a clock face</td>
+</tr>
+<tr>
+<td><strong>Days of the week</strong></td>
+<td><strong>7</strong></td>
+<td>7 days in a week</td>
+</tr>
+<tr>
+<td><strong>Barcodes</strong></td>
+<td><strong>10</strong></td>
+<td>digits 0–9</td>
+</tr>
+</tbody></table>
+<h2>4.3 Calculating Time (Time-line method)</h2>
+<p>To add/subtract time, <strong>jump to the next whole hour first</strong>, then add the rest.</p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Time-line</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>20 min after 10:00 AM</td>
+<td>10:00 —(20 min)→ 10:20</td>
+<td><strong>10:20 AM</strong></td>
+</tr>
+<tr>
+<td>20 min after 10:55 AM</td>
+<td>10:55 —(5 min)→ 11:00 —(15 min)→ 11:15</td>
+<td><strong>11:15 AM</strong></td>
+</tr>
+<tr>
+<td>2 hr 5 min after 1400</td>
+<td>1400 —(2 hr)→ 1600 —(5 min)→ 1605</td>
+<td><strong>1605</strong> (4:05 PM)</td>
+</tr>
+<tr>
+<td>1 hr 30 min after 6:50 PM</td>
+<td>6:50 —(1 hr)→ 7:50 —(10 min)→ 8:00 —(20 min)→ 8:20</td>
+<td><strong>8:20 PM</strong></td>
+</tr>
+</tbody></table>
+<h2>4.4 Reading the Calendar</h2>
+<ol>
+<li><strong>24 hours in a day</strong>, <strong>7 days in a week</strong>: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday.</li>
+<li><strong>12 months</strong>: January to December.</li>
+<li>Every month has <strong>at least 28 days</strong>. <strong>February = 28 or 29</strong>; the rest have <strong>30 or 31</strong>.</li>
+<li><strong>Leap year</strong> = February has <strong>29 days</strong>.<ul>
+<li>Years that are a <strong>multiple of 4</strong> → leap year.</li>
+<li>BUT years that are a <strong>multiple of 100</strong> must <strong>also be a multiple of 400</strong> to be a leap year.</li>
+<li>✅ <strong>2000, 2400</strong> → leap years (multiples of 100 AND 400)</li>
+<li>❌ <strong>2100, 2200, 2300</strong> → NOT leap years (multiples of 100 but not 400)</li>
+</ul>
+</li>
+</ol>
+<h2>4.5 Mathematical Systems</h2>
+<ul>
+<li>We study the <strong>nature and structure</strong> of mathematical systems. Every area of math (sets, logic, etc.) shares some <strong>basic common characteristics</strong>.</li>
+<li>🔑 <strong>A mathematical system = a set of elements + at least one binary operation.</strong></li>
+<li><strong>Binary operation</strong> = an operation applied to <strong>two objects</strong> (e.g., adding any two numbers).</li>
+</ul>
+<h2>4.6 Clock Arithmetic</h2>
+<ul>
+<li>An example of a <strong>finite mathematical system</strong>.</li>
+<li>On a 12-hour clock, when you pass 12, you <strong>go back around</strong>:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Clock sum</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 + 2 = 3</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>3 + 4 = 7</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>5 + 6 = 11</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>5 + 7 = 12</td>
+<td>lands on 12</td>
+</tr>
+<tr>
+<td>5 + 8 = <strong>1</strong></td>
+<td>13 → goes around → 1</td>
+</tr>
+<tr>
+<td>6 + 12 = <strong>6</strong></td>
+<td>adding 12 = full circle, same spot</td>
+</tr>
+<tr>
+<td>9 + 10 = <strong>7</strong></td>
+<td>19 − 12 = 7</td>
+</tr>
+<tr>
+<td>11 + 11 = <strong>10</strong></td>
+<td>22 − 12 = 10</td>
+</tr>
+<tr>
+<td>9 + 9 = <strong>6</strong></td>
+<td>18 − 12 = 6</td>
+</tr>
+<tr>
+<td>9 + 6 = <strong>3</strong></td>
+<td>start at 9, count 6 clockwise → 3</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🧠 <strong>Shortcut:</strong> add normally. <strong>If the answer is over 12, subtract 12.</strong></p>
+</blockquote>
+<ul>
+<li>You can build a <strong>full addition table</strong> for the 12-hour clock using the set <strong>{1, 2, …, 12}</strong> and <strong>addition</strong>. (Every row just &quot;wraps around&quot; after 12.)</li>
+</ul>
+<h2>4.7 Date (finding the day of the week)</h2>
+<ul>
+<li>Modular arithmetic helps find the <strong>specific day</strong> for a given date and year.</li>
+</ul>
+<h2>4.8 ✍️ Time &amp; Day Problems (my solutions)</h2>
+<blockquote>
+<p><strong>Recipe:</strong> ① divide by 12 / 24 / 7 → ② keep only the <strong>remainder</strong> → ③ move that many steps forward (after) or backward (before/ago).</p>
+</blockquote>
+<p><strong>1. What is 14 hours after 4 AM?</strong></p>
+<ul>
+<li>14 = 12 + <strong>2</strong>. Adding 12 hours flips AM↔PM and lands on the same number, so 4 AM + 12 = 4 PM, then + 2 = <strong>6 PM</strong>.</li>
+</ul>
+<p><strong>2. What is 100 hours before 1 PM?</strong></p>
+<ul>
+<li>100 ÷ 24 = 4 days, remainder <strong>4 hours</strong> (4 × 24 = 96).</li>
+<li>Whole days don&#39;t change the clock time → just go <strong>back 4 hours</strong>: 1 PM − 4 = <strong>9 AM</strong> (4 days earlier).</li>
+</ul>
+<p><strong>3. What is 247 hours after 3 PM?</strong></p>
+<ul>
+<li>247 ÷ 24 = 10 days, remainder <strong>7 hours</strong> (10 × 24 = 240).</li>
+<li>3 PM + 7 hours = <strong>10 PM</strong>.</li>
+</ul>
+<p><strong>4. If today is Monday, what day is 16 days from today?</strong></p>
+<ul>
+<li>16 ÷ 7 = 2 weeks, remainder <strong>2</strong>. Monday + 2 = <strong>Wednesday</strong>.</li>
+</ul>
+<p><strong>5. If today is Saturday, what day was it 211 days ago?</strong></p>
+<ul>
+<li>211 ÷ 7 = 30 weeks, remainder <strong>1</strong>. Saturday − 1 = <strong>Friday</strong>.</li>
+</ul>
+<p><strong>6. What day is it after 147 days if today is Sunday?</strong></p>
+<ul>
+<li>147 ÷ 7 = 21 weeks, remainder <strong>0</strong>. Exactly 21 full weeks → <strong>Sunday</strong>.</li>
+</ul>
+<p><strong>7. February 14, 2021 is a Sunday. What day is February 14, 2036?</strong></p>
+<ul>
+<li>2021 → 2036 = <strong>15 years</strong>.</li>
+<li>A normal year = 365 days = 52 weeks + <strong>1 day</strong>, so each year moves the day <strong>+1</strong>.</li>
+<li>A leap day (Feb 29) adds <strong>+1 more</strong>. Leap days between the two dates: <strong>2024, 2028, 2032</strong> = <strong>3</strong>. (2036&#39;s Feb 29 comes after Feb 14, so it doesn&#39;t count.)</li>
+<li>Total shift = 15 + 3 = <strong>18</strong> → 18 ÷ 7 = 2 remainder <strong>4</strong>.</li>
+<li>Sunday + 4 = <strong>Thursday</strong>. ✅ (Checked with a real calendar.)</li>
+</ul>
+<h2>4.9 Barcodes (13-digit check digit)</h2>
+<ul>
+<li>Modular arithmetic can find a digit in a <strong>13-digit barcode</strong> to check if a product is <strong>legit</strong>.</li>
+<li>Barcodes keep products <strong>organized in databases</strong> and <strong>universally recognized</strong> (Smyth, 2019).</li>
+<li>🔑 <strong>&quot;Modular Arithmetic is all about remainder.&quot;</strong></li>
+</ul>
+<h3>The formula</h3>
+<p><strong>d₁₃ = 10 − (d₁ + 3d₂ + d₃ + 3d₄ + d₅ + 3d₆ + d₇ + 3d₈ + d₉ + 3d₁₀ + d₁₁ + 3d₁₂) mod 10</strong></p>
+<p>What each part means:</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>d₁₃</strong></td>
+<td>The <strong>last (13th) digit</strong> of the barcode (the &quot;check digit&quot;)</td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td>A <strong>constant</strong></td>
+</tr>
+<tr>
+<td><strong>d₁, d₂ … d₁₂</strong></td>
+<td>1st digit, 2nd digit … 12th digit</td>
+</tr>
+<tr>
+<td><strong>3 × even positions</strong></td>
+<td>Digits in <strong>EVEN</strong> positions (2nd, 4th, 6th, 8th, 10th, 12th) are <strong>× 3</strong></td>
+</tr>
+<tr>
+<td><strong>1 × odd positions</strong></td>
+<td>Digits in <strong>ODD</strong> positions (1st, 3rd, 5th…) stay <strong>as they are</strong></td>
+</tr>
+<tr>
+<td><strong>mod 10</strong></td>
+<td>Take the <strong>remainder when divided by 10</strong> = <strong>the last digit</strong> of the sum</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🧠 <strong>In plain steps:</strong></p>
+<ol>
+<li>Write the 12 digits. <strong>Multiply every 2nd digit by 3.</strong></li>
+<li><strong>Add</strong> everything.</li>
+<li>Take the <strong>last digit</strong> of the sum.</li>
+<li><strong>10 − that digit</strong> = the check digit.<br><em>(If the sum already ends in 0, the check digit is 0.)</em></li>
+</ol>
+</blockquote>
+<h3>Example 1: Sprite 1.5L → <strong>4 801981 11860X</strong> (find the last digit)</h3>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Digit</td>
+<td>4</td>
+<td>8</td>
+<td>0</td>
+<td>1</td>
+<td>9</td>
+<td>8</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>8</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr>
+<td>×</td>
+<td>1</td>
+<td><strong>3</strong></td>
+<td>1</td>
+<td><strong>3</strong></td>
+<td>1</td>
+<td><strong>3</strong></td>
+<td>1</td>
+<td><strong>3</strong></td>
+<td>1</td>
+<td><strong>3</strong></td>
+<td>1</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>Value</td>
+<td>4</td>
+<td><strong>24</strong></td>
+<td>0</td>
+<td><strong>3</strong></td>
+<td>9</td>
+<td><strong>24</strong></td>
+<td>1</td>
+<td><strong>3</strong></td>
+<td>1</td>
+<td><strong>24</strong></td>
+<td>6</td>
+<td><strong>0</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li>Sum = 4+24+0+3+9+24+1+3+1+24+6+0 = <strong>99</strong></li>
+<li>99 mod 10 = <strong>9</strong> (last digit)</li>
+<li>d₁₃ = 10 − 9 = <strong>1</strong></li>
+<li>✅ <strong>The last digit of the Sprite barcode is 1.</strong></li>
+</ul>
+<h3>Example 2: Oishi Prawn Crackers → <strong>4 80019X 177962</strong> (a middle digit is missing!)</h3>
+<p>This time the <strong>last digit (2) is given</strong> and the <strong>7th digit</strong> is missing. Use the <strong>same formula</strong> and solve for X with algebra.</p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th><strong>7</strong></th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Digit</td>
+<td>4</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>9</td>
+<td><strong>X</strong></td>
+<td>1</td>
+<td>7</td>
+<td>7</td>
+<td>9</td>
+<td>6</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>4</td>
+<td><strong>24</strong></td>
+<td>0</td>
+<td><strong>0</strong></td>
+<td>1</td>
+<td><strong>27</strong></td>
+<td><strong>X</strong></td>
+<td><strong>3</strong></td>
+<td>7</td>
+<td><strong>21</strong></td>
+<td>9</td>
+<td><strong>18</strong></td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p>(Position 7 is odd, so X stays × 1.)</p>
+<p><strong>Step 1:</strong> plug in → 2 = 10 − (4+24+0+0+1+27+X+3+7+21+9+18) mod 10<br><strong>Step 2:</strong> add the known numbers → 2 = 10 − (<strong>X + 114</strong>) mod 10<br><strong>Step 3:</strong> transpose (move to the other side) → (X + 114) mod 10 = 10 − 2<br><strong>Step 4:</strong> simplify → <strong>(X + 114) mod 10 = 8</strong><br><strong>Step 5:</strong> think: &quot;(X + 114) must <strong>end in 8</strong>.&quot; The nearest number bigger than 114 ending in 8 is <strong>118</strong>. So 114 + X = 118 → <strong>X = 4</strong>.<br><strong>Check:</strong> (4 + 114) mod 10 = 118 mod 10 = <strong>8</strong> ✓</p>
+<ul>
+<li>✅ <strong>The 7th digit of the Oishi barcode is 4</strong> → full code <strong>4 800194 177962</strong>.</li>
+</ul>
+<hr>
+<h1>⚠️ EXAM TRAPS / EASY-TO-CONFUSE</h1>
+<ul>
+<li><strong>Sequence</strong> = list; <strong>Series</strong> = sum of the list.</li>
+<li><strong>Arithmetic</strong> = + or − (<strong>common difference</strong>). <strong>Geometric</strong> = × or ÷ (<strong>common ratio</strong>).</li>
+<li><strong>5, −5, 5, −5</strong> is <strong>geometric</strong> (× −1), NOT arithmetic!</li>
+<li><strong>Fibonacci:</strong> add the last two. <strong>Liber Abaci, 1202.</strong> Rabbits → <strong>233 pairs</strong> after a year. Ratio → <strong>1.618 (Golden Ratio, Φ)</strong>.</li>
+<li><strong>Fractal</strong> term coined by <strong>Benoit Mandelbrot</strong>.</li>
+<li>Tiger face = <strong>bilateral</strong>; spiderwort = <strong>3-fold</strong>; starfish = <strong>5-fold</strong> symmetry.</li>
+<li>Tessellation = <strong>no gaps, no overlaps</strong>. Only <strong>squares, equilateral triangles, hexagons</strong> tessellate alone.</li>
+<li><strong>Math language:</strong> precise, concise, powerful. <strong>Symbols / Syntax / Convention.</strong></li>
+<li>A statement <strong>doesn&#39;t have to be true</strong> to be a statement.</li>
+<li><strong>∧ = and = conjunction</strong>, <strong>∨ = or = disjunction</strong>, <strong>→ = conditional</strong>, <strong>↔ = biconditional</strong>, <strong>~ = negation</strong>.</li>
+<li><strong>→ is false ONLY for T → F.</strong> <strong>↔ is true when both are the same (even both F!).</strong></li>
+<li><strong>~p ∨ ~q ≠ ~(p ∨ q)</strong></li>
+<li><strong>Inductive</strong> = specific → general. <strong>Deductive</strong> = general → specific.</li>
+<li><strong>Intuition</strong> = guessing / common sense (subjective). <strong>Analogy</strong> = comparison (A : B :: C : D).</li>
+<li><strong>Polya:</strong> Understand → Plan → Solve → Review. Book: <em>How to Solve It</em> (1945).</li>
+<li><strong>Conjecture</strong> = conclusion from observing data.</li>
+<li><strong>Mathematical system</strong> = set of elements + at least one <strong>binary operation</strong> (operation on 2 objects).</li>
+<li><strong>mod = remainder.</strong> Clock → 12 (or 24), week → 7, barcode → 10.</li>
+<li><strong>Leap year:</strong> ÷4 ✅, but ÷100 years need ÷400 too (2000 ✅, 2100 ❌).</li>
+<li><strong>Barcode:</strong> EVEN positions × 3, ODD × 1; last digit = 10 − (sum mod 10).</li>
+</ul>
+<hr>
+<h1>✅ QUICK SELF-TEST (cover the answers!)</h1>
+<ol>
+<li>What are the 4 patterns in nature this module focuses on? → <em>Symmetry, fractals, spirals, tessellations.</em></li>
+<li>Who coined &quot;fractal&quot;? → <em>Benoit Mandelbrot.</em></li>
+<li>What is a sequence? A series? → <em>An ordered list following a rule; the sum of its terms.</em></li>
+<li>2, 6, 18, 54: arithmetic or geometric? → <em>Geometric, r = 3 (next 162).</em></li>
+<li>10, 7, 4, 1: arithmetic or geometric? → <em>Arithmetic, d = −3 (next −2).</em></li>
+<li>Next Fibonacci number after 55, 89? → <em>144.</em></li>
+<li>The Fibonacci ratio approaches? → <em>1.618 (Golden Ratio, Φ).</em></li>
+<li>p = T, q = F. What is p ∧ q? p ∨ q? p → q? p ↔ q? → <em>F, T, F, F.</em></li>
+<li>p = F, q = F. What is p → q? p ↔ q? → <em>T, T.</em></li>
+<li>Symbol for biconditional? → <em>↔</em></li>
+<li>&quot;It is not the case that p or q&quot; in symbols? → <em>~(p ∨ q).</em></li>
+<li>Inductive or deductive: &quot;The sun rose every day I&#39;ve seen, so it&#39;ll rise tomorrow.&quot; → <em>Inductive.</em></li>
+<li>Polya&#39;s 4 steps? → <em>Understand, Plan, Solve, Review.</em></li>
+<li>30 hours after 8 AM? → <em>30 mod 24 = 6 → 2 PM (next day).</em></li>
+<li>Today is Wednesday. What day is 100 days from now? → <em>100 mod 7 = 2 → Friday.</em></li>
+<li>Is 1900 a leap year? → <em>No (÷100 but not ÷400).</em></li>
+<li>Clock arithmetic: 8 + 7 = ? → <em>3.</em></li>
+<li>In barcodes, which positions are multiplied by 3? → <em>Even positions (2, 4, 6, 8, 10, 12).</em></li>
+<li>What does &quot;mod 10&quot; give you? → <em>The last digit (remainder when divided by 10).</em></li>
+<li>A mathematical system has…? → <em>A set of elements and at least one binary operation.</em></li>
+</ol>
+<hr>
+<p><em>References (from slides): Aufmann et al. (2018) Mathematics in the Modern World; Daligdig (2019) MMW, LORIMAR; De Castro (2019) MMW, PLV; Gallo &amp; Setek (2005) Fundamentals of Mathematics 10th ed.; &quot;Fibonacci Numbers: Nature, Math, and Social Inquiry&quot; Gemini Notebook; plus image sources (Alamy, Pinterest, Wikimedia, etc.).</em></p>
+
+  </div>
+  <div class="note-nav">
+    <a href="GE4_Math-In-The-Modern-World.html" class="note-nav-prev">← GE4</a>
+    <a href="GE5_Purposive-Communication.html" class="note-nav-next">GE5 →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>
