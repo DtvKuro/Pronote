@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | Reviewer: Input, Keyboard & Output Devices</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">Subjects</h4>
+  <ul class="notes-menu-list">
+        <li><a href="CC1_Introduction-To-Computing.html" class="notes-menu-link" data-preview="CC101: Introduction To Computing Unit Count Lecture = 2 units Laboratory = 1 unit Total = 3 units Mi"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="CC1_Reviewer-Lesson-2.html" class="notes-menu-link active" data-preview="📘 REVIEWER — Computer Hardware Fundamentals Covers: Lesson 2.1 (Hardware &amp;amp; Input Devices) · Les"><span class="notes-menu-code">CC1</span> Reviewer: Input, Keyboard & Output Devices</a></li>
+        <li><a href="CC2_Fundamentals-To-Programming.html" class="notes-menu-link"><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="HCI101_Intro-To-Human-Computer-Interaction.html" class="notes-menu-link"><span class="notes-menu-code">HCI101</span> Intro to Human-Computer Interaction</a></li>
+        <li><a href="GE4_Math-In-The-Modern-World.html" class="notes-menu-link"><span class="notes-menu-code">GE4</span> Math in the Modern World</a></li>
+        <li><a href="GE5_Purposive-Communication.html" class="notes-menu-link"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="GE6_Art-Appreciation.html" class="notes-menu-link"><span class="notes-menu-code">GE6</span> Art Appreciation</a></li>
+        <li><a href="GE9_Philippine-History.html" class="notes-menu-link"><span class="notes-menu-code">GE9</span> Philippine History</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>Subjects</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Reviewer: Input, Keyboard & Output Devices</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">CC1</span><span class="note-units">Lesson 2</span></p>
+  <h1 class="note-title">Reviewer: Input, Keyboard & Output Devices</h1>
+  <p class="note-meta">Last updated: September 25, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <div class="note-content">
+    <h1>📘 REVIEWER — Computer Hardware Fundamentals</h1>
+<p><strong>Covers:</strong> Lesson 2.1 (Hardware &amp; Input Devices) · Lesson 2.2 (Keyboard Fundamentals) · Lesson 2.3 (Output Devices)</p>
+<blockquote>
+<p>Tip: Read the <strong>bold words</strong> first, then the explanations. The &quot;Quick Self-Test&quot; at the end checks if you remember everything.</p>
+</blockquote>
+<hr>
+<h1>PART 1 — HARDWARE &amp; INPUT DEVICES (Lesson 2.1)</h1>
+<h2>1.1 Introduction (Why learn computers?)</h2>
+<ul>
+<li>Computers are an <strong>essential part of everyone&#39;s life</strong> today.</li>
+<li>They are used in <strong>almost every field</strong>, and new uses are discovered every day.</li>
+<li>Places that use computers: <strong>homes, offices, schools, colleges, universities, hospitals, shops, businesses, industries, banks, railway stations, bus stations, airports, research centers</strong>, and other organizations.</li>
+<li>Since most daily activities are done by computers, <strong>everyone should have basic computer knowledge</strong>.</li>
+</ul>
+<h2>1.2 What is a Computer?</h2>
+<ul>
+<li><p>A <strong>fast calculating device</strong> that does <strong>arithmetic operations</strong>.</p>
+</li>
+<li><p>But it is <strong>more than a calculator</strong>. It can do any work involving <strong>arithmetic AND logical operations</strong> on data.</p>
+</li>
+<li><p>The basic flow:</p>
+<p><strong>INPUT (get data) → PROCESS (follow instructions) → OUTPUT (give information)</strong></p>
+</li>
+</ul>
+<h2>1.3 What is Hardware?</h2>
+<ul>
+<li><p><strong>Hardware</strong> = any <strong>physical component</strong> of a computer (you can see and touch it).</p>
+</li>
+<li><p>Many kinds of hardware exist today.</p>
+</li>
+<li><p>Hardware is <strong>classified by its function</strong> in the computer system:</p>
+<ol>
+<li><strong>Input devices</strong></li>
+<li><strong>Output devices</strong></li>
+<li><strong>Storage devices</strong></li>
+<li><strong>Communication devices</strong></li>
+</ol>
+<p><em>(Note: the slide says &quot;three categories&quot; but actually lists these four.)</em></p>
+</li>
+</ul>
+<h2>1.4 What this unit covers / Objectives</h2>
+<p>The unit deals with: anatomy of a computer, input/output/storage devices, types of computers, and hardware troubleshooting &amp; diagnosis.</p>
+<p>After studying, you should be able to:</p>
+<ul>
+<li>Explain the <strong>anatomy of a computer</strong></li>
+<li>Explore various <strong>input, output, and storage</strong> devices</li>
+<li>Describe <strong>temporary and permanent storage</strong> devices</li>
+<li>Explain the <strong>different types of computers</strong></li>
+<li>Explain various <strong>computer troubleshooting</strong></li>
+</ul>
+<hr>
+<h2>1.5 Anatomy of a Computer</h2>
+<h3>Hardware vs Software</h3>
+<ul>
+<li>Internal design differs per model, but the <strong>basic components are the same</strong> in all computers.</li>
+<li>A computer needs <strong>BOTH hardware and software</strong> to work.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Hardware</strong></th>
+<th><strong>Software</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>What it is</td>
+<td>Mechanical &amp; electronic devices you <strong>can see and touch</strong></td>
+<td><strong>Programs, operating systems, and data</strong> stored in memory/storage</td>
+</tr>
+<tr>
+<td>Examples</td>
+<td>Keyboard, Monitor, DVD</td>
+<td>Java, Microsoft Office, Open Office</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Summary line: <strong>Hardware = physical parts. Software = programs needed to operate the computer.</strong></p>
+</blockquote>
+<h3>The 4 Functions of a Computer</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Meaning</th>
+<th>Example devices</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. <strong>Receive input</strong></td>
+<td>Accept information from outside</td>
+<td>Keyboard, mouse</td>
+</tr>
+<tr>
+<td>2. <strong>Process information</strong></td>
+<td>Do arithmetic or logical operations</td>
+<td>(CPU)</td>
+</tr>
+<tr>
+<td>3. <strong>Produce output</strong></td>
+<td>Communicate information to the outside world</td>
+<td>Monitor, printer</td>
+</tr>
+<tr>
+<td>4. <strong>Store information</strong></td>
+<td>Keep information</td>
+<td>Hard disk, compact disk (CD)</td>
+</tr>
+</tbody></table>
+<h3>The 3 Main Units of a Computer</h3>
+<p><em>(The slide calls them &quot;three main functions&quot;, but they&#39;re really the 3 main units:)</em></p>
+<p><strong>① Input/Output Unit</strong></p>
+<ul>
+<li>A computer processes input data using a set of instructions and gives output.</li>
+<li>The <strong>I/O unit</strong> = the unit used to get data &amp; instructions <strong>into</strong> the computer and to <strong>display or print</strong> output.</li>
+<li><strong>Keyboard = main input device. Monitor = main output device.</strong></li>
+</ul>
+<p><strong>② Central Processing Unit (CPU)</strong></p>
+<ul>
+<li>The <strong>&quot;brain&quot;</strong> of the computer — does <strong>all processing</strong> of input data.</li>
+<li>In microcomputers, the CPU is built on a <strong>single chip / Integrated Circuit (IC)</strong> called a <strong>Microprocessor</strong>.</li>
+<li><strong>5 parts of the CPU</strong> (memory trick: <strong>&quot;A CRBC&quot;</strong> → <strong>A</strong>LU, <strong>C</strong>U, <strong>R</strong>egisters, <strong>B</strong>uses, <strong>C</strong>lock):</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Arithmetic Logic Unit (ALU)</strong></td>
+<td>Does <strong>arithmetic</strong> (add, subtract, multiply, divide) and <strong>logical</strong> operations (less than, equal to, greater than)</td>
+</tr>
+<tr>
+<td><strong>Control Unit (CU)</strong></td>
+<td>Controls the <strong>transfer of data and instructions</strong> among units. Called the <strong>&quot;Central Nervous System&quot;</strong> of the computer — manages &amp; coordinates all units. It <strong>gets instructions from memory, interprets them, and directs</strong> the computer&#39;s operation</td>
+</tr>
+<tr>
+<td><strong>Registers</strong></td>
+<td><strong>Small, high-speed circuits</strong> that store <strong>data, instructions, and memory addresses</strong> while the ALU works. Number/type of registers <strong>varies per CPU</strong></td>
+</tr>
+<tr>
+<td><strong>Buses</strong></td>
+<td>Data is stored in a register as a <strong>unit of 8 bits</strong>. Each bit travels on a <strong>separate wire</strong>; this <strong>group of 8 wires</strong> is a <strong>bus</strong>. A bus = <strong>connection between two components to transmit signals</strong>. <strong>3 types: Data bus, Control bus, Address bus</strong></td>
+</tr>
+<tr>
+<td><strong>Clock</strong></td>
+<td>Measures &amp; gives a <strong>fixed time slot</strong> for each micro-operation. The CPU works <strong>in sync with the clock pulse</strong>. Clock speed measured in <strong>Megahertz (MHz) = millions of cycles per second</strong>. Speed <strong>varies per model</strong></td>
+</tr>
+</tbody></table>
+<p><strong>③ Memory</strong></p>
+<ul>
+<li>Stores <strong>data, instructions, and information before, during, and after</strong> processing by the CPU.</li>
+<li>It&#39;s a <strong>work area</strong> (physically a collection of <strong>integrated circuits</strong>) where the CPU keeps data &amp; instructions.</li>
+<li><strong>2 types: RAM and ROM</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>ROM (Read Only Memory)</strong></th>
+<th><strong>RAM (Random Access Memory)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Holds</td>
+<td><strong>Essential instructions</strong></td>
+<td>Data &amp; instructions <strong>while programs run</strong></td>
+</tr>
+<tr>
+<td>Permanent?</td>
+<td>✅ <strong>Permanent</strong> — NOT erased when switched off</td>
+<td>❌ <strong>Temporary</strong> — <strong>erased</strong> when switched off</td>
+</tr>
+<tr>
+<td>Read/Write?</td>
+<td>Read only</td>
+<td><strong>Read/Write</strong> (user can read and write)</td>
+</tr>
+<tr>
+<td>Why the name?</td>
+<td>You can only read it</td>
+<td>You can <strong>randomly use any location</strong></td>
+</tr>
+<tr>
+<td>Capacity (per slides)</td>
+<td><strong>64 KB to 256 KB</strong></td>
+<td><strong>640 KB to several megabytes</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Memory trick: <strong>RAM = Remove At Machine-off</strong> (temporary). <strong>ROM = Remains On Memory</strong> (permanent).</p>
+</blockquote>
+<hr>
+<h2>1.6 Input Devices — 2 Categories</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Basic Input Devices</strong></th>
+<th><strong>Special Input Devices</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Essential</strong> to operate a PC</td>
+<td><strong>Not essential</strong> to operate a PC</td>
+</tr>
+<tr>
+<td>Always required for basic input</td>
+<td>Used for <strong>special purposes</strong></td>
+</tr>
+<tr>
+<td><strong>Keyboard, Mouse</strong></td>
+<td><strong>Trackball, Light Pen, Touch Screen, Joystick, Digitizer, Scanner, OMR, BCR, OCR, MICR, Voice-Input Devices</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>1.7 Keyboard (Lesson 2.1 version)</h2>
+<ul>
+<li><strong>Most common input device</strong> for <strong>manual data entry</strong>.</li>
+<li>Similar to an <strong>electric typewriter</strong> keyboard but with <strong>extra keys</strong>.</li>
+<li><strong>Standardized</strong> for all computers (PC, workstation, notebook).</li>
+</ul>
+<p><strong>5 Classes of keys:</strong></p>
+<ol>
+<li><strong>Letter keys</strong> — the <strong>26 letters</strong> of the English alphabet, arranged like a typewriter.</li>
+<li><strong>Digit keys</strong> — <strong>two sets</strong>: (a) the row <strong>second from the top</strong> (like a typewriter), and (b) the <strong>numeric keypad</strong> at the <strong>bottom right</strong> for quick one-hand number entry.</li>
+<li><strong>Special character keys</strong> — <code>&lt; &gt; ? / { } [ ] ( ) . &quot; @ # $ % &amp; *</code> etc.</li>
+<li><strong>Non-printable control keys</strong> — for <strong>backspace, next line (Enter), tab, moving the cursor up/down, insert, delete</strong>. Also the <strong>space bar</strong> at the bottom for spaces.</li>
+<li><strong>Function keys</strong> — labeled <strong>F1, F2 … up to F15</strong>; pressing them <strong>invokes programs stored in the computer</strong>.</li>
+</ol>
+<p><strong>How a keyboard works:</strong><br>Key pressed → <strong>electric signal</strong> produced → detected by the <strong>keyboard encoder</strong> → sends a <strong>binary code</strong> for that key → <strong>CPU</strong>.</p>
+<ul>
+<li>Many keyboard types exist, but the <strong>101-key keyboard is the most popular</strong>.</li>
+<li>You learn each key best by actually working on a PC.</li>
+</ul>
+<hr>
+<h2>1.8 Mouse</h2>
+<ul>
+<li>Controls the <strong>movement of the cursor</strong> on the screen.</li>
+<li>A small object you <strong>roll on a hard, flat surface</strong>.</li>
+<li>Named after its <strong>shape (looks like a mouse)</strong>.</li>
+<li>Move the mouse → pointer moves the <strong>same direction</strong>.</li>
+<li>Has <strong>at least 1 button, sometimes up to 3</strong>; functions depend on the program running.</li>
+<li><strong>3 basic types:</strong> <strong>Mechanical, Opto-mechanical, Optical</strong>.</li>
+<li><strong>Wireless mice</strong> send movement to the computer wirelessly — convenient.</li>
+<li><strong>Touch panel displays</strong> don&#39;t need a mouse; touch an icon with a <strong>finger or pointing device (e.g., ballpoint pen)</strong> to open a program.</li>
+</ul>
+<hr>
+<h2>1.9 Other (Special) Input Devices</h2>
+<h3>🔵 Trackball</h3>
+<ul>
+<li><strong>Stationary</strong> pointing device with a <strong>ball you rotate</strong> to move the cursor — like an <strong>upside-down mouse</strong>.</li>
+<li>The <strong>whole device stays in place</strong> → saves <strong>desk space</strong>, reduces <strong>wrist &amp; arm strain</strong>.</li>
+<li>You move the ball with <strong>fingers, thumb, or palm</strong> for precise control.</li>
+<li><strong>In laptops/notebooks:</strong> used <strong>instead of a mouse</strong>; a ball <strong>half inserted</strong> into the body, moved with fingers.</li>
+<li><strong>Considered better than a mouse</strong> because it needs <strong>little arm movement and less desk space</strong>.</li>
+<li><strong>How it works:</strong><ul>
+<li><strong>Sensors</strong> inside detect the ball&#39;s rotation <strong>along two axes</strong>.</li>
+<li>Rolling the ball → sensors <strong>translate</strong> it into cursor movement.</li>
+</ul>
+</li>
+<li><strong>Advantages:</strong><ul>
+<li><strong>Ergonomics</strong> — less arm/wrist movement, comfortable for long use, less strain.</li>
+<li><strong>Space-saving</strong> — stationary, no extra desk space needed.</li>
+<li><strong>Precision</strong> — with practice, very precise; good for detailed work like <strong>editing</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3>✏️ Light Pen</h3>
+<ul>
+<li>Pointing device <strong>shaped like a pen</strong>.</li>
+<li>Used to <strong>select menu items</strong> or <strong>draw pictures</strong> on the monitor screen.</li>
+<li>Made of a <strong>photocell + optical system</strong> in a small tube.</li>
+<li>Press the tip → the <strong>photocell detects the screen location</strong> → sends a signal to the CPU.</li>
+</ul>
+<h3>👆 Touch Screen</h3>
+<ul>
+<li>Some special <strong>VDU (Visual Display Unit)</strong> devices have <strong>touch-sensitive screens</strong>.</li>
+<li>Sensitive to <strong>human fingers</strong>; act as <strong>tactile devices</strong>.</li>
+<li>You <strong>point to a selection on the screen</strong> instead of pressing keys.</li>
+<li>Helps the user <strong>get information quickly</strong>.</li>
+</ul>
+<h3>🕹️ Joystick</h3>
+<ul>
+<li>Pointing device to <strong>move the cursor</strong> on the screen.</li>
+<li>A <strong>stick with a spherical ball at both lower and upper ends</strong>.</li>
+<li>The <strong>lower ball moves in a socket</strong>; can move in <strong>all four directions</strong>.</li>
+<li>Works <strong>similar to a mouse</strong>.</li>
+<li>Mainly used in <strong>CAD (Computer Aided Designing)</strong> and <strong>computer games</strong>.</li>
+</ul>
+<h3>🎨 Digitizer (Tablet / Graphics Tablet)</h3>
+<ul>
+<li>Converts <strong>analog information into digital form</strong>.</li>
+<li>Can convert a signal from a <strong>TV or camera into numbers</strong> stored in a computer → computer can <strong>recreate the picture</strong>.</li>
+<li>Also called <strong>Tablet / Graphics Tablet</strong> because it converts <strong>graphics &amp; pictures into binary input</strong>.</li>
+<li>Used for <strong>fine drawing work</strong>.</li>
+</ul>
+<h3>🖨️ Scanner (Flatbed / Handheld)</h3>
+<ul>
+<li>Works like a <strong>photocopy machine</strong>.</li>
+<li>Used to transfer information <strong>on paper → to the computer&#39;s hard disk</strong> for editing.</li>
+<li>Captures images → converts to <strong>digital form</strong> → stored on disk.</li>
+<li>Images <strong>can be edited before printing</strong>.</li>
+<li>Types shown: <strong>Flatbed scanner</strong> and <strong>Handheld scanner</strong>.</li>
+</ul>
+<h3>📝 OMR — Optical Mark Reader</h3>
+<ul>
+<li>Special <strong>optical scanner</strong> that recognizes <strong>marks made by pen or pencil</strong>.</li>
+<li>Used where <strong>one out of a few choices</strong> is marked.</li>
+<li>Mainly for <strong>checking multiple-choice exam answer sheets</strong>.</li>
+</ul>
+<h3>🏷️ BCR — Bar Code Reader</h3>
+<ul>
+<li>Optical scanner for <strong>bar-coded data</strong> (<strong>light and dark lines</strong>).</li>
+<li>Bar codes are used for <strong>labeling goods, numbering books</strong>, etc.</li>
+<li>Scans the bar code → converts to an <strong>alphanumeric value</strong> → sends it to the connected computer.</li>
+</ul>
+<h3>🔤 OCR — Optical Character Recognition</h3>
+<ul>
+<li>Optical scanner that <strong>reads printed text</strong>.</li>
+<li>Scans <strong>character by character</strong> → converts to <strong>machine-readable code</strong> → stores in memory.</li>
+<li>Used for: <strong>passenger tickets, credit card bills (computer-printed), ZIP codes in postal services</strong>.</li>
+</ul>
+<h3>🏦 MICR — Magnetic Ink Character Recognition/Reader</h3>
+<ul>
+<li>Mainly used in <strong>banks</strong> (many cheques processed daily).</li>
+<li><strong>Bank code number and cheque number</strong> are printed with <strong>special ink containing magnetic particles</strong> — machine readable.</li>
+<li>This reading process = <strong>Magnetic Ink Character Recognition</strong>.</li>
+<li>It&#39;s a technology that <strong>encodes info like bank routing numbers and account numbers</strong> using magnetic ink.</li>
+<li>The ink&#39;s particles can be <strong>magnetized and then read</strong> by MICR readers.</li>
+<li>Widely used in banking for <strong>checks and other financial documents</strong>.</li>
+</ul>
+<h3>🎤 Voice Input Devices</h3>
+<ul>
+<li>The <strong>latest</strong> input devices — <strong>recognize the human voice</strong>.</li>
+<li><strong>Microphone</strong> = voice input device; inputs sound stored in <strong>digital form</strong>.</li>
+<li>Used for <strong>adding sound to multimedia presentations</strong> or <strong>mixing music</strong>.</li>
+</ul>
+<h3>🔑 Scanner-family cheat sheet (easy to mix up!)</h3>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Reads…</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>OMR</strong></td>
+<td><strong>Marks</strong> (pencil/pen shading)</td>
+<td>Multiple-choice exam sheets</td>
+</tr>
+<tr>
+<td><strong>BCR</strong></td>
+<td><strong>Bar codes</strong> (lines)</td>
+<td>Goods labels, book numbers</td>
+</tr>
+<tr>
+<td><strong>OCR</strong></td>
+<td><strong>Printed text/characters</strong></td>
+<td>Tickets, credit card bills, ZIP codes</td>
+</tr>
+<tr>
+<td><strong>MICR</strong></td>
+<td><strong>Magnetic ink</strong> characters</td>
+<td>Bank cheques</td>
+</tr>
+</tbody></table>
+<hr>
+<h1>PART 2 — KEYBOARD FUNDAMENTALS (Lesson 2.2)</h1>
+<h2>2.1 The Keyboard</h2>
+<ul>
+<li>One of the <strong>primary input devices</strong>.</li>
+<li>You enter data by <strong>pressing keys</strong>.</li>
+<li><strong>Desktop keyboards: 101 to 105 keys.</strong> Laptops/smaller computers have <strong>fewer keys</strong>.</li>
+<li>Lets you type <strong>letters, numbers, spaces, punctuation</strong>, and symbols like <strong>$</strong> and <strong>*</strong>.</li>
+<li>Has <strong>special keys</strong> for entering data and instructions.</li>
+</ul>
+<h2>2.2 Parts of the Keyboard (5 parts)</h2>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Typewriter keypad</strong></td>
+<td>The <strong>typing area</strong> — letters, numbers, punctuation, basic keys. All keyboards have it</td>
+<td>A–Z, 0–9, punctuation</td>
+</tr>
+<tr>
+<td><strong>2. Numeric keypad</strong></td>
+<td>On the <strong>right side</strong> of many desktop keyboards. <strong>Calculator-style</strong>: numbers, decimal point, basic math operators. Makes <strong>entering numbers easier</strong></td>
+<td>0–9, <code>.</code>, <code>+ - * /</code></td>
+</tr>
+<tr>
+<td><strong>3. Toggle keys</strong></td>
+<td>Switch between <strong>two states</strong> (ON/OFF)</td>
+<td><strong>Caps Lock, Num Lock, Scroll Lock, Insert</strong></td>
+</tr>
+<tr>
+<td><strong>4. Special keys</strong> (a.k.a. Computer keys)</td>
+<td>Special commands</td>
+<td><strong>Esc, Ctrl, Alt, Print Screen, Windows key, Mouse (menu) key</strong></td>
+</tr>
+<tr>
+<td><strong>5. Function keys (F1–F12)</strong></td>
+<td>Across the <strong>top</strong>; labeled <strong>F + number</strong>. Programmed to <strong>issue commands</strong>; what they do <strong>depends on the program</strong>. E.g., <strong>F1 = Help</strong> in many programs</td>
+<td>F1 … F12</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ When told to &quot;press F1&quot;, press the <strong>single key labeled F1</strong> — NOT the letter F then the number 1.</p>
+<p>⚠️ Note: Lesson 2.1 says function keys go up to <strong>F15</strong>; Lesson 2.2 says <strong>F1–F12</strong> (the common standard today).</p>
+</blockquote>
+<h2>2.3 Types of Keyboard</h2>
+<table>
+<thead>
+<tr>
+<th><strong>QWERTY</strong></th>
+<th><strong>DVORAK</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>The <strong>standard</strong> keyboard</td>
+<td><strong>Alternative</strong> layout</td>
+</tr>
+<tr>
+<td>Pronounced <strong>&quot;KWER-tee&quot;</strong></td>
+<td>Pronounced <strong>&quot;de-VOR-zhak&quot;</strong></td>
+</tr>
+<tr>
+<td>Named after the <strong>first 6 leftmost letters</strong> on the top letter row (Q-W-E-R-T-Y)</td>
+<td>Puts the <strong>most frequently typed letters in the middle</strong> of the typing area</td>
+</tr>
+<tr>
+<td>Layout <strong>might limit typing speed</strong></td>
+<td>Designed to <strong>improve typing speed</strong></td>
+</tr>
+<tr>
+<td>✅ <strong>More widely used</strong></td>
+<td>More logical design, but <strong>less used</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>2.4 Typing Fundamentals</h2>
+<h3>The 10-Finger Method (Touch Typing)</h3>
+<ul>
+<li>A well-established technique to use the keyboard <strong>efficiently</strong>.</li>
+<li>With practice and correct finger positions you can type <strong>&quot;blindly&quot;</strong> (without looking).</li>
+<li>Result: <strong>lower error rate + higher typing speed</strong> at the same time.</li>
+</ul>
+<h3>Hunt and Peck (the bad habit ❌)</h3>
+<ul>
+<li>Many people still do this despite the 10-finger method&#39;s advantages.</li>
+<li>You <strong>stare at the keyboard</strong> until you find the key, then hit it with your <strong>index finger</strong>.</li>
+<li>After years you may use more fingers and know key positions better — but <strong>without fixed finger-key combinations</strong>, few people can type blindly and equally fast.</li>
+</ul>
+<h3>Basic (Home) Position</h3>
+<ul>
+<li>Fingers rest in a <strong>fixed starting position</strong> from which you can reach any key.</li>
+<li><strong>Left hand:</strong> <strong>A, S, D, F</strong></li>
+<li><strong>Right hand:</strong> <strong>J, K, L, ;</strong></li>
+<li><strong>Thumbs:</strong> on the <strong>space bar</strong></li>
+<li>💡 <strong>Tip:</strong> The <strong>F and J keys have a small bump</strong> — feel them with your <strong>index fingers</strong> to find home position <strong>without looking</strong>; the other fingers follow.</li>
+</ul>
+<h3>Fingers and Keys</h3>
+<ul>
+<li><strong>Each finger is in charge of several keys</strong> (a color-coded chart shows which finger → which key).</li>
+<li><strong>Example:</strong> To hit <strong>E</strong> → use your <strong>left middle finger</strong> (its home key is <strong>D</strong>). Reach up to <strong>E</strong>, then <strong>return to D</strong>.</li>
+</ul>
+<h3>Objective of the 10-Finger Method</h3>
+<ul>
+<li>To make keyboard handling <strong>automatic — stored in your subconscious</strong>. The subconscious handles complex actions within seconds, almost automatically.</li>
+<li>Hunt-and-peck <strong>wastes energy</strong> (&quot;where&#39;s the next key?&quot;). Fixed finger-key combos let you focus on what matters: <strong>the content</strong>.</li>
+<li>💡 <strong>Tip:</strong> If you&#39;ve used your own style for a long time, you&#39;ll likely be <strong>slower at first</strong> after switching. <strong>Don&#39;t be discouraged</strong> — soon you&#39;ll type <strong>faster and more comfortably</strong> than before.</li>
+</ul>
+<h3>Advantages of Learning to Type (3)</h3>
+<ol>
+<li><strong>Speed</strong> — typing subconsciously increases speed a lot → <strong>saves precious time</strong>.</li>
+<li><strong>Efficiency</strong> — you don&#39;t focus on single keys anymore, so you <strong>concentrate on the text</strong>. No switching back and forth → your <strong>brain gets relief</strong> and works better.</li>
+<li><strong>Ergonomics</strong> — always looking at the keyboard causes <strong>unhealthy posture</strong>. With 10 fingers you don&#39;t need to look → you <strong>sit upright</strong> in a good position.</li>
+</ol>
+<h3>Do I Have to Use All 10 Fingers?</h3>
+<ul>
+<li>Using all 10 is the <strong>optimal</strong> way — faster and more relaxed.</li>
+<li>But if retraining is very hard, or you have <strong>anatomical difficulties</strong>, you <strong>can use fewer fingers</strong> or different fingers than recommended.</li>
+<li><strong>What really matters:</strong> know the <strong>key positions</strong> and <strong>finger movements</strong> and use them <strong>without long thinking or looking</strong> at the keyboard.</li>
+<li>The recommended technique is just a <strong>proven method</strong> — you may <strong>adapt it</strong> to your needs.</li>
+</ul>
+<h3>Why Is It Worth It?</h3>
+<ul>
+<li><strong>2/3 of all professional activities</strong> require computer work; we also spend more personal time in the digital world.</li>
+<li>Daily typing time may seem small, but the <strong>long-term view</strong> matters.</li>
+<li><strong>Example calculation:</strong><ul>
+<li>1 hour/day of typing → <strong>365 hours/year</strong>.</li>
+<li><strong>Double</strong> your speed → save about <strong>180 hours/year</strong>.</li>
+<li>On a <strong>40-hour work week</strong>, that&#39;s <strong>4½ weeks of free time per year</strong> (or at least you&#39;d get to work on time more often 😄).</li>
+</ul>
+</li>
+<li>Depending on your current skill, even a <strong>3–4× speed increase</strong> is possible → even more savings.</li>
+</ul>
+<p><strong>Typing speed vs. time spent</strong> <em>(based on a 40-hour work week)</em></p>
+<table>
+<thead>
+<tr>
+<th>Words per minute</th>
+<th>Text input per day</th>
+<th>Time spent in 1 year</th>
+<th>Time spent in 5 years</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10 wpm</td>
+<td>2 hours</td>
+<td>18 weeks</td>
+<td>90 weeks</td>
+</tr>
+<tr>
+<td>20 wpm</td>
+<td>1 hour</td>
+<td>9 weeks</td>
+<td>45 weeks</td>
+</tr>
+<tr>
+<td>40 wpm</td>
+<td>30 minutes</td>
+<td>4.5 weeks</td>
+<td>22.5 weeks</td>
+</tr>
+<tr>
+<td>60 wpm</td>
+<td>20 minutes</td>
+<td>3 weeks</td>
+<td>15 weeks</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Pattern: <strong>double the speed → half the time.</strong></p>
+</blockquote>
+<ul>
+<li>The time needed to learn 10-finger typing is <strong>negligible</strong> compared to the long-term savings.</li>
+<li>If you&#39;re slow now, learning is <strong>definitely worthwhile</strong>.</li>
+<li><strong>Practice reference:</strong> <a href="https://www.typing.academy/10-finger-typing">https://www.typing.academy/10-finger-typing</a></li>
+</ul>
+<h3>📝 Assignment (Lesson 2.2)</h3>
+<p><strong>Draw a keyboard and color-code the keys assigned to each finger.</strong></p>
+<ol>
+<li>Draw a standard keyboard on <strong>short bond paper (8.5 × 11 in)</strong>.</li>
+<li>Use <strong>different colors</strong> for the keys each finger handles in touch typing.</li>
+<li>Include <strong>left &amp; right thumbs, index, middle, ring, and pinky fingers</strong>.</li>
+<li>Add a <strong>color legend</strong> (which color = which finger).</li>
+<li><strong>Output:</strong> neat, properly color-coded keyboard + finger-assignment legend.</li>
+</ol>
+<hr>
+<h1>PART 3 — OUTPUT DEVICES (Lesson 2.3)</h1>
+<h2>3.1 What are Output Devices?</h2>
+<ul>
+<li>Hardware used to <strong>display or print the processed information</strong>.</li>
+<li>Examples: <strong>Monitor (display screen), Printer, Plotter, Speaker, Computer Output Microfilm (COM)</strong>, etc.</li>
+</ul>
+<h2>3.2 Monitor</h2>
+<ul>
+<li>Also called <strong>VDU (Visual Display Unit)</strong> — the <strong>main output device</strong>.</li>
+<li>Forms images from <strong>tiny dots called pixels</strong> arranged in a <strong>rectangle</strong>.</li>
+<li><strong>Image sharpness depends on the number of pixels.</strong></li>
+</ul>
+<p><strong>Classified by resolution (number of pixels):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Acronym</th>
+<th>Full name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CGA</strong></td>
+<td>Colour Graphics Adapter</td>
+</tr>
+<tr>
+<td><strong>MDA</strong></td>
+<td>Monochrome Display Adapter</td>
+</tr>
+<tr>
+<td><strong>HGA</strong></td>
+<td>Hercules Graphics Adapter</td>
+</tr>
+<tr>
+<td><strong>EGA</strong></td>
+<td>Enhanced Graphics Adapter</td>
+</tr>
+<tr>
+<td><strong>VGA</strong></td>
+<td>Video Graphics Adapter</td>
+</tr>
+<tr>
+<td><strong>SVGA</strong></td>
+<td>Super Video Graphics Adapter</td>
+</tr>
+</tbody></table>
+<p><strong>Classified by colour:</strong></p>
+<ul>
+<li><strong>Monochrome</strong> — single colour (black/white) display</li>
+<li><strong>Colour</strong> — displays all colours</li>
+</ul>
+<h2>3.3 Printer</h2>
+<ul>
+<li>The <strong>most important output device</strong> for printing information <strong>on paper</strong>.</li>
+<li><strong>2 types: Impact and Non-Impact.</strong></li>
+</ul>
+<h3>🗺️ Printer Family Tree (memorize this!)</h3>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">PRINTERS
+├── IMPACT (strikes ribbon onto paper)
+│   ├── Character Printers (<span class="hljs-number">1</span> <span class="hljs-keyword">character</span> <span class="hljs-keyword">at</span> <span class="hljs-keyword">a</span> <span class="hljs-built_in">time</span>)
+│   │   ├── Daisy Wheel Printer
+│   │   └── Dot Matrix Printer
+│   └── Line Printers (<span class="hljs-number">1</span> <span class="hljs-built_in">line</span> <span class="hljs-keyword">at</span> <span class="hljs-keyword">a</span> <span class="hljs-built_in">time</span> — faster)
+│       ├── Drum Printer
+│       └── Chain Printer
+├── NON-IMPACT (no striking; <span class="hljs-number">1</span> page <span class="hljs-keyword">at</span> <span class="hljs-keyword">a</span> <span class="hljs-built_in">time</span> = <span class="hljs-string">&quot;Page Printers&quot;</span>)
+│   ├── Laser Printer
+│   └── Inkjet Printer
+└── THERMAL (uses heat instead <span class="hljs-keyword">of</span> liquid ink)
+    ├── Direct Thermal Printer
+    └── Thermal Transfer Printer</code></pre></div>
+<h3>A. Impact Printers</h3>
+<ul>
+<li>Print by <strong>striking against the ribbon onto the paper</strong>.</li>
+<li><strong>2 types: Character printers and Line printers.</strong></li>
+</ul>
+<p><strong>Character Printers</strong> — print <strong>one character at a time</strong>:</p>
+<ul>
+<li><strong>Daisy Wheel Printer</strong> — uses a <strong>plastic or metal hub with spokes</strong> called a <strong>daisy wheel</strong>.</li>
+<li><strong>Dot Matrix Printer</strong> — prints characters by <strong>putting dots</strong> onto the paper.</li>
+</ul>
+<p><strong>Line Printers</strong> — print <strong>one line at a time</strong>; <strong>much faster</strong> than character printers:</p>
+<ul>
+<li><strong>Drum Printer</strong> — prints a line using a <strong>rotating drum</strong> with a <strong>ring of characters for each print position</strong>.</li>
+<li><strong>Chain Printer</strong> — prints a line using a <strong>rotating chain</strong> with <strong>ring characters for each print position</strong>.</li>
+</ul>
+<h3>B. Non-Impact Printers</h3>
+<ul>
+<li>Print <strong>without striking</strong> the ribbon onto the paper.</li>
+<li>Print a <strong>complete page at a time</strong> → also called <strong>Page Printers</strong>.</li>
+<li><strong>2 types: Laser and Inkjet.</strong></li>
+</ul>
+<p><strong>Laser Printer</strong></p>
+<ul>
+<li><strong>Looks and works like a photocopier.</strong></li>
+<li>Based on <strong>laser technology</strong> — a <strong>laser beam writes the image</strong> on paper.</li>
+<li>Many models, depending on <strong>speed</strong> and <strong>number of dots printed</strong>.</li>
+</ul>
+<p><strong>Inkjet Printer</strong></p>
+<ul>
+<li>Non-impact — prints <strong>without striking a ribbon</strong> against paper.</li>
+<li>Places <strong>tiny droplets of ink</strong> onto paper.</li>
+<li><strong>How it works (6 steps):</strong><ol>
+<li>Computer <strong>sends</strong> the document/image to the printer.</li>
+<li>Printer <strong>processes</strong> the information.</li>
+<li><strong>Print head moves</strong> across the paper.</li>
+<li><strong>Tiny ink droplets</strong> are placed on specific spots.</li>
+<li>Droplets <strong>combine</strong> to form letters, numbers, images, graphics.</li>
+<li>Paper <strong>moves through</strong> until printing is done.</li>
+</ol>
+</li>
+</ul>
+<h3>C. Thermal Printer</h3>
+<ul>
+<li>Prints text/images using <strong>heat instead of traditional liquid ink</strong>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Direct Thermal</strong></th>
+<th><strong>Thermal Transfer</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Material</td>
+<td><strong>Heat-sensitive paper</strong></td>
+<td><strong>Ribbon with ink or wax</strong></td>
+</tr>
+<tr>
+<td>How</td>
+<td>Print head <strong>heats areas</strong> of paper → heated areas <strong>turn dark</strong></td>
+<td><strong>Heat transfers</strong> material from ribbon onto paper/other material</td>
+</tr>
+<tr>
+<td>Ink/toner?</td>
+<td>❌ <strong>No ink or toner needed</strong></td>
+<td>Uses ribbon (ink/wax)</td>
+</tr>
+<tr>
+<td>Durability</td>
+<td>Less durable</td>
+<td>✅ <strong>More durable</strong> prints</td>
+</tr>
+<tr>
+<td>Used for</td>
+<td><strong>Receipts, tickets, labels</strong></td>
+<td><strong>Product labels, barcodes, shipping labels</strong></td>
+</tr>
+</tbody></table>
+<h2>3.4 Plotter</h2>
+<ul>
+<li>Prints <strong>high-quality graphics and drawings</strong>.</li>
+<li>For <strong>charts, drawings, maps</strong> in <strong>engineering and scientific</strong> applications.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>How it works</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Flat Bed Plotter</strong></td>
+<td><strong>Pen moves</strong>; paper/material is on a <strong>stationary flat surface</strong></td>
+</tr>
+<tr>
+<td><strong>Drum Plotter</strong></td>
+<td><strong>Both the pen AND the drum</strong> (holding paper) move</td>
+</tr>
+<tr>
+<td><strong>Inkjet Plotter</strong></td>
+<td>Uses <strong>inkjet instead of pen</strong>. <strong>Faster than flat bed</strong>; prints <strong>multi-coloured large drawings</strong></td>
+</tr>
+</tbody></table>
+<h2>3.5 Speakers</h2>
+<ul>
+<li>Popular output devices.</li>
+<li>Receive <strong>audio input from the sound card</strong> → produce output as <strong>sound waves</strong>.</li>
+<li>Most are <strong>active speakers</strong> — have an <strong>internal amplifier</strong> to increase <strong>volume (amplitude)</strong>.</li>
+<li>Usually come in <strong>pairs</strong> → produce <strong>stereo sound</strong> from <strong>two separate audio channels</strong>.</li>
+</ul>
+<h3>📝 Assignment (Lesson 2.3)</h3>
+<p><strong>Design Your Own Output Device.</strong> Imagine you&#39;re a computer engineer. Provide:</p>
+<ol>
+<li><strong>Name</strong> of the device</li>
+<li><strong>Drawing/design</strong></li>
+<li><strong>Type of output:</strong> visual, audio, printer, or other</li>
+<li><strong>Purpose</strong></li>
+<li><strong>Who would use it?</strong></li>
+<li><strong>What makes it different</strong> from existing output devices?</li>
+</ol>
+<p><strong>Example given:</strong></p>
+<ul>
+<li><strong>Device name:</strong> HoloScreen</li>
+<li><strong>Output:</strong> 3D visual images</li>
+<li><strong>Purpose:</strong> Displays three-dimensional objects from a computer</li>
+<li><strong>Users:</strong> Students, engineers, doctors, designers</li>
+<li><strong>Difference:</strong> No hardware producing the output — just light producing an image</li>
+</ul>
+<hr>
+<h1>⚠️ EXAM TRAPS / EASY-TO-CONFUSE</h1>
+<ul>
+<li><strong>ROM = permanent</strong>, <strong>RAM = temporary</strong> (erased when off).</li>
+<li><strong>CU = &quot;Central Nervous System&quot;</strong>; <strong>CPU = &quot;Brain&quot;</strong>.</li>
+<li><strong>ALU</strong> does math AND logic (less than, equal, greater than).</li>
+<li><strong>Bus = group of 8 wires</strong>; 3 types: <strong>data, control, address</strong>.</li>
+<li><strong>Clock speed = MHz</strong> (millions of cycles per second).</li>
+<li><strong>Basic</strong> input = keyboard &amp; mouse; everything else = <strong>special</strong>.</li>
+<li><strong>Mouse types:</strong> mechanical, opto-mechanical, optical.</li>
+<li><strong>Trackball = upside-down mouse</strong>; better than mouse (less arm movement, less space).</li>
+<li><strong>Joystick</strong> → CAD and games. <strong>Light pen</strong> → photocell.</li>
+<li><strong>Digitizer</strong> → analog to digital. <strong>OMR</strong> → exam sheets. <strong>MICR</strong> → bank cheques.</li>
+<li><strong>Most popular keyboard:</strong> 101 keys. Desktop: <strong>101–105 keys</strong>.</li>
+<li><strong>Toggle keys:</strong> Caps Lock, Num Lock, Scroll Lock, Insert.</li>
+<li><strong>Home row:</strong> ASDF / JKL; — bumps on <strong>F and J</strong>.</li>
+<li><strong>QWERTY</strong> = most used; <strong>Dvorak</strong> = faster design, less used.</li>
+<li><strong>Character printers:</strong> Daisy wheel, Dot matrix. <strong>Line printers:</strong> Drum, Chain.</li>
+<li><strong>Non-impact = Page printers:</strong> Laser, Inkjet.</li>
+<li><strong>Laser printer</strong> works like a <strong>photocopier</strong>; <strong>scanner</strong> works like a <strong>photocopy machine</strong> too.</li>
+<li><strong>Direct thermal = no ink</strong>; <strong>thermal transfer = ribbon, more durable</strong>.</li>
+<li><strong>Drum plotter:</strong> pen AND drum move. <strong>Flat bed plotter:</strong> only pen moves.</li>
+</ul>
+<hr>
+<h1>✅ QUICK SELF-TEST (cover the answers!)</h1>
+<ol>
+<li>What are the 4 functions of a computer? → <em>Receive input, process, produce output, store.</em></li>
+<li>What are the 5 parts of the CPU? → <em>ALU, CU, Registers, Buses, Clock.</em></li>
+<li>What is a CPU on a single chip called? → <em>Microprocessor.</em></li>
+<li>3 types of bus? → <em>Data, control, address.</em></li>
+<li>Which memory is erased when power is off? → <em>RAM.</em></li>
+<li>ROM capacity per the slides? → <em>64 KB – 256 KB.</em></li>
+<li>Main input device? Main output device? → <em>Keyboard; Monitor.</em></li>
+<li>What converts a key press into binary code for the CPU? → <em>Keyboard encoder.</em></li>
+<li>Which device reads multiple-choice answer sheets? → <em>OMR.</em></li>
+<li>Which device reads cheques? → <em>MICR.</em></li>
+<li>OCR is used for? → <em>Passenger tickets, credit card bills, ZIP codes.</em></li>
+<li>Where do your index fingers rest? → <em>F and J.</em></li>
+<li>Which finger types &quot;E&quot;? → <em>Left middle finger (home key D).</em></li>
+<li>3 advantages of learning to type? → <em>Speed, efficiency, ergonomics.</em></li>
+<li>Monitor images are made of? → <em>Pixels.</em></li>
+<li>Two printer types by printing method? → <em>Impact and non-impact.</em></li>
+<li>Non-impact printers are also called? → <em>Page printers.</em></li>
+<li>Which thermal printer needs no ink? → <em>Direct thermal.</em></li>
+<li>Which plotter moves both pen and drum? → <em>Drum plotter.</em></li>
+<li>Why do speakers come in pairs? → <em>To produce stereo sound from two audio channels.</em></li>
+</ol>
+
+  </div>
+  <div class="note-nav">
+    <a href="CC1_Introduction-To-Computing.html" class="note-nav-prev">← CC1</a>
+    <a href="CC2_Fundamentals-To-Programming.html" class="note-nav-next">CC2 →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>
