@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | GE6 Art Appreciation — Midterm</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">1st Year · 1st Sem</h4>
+  <ul class="notes-menu-list">
+        <li><a href="Y1S1-CC1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="Y1S1-CC2-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="Y1S1-HCI101-midterm.html" class="notes-menu-link"><span class="notes-menu-code">HCI101</span> Introduction to Human-Computer Interaction</a></li>
+        <li><a href="Y1S1-GE4-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE4</span> Mathematics in the Modern World</a></li>
+        <li><a href="Y1S1-GE5-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="Y1S1-GE6-midterm.html" class="notes-menu-link active"><span class="notes-menu-code">GE6</span> Art Appreciation</a></li>
+        <li><a href="Y1S1-GE9-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE9</span> Readings in Philippine History</a></li>
+        <li><a href="Y1S1-PATHFIT1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">PATHFIT1</span> Physical Activity Towards Health and Fitness 1</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>1st Year · 1st Sem</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Art Appreciation</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">GE6</span><span class="note-units">1st Year · 1st Sem</span></p>
+  <h1 class="note-title">Art Appreciation</h1>
+  <p class="note-meta">Last updated: September 27, 2026</p>
+  <nav class="term-tabs" aria-label="Exam period"><a href="Y1S1-GE6-midterm.html" class="term-tab active" aria-current="page">Midterm</a><span class="term-tab term-tab--empty" title="Not up yet">Finals</span></nav>
+  <div class="note-content">
+    <blockquote>
+<p>Covers: Lesson 1 Intro to Art &amp; Humanities · Lesson 2 Art Forms, Kinds, Types &amp; Functions · Lesson 3 Philosophical Perspectives on Art · Lesson 4 Subject and Content · Lesson 5 Artists and Artisans · Lesson 6 Managers, Curators, Art Dealers &amp; National Awards · Lesson 7 Medium and Techniques.<br>Items marked <strong>(added)</strong> aren&#39;t on the slides. They fill gaps.</p>
+</blockquote>
+<hr>
+<h2>1. Introduction to Art and Humanities</h2>
+<h3>Art</h3>
+<ul>
+<li>From the <strong>Aryan &quot;Ar&quot;</strong> = <strong>&quot;to put together&quot;</strong>, and the <strong>Latin &quot;Ars&quot;</strong> = <strong>&quot;skill&quot;</strong>.</li>
+<li>Covers <strong>visual, literary, musical, and performance</strong> arts.</li>
+<li>Expresses <strong>aesthetic value</strong> through <strong>skill and imagination</strong>.</li>
+</ul>
+<h3>Humanities</h3>
+<ul>
+<li>From the <strong>Latin &quot;Humanus&quot;</strong> = <strong>&quot;refined,&quot; &quot;cultured,&quot; &quot;human.&quot;</strong></li>
+<li>Studies the <strong>construct of man</strong>: its frailty and its improvement.</li>
+<li>Investigates man&#39;s quest for answers to life&#39;s questions.</li>
+<li>Understands expressions of man&#39;s <strong>feelings and thoughts</strong>; recognizes creative expression.</li>
+<li>Emphasizes the <strong>dignity and worthiness of man</strong>.</li>
+<li>Aims to shape <strong>human values</strong> and subjective energies (behavior, attitude, aspirations).</li>
+</ul>
+<h3>Importance of Humanities</h3>
+<ol>
+<li>Man gains an <strong>understanding of himself</strong>.</li>
+<li>Man understands <strong>his nature</strong>.</li>
+<li>Man is given a <strong>measure of his own passion and desire</strong>.</li>
+<li>Man develops into a <strong>complete and social</strong> being.</li>
+<li>Man&#39;s <strong>behavior is regulated</strong>.</li>
+</ol>
+<h3>Basic Assumptions of Art (6)</h3>
+<ol>
+<li>Art has been created by <strong>all people, at all times, in all countries</strong>, and it lives because it is <strong>liked and enjoyed</strong>.</li>
+<li>Art <strong>involves experience</strong>; there is no appreciation without experience.</li>
+<li><strong>Art is not nature; nature is not art.</strong> Art is <strong>made by man</strong>.</li>
+<li><strong>Art is everywhere.</strong></li>
+<li>Art is man&#39;s <strong>oldest means of expression</strong>.</li>
+<li>Art is <strong>expression and communication</strong>.</li>
+</ol>
+<blockquote>
+<p><strong>Own example (#3):</strong> A sunset isn&#39;t art (nature). A painting of a sunset is art (made by a person).</p>
+</blockquote>
+<hr>
+<h2>2. Art Forms, Kinds, Types, and Functions</h2>
+<h3>Art Forms (Ways of Expressing Oneself Through Art)</h3>
+<table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Visual Arts</strong></td>
+<td>Appeal to the <strong>sense of sight</strong></td>
+</tr>
+<tr>
+<td><strong>Film</strong></td>
+<td>Successions of frames/images that create an <strong>illusion of movement</strong>; today, recording movement with cameras plus script, music, and acting</td>
+</tr>
+<tr>
+<td><strong>Performing Arts</strong></td>
+<td><strong>Live</strong> art; the medium is mainly the <strong>human body</strong>, supported by props, visuals, or sound</td>
+</tr>
+<tr>
+<td><strong>Literary Arts</strong></td>
+<td>Uses <strong>words</strong> to express and communicate emotions, in a unique style</td>
+</tr>
+<tr>
+<td><strong>Architecture</strong></td>
+<td>The art of making <strong>beautiful buildings</strong>. Must have <strong>plan, construction, and design</strong> to be called architecture</td>
+</tr>
+<tr>
+<td><strong>Dance</strong></td>
+<td>Series of <strong>movements following the rhythm</strong> of music</td>
+</tr>
+<tr>
+<td><strong>Poetry Performance</strong></td>
+<td><strong>Literary + performing</strong> art: poems performed before an audience</td>
+</tr>
+<tr>
+<td><strong>Theater</strong></td>
+<td><strong>Live performers</strong> presenting real or imaginary events on a stage</td>
+</tr>
+<tr>
+<td><strong>Applied Arts</strong></td>
+<td>Brings <strong>beauty and comfort to useful everyday things</strong>: industrial, interior, fashion design</td>
+</tr>
+</tbody></table>
+<h3>Two Kinds of Art</h3>
+<table>
+<thead>
+<tr>
+<th>Fine / Aesthetic Arts (<strong>Major Arts</strong>)</th>
+<th>Utilitarian / Practical Arts (<strong>Minor Arts</strong>)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Focused on <strong>aesthetic value and enjoyment</strong> through the <strong>five senses</strong></td>
+<td>Meant for <strong>practical use</strong>, but must still have <strong>artistic qualities</strong></td>
+</tr>
+<tr>
+<td><em>The Starry Night</em> (Van Gogh), <em>Swan Lake</em> ballet, a classical concert</td>
+<td>Shell-craft, a sports car, a designed building</td>
+</tr>
+</tbody></table>
+<h3>Two Types of Art</h3>
+<table>
+<thead>
+<tr>
+<th>Functional Art</th>
+<th>Indirectly Functional Art</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Art we <strong>use in daily life</strong></td>
+<td>Art <strong>perceived through the senses</strong></td>
+</tr>
+<tr>
+<td>Tools, roads, bridges, buildings, furniture, kitchen utensils, coins, bills, dress, weapons</td>
+<td>Painting, music, sculpture, dance, literature, theater</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Aristotle:</strong> every substance has an end, or <em><strong>telos</strong></em> (Greek for <strong>&quot;purpose&quot;</strong>). Telos is linked with <strong>function</strong>: for a thing to reach its purpose, it must fulfill its function.</p>
+</blockquote>
+<h3>Functions of Art (8)</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Meaning</th>
+<th>Own example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Personal</strong></td>
+<td>Serves the <strong>artist&#39;s own</strong> interests, motivations, and expression</td>
+<td>A diary-like self-portrait</td>
+</tr>
+<tr>
+<td><strong>Physical</strong></td>
+<td>Satisfies man&#39;s <strong>physical needs</strong>; usable in everyday life</td>
+<td>A chair, a jacket</td>
+</tr>
+<tr>
+<td><strong>Social</strong></td>
+<td>Addresses <strong>collective interest</strong> or raises awareness of <strong>social issues</strong></td>
+<td>A mural against corruption</td>
+</tr>
+<tr>
+<td><strong>Aesthetic</strong></td>
+<td>Makes people <strong>aware of beauty</strong> and enjoy it</td>
+<td>A landscape painting</td>
+</tr>
+<tr>
+<td><strong>Cultural</strong></td>
+<td>Preserves, shares, and <strong>transmits culture</strong> across generations</td>
+<td>Tinalak weaving, folk dances</td>
+</tr>
+<tr>
+<td><strong>Political</strong></td>
+<td>Aids a <strong>campaign or political agenda</strong></td>
+<td>Campaign posters, protest art</td>
+</tr>
+<tr>
+<td><strong>Religious</strong></td>
+<td>Used <strong>for/in religious activities</strong></td>
+<td>Santo statues, church stained glass</td>
+</tr>
+<tr>
+<td><strong>Economic</strong></td>
+<td>Art is <strong>sold/consumed</strong>; brings <strong>income</strong> to artists</td>
+<td>Selling commissioned portraits</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic:</strong> <strong>P</strong>eople <strong>P</strong>lay <strong>S</strong>ongs <strong>A</strong>nd <strong>C</strong>elebrate <strong>P</strong>eacefully, <strong>R</strong>eally <strong>E</strong>njoying = Personal, Physical, Social, Aesthetic, Cultural, Political, Religious, Economic</p>
+</blockquote>
+<hr>
+<h2>3. Philosophical Perspectives on Art</h2>
+<p>Guide questions: <em>Is art more about emotion or meaning? Can something be art if no one understands it? Should art always be beautiful?</em></p>
+<table>
+<thead>
+<tr>
+<th>Philosopher</th>
+<th>View</th>
+<th>Key ideas</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Plato</strong></td>
+<td><strong>Art as Imitation</strong></td>
+<td>In <em><strong>The Republic</strong></em>, artists are <strong>imitators</strong> and art is <strong>mere imitation</strong>. Advised <strong>excluding art</strong> from the curriculum and <strong>banning artists</strong> from the ideal republic. Things in this world are <strong>copies of the originals</strong> in the <strong>world of forms</strong>. Suspicious of art because it (1) <strong>appeals to emotions, not reason</strong>, and (2) <strong>imitates rather than leads to reality</strong>. &quot;<strong>Ideas are the ultimate reality.</strong>&quot;</td>
+</tr>
+<tr>
+<td><strong>Socrates</strong></td>
+<td>Same as Plato</td>
+<td>Art is <strong>&quot;an imitation of imitation&quot;</strong></td>
+</tr>
+<tr>
+<td><strong>Aristotle</strong></td>
+<td><strong>Art as Representation</strong></td>
+<td>Plato&#39;s student; <strong>agreed</strong> art is imitation, but <strong>not with disgust</strong>. Art represents <strong>possible versions of reality</strong>: not reality as it is, but <strong>what might be</strong></td>
+</tr>
+<tr>
+<td><strong>Immanuel Kant</strong></td>
+<td><strong>Art as Disinterested Judgment</strong></td>
+<td><strong>Judgment of beauty</strong> is the cornerstone of art; it can be <strong>universal despite being subjective</strong>. Judge art by its <strong>inherent beauty</strong>, not <strong>personal interests</strong></td>
+</tr>
+<tr>
+<td><strong>Leo Tolstoy</strong></td>
+<td><strong>Art as Communication of Emotion</strong></td>
+<td>Art <strong>communicates emotions</strong> the artist experienced, just as language communicates information. Fights for the <strong>social dimension</strong> of art: art is a <strong>mechanism of cohesion / social unity</strong>. It makes feelings of people <strong>from past to present</strong> accessible</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Kant example (slides):</strong> <em>&quot;I like the painting&quot;</em> = <strong>personal interest</strong> (subjective). <em>&quot;This painting is beautiful&quot;</em> = <strong>disinterested judgment</strong> (claims universal beauty).</p>
+</blockquote>
+<blockquote>
+<p><strong>Plato vs Aristotle:</strong> Plato says imitation is <strong>bad</strong> (a poor copy). Aristotle says imitation is <strong>good</strong>, because it shows <strong>possibilities</strong>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>P</strong>lato = <strong>P</strong>oor copy · <strong>A</strong>ristotle = <strong>A</strong>lternate possibilities · <strong>K</strong>ant = <strong>K</strong>eep your bias out · <strong>T</strong>olstoy = <strong>T</strong>ransfer feelings</p>
+</blockquote>
+<hr>
+<h2>4. Subject and Content</h2>
+<p>Three basic components of a work of art (clues between the artwork and the viewer):</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Meaning</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Subject</strong></td>
+<td>The <strong>visual focus</strong> or image in the artwork</td>
+<td>The <strong>&quot;what&quot;</strong></td>
+</tr>
+<tr>
+<td><strong>Content</strong></td>
+<td>The <strong>meaning</strong> communicated by the artist/artwork</td>
+<td>The <strong>&quot;why&quot;</strong></td>
+</tr>
+<tr>
+<td><strong>Form</strong></td>
+<td>How the <strong>elements and medium</strong> are put together</td>
+<td>The <strong>&quot;how&quot;</strong></td>
+</tr>
+</tbody></table>
+<h3>Types of Subject (a spectrum, not strict boxes)</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Representational</strong> (also <strong>figurative</strong>)</td>
+<td>Refers to <strong>real-world</strong> objects or events; figures are easy to recognize. Easier for the average viewer</td>
+<td><strong>Leonardo da Vinci&#39;s <em>Mona Lisa</em></strong></td>
+</tr>
+<tr>
+<td><strong>Abstract</strong></td>
+<td><strong>Abstraction</strong> = filtering/distilling characteristics, leaving what is integral. Recognizable but simplified or distorted</td>
+<td>Picasso-style faces</td>
+</tr>
+<tr>
+<td><strong>Non-Representational</strong></td>
+<td><strong>No reference to the real world</strong>; only shapes, lines, colors to express feeling or concept</td>
+<td><strong>Jackson Pollock&#39;s <em>Number 1A</em></strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Some say <strong>all art has some abstraction</strong>, since every artist filters reality even in realistic works.</p>
+</blockquote>
+<h3>Sources of Subject</h3>
+<p><strong>Nature · History · Greek and Roman mythology · Religion · Historically significant events · People</strong><br>Contemporary artists can choose anything, from grand ideas to trivial things. Artists before didn&#39;t have that freedom.</p>
+<h3>Content: Three Levels of Meaning</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Meaning</th>
+<th>Own example (<em>Mona Lisa</em>)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Factual</strong></td>
+<td><strong>Most basic</strong>: what is identifiable</td>
+<td>A woman smiling, seated before a landscape</td>
+</tr>
+<tr>
+<td><strong>2. Conventional</strong></td>
+<td><strong>Accepted interpretation</strong> using motifs, signs, themes, symbols</td>
+<td>Renaissance portrait; the smile as a symbol of mystery</td>
+</tr>
+<tr>
+<td><strong>3. Subjective</strong></td>
+<td><strong>Personal meaning</strong> a viewer derives from their own background</td>
+<td>&quot;She reminds me of my lola&quot;</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>5. Artists and Artisans</h2>
+<table>
+<thead>
+<tr>
+<th>Artist</th>
+<th>Artisan (added definition)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Performs <strong>all forms of creative arts</strong>; creates <strong>art for art&#39;s sake</strong> with no ulterior motive; believed to <strong>create change in society</strong> through art</td>
+<td>A <strong>skilled craftsman</strong> who makes <strong>functional or decorative</strong> items by hand, often following <strong>traditional</strong> methods</td>
+</tr>
+</tbody></table>
+<h3>Famous Artists (slides)</h3>
+<table>
+<thead>
+<tr>
+<th>Artist</th>
+<th>Key facts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Vincent van Gogh</strong> (1853–1890)</td>
+<td><strong>Dutch post-impressionist</strong> painter; one of the most influential in Western art. <em>The Starry Night</em></td>
+</tr>
+<tr>
+<td><strong>Michelangelo</strong> di Lodovico Buonarroti Simoni (1475–1564)</td>
+<td>Italian <strong>sculptor, painter, architect, poet</strong> of the <strong>High Renaissance</strong>, born in the <strong>Republic of Florence</strong>. (Sistine Chapel ceiling, <em>Creation of Adam</em>)</td>
+</tr>
+</tbody></table>
+<h3>Guilds</h3>
+<ul>
+<li><strong>Guilds</strong> = a social fellowship/association with <strong>rules, customs, rights, and responsibilities</strong>.</li>
+<li>Through <strong>lifetime commitment</strong> to a trade, an artisan builds great skill. A <strong>master artisan</strong> could hire <strong>apprentices</strong> to train under him.</li>
+<li>In guilds, <strong>artistry and technology flourished under one root</strong>.</li>
+</ul>
+<h3>Importance</h3>
+<table>
+<thead>
+<tr>
+<th>Artists</th>
+<th>Artisans</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Help us <strong>envision thoughts</strong> that may not be tolerated in the social/political paradigm. <em>&quot;Art is the queen of all sciences communicating knowledge to all the generations of the world.&quot;</em> — <strong>Leonardo da Vinci</strong></td>
+<td>Make and install <strong>useful things</strong> for homes, offices, industries; fix things for people and organizations. Provide <strong>blue-collar jobs</strong> that reduce <strong>unemployment, poverty, and social vices</strong>, letting people learn <strong>vocational/technical skills</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>6. Managers, Curators, Art Dealers, and National Awards</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Job</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Gallery Manager/Owner</strong></td>
+<td><strong>Chooses and presents art for sale</strong>; manages both the <strong>creative and business</strong> sides; organizes exhibitions, private sales, art loans</td>
+</tr>
+<tr>
+<td><strong>Curator</strong></td>
+<td>In charge of a <strong>collection</strong> in a museum or gallery: <strong>assembling, cataloguing, managing, presenting, displaying</strong> artworks and artifacts</td>
+</tr>
+<tr>
+<td><strong>Art Dealer</strong></td>
+<td>Person or company that <strong>buys and sells art for profit</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>M</strong>anager = <strong>M</strong>arkets the gallery · <strong>C</strong>urator = <strong>C</strong>ares for the collection · <strong>D</strong>ealer = <strong>D</strong>eals for profit</p>
+</blockquote>
+<h3>Orden ng Pambansang Alagad ng Sining (Order of National Artists)</h3>
+<ul>
+<li>The <strong>highest national recognition</strong> for Filipinos who made significant contributions to the arts: <strong>architecture and allied arts, broadcast arts, dance, film, literature, music, visual arts</strong>.</li>
+<li>Administered jointly by the <strong>NCCA</strong> (National Commission for Culture and the Arts) and the <strong>CCP</strong> (Cultural Center of the Philippines); <strong>presented by the President</strong>.</li>
+<li><strong>First recipient:</strong> <strong>Fernando Amorsolo</strong>, painter, named in <strong>1972</strong> for <strong>Visual Arts</strong>; called the <strong>&quot;Grand Old Man of Philippine Art.&quot;</strong></li>
+</ul>
+<p><strong>Privileges of a National Artist</strong></p>
+<ol>
+<li>Rank and <strong>title</strong> of National Artist, proclaimed by the President</li>
+<li><strong>Insignia</strong> and a <strong>citation</strong></li>
+<li>Lifetime <strong>emolument</strong> and benefits like the highest officers of the land:<ul>
+<li>a. <strong>₱100,000</strong> cash award (net of taxes) for <strong>living</strong> awardees</li>
+<li>b. <strong>₱75,000</strong> for <strong>posthumous</strong> awardees (paid to legal heirs)</li>
+<li>c. <strong>Monthly life pension</strong>, medical and hospitalization benefits</li>
+<li>d. <strong>Life insurance</strong> for insurable awardees</li>
+<li>e. <strong>State funeral</strong> and burial at the <strong>Libingan ng mga Bayani</strong></li>
+<li>f. A <strong>place of honor</strong> at national state functions and cultural events</li>
+</ul>
+</li>
+</ol>
+<h3>Gawad sa Manlilikha ng Bayan (GAMABA)</h3>
+<p>Also called the <strong>National Living Treasures Award</strong>.</p>
+<ul>
+<li>Began as a project of the <strong>Philippine Rotary Club Makati-Ayala</strong> in <strong>April 1992</strong>; institutionalized by <strong>Republic Act No. 7355</strong>.</li>
+<li>Honors <strong>folk and indigenous artists</strong> who stay true to their traditions.</li>
+<li>Tied to a program that <strong>transfers their skills</strong> to new generations and promotes the craft.</li>
+<li>Administered by the <strong>NCCA</strong>, through the <strong>GAMABA Committee</strong> and an <strong>Ad Hoc Panel of Experts</strong>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Awardee</th>
+<th>Known for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ginaw Bilog</strong></td>
+<td><strong>Hanunuo Mangyan</strong> poet; master of <strong>Ambahan</strong> poetry</td>
+</tr>
+<tr>
+<td><strong>Lang Dulay</strong></td>
+<td><strong>T&#39;boli</strong> weaver of <strong>tinalak</strong> (colorful <strong>abaca</strong> cloth)</td>
+</tr>
+<tr>
+<td><strong>Eduardo Mutuc</strong></td>
+<td>From <strong>Apalit, Pampanga</strong>; religious and secular art in <strong>silver, bronze, and wood</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>National Artist vs GAMABA:</strong> National Artist = achievement in <strong>fine/modern arts</strong>. GAMABA = <strong>traditional/folk</strong> artists keeping heritage alive.</p>
+</blockquote>
+<h3>Art Production Process</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Pre-production</strong></td>
+<td><strong>Planning</strong>: preparing all elements; outlining what to accomplish so time is used efficiently</td>
+</tr>
+<tr>
+<td><strong>2. Production</strong></td>
+<td>Using the plan, the artist <strong>manipulates the medium</strong> to execute the artwork</td>
+</tr>
+<tr>
+<td><strong>3. Post-production</strong></td>
+<td>After completion: the work is <strong>set, modified, displayed, transported, or promoted</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>7. Medium and Techniques</h2>
+<ul>
+<li><strong>Medium</strong>: the <strong>material or substance</strong> a work is made of. Through it, artists express feelings and ideas.</li>
+<li><strong>Technique</strong>: the <strong>way the artist uses and manipulates materials</strong> to achieve the desired effect and meaning, according to <strong>personal style</strong>.</li>
+</ul>
+<h3>Classification by Medium</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Visual Arts</strong></td>
+<td>Mediums can be <strong>seen</strong> and <strong>occupy space</strong></td>
+</tr>
+<tr>
+<td><strong>Auditory Arts</strong></td>
+<td>Mediums can be <strong>heard</strong> and are <strong>expressed in time</strong></td>
+</tr>
+<tr>
+<td><strong>Combined Arts</strong></td>
+<td>Mediums can be <strong>seen and heard</strong>; exist in <strong>both space and time</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Visual arts, two groups</strong></p>
+<table>
+<thead>
+<tr>
+<th>Two-dimensional</th>
+<th>Three-dimensional</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Flat surface</strong>; vertical and horizontal character of the picture plane</td>
+<td>Occupies space: <strong>height, width, depth</strong></td>
+</tr>
+<tr>
+<td>Painting, drawing, printmaking, photography</td>
+<td>Sculpture, architecture, landscape, industrial design, crafts (furniture)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own examples:</strong> Music on Spotify = <strong>auditory</strong>. A movie or a concert with a light show = <strong>combined</strong>.</p>
+</blockquote>
+<h3>Artists and Their Mediums</h3>
+<table>
+<thead>
+<tr>
+<th>Artist</th>
+<th>Medium</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Sculptor</strong></td>
+<td>Metal, wood, stone, clay, glass (<strong>3D</strong> art)</td>
+</tr>
+<tr>
+<td><strong>Architect</strong></td>
+<td>Wood, bamboo, bricks, stones, concrete, building materials (<strong>3D</strong> art)</td>
+</tr>
+<tr>
+<td><strong>Painter</strong></td>
+<td><strong>Pigments</strong> (watercolor, oil, acrylic, ink) on a flat ground (wood, canvas, paper, stone wall)</td>
+</tr>
+<tr>
+<td><strong>Musician</strong></td>
+<td><strong>Sound and instruments</strong>, including the <strong>human voice</strong></td>
+</tr>
+<tr>
+<td><strong>Dancer</strong></td>
+<td>The <strong>body and its movements</strong> to music; can tell stories or convey abstract ideas</td>
+</tr>
+<tr>
+<td><strong>Theatre Artist</strong></td>
+<td><strong>Integrates all the arts</strong>: stage, production design, performance, script</td>
+</tr>
+<tr>
+<td><strong>Photographer &amp; Filmmaker</strong></td>
+<td>The <strong>camera</strong> to record the world; filmmakers combine production design, sound, performance, screenplay</td>
+</tr>
+</tbody></table>
+<h3>Examples of Technique</h3>
+<table>
+<thead>
+<tr>
+<th>Medium</th>
+<th>Technique</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Stone</td>
+<td><strong>Chiseled</strong></td>
+</tr>
+<tr>
+<td>Wood</td>
+<td><strong>Carved</strong></td>
+</tr>
+<tr>
+<td>Clay</td>
+<td><strong>Modelled and shaped</strong></td>
+</tr>
+<tr>
+<td>Metal</td>
+<td><strong>Cast</strong></td>
+</tr>
+<tr>
+<td>Thread</td>
+<td><strong>Woven</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Quick Check</h2>
+<ol>
+<li>&quot;Ars&quot; is Latin for ___.</li>
+<li>Which basic assumption says a sunset is not art?</li>
+<li>Fine arts are also called ___ arts; utilitarian arts are ___ arts.</li>
+<li>A bridge is functional or indirectly functional art?</li>
+<li>What is <em>telos</em>, and who used it?</li>
+<li>A campaign poster serves which function of art?</li>
+<li>Who called art &quot;an imitation of imitation&quot;?</li>
+<li>Whose view is &quot;art as disinterested judgment&quot;?</li>
+<li>Tolstoy saw art as a communication of ___.</li>
+<li>Subject, content, form: which is the &quot;why&quot;?</li>
+<li><em>Mona Lisa</em> is representational, abstract, or non-representational? Pollock&#39;s <em>Number 1A</em>?</li>
+<li>Which level of meaning is based on the viewer&#39;s personal background?</li>
+<li>Who said &quot;Art is the queen of all sciences...&quot;?</li>
+<li>Who buys and sells art for profit?</li>
+<li>Who was the first National Artist, and in what year?</li>
+<li>How much cash does a living National Artist receive?</li>
+<li>What law institutionalized GAMABA?</li>
+<li>Lang Dulay is known for weaving ___.</li>
+<li>Auditory arts exist in space or time?</li>
+<li>Metal is ___; thread is ___.</li>
+</ol>
+<details>
+<summary>Answers</summary>
+
+<ol>
+<li><strong>Skill</strong></li>
+<li><strong>Art is not nature; nature is not art</strong></li>
+<li><strong>Major</strong>; <strong>minor</strong></li>
+<li><strong>Functional</strong></li>
+<li><strong>Purpose</strong> (Greek); <strong>Aristotle</strong></li>
+<li><strong>Political</strong></li>
+<li><strong>Socrates</strong></li>
+<li><strong>Immanuel Kant</strong></li>
+<li><strong>Emotion</strong></li>
+<li><strong>Content</strong></li>
+<li><strong>Representational</strong>; <strong>non-representational</strong></li>
+<li><strong>Subjective</strong></li>
+<li><strong>Leonardo da Vinci</strong></li>
+<li><strong>Art dealer</strong></li>
+<li><strong>Fernando Amorsolo</strong>, <strong>1972</strong></li>
+<li><strong>₱100,000</strong> (net of taxes)</li>
+<li><strong>Republic Act No. 7355</strong></li>
+<li><strong>Tinalak</strong> (T&#39;boli abaca cloth)</li>
+<li><strong>Time</strong></li>
+<li><strong>Cast</strong>; <strong>woven</strong></li>
+</ol>
+</details>
+
+  </div>
+  <div class="note-nav">
+    <a href="Y1S1-GE5-midterm.html" class="note-nav-prev">← GE5</a>
+    <a href="Y1S1-GE9-midterm.html" class="note-nav-next">GE9 →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>
