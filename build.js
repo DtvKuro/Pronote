@@ -219,11 +219,33 @@ const LOGOS = {
 const PROJECT_ROOT = __dirname;
 const DIST = path.join(PROJECT_ROOT, 'docs');
 
-rmrf(DIST);
-mkdirp(DIST);
-
 const config = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'notes.config.json'), 'utf8'));
 const { collections, site } = config;
+
+// Note sources live inside the repo, so resolve them against it, not the cwd.
+for (const c of collections) {
+  c.sourceDirs = c.sourceDirs.map((d) => path.resolve(PROJECT_ROOT, d));
+}
+
+const CYSQL_SOURCE = path.join(PROJECT_ROOT, 'cysql');
+
+// Refuse to touch docs/ if anything is missing — a partial build would
+// silently drop pages from the live site.
+const missing = [];
+for (const c of collections) {
+  for (const n of c.notes) {
+    if (!resolveSource(c.sourceDirs, n.file)) missing.push(`[${c.id}] ${n.file}`);
+  }
+}
+if (!fs.existsSync(CYSQL_SOURCE)) missing.push('cysql/ (SQL playground)');
+if (missing.length) {
+  console.error('MISSING SOURCES — build aborted, docs/ left untouched:');
+  for (const m of missing) console.error(`  ${m}`);
+  process.exit(1);
+}
+
+rmrf(DIST);
+mkdirp(DIST);
 
 const layoutTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'layout.html'), 'utf8');
 const noteTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', 'note.html'), 'utf8');
@@ -565,11 +587,8 @@ if (broken.length) {
 }
 
 // Copy CySQL playground
-const cysqlSource = path.join(PROJECT_ROOT, '..', 'SQL-Playground');
-if (fs.existsSync(cysqlSource)) {
-  copyDir(cysqlSource, path.join(DIST, 'cysql'));
-  console.log('  Copied CySQL playground.');
-}
+copyDir(CYSQL_SOURCE, path.join(DIST, 'cysql'));
+console.log('  Copied CySQL playground.');
 
 console.log(`Built ${totalNotes} notes across ${collections.length} collections, output at docs/`);
 

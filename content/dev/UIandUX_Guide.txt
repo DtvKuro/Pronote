@@ -1,0 +1,53 @@
+Identify the message
+
+Ask yourself:
+
+What should the user feel or understand at first glance?
+
+What is the purpose of this screen? (Guide? Reassure? Prompt action?)
+
+What is the single most important thing we want them to notice?
+
+Write this down in a single sentence. This becomes your design “north star.”
+
+2. Identify the user and their context
+
+Who is the user?
+
+What do they know already?
+
+What is their constraint (time, stress, mobile use, etc.)? Cursor can build better UIs if you give it this context.
+
+3. Translate the message into UI principles For example:
+
+Need to reassure → clean spacing, consistent typography, soft colors.
+
+Need to guide → strong visual hierarchy, clear call-to-action.
+
+Need to help explore → card layouts, progressive disclosure.
+
+Need speed → minimal UI, big buttons, easy scanning.
+
+4. Only then generate with AI
+
+When you prompt Cursor/UI AI, include:
+
+The message
+
+The persona and use case
+
+The emotional direction
+
+The required components
+
+Any constraints (mobile, dark mode, accessibility)
+
+5. Iterate
+
+Review what the AI generates with UX eyes:
+
+Is the main message clear?
+
+Is the hierarchy correct?
+
+Any friction points?

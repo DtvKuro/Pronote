@@ -107,7 +107,7 @@
   </div>
   
   <h1 class="note-title">SQL</h1>
-  <p class="note-meta">Last updated: September 16, 2026 &middot; <span class="note-version-badge">v1</span></p>
+  <p class="note-meta">Last updated: September 23, 2026 &middot; <span class="note-version-badge">v1</span></p>
   <div class="note-content">
     <h1>SQL DATABASE</h1>
 <p>Things you&#39;ll be doing alot.</p>
@@ -117,11 +117,11 @@
 <p><img src="./../images/dbtable.png" alt="DB_Table"></p>
 <div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> products 
 (
-  ID <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>, <span class="hljs-comment">/*RT A1*/</span>
-  <span class="hljs-type">Name</span> string,
-  Price <span class="hljs-type">money</span>, <span class="hljs-comment">/*RT A2*/</span>
+  id <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>, <span class="hljs-comment">/*RT A1*/</span>
+  <span class="hljs-type">name</span> string,
+  price <span class="hljs-type">money</span>, <span class="hljs-comment">/*RT A2*/</span>
   
-  <span class="hljs-keyword">PRIMARY KEY</span>(ID) <span class="hljs-comment">/*RT A3*/</span> 
+  <span class="hljs-keyword">PRIMARY KEY</span>(id) <span class="hljs-comment">/*RT A3*/</span> 
 );</code></pre></div>
 <h3>A1 CONSTRAINT</h3>
 <p>This is like a requirement.<br>NOT NULL means that a table or a row will not be created without ID,<br>Especially Primary Key because its important to find an item.</p>
@@ -132,10 +132,10 @@
 <p>to learn more: <em><a href="https://www.w3schools.com/sql/sql_datatypes.asp">https://www.w3schools.com/sql/sql_datatypes.asp</a></em></p>
 <h3>A3 Unique Key</h3>
 <p>This gives all table a unique ID only for that specific product.<br>And theres 2 way to make a ID column as primary key.</p>
-<p>SOLO KEY <code>ID int PRIMARY KEY</code><br>MULTIPLE <code>PRIMARY KEY(ID, Name)</code></p>
+<p>SOLO KEY <code>id int PRIMARY KEY</code><br>MULTIPLE <code>PRIMARY KEY(id, name)</code></p>
 <hr>
 <h3>INSERTING INTO THE DATABASE TABLE</h3>
-<p>FOR SPECIFIC INSERTING<br><code>INSERT INTO products (ID, Name, Price)</code><br><code>VALUES(1, &#39;Ballpen&#39;, 1.99)</code></p>
+<p>FOR SPECIFIC INSERTING<br><code>INSERT INTO products (id, name, price)</code><br><code>VALUES(1, &#39;Ballpen&#39;, 1.99)</code></p>
 <p>FOR ALL INSERT</p>
 <div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> products 
 <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;Ballpen&#x27;</span>, <span class="hljs-number">1.99</span>)</code></pre></div>
@@ -144,8 +144,51 @@
 <h2>B. READ</h2>
 <p>Most common keywoard to read is <code>SELECT</code></p>
 <p>Show the whole table:<br><code>SELECT * FROM &#39;products&#39;;</code></p>
-<p>Show whole table with custom column :<br><code>SELECT Name, Price FROM &#39;products&#39;;</code><br><em>This will still show all products but with only the Name and Price as the column, no ID.</em></p>
-<p>Show a specific row in the Database:<br><code>SELECT * FROM &#39;products&#39; WHERE ID=1;</code><br>This will show only the row with ID of 1 in the products table.</p>
+<p>Show whole table with custom column :<br><code>SELECT name, price FROM &#39;products&#39;;</code><br><em>This will still show all products but with only the Name and Price as the column, no ID.</em></p>
+<p>Show a specific row in the Database:<br><code>SELECT * FROM &#39;products&#39; WHERE id=1;</code><br>This will show only the row with ID of 1 in the products table.</p>
+<hr>
+<h2>C. UPDATE</h2>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">UPDATE products
+SET price <span class="hljs-operator">=</span> <span class="hljs-number">0.80</span>
+WHERE id <span class="hljs-operator">=</span> <span class="hljs-number">2</span><span class="hljs-comment">;</span></code></pre></div>
+<p><strong>UPDATE</strong> means to change info on the products table,<br><strong>SET</strong> is the column and the value you set it as,<br><strong>WHERE</strong> is the location you will set the value, if you dont put that. It will make all value as 0.80</p>
+<h3>C1. ALTER TABLE</h3>
+<p>And if you wanna add another column in the table.<br>you can do Alter.</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> products
+<span class="hljs-keyword">ADD</span> stock <span class="hljs-type">int</span>;</code></pre></div>
+<hr>
+<h2>D. DELETE</h2>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> products
+<span class="hljs-keyword">WHERE</span> id = <span class="hljs-number">2</span></code></pre></div>
+<p>its a pretty easy process, where you just need the DELETE FROM which tells what table you are deleting from<br>then the WHERE which you put so it knows what id row it will delete.</p>
+<h2>E. RELATIONSHIPS ON SQL</h2>
+<p>As i said before you can make relations on tables so how do we do it?</p>
+<p>It is through <strong>Foreign Key</strong>. Which is used to link two tables together.<br><em>go here to learn more: <a href="https://www.w3schools.com/sql/sql_foreignkey.ASP">https://www.w3schools.com/sql/sql_foreignkey.ASP</a></em></p>
+<p>since we already have the products table we will need to create a orders table for ordering.</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> orders
+(
+  id <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  order_number <span class="hljs-type">INT</span>,
+  customer_id <span class="hljs-type">INT</span>,
+  product_id <span class="hljs-type">INT</span>,
+
+  <span class="hljs-keyword">PRIMARY KEY</span>(id),
+  <span class="hljs-keyword">FOREIGN KEY</span> (customer_id) <span class="hljs-keyword">REFERENCES</span> customers(id), <span class="hljs-comment">/* RT E1*/</span> 
+  <span class="hljs-keyword">FOREIGN KEY</span> (product_id) <span class="hljs-keyword">REFERENCES</span> products(id),
+);</code></pre></div>
+<h3>E1. Foreign Key and REFERENCES</h3>
+<p>As i said <strong>Foreign Key</strong> is a <em>link</em>.</p>
+<ul>
+<li><strong>FOREIGN KEY</strong> (customer_id) is the column in this table that does the linking.</li>
+<li><strong>REFERENCES</strong> customers(id) is where it links to the <code>id</code> column in the customers table.</li>
+</ul>
+<p> So <code>customer_id</code> in orders table = <code>id</code> in customers table.</p>
+<p><strong>IMPORTANT:</strong> Foreign Key only creates the link (and blocks invalid ids). To actually combine the data when reading, use JOIN.</p>
+<h3>E2. JOINT</h3>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">SELECT</span> orders.order_number, customers.first_name, customers.last_name, customers.address, products.name
+<span class="hljs-keyword">FROM</span> orders
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> customers <span class="hljs-keyword">ON</span> orders.customer_id = customer_id
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> products <span class="hljs-keyword">ON</span> orders.product_id = product_id;</code></pre></div>
 
   </div>
   <div class="note-nav">

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CySQL</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='22' font-family='Arial' font-weight='bold' font-size='16' fill='white' text-anchor='middle'>SQL</text></svg>">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="toolbar">
+    <h1>CySQL</h1>
+    <div class="toolbar-actions">
+      <button id="run-btn" class="btn btn-primary">&#9654; Run</button>
+      <button id="import-btn" class="btn">Import</button>
+      <button id="export-btn" class="btn">Export</button>
+      <button id="clear-btn" class="btn btn-danger">Reset</button>
+    </div>
+    <input type="file" id="file-input" accept=".sqlite,.db" hidden />
+  </header>
+
+  <main class="workspace">
+
+    <aside class="schema-panel">
+      <div class="schema-header">
+        <span>Explorer</span>
+        <button id="schema-add-btn" class="schema-add-btn" title="New table">+</button>
+      </div>
+      <div class="schema-content" id="schema-content">
+        <p class="schema-empty">Loading&hellip;</p>
+      </div>
+    </aside>
+
+    <section class="editor-results">
+
+      <div class="tab-bar" id="tab-bar">
+        <div class="tab-list" id="tab-list"></div>
+        <button class="tab-new-btn" id="tab-new-btn" title="New file">+</button>
+      </div>
+
+      <div class="editor-pane" id="editor-pane">
+        <div id="editor-container"></div>
+        <div class="editor-hint">Ctrl+Enter Run &middot; Alt+T New File &middot; Alt+W Close File &middot; Ctrl+S Save</div>
+      </div>
+
+      <div class="resize-handle" id="resize-handle"></div>
+
+      <div class="results-pane" id="results-pane">
+        <div id="results-container">
+          <p class="results-placeholder">Results will appear here.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <aside class="right-panel" id="right-panel">
+      <div class="right-panel-tabs">
+        <button class="right-tab active" data-target="log" id="right-tab-log">Log</button>
+        <button class="right-tab" data-target="terminal" id="right-tab-terminal">Output</button>
+        <button id="log-clear-btn" class="right-panel-clear" title="Clear">&times;</button>
+      </div>
+      <div class="right-panel-content">
+        <div class="right-pane active" id="log-content">
+          <p class="log-empty">No activity yet.</p>
+        </div>
+        <div class="right-pane" id="terminal-content">
+          <p class="log-empty">No output yet.</p>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <footer class="status-bar">
+    <span id="status-message" class="status-idle">Ready</span>
+  </footer>
+
+  <div class="context-menu" id="context-menu" hidden>
+    <ul id="context-menu-list"></ul>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay" hidden>
+    <div class="modal">
+      <div class="modal-header" id="modal-title"></div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-footer" id="modal-footer"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.11.0/sql-wasm.js"></script>
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
