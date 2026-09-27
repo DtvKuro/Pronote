@@ -216,6 +216,36 @@
 
       searchInput.addEventListener('input', applyFilters);
     }
+
+    // School: pick a year and semester to see its subjects
+    const termPicker = document.querySelector('.term-picker');
+    if (termPicker) {
+      const semSections = document.querySelectorAll('.term-section');
+      const empty = document.querySelector('.term-empty');
+      let year = termPicker.dataset.year;
+      let sem = termPicker.dataset.sem;
+
+      termPicker.addEventListener('click', (e) => {
+        const btn = e.target.closest('.term-picker-btn');
+        if (!btn) return;
+        if (btn.dataset.year) year = btn.dataset.year;
+        if (btn.dataset.sem) sem = btn.dataset.sem;
+
+        termPicker.querySelectorAll('.term-picker-btn').forEach(b => {
+          const on = b.dataset.year ? b.dataset.year === year : b.dataset.sem === sem;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', String(on));
+        });
+
+        const id = 'Y' + year + 'S' + sem;
+        let found = false;
+        semSections.forEach(s => {
+          s.hidden = s.dataset.sem !== id;
+          if (!s.hidden) found = true;
+        });
+        if (empty) empty.hidden = found;
+      });
+    }
   }
 
   if (pageType === 'note') {

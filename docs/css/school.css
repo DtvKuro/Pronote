@@ -175,6 +175,75 @@
 
 [data-mode="school"] .card-category { align-self: center; }
 
+/* Subjects without notes yet stay listed but inert. */
+[data-mode="school"] .card--soon { opacity: 0.5; cursor: default; }
+[data-mode="school"] .card--soon:hover { background-color: transparent; padding-left: 1rem; }
+[data-mode="school"] .card--soon:hover::after { transform: scaleY(0); }
+
+/* --- Year / semester picker --------------------------------------------- */
+
+.term-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.term-picker-row,
+.term-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 3px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.term-picker-btn,
+.term-tab {
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.45rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.term-picker-btn:hover,
+.term-tab:hover { color: var(--text-primary); }
+
+.term-picker-btn.active,
+.term-tab.active {
+  background-color: var(--accent);
+  color: var(--bg-primary);
+}
+
+.term-tab--empty,
+.term-tab--empty:hover {
+  opacity: 0.45;
+  cursor: not-allowed;
+  color: var(--text-secondary);
+}
+
+.term-tabs { margin: 0.25rem 0 1.5rem; }
+
+/* category-section sets its own display, which would override [hidden]. */
+.term-section[hidden],
+.term-empty[hidden] { display: none; }
+
+.term-empty {
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 1rem 0 2rem;
+}
+
 /* --- Note pages --------------------------------------------------------- */
 
 [data-mode="school"] .note-title {

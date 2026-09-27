@@ -1456,4 +1456,11 @@ code.hljs { padding: 3px 5px; }
 @media (max-width: 640px) {
   .mode-switch-btn { padding: 0.35rem 0.5rem; font-size: 0.75rem; }
   .nav-search { max-width: none; }
+
+  /* Keep the nav inside a phone screen: tighter gaps, icon-only CySQL,
+     and let the search box shrink instead of pushing buttons off-screen. */
+  .nav-container { gap: 0.5rem; padding: 0 0.75rem; }
+  .nav-search { min-width: 0; }
+  .nav-cysql { padding: 0.375rem 0.5rem; }
+  .nav-cysql span { display: none; }
 }

@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | GE5 Purposive Communication — Midterm</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">1st Year · 1st Sem</h4>
+  <ul class="notes-menu-list">
+        <li><a href="Y1S1-CC1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="Y1S1-CC2-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="Y1S1-HCI101-midterm.html" class="notes-menu-link"><span class="notes-menu-code">HCI101</span> Introduction to Human-Computer Interaction</a></li>
+        <li><a href="Y1S1-GE4-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE4</span> Mathematics in the Modern World</a></li>
+        <li><a href="Y1S1-GE5-midterm.html" class="notes-menu-link active"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="Y1S1-GE9-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE9</span> Readings in Philippine History</a></li>
+        <li><a href="Y1S1-PATHFIT1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">PATHFIT1</span> Physical Activity Towards Health and Fitness 1</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>1st Year · 1st Sem</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Purposive Communication</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">GE5</span><span class="note-units">1st Year · 1st Sem</span></p>
+  <h1 class="note-title">Purposive Communication</h1>
+  <p class="note-meta">Last updated: September 27, 2026</p>
+  <nav class="term-tabs" aria-label="Exam period"><a href="Y1S1-GE5-midterm.html" class="term-tab active" aria-current="page">Midterm</a><span class="term-tab term-tab--empty" title="Not up yet">Finals</span></nav>
+  <div class="note-content">
+    <blockquote>
+<p>Covers: Communication Processes, Principles &amp; Ethics · Language and Communication · Robert Craig&#39;s Seven Traditions of Communication.</p>
+</blockquote>
+<hr>
+<h2>1. What Is Communication?</h2>
+<p><strong>Etymology:</strong> from the Latin <strong>&quot;communis&quot;</strong> (<em>common</em>, &quot;belonging to many&quot;) and <strong>&quot;communico&quot;</strong> (<em>to confer with others</em>).</p>
+<p><strong>Communication</strong> is the <strong>process of exchanging information, ideas, thoughts, and feelings</strong> between individuals or groups, <strong>verbally or non-verbally</strong>. It&#39;s the mutual exchange of understanding by any effective means.</p>
+<ul>
+<li><strong>Components:</strong> a <strong>sender</strong> conveys a message; a <strong>receiver</strong> interprets it.</li>
+<li><strong>Importance:</strong> builds relationships, helps understanding, achieves goals in personal, academic, and professional life.</li>
+</ul>
+<h3>Principles and Characteristics of Communication</h3>
+<table>
+<thead>
+<tr>
+<th>Communication is...</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Schemata-driven</strong></td>
+<td>We interpret messages using our <strong>prior knowledge and experiences</strong> (schemata)</td>
+</tr>
+<tr>
+<td><strong>Symbolic</strong></td>
+<td>Uses <strong>symbols</strong> (words, gestures) that stand for ideas</td>
+</tr>
+<tr>
+<td><strong>Developmental / progressive</strong></td>
+<td>Skills <strong>grow and improve</strong> over time</td>
+</tr>
+<tr>
+<td><strong>An interpretative act</strong></td>
+<td>Receivers <strong>interpret</strong> meaning; it&#39;s not just passed along</td>
+</tr>
+<tr>
+<td><strong>Always results in something</strong></td>
+<td>Every message has an <strong>effect</strong></td>
+</tr>
+<tr>
+<td><strong>A process</strong></td>
+<td>Ongoing and dynamic, not a one-time event</td>
+</tr>
+<tr>
+<td><strong>Not a guaranteed direct link between two minds</strong></td>
+<td>What you mean isn&#39;t automatically what they understand</td>
+</tr>
+<tr>
+<td><strong>Irreversible</strong></td>
+<td>Once said, it <strong>can&#39;t be taken back</strong></td>
+</tr>
+<tr>
+<td><strong>Ethical</strong></td>
+<td>Carries moral responsibility</td>
+</tr>
+<tr>
+<td><strong>Active, powerful, forceful</strong></td>
+<td>Can move, change, or hurt people</td>
+</tr>
+<tr>
+<td><strong>Contextual</strong></td>
+<td>Meaning depends on the <strong>situation</strong></td>
+</tr>
+<tr>
+<td><strong>Influenced by media and technology</strong></td>
+<td>Channels shape how we communicate</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example (irreversible):</strong> You can delete a tweet, but people already saw it. Screenshots exist.</p>
+</blockquote>
+<hr>
+<h2>2. Elements of Communication</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Sender</strong></td>
+<td>The one who <strong>initiates</strong>, <strong>encodes</strong>, and sends the message</td>
+</tr>
+<tr>
+<td><strong>Message</strong></td>
+<td>The <strong>information, idea, or feeling</strong> being communicated (verbal or non-verbal)</td>
+</tr>
+<tr>
+<td><strong>Medium / Channel</strong></td>
+<td>The <strong>method or platform</strong> used: speaking, writing, digital</td>
+</tr>
+<tr>
+<td><strong>Receiver</strong></td>
+<td>The one who <strong>receives and decodes</strong> the message</td>
+</tr>
+<tr>
+<td><strong>Feedback</strong></td>
+<td>The receiver&#39;s <strong>response</strong>, showing whether the message was understood</td>
+</tr>
+<tr>
+<td><strong>Noise</strong></td>
+<td>Any <strong>interference</strong> that distorts the message: background noise, language barriers, misunderstandings</td>
+</tr>
+<tr>
+<td><strong>Context</strong></td>
+<td>The <strong>situation and environment</strong> that affects interpretation</td>
+</tr>
+</tbody></table>
+<h3>The Communication Process</h3>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">SOURCE → ENCODING → MESSAGE → CHANNEL → DECODING → RECEIVER
+   ↑                                                    │
+   └──────────────────── FEEDBACK ◄─────────────────────┘
+                 (all <span class="hljs-keyword">inside </span>a <span class="hljs-built_in">CONTEXT</span><span class="hljs-comment">; NOISE can interfere anywhere)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Source</strong></td>
+<td>The sender, starting with an <strong>idea</strong></td>
+</tr>
+<tr>
+<td><strong>2. Encoding</strong></td>
+<td>Turning thoughts into <strong>verbal or nonverbal symbols</strong></td>
+</tr>
+<tr>
+<td><strong>3. Message</strong></td>
+<td>The idea the sender wants to convey</td>
+</tr>
+<tr>
+<td><strong>4. Channel</strong></td>
+<td>The method used to transmit it</td>
+</tr>
+<tr>
+<td><strong>5. Decoding</strong></td>
+<td>The receiver&#39;s <strong>mental processing</strong> of the message</td>
+</tr>
+<tr>
+<td><strong>6. Receiver</strong></td>
+<td>The person/group who gets the message</td>
+</tr>
+<tr>
+<td><strong>7. Feedback</strong></td>
+<td>The receiver&#39;s <strong>response or reaction</strong></td>
+</tr>
+<tr>
+<td><strong>8. Context</strong></td>
+<td>The <strong>situation</strong> where it all happens</td>
+</tr>
+</tbody></table>
+<p><strong>Lesson diagram (step by step):</strong> <strong>Developing an idea</strong> → <strong>Encoding</strong> → <strong>Transmitting</strong> → <strong>Reception</strong> → <strong>Decoding</strong> → <strong>Acceptance or rejection</strong> → <strong>Using the information</strong> → <strong>Feedback</strong> to the sender, with <strong>noise</strong> affecting every stage.</p>
+<blockquote>
+<p><strong>Own example:</strong> You want to invite a friend to eat (idea) → you type &quot;kain tayo?&quot; (encoding) → send via Messenger (channel) → your friend reads it (decoding) → replies &quot;G!&quot; (feedback). A bad signal that delays the message = <strong>noise</strong>.</p>
+</blockquote>
+<hr>
+<h2>3. Models of Communication</h2>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>How it works</th>
+<th>Feedback?</th>
+<th>Own example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Linear</strong></td>
+<td><strong>One-way</strong>: sender → message → receiver. Receiver decodes <strong>without immediate feedback</strong></td>
+<td><strong>No</strong></td>
+<td>Radio/TV broadcast, a billboard</td>
+</tr>
+<tr>
+<td><strong>Interactive</strong></td>
+<td><strong>Two-way, taking turns</strong>: receiver <strong>gives feedback</strong> to the sender</td>
+<td><strong>Yes</strong> (not simultaneous)</td>
+<td>Texting back and forth, email</td>
+</tr>
+<tr>
+<td><strong>Transactional</strong></td>
+<td><strong>Both</strong> are <strong>sender and receiver at the same time</strong>; continuous exchange within a <strong>context</strong></td>
+<td><strong>Yes, simultaneous</strong></td>
+<td>Face-to-face conversation (you talk while seeing their reactions)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>(added)</strong> These are commonly credited to: <strong>Linear</strong>: Shannon &amp; Weaver (also Aristotle, Lasswell). <strong>Interactive</strong>: Schramm (Osgood-Schramm). <strong>Transactional</strong>: Barnlund.</p>
+</blockquote>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>Linear</strong> = a <strong>line</strong> (one direction). <strong>Interactive</strong> = <strong>ping-pong</strong> (taking turns). <strong>Transactional</strong> = a <strong>dance</strong> (both moving at once).</p>
+</blockquote>
+<hr>
+<h2>4. Key Principles of Communication</h2>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Inescapable</strong></td>
+<td>Communication is <strong>everywhere</strong>; you can&#39;t <em>not</em> communicate (even silence says something)</td>
+</tr>
+<tr>
+<td><strong>Irreversible</strong></td>
+<td>Messages <strong>can&#39;t be taken back</strong></td>
+</tr>
+<tr>
+<td><strong>Complicated</strong></td>
+<td><strong>Many factors</strong> affect interpretation</td>
+</tr>
+<tr>
+<td><strong>Contextual</strong></td>
+<td>Affected by context: <strong>psychological</strong> (your needs, values, beliefs) and <strong>relational</strong> (your relationship with the other person)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>5. Types of Communication</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Lesson example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Verbal</strong></td>
+<td><strong>Spoken or written words</strong>, face-to-face, phone, or digital</td>
+<td>A manager presents; team members take notes or ask questions (feedback)</td>
+</tr>
+<tr>
+<td><strong>Non-verbal</strong></td>
+<td><strong>Body language, facial expressions, gestures, posture, eye contact</strong>. Complements or contrasts with words</td>
+<td>A teacher <strong>nodding and smiling</strong> while praising a student reinforces the praise</td>
+</tr>
+<tr>
+<td><strong>Written</strong></td>
+<td>Messages through <strong>writing</strong>, formal or informal; often for <strong>documentation</strong></td>
+<td>A company sends a formal report to stakeholders</td>
+</tr>
+<tr>
+<td><strong>Visual</strong></td>
+<td><strong>Images, charts, graphs, infographics</strong>; improves understanding and retention of complex info</td>
+<td>A marketer uses infographics to show sales trends</td>
+</tr>
+</tbody></table>
+<h3>Forms of Non-Verbal Communication</h3>
+<table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Meaning</th>
+<th>Own example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Paralanguage</strong></td>
+<td><strong>Extra sounds</strong> that go with spoken words (tone, pitch, &quot;uhm,&quot; sighs)</td>
+<td>Saying &quot;okay...&quot; in a flat tone means you&#39;re <em>not</em> okay</td>
+</tr>
+<tr>
+<td><strong>Proxemics</strong></td>
+<td><strong>Space/distance</strong> that shows your thoughts or feelings</td>
+<td>Standing close to a friend vs keeping distance from a stranger</td>
+</tr>
+<tr>
+<td><strong>Time (Chronemics)</strong></td>
+<td>Your willingness or hesitance <strong>to wait</strong> shows patience or impatience</td>
+<td>Always arriving late sends a message</td>
+</tr>
+<tr>
+<td><strong>Physical appearance &amp; object language</strong></td>
+<td><strong>Dress, body type, appearance, architecture, surroundings</strong></td>
+<td>Wearing a suit to an interview shows seriousness</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>6. Barriers to Effective Communication</h2>
+<table>
+<thead>
+<tr>
+<th>Barrier</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Noise</strong></td>
+<td><strong>Physical or psychological</strong> interference (loud background, language barriers)</td>
+</tr>
+<tr>
+<td><strong>Misunderstanding</strong></td>
+<td>Misinterpretation from <strong>unclear or ambiguous</strong> language</td>
+</tr>
+<tr>
+<td><strong>Emotional barriers</strong></td>
+<td><strong>Anger, stress</strong>, etc. affect sending and receiving</td>
+</tr>
+<tr>
+<td><strong>Cultural differences</strong></td>
+<td>Different <strong>norms and practices</strong> lead to miscommunication</td>
+</tr>
+</tbody></table>
+<h3>Communication Contexts</h3>
+<table>
+<thead>
+<tr>
+<th>Context</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Situational</strong></td>
+<td>The <strong>psycho-social &quot;where&quot;</strong> (the social situation: a date, a meeting, a funeral)</td>
+</tr>
+<tr>
+<td><strong>Environmental</strong></td>
+<td>The <strong>physical &quot;where&quot;</strong> (a classroom, a noisy mall)</td>
+</tr>
+<tr>
+<td><strong>Cultural</strong></td>
+<td><strong>Learned behaviors and rules</strong> affecting interaction</td>
+</tr>
+</tbody></table>
+<h3>Cultural Differences in Gestures</h3>
+<table>
+<thead>
+<tr>
+<th>Gesture</th>
+<th>Positive meaning</th>
+<th>Negative meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Thumbs up</strong></td>
+<td>Approval/agreement in many <strong>Western</strong> cultures</td>
+<td>An <strong>insult</strong> in <strong>Bangladesh</strong>; highly offensive in parts of the <strong>Middle East</strong></td>
+</tr>
+<tr>
+<td><strong>OK sign</strong></td>
+<td>&quot;Everything&#39;s fine&quot; in <strong>English-speaking</strong> countries</td>
+<td><strong>Rude</strong> in <strong>Brazil</strong>. In the <strong>1950s, Richard Nixon</strong> used it in Brazil and caused offense</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>7. Ethics in Communication</h2>
+<h3>Morals vs Ethics</h3>
+<table>
+<thead>
+<tr>
+<th>Morals</th>
+<th>Ethics</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Personal</strong> codes of conduct</td>
+<td><strong>Societal</strong> standards of good and bad</td>
+</tr>
+<tr>
+<td>Individual rules, <strong>not imposed</strong> on others</td>
+<td>Rules accepted by society, <strong>imposed on everyone</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> Not eating meat is a <strong>moral</strong> choice (personal). Not plagiarizing is an <strong>ethical</strong> standard (school rule for everyone).</p>
+</blockquote>
+<h3>Ethical Principles of Communication (9)</h3>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Mutuality</strong></td>
+<td>Consider <strong>others&#39; needs</strong> as well as your own</td>
+</tr>
+<tr>
+<td><strong>2. Individual dignity</strong></td>
+<td>Don&#39;t <strong>embarrass</strong> others, even if their ideas differ</td>
+</tr>
+<tr>
+<td><strong>3. Accuracy</strong></td>
+<td>Give <strong>correct information</strong>; don&#39;t spread fake news</td>
+</tr>
+<tr>
+<td><strong>4. Access to information</strong></td>
+<td>Let others access information; <strong>don&#39;t use it as leverage</strong></td>
+</tr>
+<tr>
+<td><strong>5. Accountability</strong></td>
+<td>Take responsibility for the <strong>consequences</strong> of what you say</td>
+</tr>
+<tr>
+<td><strong>6. Audience responsibility</strong></td>
+<td><strong>Receivers</strong> have ethical duties too (listen, verify, don&#39;t spread)</td>
+</tr>
+<tr>
+<td><strong>7. Relative truth</strong></td>
+<td>Respect others&#39; <strong>points of view</strong> and different realities</td>
+</tr>
+<tr>
+<td><strong>8. End vs means</strong></td>
+<td><strong>The end doesn&#39;t justify</strong> unethical or illegal means</td>
+</tr>
+<tr>
+<td><strong>9. Use of power</strong></td>
+<td>People in <strong>authority</strong> have <strong>greater responsibility</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic:</strong> <strong>M</strong>y <strong>D</strong>og <strong>A</strong>te <strong>A</strong>ll <strong>A</strong>unt <strong>A</strong>nna&#39;s <strong>R</strong>ice <strong>E</strong>very <strong>P</strong>m: Mutuality, Dignity, Accuracy, Access, Accountability, Audience, Relative truth, End vs means, Power</p>
+</blockquote>
+<h3>Guidelines for Ethical Communicators</h3>
+<p>Ethical communicators:</p>
+<ul>
+<li>are <strong>respectful</strong> of their audiences</li>
+<li>consider the <strong>consequences</strong> of their communication</li>
+<li><strong>respect truth</strong></li>
+<li>use information <strong>properly</strong></li>
+<li><strong>do not falsify</strong> information</li>
+<li>respect others&#39; <strong>right to information</strong></li>
+</ul>
+<blockquote>
+<p><strong>Ethical communication enhances human worth and dignity</strong> by fostering <strong>truthfulness, fairness, responsibility, integrity, and respect</strong> for self and others.</p>
+</blockquote>
+<hr>
+<h2>8. Millennial (Digital) Communication</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Digital focus</strong></td>
+<td>Social media, instant messaging, video calls; prefers <strong>quick, efficient</strong> interaction; uses <strong>multiple channels at once</strong></td>
+</tr>
+<tr>
+<td><strong>Language &amp; style</strong></td>
+<td><strong>Informal</strong> (slang, abbreviations), <strong>emojis and GIFs</strong> for emotion, <strong>visual/multimedia</strong> elements</td>
+</tr>
+<tr>
+<td><strong>Social media</strong></td>
+<td><strong>Connectivity</strong> (friends, family, networks), <strong>brand interaction</strong>, <strong>information sharing</strong></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Efficiency</strong>: quick and convenient</td>
+<td><strong>Miscommunication</strong>: informal language, emoji overuse</td>
+</tr>
+<tr>
+<td><strong>Expressiveness</strong>: emojis, GIFs add emotional depth</td>
+<td><strong>Privacy concerns</strong>: oversharing personal info</td>
+</tr>
+<tr>
+<td><strong>Connectivity</strong>: wide network</td>
+<td><strong>Digital overload</strong>: constant notifications → fatigue</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> &quot;k.&quot; can read as angry, while &quot;okii 😊&quot; feels friendly. Same meaning, different tone = <strong>miscommunication risk</strong>.</p>
+</blockquote>
+<hr>
+<h2>9. Language and Communication</h2>
+<h3>What Is Language?</h3>
+<p>According to linguists, it&#39;s only <strong>language</strong> if it has:</p>
+<ol>
+<li>A <strong>system of rules</strong> (<strong>grammar</strong>)</li>
+<li>A <strong>sound system</strong> (<strong>phonology</strong>)</li>
+<li>A <strong>vocabulary</strong> (<strong>lexicon</strong>)</li>
+</ol>
+<blockquote>
+<p><strong>Humans are the only species that has &quot;language.&quot;</strong></p>
+</blockquote>
+<h3>How Do People Understand Language?</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Language acquisition</strong></td>
+<td><strong>Firsthand</strong>, consistent <strong>exposure</strong> to a language (natural, like a child)</td>
+<td>Picking up Filipino at home</td>
+</tr>
+<tr>
+<td><strong>Mother tongue</strong></td>
+<td>The <strong>first</strong> language you acquired and use</td>
+<td>Filipino or English, depending on your environment</td>
+</tr>
+<tr>
+<td><strong>Second language</strong></td>
+<td>Another language learned <strong>after</strong> your mother tongue</td>
+<td>English for many Filipinos</td>
+</tr>
+<tr>
+<td><strong>Language learning</strong></td>
+<td><strong>Formal or informal study</strong> of a language</td>
+<td>Schooling, reading a dictionary</td>
+</tr>
+<tr>
+<td><strong>Foreign language</strong></td>
+<td>A language not used in your community</td>
+<td>Japanese for most Filipinos</td>
+</tr>
+<tr>
+<td><strong>Speech community</strong></td>
+<td>People who <strong>share</strong> vocabulary, sounds, and grammar, so they understand each other</td>
+<td>Filipino speakers</td>
+</tr>
+</tbody></table>
+<h3>Language Acquisition vs Language Learning</h3>
+<table>
+<thead>
+<tr>
+<th>Acquisition</th>
+<th>Learning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Subconscious</strong></td>
+<td><strong>Conscious</strong></td>
+</tr>
+<tr>
+<td><strong>Informal</strong></td>
+<td><strong>Formal</strong></td>
+</tr>
+<tr>
+<td>Needs a <strong>natural</strong> environment</td>
+<td>Needs a <strong>formal</strong> environment</td>
+</tr>
+<tr>
+<td>Focus on <strong>communication</strong></td>
+<td>Focus on <strong>form</strong> (grammar)</td>
+</tr>
+<tr>
+<td><strong>Faster</strong></td>
+<td><strong>Slower</strong></td>
+</tr>
+<tr>
+<td><strong>Passive</strong></td>
+<td><strong>Active</strong></td>
+</tr>
+<tr>
+<td><strong>Mother tongue</strong></td>
+<td>Mother tongue <strong>+ second language</strong></td>
+</tr>
+<tr>
+<td><strong>Practice</strong> (language in use)</td>
+<td><strong>Theory</strong> (language analysis)</td>
+</tr>
+<tr>
+<td><strong>Implicit</strong></td>
+<td><strong>Explicit</strong></td>
+</tr>
+<tr>
+<td><strong>Automatic</strong></td>
+<td><strong>Learned</strong></td>
+</tr>
+<tr>
+<td><strong>Personal</strong></td>
+<td><strong>Technical</strong></td>
+</tr>
+<tr>
+<td>Priority on <strong>spoken</strong> language</td>
+<td>Priority on <strong>written</strong> language</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> A child learns Tagalog just by hearing family talk = <strong>acquisition</strong>. You studying Japanese grammar from a textbook = <strong>learning</strong>.</p>
+</blockquote>
+<h3>Fixing Language Confusion</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Language contact</strong></td>
+<td><strong>Slowly learning</strong> a language through <strong>constant exposure</strong> while communicating. You develop other ways to understand each other, sometimes a mixed form only you two understand</td>
+</tr>
+<tr>
+<td><strong>Language change</strong></td>
+<td>The <strong>result</strong> of language contact: you <strong>fully learn</strong> the language through communicating with its speakers</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><em>&quot;Remember that language, to be alive, needs to be used.&quot;</em></p>
+</blockquote>
+<h3>Language vs Communication</h3>
+<ul>
+<li><strong>Language</strong> is the <strong>tool</strong> of communication.</li>
+<li><strong>Communication</strong> is the <strong>process</strong> of transferring messages.</li>
+<li>Communication <strong>doesn&#39;t exist without language</strong>.</li>
+</ul>
+<h3>Why Is Communication Important?</h3>
+<ol>
+<li>It&#39;s the key to <strong>good relationships</strong>.</li>
+<li>It helps you <strong>gather information</strong>.</li>
+<li>It lets you <strong>connect and form lasting bonds</strong>.</li>
+<li>It helps you <strong>express emotions</strong>.</li>
+<li>We are <strong>social beings</strong>; communication helps us live.</li>
+</ol>
+<h3>How to Overcome Shyness</h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Tips</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Listen</strong></td>
+<td>A good communicator is a <strong>good listener</strong>. Show interest. React sometimes (&quot;I see,&quot; &quot;wow,&quot; &quot;hmm&quot;) but don&#39;t overdo it. Listening = learning; talk once you&#39;re warmed up</td>
+</tr>
+<tr>
+<td><strong>2. Ask questions and slowly build</strong></td>
+<td>Ask <strong>follow-up, elaboration, and clarifying</strong> questions to gather material. More questions = longer conversation. Keep them coherent. No need to &quot;reinvent the wheel&quot;</td>
+</tr>
+<tr>
+<td><strong>3. Relate</strong></td>
+<td>Share a <strong>similar experience</strong> if you have one. It brings fresh perspectives. <strong>Don&#39;t invent things</strong> or seem desperate</td>
+</tr>
+<tr>
+<td><strong>4. Express yourself</strong></td>
+<td>Be you. Use <strong>facial expressions and gestures</strong>; smile so you don&#39;t look stiff. Body language adds another layer to your message</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic:</strong> <strong>L</strong>et <strong>A</strong>ll <strong>R</strong>elax &amp; <strong>E</strong>njoy = Listen, Ask, Relate, Express</p>
+</blockquote>
+<hr>
+<h2>10. Robert Craig&#39;s Seven Traditions of Communication</h2>
+<p><strong>Robert Craig</strong>: an <strong>American communication theorist</strong>. In his article <strong>&quot;Communication Theory as a Field,&quot;</strong> he argued that many communication theories can be used in dialogue, and proposed <strong>7 traditions</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tradition</th>
+<th>Communication as...</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>Socio-Psychological</strong></td>
+<td><strong>Interaction and influence</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Cybernetic</strong></td>
+<td>A <strong>system of information processing</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Rhetorical</strong></td>
+<td><strong>Artful public address</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Semiotic</strong></td>
+<td>The process of <strong>sharing meaning through signs</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Socio-Cultural</strong></td>
+<td>The <strong>creation and enactment of social reality</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Critical</strong></td>
+<td>A <strong>reflexive challenge of unjust discourse</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Phenomenological</strong></td>
+<td>The <strong>experience of self and others through dialogue</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic:</strong> <strong>S</strong>ome <strong>C</strong>ats <strong>R</strong>un, <strong>S</strong>ome <strong>S</strong>leep, <strong>C</strong>ats <strong>P</strong>urr = Socio-psych, Cybernetic, Rhetorical, Semiotic, Socio-cultural, Critical, Phenomenological</p>
+</blockquote>
+<h3>1. Socio-Psychological Tradition: Interaction and Influence</h3>
+<ul>
+<li><strong>Scientific</strong> perspective; looks for <strong>cause-and-effect</strong> relationships to <strong>predict</strong> what happens when people communicate.</li>
+<li>Founded by <strong>Carl Hovland</strong> (experimental research on the effects of communication).</li>
+<li>Hovland&#39;s framework: <strong>&quot;Who says what to whom and with what effect.&quot;</strong></li>
+<li>Focuses on <strong>patterns of interaction</strong>. Reality is <strong>constructed</strong> through communicating in groups and cultures.</li>
+<li>Focuses on the <strong>internal judgment</strong> of a person toward a message; <strong>attitude change</strong> is the goal of persuasion.</li>
+<li>Researchers studied: (1) likelihood to change position, (2) direction of attitude change, (3) tolerance of other positions, (4) level of commitment.</li>
+<li>Concentrates on the <strong>source</strong>, the <strong>content</strong> of persuasive messages, and <strong>audience characteristics</strong>. The source&#39;s <strong>expertise/credibility</strong> matters.</li>
+</ul>
+<p><strong>Branches</strong></p>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Behavioral</strong></td>
+<td><strong>Stimulus → response</strong>: how people actually behave</td>
+</tr>
+<tr>
+<td><strong>Cognitive</strong></td>
+<td><strong>Mental operations</strong> in managing information that lead to behavior (more popular today; behavioral is seen as too simple)</td>
+</tr>
+<tr>
+<td><strong>Communibiology</strong></td>
+<td>Communication from a <strong>biological</strong> perspective</td>
+</tr>
+</tbody></table>
+<p><strong>Stimulus → Response:</strong> <em>what triggers impressions</em> → <em>desired associations about something</em></p>
+<p><strong>Examples</strong></p>
+<ul>
+<li><strong>Cadbury:</strong> A <strong>credible</strong> celebrity visited the factory and documented how the chocolates are made to calm fears about worms. <strong>Who</strong> (credible artist) says <strong>what</strong> (chocolates are safe) to <strong>whom</strong> (worried consumers) with <strong>what effect</strong> (anxiety quelled).</li>
+<li><strong>Doctors</strong> appearing in ads for a product.</li>
+<li>Asking your partner &quot;Do you love me?&quot; now and again in 3 years; &quot;Will my best friend still be my best friend in 10 years?&quot;</li>
+</ul>
+<h3>2. Cybernetic Tradition: Information Processing</h3>
+<ul>
+<li>The study of <strong>information processing, feedback, control</strong>, and communication <strong>systems</strong>.</li>
+<li><strong>&quot;Cybernetics&quot;</strong> was coined by MIT scientist <strong>Norbert Wiener</strong>. The model was established by <strong>Claude Shannon</strong>.</li>
+<li>Communication is <strong>goal-oriented</strong>: was the message received with its intended meaning?</li>
+<li><strong>Feedback</strong> is very important.</li>
+<li><strong>Noise</strong> is the <strong>&quot;enemy of information&quot;</strong>; it disrupts the channel&#39;s capacity between sender and receiver.</li>
+<li><strong>Three components:</strong> (1) the <strong>goal</strong> (message), (2) the <strong>difference</strong> between the goal and what was actually conveyed, (3) <strong>feedback</strong>.</li>
+<li>The message&#39;s <strong>end meaning usually doesn&#39;t match</strong> the intended one; the gap is reduced by <strong>control</strong>.</li>
+<li><strong>Redundancy</strong> (repeating) reduces uncertainty; the more it&#39;s repeated, the clearer it becomes.</li>
+</ul>
+<p><strong>Examples:</strong> the <strong>telephone game</strong> (&quot;Pass the message&quot;), <strong>gossip</strong> (the story changes as it spreads), <strong>paraphrasing</strong> written/oral works.</p>
+<h3>3. Rhetorical Tradition: Artful Public Address</h3>
+<ul>
+<li><strong>Rhetoric</strong>: the art of using <strong>all available means of persuasion</strong>: arguments, organization of ideas, language, and <strong>delivery in public speaking</strong>.</li>
+<li>Classical sources: <strong>Plato, Aristotle, Cicero, Quintilian</strong> (Greco-Roman rhetors).</li>
+<li>Explains why <strong>public discourse</strong> matters and that communication skill can be <strong>improved</strong> through study.</li>
+<li>It&#39;s best to hear <strong>both sides</strong> before judging. Rhetoric is necessary even if often done poorly or harmfully.</li>
+</ul>
+<p><strong>Socio-Psychological vs Rhetorical</strong></p>
+<table>
+<thead>
+<tr>
+<th>Socio-Psychological</th>
+<th>Rhetorical</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Influence through <strong>observation and scientific means</strong></td>
+<td>Influence and persuasion through <strong>public discourse (public speaking)</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Features of the Rhetorical Tradition</strong></p>
+<ol>
+<li><strong>Speech separates humans from animals</strong> (Cicero: what else could gather scattered people into a society?).</li>
+<li><strong>Public speech in a democratic forum</strong> solves political problems better than decrees or violence.</li>
+<li>An <strong>orator</strong> influences a <strong>wide audience</strong> through persuasive discourse (public speaking is <strong>one-way</strong>).</li>
+<li><strong>Rhetoric training</strong> is the basis of a <strong>leader&#39;s education</strong> (speaking loudly without amplifiers).</li>
+<li>Stresses the <strong>power and beauty of language</strong> to move emotions. <strong>Rhetoric is an art, not a science.</strong></li>
+<li>Public speaking was a <strong>man&#39;s domain</strong> until the 19th century (women had little chance to speak publicly).</li>
+</ol>
+<p><strong>Examples:</strong> the President&#39;s <strong>SONA</strong>, a student&#39;s <strong>declamation</strong>, a class president <strong>announcing</strong> tasks to the class.</p>
+<h3>4. Semiotic Tradition: Sharing Meaning Through Signs</h3>
+<ul>
+<li><strong>Semiotics</strong>: the study of <strong>verbal and nonverbal signs</strong> that stand for something else, and how their interpretation affects society.</li>
+<li><strong>Sign</strong>: anything that stands for something else (fever = sign of infection; birds flying south = winter; an arrow = direction).</li>
+<li><strong>Symbols</strong>: <strong>arbitrary</strong> words/signs with <strong>no natural connection</strong> to what they describe; meaning is <strong>learned</strong> in a culture.</li>
+<li><strong>Words</strong> are symbols; they mean nothing on their own. <strong>&quot;Meanings reside in people, not in words.&quot;</strong></li>
+<li>Words are <strong>multidimensional</strong> and depend on context. <em>&quot;Intimacy&quot;</em> can mean self-disclosure, emotional expressiveness, physical contact, trust, support, sexual contact, or shared activities.</li>
+</ul>
+<p><strong>Examples:</strong> &quot;Love,&quot; 🙂 <strong>smile emoji</strong>, 👍 <strong>thumbs up</strong>, ✌️ <strong>peace sign</strong>, <strong>&quot;Hala!&quot;</strong>, eyes, hands, <strong>planet symbols</strong> (☉ sun, ♀ Venus). Each can mean different things to different people.</p>
+<blockquote>
+<p><strong>Own example:</strong> 🙂 is a friendly smile to your parents, but some Gen Z users read it as <strong>passive-aggressive</strong>.</p>
+</blockquote>
+<h3>5. Socio-Cultural Tradition: Creating Social Reality</h3>
+<ul>
+<li>As people talk, they <strong>produce and reproduce culture</strong>.</li>
+<li>We think words reflect reality, but this tradition says it&#39;s <strong>the other way around</strong>: <strong>language shapes our view of reality</strong>.</li>
+<li><strong>Sapir–Whorf hypothesis (linguistic relativity):</strong> the <strong>structure of a culture&#39;s language shapes what people think and do</strong>.<blockquote>
+<p><em>&quot;The &#39;real world&#39; is to a large extent unconsciously built upon the language habits of the group.&quot;</em></p>
+</blockquote>
+</li>
+<li>Through language, <strong>reality is produced, maintained, repaired, and transformed</strong>.</li>
+<li><strong>Intertwined with the semiotic tradition.</strong> Semiotic = symbols are arbitrary and up to interpretation. Socio-cultural = we <strong>learn</strong> meanings <strong>through communication</strong> in our culture, and these shape us as we grow.</li>
+</ul>
+<p><strong>Examples:</strong> a <strong>red</strong> stop sign means halt; <strong>green</strong> = go; wearing <strong>glasses</strong> = smart; the word &quot;strong&quot;; <strong>rice</strong> as a daily staple in Filipino culture.</p>
+<blockquote>
+<p><strong>Own example:</strong> Filipinos have many words for rice (<em>palay, bigas, kanin</em>) because rice is central to our culture. English just says &quot;rice.&quot;</p>
+</blockquote>
+<h3>6. Critical Tradition: Challenging Unjust Discourse</h3>
+<ul>
+<li>Comes from the <strong>Frankfurt School</strong>, German researchers who critically examined <strong>Karl Marx&#39;s</strong> views. They rejected Marxism&#39;s economic determinism but kept its <strong>social criticism</strong>.</li>
+<li>Focus: history as the <strong>unjust distribution of power and suffering</strong>.</li>
+<li><strong>Control of language perpetuates power imbalances.</strong> <em>&quot;A language that is dominant in the conversation has the power to control.&quot;</em></li>
+</ul>
+<p><strong>Features</strong></p>
+<ol>
+<li><strong>Control of language</strong> keeps power imbalances; critical theorists condemn words that block emancipation.</li>
+<li><strong>Blind reliance on the scientific method</strong>: science isn&#39;t as value-free as it claims.</li>
+<li><strong>Mass media</strong> (&quot;culture industries&quot;: TV, film, music, print) <strong>dulls sensitivity to repression</strong> by reproducing the dominant ideology.</li>
+</ol>
+<p><strong>Examples:</strong> one person <strong>dominating</strong> a conversation; a classmate <strong>peer-pressured</strong> into being class officer; a TV show where one group can joke about another but not the reverse; slurs that are acceptable only within a group.</p>
+<blockquote>
+<p><strong>Own example:</strong> In a group chat, the loudest member decides everything and others&#39; ideas get ignored. That&#39;s a <strong>power imbalance</strong> in discourse.</p>
+</blockquote>
+<h3>7. Phenomenological Tradition: Experience of Self and Others</h3>
+<ul>
+<li><strong>Phenomenology</strong>: analysis of <strong>everyday experience</strong> from the standpoint of <strong>the person living it</strong>.</li>
+<li>Emphasizes people&#39;s <strong>perception and interpretation</strong> of their <strong>own subjective experience</strong>.</li>
+<li>An individual&#39;s <strong>story</strong> matters more than any research hypothesis.<blockquote>
+<p><strong>Carl Rogers:</strong> <em>&quot;Neither the Bible nor the prophets—neither Freud nor research—neither the revelations of God nor man—can take precedence over my own direct experience.&quot;</em></p>
+</blockquote>
+</li>
+<li><strong>No two people have the exact same experience</strong>, which is why people sometimes feel misunderstood.</li>
+</ul>
+<p><strong>Carl Rogers&#39;s 3 factors for understanding between people</strong></p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Congruence</strong></td>
+<td>Being <strong>authentic, real, transparent</strong>; your behavior matches your feelings. Breaks the barrier between sender and receiver</td>
+</tr>
+<tr>
+<td><strong>2. Unconditional positive regard</strong></td>
+<td><strong>Accepting a person</strong> regardless of their performance, traits, or past; keeping an open mind</td>
+</tr>
+<tr>
+<td><strong>3. Empathic understanding</strong></td>
+<td><strong>Setting aside your ego</strong> and putting yourself <strong>in their shoes</strong>; never seeing yourself as above or below anyone</td>
+</tr>
+</tbody></table>
+<p><strong>Examples:</strong> <strong>₱500</strong> is cheap for a well-off person but expensive for someone struggling; <strong>rain</strong> is a happy class suspension for some but a flood for others; school is fun for some, not for others.</p>
+<blockquote>
+<p><strong>Summary:</strong> Put yourself in their shoes. People have different standpoints, so be <strong>flexible</strong> in how you communicate.</p>
+</blockquote>
+<h3>Quick Tradition Identifier</h3>
+<table>
+<thead>
+<tr>
+<th>If the situation is about...</th>
+<th>Tradition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Persuading/changing attitudes, cause and effect, credibility</td>
+<td><strong>Socio-Psychological</strong></td>
+</tr>
+<tr>
+<td>Message getting distorted, feedback, noise, telephone game</td>
+<td><strong>Cybernetic</strong></td>
+</tr>
+<tr>
+<td>Public speaking, speeches, persuasion to an audience</td>
+<td><strong>Rhetorical</strong></td>
+</tr>
+<tr>
+<td>Signs, symbols, emojis, words with many meanings</td>
+<td><strong>Semiotic</strong></td>
+</tr>
+<tr>
+<td>Culture shaping meaning (red = stop, rice)</td>
+<td><strong>Socio-Cultural</strong></td>
+</tr>
+<tr>
+<td>Power, dominance, oppression, media influence</td>
+<td><strong>Critical</strong></td>
+</tr>
+<tr>
+<td>Personal experience, perspective, &quot;in their shoes&quot;</td>
+<td><strong>Phenomenological</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Quick Check</h2>
+<ol>
+<li>What two Latin words does &quot;communication&quot; come from?</li>
+<li>Which communication model has <strong>no</strong> immediate feedback?</li>
+<li>In which model do both people send and receive <strong>at the same time</strong>?</li>
+<li>Tone of voice and sighs belong to which form of non-verbal communication?</li>
+<li>Proxemics is about ___.</li>
+<li>Morals vs ethics: which is imposed by society on everyone?</li>
+<li>&quot;The ends don&#39;t justify unethical means&quot; is which ethical principle?</li>
+<li>What three things must a system have to be called language?</li>
+<li>Language acquisition is conscious or subconscious?</li>
+<li>What is the result of language contact called?</li>
+<li>Who proposed the seven traditions of communication?</li>
+<li>&quot;Who says what to whom and with what effect&quot; is from which tradition, and who said it?</li>
+<li>Who coined &quot;cybernetics&quot;?</li>
+<li>Which tradition says &quot;meanings reside in people, not in words&quot;?</li>
+<li>What hypothesis says language shapes how people think?</li>
+<li>The Frankfurt School is linked to which tradition?</li>
+<li>Name Carl Rogers&#39;s 3 factors.</li>
+<li>A classmate spreads a rumor that changes as it&#39;s passed around. Which tradition?</li>
+<li>The OK sign is rude in which country?</li>
+<li>The President&#39;s SONA is an example of which tradition?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+
+<ol>
+<li><strong>Communis</strong> (common) and <strong>communico</strong> (to confer with others)</li>
+<li><strong>Linear</strong></li>
+<li><strong>Transactional</strong></li>
+<li><strong>Paralanguage</strong></li>
+<li><strong>Space/distance</strong></li>
+<li><strong>Ethics</strong></li>
+<li><strong>End vs means</strong></li>
+<li><strong>Grammar (rules), phonology (sound system), lexicon (vocabulary)</strong></li>
+<li><strong>Subconscious</strong></li>
+<li><strong>Language change</strong></li>
+<li><strong>Robert Craig</strong></li>
+<li><strong>Socio-psychological</strong>, <strong>Carl Hovland</strong></li>
+<li><strong>Norbert Wiener</strong></li>
+<li><strong>Semiotic</strong></li>
+<li><strong>Sapir–Whorf hypothesis (linguistic relativity)</strong></li>
+<li><strong>Critical</strong></li>
+<li><strong>Congruence, unconditional positive regard, empathic understanding</strong></li>
+<li><strong>Cybernetic</strong></li>
+<li><strong>Brazil</strong></li>
+<li><strong>Rhetorical</strong></li>
+</ol>
+</details>
+
+  </div>
+  <div class="note-nav">
+    <a href="Y1S1-GE4-midterm.html" class="note-nav-prev">← GE4</a>
+    <a href="Y1S1-GE9-midterm.html" class="note-nav-next">GE9 →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

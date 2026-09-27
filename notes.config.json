@@ -37,14 +37,17 @@
       "label": "School",
       "output": "school",
       "homeTemplate": "home-school.html",
-      "skillsBanner": false,
-      "categoryTabs": [],
-      "categoryColors": {
-        "Subjects": "#c8912f"
-      },
       "sourceDirs": ["content/school"],
-      "imageDirs": [],
-      "notes": []
+      "subjects": [
+        { "code": "CC1", "title": "Introduction to Computing", "year": 1, "sem": 1, "order": 1, "terms": { "midterm": "Y1S1/CC1_Midterm.md" } },
+        { "code": "CC2", "title": "Fundamentals of Programming", "year": 1, "sem": 1, "order": 2, "terms": { "midterm": "Y1S1/CC2_Midterm.md" } },
+        { "code": "HCI101", "title": "Introduction to Human-Computer Interaction", "year": 1, "sem": 1, "order": 3, "terms": { "midterm": "Y1S1/HCI101_Midterm.md" } },
+        { "code": "GE4", "title": "Mathematics in the Modern World", "year": 1, "sem": 1, "order": 4, "terms": { "midterm": "Y1S1/GE4_Midterm.md" } },
+        { "code": "GE5", "title": "Purposive Communication", "year": 1, "sem": 1, "order": 5, "terms": { "midterm": "Y1S1/GE5_Midterm.md" } },
+        { "code": "GE6", "title": "Art Appreciation", "year": 1, "sem": 1, "order": 6, "terms": {} },
+        { "code": "GE9", "title": "Readings in Philippine History", "year": 1, "sem": 1, "order": 7, "terms": { "midterm": "Y1S1/GE9_Midterm.md" } },
+        { "code": "PATHFIT1", "title": "Physical Activity Towards Health and Fitness 1", "year": 1, "sem": 1, "order": 8, "terms": { "midterm": "Y1S1/PATHFIT1_Midterm.md" } }
+      ]
     }
   ],
   "site": {

@@ -233,8 +233,11 @@ const CYSQL_SOURCE = path.join(PROJECT_ROOT, 'cysql');
 // silently drop pages from the live site.
 const missing = [];
 for (const c of collections) {
-  for (const n of c.notes) {
-    if (!resolveSource(c.sourceDirs, n.file)) missing.push(`[${c.id}] ${n.file}`);
+  const files = c.subjects
+    ? c.subjects.flatMap((s) => Object.values(s.terms || {}))
+    : c.notes.map((n) => n.file);
+  for (const f of files) {
+    if (!resolveSource(c.sourceDirs, f)) missing.push(`[${c.id}] ${f}`);
   }
 }
 if (!fs.existsSync(CYSQL_SOURCE)) missing.push('cysql/ (SQL playground)');
@@ -280,7 +283,178 @@ const social = {
 let totalNotes = 0;
 let buildHadErrors = false;
 
+// --- school: subjects grouped by year/semester, one page per exam period ---
+
+const YEAR_LABELS = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
+const SEM_LABELS = ['1st Sem', '2nd Sem'];
+const EXAM_TERMS = [
+  { key: 'midterm', label: 'Midterm' },
+  { key: 'finals', label: 'Finals' },
+];
+
+function semId(s) { return `Y${s.year}S${s.sem}`; }
+function semLabel(s) { return `${YEAR_LABELS[s.year - 1]} · ${SEM_LABELS[s.sem - 1]}`; }
+function subjectPage(s, term) { return `${semId(s)}-${s.code}-${term}`; }
+
+// A subject opens on its latest exam period that has notes.
+function defaultTerm(s) {
+  const have = EXAM_TERMS.filter((t) => s.terms && s.terms[t.key]);
+  return have.length ? have[have.length - 1].key : null;
+}
+
+function buildSubjectCollection(collection) {
+  const { id, label, output, homeTemplate, sourceDirs } = collection;
+  const outRoot = path.join(DIST, output);
+  const outNotes = path.join(outRoot, 'notes');
+  mkdirp(outNotes);
+
+  const subjects = collection.subjects.slice().sort(
+    (a, b) => a.year - b.year || a.sem - b.sem || a.order - b.order
+  );
+  const css = (base) => `\n  <link rel="stylesheet" href="${base}css/school.css">`;
+
+  // Side menu lists every subject that has notes, grouped by semester.
+  const menuItems = subjects.filter(defaultTerm).map((s) => ({
+    category: semLabel(s),
+    code: s.code,
+    title: s.title,
+    file: subjectPage(s, defaultTerm(s)) + '.md',
+  }));
+
+  const searchIndex = [];
+  let pages = 0;
+
+  for (const s of subjects) {
+    const peers = subjects.filter((p) => semId(p) === semId(s) && defaultTerm(p));
+    const i = peers.indexOf(s);
+    // Neighbours open on the same exam period when they have it.
+    const pageFor = (p, term) => subjectPage(p, p.terms[term] ? term : defaultTerm(p));
+
+    for (const term of EXAM_TERMS) {
+      const file = s.terms && s.terms[term.key];
+      if (!file) continue;
+
+      const mdPath = resolveSource(sourceDirs, file);
+      // The page header already names the subject and period, so drop the file's own H1.
+      const raw = fs.readFileSync(mdPath, 'utf8').replace(/^﻿?# .*\r?\n/, '');
+      const noteHtml = marked(raw);
+      const slug = subjectPage(s, term.key);
+
+      const tabs = EXAM_TERMS.map((t) => {
+        if (!s.terms[t.key]) {
+          return `<span class="term-tab term-tab--empty" title="Not up yet">${t.label}</span>`;
+        }
+        const current = t.key === term.key;
+        return `<a href="${subjectPage(s, t.key)}.html" class="term-tab${current ? ' active' : ''}"${current ? ' aria-current="page"' : ''}>${t.label}</a>`;
+      }).join('');
+
+      const prev = peers[i - 1];
+      const next = peers[i + 1];
+      const noteBody = noteTpl
+        .replace(/\{\{CATEGORY\}\}/g, semLabel(s))
+        .replace(/\{\{TITLE\}\}/g, s.title)
+        .replace(/\{\{NOTE_EYEBROW\}\}/g, `<p class="note-eyebrow"><span class="note-code">${s.code}</span><span class="note-units">${semLabel(s)}</span></p>`)
+        .replace(/\{\{LAST_UPDATED\}\}/g, formatDate(fs.statSync(mdPath).mtime))
+        .replace(/\{\{VERSION_MARKUP\}\}/g, '')
+        .replace(/\{\{NOTE_TABS\}\}/g, `<nav class="term-tabs" aria-label="Exam period">${tabs}</nav>`)
+        .replace(/\{\{NOTE_CONTENT\}\}/g, noteHtml)
+        .replace(/\{\{PREV_LINK\}\}/g, prev ? `<a href="${pageFor(prev, term.key)}.html" class="note-nav-prev">← ${prev.code}</a>` : '')
+        .replace(/\{\{NEXT_LINK\}\}/g, next ? `<a href="${pageFor(next, term.key)}.html" class="note-nav-next">${next.code} →</a>` : '');
+
+      const base = upTo(2);
+      const page = applyLayout(layoutTpl, {
+        pageTitle: `Pronote | ${s.code} ${s.title} — ${term.label}`,
+        basePath: base,
+        pageType: 'note',
+        mode: id,
+        homeHref: '../index.html',
+        extraCss: css(base),
+        modeSwitch: buildModeSwitch(collections, id, switchHrefs(2)),
+        content: noteBody,
+        notesMenuToggle: MENU_BTN,
+        notesMenu: buildNotesMenu(menuItems, subjectPage(s, defaultTerm(s)), '', {}),
+        ...social,
+      });
+      fs.writeFileSync(path.join(outNotes, `${slug}.html`), page, 'utf8');
+
+      const plainText = noteHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+      searchIndex.push({ slug, title: `${s.title} (${term.label})`, category: semLabel(s), content: plainText.slice(0, 500) });
+      pages++;
+    }
+  }
+
+  // Home: year + semester pickers, opening on the latest semester with notes.
+  const withNotes = subjects.filter(defaultTerm);
+  const current = withNotes.length ? withNotes[withNotes.length - 1] : subjects[0];
+
+  const pickerRow = (kind, labels, active) => {
+    const btns = labels.map((l, n) => {
+      const on = n + 1 === active;
+      return `<button type="button" class="term-picker-btn${on ? ' active' : ''}" data-${kind}="${n + 1}" aria-pressed="${on}">${l}</button>`;
+    }).join('');
+    return `<div class="term-picker-row" role="group" aria-label="${kind === 'year' ? 'Year' : 'Semester'}">${btns}</div>`;
+  };
+  const picker = `<div class="term-picker" data-year="${current.year}" data-sem="${current.sem}">`
+    + pickerRow('year', YEAR_LABELS, current.year)
+    + pickerRow('sem', SEM_LABELS, current.sem)
+    + '</div>';
+
+  const bySem = new Map();
+  for (const s of subjects) {
+    if (!bySem.has(semId(s))) bySem.set(semId(s), []);
+    bySem.get(semId(s)).push(s);
+  }
+
+  let panels = '';
+  for (const [sem, list] of bySem) {
+    const rows = list.map((s) => {
+      const inner = (note) => `<div class="card-code">${s.code}</div><div class="card-body"><h3>${s.title}</h3></div><div class="card-badges"><span class="card-units">${note}</span></div>`;
+      const periods = EXAM_TERMS.filter((t) => s.terms && s.terms[t.key]).map((t) => t.label);
+      if (!periods.length) return `<div class="card card--soon" data-title="${s.title}">${inner('Coming soon')}</div>`;
+      return `<a href="notes/${subjectPage(s, defaultTerm(s))}.html" class="card" data-title="${s.title}">${inner(periods.join(' · '))}</a>`;
+    }).join('\n        ');
+
+    panels += `
+<section class="category-section term-section" data-sem="${sem}"${sem === semId(current) ? '' : ' hidden'}>
+  <h2 class="category-heading">${semLabel(list[0])}</h2>
+  <div class="card-grid">
+        ${rows}
+  </div>
+</section>`;
+  }
+  panels += '\n<p class="term-empty" hidden>Nothing here yet for this semester.</p>';
+
+  const homeTpl = fs.readFileSync(path.join(PROJECT_ROOT, 'templates', homeTemplate), 'utf8');
+  const homeBody = homeTpl
+    .replace(/\{\{CATEGORY_TABS\}\}/g, picker)
+    .replace(/\{\{CATEGORIES\}\}/g, panels);
+
+  const homeBase = upTo(1);
+  fs.writeFileSync(path.join(outRoot, 'index.html'), applyLayout(layoutTpl, {
+    pageTitle: `${site.title} | ${label}`,
+    basePath: homeBase,
+    pageType: 'home',
+    mode: id,
+    homeHref: './index.html',
+    extraCss: css(homeBase),
+    modeSwitch: buildModeSwitch(collections, id, switchHrefs(1)),
+    content: homeBody,
+    notesMenuToggle: MENU_BTN,
+    notesMenu: buildNotesMenu(menuItems, null, 'notes/', {}),
+    ...social,
+  }), 'utf8');
+  fs.writeFileSync(path.join(outRoot, 'search-index.json'), JSON.stringify(searchIndex));
+
+  console.log(`  [${id}] built ${pages} pages for ${subjects.length} subjects -> docs/${output}/`);
+  return pages;
+}
+
 for (const collection of collections) {
+  if (collection.subjects) {
+    totalNotes += buildSubjectCollection(collection);
+    continue;
+  }
+
   const {
     id, label, output, notes, sourceDirs,
     categoryTabs, homeTemplate, skillsBanner,
@@ -359,6 +533,7 @@ for (const collection of collections) {
       .replace(/\{\{NOTE_EYEBROW\}\}/g, eyebrow)
       .replace(/\{\{LAST_UPDATED\}\}/g, formatDate(mtime))
       .replace(/\{\{VERSION_MARKUP\}\}/g, versionMarkup)
+      .replace(/\{\{NOTE_TABS\}\}/g, '')
       .replace(/\{\{NOTE_CONTENT\}\}/g, noteHtml)
       .replace(/\{\{PREV_LINK\}\}/g, prevLink)
       .replace(/\{\{NEXT_LINK\}\}/g, nextLink);

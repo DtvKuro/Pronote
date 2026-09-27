@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | CC2 Fundamentals of Programming — Midterm</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">1st Year · 1st Sem</h4>
+  <ul class="notes-menu-list">
+        <li><a href="Y1S1-CC1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="Y1S1-CC2-midterm.html" class="notes-menu-link active"><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="Y1S1-HCI101-midterm.html" class="notes-menu-link"><span class="notes-menu-code">HCI101</span> Introduction to Human-Computer Interaction</a></li>
+        <li><a href="Y1S1-GE4-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE4</span> Mathematics in the Modern World</a></li>
+        <li><a href="Y1S1-GE5-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="Y1S1-GE9-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE9</span> Readings in Philippine History</a></li>
+        <li><a href="Y1S1-PATHFIT1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">PATHFIT1</span> Physical Activity Towards Health and Fitness 1</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>1st Year · 1st Sem</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Fundamentals of Programming</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">CC2</span><span class="note-units">1st Year · 1st Sem</span></p>
+  <h1 class="note-title">Fundamentals of Programming</h1>
+  <p class="note-meta">Last updated: September 27, 2026</p>
+  <nav class="term-tabs" aria-label="Exam period"><a href="Y1S1-CC2-midterm.html" class="term-tab active" aria-current="page">Midterm</a><span class="term-tab term-tab--empty" title="Not up yet">Finals</span></nav>
+  <div class="note-content">
+    <blockquote>
+<p>Covers: Intro to Programming, Java Basic Syntax, Operators, User Input (Scanner), Problem-Solving Tools, Conditional Statements, Looping Statements, Parsing &amp; ASCII.</p>
+</blockquote>
+<hr>
+<h2>1. Introduction to Computer Programming</h2>
+<p><strong>Computer programming</strong> is the process of <strong>designing, writing, testing, and maintaining</strong> instructions (<strong>code</strong>) that a computer executes to perform specific tasks. Code is written in a <strong>programming language</strong> that both humans and machines can understand.</p>
+<p><strong>Computer programmers</strong> use logic and programming languages to write, revise, test, and update code.</p>
+<p><strong>Real-life examples</strong></p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>What the code does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ATM withdrawal</td>
+<td>Checks PIN, verifies balance with the bank database, dispenses cash, prints receipt</td>
+</tr>
+<tr>
+<td>Browsers &amp; apps (Chrome, WhatsApp)</td>
+<td>Sends network requests, renders text/media, processes taps and clicks</td>
+</tr>
+<tr>
+<td>Traffic lights</td>
+<td>Cycles colors using timers or sensors that detect cars</td>
+</tr>
+<tr>
+<td>E-commerce checkout</td>
+<td>Computes totals, taxes/discounts, authorizes cards, updates stock</td>
+</tr>
+</tbody></table>
+<h3>The Computer System</h3>
+<p>A <strong>computer system</strong> is a programmable electronic device that <strong>accepts input (data), processes it, and produces output</strong> in the desired format. A computer is a <strong>digital electronic machine</strong> and <strong>needs to be programmed</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Meaning</th>
+<th>Analogy</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Hardware</strong></td>
+<td><strong>Physical</strong> parts. If you can <strong>touch</strong> it, it&#39;s hardware.</td>
+<td>Bones, muscles, organs</td>
+</tr>
+<tr>
+<td><strong>Software</strong></td>
+<td><strong>Instructions/programs</strong> that tell hardware what to do. <strong>Intangible</strong>, can be updated without changing hardware.</td>
+<td>The brain&#39;s instructions</td>
+</tr>
+</tbody></table>
+<p><strong>Four functional units:</strong> <strong>Input Unit</strong> → <strong>CPU</strong> → <strong>Memory/Storage</strong> → <strong>Output Unit</strong></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">DATA</span>  ──►  PROCESSING  ──►  INFORMATION</code></pre></div>
+<p><strong>Inside the system (lesson diagram)</strong></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">                 ┌──── Central Processing <span class="hljs-keyword">Unit</span> (CPU) ────┐
+                 │   Arithmetic Logic <span class="hljs-keyword">Unit</span> (ALU) ─ Registers
+                 │              Control <span class="hljs-keyword">Unit</span> (CU)         │
+                 └───────────────────┬────────────────────┘
+                                     │ controls
+ Input <span class="hljs-keyword">unit</span> ──►  ┌──── Storage <span class="hljs-keyword">unit</span> ─┴──┐  ──►  Output <span class="hljs-keyword">unit</span>
+                 │  Primary storage     │
+                 │      ⇅               │
+                 │  Secondary storage   │
+                 └──────────────────────┘</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Job</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>ALU</strong></td>
+<td>Does arithmetic and logic (comparisons)</td>
+</tr>
+<tr>
+<td><strong>Registers</strong></td>
+<td>Tiny, super-fast storage inside the CPU</td>
+</tr>
+<tr>
+<td><strong>Control Unit</strong></td>
+<td>Directs everything: input, output, and storage</td>
+</tr>
+<tr>
+<td><strong>Primary storage</strong></td>
+<td>Main memory (RAM), used while working</td>
+</tr>
+<tr>
+<td><strong>Secondary storage</strong></td>
+<td>Long-term storage (SSD, HDD)</td>
+</tr>
+</tbody></table>
+<h3>Programming Languages</h3>
+<p>A programming language is the <strong>middle man</strong> between human ideas and machine execution. <strong>High-level languages</strong> let you use words like <em>read, write, add</em> instead of on/off switches.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Language</th>
+<th>Key facts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Low</strong></td>
+<td><strong>Machine language</strong></td>
+<td>Only <strong>0s and 1s</strong> (binary). Also called <strong>machine code / object code</strong>. <strong>Executed directly by the CPU</strong>. Can&#39;t be understood by humans in raw form.</td>
+</tr>
+<tr>
+<td><strong>Low</strong></td>
+<td><strong>Assembly language</strong></td>
+<td>Uses <strong>mnemonics</strong> (ADD, SUB, MUL). Readable by humans. Needs an <strong>assembler</strong> to become machine code.</td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td>Java, Python, C++, JavaScript, Ruby</td>
+<td><strong>Human-like syntax</strong>, easier to read and write. Needs a <strong>translator</strong>.</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Low-level</strong> = closer to the machine, faster, harder for humans.<br><strong>High-level</strong> = closer to English, easier, needs translation.</p>
+</blockquote>
+<p><strong>Common languages and their uses</strong></p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Python</strong></td>
+<td>Data science, machine learning, AI, web development, automation, data analysis/visualization, game development</td>
+</tr>
+<tr>
+<td><strong>Java</strong></td>
+<td><strong>Android apps</strong>, server-side apps, enterprise apps, web-based apps, big data, game development, IoT, cloud computing</td>
+</tr>
+<tr>
+<td><strong>C++</strong></td>
+<td>Game development, GUI apps, <strong>operating systems</strong>, database systems, embedded systems, networking, VR, computer vision</td>
+</tr>
+<tr>
+<td><strong>JavaScript</strong></td>
+<td><strong>Web development and apps</strong>, server-side development, mobile apps, machine learning, IoT, automation, chatbots</td>
+</tr>
+<tr>
+<td><strong>Swift</strong></td>
+<td><strong>iOS and macOS apps</strong>, deep learning, IoT, server-side development, machine learning, automation</td>
+</tr>
+<tr>
+<td><strong>C#</strong></td>
+<td>Game development, web development, <strong>Windows apps</strong>, backend services, IoT, robotics, cloud computing</td>
+</tr>
+</tbody></table>
+<h3>Source Code vs Object Code</h3>
+<table>
+<thead>
+<tr>
+<th>Source Code</th>
+<th>Object Code</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Written by the programmer</td>
+<td>Produced by a translator (compiler, etc.)</td>
+</tr>
+<tr>
+<td><strong>Human-readable</strong> (high-level language)</td>
+<td><strong>Machine-readable</strong> (binary)</td>
+</tr>
+<tr>
+<td>Easy for humans to understand</td>
+<td>Hard for humans to read; CPU executes it directly</td>
+</tr>
+</tbody></table>
+<h3>Translators</h3>
+<p><strong>Translators</strong> convert <strong>source code</strong> into <strong>machine code</strong> so the computer can run it.</p>
+<table>
+<thead>
+<tr>
+<th>Translator</th>
+<th>How it works</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Assembler</strong></td>
+<td>Converts <strong>assembly language</strong> → machine code</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Compiler</strong></td>
+<td>Translates the <strong>entire</strong> program <strong>all at once</strong> before running. Lists <strong>all errors</strong> at once. <strong>Faster</strong> than an interpreter but <strong>harder to debug</strong>. If there&#39;s an error, <strong>no binary is created</strong>. Produces an executable (e.g. <code>.exe</code>)</td>
+<td>C, C++, Objective-C, Swift, Pascal</td>
+</tr>
+<tr>
+<td><strong>Interpreter</strong></td>
+<td>Translates and runs <strong>line by line</strong>. <strong>Stops at the first error</strong>. <strong>Easier to debug</strong>, but <strong>slower</strong> overall</td>
+<td>Python, Ruby, JavaScript, Perl</td>
+</tr>
+<tr>
+<td><strong>Hybrid</strong></td>
+<td>Compiles the whole program into <strong>bytecode</strong>, then a runtime engine executes it line-by-line or block-by-block</td>
+<td><strong>Java</strong> (JVM)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> A compiler is a translator who reads your <strong>whole essay</strong>, then hands back a full translation (or a list of every mistake). An interpreter is a <strong>live interpreter</strong> at a meeting: translates sentence by sentence and stops the moment something makes no sense.</p>
+</blockquote>
+<h3>How Java Runs (Hybrid)</h3>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">MyProgram.java  ──javac──►  MyProgram.class  ──JVM──►  <span class="hljs-keyword">Output</span>
+ (source <span class="hljs-built_in">code</span>)   <span class="hljs-keyword">compile</span>     (bytecode)       <span class="hljs-keyword">run</span></code></pre></div>
+<ol>
+<li><strong>Write</strong> source code in a text editor or IDE (<code>.java</code>).</li>
+<li><strong>Compile</strong> with <code>javac</code>, which produces <strong>bytecode</strong> (<code>.class</code>). Bytecode is <strong>not yet machine code</strong>.</li>
+<li><strong>Run</strong> with <code>java</code>. The <strong>JVM</strong> interprets the bytecode line by line, or uses <strong>JIT (Just-In-Time) compilation</strong> to turn it into native machine code for speed.</li>
+</ol>
+<blockquote>
+<p>Java bytecode runs on <strong>any computer that has a JVM</strong>, which is why Java is <strong>platform independent</strong> (&quot;write once, run anywhere&quot;).</p>
+</blockquote>
+<p><strong>Phases of programming:</strong> <strong>Write → Compile → Run</strong></p>
+<h3>History of Java</h3>
+<table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Creator</td>
+<td><strong>James Gosling</strong>, early <strong>1990s</strong></td>
+</tr>
+<tr>
+<td>Original purpose</td>
+<td>Language for <strong>digital devices</strong> (set-top boxes, TVs). C++ was considered but rejected</td>
+</tr>
+<tr>
+<td>Project name</td>
+<td><strong>Green Project</strong></td>
+</tr>
+<tr>
+<td>First name</td>
+<td><strong>Greentalk</strong> (file extension <strong><code>.gt</code></strong>)</td>
+</tr>
+<tr>
+<td>Second name</td>
+<td><strong>Oak</strong>, after an oak tree outside Gosling&#39;s office</td>
+</tr>
+<tr>
+<td>Why renamed</td>
+<td>&quot;Oak&quot; was already trademarked by <strong>Oak Technologies</strong></td>
+</tr>
+<tr>
+<td>Final name</td>
+<td><strong>Java</strong>, from a type of <strong>espresso bean</strong> (named over coffee)</td>
+</tr>
+<tr>
+<td>Principles</td>
+<td>Robust, Portable, Platform Independent, High Performance, Multithreaded</td>
+</tr>
+<tr>
+<td>Award</td>
+<td>One of the <strong>Ten Best Products of 1995</strong> by <strong>TIME Magazine</strong></td>
+</tr>
+<tr>
+<td>First public version</td>
+<td><strong>Java 1.0 (1995)</strong></td>
+</tr>
+<tr>
+<td>Ownership</td>
+<td><strong>Sun Microsystems</strong> was acquired by <strong>Oracle in 2010</strong></td>
+</tr>
+<tr>
+<td>Latest (as of Aug 2026)</td>
+<td><strong>Java 26 (Java SE 26)</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Java</strong> is a general-purpose, <strong>class-based, object-oriented</strong> language designed to have as few implementation dependencies as possible.</p>
+<h3>JDK vs JRE vs JVM</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>What it is</th>
+<th>Who needs it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>JDK</strong> (Java Development Kit)</td>
+<td>Everything to <strong>develop</strong> Java: <strong>compiler</strong>, tools, libraries, docs. <strong>Includes the JRE</strong></td>
+<td>Programmers who <strong>write</strong> Java</td>
+</tr>
+<tr>
+<td><strong>JRE</strong> (Java Runtime Environment)</td>
+<td>Everything to <strong>run</strong> Java: <strong>JVM</strong> + libraries</td>
+<td>Users who only <strong>run</strong> Java apps</td>
+</tr>
+<tr>
+<td><strong>JVM</strong> (Java Virtual Machine)</td>
+<td><strong>Executes bytecode</strong>. Platform independent. Manages memory and <strong>garbage collection</strong></td>
+<td>Inside the JRE</td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">┌──────────── <span class="hljs-keyword">JDK </span>────────────┐
+│  compiler, tools            │
+│  ┌──────── <span class="hljs-keyword">JRE </span>─────────┐   │
+│  │  libraries           │   │
+│  │  ┌────── <span class="hljs-keyword">JVM </span>─────┐  │   │
+│  │  └────────────────┘  │   │
+│  └──────────────────────┘   │
+└─────────────────────────────┘</code></pre></div>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>D</strong>evelop = J<strong>D</strong>K, <strong>R</strong>un = J<strong>R</strong>E, the <strong>M</strong>achine that executes = JV<strong>M</strong>.</p>
+</blockquote>
+<h3>Errors and Debugging</h3>
+<p><strong>Debugging</strong> is finding and fixing mistakes (bugs) that cause crashes, wrong results, or unexpected behavior.</p>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Meaning</th>
+<th>When detected</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Syntax error</strong></td>
+<td>Breaks the <strong>rules/structure</strong> of the language (misspelled keyword, missing <code>;</code>, missing bracket)</td>
+<td><strong>Before</strong> the program runs (compilation)</td>
+<td><code>System.out.println(&quot;Hi&quot;)</code> ← missing <code>;</code></td>
+</tr>
+<tr>
+<td><strong>Logical / Semantic error</strong></td>
+<td>Syntax is correct but the <strong>logic is wrong</strong>, so the output is wrong</td>
+<td><strong>While running</strong> (or by noticing wrong results)</td>
+<td>Using <code>-</code> instead of <code>+</code> when computing a total</td>
+</tr>
+</tbody></table>
+<p><strong>Lesson examples</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-comment">// SYNTAX ERROR: missing &quot;);&quot; so it won&#x27;t compile</span>
+System.out.println(<span class="hljs-string">&quot;Hello, World!&quot;</span></code></pre></div>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-comment">// LOGICAL ERROR: compiles and runs, but the answer is wrong</span>
+<span class="hljs-type">int</span> <span class="hljs-variable">number</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;
+<span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> number / <span class="hljs-number">3</span>;
+System.out.println(<span class="hljs-string">&quot;The result is: &quot;</span> + result);   <span class="hljs-comment">// prints 3, not 3.33</span></code></pre></div>
+<blockquote>
+<p><strong>Own example:</strong> &quot;The cat drinked milk&quot; is a <strong>syntax</strong> error (grammar). &quot;The milk drank the cat&quot; is a <strong>logic</strong> error: the grammar is fine, the meaning is wrong.</p>
+</blockquote>
+<h3>IDE vs Text Editor</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Meaning</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>IDE</strong> (Integrated Development Environment)</td>
+<td>A place to <strong>write, run, and debug</strong> code and convert it to machine code. Has <strong>built-in error checking</strong> and <strong>autofill</strong></td>
+<td>NetBeans, Eclipse, IntelliJ, Visual Studio</td>
+</tr>
+<tr>
+<td><strong>Text Editor</strong></td>
+<td>Software to create and edit <strong>plain text</strong> files, including source code. &quot;The programmer&#39;s writing desk&quot;</td>
+<td>Notepad</td>
+</tr>
+</tbody></table>
+<h3>Running Java from the Command Prompt</h3>
+<ol>
+<li>Install the JDK and add its <code>bin</code> folder to the <strong>Path</strong> environment variable.</li>
+<li>Check the install: <code>java --version</code></li>
+<li>Go to your file&#39;s folder: <code>cd &lt;folder&gt;</code></li>
+<li>Compile: <code>javac FileName.java</code> (no message = success; creates <code>FileName.class</code>)</li>
+<li>Run: <code>java FileName</code></li>
+</ol>
+<blockquote>
+<p>The file must end in <strong><code>.java</code></strong>.</p>
+</blockquote>
+<h3>Parts of a Java Program</h3>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloWorld</span> {                    <span class="hljs-comment">// class name → file must be HelloWorld.java</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> { <span class="hljs-comment">// main() method → program starts here</span>
+        <span class="hljs-comment">// Prints &quot;Hello, World&quot; in the terminal window.</span>
+        System.out.print(<span class="hljs-string">&quot;Hello, World&quot;</span>);    <span class="hljs-comment">// statement, ends with ; (terminator)</span>
+    }                                        <span class="hljs-comment">// method body ends</span>
+}                                            <span class="hljs-comment">// class body ends</span></code></pre></div>
+<p><strong>Class body</strong> contains the <strong>method body</strong>, which contains the <strong>statements</strong>. Every statement ends with a <strong>semicolon (<code>;</code>)</strong>, the <strong>terminator</strong>.</p>
+<hr>
+<h2>2. Java Basic Syntax</h2>
+<h3>Basic Terminologies</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Class</strong></td>
+<td>A <strong>blueprint/template</strong> that defines common properties and methods</td>
+<td>Blueprint of a house; the <code>Human</code> class</td>
+</tr>
+<tr>
+<td><strong>Object</strong></td>
+<td>An <strong>instance</strong> of a class, the actual thing built from the blueprint</td>
+<td>The actual house; Alice is an object of <code>Human</code></td>
+</tr>
+<tr>
+<td><strong>Method</strong></td>
+<td>A <strong>block of code</strong> in a class that performs an action and can return a result</td>
+<td><code>main()</code>, <code>newMethod()</code></td>
+</tr>
+<tr>
+<td><strong>Parameter</strong></td>
+<td>A <strong>placeholder</strong> in a method that says what information the method expects</td>
+<td><code>String word</code> in <code>newMethod(String word)</code></td>
+</tr>
+</tbody></table>
+<h3>Comments</h3>
+<p>Comments explain code and are <strong>ignored by the compiler</strong>. They can also disable code while testing.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Syntax</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Single-line</strong></td>
+<td><code>// comment</code></td>
+<td>Until the end of the line</td>
+</tr>
+<tr>
+<td><strong>Multi-line (block)</strong></td>
+<td><code>/* comment */</code></td>
+<td>Spans many lines</td>
+</tr>
+<tr>
+<td><strong>Documentation (Javadoc)</strong></td>
+<td><code>/** comment */</code></td>
+<td>Used by the <strong>javadoc</strong> tool to generate documentation pages</td>
+</tr>
+</tbody></table>
+<h3>Variables</h3>
+<p><strong>Variables</strong> are <strong>containers</strong> that store data. The data stored is its <strong>value</strong>. You must <strong>declare</strong> a variable before using it.</p>
+<h3>Data Types</h3>
+<p>A <strong>data type</strong> tells the computer:</p>
+<ol>
+<li><strong>What kind</strong> of data is stored (number, text, true/false, character)</li>
+<li><strong>How much memory</strong> to reserve</li>
+<li><strong>What operations</strong> are allowed (you can add two numbers, not two booleans)</li>
+</ol>
+<h4>Primitive Data Types (&quot;value types&quot;)</h4>
+<p>Store the <strong>actual value</strong> directly. Simple, small, fixed size, fast.</p>
+<p><strong>Whole numbers</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Size</th>
+<th>Memory</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>byte</code></td>
+<td>8 bits</td>
+<td>1 byte</td>
+<td>−128 to 127</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>16 bits</td>
+<td>2 bytes</td>
+<td>−32,768 to 32,767</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>32 bits</td>
+<td>4 bytes</td>
+<td>−2,147,483,648 to 2,147,483,647 (<strong>default</strong> integer type)</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>64 bits</td>
+<td>8 bytes</td>
+<td>−9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>1 byte = 8 bits.</strong> More bits = more memory = bigger range.</p>
+</blockquote>
+<p><strong>Decimal numbers</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Size</th>
+<th>Precision</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>float</code></td>
+<td>32 bits (4 bytes)</td>
+<td>~6–7 digits</td>
+<td>Value must end in <strong><code>f</code> or <code>F</code></strong> → <code>2.5f</code></td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>64 bits (8 bytes)</td>
+<td>~15–16 digits</td>
+<td><strong>Default</strong> decimal type, more accurate</td>
+</tr>
+</tbody></table>
+<p><strong>Others</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Stores</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>boolean</code></td>
+<td><code>true</code> or <code>false</code> only. Needed for if-statements and loops</td>
+<td><code>boolean isTall = true;</code></td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td><strong>One</strong> character in <strong>single quotes</strong></td>
+<td><code>char grade = &#39;A&#39;;</code></td>
+</tr>
+</tbody></table>
+<h4>Reference (Non-Primitive) Data Types</h4>
+<p>Store a <strong>reference (memory address)</strong> that points to where the data actually is, not the value itself.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>String</code></td>
+<td>A <strong>sequence of characters</strong>, written in <strong>double quotes</strong>. It&#39;s a <strong>class</strong>, not a primitive</td>
+<td><code>String name = &quot;Pedro&quot;;</code></td>
+</tr>
+<tr>
+<td><strong>Array</strong></td>
+<td>A collection of values of the <strong>same type</strong> in one variable. Indexes <strong>start at 0</strong></td>
+<td><code>int[] nums = {10, 20, 30};</code> → <code>nums[0]</code> is 10</td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">Primitive:   num1 → [ <span class="hljs-number">50</span> ]      num2 → [ <span class="hljs-number">50</span> ]      (<span class="hljs-keyword">each</span> holds its own <span class="hljs-keyword">value</span>)
+
+Reference:   s1 ──┐
+                  ├──►  &quot;Pedro&quot;                  (<span class="hljs-keyword">both</span> <span class="hljs-type">point</span> <span class="hljs-keyword">to</span> the same <span class="hljs-keyword">object</span>)
+             s2 ──┘</code></pre></div>
+<blockquote>
+<p><strong>Primitive vs Reference:</strong> A primitive is the <strong>item itself</strong> in your hand. A reference is a <strong>claim stub</strong> that tells you where the item is stored.</p>
+</blockquote>
+<blockquote>
+<p><strong>Watch out:</strong> <code>&#39;A&#39;</code> (single quotes) is a <code>char</code>. <code>&quot;A&quot;</code> (double quotes) is a <code>String</code>.</p>
+</blockquote>
+<h3>Rules You Must Know</h3>
+<ul>
+<li><strong>Source file name</strong> must <strong>exactly match the public class name</strong> + <code>.java</code>. <code>public class Main</code> → <code>Main.java</code></li>
+<li>Java is <strong>case-sensitive</strong>: <code>AB</code>, <code>Ab</code>, <code>aB</code>, <code>ab</code> are all different.<br><code>System.out.println(&quot;Hi&quot;);</code> ✓ but <code>system.out.println(&quot;Hi&quot;);</code> ✗ (lowercase <code>system</code>)</li>
+<li><strong><code>main()</code></strong> is the <strong>entry point</strong>; the program starts here.</li>
+</ul>
+<h3>Anatomy of the Main Method</h3>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+    System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>);
+}</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>public</code></td>
+<td><strong>Access modifier</strong>: controls visibility (anyone can access)</td>
+</tr>
+<tr>
+<td><code>static</code></td>
+<td>Lets <code>main()</code> run <strong>without creating an object</strong> of the class</td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td>The method <strong>returns no value</strong></td>
+</tr>
+<tr>
+<td><code>main</code></td>
+<td>The method name, the program&#39;s <strong>starting point</strong></td>
+</tr>
+<tr>
+<td><code>String[] args</code></td>
+<td>The <strong>parameter</strong>: an array of Strings</td>
+</tr>
+<tr>
+<td><code>System</code></td>
+<td>A <strong>built-in class</strong></td>
+</tr>
+<tr>
+<td><code>out</code></td>
+<td>A <strong>static member</strong> of System, a <code>PrintStream</code> object used for output</td>
+</tr>
+<tr>
+<td><code>println()</code></td>
+<td>Prints text, then moves to a <strong>new line</strong></td>
+</tr>
+<tr>
+<td><code>.</code> (dots)</td>
+<td>Separate classes, objects, and methods</td>
+</tr>
+</tbody></table>
+<p><strong>Creating your own method</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">newMethod</span><span class="hljs-params">(String word)</span> {
+    <span class="hljs-comment">// method body</span>
+}</code></pre></div>
+<p><code>public</code> = access modifier · <code>static</code> = non-access modifier · <code>void</code> = return type · <code>newMethod</code> = identifier · <code>String word</code> = parameter · <code>{ }</code> = opening/closing braces</p>
+<h3>Identifiers</h3>
+<p><strong>Identifiers</strong> are the <strong>names</strong> you give to variables, classes, methods, packages, etc.</p>
+<ul>
+<li>Can <strong>begin with</strong> a <strong>letter</strong>, <strong>currency symbol (<code>$</code>)</strong>, or <strong>underscore (<code>_</code>)</strong>.</li>
+<li>After the first character: letters, <strong>digits</strong>, <code>$</code>, <code>_</code>.</li>
+<li><strong>Cannot start with a digit</strong> (<code>2name</code> ✗).</li>
+<li><strong>Case-sensitive</strong>.</li>
+<li><strong>Cannot be a keyword</strong> (reserved word).</li>
+<li>Underscore is <strong>not recommended</strong> for variable names; convention is a <strong>lowercase</strong> first letter.</li>
+</ul>
+<p><strong>Camel casing:</strong> start lowercase, capitalize each next word, like a camel&#39;s hump: <code>myAge</code>, <code>firstName</code>, <code>isTall</code>, <code>favLetter</code></p>
+<table>
+<thead>
+<tr>
+<th>Valid</th>
+<th>Invalid</th>
+<th>Why invalid</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>studentName</code></td>
+<td><code>student name</code></td>
+<td>Space</td>
+</tr>
+<tr>
+<td><code>_count</code></td>
+<td><code>2ndPlace</code></td>
+<td>Starts with a digit</td>
+</tr>
+<tr>
+<td><code>$price</code></td>
+<td><code>class</code></td>
+<td>Keyword</td>
+</tr>
+<tr>
+<td><code>total2</code></td>
+<td><code>my-age</code></td>
+<td><code>-</code> not allowed</td>
+</tr>
+</tbody></table>
+<h3>Java Keywords (reserved; can&#39;t be identifiers)</h3>
+<p><code>abstract</code> <code>assert</code> <code>boolean</code> <code>break</code> <code>byte</code> <code>case</code> <code>catch</code> <code>char</code> <code>class</code> <code>const</code> <code>continue</code> <code>default</code> <code>do</code> <code>double</code> <code>else</code> <code>enum</code> <code>extends</code> <code>final</code> <code>finally</code> <code>float</code> <code>for</code> <code>goto</code> <code>if</code> <code>implements</code> <code>import</code> <code>instanceof</code> <code>int</code> <code>interface</code> <code>long</code> <code>native</code> <code>new</code> <code>package</code> <code>private</code> <code>protected</code> <code>public</code> <code>return</code> <code>short</code> <code>static</code> <code>strictfp</code> <code>super</code> <code>switch</code> <code>synchronized</code> <code>this</code> <code>throw</code> <code>throws</code> <code>transient</code> <code>try</code> <code>void</code> <code>volatile</code> <code>while</code></p>
+<h3>Declaration &amp; Assignment</h3>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-comment">// Declaration:        datatype identifier;</span>
+<span class="hljs-type">int</span> age;
+<span class="hljs-type">int</span> a, b, c;
+
+<span class="hljs-comment">// Assignment:         identifier = value;</span>
+age = <span class="hljs-number">18</span>;
+
+<span class="hljs-comment">// Combined:           datatype identifier = value;</span>
+<span class="hljs-type">int</span> <span class="hljs-variable">numberSeen</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, increment = <span class="hljs-number">5</span>;
+<span class="hljs-type">double</span> <span class="hljs-variable">height</span> <span class="hljs-operator">=</span> <span class="hljs-number">12.34</span>, prize = <span class="hljs-number">7.3</span> + increment;
+<span class="hljs-type">char</span> <span class="hljs-variable">answer</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;y&#x27;</span>;</code></pre></div>
+<p>In an assignment, the <strong>right side is evaluated first</strong>, then stored in the variable on the left.</p>
+<p><strong>Literal examples from the lesson:</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">long</span> <span class="hljs-variable">transactionID</span> <span class="hljs-operator">=</span> <span class="hljs-number">81475245L</span>;   <span class="hljs-comment">// long ends with L</span>
+<span class="hljs-type">float</span> <span class="hljs-variable">grades</span> <span class="hljs-operator">=</span> <span class="hljs-number">2.5f</span>;              <span class="hljs-comment">// float ends with f</span>
+<span class="hljs-type">double</span> <span class="hljs-variable">prices</span> <span class="hljs-operator">=</span> <span class="hljs-number">845.25</span>;
+<span class="hljs-type">boolean</span> <span class="hljs-variable">isDead</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
+<span class="hljs-type">char</span> <span class="hljs-variable">gender</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;F&#x27;</span>;
+<span class="hljs-type">String</span> <span class="hljs-variable">firstName</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;John&quot;</span>;</code></pre></div>
+<h3>Concatenation</h3>
+<p>Joining strings with <strong><code>+</code></strong> (the <strong>concatenation operator</strong>).</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Pedro&quot;</span>;
+System.out.println(<span class="hljs-string">&quot;Hello, &quot;</span> + name + <span class="hljs-string">&quot; long time no see&quot;</span>);
+<span class="hljs-comment">// Output: Hello, Pedro long time no see</span></code></pre></div>
+<blockquote>
+<p><strong>Own example (trap):</strong> <code>System.out.println(&quot;Sum: &quot; + 5 + 3);</code> prints <strong><code>Sum: 53</code></strong>, because once a String appears, <code>+</code> glues text. Use <code>&quot;Sum: &quot; + (5 + 3)</code> to get <code>Sum: 8</code>.</p>
+</blockquote>
+<h3><code>print()</code> vs <code>println()</code></h3>
+<table>
+<thead>
+<tr>
+<th><code>println()</code></th>
+<th><code>print()</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Prints, then moves to a <strong>new line</strong> (adds <code>\n</code>)</td>
+<td>Prints and <strong>stays on the same line</strong></td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java">System.out.println(<span class="hljs-string">&quot;Hello PLVWorld&quot;</span>);
+System.out.println(<span class="hljs-string">&quot;Thank you for Warm Welcome&quot;</span>);
+<span class="hljs-comment">// Hello PLVWorld</span>
+<span class="hljs-comment">// Thank you for Warm Welcome</span>
+
+System.out.print(<span class="hljs-string">&quot;Hello PLVWorld,&quot;</span>);
+System.out.print(<span class="hljs-string">&quot; Thank you for Warm Welcome&quot;</span>);
+<span class="hljs-comment">// Hello PLVWorld, Thank you for Warm Welcome</span></code></pre></div>
+<hr>
+<h2>3. Java Operators</h2>
+<p><strong>Operators</strong> are symbols that perform actions on variables and values.</p>
+<p><strong>Types:</strong> Arithmetic, Assignment, Relational, Logical, Unary, Bitwise, Ternary</p>
+<h3>Arithmetic Operators</h3>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th><code>10 ? 3</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>+</code></td>
+<td>Add</td>
+<td>13</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Subtract</td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Multiply</td>
+<td>30</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Divide</td>
+<td><strong>3</strong> (int ÷ int drops the decimal)</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Modulus (<strong>remainder</strong>)</td>
+<td><strong>1</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own examples:</strong> <code>10 / 4</code> = <strong>2</strong> (int), but <code>10.0 / 4</code> = <strong>2.5</strong>.<br><code>%</code> is how you check even/odd: <code>n % 2 == 0</code> → even.</p>
+</blockquote>
+<p><strong>Machine problem example:</strong> 3 notebooks at ₱45 and 2 pens at ₱15</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">int</span> <span class="hljs-variable">total</span> <span class="hljs-operator">=</span> (<span class="hljs-number">3</span> * <span class="hljs-number">45</span>) + (<span class="hljs-number">2</span> * <span class="hljs-number">15</span>);   <span class="hljs-comment">// 135 + 30</span>
+System.out.println(<span class="hljs-string">&quot;Total: &quot;</span> + total);   <span class="hljs-comment">// Total: 165</span></code></pre></div>
+<h3>Assignment Operators</h3>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Same as</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>=</code></td>
+<td>Assign</td>
+<td><code>x = 5</code></td>
+</tr>
+<tr>
+<td><code>+=</code></td>
+<td>Add and assign</td>
+<td><code>x = x + 5</code></td>
+</tr>
+<tr>
+<td><code>-=</code></td>
+<td>Subtract and assign</td>
+<td><code>x = x - 5</code></td>
+</tr>
+<tr>
+<td><code>*=</code></td>
+<td>Multiply and assign</td>
+<td><code>x = x * 5</code></td>
+</tr>
+<tr>
+<td><code>/=</code></td>
+<td>Divide and assign</td>
+<td><code>x = x / 5</code></td>
+</tr>
+<tr>
+<td><code>%=</code></td>
+<td>Modulus and assign</td>
+<td><code>x = x % 5</code></td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;
+num += <span class="hljs-number">5</span>;   <span class="hljs-comment">// 15</span>
+num -= <span class="hljs-number">3</span>;   <span class="hljs-comment">// 12</span>
+num *= <span class="hljs-number">2</span>;   <span class="hljs-comment">// 24</span>
+num /= <span class="hljs-number">4</span>;   <span class="hljs-comment">// 6</span>
+num %= <span class="hljs-number">4</span>;   <span class="hljs-comment">// 2</span></code></pre></div>
+<h3>Relational (Comparison) Operators</h3>
+<p>Compare two values; the result is always a <strong>boolean</strong> (<code>true</code>/<code>false</code>). Used in conditions.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>==</code></td>
+<td>Equal to</td>
+<td><code>5 == 5</code></td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>Not equal to</td>
+<td><code>5 != 3</code></td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Greater than</td>
+<td><code>7 &gt; 2</code></td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Less than</td>
+<td><code>4 &lt; 10</code></td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>Greater than or equal</td>
+<td><code>6 &gt;= 6</code></td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>Less than or equal</td>
+<td><code>3 &lt;= 5</code></td>
+<td>true</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Trap:</strong> <code>=</code> <strong>assigns</strong>, <code>==</code> <strong>compares</strong>.</p>
+</blockquote>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">int</span> <span class="hljs-variable">michaelAge</span> <span class="hljs-operator">=</span> <span class="hljs-number">34</span>, jordanAge = <span class="hljs-number">30</span>;
+<span class="hljs-type">boolean</span> <span class="hljs-variable">whoIsOlder</span> <span class="hljs-operator">=</span> michaelAge &gt; jordanAge;
+System.out.print(<span class="hljs-string">&quot;Is michael older than jordan? &quot;</span> + whoIsOlder);  <span class="hljs-comment">// true</span></code></pre></div>
+<h3>Logical Operators</h3>
+<p>Combine or reverse conditions. Result is always boolean.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Name</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&amp;&amp;</code></td>
+<td>AND</td>
+<td>true <strong>only if both</strong> are true</td>
+</tr>
+<tr>
+<td><code>||</code></td>
+<td>OR</td>
+<td>true if <strong>at least one</strong> is true</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>NOT</td>
+<td><strong>reverses</strong> the value</td>
+</tr>
+</tbody></table>
+<p><strong>Truth tables</strong></p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>A &amp;&amp; B</th>
+<th>A || B</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>T</td>
+<td><strong>T</strong></td>
+<td>T</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td><strong>F</strong></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>!A</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>AND is strict</strong> (everyone must agree). <strong>OR is chill</strong> (one yes is enough).</p>
+</blockquote>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">int</span> <span class="hljs-variable">numOne</span> <span class="hljs-operator">=</span> <span class="hljs-number">15</span>, numTwo = <span class="hljs-number">30</span>, numThree = <span class="hljs-number">45</span>;
+<span class="hljs-type">boolean</span> <span class="hljs-variable">boolOne</span> <span class="hljs-operator">=</span> (numOne &gt; numTwo) &amp;&amp; (numTwo == numThree);
+<span class="hljs-comment">//              = (15 &gt; 30) &amp;&amp; (30 == 45)</span>
+<span class="hljs-comment">//              = false &amp;&amp; false</span>
+<span class="hljs-comment">//              = false</span></code></pre></div>
+<blockquote>
+<p><strong>Own example:</strong> You can go out if <code>(homeworkDone &amp;&amp; !raining)</code>. Homework done but it&#39;s raining → <code>true &amp;&amp; false</code> → <strong>false</strong>, you stay home.</p>
+</blockquote>
+<h3>Unary Operators</h3>
+<p>Work on <strong>one</strong> operand.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>+</code></td>
+<td>Unary plus</td>
+<td>Positive value</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Unary minus</td>
+<td>Negates (changes sign)</td>
+</tr>
+<tr>
+<td><code>++</code></td>
+<td>Increment</td>
+<td>Adds 1</td>
+</tr>
+<tr>
+<td><code>--</code></td>
+<td>Decrement</td>
+<td>Subtracts 1</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>Logical complement</td>
+<td>Reverses a boolean</td>
+</tr>
+</tbody></table>
+<h3>Bitwise Operators</h3>
+<p>Work on the <strong>binary bits</strong> of integers (<code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Name</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&amp;</code></td>
+<td>AND</td>
+<td>1 if <strong>both</strong> bits are 1</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>OR</td>
+<td>1 if <strong>at least one</strong> bit is 1</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>XOR</td>
+<td>1 if the bits are <strong>different</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> <code>5 &amp; 3</code> → <code>0101 &amp; 0011</code> = <code>0001</code> = <strong>1</strong>; <code>5 | 3</code> = <code>0111</code> = <strong>7</strong>; <code>5 ^ 3</code> = <code>0110</code> = <strong>6</strong></p>
+</blockquote>
+<h3>Ternary Operator (<code>? :</code>)</h3>
+<p>A <strong>one-line if-else</strong> that takes <strong>three operands</strong>.</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-attribute">datatype identifier</span> = condition ? valueIfTrue : valueIfFalse;</code></pre></div>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">String</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> (age &gt;= <span class="hljs-number">18</span>) ? <span class="hljs-string">&quot;Adult&quot;</span> : <span class="hljs-string">&quot;Minor&quot;</span>;</code></pre></div>
+<ol>
+<li>The condition is checked.</li>
+<li>If <strong>true</strong>, returns the first value.</li>
+<li>If <strong>false</strong>, returns the second value.</li>
+</ol>
+<hr>
+<h2>4. Java User Input (Scanner Class)</h2>
+<p><strong>User input</strong> is data entered <strong>while the program is running</strong>, instead of hardcoding values. The most common way is the <strong>Scanner class</strong> from the <strong><code>java.util</code> package</strong>.</p>
+<p><strong>Three steps</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">import</span> java.util.Scanner;                    <span class="hljs-comment">// 1. Import</span>
+<span class="hljs-type">Scanner</span> <span class="hljs-variable">input</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);      <span class="hljs-comment">// 2. Create a Scanner object (reads from keyboard)</span>
+<span class="hljs-type">int</span> <span class="hljs-variable">age</span> <span class="hljs-operator">=</span> input.nextInt();                   <span class="hljs-comment">// 3. Read input</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Reads</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>nextInt()</code></td>
+<td>An <strong>integer</strong></td>
+</tr>
+<tr>
+<td><code>nextDouble()</code></td>
+<td>A <strong>decimal</strong> number</td>
+</tr>
+<tr>
+<td><code>nextLine()</code></td>
+<td>A <strong>whole line</strong> of text, <strong>including spaces</strong></td>
+</tr>
+<tr>
+<td><code>next()</code></td>
+<td>A <strong>single word</strong> (stops at a space)</td>
+</tr>
+<tr>
+<td><code>nextBoolean()</code></td>
+<td><code>true</code> / <code>false</code></td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserInputExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">Scanner</span> <span class="hljs-variable">input</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+
+        System.out.print(<span class="hljs-string">&quot;Enter your name: &quot;</span>);
+        <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> input.nextLine();
+
+        System.out.print(<span class="hljs-string">&quot;Enter your age: &quot;</span>);
+        <span class="hljs-type">int</span> <span class="hljs-variable">age</span> <span class="hljs-operator">=</span> input.nextInt();
+
+        System.out.println(<span class="hljs-string">&quot;Hello &quot;</span> + name + <span class="hljs-string">&quot;, you are &quot;</span> + age + <span class="hljs-string">&quot; years old.&quot;</span>);
+    }
+}</code></pre></div>
+<blockquote>
+<p><strong>Own example:</strong> Typing <code>Juan Dela Cruz</code>: <code>nextLine()</code> gets <strong>Juan Dela Cruz</strong>, <code>next()</code> gets only <strong>Juan</strong>.</p>
+</blockquote>
+<h3>Pitfall: <code>nextLine()</code> after <code>nextInt()</code> / <code>nextDouble()</code> / <code>next()</code></h3>
+<p>After you type a number and press <strong>Enter</strong>, <code>nextInt()</code> takes the number but <strong>leaves the Enter</strong> behind. The next <code>nextLine()</code> grabs that leftover Enter, so the string input is <strong>skipped</strong>.</p>
+<p><strong>Fix:</strong> add an <strong>extra <code>nextLine()</code></strong> to consume the leftover Enter.</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java">System.out.print(<span class="hljs-string">&quot;Enter any number: &quot;</span>);
+<span class="hljs-type">int</span> <span class="hljs-variable">number</span> <span class="hljs-operator">=</span> scanner.nextInt();
+scanner.nextLine();                 <span class="hljs-comment">// consumes the leftover Enter key</span>
+System.out.print(<span class="hljs-string">&quot;Enter any word: &quot;</span>);
+<span class="hljs-type">String</span> <span class="hljs-variable">word</span> <span class="hljs-operator">=</span> scanner.nextLine();</code></pre></div>
+<hr>
+<h2>5. Problem-Solving Tools in Programming</h2>
+<p><strong>Program design tools</strong> are used to <strong>plan the logic before coding</strong>. They catch errors early, save time, and keep steps in the right order.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Algorithm</strong></td>
+<td>A <strong>written step-by-step procedure</strong> in plain English, like a <strong>recipe</strong>. Says <em>what to do and in what order</em>, without caring about the language yet</td>
+</tr>
+<tr>
+<td><strong>Pseudocode</strong></td>
+<td>Plain English <strong>mixed with code-like structure</strong>. Also called <strong>&quot;false code.&quot;</strong> A <strong>bridge</strong> between algorithm and real code. Uses keywords like <code>START</code>, <code>END</code>, <code>INPUT</code>, <code>OUTPUT</code>, <code>IF</code>, <code>WHILE</code>, <code>DECLARE</code>, <code>DISPLAY</code></td>
+</tr>
+<tr>
+<td><strong>Flowchart</strong></td>
+<td>A <strong>graphical</strong> representation using <strong>shapes and arrows</strong> to show the flow of steps</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Remember:</strong> There is <strong>no single correct algorithm</strong>. Different steps are fine as long as the <strong>logic is correct</strong> and it <strong>produces the right output</strong>.</p>
+</blockquote>
+<p><strong>Why flowcharts help:</strong> logic is easy to see at a glance, the sequence is clear, non-programmers can understand them, and missing steps are easy to spot before coding.</p>
+<h3>Flowchart Symbols</h3>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Shape</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Terminal</strong></td>
+<td><strong>Oval / rounded rectangle</strong></td>
+<td><strong>Start</strong> or <strong>End</strong></td>
+</tr>
+<tr>
+<td><strong>Process</strong></td>
+<td><strong>Rectangle</strong></td>
+<td>A step or calculation (<code>sum = a + b</code>)</td>
+</tr>
+<tr>
+<td><strong>Input/Output</strong></td>
+<td><strong>Parallelogram</strong></td>
+<td>Entering data (<strong>Input</strong>) or showing results (<strong>Display</strong>)</td>
+</tr>
+<tr>
+<td><strong>Decision</strong></td>
+<td><strong>Diamond</strong></td>
+<td>A <strong>yes/no (true/false)</strong> question; branches out</td>
+</tr>
+<tr>
+<td><strong>Connector</strong></td>
+<td><strong>Circle</strong></td>
+<td>Continues the flow where a <strong>matching labeled</strong> circle is</td>
+</tr>
+<tr>
+<td><strong>Flow lines</strong></td>
+<td><strong>Arrows</strong></td>
+<td>Show the <strong>direction</strong> of the program</td>
+</tr>
+</tbody></table>
+<h3>Worked Example: Add Two Numbers</h3>
+<p><strong>Algorithm</strong></p>
+<ol>
+<li>Start.</li>
+<li>Declare three variables: numOne, numTwo, and sum.</li>
+<li>Assign or input values to numOne and numTwo.</li>
+<li>Add numOne and numTwo.</li>
+<li>Store the result in sum.</li>
+<li>Display sum.</li>
+<li>End.</li>
+</ol>
+<p><strong>Pseudocode</strong></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">START
+    DECLARE numOne, numTwo, <span class="hljs-keyword">sum</span>
+    <span class="hljs-keyword">INPUT</span> numOne
+    <span class="hljs-keyword">INPUT</span> numTwo
+    <span class="hljs-keyword">sum</span> ← numOne + numTwo
+    <span class="hljs-keyword">DISPLAY</span> <span class="hljs-keyword">sum</span>
+END</code></pre></div>
+<p><strong>Flowchart</strong></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">(Start) → [numOne = 0, numTwo = 0, <span class="hljs-keyword">sum</span> = 0] → /<span class="hljs-keyword">Input</span> numOne, numTwo/
+        → [<span class="hljs-keyword">sum</span> = numOne + numTwo] → /<span class="hljs-keyword">Display</span> <span class="hljs-keyword">sum</span>/ → (End)</code></pre></div>
+<p><code>( )</code> terminal · <code>[ ]</code> process · <code>/ /</code> input/output</p>
+<h3>Worked Example: Meters to Centimeters (12 m, cm = m × 100)</h3>
+<p><strong>Pseudocode</strong></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-keyword">START</span>
+    <span class="hljs-keyword">DECLARE</span> meters, centimeters
+    INITIALIZE meters ← <span class="hljs-number">12</span>
+    centimeters ← meters <span class="hljs-operator">*</span> <span class="hljs-number">100</span>
+    DISPLAY centimeters
+<span class="hljs-keyword">END</span></code></pre></div>
+<p>Output: <strong>1200</strong></p>
+<hr>
+<h2>6. Java Flow of Control</h2>
+<p><strong>Control structures</strong> decide the <strong>flow of execution</strong> in a program. There are <strong>three</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Sequence</strong></td>
+<td>Steps run <strong>one after another</strong>, in order, with <strong>no branching or skipping</strong></td>
+</tr>
+<tr>
+<td><strong>Selection</strong> (decision)</td>
+<td>Uses a <strong>condition</strong> to <strong>choose a path</strong> (if, switch)</td>
+</tr>
+<tr>
+<td><strong>Iteration</strong> (looping)</td>
+<td><strong>Repeats</strong> statements <strong>as long as a condition is true</strong> (while, do-while, for)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>7. Selection / Conditional Statements</h2>
+<p>Conditional statements decide <strong>which code runs and which is skipped</strong>. Java&#39;s two main selection statements are <strong><code>if</code></strong> and <strong><code>switch</code></strong>.</p>
+<p>Common forms: <strong>if</strong>, <strong>if-else</strong>, <strong>if-else-if ladder</strong>, <strong>nested if</strong>, <strong>switch</strong></p>
+<h3><code>if</code> Statement</h3>
+<p>Runs the block <strong>only if</strong> the condition is true. If false, <strong>nothing happens</strong>.</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">if</span> (condition) {
+    <span class="hljs-comment">// runs if true</span>
+}</code></pre></div>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">if</span> (age &gt;= <span class="hljs-number">18</span>) {
+    System.out.println(<span class="hljs-string">&quot;You are allowed to vote.&quot;</span>);
+}</code></pre></div>
+<blockquote>
+<p>Any expression that gives <code>true</code>/<code>false</code> can be a condition, including a boolean variable or a method returning a boolean.</p>
+</blockquote>
+<h3><code>if-else</code> Statement</h3>
+<p>Chooses between <strong>two</strong> actions.</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">if</span> (condition) {
+    <span class="hljs-comment">// runs if true</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// runs if false</span>
+}</code></pre></div>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">if</span> (number % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+    System.out.println(<span class="hljs-string">&quot;The number is even.&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+    System.out.println(<span class="hljs-string">&quot;The number is odd.&quot;</span>);
+}</code></pre></div>
+<p><strong>Pass/fail example (average ≥ 75)</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java">average = (grade1 + grade2 + grade3) / <span class="hljs-number">3</span>;
+<span class="hljs-keyword">if</span> (average &gt;= <span class="hljs-number">75</span>) {
+    System.out.println(<span class="hljs-string">&quot;Status: PASSED&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+    System.out.println(<span class="hljs-string">&quot;Status: FAILED&quot;</span>);
+}
+System.out.printf(<span class="hljs-string">&quot;Average Grade: %.2f%n&quot;</span>, average);</code></pre></div>
+<blockquote>
+<p><code>printf(&quot;%.2f&quot;, x)</code> prints <code>x</code> with <strong>2 decimal places</strong>.</p>
+</blockquote>
+<p><strong>Discount example (10% off if total ≥ ₱1,000)</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">double</span> price, totalAmount = <span class="hljs-number">0</span>, discount = <span class="hljs-number">0</span>, finalAmount = <span class="hljs-number">0</span>;
+<span class="hljs-type">int</span> quantity;
+<span class="hljs-comment">// ... read price and quantity ...</span>
+totalAmount = price * quantity;
+
+<span class="hljs-keyword">if</span> (totalAmount &gt;= <span class="hljs-number">1000</span>) {
+    discount = totalAmount * <span class="hljs-number">0.10</span>;
+    finalAmount = totalAmount - discount;
+} <span class="hljs-keyword">else</span> {
+    finalAmount = totalAmount;
+}</code></pre></div>
+<blockquote>
+<p>Initializing to <code>0</code> gives variables a <strong>starting/default value</strong> before they&#39;re used.</p>
+</blockquote>
+<p>A block can hold <strong>multiple statements</strong> inside <code>{ }</code>.</p>
+<h3><code>if-else-if</code> Ladder</h3>
+<p>Checks <strong>many conditions top to bottom</strong>. The <strong>first true</strong> one runs, and the <strong>rest are skipped</strong>. <code>else</code> runs if none are true.</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">if</span> (condition1) {
+    <span class="hljs-comment">// block 1</span>
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (condition2) {
+    <span class="hljs-comment">// block 2</span>
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (condition3) {
+    <span class="hljs-comment">// block 3</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// none were true</span>
+}</code></pre></div>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">if</span> (grade &gt;= <span class="hljs-number">90</span> &amp;&amp; grade &lt;= <span class="hljs-number">100</span>) {
+    System.out.println(<span class="hljs-string">&quot;Excellent!&quot;</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (grade &gt;= <span class="hljs-number">80</span> &amp;&amp; grade &lt;= <span class="hljs-number">89</span>) {
+    System.out.println(<span class="hljs-string">&quot;Very Good!&quot;</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (grade &gt;= <span class="hljs-number">75</span> &amp;&amp; grade &lt;= <span class="hljs-number">79</span>) {
+    System.out.println(<span class="hljs-string">&quot;Good!&quot;</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (grade &gt;= <span class="hljs-number">0</span> &amp;&amp; grade &lt; <span class="hljs-number">75</span>) {
+    System.out.println(<span class="hljs-string">&quot;Failed.&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+    System.out.println(<span class="hljs-string">&quot;Invalid grade. Please enter a number between 0 and 100.&quot;</span>);
+}</code></pre></div>
+<p><strong>Multi-branch decision making</strong> means choosing from several outcomes. It&#39;s commonly done with if-else-if or nested if-else, and is treated almost like its own statement type.</p>
+<h3>Nested <code>if</code></h3>
+<p>An <code>if</code> <strong>inside another <code>if</code> or <code>else</code></strong>. The <strong>inner</strong> if only runs if the <strong>outer</strong> condition is true.</p>
+<blockquote>
+<p><strong>Rule:</strong> an <code>else</code> belongs to the <strong>nearest <code>if</code></strong> in the same block that doesn&#39;t already have an <code>else</code>.</p>
+</blockquote>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">if</span> (grade &lt; <span class="hljs-number">0</span> || grade &gt; <span class="hljs-number">100</span>) {
+    System.out.println(<span class="hljs-string">&quot;Invalid grade.&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">if</span> (grade &gt;= <span class="hljs-number">75</span>) {
+        <span class="hljs-keyword">if</span> (grade &gt;= <span class="hljs-number">90</span>) {
+            System.out.println(<span class="hljs-string">&quot;Excellent!&quot;</span>);
+        } <span class="hljs-keyword">else</span> {
+            System.out.println(<span class="hljs-string">&quot;Passed.&quot;</span>);
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">if</span> (grade &gt;= <span class="hljs-number">50</span>) {
+            System.out.println(<span class="hljs-string">&quot;Needs Improvement.&quot;</span>);
+        } <span class="hljs-keyword">else</span> {
+            System.out.println(<span class="hljs-string">&quot;Failed badly.&quot;</span>);
+        }
+    }
+}</code></pre></div>
+<blockquote>
+<p><strong>Own example:</strong> Grade 82 → not invalid → 82 ≥ 75 ✓ → 82 ≥ 90 ✗ → <strong>&quot;Passed.&quot;</strong></p>
+</blockquote>
+<h3>Comparing Strings</h3>
+<ul>
+<li>For <strong>primitives</strong>, use <code>==</code>.</li>
+<li>For <strong>Strings (objects)</strong>, <code>==</code> checks if both point to the <strong>same memory location</strong>, not the same text. <strong>Use <code>equals()</code> instead.</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>equals()</code></td>
+<td>Compares text, <strong>case-sensitive</strong></td>
+</tr>
+<tr>
+<td><code>equalsIgnoreCase()</code></td>
+<td>Compares text, <strong>ignores case</strong></td>
+</tr>
+<tr>
+<td><code>contains()</code></td>
+<td>Checks if a string <strong>contains</strong> a substring</td>
+</tr>
+<tr>
+<td><code>charAt(index)</code></td>
+<td>Gets <strong>one character</strong> at a position (starts at 0)</td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">if</span> (color.equalsIgnoreCase(<span class="hljs-string">&quot;Red&quot;</span>)) {          <span class="hljs-comment">// &quot;red&quot;, &quot;RED&quot;, &quot;Red&quot; all match</span>
+    System.out.println(<span class="hljs-string">&quot;Stop!&quot;</span>);
+} <span class="hljs-keyword">else</span> {
+    System.out.println(<span class="hljs-string">&quot;Color not defined&quot;</span>);
+}
+
+<span class="hljs-keyword">if</span> (name.contains(<span class="hljs-string">&quot;John&quot;</span>)) {
+    System.out.println(<span class="hljs-string">&quot;So, you are also a John!&quot;</span>);
+}</code></pre></div>
+<blockquote>
+<p><strong>Own example:</strong> <code>&quot;Hello&quot;.equals(&quot;hello&quot;)</code> → <strong>false</strong>; <code>&quot;Hello&quot;.equalsIgnoreCase(&quot;hello&quot;)</code> → <strong>true</strong>; <code>&quot;Hello&quot;.charAt(1)</code> → <strong>&#39;e&#39;</strong></p>
+</blockquote>
+<h3><code>switch</code> Statement</h3>
+<p>Compares <strong>one variable</strong> against a list of <strong>specific constant values</strong> (int, byte, short, char, String, enum).</p>
+<p><strong>Four keywords</strong></p>
+<table>
+<thead>
+<tr>
+<th>Keyword</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>switch</code></td>
+<td>Starts the structure, followed by the test expression in <code>( )</code></td>
+</tr>
+<tr>
+<td><code>case</code></td>
+<td>A possible value, followed by a <strong>colon</strong> <code>:</code></td>
+</tr>
+<tr>
+<td><code>break</code></td>
+<td><strong>Ends</strong> the switch so it doesn&#39;t continue to the next cases</td>
+</tr>
+<tr>
+<td><code>default</code></td>
+<td>Runs if <strong>no case matches</strong> (like <code>else</code>)</td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">switch</span> (day) {
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+        System.out.println(<span class="hljs-string">&quot;It&#x27;s Monday!&quot;</span>);
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+        System.out.println(<span class="hljs-string">&quot;It&#x27;s Tuesday!&quot;</span>);
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-comment">// ... cases 3 to 7 ...</span>
+    <span class="hljs-keyword">default</span>:
+        System.out.println(<span class="hljs-string">&quot;Invalid&quot;</span>);
+        <span class="hljs-keyword">break</span>;
+}</code></pre></div>
+<p><strong>With a char (reading one letter via <code>charAt(0)</code>)</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">char</span> <span class="hljs-variable">grade</span> <span class="hljs-operator">=</span> input.next().charAt(<span class="hljs-number">0</span>);
+<span class="hljs-keyword">switch</span> (grade) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;A&#x27;</span>: System.out.println(<span class="hljs-string">&quot;Excellent!&quot;</span>); <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;B&#x27;</span>: System.out.println(<span class="hljs-string">&quot;Very Good!&quot;</span>); <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;C&#x27;</span>: System.out.println(<span class="hljs-string">&quot;Good!&quot;</span>); <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;D&#x27;</span>: System.out.println(<span class="hljs-string">&quot;Needs Improvement.&quot;</span>); <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;F&#x27;</span>: System.out.println(<span class="hljs-string">&quot;Failed.&quot;</span>); <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:  System.out.println(<span class="hljs-string">&quot;Invalid Grade.&quot;</span>);
+}</code></pre></div>
+<p><strong>Important rules</strong></p>
+<ul>
+<li>A switch checks <strong>equality only</strong>. You <strong>can&#39;t</strong> use <code>&gt;</code>, <code>&lt;</code>, etc. in cases.</li>
+<li>Case values must be <strong>unique constants</strong> (literals, not variables). <strong>No duplicates</strong>.</li>
+<li>Without <code>break</code>, execution <strong>falls through</strong> into the following cases. This is called <strong>fall-through</strong>.</li>
+<li>Fall-through can be <strong>useful</strong> when several cases share the same code.</li>
+<li><code>default</code> can be placed <strong>anywhere</strong>, but it&#39;s usually last.</li>
+<li>An inner switch and outer switch <strong>can</strong> share case values.</li>
+</ul>
+<blockquote>
+<p><strong>Own example (fall-through):</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;
+<span class="hljs-keyword">switch</span> (n) {
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: System.out.println(<span class="hljs-string">&quot;One&quot;</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: System.out.println(<span class="hljs-string">&quot;Two&quot;</span>);
+    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: System.out.println(<span class="hljs-string">&quot;Three&quot;</span>);
+}</code></pre></div>
+<p>Output: <strong>Two</strong> and <strong>Three</strong>, since there&#39;s no <code>break</code>, so it keeps going after case 2.</p>
+</blockquote>
+<h3>Rule Switch (Java 12+)</h3>
+<p>A newer, shorter switch. It uses <strong>arrows (<code>-&gt;</code>)</strong> instead of <code>case ...:</code>, allows <strong>several values in one case</strong> (separated by commas), and needs <strong>no <code>break</code></strong> (no fall-through).</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">switch</span> (expression) {
+    <span class="hljs-keyword">case</span> value1, value2 -&gt; {
+        <span class="hljs-comment">// code for value1 or value2</span>
+    }
+    <span class="hljs-keyword">case</span> value3, value4 -&gt; {
+        <span class="hljs-comment">// code for value3 or value4</span>
+    }
+    <span class="hljs-keyword">default</span> -&gt; {
+        <span class="hljs-comment">// default code</span>
+    }
+}</code></pre></div>
+<p><strong>Traditional vs rule switch: vowel or consonant</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-comment">// Traditional: stacked cases + break</span>
+<span class="hljs-keyword">switch</span> (letter) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;A&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;E&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;I&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;O&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;U&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;Y&#x27;</span>:
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;a&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;e&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;i&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;o&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;u&#x27;</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;y&#x27;</span>:
+        System.out.println(<span class="hljs-string">&quot;It&#x27;s a VOWEL!&quot;</span>); <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+        System.out.println(<span class="hljs-string">&quot;It&#x27;s a CONSONANT&quot;</span>);
+}
+
+<span class="hljs-comment">// Rule switch: one line, no break</span>
+<span class="hljs-keyword">switch</span> (letter) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;E&#x27;</span>, <span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-string">&#x27;O&#x27;</span>, <span class="hljs-string">&#x27;U&#x27;</span>, <span class="hljs-string">&#x27;Y&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-string">&#x27;u&#x27;</span>, <span class="hljs-string">&#x27;y&#x27;</span> -&gt;
+        System.out.println(<span class="hljs-string">&quot;It&#x27;s a VOWEL!&quot;</span>);
+    <span class="hljs-keyword">default</span> -&gt; System.out.println(<span class="hljs-string">&quot;It&#x27;s a CONSONANT&quot;</span>);
+}</code></pre></div>
+<h3>Shorthand If-Else (Ternary)</h3>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">String</span> <span class="hljs-variable">checkAge</span> <span class="hljs-operator">=</span> (age &gt;= <span class="hljs-number">18</span> &amp;&amp; age &lt;= <span class="hljs-number">100</span>) ? <span class="hljs-string">&quot;You are in legal age&quot;</span> : <span class="hljs-string">&quot;You are a minor&quot;</span>;
+
+<span class="hljs-type">String</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> color.equalsIgnoreCase(<span class="hljs-string">&quot;Red&quot;</span>) ? <span class="hljs-string">&quot;Stop!&quot;</span> : <span class="hljs-string">&quot;Color not defined&quot;</span>;</code></pre></div>
+<hr>
+<h2>8. Increment and Decrement Operators</h2>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Name</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>++x</code></td>
+<td><strong>Pre-increment</strong></td>
+<td><strong>Increment first</strong>, then use</td>
+</tr>
+<tr>
+<td><code>x++</code></td>
+<td><strong>Post-increment</strong></td>
+<td><strong>Use first</strong>, then increment</td>
+</tr>
+<tr>
+<td><code>--x</code></td>
+<td><strong>Pre-decrement</strong></td>
+<td><strong>Decrement first</strong>, then use</td>
+</tr>
+<tr>
+<td><code>x--</code></td>
+<td><strong>Post-decrement</strong></td>
+<td><strong>Use first</strong>, then decrement</td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;  <span class="hljs-type">int</span> <span class="hljs-variable">y</span> <span class="hljs-operator">=</span> ++x;   <span class="hljs-comment">// x = 6, y = 6</span>
+<span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;  <span class="hljs-type">int</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> a++;   <span class="hljs-comment">// b = 5, a = 6</span>
+<span class="hljs-type">int</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;  <span class="hljs-type">int</span> <span class="hljs-variable">q</span> <span class="hljs-operator">=</span> --p;   <span class="hljs-comment">// p = 4, q = 4</span>
+<span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;  <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> m--;   <span class="hljs-comment">// n = 5, m = 4</span></code></pre></div>
+<blockquote>
+<p><strong>Memory trick:</strong> Read it left to right. <code>++x</code>: the <code>++</code> comes <strong>first</strong>, so it adds first. <code>x++</code>: <code>x</code> comes first, so you <strong>use x first</strong>.</p>
+</blockquote>
+<hr>
+<h2>9. Looping (Iteration) Statements</h2>
+<p><strong>Loops</strong> repeat a block of statements (the <strong>loop body</strong>) <strong>as long as a boolean condition is true</strong>. When it becomes <strong>false</strong>, the loop <strong>terminates</strong> and the program moves on.</p>
+<p><strong>Iteration</strong> = one complete run of the loop body.</p>
+<h3>Three Types of Loops</h3>
+<table>
+<thead>
+<tr>
+<th>Loop</th>
+<th>Condition checked</th>
+<th>Runs at least once?</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>while</strong></td>
+<td><strong>Before</strong> the body (first)</td>
+<td><strong>No</strong>, may run 0 times</td>
+<td>Unknown number of repetitions</td>
+</tr>
+<tr>
+<td><strong>do-while</strong></td>
+<td><strong>After</strong> the body (last)</td>
+<td><strong>Yes, always at least once</strong></td>
+<td>When the body must run once first (menus, input prompts)</td>
+</tr>
+<tr>
+<td><strong>for</strong></td>
+<td>Before each iteration</td>
+<td>No</td>
+<td><strong>Known</strong> number of repetitions (<strong>counter-controlled</strong>)</td>
+</tr>
+</tbody></table>
+<h3><code>while</code> Loop</h3>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">while</span> (condition) {
+    <span class="hljs-comment">// body</span>
+}</code></pre></div>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;                          <span class="hljs-comment">// starting point</span>
+<span class="hljs-keyword">while</span> (i &lt;= <span class="hljs-number">5</span>) {
+    System.out.println(<span class="hljs-string">&quot;Count: &quot;</span> + i);
+    i++;                            <span class="hljs-comment">// increment to avoid infinite loop</span>
+}
+<span class="hljs-comment">// Count: 1 ... Count: 5</span></code></pre></div>
+<h3><code>do-while</code> Loop</h3>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">do</span> {
+    <span class="hljs-comment">// body</span>
+} <span class="hljs-keyword">while</span> (condition);   <span class="hljs-comment">// note the semicolon</span></code></pre></div>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+<span class="hljs-keyword">do</span> {
+    System.out.println(i);
+    i++;
+} <span class="hljs-keyword">while</span> (i &lt;= <span class="hljs-number">5</span>);</code></pre></div>
+<blockquote>
+<p><strong>Own example:</strong> If <code>i = 10</code>, <code>while (i &lt;= 5)</code> prints <strong>nothing</strong>, but <code>do { ... } while (i &lt;= 5)</code> prints <strong>10</strong> once.</p>
+</blockquote>
+<h3><code>for</code> Loop</h3>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">for</span> (initialization; condition; update) {
+    <span class="hljs-comment">// body</span>
+}</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Role</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Initialization</strong></td>
+<td>Sets the starting value of the loop control variable</td>
+<td><code>int i = 1</code></td>
+</tr>
+<tr>
+<td><strong>Condition</strong></td>
+<td>Checked <strong>before each</strong> iteration; loop continues while true</td>
+<td><code>i &lt;= 5</code></td>
+</tr>
+<tr>
+<td><strong>Update</strong></td>
+<td>Changes the variable <strong>after each</strong> iteration</td>
+<td><code>i++</code></td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">5</span>; i++) {
+    System.out.println(<span class="hljs-string">&quot;Count: &quot;</span> + i);
+}</code></pre></div>
+<p><strong>Order:</strong> initialize → check condition → run body → update → check condition → …</p>
+<blockquote>
+<p><strong>Own example (countdown):</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>; i &gt;= <span class="hljs-number">1</span>; i--) {
+    System.out.print(i + <span class="hljs-string">&quot; &quot;</span>);
+}
+System.out.println(<span class="hljs-string">&quot;Liftoff!&quot;</span>);
+<span class="hljs-comment">// 10 9 8 7 6 5 4 3 2 1 Liftoff!</span></code></pre></div>
+</blockquote>
+<h3>Loops by How Many Times They Repeat</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Definite (count-controlled)</strong></td>
+<td>Runs a <strong>known, fixed</strong> number of times. Most common: <strong>for loop</strong> (while/do-while can also be definite with a counter)</td>
+</tr>
+<tr>
+<td><strong>Indefinite</strong></td>
+<td>Runs <strong>until a condition changes</strong> (e.g. until the user types &quot;exit&quot;). Number of repetitions isn&#39;t known in advance</td>
+</tr>
+<tr>
+<td><strong>Infinite</strong></td>
+<td><strong>Never stops</strong> on its own; the condition is always true. Sometimes intentional (servers, monitoring), but usually a <strong>bug</strong> that freezes programs or eats resources</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> <code>while (true) { }</code> is infinite. Forgetting <code>i++</code> in a while loop also makes it infinite.</p>
+</blockquote>
+<h3>Nested Loops</h3>
+<p>A loop <strong>inside</strong> another loop. For <strong>each</strong> iteration of the outer loop, the inner loop runs <strong>completely</strong>.</p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">while</span> (condition1) {          <span class="hljs-comment">// outer loop</span>
+    <span class="hljs-comment">// statements for outer loop</span>
+    <span class="hljs-keyword">while</span> (condition2) {      <span class="hljs-comment">// inner loop</span>
+        <span class="hljs-comment">// statements for inner loop</span>
+    }
+}</code></pre></div>
+<blockquote>
+<p><strong>Own example:</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">row</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; row &lt;= <span class="hljs-number">3</span>; row++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">col</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; col &lt;= row; col++) {
+        System.out.print(<span class="hljs-string">&quot;*&quot;</span>);
+    }
+    System.out.println();
+}
+<span class="hljs-comment">// *</span>
+<span class="hljs-comment">// **</span>
+<span class="hljs-comment">// ***</span></code></pre></div>
+</blockquote>
+<p><strong>Sample tasks from the lesson:</strong> factorial of a number (5! = 120), the first <em>n</em> Fibonacci numbers (0 1 1 2 3 5 8 13 21 34), even numbers 2–20, multiplication table of 2, and a menu that repeats until the user chooses Exit.</p>
+<blockquote>
+<p><strong>Own example (factorial):</strong></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">int</span> <span class="hljs-variable">factorial</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= number; i++) {
+    factorial *= i;
+}
+<span class="hljs-comment">// number = 5 → 1×2×3×4×5 = 120</span></code></pre></div>
+</blockquote>
+<hr>
+<h2>10. Java Parsing Methods</h2>
+<p><strong>Parsing</strong> means <strong>converting a String</strong> into another data type (int, double, boolean). This is useful because <strong>user input often comes in as a String</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Converts String →</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Integer.parseInt(s)</code></td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td><code>Double.parseDouble(s)</code></td>
+<td><code>double</code></td>
+</tr>
+<tr>
+<td><code>Float.parseFloat(s)</code></td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td><code>Boolean.parseBoolean(s)</code></td>
+<td><code>boolean</code></td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;50&quot;</span>;
+<span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;50&quot;</span>;
+<span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> Integer.parseInt(str);
+<span class="hljs-type">int</span> <span class="hljs-variable">num1</span> <span class="hljs-operator">=</span> Integer.parseInt(str1);
+<span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> num + num1;
+System.out.println(result);        <span class="hljs-comment">// 100 (not &quot;5050&quot;)</span>
+
+<span class="hljs-type">boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> Boolean.parseBoolean(<span class="hljs-string">&quot;true&quot;</span>);   <span class="hljs-comment">// true</span></code></pre></div>
+<hr>
+<h2>11. ASCII</h2>
+<p><strong>ASCII</strong> (<strong>American Standard Code for Information Interchange</strong>) represents characters as <strong>numbers</strong> so computers can store and process text.</p>
+<ul>
+<li>Standard ASCII: <strong>128</strong> characters, numbered <strong>0–127</strong></li>
+<li><strong>Extended ASCII</strong>: adds <strong>128–255</strong> (special symbols, accented letters)</li>
+<li>Java stores characters as <strong>Unicode</strong>, which matches ASCII for standard characters.</li>
+</ul>
+<p><strong>Char → ASCII:</strong> cast to <code>int</code></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;A&#x27;</span>;
+<span class="hljs-type">int</span> <span class="hljs-variable">ascii</span> <span class="hljs-operator">=</span> (<span class="hljs-type">int</span>) c;       <span class="hljs-comment">// 65</span></code></pre></div>
+<p><strong>ASCII → Char:</strong> cast to <code>char</code></p>
+<div class="code-block-wrapper"><span class="code-lang-label">JAVA</span><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs language-java"><span class="hljs-type">int</span> <span class="hljs-variable">ascii</span> <span class="hljs-operator">=</span> <span class="hljs-number">65</span>;
+<span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> (<span class="hljs-type">char</span>) ascii;     <span class="hljs-comment">// &#x27;A&#x27;</span></code></pre></div>
+<blockquote>
+<p><strong>Handy values:</strong> <code>&#39;A&#39;</code> = <strong>65</strong>, <code>&#39;a&#39;</code> = <strong>97</strong>, <code>&#39;0&#39;</code> = <strong>48</strong>, space = <strong>32</strong>.<br>Lowercase is uppercase <strong>+ 32</strong> → <code>(char)(&#39;A&#39; + 32)</code> = <code>&#39;a&#39;</code></p>
+</blockquote>
+<hr>
+<h2>Quick Check</h2>
+<ol>
+<li>What does the JVM execute?</li>
+<li>Compiler vs interpreter: which stops at the first error?</li>
+<li>What was Java&#39;s name before &quot;Java,&quot; and why was it changed?</li>
+<li>What is the output of <code>System.out.println(17 % 5);</code>?</li>
+<li>What is the output of <code>System.out.println(7 / 2);</code>?</li>
+<li><code>int x = 3; int y = x++ + 2;</code> What are x and y?</li>
+<li><code>(5 &gt; 3) || (2 &gt; 8)</code> → ?</li>
+<li>Which flowchart symbol represents a decision?</li>
+<li>Why should you use <code>equals()</code> instead of <code>==</code> for Strings?</li>
+<li>What happens in a switch when you forget <code>break</code>?</li>
+<li>Which loop always runs at least once?</li>
+<li>What are the three parts inside a for loop&#39;s parentheses?</li>
+<li><code>Integer.parseInt(&quot;12&quot;) + Integer.parseInt(&quot;8&quot;)</code> → ?</li>
+<li><code>(char) 66</code> → ?</li>
+<li>Which is a valid identifier: <code>2total</code>, <code>total-2</code>, <code>total_2</code>, <code>int</code>?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+
+<ol>
+<li>Bytecode (<code>.class</code> files)</li>
+<li>Interpreter</li>
+<li>Oak (before that, Greentalk). Oak was already trademarked by Oak Technologies.</li>
+<li><strong>2</strong></li>
+<li><strong>3</strong> (int division drops the decimal)</li>
+<li>y = 3 + 2 = <strong>5</strong> (post-increment uses 3 first), x = <strong>4</strong></li>
+<li><strong>true</strong> (OR needs only one true)</li>
+<li>Diamond</li>
+<li><code>==</code> compares memory locations; <code>equals()</code> compares the actual text</li>
+<li><strong>Fall-through</strong>: it continues into the following cases</li>
+<li>do-while</li>
+<li>Initialization; condition; update</li>
+<li><strong>20</strong></li>
+<li><strong>&#39;B&#39;</strong></li>
+<li><code>total_2</code></li>
+</ol>
+</details>
+
+  </div>
+  <div class="note-nav">
+    <a href="Y1S1-CC1-midterm.html" class="note-nav-prev">← CC1</a>
+    <a href="Y1S1-HCI101-midterm.html" class="note-nav-next">HCI101 →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

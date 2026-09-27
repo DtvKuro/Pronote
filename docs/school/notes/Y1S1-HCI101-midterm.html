@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | HCI101 Introduction to Human-Computer Interaction — Midterm</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">1st Year · 1st Sem</h4>
+  <ul class="notes-menu-list">
+        <li><a href="Y1S1-CC1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="Y1S1-CC2-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="Y1S1-HCI101-midterm.html" class="notes-menu-link active"><span class="notes-menu-code">HCI101</span> Introduction to Human-Computer Interaction</a></li>
+        <li><a href="Y1S1-GE4-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE4</span> Mathematics in the Modern World</a></li>
+        <li><a href="Y1S1-GE5-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="Y1S1-GE9-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE9</span> Readings in Philippine History</a></li>
+        <li><a href="Y1S1-PATHFIT1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">PATHFIT1</span> Physical Activity Towards Health and Fitness 1</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>1st Year · 1st Sem</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Introduction to Human-Computer Interaction</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">HCI101</span><span class="note-units">1st Year · 1st Sem</span></p>
+  <h1 class="note-title">Introduction to Human-Computer Interaction</h1>
+  <p class="note-meta">Last updated: September 27, 2026</p>
+  <nav class="term-tabs" aria-label="Exam period"><a href="Y1S1-HCI101-midterm.html" class="term-tab active" aria-current="page">Midterm</a><span class="term-tab term-tab--empty" title="Not up yet">Finals</span></nav>
+  <div class="note-content">
+    <blockquote>
+<p>Covers: Intro &amp; History of HCI, Frameworks &amp; Paradigms (Norman), Design &amp; the Software Process, HCI in the Software Process, Design Rules, Implementation Support, Evaluation Techniques, Universal Design &amp; User Support.</p>
+</blockquote>
+<hr>
+<h2>1. Introduction to HCI</h2>
+<h3>Key Vocabulary</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>HCI</strong> (Human-Computer Interaction)</td>
+<td><strong>Designing, evaluating, and improving</strong> how humans interact with technology. Combines <strong>design, computing, and human sciences</strong>. Goal: <strong>useful, usable, supportive</strong> technology</td>
+</tr>
+<tr>
+<td><strong>Interaction Design</strong></td>
+<td>Designing interactive products that <strong>support communication and interaction</strong> in daily and work life, for real people in real contexts</td>
+</tr>
+<tr>
+<td><strong>User Experience (UX)</strong></td>
+<td>How a product <strong>behaves and feels</strong> in context</td>
+</tr>
+<tr>
+<td><strong>Usability</strong></td>
+<td>Effectiveness, efficiency, safety, utility, learnability, memorability</td>
+</tr>
+<tr>
+<td><strong>User-Centered Design</strong></td>
+<td>Involving <strong>users, tasks, and contexts throughout</strong> design</td>
+</tr>
+</tbody></table>
+<h3>Why HCI Matters</h3>
+<ul>
+<li>A system can <strong>work</strong> and still be <strong>confusing, slow, unsafe, or inaccessible</strong>.</li>
+<li>Design affects <strong>errors, learning time, productivity, trust, and satisfaction</strong>.</li>
+<li><strong>Early attention to users reduces costly redesign.</strong></li>
+<li>Technology must serve <strong>diverse people in diverse contexts</strong>.</li>
+</ul>
+<h3>Good Design vs Poor Design</h3>
+<table>
+<thead>
+<tr>
+<th>Good Design</th>
+<th>Poor Design</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Clear and simple</td>
+<td>Cluttered content</td>
+</tr>
+<tr>
+<td>Easy to navigate</td>
+<td>Weak visual hierarchy</td>
+</tr>
+<tr>
+<td>Consistent patterns</td>
+<td>Inconsistent controls</td>
+</tr>
+<tr>
+<td>Helpful feedback</td>
+<td>Unclear status and labels</td>
+</tr>
+<tr>
+<td>Fast and safe task completion</td>
+<td>More errors, delay, and stress</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Lesson examples:</strong> A clean <strong>mobile banking app</strong> and a <strong>LearnHub dashboard</strong> (clear, grouped, labeled) were shown as <strong>good</strong>. A flashy <strong>&quot;SUPER MEGA SALE!!! CLICK EVERYTHING!!!&quot; shopping page</strong> and a cramped <strong>desktop database tool</strong> full of tiny icons and 9 tabs were shown as <strong>poor</strong>.</p>
+</blockquote>
+<h3>History of HCI</h3>
+<table>
+<thead>
+<tr>
+<th>Era</th>
+<th>Milestones</th>
+<th>Key idea</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1940s</strong> Foundations</td>
+<td><strong>1945 Memex</strong>: Vannevar Bush imagined a desk-like system for storing, connecting, and retrieving information. <strong>1946 ENIAC</strong>: one of the first general-purpose electronic computers, operated with switches, cables, plugboards, punched cards</td>
+<td>Interaction required <strong>technical expertise and direct machine control</strong></td>
+</tr>
+<tr>
+<td><strong>1950s</strong> Early interaction</td>
+<td><strong>1950 Turing Test</strong>: Alan Turing, judging machine intelligence through text conversation. <strong>1952 Trackball</strong> (Canadian DATAR system). <strong>1955 Light pen</strong>: point and draw directly on the display</td>
+<td>People began <strong>communicating with computers more directly</strong></td>
+</tr>
+<tr>
+<td><strong>1960s</strong> Interactive computing</td>
+<td><strong>1960 Man-Computer Symbiosis</strong>: J.C.R. Licklider, people and computers working together. <strong>1963 Sketchpad</strong>: Ivan Sutherland, graphical interaction with a light pen. <strong>1964 Computer mouse</strong>: Douglas Engelbart&#39;s wooden prototype. <strong>1968 &quot;Mother of All Demos&quot;</strong>: Engelbart showed the mouse, windows, hypertext, video calls, collaborative editing. <strong>1969 ARPANET</strong>: networked computers</td>
+<td>From <strong>operating machines</strong> to <strong>interacting with information</strong></td>
+</tr>
+<tr>
+<td><strong>1970s</strong> Personal &amp; graphical</td>
+<td><strong>1970 Xerox PARC</strong> research center. <strong>1973 Xerox Alto</strong>: graphical display, keyboard, and mouse workstation. <strong>1977 Personal computers</strong> (Apple II) in homes and schools. <strong>1979 VisiCalc</strong>: first popular spreadsheet</td>
+<td>Computers became <strong>visual, personal, and useful</strong></td>
+</tr>
+<tr>
+<td><strong>1980s</strong> The GUI</td>
+<td><strong>1981 Xerox Star</strong>: commercial desktop with icons, folders, windows, mouse. <strong>1983</strong>: the term <strong>&quot;HCI&quot; gained recognition</strong>. <strong>1984 Macintosh</strong> popularized the GUI and mouse. <strong>1989 World Wide Web</strong>: proposed by <strong>Tim Berners-Lee</strong></td>
+<td><strong>Pointing, clicking, graphical desktops</strong> became mainstream</td>
+</tr>
+<tr>
+<td><strong>1990s</strong> Web &amp; everyday computing</td>
+<td><strong>1991 Web goes public</strong>. <strong>1993 Mosaic</strong> browser (text + images). <strong>1995 Windows 95</strong> (Start menu, taskbar). <strong>1996 PalmPilot</strong> (handheld, touch-based)</td>
+<td>Interaction expanded from the <strong>desktop to the Web and mobile</strong></td>
+</tr>
+<tr>
+<td><strong>2000s and beyond</strong></td>
+<td><strong>2000s Web 2.0</strong> (create, share, collaborate). <strong>2007 Multi-touch smartphones</strong> (tap, swipe, pinch). <strong>2010s Voice &amp; wearables</strong> (hands-free, context-aware). <strong>2016 VR/AR</strong>. <strong>2020s Generative AI</strong> (natural-language prompts)</td>
+<td>Interaction became <strong>mobile, natural, immersive, and intelligent</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Summary by era:</strong> 1940s–60s = human factors and ergonomics · 1970s–80s = personal computing, GUIs, usability · 1990s–2000s = web and mobile · 2020s+ = technology embedded in everyday life.</p>
+<blockquote>
+<p><strong>HCI&#39;s central shift:</strong> <em>Earlier</em> it asked <strong>&quot;Can people use it effectively?&quot;</strong> (performance, usability). <em>Today</em> it asks <strong>&quot;What experience does it create?&quot;</strong> (meaning, emotion, inclusion, people at the center).</p>
+</blockquote>
+<blockquote>
+<p><strong>Memory trick for the 1960s:</strong> <strong>L</strong>icklider → <strong>S</strong>utherland → <strong>E</strong>ngelbart (<strong>L</strong>et <strong>S</strong>ketch <strong>E</strong>volve): symbiosis → Sketchpad → mouse.</p>
+</blockquote>
+<h3>What Designers Must Consider</h3>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Who</strong></td>
+<td>Users&#39; abilities, experience, culture, needs, accessibility</td>
+</tr>
+<tr>
+<td><strong>What</strong></td>
+<td>Goals and activities the product must support</td>
+</tr>
+<tr>
+<td><strong>Where</strong></td>
+<td>Physical, social, organizational, technological context</td>
+</tr>
+<tr>
+<td><strong>How</strong></td>
+<td>Input, output, flow, feedback, confirmation, recovery</td>
+</tr>
+</tbody></table>
+<h3>Who Is Involved (Multidisciplinary Team)</h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Contributes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Users &amp; stakeholders</strong></td>
+<td>Needs, goals, context, feedback</td>
+</tr>
+<tr>
+<td><strong>UX designers</strong></td>
+<td>Flows, prototypes, behavior, experience goals</td>
+</tr>
+<tr>
+<td><strong>Developers</strong></td>
+<td>Architecture, implementation, reliability, performance</td>
+</tr>
+<tr>
+<td><strong>Psychologists</strong></td>
+<td>Attention, memory, learning, decision-making</td>
+</tr>
+<tr>
+<td><strong>Human-factors specialists</strong></td>
+<td>Safety, comfort, workload, environment</td>
+</tr>
+<tr>
+<td><strong>Visual designers &amp; domain experts</strong></td>
+<td>Communication and real-world rules</td>
+</tr>
+</tbody></table>
+<h3>The Human Side of HCI (4 Human Factors)</h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Meaning</th>
+<th>Design response</th>
+<th>If ignored...</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Perception</strong></td>
+<td>Detecting info through sight, sound, other senses</td>
+<td>Readable text, contrast, clear icons, status cues</td>
+<td>Users <strong>can&#39;t perceive it</strong>, so they can&#39;t interact with it</td>
+</tr>
+<tr>
+<td><strong>Cognition</strong></td>
+<td>Attending, understanding, remembering, deciding, solving</td>
+<td>Simple choices, logical grouping, recognition, feedback</td>
+<td>Users <strong>don&#39;t understand it</strong>, so they make bad choices</td>
+</tr>
+<tr>
+<td><strong>Psychology</strong></td>
+<td>Emotions, motivation, expectations, habits, trust, anxiety</td>
+<td>Supportive wording, predictable behavior, credible signals</td>
+<td>Users <strong>don&#39;t feel good about it</strong>, so they won&#39;t trust or keep using it</td>
+</tr>
+<tr>
+<td><strong>Ergonomics</strong></td>
+<td>Fit with the body, device, environment, duration of use</td>
+<td>Comfortable reach, adequate target size, reduced strain</td>
+<td>Hard to <strong>hold, reach, or use</strong> → users get tired or frustrated</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>&quot;Good design considers <strong>the whole person</strong> and <strong>the whole context</strong>.&quot;</p>
+</blockquote>
+<blockquote>
+<p><strong>Lesson examples:</strong> A <strong>tiny button</strong> is an ergonomics + perception problem. An <strong>unclear icon</strong> is a perception + cognition problem. A <strong>harsh error message</strong> (&quot;You did something wrong! Error code 42X7&quot;) is a psychology + cognition problem.</p>
+</blockquote>
+<h3>Usability Goals (6)</h3>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Effective</strong></td>
+<td>Supports <strong>accurate and complete</strong> task accomplishment</td>
+</tr>
+<tr>
+<td><strong>Efficient</strong></td>
+<td>Reasonable <strong>time, steps, and effort</strong></td>
+</tr>
+<tr>
+<td><strong>Safe</strong></td>
+<td><strong>Prevents serious errors</strong> and supports recovery</td>
+</tr>
+<tr>
+<td><strong>Utility</strong></td>
+<td>Provides the <strong>functions users actually need</strong></td>
+</tr>
+<tr>
+<td><strong>Learnable</strong></td>
+<td>New users can <strong>become competent</strong></td>
+</tr>
+<tr>
+<td><strong>Memorable</strong></td>
+<td>Still understandable <strong>after a period of non-use</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic:</strong> <strong>E</strong>very <strong>E</strong>xcellent <strong>S</strong>ystem <strong>U</strong>sually <strong>L</strong>ooks <strong>M</strong>agical = Effective, Efficient, Safe, Utility, Learnable, Memorable</p>
+</blockquote>
+<blockquote>
+<p><strong>Own example (GCash, sending ₱500):</strong> <em>Effective</em> if the money reaches the right person. <em>Efficient</em> if it takes few taps. <em>Safe</em> if it confirms the recipient&#39;s name before sending. <em>Utility</em> if it has the Send feature you need. <em>Learnable</em> if a first-timer figures it out. <em>Memorable</em> if you still remember how after a month.</p>
+</blockquote>
+<h3>Experience Goals (Beyond Usability)</h3>
+<p>Products may also aim to be <strong>satisfying, enjoyable, engaging, motivating, rewarding, creative, or emotional</strong>. The right goals <strong>depend on context</strong>:</p>
+<ul>
+<li><strong>Safety-critical systems</strong> prioritize <strong>effectiveness and safety</strong>.</li>
+<li><strong>Games</strong> may <em>deliberately</em> add challenge, competition, and fun.</li>
+</ul>
+<hr>
+<h2>2. HCI Frameworks and Paradigms (Don Norman, Ch. 1)</h2>
+<h3>Framework vs Paradigm</h3>
+<table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Paradigm</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A <strong>structured guide</strong> used to analyze, design, or evaluate interaction</td>
+<td>A <strong>broad way of thinking</strong> (lens) that shapes what good interaction should be</td>
+</tr>
+<tr>
+<td>Organizes the questions and principles we apply</td>
+<td>Changes how designers <strong>see</strong> users and technology</td>
+</tr>
+<tr>
+<td><strong>= guide / structure</strong></td>
+<td><strong>= way / style / mindset</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> A <strong>paradigm</strong> is your belief: &quot;I should eat healthy.&quot; A <strong>framework</strong> is the meal plan that tells you what to eat and when.</p>
+</blockquote>
+<h3>Three Important Paradigms</h3>
+<table>
+<thead>
+<tr>
+<th>Paradigm</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Cognitive</strong></td>
+<td>What happens <strong>in the user&#39;s mind</strong>: perception, attention, memory, decision-making, problem-solving</td>
+</tr>
+<tr>
+<td><strong>2. Human-Centered Design</strong></td>
+<td>Puts the <strong>user&#39;s needs, abilities, behavior, and limitations first</strong>. Understand → identify needs → create and test → improve through iteration</td>
+</tr>
+<tr>
+<td><strong>3. Experiential &amp; Emotional</strong></td>
+<td>How the interaction <strong>makes the user feel</strong>: attractive, enjoyable, satisfying, frustrating, meaningful</td>
+</tr>
+</tbody></table>
+<p><strong>Cognitive paradigm cycle (lesson diagram):</strong><br>User&#39;s <strong>goal</strong> (e.g. book a flight) → <strong>Perception</strong> (notice text, icons, layout) → <strong>Attention</strong> (focus on what matters) → <strong>Memory</strong> (past experience guides actions) → <strong>Decision making</strong> (choose the best action) → <strong>Action</strong> (mouse, keyboard, touch, voice) → <strong>Feedback &amp; evaluation</strong> (system responds; did it achieve the goal?)</p>
+<blockquote>
+<p>Technology should match <strong>how people think, learn, remember, and solve problems</strong>.<br>Example: a banking app with a <strong>large balance</strong> (perception), <strong>quick actions in the center</strong> (attention), <strong>familiar icons</strong> (memory: recognition, not recall), <strong>organized history</strong> (decision), <strong>clear buttons</strong> (action).</p>
+</blockquote>
+<h3>Framework 1: Human-Centered Design (HCD)</h3>
+<p>Start with <strong>people&#39;s needs, abilities, limitations, and real behavior</strong>, then design technology to fit them.</p>
+<p><strong>Norman&#39;s 4 steps:</strong> <strong>OBSERVE</strong> (watch real users doing real tasks) → <strong>IDEATE</strong> (create solutions) → <strong>TEST</strong> (try with users) → <strong>ITERATE</strong> (revise using evidence)</p>
+<p><strong>HCD paradigm, 5 steps (lesson diagram):</strong> People first, technology second</p>
+<ol>
+<li><strong>Understand users</strong>: research, observe behavior, identify pain points</li>
+<li><strong>Identify needs</strong>: analyze insights, define real needs, prioritize</li>
+<li><strong>Create solutions</strong>: brainstorm, design with users in mind, build prototypes</li>
+<li><strong>Test with users</strong>: usability testing, gather feedback, measure effectiveness</li>
+<li><strong>Improve through iteration</strong>: refine, solve remaining problems, repeat</li>
+</ol>
+<p><strong>Result:</strong> solutions that are <strong>useful, usable, desirable, meaningful</strong>: they meet real needs, are easy to use, create positive experiences, reduce errors, and increase satisfaction and adoption.</p>
+<p><strong>Why HCD matters</strong></p>
+<ul>
+<li>People are creative but also <strong>distracted, tired, imperfect</strong>. <strong>Experts make mistakes too.</strong></li>
+<li><strong>Repeated errors reveal weak design.</strong> <em>&quot;If many users make the same mistake, investigate the design.&quot;</em></li>
+<li>Design for people <strong>as they really are</strong>, not as we wish them to be.</li>
+</ul>
+<h3>Framework 2: Principles of Interaction (6)</h3>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Short meaning</th>
+<th>Details</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Affordance</strong></td>
+<td><strong>Possible action</strong></td>
+<td>The relationship between an object&#39;s properties and the user&#39;s abilities that <strong>makes an action possible</strong></td>
+<td>A chair affords sitting. A button affords pressing. <strong>Glass</strong> affords seeing through but blocks passing = <strong>anti-affordance</strong></td>
+</tr>
+<tr>
+<td><strong>Signifier</strong></td>
+<td><strong>Visible clue</strong></td>
+<td>A <strong>perceivable clue</strong> showing <strong>where/how</strong> to act. Types: <strong>physical</strong> (handle, push plate, arrow, label), <strong>digital</strong> (button shape, icon, link style, cursor change), <strong>accidental</strong> (footprints, worn surfaces)</td>
+<td>&quot;PUSH&quot; sign on a door</td>
+</tr>
+<tr>
+<td><strong>Constraint</strong></td>
+<td><strong>Limits action</strong></td>
+<td>Reduces possible actions to prevent errors. Types: <strong>physical</strong> (plug fits one port), <strong>logical</strong> (only one action makes sense), <strong>cultural</strong> (red = stop/danger)</td>
+<td>Greyed-out &quot;Next&quot; until the form is filled</td>
+</tr>
+<tr>
+<td><strong>Mapping</strong></td>
+<td><strong>Control ↔ result link</strong></td>
+<td>Relationship between a control and its result. <strong>Poor:</strong> 4 knobs in a line for 4 burners in a square. <strong>Natural:</strong> controls arranged like the burners</td>
+<td>Volume slider: up = louder</td>
+</tr>
+<tr>
+<td><strong>Feedback</strong></td>
+<td><strong>What happened</strong></td>
+<td>Shows result/progress. Must be <strong>immediate, informative, noticeable, appropriate</strong></td>
+<td>Sent ✓, progress bar, vibration, confirmation</td>
+</tr>
+<tr>
+<td><strong>Conceptual model</strong></td>
+<td><strong>How it works</strong></td>
+<td>Simplified explanation that helps users <strong>predict, explain, recover</strong></td>
+<td>&quot;Trash bin&quot; = deleted files can be restored</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Quick check:</strong> Is a door <strong>handle</strong> an affordance or a signifier? <strong>Both</strong>: it <em>allows</em> pulling (affordance) and <em>shows</em> where to grab (signifier).</p>
+</blockquote>
+<p><strong>The System Image</strong></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">DESIGNER<span class="hljs-string">&#x27;S MODEL  ──►  SYSTEM IMAGE  ──►  USER&#x27;</span>S MODEL
+(how the designer    (<span class="hljs-keyword">interface</span>, <span class="hljs-symbol">controls</span>,   (<span class="hljs-symbol">how</span> <span class="hljs-symbol">the</span> <span class="hljs-symbol">user</span>
+ <span class="hljs-symbol">thinks</span> <span class="hljs-symbol">it</span> <span class="hljs-symbol">works</span>)     <span class="hljs-symbol">labels</span>, <span class="hljs-symbol">help</span>)            <span class="hljs-symbol">thinks</span> <span class="hljs-symbol">it</span> <span class="hljs-symbol">works</span>)</code></pre></div>
+<p>Good design makes the <strong>user&#39;s model match the designer&#39;s model</strong>. The only way they &quot;talk&quot; is through the <strong>system image</strong>.</p>
+<h3>Paradigm Shifts</h3>
+<table>
+<thead>
+<tr>
+<th>Shift</th>
+<th>Old view</th>
+<th>New view</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Technology → People</strong></td>
+<td>Start with what the <strong>machine</strong> can do; users must learn it; success = functions work</td>
+<td>Start with what <strong>people</strong> need; system adapts to users; success = useful, usable, understandable. <em>&quot;Can we build it?&quot;</em> → <em>&quot;Does it work well for people?&quot;</em></td>
+</tr>
+<tr>
+<td><strong>2. Blame → Design</strong></td>
+<td>&quot;The user made a mistake.&quot; Add warnings, read the manual, more training</td>
+<td>&quot;<strong>Why was the error likely?</strong>&quot; Improve signifiers, mapping, constraints, feedback, recovery. <em>Human error is a symptom, not the final explanation</em></td>
+</tr>
+<tr>
+<td><strong>3. Function → Experience</strong></td>
+<td><strong>Functional</strong>: completes its operation</td>
+<td><strong>Usable</strong> (effective, efficient, learnable, safe) → <strong>Enjoyable</strong> (confidence, satisfaction, trust)</td>
+</tr>
+</tbody></table>
+<h3>The Paradox of Technology</h3>
+<p><strong>More capabilities = more complexity.</strong> More features solve more problems but are <strong>harder to find, learn, and control</strong>. Good design <strong>protects common tasks</strong> from unnecessary complexity.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Key idea</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Paradigm</strong></td>
+<td>Human needs guide technology</td>
+</tr>
+<tr>
+<td><strong>Framework</strong></td>
+<td>HCD process: observe, test, iterate</td>
+</tr>
+<tr>
+<td><strong>Principles</strong></td>
+<td>Interaction concepts (affordance → conceptual model)</td>
+</tr>
+<tr>
+<td><strong>Result</strong></td>
+<td>Useful, usable, understandable interaction</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>3. Design and the Software Process (Part 1)</h2>
+<p><strong>Big idea:</strong> Good systems come from understanding people, defining goals and constraints, exploring solutions, testing early versions, and improving them before deployment.</p>
+<p>HCI isn&#39;t only studying systems. It&#39;s also <strong>doing and making</strong>. A system isn&#39;t successful just because it <strong>works technically</strong>. It must fit users&#39; real needs and routines.</p>
+<blockquote>
+<p><strong>Lesson example:</strong> An attendance app isn&#39;t good just because it records names. It should be <strong>quick</strong>, <strong>prevent duplicates</strong>, <strong>protect student data</strong>, and <strong>fit the teacher&#39;s routine</strong>.</p>
+</blockquote>
+<h3>What Is Design?</h3>
+<p><strong>Design = achieving goals within constraints.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Goals</strong></td>
+<td>What the design should achieve (purpose, users, why they need it)</td>
+</tr>
+<tr>
+<td><strong>Constraints</strong></td>
+<td>Limits the design must respect: <strong>time, budget, materials/technology, standards, safety, privacy, security, environment (rain, weak signal), legal/ethical (copyright)</strong></td>
+</tr>
+<tr>
+<td><strong>Trade-off</strong></td>
+<td>A <strong>reasoned choice</strong> to relax a less important goal/constraint so a more important one can be met. Justified by <strong>evidence and priorities</strong>, not personal preference</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Lesson example:</strong> A student portal due before enrollment <strong>drops a non-essential animation</strong> to focus on accurate records, security, accessibility, and on-time delivery.</p>
+</blockquote>
+<h3>Golden Rule of HCI Design</h3>
+<p><strong>Understand computers AND understand people.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Understand computers</th>
+<th>Understand people</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Capabilities &amp; limitations, platforms, tools, processing, storage, networks, input/output</td>
+<td>Perception, memory, attention, physical abilities, social needs, work habits, common errors</td>
+</tr>
+</tbody></table>
+<p>A powerful system <strong>fails</strong> if people can&#39;t use it. A great idea <strong>fails</strong> if the tech can&#39;t support it.</p>
+<h3>Usability Must Start Early</h3>
+<p>Don&#39;t treat usability as a final test. User needs, accessibility, work practices, errors, feedback, navigation, and controls should shape <strong>early decisions</strong>, which <strong>reduces costly redesign</strong>.</p>
+<h3>The Interaction Design Process</h3>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">REQUIREMENTS → ANALYSIS → DESIGN → IMPLEMENTATION <span class="hljs-meta">&amp; DEPLOYMENT</span>
+        ↑__________ ITERATION <span class="hljs-meta">&amp; PROTOTYPING __________↓</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Purpose</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Requirements</strong></td>
+<td>Discover <strong>what is needed</strong> and how users currently work</td>
+<td>Techniques: <strong>interviews</strong>, <strong>direct observation</strong>, <strong>video recording (with consent)</strong>, <strong>examining documents/forms/tools</strong></td>
+</tr>
+<tr>
+<td><strong>2. Analysis</strong></td>
+<td><strong>Organize findings</strong> to reveal key needs, repeated problems, patterns, unusual cases, conflicts</td>
+<td>e.g. &quot;Students on mobile data abandon uploads when file size isn&#39;t shown&quot;</td>
+</tr>
+<tr>
+<td><strong>3. Design</strong></td>
+<td>Move from <strong>what</strong> is needed to <strong>how</strong> it will work</td>
+<td>Task flow, navigation, labels, controls, layout, feedback, error prevention, accessibility</td>
+</tr>
+<tr>
+<td><strong>4. Implementation &amp; Deployment</strong></td>
+<td><strong>Build and release</strong> the system</td>
+<td>Code, databases, documentation, training, installing. <strong>Deployment is not the end</strong>: feedback leads to improvements</td>
+</tr>
+</tbody></table>
+<h3>Prototyping &amp; Iteration</h3>
+<ul>
+<li><strong>Prototype</strong> = an early version or representation: <strong>paper sketch, storyboard, wireframe, clickable mock-up, partially working product</strong>.</li>
+<li><strong>Iteration</strong> = create → test with representative users → find problems → revise → test again.</li>
+</ul>
+<blockquote>
+<p><strong>&quot;The first design is only a hypothesis.&quot;</strong></p>
+</blockquote>
+<h3>Time, Cost, and Quality</h3>
+<p>Balance <strong>time, budget, and quality</strong>. A product doesn&#39;t have to be perfect, but it must never sacrifice <strong>safety, security, legality, core usability</strong>.</p>
+<blockquote>
+<p>An acceptable product <strong>on time and within budget</strong> may be more useful than a perfect one delivered <strong>too late</strong>.</p>
+</blockquote>
+<hr>
+<h2>4. HCI in the Software Process (Part 2)</h2>
+<p><strong>Big idea:</strong> Usability is designed <strong>throughout</strong> the life cycle, <strong>not added at the end</strong>.</p>
+<p><strong>Software engineering</strong> manages the software design process, called the <strong>software life cycle</strong> (plan, design, build, test, release, operate, improve).</p>
+<h3>Waterfall Model</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Main question</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Requirements specification</strong></td>
+<td>What must the system provide?</td>
+</tr>
+<tr>
+<td><strong>2. Architectural design</strong></td>
+<td>What major <strong>components</strong> are there, and how do they relate?</td>
+</tr>
+<tr>
+<td><strong>3. Detailed design</strong></td>
+<td>How will each component be refined into <strong>modules</strong>?</td>
+</tr>
+<tr>
+<td><strong>4. Coding &amp; unit testing</strong></td>
+<td>Build and test <strong>individual modules</strong></td>
+</tr>
+<tr>
+<td><strong>5. Integration &amp; testing</strong></td>
+<td>Do combined parts <strong>work together</strong>?</td>
+</tr>
+<tr>
+<td><strong>6. Operation &amp; maintenance</strong></td>
+<td>Support, fix, improve <strong>after release</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Limit:</strong> Interactive systems rarely follow a straight line. Teams find missing requirements and usability problems as they go, so they need <strong>iteration and feedback</strong>.</p>
+</blockquote>
+<h3>Functional vs Nonfunctional Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Functional</th>
+<th>Nonfunctional</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>What</strong> the system must do</td>
+<td><strong>How well</strong> it should work</td>
+</tr>
+<tr>
+<td>&quot;Students can submit assignments&quot;</td>
+<td>Fast, secure, accessible, reliable, easy to use</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Lesson example (LMS components):</strong> authentication, course content, assignments, messaging, grades.</p>
+</blockquote>
+<h3>Verification vs Validation</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Verification</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Meaning</td>
+<td><strong>Building the product right</strong></td>
+<td><strong>Building the right product</strong></td>
+</tr>
+<tr>
+<td>Question</td>
+<td>Does it match the <strong>specification</strong>?</td>
+<td>Does it meet <strong>real user needs</strong> in context?</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>A system can <strong>pass verification but fail validation</strong>. Example: an attendance app stores every record exactly as specified, but teachers find it <strong>too slow in class</strong>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>V</strong>erification = <strong>V</strong>s. the document. <strong>V</strong>alidation = <strong>V</strong>alue to users.</p>
+</blockquote>
+<p><strong>Formality gap:</strong> the gap between <strong>precise technical specifications</strong> and <strong>complex real-world user needs</strong>. It&#39;s filled by observation, judgment, and user feedback.</p>
+<p><strong>Management &amp; contractual issues:</strong> schedules, budgets, contracts, and acceptance criteria also shape what gets built.</p>
+<h3>Usability Engineering</h3>
+<p>Makes usability <strong>explicit and measurable</strong> instead of just saying &quot;user-friendly.&quot;</p>
+<table>
+<thead>
+<tr>
+<th>Part of a usability specification</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Usability attribute</strong></td>
+<td>The quality to improve (e.g. learnability, error recovery)</td>
+</tr>
+<tr>
+<td><strong>Measuring concept</strong></td>
+<td>What is counted/timed/rated</td>
+</tr>
+<tr>
+<td><strong>Measuring method</strong></td>
+<td><strong>How</strong> the data is collected</td>
+</tr>
+<tr>
+<td><strong>Now level</strong></td>
+<td><strong>Current</strong> performance</td>
+</tr>
+<tr>
+<td><strong>Worst-case level</strong></td>
+<td><strong>Lowest acceptable</strong> performance</td>
+</tr>
+<tr>
+<td><strong>Planned level</strong></td>
+<td><strong>Target</strong> performance</td>
+</tr>
+<tr>
+<td><strong>Best-case level</strong></td>
+<td><strong>Ideal</strong> performance</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Lesson example (backward recoverability, video recorder):</strong> Method = number of actions to undo a wrong programming sequence. Planned = ≤ 2 actions. Best case = 1 cancel action.</p>
+</blockquote>
+<blockquote>
+<p><strong>Own example (online enrollment form):</strong> Attribute: learnability · Concept: time to finish without help · Method: time 10 first-year students · Now: 15 min · Worst: 12 min · Planned: 8 min · Best: 5 min</p>
+</blockquote>
+<h3>ISO 9241 Usability Categories</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Meaning</th>
+<th>Simple question</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Effectiveness</strong></td>
+<td><strong>Accuracy and completeness</strong> in achieving goals</td>
+<td>Can users achieve what they want?</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td><strong>Time, effort, resources</strong> used</td>
+<td>Without wasting effort?</td>
+</tr>
+<tr>
+<td><strong>Satisfaction</strong></td>
+<td><strong>Comfort and positive attitude</strong></td>
+<td>Are users comfortable?</td>
+</tr>
+</tbody></table>
+<p><strong>Examples of measures</strong></p>
+<table>
+<thead>
+<tr>
+<th>Objective</th>
+<th>Effectiveness</th>
+<th>Efficiency</th>
+<th>Satisfaction</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Suitability for the task</td>
+<td>% of goals achieved</td>
+<td>Time to complete a task</td>
+<td>Satisfaction rating</td>
+</tr>
+<tr>
+<td>Appropriate for trained users</td>
+<td>Number of power features used</td>
+<td>Efficiency compared with an expert</td>
+<td>Satisfaction with power features</td>
+</tr>
+<tr>
+<td>Learnability</td>
+<td>% of functions learned</td>
+<td>Time to reach a learning criterion</td>
+<td>Ease-of-learning rating</td>
+</tr>
+<tr>
+<td>Error tolerance</td>
+<td>% of errors corrected</td>
+<td>Time spent correcting errors</td>
+<td>Rating of error handling</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Use numbers to make goals testable, but don&#39;t let numbers replace understanding users.</strong></p>
+</blockquote>
+<h3>Types of Prototypes</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>How it&#39;s used</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Throw-away</strong></td>
+<td>Built quickly to test an idea, then <strong>discarded</strong></td>
+</tr>
+<tr>
+<td><strong>Incremental</strong></td>
+<td>Parts built <strong>separately</strong>, then <strong>combined</strong></td>
+</tr>
+<tr>
+<td><strong>Evolutionary</strong></td>
+<td>Repeatedly improved until it <strong>becomes the final system</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> A paper sketch of your app → <strong>throw-away</strong>. Building login first, then the dashboard, then payments → <strong>incremental</strong>. A beta app updated until v1.0 → <strong>evolutionary</strong>.</p>
+</blockquote>
+<p><strong>Management issues:</strong> reserve time for testing/redesign, plan iteration (not uncontrolled change), early prototypes may not show speed/security, contracts must allow revision.</p>
+<h3>Prototyping Techniques</h3>
+<table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Storyboards</strong></td>
+<td>A <strong>sequence of screens/events/actions</strong>, on paper or animated. Good for discussing task flow cheaply</td>
+</tr>
+<tr>
+<td><strong>Limited-functionality simulation</strong></td>
+<td>Only <strong>selected features</strong> work, so users can test key interactions</td>
+</tr>
+<tr>
+<td><strong>Wizard of Oz</strong></td>
+<td>A <strong>hidden person</strong> performs a function that <strong>appears automatic</strong> (e.g. a &quot;chatbot&quot; whose replies are secretly typed by a researcher)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Warning — Design inertia:</strong> Weak early decisions <strong>stay</strong> just because the team already invested in them. Diagnose the <strong>real</strong> problem instead of patching symptoms.</p>
+</blockquote>
+<h3>Design Rationale</h3>
+<p>A <strong>record explaining why</strong> a system was designed the way it is: questions, alternatives, evidence, arguments, criteria, decisions, trade-offs.</p>
+<p><strong>Benefits:</strong> communication across the life cycle, <strong>reuse</strong> of design knowledge, disciplined decisions, explains trade-offs, organizes many design options, preserves context.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Emphasis</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Process-oriented</strong></td>
+<td>Preserves the <strong>order of discussion and decisions</strong> (e.g. IBIS)</td>
+</tr>
+<tr>
+<td><strong>Structure-oriented</strong></td>
+<td>Organizes <strong>alternatives and relationships</strong>, often after the discussion (e.g. QOC)</td>
+</tr>
+</tbody></table>
+<p><strong>IBIS (Issue-Based Information System)</strong>: process-oriented</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Issue</strong></td>
+<td>A question/problem</td>
+<td>How should students sign in?</td>
+</tr>
+<tr>
+<td><strong>Position</strong></td>
+<td>A possible answer</td>
+<td>Password; one-time code; biometrics</td>
+</tr>
+<tr>
+<td><strong>Argument</strong></td>
+<td>Supports or objects to a position</td>
+<td>OTP is safer but needs network access</td>
+</tr>
+<tr>
+<td><strong>Sub-issue</strong></td>
+<td>A smaller related question</td>
+<td>How to recover access without signal?</td>
+</tr>
+</tbody></table>
+<p><strong>gIBIS</strong> = the <strong>graphical</strong> version of IBIS.</p>
+<p><strong>QOC (Questions, Options, Criteria)</strong>: structure-oriented, part of <strong>design space analysis</strong></p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Role</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Question</strong></td>
+<td>The design problem</td>
+<td>How should attendance be confirmed?</td>
+</tr>
+<tr>
+<td><strong>Options</strong></td>
+<td>Possible solutions</td>
+<td>QR code, manual button, teacher scan</td>
+</tr>
+<tr>
+<td><strong>Criteria</strong></td>
+<td>Standards to compare options</td>
+<td>Speed, privacy, accessibility, fraud prevention, offline use</td>
+</tr>
+</tbody></table>
+<p><strong>DRL</strong> is like QOC but with a <strong>larger, more formal</strong> language.</p>
+<p><strong>Psychological design rationale:</strong> studies how a design affects users&#39; <strong>tasks, thinking, behavior, strategies, and errors</strong>. It&#39;s based on the <strong>task-artifact cycle</strong>:</p>
+<blockquote>
+<p><strong>Tools change how people do tasks, and changed tasks create new needs for tools.</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Own example:</strong> Online class tools (artifact) changed how students submit work (task). That created new needs, like <strong>file-size limits and upload progress bars</strong>.</p>
+</blockquote>
+<hr>
+<h2>5. HCI Design Rules</h2>
+<p><strong>Design rules</strong> are reusable statements that <strong>guide or evaluate</strong> interface decisions.</p>
+<h3>Types of Design Rules</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Generality</th>
+<th>Authority</th>
+<th>Best use</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Principle</strong></td>
+<td><strong>High</strong></td>
+<td>Lower</td>
+<td>Framing early decisions</td>
+<td>&quot;Make system status observable&quot;</td>
+</tr>
+<tr>
+<td><strong>Guideline</strong></td>
+<td>Medium–high</td>
+<td><strong>Advisory</strong></td>
+<td>Choosing and reviewing details</td>
+<td>&quot;Use labels beside unfamiliar icons&quot;</td>
+</tr>
+<tr>
+<td><strong>Standard</strong></td>
+<td>Usually <strong>specific</strong></td>
+<td><strong>High</strong></td>
+<td>Meeting agreed requirements</td>
+<td>ISO accessibility/ergonomic requirement</td>
+</tr>
+<tr>
+<td><strong>Heuristic</strong></td>
+<td>Broad</td>
+<td>Advisory</td>
+<td><strong>Rapid expert inspection</strong></td>
+<td>&quot;Prevent errors and support recovery&quot;</td>
+</tr>
+<tr>
+<td><strong>Design pattern</strong></td>
+<td>Context-specific</td>
+<td>Practice-based</td>
+<td>Reusing a <strong>proven solution</strong></td>
+<td>&quot;Safe place to return to&quot; (Home)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Standards</strong> have the <strong>highest authority</strong> but the <strong>most limited scope</strong>. <strong>Principles</strong> are the most <strong>general</strong>.</p>
+</blockquote>
+<p><strong>Why judgment is still needed:</strong> Rules can <strong>conflict</strong> (more info = more visibility, but also more cognitive load). Check the <strong>user goal, context, consequences, and evidence</strong>.</p>
+<p><strong>ISO 9241:</strong> users achieve goals <strong>effectively, efficiently, and satisfactorily</strong> in a specified context.</p>
+<h3>Usability Principles: Learnability, Flexibility, Robustness</h3>
+<table>
+<thead>
+<tr>
+<th>Quality</th>
+<th>Central question</th>
+<th>Simple test</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Learnability</strong></td>
+<td>Can a new/returning user figure out what to do?</td>
+<td>First-time user does a task without coaching</td>
+</tr>
+<tr>
+<td><strong>Flexibility</strong></td>
+<td>Can user and system work together in more than one way?</td>
+<td>Check shortcuts / shifting responsibility</td>
+</tr>
+<tr>
+<td><strong>Robustness</strong></td>
+<td>Can users see progress, finish goals, and recover?</td>
+<td>Interrupt a task or trigger a safe error</td>
+</tr>
+</tbody></table>
+<p><strong>Learnability</strong></p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Predictability</strong></td>
+<td>Guess the result of an action from what you&#39;ve seen</td>
+<td>Save icon works the same everywhere</td>
+</tr>
+<tr>
+<td><strong>Synthesizability</strong></td>
+<td>Understand how <strong>past actions changed</strong> the system</td>
+<td>After uploading: status shows &quot;Submitted&quot; + timestamp</td>
+</tr>
+<tr>
+<td><strong>Familiarity</strong></td>
+<td>Uses knowledge users <strong>already have</strong></td>
+<td>Trash-bin icon = delete</td>
+</tr>
+<tr>
+<td><strong>Generalizability</strong></td>
+<td>Knowledge <strong>transfers</strong> to other parts</td>
+<td>Swipe-left archives everywhere, not deletes in one place</td>
+</tr>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>Similar situations → similar language, look, behavior</td>
+<td>&quot;Submit&quot; always means final submission</td>
+</tr>
+</tbody></table>
+<p><strong>Flexibility</strong></p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Dialogue initiative</strong></td>
+<td>Don&#39;t force unnecessary sequences; let the user lead</td>
+<td>Search or shortcuts instead of long menus</td>
+</tr>
+<tr>
+<td><strong>Multithreading</strong></td>
+<td>Supports <strong>more than one task</strong> at a time</td>
+<td>Unfinished post stays while you check a file in another tab</td>
+</tr>
+<tr>
+<td><strong>Task migratability</strong></td>
+<td>Responsibility <strong>moves between user and system</strong></td>
+<td>Maps app suggests a route; driver accepts or changes it</td>
+</tr>
+<tr>
+<td><strong>Substitutivity</strong></td>
+<td><strong>Equivalent inputs/outputs</strong> can replace each other</td>
+<td>Type a date or pick from a calendar; list or grid view</td>
+</tr>
+<tr>
+<td><strong>Customizability</strong></td>
+<td>Changed by the <strong>user (adaptability)</strong> or by the <strong>system (adaptivity)</strong></td>
+<td>Text size setting = adaptable; recommendations = adaptive</td>
+</tr>
+</tbody></table>
+<p><strong>Robustness</strong></p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Observability</strong></td>
+<td>Users can see the <strong>system&#39;s state</strong></td>
+<td>Upload bar with file name, %, done state</td>
+</tr>
+<tr>
+<td><strong>Recoverability</strong></td>
+<td>Users can <strong>fix errors</strong>. <strong>Backward</strong> = undo; <strong>forward</strong> = fix and continue</td>
+<td>Undo (backward); highlight a missing field without clearing others (forward)</td>
+</tr>
+<tr>
+<td><strong>Responsiveness</strong></td>
+<td>System communicates in a time/way users understand</td>
+<td>Progress indicator instead of a frozen screen</td>
+</tr>
+<tr>
+<td><strong>Task conformance</strong></td>
+<td>Provides the needed functions (<strong>task completeness</strong>) in a way that fits the work (<strong>task adequacy</strong>)</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic:</strong> <strong>L</strong>earn, <strong>F</strong>lex, <strong>R</strong>ecover. Learnability = <strong>&quot;PS FGC&quot;</strong> (<strong>P</strong>lease <strong>S</strong>tudy <strong>F</strong>or <strong>G</strong>reat <strong>C</strong>hances): Predictability, Synthesizability, Familiarity, Generalizability, Consistency.</p>
+</blockquote>
+<h3>Shneiderman&#39;s Eight Golden Rules</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Rule</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>Strive for consistency</strong></td>
+<td>&quot;Submit&quot; always means final submission</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Enable shortcuts</strong> (for frequent users)</td>
+<td>Keyboard shortcuts, recent items, autofill</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Offer informative feedback</strong></td>
+<td>&quot;Saved,&quot; upload progress, clear validation message</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Design for closure</strong> (clear beginning, middle, end)</td>
+<td>Enrollment confirmation + next steps</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Prevent and handle errors</strong></td>
+<td>Disable impossible dates, explain how to fix input</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Permit easy reversal</strong></td>
+<td>&quot;Recently Deleted&quot; folder, Undo, Cancel</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Keep users in control</strong></td>
+<td>Ask before destructive actions; let users stop a process</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Reduce short-term memory load</strong></td>
+<td>Show password rules <strong>beside</strong> the field</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic:</strong> <strong>C</strong>ats <strong>S</strong>leep <strong>F</strong>or <strong>C</strong>omfort, <strong>P</strong>urring <strong>R</strong>elaxes <strong>C</strong>at <strong>M</strong>inds = Consistency, Shortcuts, Feedback, Closure, Prevent errors, Reversal, Control, Memory</p>
+</blockquote>
+<h3>Norman&#39;s Seven Principles</h3>
+<ol>
+<li>Use <strong>knowledge in the world</strong> and <strong>knowledge in the head</strong></li>
+<li><strong>Simplify the structure</strong> of tasks</li>
+<li><strong>Make things visible</strong></li>
+<li><strong>Get the mappings right</strong></li>
+<li>Use <strong>natural and artificial constraints</strong></li>
+<li><strong>Design for error</strong> (expect slips and mistakes)</li>
+<li><strong>When all else fails, standardize</strong></li>
+</ol>
+<h3>From Rule to Design Decision</h3>
+<p>Never just say &quot;it&#39;s confusing.&quot; Use: <strong>Evidence → Rule → Consequence → Recommendation</strong></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Evidence</strong></td>
+<td>Delete and Archive icons have no labels and the same gray style</td>
+</tr>
+<tr>
+<td><strong>Rule</strong></td>
+<td>Familiarity, consistency, error prevention, visible knowledge</td>
+</tr>
+<tr>
+<td><strong>Consequence</strong></td>
+<td>A first-time user may delete a message by mistake</td>
+</tr>
+<tr>
+<td><strong>Recommendation</strong></td>
+<td>Add labels, make Delete look different, provide Undo</td>
+</tr>
+</tbody></table>
+<h3>Design Patterns</h3>
+<p>A <strong>reusable solution</strong> to a <strong>recurring problem</strong> in a specific context. The idea came from <strong>architecture</strong>. A pattern describes: <strong>Context, Problem, Forces (trade-offs), Solution, Consequences.</strong></p>
+<blockquote>
+<p><strong>Example: &quot;Safe place to return to&quot;:</strong> give a stable <strong>Home</strong> so lost users can get back.</p>
+</blockquote>
+<p>Linked patterns form a <strong>pattern language</strong>.</p>
+<h3>Modern Systems (AI, Accessibility)</h3>
+<ul>
+<li><strong>AI interfaces:</strong> show capabilities and limits, keep user control (edit/reject/stop), give feedback during generation, be consistent, reduce memory load, prevent irreversible actions.</li>
+<li><strong>Accessibility:</strong> don&#39;t rely on <strong>color alone</strong>; readable text, clear focus order, big enough targets, descriptive labels, keyboard support.</li>
+</ul>
+<hr>
+<h2>6. HCI Implementation Support</h2>
+<p><strong>Implementation support</strong> = tools, services, and architectures that help developers turn designs into working interfaces. <strong>Tools should support the design, not decide it.</strong></p>
+<h3>Key Terms</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Windowing system</strong></td>
+<td>Low-level support for windows, input devices, graphics, shared display</td>
+</tr>
+<tr>
+<td><strong>Toolkit</strong></td>
+<td>Collection of reusable <strong>interaction objects</strong> (buttons, menus, fields, dialogs)</td>
+</tr>
+<tr>
+<td><strong>Widget</strong></td>
+<td>A reusable interface object = visible presentation + behavior</td>
+</tr>
+<tr>
+<td><strong>UIMS</strong> (User Interface Management System)</td>
+<td>Separates and coordinates <strong>presentation, dialogue, and application</strong> functions</td>
+</tr>
+<tr>
+<td><strong>Event</strong></td>
+<td>A meaningful occurrence: click, key press, touch, timer, data update</td>
+</tr>
+<tr>
+<td><strong>Callback</strong></td>
+<td>Code registered to run <strong>when an event happens</strong></td>
+</tr>
+<tr>
+<td><strong>Feedback</strong></td>
+<td>Visible, audible, or haptic response</td>
+</tr>
+</tbody></table>
+<h3>Layers of Implementation Support</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Main service</th>
+<th>Benefit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Windowing system</strong> (lowest)</td>
+<td>Manages display and input: windows, pixels, pointer, focus</td>
+<td><strong>Device independence</strong>, multiple apps at once</td>
+</tr>
+<tr>
+<td><strong>Interaction toolkit</strong></td>
+<td>Reusable objects: buttons, menus, fields</td>
+<td><strong>Consistency</strong>, faster development, reuse</td>
+</tr>
+<tr>
+<td><strong>UIMS</strong> (highest)</td>
+<td>Coordinates presentation, dialogue, application</td>
+<td><strong>Separation of concerns</strong>, portability</td>
+</tr>
+</tbody></table>
+<h3>Windowing Systems</h3>
+<ul>
+<li><strong>Device independence:</strong> apps request &quot;draw a line / get pointer position&quot; through an <strong>abstract interface</strong>; drivers handle the actual hardware → <strong>portability</strong>.</li>
+<li><strong>Resource sharing:</strong> coordinates screen, keyboard, pointer, clipboard, and audio among many apps; decides <strong>which window gets input (focus)</strong>.</li>
+</ul>
+<p><strong>Three architectural choices</strong></p>
+<table>
+<thead>
+<tr>
+<th>Architecture</th>
+<th>Strength</th>
+<th>Limitation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Each <strong>application</strong> manages processes</td>
+<td>Maximum control</td>
+<td>Every app handles sync; poor portability</td>
+</tr>
+<tr>
+<td>Management in the <strong>OS kernel</strong></td>
+<td>Strong integration</td>
+<td>Tied to that OS</td>
+</tr>
+<tr>
+<td>Management as a <strong>separate service</strong></td>
+<td>Portability, modularity</td>
+<td>Communication boundaries must be designed</td>
+</tr>
+</tbody></table>
+<p><strong>Client-server (X Window System):</strong> apps are <strong>clients</strong> requesting display services from a <strong>server</strong> (tied to the user&#39;s display). A <strong>window manager</strong> handles focus and overlapping/tiled windows. &quot;Server&quot; = display provider, not necessarily a remote computer.</p>
+<h3>Programming the Dialogue</h3>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>How it works</th>
+<th>Best fit</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Read-evaluation loop</strong></td>
+<td>A central loop reads an event, checks its type, runs matching code</td>
+<td>Simple, sequenced/<strong>modal</strong> interaction</td>
+<td>Loop gets complicated</td>
+</tr>
+<tr>
+<td><strong>Notification-based</strong></td>
+<td>Components register <strong>callbacks</strong>; the system calls them when events happen</td>
+<td>Graphical, <strong>non-modal</strong>, event-driven UIs</td>
+<td>State scattered across handlers</td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">Central <span class="hljs-keyword">event</span> <span class="hljs-keyword">loop</span>                 Notification-based
+<span class="hljs-keyword">repeat</span>                             saveButton.onClick(save)
+  <span class="hljs-keyword">event</span> = readEvent()              quitButton.onClick(quit)
+  <span class="hljs-keyword">if</span> <span class="hljs-keyword">event</span> <span class="hljs-keyword">is</span> SAVE: save()
+  <span class="hljs-keyword">if</span> <span class="hljs-keyword">event</span> <span class="hljs-keyword">is</span> QUIT: quit()         <span class="hljs-keyword">function</span> <span class="hljs-title function_">save</span><span class="hljs-params">(<span class="hljs-keyword">event</span>)</span>:
+<span class="hljs-keyword">until</span> finished                       store current work</code></pre></div>
+<ul>
+<li><strong>Modal</strong> = you <strong>must respond</strong> to the dialog before doing anything else (use sparingly).</li>
+<li><strong>Non-modal</strong> = you can <strong>keep working elsewhere</strong> while it&#39;s open.</li>
+<li><strong>&quot;Going with the grain&quot;:</strong> every framework makes some structures easier. Don&#39;t let what&#39;s <strong>easiest to code</strong> decide the user experience.</li>
+</ul>
+<blockquote>
+<p><strong>Own example:</strong> &quot;Are you sure you want to delete?&quot; pop-up = <strong>modal</strong>. Messenger chat bubble while browsing = <strong>non-modal</strong>.</p>
+</blockquote>
+<h3>Interaction Toolkits</h3>
+<p>Provide reusable <strong>widgets</strong>, event handling, consistent look and feel, and accessibility info. Lesson examples: <strong>Java AWT</strong> (basic, platform-oriented) and <strong>Swing</strong> (higher-level, model-view separation). Modern: HTML, Android/iOS UI, JavaFX, .NET, Flutter, React.</p>
+<blockquote>
+<p><strong>Native semantics before custom appearance:</strong> use built-in controls first. Custom-drawn ones may lose keyboard support, focus, and screen-reader info.</p>
+</blockquote>
+<h3>UIMS: Why Separate Presentation from Semantics?</h3>
+<p><strong>Portability, reusability, multiple interfaces</strong> (desktop/mobile/voice), <strong>customizability, testability</strong>.</p>
+<h3>Conceptual Architectures</h3>
+<p><strong>Seeheim Model</strong>: separates:</p>
+<ol>
+<li><strong>Presentation</strong>: perceivable input/output</li>
+<li><strong>Dialogue control</strong>: interaction sequence and structure</li>
+<li><strong>Application interface (semantics)</strong>: connects to functions and data</li>
+</ol>
+<p><strong>Levels of feedback</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Lexical</strong></td>
+<td>Immediate physical/display response</td>
+<td>Pointer moves; button looks pressed</td>
+</tr>
+<tr>
+<td><strong>Syntactic</strong></td>
+<td>Shows a valid interaction structure</td>
+<td>Menu item highlights on hover</td>
+</tr>
+<tr>
+<td><strong>Semantic</strong></td>
+<td>Reflects application meaning/data</td>
+<td>Cart total updates after adding an item</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Semantic feedback is slower (needs processing); fast lexical/syntactic feedback <strong>reassures</strong> users input was received.</p>
+</blockquote>
+<p><strong>Arch/Slinky Model:</strong> refines the layers; the &quot;slinky&quot; means layers can be <strong>thicker or thinner</strong> depending on the system (a drawing app is presentation-heavy; a data system is logic-heavy).</p>
+<h3>Component Models: MVC and PAC</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Parts</th>
+<th>Main idea</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>MVC</strong></td>
+<td><strong>Model</strong> (stores logical state) · <strong>View</strong> (renders it) · <strong>Controller</strong> (interprets input)</td>
+<td>Perfect separation is uncommon</td>
+</tr>
+<tr>
+<td><strong>PAC</strong></td>
+<td><strong>Presentation</strong> (input/output) · <strong>Abstraction</strong> (logical state) · <strong>Control</strong> (mediates, connects agents)</td>
+<td>Clean for hierarchies and multiple views, less common in frameworks</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Watch out:</strong> In <strong>MVC</strong>, the <strong>Model</strong> holds the data. In <strong>PAC</strong>, the <strong>Abstraction</strong> holds the data.</p>
+</blockquote>
+<p><strong>Tracing &quot;Add to Cart&quot; through MVC:</strong></p>
+<ol>
+<li>User taps Add to Cart → 2. <strong>Controller</strong> interprets the event → 3. <strong>Model</strong> updates the cart and total → 4. <strong>View</strong> shows the new quantity/price → 5. User evaluates the feedback.</li>
+</ol>
+<p>Bug hunting: can&#39;t reach the button by keyboard → presentation/input. Wrong total → model. Model updates but the screen doesn&#39;t → broken model-view link.</p>
+<h3>Specifying Dialogue</h3>
+<table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Useful for</th>
+<th>Watch out</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>State-transition diagram</strong></td>
+<td>States, events, transitions</td>
+<td>Too many states/arrows in big systems</td>
+</tr>
+<tr>
+<td><strong>Event language/handlers</strong></td>
+<td>Mapping events to actions</td>
+<td>Overall journey hard to see</td>
+</tr>
+<tr>
+<td><strong>Declarative UI</strong></td>
+<td>Stating what the UI should be</td>
+<td>Runtime behavior still needs reasoning</td>
+</tr>
+<tr>
+<td><strong>Constraints</strong></td>
+<td>Relationships that must stay true</td>
+<td>Conflicts are hard to diagnose</td>
+</tr>
+<tr>
+<td><strong>Graphical specification</strong></td>
+<td>Drawing components and linking actions</td>
+<td>May <strong>hide global paths</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Drift of dialogue control:</strong> dialogue can live <strong>inside</strong> the app, in a <strong>separate</strong> controller, or <strong>near presentation</strong> (visual tools). Each affects testability and flow visibility.</p>
+<p><strong>Modern principles:</strong> one clear source of truth, immediate acknowledgment, don&#39;t freeze during long tasks (show progress, allow cancel), keep user data on errors, test keyboard/screen readers/zoom, don&#39;t leak private data in logs, test <strong>whole task flows</strong>.</p>
+<hr>
+<h2>7. HCI Evaluation Techniques</h2>
+<p><strong>Evaluation</strong> = systematically collecting and interpreting evidence about a design. It&#39;s <strong>not a final inspection</strong>; it happens <strong>throughout</strong> the life cycle.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Usability problem</strong></td>
+<td>A feature that makes a task ineffective, inefficient, unsafe, confusing, or unsatisfying</td>
+</tr>
+<tr>
+<td><strong>Inspection method</strong></td>
+<td>Evaluation by <strong>experts</strong> (no users)</td>
+</tr>
+<tr>
+<td><strong>Usability testing</strong></td>
+<td>Watching <strong>representative users</strong> do <strong>representative tasks</strong></td>
+</tr>
+<tr>
+<td><strong>Qualitative data</strong></td>
+<td>Descriptions, comments, behaviors, themes</td>
+</tr>
+<tr>
+<td><strong>Quantitative data</strong></td>
+<td>Numbers: time, errors, completion rate, ratings</td>
+</tr>
+<tr>
+<td><strong>Formative evaluation</strong></td>
+<td>To <strong>improve</strong> a design <strong>during</strong> development</td>
+</tr>
+<tr>
+<td><strong>Summative evaluation</strong></td>
+<td>To <strong>judge</strong> a finished system against goals</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>Form</strong>ative = still <strong>form</strong>ing. <strong>Sum</strong>mative = the final <strong>sum</strong>-up.</p>
+</blockquote>
+<h3>Three Goals of Evaluation</h3>
+<ol>
+<li><strong>Assess functionality</strong>: does it provide and correctly perform the required services?</li>
+<li><strong>Assess the effect on the user</strong>: performance, understanding, workload, satisfaction</li>
+<li><strong>Identify specific problems</strong>: where, when, why interaction breaks down</li>
+</ol>
+<h3>Evaluation Across the Life Cycle</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Artifact</th>
+<th>Methods</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Early concept</td>
+<td>Scenario, storyboard, sketch</td>
+<td>Review, walkthrough, interview</td>
+</tr>
+<tr>
+<td>Prototype</td>
+<td>Paper/interactive prototype</td>
+<td>Think aloud, heuristic evaluation, cooperative evaluation</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>Working system</td>
+<td>Usability test, experiment, logging, questionnaire</td>
+</tr>
+<tr>
+<td>Use over time</td>
+<td>Deployed system</td>
+<td>Field study, diary, interview, analytics</td>
+</tr>
+</tbody></table>
+<h3>Evaluation WITHOUT Users (Expert Inspection)</h3>
+<p>Efficient, but <strong>can&#39;t replace real users</strong>: experts <strong>predict</strong> problems; users <strong>reveal</strong> them.</p>
+<p><strong>Cognitive Walkthrough</strong>: focuses on <strong>learnability</strong> (can a <strong>new user</strong> discover the right action?)</p>
+<ul>
+<li>Prep: define users &amp; what they know, choose a task, list the correct action sequence, prepare the prototype.</li>
+<li><strong>Four questions at each step:</strong><ol>
+<li>Will the user try to achieve the <strong>correct goal</strong>?</li>
+<li>Will the user <strong>notice</strong> the correct action is available?</li>
+<li>Will the user <strong>connect</strong> the action with the goal?</li>
+<li>Will the user <strong>understand the feedback</strong> and know progress was made?</li>
+</ol>
+</li>
+</ul>
+<p><strong>Heuristic Evaluation</strong>: <strong>several experts independently</strong> check the interface against usability principles (heuristics), then combine findings.<br>Record: <strong>Location, Evidence, Heuristic violated, Consequence, Severity, Recommendation.</strong></p>
+<blockquote>
+<p>Domain-specific heuristics can catch issues generic lists miss.</p>
+</blockquote>
+<p><strong>Review-based:</strong> uses <strong>published research</strong> (check if it transfers to your users/context).<br><strong>Model-based:</strong> uses a predictive model, like <strong>GOMS</strong> = <strong>G</strong>oals, <strong>O</strong>perators, <strong>M</strong>ethods, <strong>S</strong>election rules (estimates skilled performance).<br><strong>Design rationale:</strong> past decisions show what to evaluate.</p>
+<h3>Evaluation WITH Users</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Advantages</th>
+<th>Limitations</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Laboratory</strong></td>
+<td>Controlled, equipment, fewer interruptions</td>
+<td><strong>Artificial</strong> context</td>
+<td>Focused comparisons, risky tasks</td>
+</tr>
+<tr>
+<td><strong>Field</strong></td>
+<td><strong>Natural</strong> setting, real context, long-term</td>
+<td>Noise, less control; being watched changes behavior</td>
+<td>Context-dependent work, mobile, long-term use</td>
+</tr>
+<tr>
+<td><strong>Remote</strong></td>
+<td>Wide reach, own devices, cheap</td>
+<td>Setup issues, less visibility, privacy</td>
+<td>Distributed users</td>
+</tr>
+</tbody></table>
+<p><strong>Artifacts:</strong> <strong>simulation</strong> (imitates behavior), <strong>prototype</strong> (enough to explore flow), <strong>full implementation</strong> (real performance).</p>
+<h3>Experimental Evaluation</h3>
+<p>Tests a <strong>hypothesis</strong> under <strong>controlled</strong> conditions.</p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Participants</strong></td>
+<td>Represent target users</td>
+<td>First-year students new to the portal</td>
+</tr>
+<tr>
+<td><strong>Independent variable (IV)</strong></td>
+<td>What you <strong>deliberately change</strong></td>
+<td>Menu: alphabetical vs task-based</td>
+</tr>
+<tr>
+<td><strong>Dependent variable (DV)</strong></td>
+<td>What you <strong>measure</strong></td>
+<td>Completion time, errors, rating</td>
+</tr>
+<tr>
+<td><strong>Hypothesis</strong></td>
+<td>Testable prediction linking IV → DV</td>
+<td>&quot;Task-based menus reduce completion time&quot;</td>
+</tr>
+<tr>
+<td><strong>Null hypothesis</strong></td>
+<td>Says <strong>no difference</strong></td>
+<td>&quot;Menu type won&#39;t change completion time&quot;</td>
+</tr>
+<tr>
+<td><strong>Experimental design</strong></td>
+<td>Assignment, order, controls, analysis</td>
+<td>Counterbalanced within-participant</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>I</strong> change the <strong>I</strong>ndependent variable; the <strong>D</strong>ependent variable <strong>D</strong>epends on it.</p>
+</blockquote>
+<blockquote>
+<p><strong>Measure more than speed:</strong> faster isn&#39;t better if users make more serious errors. Define measures <strong>before</strong> collecting data.</p>
+</blockquote>
+<h3>Observational Methods</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>How</th>
+<th>Watch out</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Think aloud</strong></td>
+<td>User <strong>says what they&#39;re thinking</strong> while doing the task</td>
+<td>Talking may change performance; don&#39;t teach or defend the UI</td>
+</tr>
+<tr>
+<td><strong>Cooperative evaluation</strong></td>
+<td>User <strong>and evaluator can ask each other</strong> questions</td>
+<td>May influence behavior; record when help was given</td>
+</tr>
+<tr>
+<td><strong>Post-task walkthrough</strong></td>
+<td>Replay the recording; user <strong>explains</strong> their actions afterward</td>
+<td>Memory may reconstruct events</td>
+</tr>
+</tbody></table>
+<p><strong>Protocol analysis (recording methods)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Record</th>
+<th>Strength</th>
+<th>Limitation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Paper &amp; pencil notes</strong></td>
+<td>Cheap, easy</td>
+<td>Limited by writing speed</td>
+</tr>
+<tr>
+<td><strong>Audio</strong></td>
+<td>Captures think-aloud</td>
+<td>Hard to match with screen events</td>
+</tr>
+<tr>
+<td><strong>Video/screen recording</strong></td>
+<td>Accurate sequence</td>
+<td>Obtrusive; consent, storage, analysis burden</td>
+</tr>
+<tr>
+<td><strong>Interaction logging</strong></td>
+<td>Automatic timing, paths, errors</td>
+<td>Lots of data; <strong>doesn&#39;t show intention</strong></td>
+</tr>
+<tr>
+<td><strong>User diary/notebook</strong></td>
+<td>Good for long-term use</td>
+<td>Delayed, subjective, incomplete</td>
+</tr>
+</tbody></table>
+<h3>Query Techniques</h3>
+<ul>
+<li><strong>Interviews</strong>: flexible, in-depth; time-consuming, affected by memory and wording. Use neutral prompts: <em>&quot;What did you expect to happen?&quot;</em></li>
+<li><strong>Questionnaires</strong>: same questions to many people, easy to compare; less flexible.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Question style</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>General/factual</strong></td>
+<td>How often do you use this service?</td>
+</tr>
+<tr>
+<td><strong>Open-ended</strong></td>
+<td>What was most difficult and why?</td>
+</tr>
+<tr>
+<td><strong>Scalar</strong></td>
+<td>Easy to use: 1 (strongly disagree) to 5 (strongly agree)</td>
+</tr>
+<tr>
+<td><strong>Multiple choice</strong></td>
+<td>Which device did you use?</td>
+</tr>
+<tr>
+<td><strong>Ranked</strong></td>
+<td>Rank these three layouts</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Avoid <strong>double questions, leading wording, undefined terms, overlapping choices, scales that flip direction</strong>. <strong>Pilot</strong> it first.</p>
+</blockquote>
+<h3>Eye Tracking &amp; Physiological Measures</h3>
+<ul>
+<li><strong>Fixation</strong>: gaze stays on one spot (may mean attention or difficulty)</li>
+<li><strong>Saccade</strong>: rapid jump between points</li>
+<li><strong>Scan path</strong>: the sequence of gaze movements</li>
+<li><strong>Physiological</strong>: heart rate, blood pressure, <strong>GSR</strong> (galvanic skin response), <strong>EMG</strong> (muscles), <strong>EEG</strong> (brain)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Can indicate</th>
+<th>Can&#39;t prove alone</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Where attention goes</td>
+<td>What the user understood or intended</td>
+</tr>
+<tr>
+<td>Change in arousal</td>
+<td>Whether the emotion was positive/negative or caused by the UI</td>
+</tr>
+<tr>
+<td>When a response happened</td>
+<td>Which usability problem caused it</td>
+</tr>
+</tbody></table>
+<h3>Choosing a Method</h3>
+<p><strong>Start with the evaluation question.</strong> Then consider: stage, setting, type of evidence (subjective/objective, qualitative/quantitative), level of detail, interference, participants, resources, <strong>ethics</strong> (consent, privacy, withdrawal).</p>
+<p><strong>Triangulation / mixed methods:</strong> no single method reveals everything. Inspect → observe users → ask follow-ups → compare. Agreement = more confidence.</p>
+<p><strong>AI-assisted evaluation:</strong> can help with transcription and clustering, but findings are <strong>leads for human review</strong>, not final truth.</p>
+<hr>
+<h2>8. Universal Design &amp; User Support</h2>
+<h3>Universal Design</h3>
+<p>Designing so <strong>more people</strong> can use a product comfortably, planning for different <strong>abilities, situations, ages, and interaction methods</strong> from the start.</p>
+<p><strong>7 Principles of Universal Design</strong></p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Equitable use</strong></td>
+<td>Form works with both mouse <strong>and</strong> keyboard</td>
+</tr>
+<tr>
+<td><strong>2. Flexibility in use</strong></td>
+<td>Type a search <strong>or</strong> use voice</td>
+</tr>
+<tr>
+<td><strong>3. Simple and intuitive use</strong></td>
+<td>Payment screen shows the next step in plain language</td>
+</tr>
+<tr>
+<td><strong>4. Perceptible information</strong></td>
+<td>Video captions; phone shows a visual alert <strong>with</strong> sound</td>
+</tr>
+<tr>
+<td><strong>5. Tolerance for error</strong></td>
+<td>Confirm before deleting + Undo</td>
+</tr>
+<tr>
+<td><strong>6. Low physical effort</strong></td>
+<td>Form <strong>saves progress</strong> so you don&#39;t retype</td>
+</tr>
+<tr>
+<td><strong>7. Size and space for approach and use</strong></td>
+<td>Kiosk controls reachable by people of different heights</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic:</strong> <strong>E</strong>very <strong>F</strong>riend <strong>S</strong>hould <strong>P</strong>ractice <strong>T</strong>olerance, <strong>L</strong>ove, and <strong>S</strong>pace</p>
+</blockquote>
+<h3>Multi-sensory Interaction</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Multimodal</strong></td>
+<td>Uses <strong>different senses</strong> (sight, hearing, touch)</td>
+<td>Phone shows a message, plays a sound, vibrates</td>
+</tr>
+<tr>
+<td><strong>Multimedia</strong></td>
+<td>Uses <strong>different content forms</strong> (text, images, video)</td>
+<td>Text + images + silent video are all <strong>visual</strong> (same sense)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Trap:</strong> Multimedia ≠ multimodal. Multimedia can still use just <strong>one sense</strong>.</p>
+</blockquote>
+<p><strong>Speech &amp; sound</strong></p>
+<ul>
+<li><strong>Speech recognition</strong>: spoken input → text/commands (dictation). Struggles with noise, accents.</li>
+<li><strong>Speech synthesis</strong>: system <strong>speaks</strong> output (screen readers). Keep on-screen text too.</li>
+<li><strong>Auditory icon</strong>: a <strong>real-world sound</strong> with natural meaning (camera <strong>shutter</strong> sound)</li>
+<li><strong>Earcon</strong>: a <strong>designed sequence of tones</strong> (distinct success/error beeps)</li>
+</ul>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>Ear</strong>con = <strong>ear</strong>-made-up tune. <strong>Auditory icon</strong> = <strong>actual</strong> real sound.</p>
+</blockquote>
+<p><strong>Touch, handwriting, gestures</strong></p>
+<ul>
+<li><strong>Haptic feedback</strong>: communicates through <strong>touch</strong> (vibration after a tap; <strong>refreshable Braille display</strong>)</li>
+<li><strong>Handwriting input</strong>: stylus writing (style affects recognition)</li>
+<li><strong>Gestures</strong>: swipe/point; unfamiliar gestures need a <strong>visible alternative</strong> (Back button + swipe back)</li>
+</ul>
+<p><strong>Different users &amp; situations:</strong> captions on a noisy commute, screen readers for blind users, voice/large controls for limited hand movement, readable text for older users. <strong>Test with diverse users</strong>; consider language and culture.</p>
+<h3>User Support</h3>
+<p>Help that lets people learn a feature, complete a task, or recover from a problem.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Help message</strong></td>
+<td>Answers a <strong>specific question</strong></td>
+<td>&quot;Your file is over 25 MB. Compress it or choose a smaller file&quot; (not just &quot;Upload error&quot;)</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>Explains <strong>more of the system</strong></td>
+<td>User manual</td>
+</tr>
+<tr>
+<td><strong>Context-sensitive help</strong></td>
+<td>Help tied to <strong>what you&#39;re doing now</strong></td>
+<td>Tooltip on an unfamiliar icon; password rules shown <strong>before</strong> you submit</td>
+</tr>
+<tr>
+<td><strong>Tutorial</strong></td>
+<td><strong>Teaches</strong> how to do a task</td>
+<td>Onboarding walkthrough</td>
+</tr>
+<tr>
+<td><strong>Wizard</strong></td>
+<td><strong>Guides step by step</strong>, next steps depend on your answers</td>
+<td>Account recovery: email → code → new password</td>
+</tr>
+<tr>
+<td><strong>Adaptable support</strong></td>
+<td><strong>User chooses</strong> the help type</td>
+<td>Beginner mode, language setting</td>
+</tr>
+<tr>
+<td><strong>Adaptive support</strong></td>
+<td><strong>System changes</strong> help based on behavior</td>
+<td>Coding app offers a hint after repeated errors (must be dismissible)</td>
+</tr>
+</tbody></table>
+<p><strong>Good help:</strong> easy to find, accurate, consistent, easy to dismiss, uses familiar words, gives <strong>specific next steps</strong>, and is updated when the app changes.</p>
+<hr>
+<h2>Quick Check</h2>
+<ol>
+<li>What is the difference between a framework and a paradigm?</li>
+<li>A door handle is an example of an affordance, a signifier, or both?</li>
+<li>Four knobs in a straight line controlling burners arranged in a square is an example of poor ___.</li>
+<li>What does &quot;design&quot; mean in HCI, in four words?</li>
+<li>What is the golden rule of HCI design?</li>
+<li>Verification vs validation: which asks &quot;Are we building the right product?&quot;</li>
+<li>Which prototype is discarded after testing?</li>
+<li>In a Wizard of Oz prototype, who performs the &quot;automatic&quot; function?</li>
+<li>IBIS elements: Issue, ___, Argument, Sub-issue.</li>
+<li>QOC stands for?</li>
+<li>Which design rule type has the highest authority but narrowest scope?</li>
+<li>A user can type a date or pick it from a calendar. Which flexibility principle?</li>
+<li>Undo is ___ recovery; highlighting a missing field so you can fix it is ___ recovery.</li>
+<li>In MVC, which part stores the data?</li>
+<li>A pop-up you must answer before continuing is ___ interaction.</li>
+<li>Which evaluation method focuses on whether a new user can discover the correct action?</li>
+<li>In an experiment comparing two menu layouts by completion time, what are the IV and the DV?</li>
+<li>Formative vs summative: which is done during development to improve the design?</li>
+<li>A camera shutter sound is an ___; a designed success beep is an ___.</li>
+<li>Name the three ISO 9241 usability categories.</li>
+</ol>
+<details>
+<summary>Answers</summary>
+
+<ol>
+<li>A paradigm is a broad <strong>way of thinking</strong>; a framework is a <strong>structured guide</strong> for analyzing/designing/evaluating</li>
+<li><strong>Both</strong></li>
+<li><strong>Mapping</strong></li>
+<li><strong>Achieving goals within constraints</strong></li>
+<li><strong>Understand computers and understand people</strong></li>
+<li><strong>Validation</strong></li>
+<li><strong>Throw-away</strong></li>
+<li>A <strong>hidden person</strong></li>
+<li><strong>Position</strong></li>
+<li><strong>Questions, Options, Criteria</strong></li>
+<li><strong>Standard</strong></li>
+<li><strong>Substitutivity</strong></li>
+<li><strong>Backward</strong>; <strong>forward</strong></li>
+<li><strong>Model</strong></li>
+<li><strong>Modal</strong></li>
+<li><strong>Cognitive walkthrough</strong></li>
+<li>IV = <strong>menu layout</strong>; DV = <strong>completion time</strong></li>
+<li><strong>Formative</strong></li>
+<li><strong>Auditory icon</strong>; <strong>earcon</strong></li>
+<li><strong>Effectiveness, Efficiency, Satisfaction</strong></li>
+</ol>
+</details>
+
+  </div>
+  <div class="note-nav">
+    <a href="Y1S1-CC2-midterm.html" class="note-nav-prev">← CC2</a>
+    <a href="Y1S1-GE4-midterm.html" class="note-nav-next">GE4 →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

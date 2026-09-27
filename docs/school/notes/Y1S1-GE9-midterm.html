@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | GE9 Readings in Philippine History — Midterm</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">1st Year · 1st Sem</h4>
+  <ul class="notes-menu-list">
+        <li><a href="Y1S1-CC1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="Y1S1-CC2-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="Y1S1-HCI101-midterm.html" class="notes-menu-link"><span class="notes-menu-code">HCI101</span> Introduction to Human-Computer Interaction</a></li>
+        <li><a href="Y1S1-GE4-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE4</span> Mathematics in the Modern World</a></li>
+        <li><a href="Y1S1-GE5-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="Y1S1-GE9-midterm.html" class="notes-menu-link active"><span class="notes-menu-code">GE9</span> Readings in Philippine History</a></li>
+        <li><a href="Y1S1-PATHFIT1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">PATHFIT1</span> Physical Activity Towards Health and Fitness 1</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>1st Year · 1st Sem</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Readings in Philippine History</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">GE9</span><span class="note-units">1st Year · 1st Sem</span></p>
+  <h1 class="note-title">Readings in Philippine History</h1>
+  <p class="note-meta">Last updated: September 27, 2026</p>
+  <nav class="term-tabs" aria-label="Exam period"><a href="Y1S1-GE9-midterm.html" class="term-tab active" aria-current="page">Midterm</a><span class="term-tab term-tab--empty" title="Not up yet">Finals</span></nav>
+  <div class="note-content">
+    <blockquote>
+<p>Covers: Introduction to History · Historiography &amp; Sources · Periods of Philippine History · The Pre-Colonial Period (artifacts, origins, society, beliefs, IPs) · The Rise of Islam in the Philippines.<br>Items marked <strong>(added)</strong> aren&#39;t on the slides. The slides only name some topics, so these fill in the meaning.</p>
+</blockquote>
+<hr>
+<h2>1. What Is History?</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>General</strong></td>
+<td>The <strong>study and interpretation of past events</strong>, especially those involving <strong>humans, societies, and civilizations</strong></td>
+</tr>
+<tr>
+<td><strong>Teodoro Agoncillo</strong></td>
+<td>&quot;A study of <strong>man and his deeds</strong> in relation to society, particularly emphasizing the <strong>struggle for freedom and national identity</strong>&quot;</td>
+</tr>
+<tr>
+<td><strong>Ambeth Ocampo</strong></td>
+<td>History is a <strong>narrative of the past that is relevant to the present</strong>, combining scholarship with <strong>storytelling</strong> to make history accessible</td>
+</tr>
+<tr>
+<td><strong>Zeus Salazar</strong> (<em>Pantayong Pananaw</em>)</td>
+<td>&quot;Ang kasaysayan ay <strong>salaysay na may saysay</strong> sa sinasalaysayang grupo ng tao.&quot; (History is a <strong>story that has meaning</strong> for the group of people it is about)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>Salazar</strong> = <strong>salaysay</strong> + <strong>saysay</strong> (story + meaning). <strong>Pantayong Pananaw</strong> = &quot;<strong>from us, for us</strong>&quot;: Filipino history told by Filipinos, for Filipinos. <strong>(added)</strong></p>
+</blockquote>
+<h3>Elements of History</h3>
+<p><strong>Time · Evidence · Human Actions · Interpretations</strong></p>
+<h3>Significance of History</h3>
+<ol>
+<li>To <strong>understand human experiences</strong></li>
+<li>To <strong>learn from past successes and mistakes</strong></li>
+<li>To <strong>preserve cultural identity and collective memory</strong></li>
+</ol>
+<h3>History and Psychology (added)</h3>
+<p>Both study <strong>human behavior</strong>. Psychology explains <strong>why</strong> people act; history shows <strong>how</strong> they acted in the past. History helps explain a people&#39;s <strong>values, trauma, and identity</strong> (e.g., colonial mentality), while psychology helps interpret <strong>motives</strong> behind historical events.</p>
+<hr>
+<h2>2. Historiography</h2>
+<p><strong>Historiography</strong> is the <strong>study of how history is written</strong>: the <strong>methods, interpretations, sources, and perspectives</strong> historians use.</p>
+<blockquote>
+<p><strong>Watch out:</strong> <strong>History</strong> = the past itself / the study of it. <strong>Historiography</strong> = the study of <strong>how</strong> that history was <strong>written</strong>.</p>
+</blockquote>
+<h3>Historical Sources</h3>
+<table>
+<thead>
+<tr>
+<th>Primary sources</th>
+<th>Secondary sources</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Firsthand</strong>, made <strong>during</strong> the time studied</td>
+<td><strong>Secondhand</strong>, made <strong>later</strong>, interpreting primary sources</td>
+</tr>
+<tr>
+<td><strong>Fossils, artifacts, letters, journals, personal accounts, laws/legal documents, photographs, paintings, carvings</strong></td>
+<td><strong>Books, articles, columns, news, documentaries/films</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> Rizal&#39;s actual letter to his family = <strong>primary</strong>. A YouTube documentary about Rizal = <strong>secondary</strong>.</p>
+</blockquote>
+<h3>Types of Historical Research</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Focus (added)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Narrative</strong></td>
+<td><strong>Tells the story</strong> of events in order</td>
+</tr>
+<tr>
+<td><strong>Analytical (Interpretive)</strong></td>
+<td>Explains <strong>why</strong> events happened (causes and effects)</td>
+</tr>
+<tr>
+<td><strong>Comparative</strong></td>
+<td><strong>Compares</strong> events, societies, or periods</td>
+</tr>
+<tr>
+<td><strong>Social</strong></td>
+<td>Everyday life of <strong>ordinary people</strong> and social groups</td>
+</tr>
+<tr>
+<td><strong>Intellectual</strong></td>
+<td>History of <strong>ideas</strong>, beliefs, and thinkers</td>
+</tr>
+<tr>
+<td><strong>Cultural</strong></td>
+<td><strong>Customs, arts, traditions</strong>, and values</td>
+</tr>
+<tr>
+<td><strong>Economic and Political</strong></td>
+<td><strong>Trade, wealth, government, and power</strong></td>
+</tr>
+</tbody></table>
+<h3>Models of History (Mga Modelo ng Kasaysayan)</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Meaning</th>
+<th>Shape</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Linear</strong> (also <strong>&quot;Providential&quot;</strong> or <strong>&quot;Fatalistic&quot;</strong>)</td>
+<td>History has a <strong>definite beginning and end</strong>. Example: <strong>the Bible</strong></td>
+<td>A straight line ━</td>
+</tr>
+<tr>
+<td><strong>2. Cyclical</strong></td>
+<td>History <strong>returns to its start / repeats</strong>: <strong>&quot;history repeats itself.&quot;</strong> Example: <strong>dynasties and kingdoms</strong> rising and falling</td>
+<td>A circle ○</td>
+</tr>
+<tr>
+<td><strong>3. Spiral</strong></td>
+<td>A <strong>critique of the cyclical</strong> model: history <strong>doesn&#39;t repeat exactly</strong>, there are only <strong>similarities</strong>; aspects of time are <strong>not</strong> fully repeated</td>
+<td>A spiral 🌀</td>
+</tr>
+<tr>
+<td><strong>4. Chaotic View</strong></td>
+<td>History has <strong>no pattern</strong> and there&#39;s <strong>no real history</strong>. Inspired by <strong>postmodernist</strong> thought: history <strong>can&#39;t be objective</strong> because you can&#39;t know what&#39;s true, and no single discipline can cover everything</td>
+<td>A tangled scribble</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> &quot;Every few decades there&#39;s another pandemic, but each one is different&quot; = <strong>spiral</strong>. &quot;Empires always rise and fall the same way&quot; = <strong>cyclical</strong>.</p>
+</blockquote>
+<h3>Schools of Thought in History (added: slides only name them)</h3>
+<table>
+<thead>
+<tr>
+<th>School</th>
+<th>Idea</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Positivism</strong></td>
+<td>History must be based on <strong>facts and documents</strong> (&quot;<strong>no document, no history</strong>&quot;). Aims to be <strong>objective and scientific</strong></td>
+</tr>
+<tr>
+<td><strong>Postcolonialism</strong></td>
+<td>Re-examines history <strong>from the view of the colonized</strong>, challenging accounts written by <strong>colonizers</strong>. Aims to recover the <strong>native perspective</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Link:</strong> <em>Pantayong Pananaw</em> fits <strong>postcolonialism</strong>: telling our history from our own point of view.</p>
+</blockquote>
+<hr>
+<h2>3. Periods of Philippine History</h2>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">PRE-COLONIAL → SPANISH COLONIALISM → AMERICAN NEOCOLONIALISM → <span class="hljs-keyword">JAPANESE </span>OCCUPATION → CONTEMPORARY PERIOD</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Rough dates (added)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Pre-colonial</strong></td>
+<td>Before <strong>1521/1565</strong></td>
+</tr>
+<tr>
+<td><strong>Spanish Colonialism</strong></td>
+<td><strong>1565–1898</strong></td>
+</tr>
+<tr>
+<td><strong>American Neocolonialism</strong></td>
+<td><strong>1898–1946</strong></td>
+</tr>
+<tr>
+<td><strong>Japanese Occupation</strong></td>
+<td><strong>1942–1945</strong></td>
+</tr>
+<tr>
+<td><strong>Contemporary Period</strong></td>
+<td><strong>1946–present</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>4. The Pre-Colonial Period: Early People and Artifacts</h2>
+<table>
+<thead>
+<tr>
+<th>Discovery</th>
+<th>Where</th>
+<th>Date / details</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Homo luzonensis</strong></td>
+<td><strong>Callao Cave, Peñablanca, Cagayan</strong></td>
+<td><strong>~67,000 years ago</strong> (a new human species)</td>
+</tr>
+<tr>
+<td><strong>Tabon Man</strong></td>
+<td><strong>Tabon Cave, Quezon, Palawan</strong></td>
+<td>Slide says &quot;47 years ago&quot;; the actual date is <strong>~47,000 years ago</strong> (added)</td>
+</tr>
+<tr>
+<td><strong>Manunggul Jar</strong></td>
+<td>Tabon Caves, Palawan (added)</td>
+<td><strong>890 BCE</strong>. A <strong>secondary burial jar</strong>; the lid shows two figures in a <strong>boat of the dead</strong>, showing belief in the <strong>afterlife</strong> (added)</td>
+</tr>
+<tr>
+<td><strong>Angono-Binangonan Petroglyphs</strong></td>
+<td>Rizal</td>
+<td><strong>~3,000 BC</strong>. <strong>Oldest known work of art</strong> in the Philippines. Discovered in <strong>1965</strong> by <strong>Carlos &quot;Botong&quot; Francisco</strong></td>
+</tr>
+<tr>
+<td><strong>Butuan Balangay</strong></td>
+<td>Butuan, Agusan del Norte</td>
+<td><strong>689 CE</strong>. Found in the <strong>1970s</strong> by archaeologists; a wooden <strong>boat</strong> showing early seafaring and trade</td>
+</tr>
+<tr>
+<td><strong>Golden Tara</strong></td>
+<td>Agusan</td>
+<td><strong>9th century</strong>. Found in <strong>1917</strong> by a <strong>Manobo woman, Bilay Campos</strong>; a gold figure showing <strong>Hindu-Buddhist</strong> influence</td>
+</tr>
+<tr>
+<td><strong>Bulul</strong></td>
+<td><strong>Cordillera (CAR)</strong></td>
+<td>Wooden figure representing a <strong>rice god</strong></td>
+</tr>
+<tr>
+<td><strong>Laguna Copperplate Inscription</strong></td>
+<td><strong>Lumban, Laguna</strong></td>
+<td><strong>900 CE</strong>. Found in <strong>1989</strong> by a <strong>laborer</strong>; the <strong>oldest known written document</strong> in the Philippines (added)</td>
+</tr>
+<tr>
+<td><strong>Baybayin</strong></td>
+<td>—</td>
+<td><strong>Pre-colonial form of writing</strong>; earliest artifacts dated <strong>1593</strong> (UST). (added: the <em>Doctrina Christiana</em>, <strong>1593</strong>, is the first printed book using Baybayin)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic by age (oldest → newest):</strong> <strong>H</strong>omo luzonensis → <strong>T</strong>abon → <strong>A</strong>ngono petroglyphs → <strong>M</strong>anunggul → <strong>B</strong>alangay → <strong>G</strong>olden Tara / <strong>L</strong>aguna Copperplate = &quot;<strong>H</strong>appy <strong>T</strong>eachers <strong>A</strong>lways <strong>M</strong>ake <strong>B</strong>etter <strong>G</strong>rades <strong>L</strong>ater&quot;</p>
+</blockquote>
+<h3>Origin of Filipinos: Austronesian Origin</h3>
+<ul>
+<li>Filipinos are part of the <strong>Austronesian</strong> peoples, who spread by <strong>sea</strong> from <strong>Taiwan (~3000 BC)</strong> to the <strong>Philippines (~2000 BC)</strong>, then to Indonesia, Micronesia, Melanesia, Polynesia (Hawaii, Easter Island, New Zealand), and even <strong>Madagascar</strong>.</li>
+<li>Prof. Padilla: <em>&quot;Kung nanood po kayo ng <strong>Moana</strong>, &#39;yun ang lahi natin.&quot;</em> (Moana is Polynesian, a fellow Austronesian people.)</li>
+<li>The slides also included a <strong>fact-check of Sen. Robinhood Padilla&#39;s &quot;Luzvimindan Project&quot;</strong> claim, as a lesson on <strong>verifying sources</strong>.</li>
+</ul>
+<hr>
+<h2>5. Pre-Colonial Society</h2>
+<h3>Social Classes</h3>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">RULING <span class="hljs-keyword">CLASS</span> ─── Datu <span class="hljs-regexp">/ Rajah /</span> Sultan
+NOBLE <span class="hljs-keyword">CLASS</span> ──── Maharlika (Tagalog warriors)
+            └─── Timawa (Visayan warriors/commoners)
+COMMONERS ────── Aliping Namamahay
+            └─── Uripon (Visayan equivalent)
+DEPENDENT <span class="hljs-keyword">CLASS</span> ─ Aliping Saguiguilid</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description (added details)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Datu / Rajah / Sultan</strong></td>
+<td><strong>Rulers</strong> of the barangay/territory</td>
+</tr>
+<tr>
+<td><strong>Maharlika</strong></td>
+<td><strong>Tagalog warrior</strong> nobles who fought for the datu</td>
+</tr>
+<tr>
+<td><strong>Timawa</strong></td>
+<td><strong>Visayan</strong> free people / warriors</td>
+</tr>
+<tr>
+<td><strong>Aliping Namamahay</strong></td>
+<td>Had <strong>their own house</strong> and family; served the master but kept some property</td>
+</tr>
+<tr>
+<td><strong>Uripon</strong></td>
+<td><strong>Visayan</strong> term for dependents/servants</td>
+</tr>
+<tr>
+<td><strong>Aliping Saguiguilid</strong></td>
+<td>Lived <strong>in the master&#39;s house</strong>, fully dependent, the <strong>lowest</strong> class</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>Namamahay</strong> = may <strong>bahay</strong> (has a house). <strong>Saguiguilid</strong> = sa <strong>gilid</strong> (lives at the side of the master&#39;s house).</p>
+</blockquote>
+<h3>Belief System and Values</h3>
+<table>
+<thead>
+<tr>
+<th>Belief</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Animism</strong></td>
+<td>Belief that <strong>nature and objects</strong> (rivers, trees, mountains, animals) have <strong>spirits</strong> (<strong>anito</strong> or <strong>diwata</strong>)</td>
+</tr>
+<tr>
+<td><strong>Polytheism</strong></td>
+<td>Worship of <strong>many gods and goddesses</strong>, each tied to an aspect of life</td>
+</tr>
+</tbody></table>
+<p><strong>Gods (Polytheism)</strong></p>
+<table>
+<thead>
+<tr>
+<th>God</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Bathala</strong></td>
+<td><strong>Tagalog supreme deity</strong></td>
+</tr>
+<tr>
+<td><strong>Kaptan</strong></td>
+<td><strong>Visayan sky god</strong></td>
+</tr>
+<tr>
+<td><strong>Amanikable</strong></td>
+<td><strong>Tagalog sea god</strong></td>
+</tr>
+<tr>
+<td><strong>Lakapati</strong></td>
+<td><strong>Tagalog fertility goddess</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Spiritual leaders</strong></p>
+<ul>
+<li><strong>Babaylan</strong> (usually <strong>female</strong>) / <strong>Katalonan</strong> (<strong>Tagalog</strong> term): <strong>shamans</strong> who performed <strong>rituals, healing, and communication with spirits</strong>.</li>
+<li><strong>Bagani</strong> (<strong>warrior class</strong>) also had spiritual roles in some areas.</li>
+<li>Artwork shown: <strong>&quot;Evolution of Medicine&quot;</strong> by <strong>Carlos &quot;Botong&quot; Francisco</strong>.</li>
+</ul>
+<p><strong>Filipino values from pre-colonial times (added examples):</strong> <strong>bayanihan</strong> (community cooperation), <strong>respect for elders</strong>, <strong>hospitality</strong>, <strong>utang na loob</strong> (debt of gratitude), close <strong>family ties</strong>, respect for <strong>nature</strong>.</p>
+<h3>Indigenous Peoples (IPs)</h3>
+<p>Groups who have <strong>preserved their distinct cultures, languages, traditions, and ancestral lands</strong> from pre-colonial times to today, often living <strong>outside mainstream lowland, urban society</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Groups</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Luzon</strong></td>
+<td><strong>Igorot, Aeta</strong></td>
+</tr>
+<tr>
+<td><strong>Visayas</strong></td>
+<td><strong>Ati</strong></td>
+</tr>
+<tr>
+<td><strong>Mindanao</strong></td>
+<td><strong>Lumad</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>6. The Rise of Islam in the Philippines</h2>
+<h3>What Is Islam?</h3>
+<ul>
+<li><strong>Islam</strong> = <strong>&quot;submission to the will of God.&quot;</strong></li>
+<li>Began in <strong>Mecca, Saudi Arabia</strong>.</li>
+<li><strong>Prophet Muhammad</strong> received revelations through the angel <strong>Jibreel (Gabriel)</strong>.</li>
+<li>God: <strong>Allah</strong>.</li>
+<li>Led after Muhammad by the <strong>Caliphate system</strong> (caliphs).</li>
+<li>The first revealed words (Qur&#39;an 96): <em>&quot;<strong>Read</strong> in the name of your Lord who created — created man from a clot of blood...&quot;</em></li>
+</ul>
+<h3>The 4 Caliphs (Rightly Guided)</h3>
+<ol>
+<li><strong>Abu Bakr</strong>: first caliph</li>
+<li><strong>Umar</strong>: father-in-law of Muhammad</li>
+<li><strong>Uthman</strong>: son-in-law of the Prophet</li>
+<li><strong>Ali</strong>: cousin and son-in-law of the Prophet</li>
+</ol>
+<blockquote>
+<p><strong>Mnemonic:</strong> <strong>A</strong>ll <strong>U</strong>mbrellas <strong>U</strong>sually <strong>A</strong>rrive = Abu Bakr, Umar, Uthman, Ali</p>
+</blockquote>
+<h3>Sunni vs Shia</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Sunni</strong></th>
+<th><strong>Shia</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Followers</td>
+<td><strong>85–90%</strong> of Muslims</td>
+<td><strong>10–15%</strong> of Muslims</td>
+</tr>
+<tr>
+<td>Origin of split</td>
+<td>Successor chosen by <strong>consensus (community)</strong></td>
+<td>Leadership should stay in the <strong>Prophet&#39;s family</strong>, starting with <strong>Ali</strong></td>
+</tr>
+<tr>
+<td>First leader after Muhammad</td>
+<td><strong>Abu Bakr</strong> (companion)</td>
+<td><strong>Ali ibn Abi Talib</strong> (cousin and son-in-law)</td>
+</tr>
+<tr>
+<td>Leader title</td>
+<td><strong>Caliph</strong>: political and religious leader <strong>chosen by people</strong></td>
+<td><strong>Imam</strong>: spiritual and political leader, <strong>from the Prophet&#39;s bloodline</strong></td>
+</tr>
+<tr>
+<td>Strongholds</td>
+<td>Egypt, Turkey, Saudi Arabia, <strong>Indonesia</strong>, most of the Muslim world</td>
+<td><strong>Iran, Iraq</strong>, Bahrain, Azerbaijan, parts of Lebanon, Yemen, Pakistan, India</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>Sh</strong>ia = <strong>sh</strong>ares the <strong>bloodline</strong> (family). <strong>Sunni</strong> = <strong>s</strong>elected by the <strong>s</strong>ociety.</p>
+</blockquote>
+<h3>How Islam Spread in the Philippines</h3>
+<ol>
+<li><strong>13th century</strong>: Islam arrives through <strong>trade</strong></li>
+<li><strong>Establishment</strong> of Islam in present-day <strong>BARMM</strong></li>
+<li><strong>Sultanates of Sulu and Maguindanao</strong></li>
+<li><strong>Influence of Islam in Luzon and Manila</strong></li>
+</ol>
+<h3>Key People and Sultanates</h3>
+<table>
+<thead>
+<tr>
+<th>Place</th>
+<th>Person</th>
+<th>Year</th>
+<th>Key facts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Tawi-Tawi</strong></td>
+<td><strong>Sheikh Karim ul-Makhdum</strong></td>
+<td><strong>1380</strong></td>
+<td>Built the <strong>oldest mosque</strong> in the Philippines: <strong>Sheikh Karimul Makhdum Mosque, Simunul, Tawi-Tawi</strong></td>
+</tr>
+<tr>
+<td><strong>Sulu</strong></td>
+<td><strong>Rajah Baguinda</strong></td>
+<td><strong>1390</strong></td>
+<td><strong>Missionary leader from Indonesia</strong> (Sumatra); strengthened Islam and political structure in Sulu; one of the <strong>founding fathers</strong> of Islam here</td>
+</tr>
+<tr>
+<td><strong>Sulu Sultanate</strong></td>
+<td><strong>Sharif ul-Hashim</strong></td>
+<td><strong>~1450</strong></td>
+<td><strong>First Sultan of Sulu</strong>; a <strong>descendant of Prophet Muhammad</strong> (&quot;Sharif&quot;); linked Sulu to <strong>Muslim trade networks</strong></td>
+</tr>
+<tr>
+<td><strong>Maguindanao Sultanate</strong></td>
+<td><strong>Sharif Kabungsuan</strong></td>
+<td><strong>1515</strong></td>
+<td><strong>Missionary from Malaysia</strong> (Johor); arrived in <strong>Cotabato</strong>; <strong>founder of the Sultanate of Maguindanao</strong></td>
+</tr>
+<tr>
+<td><strong>Manila</strong></td>
+<td><strong>Rajah Sulaiman, Rajah Matanda, Lakan Dula</strong></td>
+<td><strong>~1500</strong></td>
+<td><strong>Early Muslim</strong> rulers in Manila/Tondo</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Timeline mnemonic:</strong> <strong>1380</strong> Makhdum (mosque) → <strong>1390</strong> Baguinda → <strong>1450</strong> Sulu Sultanate → <strong>1500</strong> Manila rajahs → <strong>1515</strong> Maguindanao</p>
+</blockquote>
+<h3>The Five Pillars of Islam</h3>
+<table>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Shahadah</strong></td>
+<td><strong>Faith</strong>: declaring there is no god but Allah and Muhammad is His messenger</td>
+</tr>
+<tr>
+<td><strong>Salah</strong></td>
+<td><strong>Prayer</strong>: <strong>five times a day</strong> (added)</td>
+</tr>
+<tr>
+<td><strong>Sawm</strong></td>
+<td><strong>Fasting</strong>: during <strong>Ramadan</strong> (added)</td>
+</tr>
+<tr>
+<td><strong>Zakah</strong></td>
+<td><strong>Almsgiving</strong>: giving to the poor</td>
+</tr>
+<tr>
+<td><strong>Hajj</strong></td>
+<td><strong>Pilgrimage</strong> to <strong>Mecca</strong>, at least once if able</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic:</strong> <strong>S</strong>ome <strong>S</strong>tudents <strong>S</strong>tudy <strong>Z</strong>ealously <strong>H</strong>ere = Shahadah, Salah, Sawm, Zakah, Hajj</p>
+</blockquote>
+<h3>Datu Puti and the 10 Bornean Datus</h3>
+<ul>
+<li>A <strong>legend</strong>: ten datus led by <strong>Datu Puti</strong> fled <strong>Borneo</strong> and sailed to <strong>Panay</strong>. (added) They &quot;bought&quot; Panay from the <strong>Ati</strong> chief <strong>Marikudo</strong> with a <strong>golden salakot</strong> (the <strong>&quot;Barter of Panay&quot;</strong>, shown in the slide painting).</li>
+<li>Panay was divided into three districts: <strong>Hantik (Antique)</strong>, <strong>Irong-Irong (Iloilo)</strong>, and <strong>Aklan</strong>.</li>
+</ul>
+<h3>Conflicting Views in Philippine History</h3>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Datu Puti and the 10 Bornean Datus</strong></td>
+<td><strong>Legend</strong>: from the <em>Maragtas</em> (by <strong>Pedro Monteclaro</strong>, 1907) (added), not proven by historical evidence</td>
+</tr>
+<tr>
+<td><strong>Code of Kalantiaw</strong></td>
+<td><strong>Hoax</strong>: a fake &quot;pre-colonial legal code&quot; created by <strong>Jose E. Marco</strong> in <strong>1913</strong> (added); exposed by historian <strong>William Henry Scott</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Lesson:</strong> Always check whether a &quot;historical&quot; source is <strong>primary, reliable, and verified</strong>, as in the Kalantiaw hoax and the Padilla fact-check.</p>
+</blockquote>
+<hr>
+<h2>Quick Check</h2>
+<ol>
+<li>Who said history is &quot;a study of man and his deeds... emphasizing the struggle for freedom and national identity&quot;?</li>
+<li>What does Zeus Salazar&#39;s definition of <em>kasaysayan</em> mean?</li>
+<li>Name the four elements of history.</li>
+<li>What is historiography?</li>
+<li>A diary written during World War II is a ___ source; a documentary about it is a ___ source.</li>
+<li>Which model of history says &quot;history repeats itself&quot;?</li>
+<li>Which model is also called &quot;Providential&quot; or &quot;Fatalistic&quot;?</li>
+<li>Which model is inspired by postmodernism and says history has no pattern?</li>
+<li>Where was Homo luzonensis found, and how old is it?</li>
+<li>What is the oldest known work of art in the Philippines, and who discovered it?</li>
+<li>Who found the Golden Tara, and when?</li>
+<li>When and where was the Laguna Copperplate Inscription found?</li>
+<li>What is the Visayan equivalent of the aliping namamahay?</li>
+<li>Babaylan and katalonan were ___.</li>
+<li>Who is the Tagalog supreme deity? The Visayan sky god?</li>
+<li>Name the IP groups of Luzon, Visayas, and Mindanao shown in the lesson.</li>
+<li>Where is the oldest mosque in the Philippines, and who built it?</li>
+<li>Who was the first Sultan of Sulu?</li>
+<li>Who founded the Sultanate of Maguindanao, and when did he arrive?</li>
+<li>Sunni or Shia: which believes leadership should stay in the Prophet&#39;s family?</li>
+<li>The Code of Kalantiaw is a ___.</li>
+<li>Name the Five Pillars of Islam.</li>
+</ol>
+<details>
+<summary>Answers</summary>
+
+<ol>
+<li><strong>Teodoro Agoncillo</strong></li>
+<li>History is a <strong>story with meaning</strong> for the group of people it&#39;s about</li>
+<li><strong>Time, Evidence, Human Actions, Interpretations</strong></li>
+<li>The study of <strong>how history is written</strong> (methods, sources, interpretations, perspectives)</li>
+<li><strong>Primary</strong>; <strong>secondary</strong></li>
+<li><strong>Cyclical</strong></li>
+<li><strong>Linear</strong></li>
+<li><strong>Chaotic view</strong></li>
+<li><strong>Callao Cave, Cagayan</strong>; <strong>~67,000 years ago</strong></li>
+<li><strong>Angono-Binangonan Petroglyphs</strong>; <strong>Carlos &quot;Botong&quot; Francisco (1965)</strong></li>
+<li><strong>Bilay Campos</strong>, a Manobo woman, in <strong>1917</strong></li>
+<li><strong>1989</strong>, <strong>Lumban, Laguna</strong> (by a laborer)</li>
+<li><strong>Uripon</strong></li>
+<li><strong>Shamans / spiritual leaders</strong> (rituals, healing, communicating with spirits)</li>
+<li><strong>Bathala</strong>; <strong>Kaptan</strong></li>
+<li><strong>Igorot, Aeta</strong> (Luzon); <strong>Ati</strong> (Visayas); <strong>Lumad</strong> (Mindanao)</li>
+<li><strong>Simunul, Tawi-Tawi</strong>; <strong>Sheikh Karim ul-Makhdum (1380)</strong></li>
+<li><strong>Sharif ul-Hashim</strong></li>
+<li><strong>Sharif Kabungsuan</strong>, <strong>1515</strong></li>
+<li><strong>Shia</strong></li>
+<li><strong>Hoax</strong></li>
+<li><strong>Shahadah (faith), Salah (prayer), Sawm (fasting), Zakah (almsgiving), Hajj (pilgrimage)</strong></li>
+</ol>
+</details>
+
+  </div>
+  <div class="note-nav">
+    <a href="Y1S1-GE5-midterm.html" class="note-nav-prev">← GE5</a>
+    <a href="Y1S1-PATHFIT1-midterm.html" class="note-nav-next">PATHFIT1 →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

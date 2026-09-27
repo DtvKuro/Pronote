@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | PATHFIT1 Physical Activity Towards Health and Fitness 1 — Midterm</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">1st Year · 1st Sem</h4>
+  <ul class="notes-menu-list">
+        <li><a href="Y1S1-CC1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="Y1S1-CC2-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="Y1S1-HCI101-midterm.html" class="notes-menu-link"><span class="notes-menu-code">HCI101</span> Introduction to Human-Computer Interaction</a></li>
+        <li><a href="Y1S1-GE4-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE4</span> Mathematics in the Modern World</a></li>
+        <li><a href="Y1S1-GE5-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="Y1S1-GE9-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE9</span> Readings in Philippine History</a></li>
+        <li><a href="Y1S1-PATHFIT1-midterm.html" class="notes-menu-link active"><span class="notes-menu-code">PATHFIT1</span> Physical Activity Towards Health and Fitness 1</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>1st Year · 1st Sem</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Physical Activity Towards Health and Fitness 1</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">PATHFIT1</span><span class="note-units">1st Year · 1st Sem</span></p>
+  <h1 class="note-title">Physical Activity Towards Health and Fitness 1</h1>
+  <p class="note-meta">Last updated: September 27, 2026</p>
+  <nav class="term-tabs" aria-label="Exam period"><a href="Y1S1-PATHFIT1-midterm.html" class="term-tab active" aria-current="page">Midterm</a><span class="term-tab term-tab--empty" title="Not up yet">Finals</span></nav>
+  <div class="note-content">
+    <blockquote>
+<p>Covers: Nutrition, Physical Fitness Components, Training Load, Exercise Programs, Types of Body Movement, Step Aerobics Terminology.<br>Items marked <strong>(added)</strong> are not in the handout. They fill gaps or clear up confusing parts.</p>
+</blockquote>
+<hr>
+<h2>1. Nutrition</h2>
+<p><strong>Nutrition</strong> means eating the right amount and type of nutrients to fuel your body. It is the cornerstone of any physical conditioning program.</p>
+<ul>
+<li><strong>Nutrients</strong>: substances that give the body <strong>structure</strong>, <strong>function</strong>, or <strong>energy</strong>.</li>
+<li><strong>Essential nutrients</strong>: nutrients that <strong>must come from food</strong> because the body can&#39;t make enough of them.</li>
+</ul>
+<h3>Why proper nutrition matters</h3>
+<table>
+<thead>
+<tr>
+<th>Impact</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Physical health</strong></td>
+<td>Healthy weight, muscle repair, stronger immune system. Lowers risk of heart disease, type 2 diabetes, some cancers.</td>
+</tr>
+<tr>
+<td><strong>Energy &amp; performance</strong></td>
+<td>Carbs, protein, and fat fuel daily activity and workouts; less fatigue.</td>
+</tr>
+<tr>
+<td><strong>Mental well-being</strong></td>
+<td>Better mood and thinking; lower risk of mental health conditions.</td>
+</tr>
+<tr>
+<td><strong>Recovery</strong></td>
+<td>Protein repairs muscles after exercise, so less soreness and faster recovery.</td>
+</tr>
+</tbody></table>
+<h3>The Five Food Groups</h3>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Job</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Carbohydrates</strong></td>
+<td><strong>Main energy source</strong>; base of most meals</td>
+<td>Rice, bread, potatoes, cereal, fruit</td>
+</tr>
+<tr>
+<td><strong>Protein</strong></td>
+<td><strong>Builds and repairs</strong> tissue and muscle</td>
+<td>Chicken, fish, eggs, legumes, nuts</td>
+</tr>
+<tr>
+<td><strong>Fats</strong></td>
+<td>Energy, protects organs, insulation, helps absorb some vitamins. Choose <strong>unsaturated</strong> fats.</td>
+<td>Avocado, nuts, vegetable oil (limit fried food, butter, fatty sausages)</td>
+</tr>
+<tr>
+<td><strong>Vitamins &amp; Minerals</strong></td>
+<td><strong>Micronutrients</strong> that regulate body processes</td>
+<td>Vitamin C (citrus), iron (spinach), calcium (milk)</td>
+</tr>
+<tr>
+<td><strong>Water</strong></td>
+<td>Regulates temperature, carries nutrients, flushes waste</td>
+<td>At least <strong>8 glasses a day</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Proper food setup</strong> means balancing the groups in every meal.<br>Example: grilled chicken (protein) + brown rice (carbs) + steamed broccoli and carrots (vitamins/minerals).</p>
+<blockquote>
+<p><strong>Own example:</strong> A student&#39;s typical <em>silog</em> breakfast: rice = carbs, egg = protein, oil used for frying = fat. The missing groups are <strong>vitamins/minerals</strong> (add fruit or tomatoes) and <strong>water</strong>.</p>
+</blockquote>
+<hr>
+<h2>2. Physical Fitness Components</h2>
+<p><strong>Physical fitness</strong> is the body&#39;s ability to do daily tasks <strong>with vigor and alertness, without excessive fatigue</strong>. It needs regular exercise, a healthy diet, and enough rest.</p>
+<p>There are two categories: <strong>Health-Related (HRF)</strong> and <strong>Skill-Related (SRF)</strong>.</p>
+<h3>A. Health-Related Fitness (HRF): 5 components</h3>
+<p><em>These relate to overall health.</em></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Meaning</th>
+<th>Test / Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Body Composition</strong></td>
+<td>Ratio of <strong>lean mass</strong> (muscle, bone, organs) to <strong>fat mass</strong></td>
+<td><strong>BMI</strong></td>
+</tr>
+<tr>
+<td><strong>Cardiovascular Endurance</strong></td>
+<td>Heart, lungs, and blood vessels supplying oxygen to muscles over a <strong>long period</strong></td>
+<td><strong>3-Minute Step Test</strong> (heart rate recovery)</td>
+</tr>
+<tr>
+<td><strong>Muscular Strength</strong></td>
+<td><strong>Maximum force</strong> in a <strong>single</strong> effort</td>
+<td><strong>Basic Plank</strong> (core)</td>
+</tr>
+<tr>
+<td><strong>Muscular Endurance</strong></td>
+<td><strong>Repeated</strong> contractions over a long period</td>
+<td><strong>Push-ups</strong></td>
+</tr>
+<tr>
+<td><strong>Flexibility</strong></td>
+<td><strong>Range of motion</strong> around a joint</td>
+<td><strong>Sit-and-Reach</strong> (hamstrings, lower back), <strong>Zipper Test</strong> (shoulders)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Strength vs. Endurance:</strong> Strength is lifting something heavy <strong>once</strong>. Endurance is doing something <strong>many times</strong>.</p>
+</blockquote>
+<h4>BMI formula</h4>
+<p><strong>BMI = weight (kg) ÷ height (m)²</strong></p>
+<blockquote>
+<p><strong>Own example:</strong> 60 kg, 1.65 m tall<br>1.65² = 2.7225 → 60 ÷ 2.7225 = <strong>22.0</strong> (normal)</p>
+</blockquote>
+<p><strong>(added)</strong> Standard BMI categories:</p>
+<table>
+<thead>
+<tr>
+<th>BMI</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>below 18.5</td>
+<td>Underweight</td>
+</tr>
+<tr>
+<td><strong>18.5 – 24.9</strong></td>
+<td><strong>Normal</strong></td>
+</tr>
+<tr>
+<td>25 – 29.9</td>
+<td>Overweight</td>
+</tr>
+<tr>
+<td>30 and above</td>
+<td>Obese</td>
+</tr>
+</tbody></table>
+<h3>B. Skill-Related Fitness (SRF): 6 components</h3>
+<p><em>These matter for sports performance.</em></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Speed</strong></td>
+<td>Covering a distance in a <strong>short time</strong></td>
+<td>50-meter sprint</td>
+</tr>
+<tr>
+<td><strong>Agility</strong></td>
+<td><strong>Changing body position</strong> quickly with control</td>
+<td>Shuttle run, cone drill</td>
+</tr>
+<tr>
+<td><strong>Power</strong></td>
+<td>Max force in the <strong>shortest time</strong> (<strong>strength + speed</strong>)</td>
+<td>Volleyball spike jump, standing long jump</td>
+</tr>
+<tr>
+<td><strong>Balance</strong></td>
+<td>Staying in <strong>equilibrium</strong> while still or moving</td>
+<td>Standing on one leg, balance beam</td>
+</tr>
+<tr>
+<td><strong>Reaction Time</strong></td>
+<td>Time to <strong>respond to a stimulus</strong></td>
+<td>Runner reacting to the starting pistol</td>
+</tr>
+<tr>
+<td><strong>Coordination</strong></td>
+<td>Using body parts together <strong>smoothly</strong></td>
+<td>Dribbling a basketball while running</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic for SRF:</strong> <strong>S</strong>illy <strong>A</strong>pes <strong>P</strong>lay <strong>B</strong>all <strong>R</strong>eally <strong>C</strong>almly = Speed, Agility, Power, Balance, Reaction time, Coordination</p>
+</blockquote>
+<hr>
+<h2>3. Understanding Your Training Load</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>PMHR</strong> (Personal Maximal Heart Rate)</td>
+<td>Highest heart rate you can reach</td>
+<td><strong>220 − age</strong></td>
+</tr>
+<tr>
+<td><strong>THR</strong> (Target Heart Rate)</td>
+<td>Heart rate range to aim for while exercising</td>
+<td><strong>Moderate = 65% – 75% of PMHR</strong></td>
+</tr>
+<tr>
+<td><strong>RPE</strong> (Rate of Perceived Exertion)</td>
+<td><strong>Subjective</strong> scale of how hard you <em>feel</em> you&#39;re working; no heart-rate monitor needed</td>
+<td>(added) Often rated 1–10: 1 = very easy, 10 = max effort</td>
+</tr>
+</tbody></table>
+<p><strong>Handout example (age 20):</strong> PMHR = 220 − 20 = <strong>200 bpm</strong>, THR = 200 × 0.65 to 200 × 0.75 = <strong>130 – 150 bpm</strong></p>
+<blockquote>
+<p><strong>Own example (age 18):</strong><br>PMHR = 220 − 18 = <strong>202 bpm</strong><br>Low end: 202 × 0.65 = <strong>131.3</strong><br>High end: 202 × 0.75 = <strong>151.5</strong><br>THR ≈ <strong>131 – 152 bpm</strong></p>
+</blockquote>
+<hr>
+<h2>4. Exercise Programs</h2>
+<p>Exercise is prescribed by <strong>intensity, duration, and frequency</strong>.</p>
+<ul>
+<li><strong>Exercise</strong>: a proper selection of activities <strong>adapted to a person&#39;s age, condition, body type, and needs</strong>, done at the right time and intensity.</li>
+<li><strong>Physical Exercise</strong>: any bodily activity that <strong>enhances or maintains</strong> fitness, health, and wellness. It helps prevent <strong>&quot;diseases of affluence&quot;</strong> such as heart disease, cardiovascular disease, diabetes, and obesity.</li>
+</ul>
+<h3>Types of Exercise</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Example (own)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Aerobic</strong></td>
+<td><strong>Moderate</strong> intensity, <strong>long</strong> duration. &quot;Aerobic&quot; = <strong>&quot;with oxygen&quot;</strong></td>
+<td>Jogging 30 min, Zumba</td>
+</tr>
+<tr>
+<td><strong>Anaerobic</strong></td>
+<td><strong>High</strong> intensity, <strong>short</strong> duration</td>
+<td>100 m sprint, heavy lifting</td>
+</tr>
+<tr>
+<td><strong>Low Intensity</strong></td>
+<td>Light activities</td>
+<td>Light walk, stretching, beginner yoga, household chores</td>
+</tr>
+<tr>
+<td><strong>Isometric</strong></td>
+<td>Muscles <strong>tense without moving</strong> the joint (handout: &quot;static&quot;, &quot;no motion&quot;)</td>
+<td>Plank, wall sit, pushing against a wall</td>
+</tr>
+<tr>
+<td><strong>Isotonic</strong></td>
+<td>Muscles <strong>move through a range</strong> against resistance (handout: &quot;shifting of resistance&quot;)</td>
+<td>Squats, bicep curls, push-ups</td>
+</tr>
+<tr>
+<td><strong>Relaxation</strong> (added definition)</td>
+<td>Lowers tension and stress</td>
+<td>Deep breathing, slow stretching</td>
+</tr>
+<tr>
+<td><strong>Therapeutic</strong> (added definition)</td>
+<td>Restores movement or strength, often after injury</td>
+<td>Rehab exercises for a sprained ankle</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Father of Aerobics:</strong> <strong>Dr. Kenneth H. Cooper</strong>, a physician and former Air Force flight surgeon. He coined &quot;aerobics&quot; and published the book <em>Aerobics</em> in <strong>1968</strong>, promoting exercise for disease prevention and cardiovascular fitness.</p>
+</blockquote>
+<h3>Phases of an Exercise Program</h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Warm-up</strong></td>
+<td><strong>5–10 min</strong></td>
+<td>Raises body temperature, loosens muscles, <strong>prevents injury</strong></td>
+<td>Brisk walk + arm circles, leg swings</td>
+</tr>
+<tr>
+<td><strong>2. Workout</strong></td>
+<td>Main part</td>
+<td>Tailored to your goals</td>
+<td>30-min run, dance class, circuit training</td>
+</tr>
+<tr>
+<td><strong>3. Cool-down</strong></td>
+<td><strong>5–10 min</strong></td>
+<td><strong>Gradually lowers</strong> heart rate and temperature; static stretches reduce soreness</td>
+<td>Slow walk + holding stretches</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>5. Types of Body Movement</h2>
+<h3>A. Appendicular Movements</h3>
+<p>Movements of the <strong>arms and legs</strong> (appendages) and the girdles connecting them to the axial skeleton. They usually come in <strong>opposite pairs</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Movement</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Flexion</strong></td>
+<td><strong>Decreases</strong> the angle at a joint</td>
+<td>Bending the elbow</td>
+</tr>
+<tr>
+<td><strong>Extension</strong></td>
+<td><strong>Increases</strong> the angle at a joint</td>
+<td>Straightening the elbow</td>
+</tr>
+<tr>
+<td><strong>Abduction</strong></td>
+<td>Moves a limb <strong>away</strong> from the body&#39;s midline</td>
+<td>Raising your arm to the side</td>
+</tr>
+<tr>
+<td><strong>Adduction</strong> (added)</td>
+<td>Moves a limb <strong>toward</strong> the midline</td>
+<td>Lowering your arm back to your side</td>
+</tr>
+<tr>
+<td><strong>Medial (Internal) Rotation</strong></td>
+<td>Rotates a limb <strong>toward</strong> the midline</td>
+<td>Toes pointing inward</td>
+</tr>
+<tr>
+<td><strong>Lateral (External) Rotation</strong></td>
+<td>Rotates a limb <strong>away</strong> from the midline</td>
+<td>Toes pointing outward</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>Add</strong>uction = <strong>add</strong> the limb back to the body. <strong>Ab</strong>duction = <strong>ab</strong>sent from the body (taken away).</p>
+</blockquote>
+<p><strong>Specialized movements</strong></p>
+<table>
+<thead>
+<tr>
+<th>Movement</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Circumduction</strong></td>
+<td><strong>Circular</strong> movement combining flexion, extension, abduction, and adduction. Example: arm circles</td>
+</tr>
+<tr>
+<td><strong>Pronation</strong></td>
+<td>Forearm turns so the palm faces <strong>down / backward</strong></td>
+</tr>
+<tr>
+<td><strong>Supination</strong></td>
+<td>Forearm turns so the palm faces <strong>up / forward</strong> (like holding a bowl of <strong>soup</strong>)</td>
+</tr>
+<tr>
+<td><strong>Inversion</strong></td>
+<td>Sole of the foot turns <strong>inward</strong></td>
+</tr>
+<tr>
+<td><strong>Eversion</strong></td>
+<td>Sole of the foot turns <strong>outward</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>Sup</strong>ination = holding <strong>soup</strong>, palm up.</p>
+</blockquote>
+<h3>B. Axial Movements</h3>
+<p>Movements done on a <strong>stationary base</strong> (you stay in one spot). They move around the body&#39;s <strong>central axis / spine</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Movement</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Bending</strong></td>
+<td>Flexing or extending a joint</td>
+<td>Forward bend, squat</td>
+</tr>
+<tr>
+<td><strong>Stretching</strong></td>
+<td>Lengthening a muscle or body part</td>
+<td>Side stretch</td>
+</tr>
+<tr>
+<td><strong>Twisting</strong></td>
+<td>Rotating the torso around the spine</td>
+<td>Torso twist</td>
+</tr>
+<tr>
+<td><strong>Swinging</strong></td>
+<td>Moving a body part in an <strong>arc</strong></td>
+<td>Arm swings</td>
+</tr>
+<tr>
+<td><strong>Shaking</strong></td>
+<td>Rapid, <strong>vibrating</strong> movement</td>
+<td>Shaking out your legs after a set</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Appendicular vs. Axial:</strong> Appendicular is about <strong>which part</strong> moves (the limbs). Axial is about <strong>moving in place</strong> around the spine.</p>
+</blockquote>
+<hr>
+<h2>6. Step Aerobics Terminology</h2>
+<h3>Leg Movements</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>How it&#39;s done</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>V-Step</strong></td>
+<td>Step <strong>up wide</strong>, step <strong>down narrow</strong>. Your feet trace a <strong>&quot;V&quot;</strong></td>
+</tr>
+<tr>
+<td><strong>A-Step</strong></td>
+<td>Reverse of V-step: start <strong>narrow</strong>, step up <strong>wide</strong>, step down <strong>narrow</strong></td>
+</tr>
+<tr>
+<td><strong>Lunge</strong></td>
+<td>Step one foot <strong>back</strong> and bend both knees (platform lunge: one foot on the step)</td>
+</tr>
+<tr>
+<td><strong>Knee Lift</strong></td>
+<td>Lift one knee <strong>toward the chest</strong> while standing on the other leg</td>
+</tr>
+<tr>
+<td><strong>Leg Curl</strong></td>
+<td>Bend the knee to bring the <strong>heel toward the glutes</strong></td>
+</tr>
+</tbody></table>
+<h3>Arm Movements</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>How it&#39;s done</th>
+<th>Targets</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Bicep Curl</strong></td>
+<td>Bend elbows, hands toward shoulders</td>
+<td>Biceps</td>
+</tr>
+<tr>
+<td><strong>Tricep Extension</strong></td>
+<td>Straighten arms <strong>behind</strong> you from a bent position</td>
+<td>Triceps</td>
+</tr>
+<tr>
+<td><strong>Overhead Press</strong></td>
+<td>Push hands straight <strong>up</strong> overhead</td>
+<td>Shoulders</td>
+</tr>
+<tr>
+<td><strong>Lateral Raise</strong></td>
+<td>Lift arms <strong>out to the sides</strong> to shoulder level</td>
+<td>Shoulders</td>
+</tr>
+<tr>
+<td><strong>Front Raise</strong></td>
+<td>Lift arms <strong>straight in front</strong> to shoulder level</td>
+<td>Shoulders</td>
+</tr>
+<tr>
+<td><strong>Chest Press</strong></td>
+<td>Push hands <strong>out in front</strong> of the chest</td>
+<td>Chest</td>
+</tr>
+<tr>
+<td><strong>Punch</strong></td>
+<td>Quick, straight arm movement: forward, side, or overhead</td>
+<td>Arms, shoulders</td>
+</tr>
+<tr>
+<td><strong>Row</strong></td>
+<td>Pull elbows <strong>back</strong> like pulling a rope</td>
+<td>Back</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Quick Check</h2>
+<ol>
+<li>What is the formula for PMHR?</li>
+<li>A 19-year-old wants a moderate workout. What is their THR range?</li>
+<li>Plank: isometric or isotonic?</li>
+<li>Which HRF component does the Zipper Test measure?</li>
+<li>Power is a combination of which two things?</li>
+<li>Raising your arm out to the side is ___; lowering it back is ___.</li>
+<li>Palm facing up is ___.</li>
+<li>Who is the Father of Aerobics, and what year was his book published?</li>
+<li>How long should warm-up and cool-down each last?</li>
+<li>What is the difference between an essential nutrient and a nutrient?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+
+<ol>
+<li>220 − age</li>
+<li>PMHR = 201 → 201 × 0.65 = 130.65, 201 × 0.75 = 150.75, so about <strong>131 – 151 bpm</strong></li>
+<li>Isometric (muscle tenses, no movement)</li>
+<li>Flexibility (shoulders)</li>
+<li>Strength + speed</li>
+<li>Abduction; adduction</li>
+<li>Supination</li>
+<li>Dr. Kenneth H. Cooper, 1968</li>
+<li>5–10 minutes each</li>
+<li>All nutrients provide structure, function, or energy; <strong>essential</strong> ones must come from food because the body can&#39;t make enough</li>
+</ol>
+</details>
+
+  </div>
+  <div class="note-nav">
+    <a href="Y1S1-GE9-midterm.html" class="note-nav-prev">← GE9</a>
+    
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

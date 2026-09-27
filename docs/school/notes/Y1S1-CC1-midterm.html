@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | CC1 Introduction to Computing — Midterm</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">1st Year · 1st Sem</h4>
+  <ul class="notes-menu-list">
+        <li><a href="Y1S1-CC1-midterm.html" class="notes-menu-link active"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="Y1S1-CC2-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="Y1S1-HCI101-midterm.html" class="notes-menu-link"><span class="notes-menu-code">HCI101</span> Introduction to Human-Computer Interaction</a></li>
+        <li><a href="Y1S1-GE4-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE4</span> Mathematics in the Modern World</a></li>
+        <li><a href="Y1S1-GE5-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="Y1S1-GE9-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE9</span> Readings in Philippine History</a></li>
+        <li><a href="Y1S1-PATHFIT1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">PATHFIT1</span> Physical Activity Towards Health and Fitness 1</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>1st Year · 1st Sem</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Introduction to Computing</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">CC1</span><span class="note-units">1st Year · 1st Sem</span></p>
+  <h1 class="note-title">Introduction to Computing</h1>
+  <p class="note-meta">Last updated: September 27, 2026</p>
+  <nav class="term-tabs" aria-label="Exam period"><a href="Y1S1-CC1-midterm.html" class="term-tab active" aria-current="page">Midterm</a><span class="term-tab term-tab--empty" title="Not up yet">Finals</span></nav>
+  <div class="note-content">
+    <blockquote>
+<p>Covers: Lesson 1 Intro to Computers (IPOS, components, generations, categories, software) · Lesson 2 Hardware: Input Devices, Keyboard Fundamentals, Output Devices, Storage Devices, Types of Computers.</p>
+</blockquote>
+<hr>
+<h2>1. Why Be Computer Literate?</h2>
+<p>Computers are everywhere: workplaces (letters, memos, payroll, inventory, invoices), banks (<strong>ATMs</strong>), homes, schools, hospitals, stores, airports, research centers. Since most routine activities now run on computers, <strong>everyone needs basic computer knowledge</strong>.</p>
+<hr>
+<h2>2. What Is a Computer?</h2>
+<p>A <strong>computer</strong> is an <strong>electronic device</strong> that <strong>accepts data (input)</strong>, <strong>processes</strong> it according to <strong>instructions</strong>, <strong>produces information (output)</strong>, and <strong>stores</strong> the results for future use.</p>
+<p>It&#39;s not just a calculator: it performs <strong>arithmetic and logical</strong> operations on data.</p>
+<h3>Data vs Information</h3>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Information</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Unorganized</strong> raw facts: words, numbers, images, sounds</td>
+<td>Data that is <strong>organized, meaningful, and useful</strong></td>
+</tr>
+<tr>
+<td>e.g. scores 85, 90, 78</td>
+<td>e.g. a report card showing an average of 84.3</td>
+</tr>
+</tbody></table>
+<p>Other examples of information: reports, newsletters, receipts, pictures, invoices, checks.</p>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>D</strong>ata = <strong>D</strong>isorganized. <strong>I</strong>nformation = <strong>I</strong>mportant (it has meaning).</p>
+</blockquote>
+<h3>The Information Processing Cycle (IPOS)</h3>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">        <span class="hljs-literal">INPUT</span>  ──►  PROCESS  ──►  <span class="hljs-literal">OUTPUT</span>
+                       ⇅
+                    STORAGE</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Input</strong></td>
+<td><strong>Data and instructions</strong> entered into the computer</td>
+</tr>
+<tr>
+<td><strong>Process</strong></td>
+<td>The computer <strong>manipulates data</strong> according to software instructions</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td><strong>Processed results</strong> shown to users or sent to another system</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>Data, programs, and results <strong>saved for future use</strong></td>
+</tr>
+</tbody></table>
+<p><strong>IPOS in action (lesson examples)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pathway</th>
+<th>Input</th>
+<th>Process</th>
+<th>Output</th>
+<th>Storage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Grade calculator</strong></td>
+<td>Teacher types student scores</td>
+<td>Software computes totals, averages, final grades</td>
+<td>Final grade appears on the monitor</td>
+<td>Grade record saved to the school database</td>
+</tr>
+<tr>
+<td><strong>Document workflow</strong></td>
+<td>Student <strong>scans</strong> a paper page</td>
+<td>Software edits and converts it to <strong>PDF</strong></td>
+<td>PDF sent to a <strong>printer</strong></td>
+<td>File saved to an <strong>SSD</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example (GCash):</strong> You type ₱100 and a number (<strong>input</strong>) → app checks balance and deducts (<strong>process</strong>) → &quot;Sent!&quot; appears (<strong>output</strong>) → transaction saved in history (<strong>storage</strong>).</p>
+</blockquote>
+<hr>
+<h2>3. Components of a Computer (The Computing Ecosystem)</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Peopleware</strong></td>
+<td>The <strong>users, managers, and developers</strong> who operate and maintain the technology</td>
+</tr>
+<tr>
+<td><strong>Data &amp; Procedures</strong></td>
+<td>The raw facts and the <strong>rules</strong> used to accomplish tasks</td>
+</tr>
+<tr>
+<td><strong>Software</strong></td>
+<td><strong>System programs (OS)</strong> and <strong>application programs</strong> that give instructions</td>
+</tr>
+<tr>
+<td><strong>Hardware</strong></td>
+<td>The <strong>physical, touchable</strong> electronic parts and peripherals</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Hardware cannot act without software.</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Hardware</th>
+<th>Software</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Physical</strong> parts you can <strong>see and touch</strong></td>
+<td><strong>Programs</strong>, OS, and data in memory/storage</td>
+</tr>
+<tr>
+<td>Keyboard, monitor, DVD</td>
+<td>Java, Microsoft Office, OpenOffice</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>4. The Five Generations of Computers</h2>
+<p><strong>Trend:</strong> physical size and heat <strong>decrease</strong> while processing power <strong>increases</strong> (inverse relationship).</p>
+<table>
+<thead>
+<tr>
+<th>Generation</th>
+<th>Technology</th>
+<th>Key facts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1st</strong> (1940s–50s)</td>
+<td><strong>Vacuum tubes</strong></td>
+<td>Massive, expensive, high heat, frequent maintenance (<strong>ENIAC, UNIVAC I</strong>)</td>
+</tr>
+<tr>
+<td><strong>2nd</strong> (late 50s–60s)</td>
+<td><strong>Transistors</strong></td>
+<td>Replaced tubes; smaller, faster, energy-efficient; rise of <strong>high-level programming</strong></td>
+</tr>
+<tr>
+<td><strong>3rd</strong> (1960s–early 70s)</td>
+<td><strong>Integrated Circuits (ICs)</strong></td>
+<td>Many components on one chip; rise of <strong>OS and time-sharing</strong></td>
+</tr>
+<tr>
+<td><strong>4th</strong> (1970s+)</td>
+<td><strong>Microprocessors</strong></td>
+<td>CPU on a <strong>single chip</strong>; era of <strong>PCs, GUIs, networking</strong></td>
+</tr>
+<tr>
+<td><strong>5th</strong> (modern/future)</td>
+<td><strong>AI &amp; advanced computing</strong></td>
+<td>Machine learning, NLP, GPUs, cloud, massive data</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Mnemonic:</strong> <strong>V</strong>ery <strong>T</strong>iny <strong>I</strong>nsects <strong>M</strong>ake <strong>A</strong>nts = Vacuum tubes, Transistors, ICs, Microprocessors, AI</p>
+</blockquote>
+<p><strong>Before electronics (Gears to Relays):</strong> <strong>Abacus</strong> (ancient counting) → <strong>Pascaline</strong> (17th c., mechanical calculator) → <strong>Analytical Engine</strong> (Babbage&#39;s general-purpose mechanical computer) → <strong>Punch cards</strong> (mechanical data and instructions) → <strong>Electromechanical</strong> (physical switches and relays). Electronics then replaced moving parts, making computers much faster and more reliable.</p>
+<hr>
+<h2>5. Classifications of Hardware</h2>
+<ol>
+<li><strong>Peripheral devices</strong>: any <strong>external/auxiliary</strong> device that provides input and output (mouse, keyboard, expansion cards, graphics cards, scanners, tape drives, microphones, speakers, webcams, digital cameras)</li>
+<li><strong>Central Processing Unit (CPU)</strong>: the <strong>brain</strong></li>
+<li><strong>Mass storage system / memory</strong></li>
+</ol>
+<p><strong>Peripheral devices include:</strong> <strong>Input</strong>, <strong>Output</strong>, <strong>Storage</strong>, and <strong>Communication</strong> devices.</p>
+<h3>System Unit</h3>
+<p>A <strong>box-like case</strong> (metal or plastic) that houses the computer&#39;s electronic circuitry. The circuitry is on the <strong>motherboard</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Motherboard</strong> (&quot;the nervous system&quot;)</td>
+<td>Main circuit board connecting all components</td>
+</tr>
+<tr>
+<td><strong>CPU &amp; Memory</strong> (&quot;the brain &amp; short-term memory&quot;)</td>
+<td>Chips housed on the motherboard</td>
+</tr>
+<tr>
+<td><strong>Power Supply Unit / PSU</strong> (&quot;the heart&quot;)</td>
+<td>Converts electrical power into the voltages the machine needs</td>
+</tr>
+<tr>
+<td><strong>Cooling system</strong> (fans/heat sinks)</td>
+<td>Removes heat, keeps the system stable</td>
+</tr>
+<tr>
+<td><strong>Ports/connectors</strong></td>
+<td>Interfaces for external peripherals</td>
+</tr>
+<tr>
+<td><strong>Storage drives</strong></td>
+<td>Data retention</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>In laptops and phones, these same parts are <strong>miniaturized</strong> into one compact chassis.</p>
+</blockquote>
+<p><strong>Two main components on the motherboard:</strong> the <strong>CPU</strong> and <strong>memory</strong>. Both are <strong>chips</strong>.</p>
+<h3>Communication Devices</h3>
+<p>Let computers <strong>exchange data</strong> with other computers over <strong>transmission media</strong> (cables, telephone lines, fiber optics).</p>
+<ul>
+<li><strong>Modem</strong>: communicates via telephone lines or other means; most are <strong>internal</strong>.</li>
+<li><strong>Network</strong>: <strong>two or more connected computers</strong> sharing input, processing, output, and storage.</li>
+<li><strong>Internet</strong>: the <strong>worldwide collection of networks</strong> linking businesses, governments, schools, and individuals.</li>
+</ul>
+<hr>
+<h2>6. The CPU (Central Processing Unit)</h2>
+<p>The <strong>brain</strong> of the computer; it handles all instructions. In microcomputers, the CPU is on a <strong>single chip (IC)</strong> called a <strong>microprocessor</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Role</th>
+<th>Nickname</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Arithmetic Logic Unit (ALU)</strong></td>
+<td>Performs <strong>arithmetic</strong> (+ − × ÷) and <strong>logical</strong> operations (&lt;, =, &gt;)</td>
+<td>&quot;The Calculator&quot;</td>
+</tr>
+<tr>
+<td><strong>Control Unit (CU)</strong></td>
+<td><strong>Manages and coordinates</strong> all units; fetches instructions from memory, <strong>interprets</strong> them, and sends signals to other parts. Calls on the ALU for calculations</td>
+<td>&quot;The Air Traffic Controller&quot; / <strong>&quot;Central Nervous System&quot;</strong></td>
+</tr>
+<tr>
+<td><strong>Registers / Memory Unit (cache)</strong></td>
+<td><strong>Small, high-speed</strong> circuits that hold data, instructions, and addresses while the ALU works</td>
+<td>High-speed memory for instant access</td>
+</tr>
+<tr>
+<td><strong>Buses</strong></td>
+<td>Connections that carry signals between components. Data moves as <strong>8-bit</strong> units over a group of 8 wires. <strong>3 types: data bus, control bus, address bus</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Clock</strong></td>
+<td>Allocates a fixed time slot for each micro-operation; CPU runs <strong>in sync with clock pulses</strong>. Speed measured in <strong>MHz</strong> (millions of cycles/second)</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Watch out:</strong> The <strong>CU</strong> doesn&#39;t calculate; it <strong>directs</strong>. The <strong>ALU</strong> does the math.</p>
+</blockquote>
+<hr>
+<h2>7. Memory</h2>
+<p><strong>Memory</strong> temporarily holds data and instructions <strong>before, during, and after</strong> CPU processing. It&#39;s the computer&#39;s <strong>work area</strong> (a collection of ICs).</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>RAM</strong> (Random Access Memory)</th>
+<th><strong>ROM</strong> (Read-Only Memory)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Volatility</strong></td>
+<td><strong>Volatile</strong>: erased when power is off</td>
+<td><strong>Non-volatile</strong>: kept when power is off</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td><strong>Temporary working memory</strong> for running programs</td>
+<td>Stores <strong>firmware / essential instructions</strong> (e.g. <strong>BIOS</strong>)</td>
+</tr>
+<tr>
+<td><strong>Typical use</strong></td>
+<td>Running programs, processing data</td>
+<td><strong>Booting</strong> and hardware-control instructions</td>
+</tr>
+<tr>
+<td><strong>Can be modified?</strong></td>
+<td><strong>Yes</strong> (read/write)</td>
+<td>Traditionally <strong>no</strong>; modern forms can be rewritten</td>
+</tr>
+<tr>
+<td><strong>Capacity (lesson)</strong></td>
+<td>640 KB to several MB (old models)</td>
+<td>64 KB to 256 KB</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Analogy:</strong> RAM = a <strong>whiteboard</strong> (temporary workspace, wiped when you leave). Storage = a <strong>filing cabinet</strong> (keeps things long-term).</p>
+</blockquote>
+<h3>Key Characteristics of RAM</h3>
+<ol>
+<li><strong>Temporary (volatile)</strong>: unsaved work in RAM is lost if power suddenly goes out.</li>
+<li><strong>Fast access</strong>: much faster than HDDs/SSDs.</li>
+<li><strong>Random access</strong>: the CPU can jump to <strong>any location directly</strong>.</li>
+<li><strong>Affects performance</strong>: more RAM = more programs at once; too little = slow computer.</li>
+</ol>
+<p><strong>Types of RAM</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>DRAM</strong></td>
+<td>Dynamic RAM; common <strong>main memory</strong></td>
+</tr>
+<tr>
+<td><strong>SRAM</strong></td>
+<td>Static RAM; <strong>faster, more expensive</strong>; used for <strong>CPU cache</strong></td>
+</tr>
+<tr>
+<td><strong>SDRAM</strong></td>
+<td><strong>Synchronized</strong> with the system clock</td>
+</tr>
+<tr>
+<td><strong>DDR RAM</strong></td>
+<td>Double Data Rate; widely used today</td>
+</tr>
+<tr>
+<td><strong>DDR4</strong></td>
+<td>Common generation, good performance</td>
+</tr>
+<tr>
+<td><strong>DDR5</strong></td>
+<td>Newer; <strong>higher bandwidth</strong>, more efficient than DDR4</td>
+</tr>
+</tbody></table>
+<h3>ROM</h3>
+<p>When the computer turns on, it loads the <strong>BIOS (Basic Input/Output System)</strong> from ROM. ROM holds the programming that lets the computer <strong>boot up</strong>.</p>
+<p><strong>Types of ROM</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>PROM</strong></td>
+<td>Programmable ROM; programmed <strong>once</strong> after manufacturing</td>
+</tr>
+<tr>
+<td><strong>EPROM</strong></td>
+<td>Erasable PROM; erased with <strong>ultraviolet (UV) light</strong>, then reprogrammed</td>
+</tr>
+<tr>
+<td><strong>EEPROM</strong></td>
+<td><strong>Electrically</strong> erasable and rewritable</td>
+</tr>
+<tr>
+<td><strong>Flash memory</strong></td>
+<td>A type of EEPROM erased/rewritten <strong>in blocks</strong>; used in <strong>USB drives, memory cards, SSDs</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>P</strong>ROM = <strong>P</strong>ermanent once. <strong>E</strong>PROM = <strong>E</strong>rased by UV. <strong>EE</strong>PROM = <strong>E</strong>lectrically <strong>E</strong>rased.</p>
+</blockquote>
+<h3>Memory vs Storage</h3>
+<table>
+<thead>
+<tr>
+<th>Memory (RAM/ROM)</th>
+<th>Storage (HDD/SSD/Cloud)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Primary</strong> storage</td>
+<td><strong>Secondary</strong> storage</td>
+</tr>
+<tr>
+<td>Holds data <strong>temporarily</strong> while processing (RAM)</td>
+<td>Holds data <strong>permanently</strong></td>
+</tr>
+<tr>
+<td>Extremely <strong>fast</strong></td>
+<td>Slower, but <strong>huge capacity</strong> (GB/TB)</td>
+</tr>
+<tr>
+<td>Whiteboard</td>
+<td>Filing cabinet</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>8. Computer Categories (Lesson 1)</h2>
+<p>Based on <strong>size, speed, processing capability, and price</strong>. (Categories overlap and change as technology improves.)</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Key facts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Personal Computer / Microcomputer (PC)</strong></td>
+<td>Does all input, processing, output, and storage <strong>by itself</strong>. Most common (desktops, laptops). Has at least one input, output, storage device, memory, and a processor. The <strong>microprocessor</strong> = CPU on a single chip. Two popular series: <strong>PC</strong> (Windows) and <strong>Apple Macintosh</strong> (macOS)</td>
+</tr>
+<tr>
+<td><strong>Minicomputer</strong></td>
+<td>More powerful than a workstation, smaller than a mainframe. Supports <strong>up to 4,000 users</strong>. Accessed via <strong>terminals</strong>; <strong>dumb terminals</strong> have <strong>no processing power</strong>. Can act as a <strong>server</strong></td>
+</tr>
+<tr>
+<td><strong>Mainframe</strong></td>
+<td>Large, powerful, expensive; used by <strong>large organizations</strong>; handles <strong>hundreds to thousands</strong> of users; stores tremendous data; can act as a <strong>server</strong></td>
+</tr>
+<tr>
+<td><strong>Supercomputer</strong></td>
+<td><strong>Fastest, most powerful, most expensive</strong>. Processes <strong>more than 64 billion instructions per second</strong>. Used for <strong>weather forecasting, nuclear energy research, petroleum exploration</strong></td>
+</tr>
+</tbody></table>
+<h3>Why Computers Are Powerful (5 Pillars)</h3>
+<table>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Speed</strong></td>
+<td>Data travels through circuits at <strong>near the speed of light</strong>: billions of operations per second</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong></td>
+<td><strong>Low failure rate</strong>; consistent results</td>
+</tr>
+<tr>
+<td><strong>Accuracy</strong></td>
+<td><strong>Error-free</strong> results <strong>if</strong> input is correct. <strong>GIGO: Garbage In, Garbage Out</strong></td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>Holds <strong>enormous</strong> amounts of data, retrieved instantly</td>
+</tr>
+<tr>
+<td><strong>Communications</strong></td>
+<td>Can <strong>share</strong> input, processing, output, and storage with other computers (networks, Internet)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example (GIGO):</strong> If you type your grade as 58 instead of 85, the computer will &quot;accurately&quot; compute a failing average. The computer isn&#39;t wrong; the <strong>input</strong> was.</p>
+</blockquote>
+<h3>Types of Users</h3>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Uses computers for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Home users</strong></td>
+<td>Entertainment, communication, research, education, web, shopping, personal finance, word processing</td>
+</tr>
+<tr>
+<td><strong>Small business users</strong></td>
+<td>Productivity, communication software, browsers, e-mail, specialized software</td>
+</tr>
+<tr>
+<td><strong>Mobile users</strong></td>
+<td>Laptops on the road; often <strong>presentation</strong> software</td>
+</tr>
+<tr>
+<td><strong>Large business users</strong></td>
+<td>Productivity software, automated systems for most departments, large networks</td>
+</tr>
+<tr>
+<td><strong>Power users</strong></td>
+<td><strong>Workstations</strong>/powerful computers for design, publishing, graphic art, <strong>multimedia</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>9. Classifications of Software</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. System Software</strong></td>
+<td><strong>Operating System</strong>, <strong>Utilities</strong></td>
+</tr>
+<tr>
+<td><strong>2. Programming Languages</strong></td>
+<td><strong>1GL</strong>: Machine language · <strong>2GL</strong>: Assembly language · <strong>3GL</strong>: C, BASIC, Pascal, Foxbase · <strong>4GL</strong>: PowerBuilder, SQL, Magic · <strong>5GL</strong>: Visual Basic, Visual FoxPro, Java, Visual C++</td>
+</tr>
+<tr>
+<td><strong>3. Application Software</strong></td>
+<td>Word processing, spreadsheet, graphics, games, educational, desktop publishing, accounting package, <strong>CAD</strong> (Computer-Aided Design)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> Windows 11 = <strong>system software</strong>. MS Word = <strong>application software</strong>. Python = <strong>programming language</strong>.</p>
+</blockquote>
+<hr>
+<h2>10. Input Devices</h2>
+<p>An <strong>input device</strong> lets users <strong>enter data and commands</strong> into memory.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Basic input devices</strong></td>
+<td><strong>Essential</strong> to operate a PC</td>
+<td><strong>Keyboard, mouse</strong></td>
+</tr>
+<tr>
+<td><strong>Special input devices</strong></td>
+<td><strong>Not essential</strong>; for special purposes</td>
+<td>Trackball, light pen, touch screen, joystick, digitizer, scanner, OMR, BCR, OCR, MICR, voice input</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Key facts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Keyboard</strong></td>
+<td>Most common input device for <strong>manual data entry</strong>. Pressing a key sends an electric signal; a <strong>keyboard encoder</strong> sends the <strong>binary code</strong> to the CPU. <strong>101-key</strong> keyboard is the most popular</td>
+</tr>
+<tr>
+<td><strong>Mouse</strong></td>
+<td>Controls <strong>cursor movement</strong>; named for its shape. Has 1–3 buttons. <strong>3 basic types: mechanical, opto-mechanical, optical</strong>. Wireless mice also exist</td>
+</tr>
+<tr>
+<td><strong>Trackball</strong></td>
+<td>A <strong>stationary</strong> pointing device: an <strong>upside-down mouse</strong>. Roll the ball with fingers/thumb/palm. Sensors detect rotation on <strong>two axes</strong>. Used in some laptops. <strong>Advantages: ergonomics</strong> (less arm/wrist movement), <strong>space-saving</strong>, <strong>precision</strong></td>
+</tr>
+<tr>
+<td><strong>Light pen</strong></td>
+<td>Pen-like pointing device to select menu items or <strong>draw on the screen</strong>. Has a <strong>photocell</strong> and optical system in a tube</td>
+</tr>
+<tr>
+<td><strong>Touch screen</strong></td>
+<td>Screen sensitive to <strong>fingers</strong>; point instead of pressing keys</td>
+</tr>
+<tr>
+<td><strong>Joystick</strong></td>
+<td>A stick with a spherical ball at <strong>both ends</strong>; the lower ball moves in a socket; moves in <strong>all four directions</strong>. Used for <strong>CAD and gaming</strong></td>
+</tr>
+<tr>
+<td><strong>Digitizer / Graphics tablet</strong></td>
+<td>Converts <strong>analog → digital</strong>; used for fine <strong>drawing</strong> work</td>
+</tr>
+<tr>
+<td><strong>Scanner (flatbed)</strong></td>
+<td>Works like a <strong>photocopier</strong>; converts paper images to digital form for editing</td>
+</tr>
+<tr>
+<td><strong>OMR</strong> (Optical Mark Reader)</td>
+<td>Reads <strong>pen/pencil marks</strong>; used to check <strong>multiple-choice exam</strong> answer sheets</td>
+</tr>
+<tr>
+<td><strong>BCR</strong> (Bar Code Reader)</td>
+<td>Reads <strong>bar codes</strong> (light and dark lines) → alphanumeric value; used for <strong>labeling goods, numbering books</strong></td>
+</tr>
+<tr>
+<td><strong>OCR</strong> (Optical Character Recognition)</td>
+<td>Reads <strong>printed text</strong> character by character → machine-readable text; used for tickets, credit card bills, <strong>ZIP codes</strong></td>
+</tr>
+<tr>
+<td><strong>MICR</strong> (Magnetic Ink Character Recognition)</td>
+<td>Reads characters printed in <strong>magnetic ink</strong>; used in <strong>banks</strong> for <strong>cheques</strong> (bank code, cheque number)</td>
+</tr>
+<tr>
+<td><strong>Voice input</strong> (microphone)</td>
+<td>Recognizes the <strong>human voice</strong>; stores sound digitally; for multimedia, music mixing</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Memory trick for scanners:</strong> O<strong>M</strong>R = <strong>M</strong>arks · <strong>B</strong>CR = <strong>B</strong>ars · O<strong>C</strong>R = <strong>C</strong>haracters · MICR = <strong>M</strong>agnetic ink (banks)</p>
+</blockquote>
+<hr>
+<h2>11. Keyboard Fundamentals</h2>
+<p>Desktop keyboards have <strong>101–105 keys</strong>; laptops have fewer.</p>
+<h3>Parts of the Keyboard</h3>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Typewriter keypad</strong> (alphanumeric)</td>
+<td>Letters, numbers, punctuation, basic keys</td>
+</tr>
+<tr>
+<td><strong>Numeric keypad</strong></td>
+<td><strong>Calculator-style</strong> keys on the <strong>right</strong> for fast number entry</td>
+</tr>
+<tr>
+<td><strong>Toggle keys</strong></td>
+<td>Switch between <strong>two states</strong>: <strong>Caps Lock, Num Lock, Scroll Lock, Insert</strong></td>
+</tr>
+<tr>
+<td><strong>Special (computer) keys</strong></td>
+<td><strong>Esc, Ctrl, Alt, Print Screen, Windows key, Menu key</strong></td>
+</tr>
+<tr>
+<td><strong>Function keys</strong></td>
+<td><strong>F1–F12</strong> across the top; the command depends on the program (<strong>F1 = Help</strong> in many programs)</td>
+</tr>
+<tr>
+<td><strong>Cursor/arrow keys</strong></td>
+<td>Move the cursor</td>
+</tr>
+<tr>
+<td><strong>Control keys</strong></td>
+<td>Backspace, Enter, Tab, Delete, Space bar</td>
+</tr>
+</tbody></table>
+<p><strong>Key classes (Lesson 2.1):</strong> <strong>letter keys</strong> (26), <strong>digit keys</strong> (top row + numeric pad), <strong>special character keys</strong> (&lt; &gt; ? / { } [ ] @ # $ % &amp; *), <strong>non-printable control keys</strong> (backspace, enter, tab, arrows, insert, delete, space), <strong>function keys</strong>.</p>
+<blockquote>
+<p>Press the key labeled <strong>F1</strong>, not the letter F then 1.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong> Lesson 2.2 says F1–<strong>F12</strong> (standard today); Lesson 2.1 says up to <strong>F15</strong> (older keyboards).</p>
+</blockquote>
+<h3>Types of Keyboard Layout</h3>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Key facts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>QWERTY</strong></td>
+<td>Named after the <strong>first six letters</strong> of the top letter row. <strong>Most widely used</strong>, but may <strong>limit typing speed</strong></td>
+</tr>
+<tr>
+<td><strong>Dvorak</strong> (pronounced <em>de-VOR-zhak</em>)</td>
+<td>Puts the <strong>most frequently typed letters in the middle</strong> row to <strong>improve speed</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Despite Dvorak&#39;s more logical design, <strong>QWERTY is more widely used</strong>.</p>
+</blockquote>
+<h3>Typing Methods</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Hunt and peck</strong></td>
+<td>Staring at the keyboard to find each key and hitting it with the <strong>index finger</strong></td>
+</tr>
+<tr>
+<td><strong>10-finger method (touch typing)</strong></td>
+<td>Fingers have <strong>fixed positions</strong>; you type &quot;<strong>blindly</strong>&quot; without looking</td>
+</tr>
+</tbody></table>
+<h3>Home Row (Basic Position)</h3>
+<ul>
+<li><strong>Left hand:</strong> <strong>A S D F</strong></li>
+<li><strong>Right hand:</strong> <strong>J K L ;</strong></li>
+<li><strong>Thumbs:</strong> <strong>Space bar</strong></li>
+<li><strong>F and J have small bumps</strong> so you can find the position without looking.</li>
+</ul>
+<p><strong>Finger assignments (touch typing)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Finger</th>
+<th>Left hand</th>
+<th>Right hand</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Pinky</strong></td>
+<td>Q, A, Z, 1 (+ Tab, Caps Lock, Shift)</td>
+<td>P, ;, /, 0 (+ Enter, Shift, Backspace)</td>
+</tr>
+<tr>
+<td><strong>Ring</strong></td>
+<td>W, S, X, 2</td>
+<td>O, L, ., 9</td>
+</tr>
+<tr>
+<td><strong>Middle</strong></td>
+<td>E, D, C, 3</td>
+<td>I, K, ,, 8</td>
+</tr>
+<tr>
+<td><strong>Index</strong></td>
+<td>R, F, V, T, G, B, 4, 5</td>
+<td>Y, H, N, U, J, M, 6, 7</td>
+</tr>
+<tr>
+<td><strong>Thumb</strong></td>
+<td>Space bar</td>
+<td>Space bar</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Lesson example:</strong> To type <strong>E</strong>, the <strong>left middle finger</strong> reaches up from <strong>D</strong>, then returns to D.</p>
+</blockquote>
+<h3>Objective and Advantages of the 10-Finger Method</h3>
+<p><strong>Objective:</strong> anchor keyboard handling in your <strong>subconscious</strong>, so you focus on <strong>content</strong>, not on finding keys.</p>
+<table>
+<thead>
+<tr>
+<th>Advantage</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Speed</strong></td>
+<td>Type much faster, saving time</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td>Concentrate on the text; less mental back-and-forth</td>
+</tr>
+<tr>
+<td><strong>Ergonomics</strong></td>
+<td>No constant looking down → <strong>upright, healthy posture</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li>Switching may make you <strong>slower at first</strong>. Don&#39;t be discouraged.</li>
+<li>Using fewer fingers is okay if needed; what matters is knowing key positions without thinking.</li>
+</ul>
+<p><strong>Why it&#39;s worth it:</strong> If you type <strong>1 hour a day</strong> (365 hrs/year) and <strong>double</strong> your speed, you save about <strong>180 hours a year</strong>, around <strong>4½ work weeks</strong> (40-hour weeks).</p>
+<hr>
+<h2>12. Output Devices</h2>
+<p><strong>Output devices</strong> display or print processed information: <strong>monitor, printer, plotter, speaker, computer output microfilm.</strong></p>
+<h3>Monitor</h3>
+<p>Also called the <strong>Visual Display Unit (VDU)</strong>, the <strong>main output device</strong>. Forms images from <strong>pixels</strong>; <strong>more pixels = sharper image</strong>.</p>
+<p><strong>By resolution:</strong> <strong>CGA</strong> (Colour Graphics Adapter), <strong>MDA</strong> (Monochrome Display Adapter), <strong>HGA</strong> (Hercules Graphics Adapter), <strong>EGA</strong> (Enhanced Graphics Adapter), <strong>VGA</strong> (Video Graphics Adapter), <strong>SVGA</strong> (Super Video Graphics Adapter)</p>
+<p><strong>By colour:</strong> <strong>Monochrome</strong> (single colour, black/white) and <strong>Colour</strong> monitors</p>
+<h3>Printers</h3>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">PRINTERS
+├── IMPACT (strikes ribbon onto paper)
+│   ├── Character printers (<span class="hljs-number">1</span> <span class="hljs-keyword">character</span> <span class="hljs-keyword">at</span> <span class="hljs-keyword">a</span> <span class="hljs-built_in">time</span>)
+│   │   ├── Daisy wheel
+│   │   └── Dot matrix
+│   └── Line printers (<span class="hljs-number">1</span> <span class="hljs-built_in">line</span> <span class="hljs-keyword">at</span> <span class="hljs-keyword">a</span> <span class="hljs-built_in">time</span>, faster)
+│       ├── Drum
+│       └── Chain
+└── NON-IMPACT (no striking; <span class="hljs-keyword">a</span> full page <span class="hljs-keyword">at</span> <span class="hljs-keyword">a</span> <span class="hljs-built_in">time</span> = <span class="hljs-string">&quot;page printers&quot;</span>)
+    ├── Laser
+    └── Inkjet
+(+ Thermal printers: direct thermal, thermal transfer)</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Printer</th>
+<th>How it works</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Daisy wheel</strong></td>
+<td>A plastic/metal hub with <strong>spokes</strong> (the &quot;daisy wheel&quot;) strikes characters</td>
+</tr>
+<tr>
+<td><strong>Dot matrix</strong></td>
+<td>Prints characters as <strong>dots</strong></td>
+</tr>
+<tr>
+<td><strong>Drum</strong></td>
+<td>A <strong>rotating drum</strong> with a ring of characters per print position</td>
+</tr>
+<tr>
+<td><strong>Chain</strong></td>
+<td>A <strong>rotating chain</strong> of characters per print position</td>
+</tr>
+<tr>
+<td><strong>Laser</strong></td>
+<td>Works like a <strong>photocopier</strong>; a <strong>laser beam</strong> writes the image</td>
+</tr>
+<tr>
+<td><strong>Inkjet</strong></td>
+<td>Sprays <strong>tiny droplets of ink</strong> from a moving print head</td>
+</tr>
+<tr>
+<td><strong>Thermal</strong></td>
+<td>Uses <strong>heat</strong> instead of liquid ink</td>
+</tr>
+</tbody></table>
+<p><strong>How an inkjet prints:</strong> computer sends the document → printer processes it → print head moves across the paper → ink droplets placed on specific spots → droplets form text/images → paper moves until done.</p>
+<p><strong>Thermal printer types</strong></p>
+<table>
+<thead>
+<tr>
+<th>Direct thermal</th>
+<th>Thermal transfer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Heat-sensitive paper</strong> turns dark when heated</td>
+<td>Heat transfers ink/wax from a <strong>ribbon</strong></td>
+</tr>
+<tr>
+<td><strong>No ink or toner</strong></td>
+<td>Prints are <strong>more durable</strong></td>
+</tr>
+<tr>
+<td>Receipts, tickets, labels</td>
+<td>Product labels, barcodes, shipping labels</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> The receipt from 7-Eleven or a grocery = <strong>direct thermal</strong> (it fades over time).</p>
+</blockquote>
+<h3>Other Output Devices</h3>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Key facts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Plotter</strong></td>
+<td>Prints <strong>high-quality graphics</strong> (charts, drawings, maps) for engineering/science. <strong>Flatbed</strong> (pen moves on a stationary surface), <strong>Drum</strong> (pen <strong>and</strong> drum move), <strong>Inkjet</strong> (inkjet instead of pen; faster; multicoloured large drawings)</td>
+</tr>
+<tr>
+<td><strong>Speakers</strong></td>
+<td>Get audio from the <strong>sound card</strong> → sound waves. Most are <strong>active</strong> (built-in <strong>amplifier</strong>). Come in pairs for <strong>stereo</strong> sound</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>13. Storage Devices</h2>
+<p><strong>Storage devices</strong> store, save, and retrieve digital data: documents, photos, videos, programs, OS files.</p>
+<table>
+<thead>
+<tr>
+<th>Primary storage</th>
+<th>Secondary storage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Smaller size</td>
+<td><strong>Large</strong> capacity</td>
+</tr>
+<tr>
+<td>Stores data <strong>temporarily</strong></td>
+<td>Stores data <strong>permanently</strong></td>
+</tr>
+<tr>
+<td><strong>Fastest</strong> access</td>
+<td>Slower</td>
+</tr>
+<tr>
+<td>Also called <strong>main memory / main store</strong>; closely connected to the processor; holds programs being worked on</td>
+<td>Can be <strong>internal or external</strong>; used to <strong>transfer</strong> data between computers</td>
+</tr>
+<tr>
+<td><strong>RAM, ROM</strong></td>
+<td>HDD, SSD, CD, USB, etc.</td>
+</tr>
+</tbody></table>
+<p>A <strong>storage medium</strong> (plural: media) is the physical material data is stored on. A <strong>storage device</strong> records and retrieves data to/from the medium, and often acts as <strong>input</strong> (it transfers items into memory).</p>
+<h3>Types of Secondary Storage</h3>
+<p><strong>1. Magnetic Storage</strong></p>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Key facts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Hard Disk Drive (HDD)</strong></td>
+<td>Stores data <strong>magnetically</strong> on <strong>platters</strong> (disks coated with magnetic material), read by a <strong>magnetic head</strong>. <strong>Pros:</strong> large capacity (up to 10 TB in the lesson), data kept when off. <strong>Cons:</strong> slower than RAM/ROM; if it <strong>crashes</strong>, you lose your work. Usually <strong>fixed inside</strong>, not portable</td>
+</tr>
+<tr>
+<td><strong>External hard drive</strong></td>
+<td><strong>Portable</strong>, connects via <strong>USB</strong>; for backups and when the internal drive is full; <strong>higher capacity than flash drives</strong></td>
+</tr>
+<tr>
+<td><strong>Floppy disk</strong></td>
+<td>Small, <strong>flexible</strong> plastic disk with magnetic coating in a square jacket; read by a <strong>Floppy Disk Drive (FDD)</strong>. Sizes: <strong>5¼&quot; and 3½&quot;</strong>. Capacity: <strong>360 KB to 1.44 MB</strong>. Single- or double-sided</td>
+</tr>
+<tr>
+<td><strong>Magnetic tape</strong></td>
+<td><strong>Oldest</strong> storage medium for large data; in <strong>cassettes</strong>. <strong>Pros:</strong> small, cheap, stores a lot. <strong>Con:</strong> <strong>very slow</strong> access</td>
+</tr>
+</tbody></table>
+<p><strong>2. Optical Storage</strong>: uses a <strong>laser</strong> to read/write discs</p>
+<table>
+<thead>
+<tr>
+<th>Disc</th>
+<th>Capacity</th>
+<th>Laser</th>
+<th>Types</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CD</strong> (Compact Disc)</td>
+<td><strong>~700 MB</strong> (CD-ROM usually 650 MB)</td>
+<td><strong>Red</strong></td>
+<td><strong>CD-ROM</strong> (read only), <strong>CD-R</strong> (write once), <strong>CD-RW</strong> (rewritable)</td>
+</tr>
+<tr>
+<td><strong>DVD</strong> (Digital Versatile Disc)</td>
+<td><strong>~4.38 GB</strong> (commonly 4.7 GB)</td>
+<td>Red</td>
+<td><strong>DVD-ROM</strong> (read only), <strong>DVD-R</strong> (record once), <strong>DVD-RW / DVD+RW</strong> (record and erase many times)</td>
+</tr>
+<tr>
+<td><strong>Blu-ray</strong> (BD)</td>
+<td><strong>25–50 GB</strong></td>
+<td><strong>Blue</strong></td>
+<td>For <strong>HD video</strong>; higher capacity and quality than DVD</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Data on a CD is stored as <strong>pits</strong> on reflective material; the laser detects the pits and converts them to a digital signal.</p>
+</blockquote>
+<blockquote>
+<p><strong>Memory trick:</strong> <strong>ROM</strong> = <strong>R</strong>ead <strong>O</strong>nly · <strong>R</strong> = <strong>R</strong>ecord once · <strong>RW</strong> = <strong>R</strong>e<strong>W</strong>rite</p>
+</blockquote>
+<p><strong>3. Solid-State Storage</strong>: stores data <strong>electronically</strong>, <strong>no moving parts</strong></p>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Key facts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>SSD</strong> (Solid-State Drive)</td>
+<td>Non-volatile, <strong>electronic</strong> (flash memory on microchips). <strong>Pros:</strong> much faster, no moving parts, <strong>shock-resistant</strong>, less power. <strong>Cons:</strong> <strong>more expensive per GB</strong></td>
+</tr>
+<tr>
+<td><strong>USB flash drive</strong></td>
+<td>Small, portable flash-memory device via <strong>USB port</strong>; for transferring files, presentations, installers, small backups</td>
+</tr>
+<tr>
+<td><strong>Memory card</strong> (flash card)</td>
+<td>Small non-volatile flash storage for <strong>cameras and phones</strong>. <strong>SD (Secure Digital) card</strong> is one <strong>specific type</strong> (&quot;memory card&quot; is the general term)</td>
+</tr>
+</tbody></table>
+<p><strong>HDD vs SSD</strong></p>
+<table>
+<thead>
+<tr>
+<th>HDD</th>
+<th>SSD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Records <strong>magnetically</strong> on a <strong>spinning platter</strong> with a moving read/write arm</td>
+<td>Stores <strong>electronically</strong> on <strong>microchips</strong></td>
+</tr>
+<tr>
+<td>Has <strong>moving parts</strong></td>
+<td><strong>No moving parts</strong></td>
+</tr>
+<tr>
+<td><strong>Slower</strong>, cheaper per GB</td>
+<td><strong>Faster</strong>, more expensive per GB</td>
+</tr>
+</tbody></table>
+<p><strong>4. Photographic Storage</strong>: stores documents as <strong>tiny photographic images</strong> on film</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Microfilm</strong></td>
+<td>A <strong>roll</strong> of <strong>35 mm film</strong>; a reader&#39;s lens enlarges the image</td>
+</tr>
+<tr>
+<td><strong>Microfiche</strong></td>
+<td>A <strong>flat sheet/card</strong> of transparent film with miniaturized pages (newspapers, catalogs)</td>
+</tr>
+</tbody></table>
+<p><strong>Summary: Secondary Storage and Common Uses</strong></p>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Common use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HDD</td>
+<td>Computer storage, backups</td>
+</tr>
+<tr>
+<td>SSD</td>
+<td>OS, applications, fast storage</td>
+</tr>
+<tr>
+<td>USB flash drive</td>
+<td>Transferring files</td>
+</tr>
+<tr>
+<td>Memory card</td>
+<td>Cameras, smartphones, tablets</td>
+</tr>
+<tr>
+<td>CD</td>
+<td>Music, software, small files</td>
+</tr>
+<tr>
+<td>DVD</td>
+<td>Movies, software, data</td>
+</tr>
+<tr>
+<td>Blu-ray</td>
+<td>HD/4K video, large data</td>
+</tr>
+<tr>
+<td>External HDD/SSD</td>
+<td>Backups, large file transfers</td>
+</tr>
+<tr>
+<td><strong>NAS</strong> (Network Attached Storage)</td>
+<td>Storage on a <strong>network</strong> shared by <strong>multiple users</strong>: file sharing and backups</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>14. Types of Computers (Lesson 2)</h2>
+<h3>According to Purpose</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>General purpose</strong></td>
+<td>For general tasks</td>
+<td>Office work, sales analysis, accounting, invoicing</td>
+</tr>
+<tr>
+<td><strong>Special purpose</strong></td>
+<td>Built for <strong>specific tasks</strong></td>
+<td>Scientific research, <strong>weather forecasting</strong>, space applications</td>
+</tr>
+</tbody></table>
+<h3>According to Technology Used</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Analog</strong></td>
+<td>Represents data as <strong>continuously varying</strong> physical quantities (current, voltage, frequency); measures pressure, temperature, speed</td>
+<td><strong>Thermometer, speedometer</strong></td>
+</tr>
+<tr>
+<td><strong>Digital</strong></td>
+<td>Represents data in <strong>discrete</strong> numbers (<strong>binary</strong>); mainly general purpose</td>
+<td>PCs, laptops, phones</td>
+</tr>
+<tr>
+<td><strong>Hybrid</strong></td>
+<td><strong>Both</strong> analog and digital; uses <strong>ADC</strong> (analog-to-digital) and <strong>DAC</strong> (digital-to-analog) converters</td>
+<td>Mainly used in <strong>artificial intelligence</strong> (also: hospital ICU monitors)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Own example:</strong> An old needle speedometer is <strong>analog</strong> (smooth movement). A digital clock showing 10:45 is <strong>digital</strong> (exact numbers).</p>
+</blockquote>
+<h3>According to Size and Storage Capacity</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Key facts</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Supercomputer</strong></td>
+<td><strong>Biggest and fastest</strong>; many CPUs working <strong>in parallel</strong>; weather, energy, defense, nuclear research, medicine, animation</td>
+<td><strong>CRAY-3, CRAY-XMP-14, NEC-500, PARAM 9000, PARAM 10000</strong></td>
+</tr>
+<tr>
+<td><strong>Mainframe</strong></td>
+<td>Large and fast but smaller/slower than super. <strong>Centralized</strong>: many <strong>terminals</strong> share <strong>one CPU</strong>; thousands of users; <strong>railway/airline reservations, banking</strong></td>
+<td><strong>IBM 3090, IBM 4381, IBM 4300, IBM ES-9000</strong></td>
+</tr>
+<tr>
+<td><strong>Minicomputer</strong></td>
+<td>Medium-scale, slower than mainframe; many terminals on one CPU; used where processing can be <strong>distributed</strong></td>
+<td><strong>PDP-1, DEC MicroVAX, IBM AS/400</strong></td>
+</tr>
+<tr>
+<td><strong>Microcomputer</strong></td>
+<td><strong>Smallest</strong> digital computer; CPU is a <strong>microprocessor</strong> (single-chip CPU); = <strong>PC</strong>. Stand-alone or a terminal. <strong>Desktop or portable</strong> (laptops, notebooks; <strong>notebooks are smaller and lighter</strong> than laptops)</td>
+<td>Desktop, laptop</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Size order (biggest → smallest):</strong> <strong>S</strong>uper → <strong>M</strong>ainframe → <strong>M</strong>ini → <strong>M</strong>icro (&quot;<strong>S</strong>ome <strong>M</strong>en <strong>M</strong>ake <strong>M</strong>illions&quot;)</p>
+</blockquote>
+<hr>
+<h2>Quick Check</h2>
+<ol>
+<li>What is the difference between data and information?</li>
+<li>What are the four stages of the IPOS cycle?</li>
+<li>Which generation introduced transistors? Integrated circuits?</li>
+<li>Which CPU part performs arithmetic and logical operations?</li>
+<li>Which CPU part is called the &quot;central nervous system&quot;?</li>
+<li>What are the three types of buses?</li>
+<li>RAM or ROM: which is volatile?</li>
+<li>What does BIOS stand for, and where is it stored?</li>
+<li>Which ROM type is erased using UV light?</li>
+<li>What does GIGO mean?</li>
+<li>A supercomputer can process more than how many instructions per second?</li>
+<li>What device reads the answer sheets of multiple-choice exams?</li>
+<li>What device is used in banks to read cheques?</li>
+<li>What are the home row keys for each hand?</li>
+<li>Which keys have small bumps?</li>
+<li>Why is the QWERTY keyboard called that?</li>
+<li>Impact or non-impact: which prints a full page at a time?</li>
+<li>Which thermal printer needs no ink or ribbon?</li>
+<li>What is the capacity of a Blu-ray disc, and what laser color does it use?</li>
+<li>HDD vs SSD: which has no moving parts?</li>
+<li>Microfilm vs microfiche: which is a flat sheet?</li>
+<li>A thermometer is an example of what type of computer (by technology)?</li>
+<li>Give one example of a mainframe computer.</li>
+<li>Floppy disk sizes and capacity range?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+
+<ol>
+<li><strong>Data</strong> = unorganized raw facts; <strong>information</strong> = organized, meaningful, useful data</li>
+<li><strong>Input, Process, Output, Storage</strong></li>
+<li><strong>2nd</strong> gen = transistors; <strong>3rd</strong> gen = ICs</li>
+<li><strong>ALU</strong></li>
+<li><strong>Control Unit</strong></li>
+<li><strong>Data bus, control bus, address bus</strong></li>
+<li><strong>RAM</strong></li>
+<li><strong>Basic Input/Output System</strong>, stored in <strong>ROM</strong></li>
+<li><strong>EPROM</strong></li>
+<li><strong>Garbage In, Garbage Out</strong>: output accuracy depends on input accuracy</li>
+<li><strong>64 billion</strong></li>
+<li><strong>OMR</strong> (Optical Mark Reader)</li>
+<li><strong>MICR</strong> (Magnetic Ink Character Recognition)</li>
+<li>Left: <strong>A S D F</strong>; Right: <strong>J K L ;</strong></li>
+<li><strong>F and J</strong></li>
+<li>Named after the <strong>first six letters</strong> of the top letter row</li>
+<li><strong>Non-impact</strong> (page printers)</li>
+<li><strong>Direct thermal</strong></li>
+<li><strong>25–50 GB</strong>, <strong>blue</strong> laser</li>
+<li><strong>SSD</strong></li>
+<li><strong>Microfiche</strong></li>
+<li><strong>Analog</strong></li>
+<li>IBM 3090, IBM 4381, IBM 4300, or IBM ES-9000</li>
+<li><strong>5¼&quot; and 3½&quot;</strong>; <strong>360 KB to 1.44 MB</strong></li>
+</ol>
+</details>
+
+  </div>
+  <div class="note-nav">
+    
+    <a href="Y1S1-CC2-midterm.html" class="note-nav-next">CC2 →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>
