@@ -544,109 +544,804 @@ Spain (Sanlúcar de Barrameda) → Canary Islands → Brazil (Rio de Janeiro) �
 
 ## Quick Check
 
-1. Who said history is "a study of man and his deeds... emphasizing the struggle for freedom and national identity"?
-2. What does Zeus Salazar's definition of *kasaysayan* mean?
-3. Name the four elements of history.
-4. What is historiography?
-5. A diary written during World War II is a ___ source; a documentary about it is a ___ source.
-6. Which model of history says "history repeats itself"?
-7. Which model is also called "Providential" or "Fatalistic"?
-8. Which model is inspired by postmodernism and says history has no pattern?
-9. Where was Homo luzonensis found, and how old is it?
-10. What is the oldest known work of art in the Philippines, and who discovered it?
-11. Who found the Golden Tara, and when?
-12. When and where was the Laguna Copperplate Inscription found?
-13. What is the Visayan equivalent of the aliping namamahay?
-14. Babaylan and katalonan were ___.
-15. Who is the Tagalog supreme deity? The Visayan sky god?
-16. Name the IP groups of Luzon, Visayas, and Mindanao shown in the lesson.
-17. Where is the oldest mosque in the Philippines, and who built it?
-18. Who was the first Sultan of Sulu?
-19. Who founded the Sultanate of Maguindanao, and when did he arrive?
-20. Sunni or Shia: which believes leadership should stay in the Prophet's family?
-21. The Code of Kalantiaw is a ___.
-22. Name the Five Pillars of Islam.
-23. What is the difference between a fossil and an artifact?
-24. What treaty drew the Line of Demarcation between Spain and Portugal?
-25. What do the "3 Gs" of the Age of Exploration stand for?
-26. Name Magellan's five ships. Which one completed the circumnavigation?
-27. Where and when was the first Catholic Mass in the Philippines held?
-28. Who chronicled Magellan's voyage, and what kind of source is his account?
-29. Who was Enrique?
-30. Who completed the first circumnavigation after Magellan died?
-31. Why were the Moluccas important?
-32. Who named the islands "Las Islas Filipinas," and after whom?
-33. Who were the two parties in the Blood Compact, and who painted it?
-34. What was Fort San Pedro?
-35. Which battle led to the Spanish conquest of Manila in 1571?
-36. Encomienda, Reduccion, Polo y Servicio: which one is forced labor?
-37. Who was Hermano Pule, and what did he found?
-38. What is secularization?
-39. Which governor-general was liberal, and which one was strict?
-40. When and how were GomBurZa executed?
-41. Who told Jose Rizal about GomBurZa, and which novel did Rizal dedicate to them?
-42. What 1868 event in Spain brought a liberal governor-general to the Philippines?
-43. What opened in 1869 and sped up the entry of liberal ideas?
-44. What is the difference between a regular priest and a secular priest?
-45. Why did the expulsion (1768) and return (1859) of the Jesuits matter to the secular priests?
-46. Who were the students linked to Burgos in the 1869 UST demonstration?
-47. Who was the key witness against Burgos, and what happened to him?
-48. In what order were the four men executed?
-49. How did the Archbishop of Manila show he believed the priests were innocent?
-50. What did Agoncillo say about 1872, and what did he mean?
+```quiz
+Q: Who defined history as "a study of man and his deeds in relation to society," emphasizing the struggle for freedom and national identity?
+* Teodoro Agoncillo
+- Ambeth Ocampo
+- Zeus Salazar
+- Trinidad Pardo de Tavera
 
-<details>
-<summary>Answers</summary>
+Q: What does Zeus Salazar's "salaysay na may saysay" mean?
+* A story that has meaning for the group of people it is about
+- A list of dates and events in exact order
+- A record of the past written by the colonizers
+- A story with no pattern and no real truth
+> Salazar = salaysay (story) + saysay (meaning).
 
-1. **Teodoro Agoncillo**
-2. History is a **story with meaning** for the group of people it's about
-3. **Time, Evidence, Human Actions, Interpretations**
-4. The study of **how history is written** (methods, sources, interpretations, perspectives)
-5. **Primary**; **secondary**
-6. **Cyclical**
-7. **Linear**
-8. **Chaotic view**
-9. **Callao Cave, Cagayan**; **~67,000 years ago**
-10. **Angono-Binangonan Petroglyphs**; **Carlos "Botong" Francisco (1965)**
-11. **Bilay Campos**, a Manobo woman, in **1917**
-12. **1989**, **Lumban, Laguna** (by a laborer)
-13. **Uripon**
-14. **Shamans / spiritual leaders** (rituals, healing, communicating with spirits)
-15. **Bathala**; **Kaptan**
-16. **Igorot, Aeta** (Luzon); **Ati** (Visayas); **Lumad** (Mindanao)
-17. **Simunul, Tawi-Tawi**; **Sheikh Karim ul-Makhdum (1380)**
-18. **Sharif ul-Hashim**
-19. **Sharif Kabungsuan**, **1515**
-20. **Shia**
-21. **Hoax**
-22. **Shahadah (faith), Salah (prayer), Sawm (fasting), Zakah (almsgiving), Hajj (pilgrimage)**
-23. A **fossil** is the preserved remains of a **once-living thing**; an **artifact** is an object **made by humans**
-24. **Treaty of Tordesillas (1494)**
-25. **God, Gold, Glory**
-26. **Santiago, San Antonio, Concepcion, Trinidad, Victoria**; the **Victoria**
-27. **Limasawa, Leyte**, on **March 31, 1521 (Easter Sunday)**
-28. **Antonio Pigafetta**; a **primary source**
-29. Magellan's **Malay slave and interpreter**
-30. **Juan Sebastian Elcano**
-31. They were the **Spice Islands**, the source of valuable spices and the **goal of the expedition**
-32. **Ruy López de Villalobos**, after **Prince Philip (King Philip II) of Spain**
-33. **Legazpi and Rajah Sikatuna**; painted by **Juan Luna**
-34. The **first military barracks and seat of government** under Spanish colonial rule, in **Cebu**
-35. **Battle of Bangkusay**
-36. **Polo y Servicio**
-37. **Apolinario de la Cruz**; he founded the **Cofradía de San José**
-38. The **transfer of parishes from regular friars to secular (Filipino) priests**
-39. **Carlos María de la Torre** was liberal; **Rafael Izquierdo** was strict
-40. **February 17, 1872**, by **garrote**, at **Bagumbayan**
-41. His brother **Paciano**; ***El Filibusterismo***
-42. The **Glorious Revolution**: the monarchy fell and **Carlos María de la Torre** was sent
-43. The **Suez Canal**
-44. **Regulars (friars)** belong to a **religious order** and follow its rule; **seculars** are under a **bishop/diocese**
-45. Seculars **gained parishes** when the Jesuits left and **lost them** when the Jesuits returned (the **domino effect**), which intensified the call for secularization
-46. **Maximo Paterno, Paciano Rizal, Felipe Buencamino, Ambrosio Rianzares Bautista**
-47. **Francisco Zaldua**; he was **executed too**
-48. **Zaldua → Gomez → Zamora → Burgos**
-49. He **refused to strip them of their priesthood** (they died in their habits) and **tolled the bells** for them
-50. That the Philippines **had no history before 1872**: there was no **Filipino national consciousness** until then
+Q: Which historian is linked to Pantayong Pananaw?
+* Zeus Salazar
+- Teodoro Agoncillo
+- Ambeth Ocampo
+- William Henry Scott
 
-</details>
+Q: Who described history as a narrative of the past that is relevant to the present, combining scholarship with storytelling?
+* Ambeth Ocampo
+- Zeus Salazar
+- Teodoro Agoncillo
+- John Schumacher
+
+Q: Which of these is NOT one of the four elements of history?
+* Geography
+- Time
+- Evidence
+- Interpretations
+> The four elements are Time, Evidence, Human Actions, and Interpretations.
+
+Q: What is historiography?
+* The study of how history is written
+- The study of the past itself
+- The study of fossils and artifacts
+- The study of maps and places
+
+Q: A diary written during World War II is what kind of source?
+* Primary source
+- Secondary source
+- Legend
+- Hoax
+
+Q: Which of these is a secondary source?
+* A documentary film about Rizal
+- Rizal's own letter to his family
+- A fossil from Callao Cave
+- A photograph taken during the event
+
+Q: Which model of history says "history repeats itself"?
+* Cyclical
+- Linear
+- Spiral
+- Chaotic view
+
+Q: Which model of history is also called "Providential" or "Fatalistic"?
+* Linear
+- Cyclical
+- Spiral
+- Chaotic view
+> Linear history has a definite beginning and end, like the Bible.
+
+Q: Which model says history has no pattern and is inspired by postmodernist thought?
+* Chaotic view
+- Spiral
+- Linear
+- Cyclical
+
+Q: Which model says history does not repeat exactly and there are only similarities?
+* Spiral
+- Cyclical
+- Linear
+- Chaotic view
+> The spiral model is a critique of the cyclical model.
+
+Q: "No document, no history" is the idea of which school of thought?
+* Positivism
+- Postcolonialism
+- Pantayong Pananaw
+- Postmodernism
+
+Q: Which school of thought re-examines history from the view of the colonized?
+* Postcolonialism
+- Positivism
+- Providentialism
+- Animism
+
+Q: Which type of historical research explains WHY events happened?
+* Analytical (Interpretive)
+- Narrative
+- Comparative
+- Cultural
+
+Q: Which is the correct order of the periods of Philippine history?
+* Pre-colonial, Spanish, American, Japanese, Contemporary
+- Pre-colonial, American, Spanish, Japanese, Contemporary
+- Spanish, Pre-colonial, Japanese, American, Contemporary
+- Pre-colonial, Spanish, Japanese, American, Contemporary
+
+Q: Where was Homo luzonensis found?
+* Callao Cave, Cagayan
+- Tabon Cave, Palawan
+- Angono, Rizal
+- Butuan, Agusan del Norte
+
+Q: Where was Tabon Man found?
+* Tabon Cave, Quezon, Palawan
+- Callao Cave, Peñablanca, Cagayan
+- Lumban, Laguna
+- Simunul, Tawi-Tawi
+
+Q: Which is older?
+* Homo luzonensis
+- Tabon Man
+- The Manunggul Jar
+- The Laguna Copperplate Inscription
+> Homo luzonensis is about 67,000 years old; Tabon Man about 47,000.
+
+Q: What is the oldest known work of art in the Philippines?
+* Angono-Binangonan Petroglyphs
+- Manunggul Jar
+- Golden Tara
+- Bulul
+
+Q: Who discovered the Angono-Binangonan Petroglyphs in 1965?
+* Carlos "Botong" Francisco
+- Juan Luna
+- Bilay Campos
+- William Henry Scott
+
+Q: What is a Bulul?
+* A wooden figure from the Cordillera representing a rice god
+- A burial jar from Palawan
+- A gold figure from Agusan
+- A wooden boat from Butuan
+
+Q: What is Baybayin?
+* The pre-colonial form of writing
+- A pre-colonial boat
+- A rice god of the Cordillera
+- A burial jar
+
+Q: When and where was the Laguna Copperplate Inscription found?
+* 1989, in Lumban, Laguna
+- 1917, in Agusan
+- 1965, in Angono, Rizal
+- The 1970s, in Butuan
+
+Q: Why is the Laguna Copperplate Inscription important?
+* It is the oldest known written document in the Philippines
+- It is the oldest known work of art in the Philippines
+- It is the first book printed in Baybayin
+- It is the oldest human fossil in the Philippines
+
+Q: Who found the Golden Tara in 1917?
+* Bilay Campos, a Manobo woman
+- Carlos "Botong" Francisco
+- A laborer in Lumban, Laguna
+- Sheikh Karim ul-Makhdum
+
+Q: What does the Manunggul Jar show about early Filipinos?
+* Belief in the afterlife
+- Knowledge of writing
+- Hindu-Buddhist influence
+- Worship of a rice god
+> It is a secondary burial jar; its lid shows two figures in a boat of the dead.
+
+Q: Which of these is a fossil, not an artifact?
+* Tabon Man's skullcap
+- The Manunggul Jar
+- The Bulul
+- The Laguna Copperplate Inscription
+> A fossil is the remains of a once-living thing. An artifact is made by humans.
+
+Q: What is an artifact?
+* An object made or changed by humans
+- The preserved remains of a once-living thing
+- A story passed down by word of mouth
+- A book written long after the event
+
+Q: Filipinos belong to which group of peoples who spread by sea from Taiwan?
+* Austronesian
+- Polynesian only
+- Indo-European
+- Mongol
+
+Q: What is the Visayan equivalent of the aliping namamahay?
+* Uripon
+- Timawa
+- Maharlika
+- Aliping saguiguilid
+
+Q: Which class lived in the master's house and was the lowest in pre-colonial society?
+* Aliping saguiguilid
+- Aliping namamahay
+- Timawa
+- Maharlika
+> Saguiguilid = sa gilid. Namamahay = may bahay.
+
+Q: Who were the Maharlika?
+* Tagalog warrior nobles
+- Visayan servants
+- Shamans who healed the sick
+- Muslim missionaries
+
+Q: What is animism?
+* The belief that nature and objects have spirits
+- The worship of only one god
+- The belief that history repeats itself
+- The belief that leadership stays in one family
+
+Q: Who is the Tagalog supreme deity?
+* Bathala
+- Kaptan
+- Amanikable
+- Lakapati
+
+Q: Who is the Visayan sky god?
+* Kaptan
+- Bathala
+- Amanikable
+- Lakapati
+
+Q: What were the babaylan and katalonan?
+* Shamans who performed rituals, healing, and communication with spirits
+- Warrior nobles who fought for the datu
+- Rulers of the barangay
+- Traders from Borneo
+
+Q: Which Indigenous People are from Mindanao?
+* Lumad
+- Igorot
+- Aeta
+- Ati
+
+Q: The Ati are an Indigenous People of which island group?
+* Visayas
+- Luzon
+- Mindanao
+- Sulu
+
+Q: What does "Islam" mean?
+* Submission to the will of God
+- The path of the Prophet
+- The people of the book
+- Peace among nations
+
+Q: Who was the first of the four Rightly Guided Caliphs?
+* Abu Bakr
+- Umar
+- Uthman
+- Ali
+
+Q: Which group believes leadership should stay in the Prophet's family, starting with Ali?
+* Shia
+- Sunni
+- Caliphs
+- Lumad
+
+Q: Where is the oldest mosque in the Philippines?
+* Simunul, Tawi-Tawi
+- Jolo, Sulu
+- Cotabato
+- Manila
+> Built by Sheikh Karim ul-Makhdum in 1380.
+
+Q: Who was the first Sultan of Sulu?
+* Sharif ul-Hashim
+- Rajah Baguinda
+- Sharif Kabungsuan
+- Sheikh Karim ul-Makhdum
+
+Q: Who founded the Sultanate of Maguindanao?
+* Sharif Kabungsuan
+- Sharif ul-Hashim
+- Rajah Baguinda
+- Rajah Sulaiman
+
+Q: Who was Rajah Baguinda?
+* A missionary leader from Sumatra who strengthened Islam in Sulu
+- The first Sultan of Sulu
+- The founder of the Sultanate of Maguindanao
+- The builder of the oldest mosque in the Philippines
+
+Q: Which of these were early Muslim rulers of Manila and Tondo?
+* Rajah Sulaiman, Rajah Matanda, and Lakan Dula
+- Rajah Humabon, Rajah Kolambu, and Lapu-Lapu
+- Rajah Tupas, Rajah Sikatuna, and Datu Puti
+- Sharif ul-Hashim, Sharif Kabungsuan, and Rajah Baguinda
+
+Q: How did Islam first arrive in the Philippines in the 13th century?
+* Through trade
+- Through conquest by Spain
+- Through the Galleon Trade
+- Through the Katipunan
+
+Q: Which Pillar of Islam is fasting during Ramadan?
+* Sawm
+- Salah
+- Zakah
+- Hajj
+
+Q: Which Pillar of Islam is almsgiving?
+* Zakah
+- Shahadah
+- Sawm
+- Hajj
+
+Q: Which Pillar of Islam is the declaration of faith?
+* Shahadah
+- Salah
+- Zakah
+- Sawm
+
+Q: What is the Hajj?
+* The pilgrimage to Mecca
+- Prayer five times a day
+- Fasting during Ramadan
+- Giving to the poor
+
+Q: The Code of Kalantiaw is a:
+* Hoax
+- Primary source
+- Pre-colonial law
+- Spanish decree
+> It was created by Jose E. Marco in 1913 and exposed by William Henry Scott.
+
+Q: The story of Datu Puti and the 10 Bornean Datus is best described as a:
+* Legend
+- Primary source
+- Proven historical fact
+- Spanish account
+
+Q: Which treaty drew the Line of Demarcation between Spain and Portugal?
+* Treaty of Tordesillas
+- Treaty of Paris
+- Treaty of Zaragoza
+- Treaty of Cebu
+
+Q: What are the "3 Gs" of the Age of Exploration?
+* God, Gold, Glory
+- Guns, Gold, Galleons
+- God, Government, Growth
+- Gold, Glory, Geography
+
+Q: Who was Ferdinand Magellan?
+* A Portuguese navigator who sailed under the flag of Spain
+- A Spanish friar and navigator
+- An Italian chronicler
+- The first Governor-General of the Philippines
+
+Q: Which of Magellan's ships completed the circumnavigation?
+* Victoria
+- Trinidad
+- Concepcion
+- San Antonio
+
+Q: Which ship was burned in the Philippines?
+* Concepcion
+- Santiago
+- Victoria
+- Trinidad
+
+Q: What happened to the Santiago?
+* It was wrecked in Argentina
+- It was captured by the Portuguese
+- It sailed back home to Spain
+- It was burned in the Philippines
+
+Q: What happened to the Trinidad?
+* It was captured by the Portuguese in 1522
+- It was wrecked in Argentina
+- It completed the circumnavigation
+- It was burned in the Philippines
+
+Q: Where did Magellan's expedition first land in the Philippines?
+* Homonhon Island, Eastern Samar
+- Limasawa, Leyte
+- Cebu
+- Mactan
+
+Q: Where and when was the first Catholic Mass in the Philippines held?
+* Limasawa, on March 31, 1521
+- Cebu, on April 27, 1521
+- Homonhon, on March 16, 1521
+- Mactan, on April 14, 1521
+> It was Easter Sunday.
+
+Q: Which ruler welcomed Magellan in Limasawa?
+* Rajah Kolambu
+- Rajah Humabon
+- Rajah Tupas
+- Rajah Sikatuna
+
+Q: Who were baptized in Cebu together with 800 natives?
+* Rajah Humabon and Hara Amihan
+- Rajah Kolambu and Rajah Siagu
+- Lapu-Lapu and Zula
+- Rajah Tupas and Rajah Sikatuna
+
+Q: What is the correct order of places Magellan reached in the Philippines?
+* Homonhon, Limasawa, Cebu, Mactan
+- Cebu, Mactan, Homonhon, Limasawa
+- Limasawa, Homonhon, Mactan, Cebu
+- Mactan, Cebu, Limasawa, Homonhon
+
+Q: Who was the datu of Mactan who refused to submit to Magellan?
+* Lapu-Lapu
+- Rajah Humabon
+- Rajah Kolambu
+- Rajah Tupas
+
+Q: When was the Battle of Mactan?
+* April 27, 1521
+- March 16, 1521
+- March 31, 1521
+- June 3, 1571
+
+Q: Who was the chronicler of Magellan's voyage?
+* Antonio Pigafetta
+- Juan Sebastian Elcano
+- Andrés de Urdaneta
+- Enrique of Malacca
+
+Q: Pigafetta's account of the voyage is what kind of source?
+* Primary source
+- Secondary source
+- Legend
+- Hoax
+
+Q: Who was Enrique?
+* Magellan's Malay slave and interpreter
+- The captain of the Victoria
+- The chronicler of the voyage
+- The ruler of Limasawa
+
+Q: Who completed the first circumnavigation after Magellan died?
+* Juan Sebastian Elcano
+- Antonio Pigafetta
+- Miguel López de Legazpi
+- Ruy López de Villalobos
+
+Q: Why were the Moluccas important?
+* They were the Spice Islands, the goal of the expedition
+- They were the first Spanish settlement in the Philippines
+- They were where the first Mass was held
+- They were where Magellan was born
+
+Q: Who named the islands "Las Islas Filipinas"?
+* Ruy López de Villalobos
+- Ferdinand Magellan
+- Miguel López de Legazpi
+- García Jofre de Loaísa
+
+Q: "Las Islas Filipinas" was named in honor of whom?
+* Prince Philip of Spain, later King Philip II
+- Queen Isabel of Spain
+- King Charles I of Spain
+- Ferdinand Magellan
+
+Q: Which expedition established the first permanent Spanish settlement in the Philippines?
+* Legazpi's expedition, in Cebu in 1565
+- Magellan's expedition, in Cebu in 1521
+- Villalobos's expedition, in Mindanao in 1543
+- Loaísa's expedition, in 1525
+
+Q: What was the outcome of the Loaísa expedition?
+* It failed to establish a settlement
+- It founded Manila
+- It named the islands Filipinas
+- It completed the first circumnavigation
+
+Q: Who was Andrés de Urdaneta?
+* An Augustinian friar and navigator who sailed with Legazpi
+- The first Governor-General of the Philippines
+- The chronicler of Magellan's voyage
+- The conqueror of Manila
+
+Q: On the slide, Legazpi stands for "Politics and Military." What does Urdaneta stand for?
+* Religion and Navigation
+- Trade and Tribute
+- Law and Order
+- Art and Culture
+
+Q: The Blood Compact (Sandugo) was between Legazpi and whom?
+* Rajah Sikatuna
+- Rajah Tupas
+- Rajah Humabon
+- Rajah Sulaiman
+
+Q: Where did the Blood Compact take place?
+* Bohol
+- Cebu
+- Manila
+- Limasawa
+
+Q: Who painted the Blood Compact?
+* Juan Luna
+- Carlos "Botong" Francisco
+- Fernando Amorsolo
+- Antonio Pigafetta
+
+Q: Which ruler of Cebu resisted Legazpi and then made peace on June 4, 1565?
+* Rajah Tupas
+- Rajah Humabon
+- Rajah Sikatuna
+- Lapu-Lapu
+
+Q: What was Fort San Pedro?
+* The first military barracks and seat of government under Spanish rule, in Cebu
+- The prison in Intramuros where Rizal was held
+- The arsenal in Cavite where the 1872 mutiny happened
+- The walled city of Manila
+
+Q: Which battle led to the Spanish conquest of Manila in 1571?
+* Battle of Bangkusay
+- Battle of Mactan
+- Battle of Alitao
+- Cavite Mutiny
+
+Q: Who conquered Manila for Spain in 1571?
+* Martin de Goiti and Juan de Salcedo
+- Magellan and Elcano
+- Villalobos and Loaísa
+- De la Torre and Izquierdo
+
+Q: Which system made natives pay tribute to a Spaniard who was granted a territory?
+* Encomienda
+- Reduccion
+- Polo y Servicio
+- Galleon Trade
+
+Q: Which system forcibly resettled scattered barangays into towns around a plaza?
+* Reduccion
+- Encomienda
+- Polo y Servicio
+- Bandala
+
+Q: Which system required Filipino males aged 16 to 60 to give 40 days of forced labor a year?
+* Polo y Servicio
+- Encomienda
+- Reduccion
+- Secularization
+
+Q: According to the slides, what happened to natives who chose "flight" and went to the mountains?
+* They became the remaining Indigenous Peoples of today
+- They became the encomenderos
+- They became secular priests
+- They were sent to Mexico
+
+Q: What does GomBurZa stand for?
+* Gomez, Burgos, Zamora
+- Gomez, Buencamino, Zaldua
+- Goiti, Burgos, Zamora
+- Gomez, Burgos, Zaldua
+
+Q: What was Hermano Pule's real name?
+* Apolinario de la Cruz
+- Apolinario Mabini
+- Pedro Pelaez
+- Francisco Zaldua
+
+Q: What did Hermano Pule found?
+* Cofradía de San José
+- Committee of Reformers
+- La Liga Filipina
+- Katipunan
+
+Q: Which fort did the Tayabas Regiment attack in January 1843, shouting "independence"?
+* Fort Santiago
+- Fort San Pedro
+- Fort San Felipe
+- Fort Pilar
+
+Q: What 1868 event in Spain led to a liberal governor-general being sent to the Philippines?
+* The Glorious Revolution
+- The French Revolution
+- The opening of the Suez Canal
+- The Mexican War of Independence
+
+Q: What opened in 1869 and sped up the entry of liberal ideas into the Philippines?
+* The Suez Canal
+- The Galleon Trade
+- The Manila Cathedral
+- The University of Santo Tomas
+
+Q: Who was the liberal governor-general from 1869 to 1871?
+* Carlos María de la Torre
+- Rafael de Izquierdo
+- Santiago de Vera
+- Miguel López de Legazpi
+
+Q: Which governor-general ruled with an "iron hand" and removed the privileges of the Cavite arsenal workers?
+* Rafael de Izquierdo
+- Carlos María de la Torre
+- Santiago de Vera
+- Martin de Goiti
+
+Q: Who called the power of the friars "monastic supremacy"?
+* Marcelo H. del Pilar
+- Jose Rizal
+- Emilio Jacinto
+- Teodoro Agoncillo
+
+Q: Why was Cavite called "La Madre de los Ladrones"?
+* Friar land grabbing pushed many displaced people into banditry
+- It was where pirates from Sulu settled
+- Its arsenal workers stole from the navy
+- It was the home province of Gomburza
+
+Q: What is a regular priest?
+* A friar who belongs to a religious order and follows its rule
+- A priest under a bishop or diocese
+- A priest who has left the Church
+- A priest who teaches at a university
+
+Q: What is a secular priest?
+* A priest under a bishop or diocese, not a member of an order
+- A friar bound by the rules of an order
+- A Jesuit with a fourth vow
+- A priest born in Spain
+
+Q: What is secularization?
+* Transferring the parishes from the regular friars to the secular priests
+- Removing religion from the schools
+- Sending Filipino priests to Spain
+- Expelling the Jesuits from the Philippines
+
+Q: What is the fourth vow of the Jesuits?
+* Obedience to the Pope
+- Poverty
+- Celibacy
+- Obedience to the head of the order
+
+Q: In what year were the Jesuits expelled from the Philippines?
+* 1768
+- 1859
+- 1841
+- 1872
+> They returned in 1859, which set off the domino effect that cost the seculars their parishes.
+
+Q: Who was the mentor of Jose Burgos?
+* Fr. Pedro Pelaez
+- Fr. Mariano Gomez
+- Fr. Miguel Hidalgo
+- Fr. John Schumacher
+
+Q: How did Fr. Pedro Pelaez die?
+* He was crushed when the Manila Cathedral fell in the 1863 earthquake
+- He was executed by garrote in 1872
+- He was beheaded in Tayabas in 1841
+- He was exiled to Guam
+
+Q: According to the documentary, what was the main reason secularization was blocked?
+* Racism: the belief in "purity of blood"
+- There were too many Filipino priests
+- The Pope forbade it
+- The secular priests refused the parishes
+
+Q: Which priest led the 1810 revolt in Mexico, making Spain fear Filipino priests?
+* Fr. Miguel Hidalgo
+- Fr. Pedro Pelaez
+- Fr. Jose Burgos
+- Fr. Andrés de Urdaneta
+
+Q: Who was the oldest of the three priests?
+* Mariano Gomez
+- Jose Burgos
+- Jacinto Zamora
+- Pedro Pelaez
+> Gomez was 72. Zamora was 36 and Burgos was 35.
+
+Q: Where was Mariano Gomez parish priest for 48 years?
+* Bacoor, Cavite
+- Marikina
+- Vigan, Ilocos Sur
+- Pandacan, Manila
+
+Q: Which priest had seven degrees, two of them doctorates?
+* Jose Burgos
+- Mariano Gomez
+- Jacinto Zamora
+- Pedro Pelaez
+
+Q: Why was Jacinto Zamora arrested?
+* A letter telling a friend to bring "bullet and gunpowder," which was gambling code for money
+- He led the soldiers at Fort San Felipe
+- He paid the mutineers
+- He wrote leaflets for the UST students
+
+Q: Who was Jose Rizal's older brother and a student of Burgos?
+* Paciano Rizal
+- Felipe Buencamino
+- Maximo Paterno
+- Ambrosio Rianzares Bautista
+
+Q: Who was Felipe Buencamino in the Gomburza story?
+* One of the student activists of the 1869 UST demonstration
+- The sergeant who led the Cavite Mutiny
+- The witness who named Burgos
+- The Archbishop of Manila
+
+Q: When did the Cavite Mutiny break out?
+* January 20, 1872
+- February 17, 1872
+- January 19, 1843
+- June 3, 1863
+
+Q: Where did the Cavite Mutiny happen?
+* Fort San Felipe, Cavite
+- Fort Santiago, Manila
+- Fort San Pedro, Cebu
+- Bagumbayan
+
+Q: Who led the Cavite Mutiny?
+* Sgt. La Madrid
+- Francisco Zaldua
+- Luis Parang
+- Paciano Rizal
+
+Q: Who was the key witness who named Burgos?
+* Francisco Zaldua
+- Sgt. La Madrid
+- Maximo Inocencio
+- Edmund Plauchut
+
+Q: What happened to Francisco Zaldua?
+* He was executed too
+- He was set free
+- He was exiled to Guam
+- He became a priest
+
+Q: What was Pardo de Tavera's view of the Cavite Mutiny?
+* It was only a localized event in Cavite
+- It was a revolution led by the three priests
+- It never happened
+- It was started by the Jesuits
+
+Q: According to Fr. Schumacher's study, what happened to the real masterminds of the mutiny?
+* They were only exiled to the Marianas (Guam)
+- They were executed with Gomburza
+- They escaped to Hong Kong
+- They were never identified
+
+Q: What did Archbishop Meliton Martinez do when asked to strip the three priests of their priesthood?
+* He refused and tolled the bells for them
+- He agreed and removed their habits
+- He testified against them
+- He fled to Spain
+
+Q: When were Gomburza executed?
+* February 17, 1872
+- January 20, 1872
+- December 30, 1896
+- June 12, 1898
+
+Q: How were Gomburza executed?
+* By garrote
+- By firing squad
+- By hanging
+- By beheading
+
+Q: Where were Gomburza executed?
+* Bagumbayan (now Luneta)
+- Fort Santiago
+- Fort San Felipe
+- Paco Cemetery
+
+Q: Who was executed last?
+* Jose Burgos
+- Mariano Gomez
+- Jacinto Zamora
+- Francisco Zaldua
+> The order was Zaldua, Gomez, Zamora, Burgos.
+
+Q: Where were the three priests buried?
+* Paco Cemetery
+- Manila Cathedral
+- Bacoor Church
+- Bagumbayan
+
+Q: Which novel did Rizal dedicate to Gomburza?
+* El Filibusterismo
+- Noli Me Tangere
+- Florante at Laura
+- Mi Último Adiós
+
+Q: What did Agoncillo mean when he said the Philippines had no history before 1872?
+* There was no Filipino national consciousness before then
+- Nothing important happened before 1872
+- No written records exist before 1872
+- The Spaniards destroyed all earlier documents
+
+Q: "Gomburza" was used as a password by which group?
+* The Katipunan
+- The Propaganda Movement
+- The Cofradía de San José
+- The Committee of Reformers
+```

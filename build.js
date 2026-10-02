@@ -5,11 +5,48 @@ const path = require('path');
 const { marked } = require('marked');
 const hljs = require('highlight.js');
 
+// Parse a ```quiz block into [{ q, c, w, e }]. Throws naming the offending question.
+function parseQuiz(text) {
+  const questions = text.split(/\r?\n[ \t]*\r?\n/).map((b) => b.trim()).filter(Boolean).map((block, n) => {
+    const item = { q: '', c: [], w: [], e: '' };
+    const lines = block.split(/\r?\n/).map((l) => l.trim());
+    const fail = (why) => {
+      throw new Error(`quiz question ${n + 1} ("${(lines[0] || '').slice(0, 70)}"): ${why}`);
+    };
+    for (const line of lines) {
+      if (line.startsWith('Q: ') && !item.q) item.q = line.slice(3).trim();
+      else if (line.startsWith('* ')) item.c.push(line.slice(2).trim());
+      else if (line.startsWith('- ')) item.w.push(line.slice(2).trim());
+      else if (line.startsWith('> ') && !item.e) item.e = line.slice(2).trim();
+      else fail(`unrecognised or repeated line "${line.slice(0, 50)}"`);
+    }
+    if (!item.q) fail('missing "Q:" line');
+    if (item.c.length !== 1) fail(`needs exactly 1 correct "* " answer, found ${item.c.length}`);
+    if (item.w.length !== 3) fail(`needs exactly 3 wrong "- " answers, found ${item.w.length}`);
+    if (item.c.concat(item.w).some((a) => !a)) fail('has an empty answer');
+    return { q: item.q, c: item.c[0], w: item.w, e: item.e };
+  });
+  if (!questions.length) throw new Error('quiz block contains no questions');
+  return questions;
+}
+
 marked.use({
   gfm: true,
   breaks: true,
   renderer: {
     code({ text, lang }) {
+      if (lang === 'quiz') {
+        let questions;
+        try {
+          questions = parseQuiz(text);
+        } catch (err) {
+          console.error(`QUIZ ERROR — build aborted: ${err.message}`);
+          process.exit(1);
+        }
+        // "<" escaped so "</script>" or "<!--" in a question cannot break out of the tag.
+        const json = JSON.stringify(questions).replace(/</g, '\\u003c');
+        return `<div class="quiz" data-quiz><script type="application/json" class="quiz-data">${json}</script></div>\n`;
+      }
       const language = lang && hljs.getLanguage(lang) ? lang : null;
       const highlighted = language
         ? hljs.highlight(text, { language }).value
@@ -377,7 +414,7 @@ function buildSubjectCollection(collection) {
       });
       fs.writeFileSync(path.join(outNotes, `${slug}.html`), page, 'utf8');
 
-      const plainText = noteHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+      const plainText = noteHtml.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
       searchIndex.push({ slug, title: `${s.title} (${term.label})`, category: semLabel(s), content: plainText.slice(0, 500) });
       pages++;
     }
@@ -506,7 +543,7 @@ for (const collection of collections) {
       noteHtml = '<p class="note-empty">Nothing written here yet.</p>';
     }
 
-    const plainText = noteHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    const plainText = noteHtml.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
     const slug = slugify(note.file);
     previewMap[slug] = plainText.slice(0, 100);
 

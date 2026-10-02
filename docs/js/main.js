@@ -127,7 +127,9 @@
       return;
     }
 
-    if (pageType === 'note' && !inInput) {
+    const inQuiz = document.activeElement && document.activeElement.closest('.quiz');
+
+    if (pageType === 'note' && !inInput && !inQuiz) {
       if (e.key === 'ArrowLeft') {
         const prev = document.querySelector('.note-nav-prev');
         if (prev) prev.click();
@@ -466,6 +468,8 @@
       }, { threshold: 0 }).observe(noteTitle);
     }
 
+    const quizzes = Array.from(document.querySelectorAll('.quiz'));
+
     // In-page keyword search
     if (searchInput && noteContent) {
       const navPanel = document.getElementById('searchNavPanel');
@@ -477,14 +481,20 @@
       let matches = [];
       let curMatch = -1;
 
-      function clearHighlights() {
+      // Restoring the markup would wipe a running quiz, so swap the live ones back in.
+      function resetContent() {
         noteContent.innerHTML = original;
+        noteContent.querySelectorAll('.quiz').forEach((fresh, i) => fresh.replaceWith(quizzes[i]));
+      }
+
+      function clearHighlights() {
+        resetContent();
         matches = [];
         curMatch = -1;
       }
 
       function highlightText(query) {
-        noteContent.innerHTML = original;
+        resetContent();
         matches = [];
         curMatch = -1;
         if (!query) return;
@@ -495,7 +505,7 @@
         const nodes = [];
         let node;
         while ((node = walker.nextNode())) {
-          if (node.textContent.toLowerCase().includes(lower)) nodes.push(node);
+          if (node.textContent.toLowerCase().includes(lower) && !node.parentNode.closest('.quiz')) nodes.push(node);
         }
 
         // replace in reverse to preserve positions
@@ -558,5 +568,133 @@
       if (prevBtn) prevBtn.addEventListener('click', () => goToMatch(curMatch - 1));
       if (nextBtn) nextBtn.addEventListener('click', () => goToMatch(curMatch + 1));
     }
+
+    // Quiz (runs after the search block above has captured the untouched markup)
+    function shuffle(list) {
+      const a = list.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function make(tag, cls, text) {
+      const node = document.createElement(tag);
+      node.className = cls;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    }
+
+    function initQuiz(root) {
+      const questions = JSON.parse(root.querySelector('.quiz-data').textContent);
+      const body = make('div', 'quiz-body');
+      const live = make('div', 'quiz-live');
+      const actions = make('div', 'quiz-actions');
+      live.setAttribute('aria-live', 'polite');
+      root.append(body, live, actions);
+
+      let order = [];
+      let pos = 0;
+      let right = 0;
+      let answered = false;
+
+      function button(label, cls, onClick) {
+        const b = make('button', 'quiz-btn ' + cls, label);
+        b.type = 'button';
+        b.addEventListener('click', onClick);
+        return b;
+      }
+
+      function intro() {
+        body.replaceChildren(make('p', 'quiz-intro', questions.length + ' questions, asked in random order.'));
+        actions.replaceChildren(button('Start quiz', 'quiz-btn--primary', start));
+      }
+
+      function start() {
+        order = shuffle(questions);
+        pos = 0;
+        right = 0;
+        show();
+      }
+
+      function finish() {
+        const count = pos + 1;
+        body.replaceChildren();
+        live.replaceChildren(
+          make('p', 'quiz-result-title', 'Quiz finished'),
+          make('p', 'quiz-score', 'Score: ' + right + ' / ' + count)
+        );
+        const again = button('Start again', 'quiz-btn--primary', start);
+        actions.replaceChildren(again);
+        again.focus();
+      }
+
+      function show() {
+        const q = order[pos];
+        answered = false;
+
+        const status = make('p', 'quiz-status');
+        const setStatus = () => { status.textContent = 'Question ' + (pos + 1) + ' of ' + order.length + ' · Correct: ' + right; };
+        setStatus();
+
+        const text = make('p', 'quiz-question', q.q);
+        text.tabIndex = -1;
+
+        const group = make('div', 'quiz-choices');
+        group.setAttribute('role', 'group');
+        group.setAttribute('aria-label', 'Answer choices');
+
+        const choices = shuffle([{ t: q.c, ok: true }].concat(q.w.map((t) => ({ t, ok: false }))));
+        const buttons = choices.map((choice) => {
+          const b = make('button', 'quiz-choice');
+          b.type = 'button';
+          b.append(make('span', 'quiz-icon'), make('span', 'quiz-choice-text', choice.t), make('span', 'quiz-tag'));
+          group.appendChild(b);
+          return b;
+        });
+
+        buttons.forEach((b, i) => b.addEventListener('click', () => {
+          if (answered) return;
+          answered = true;
+          const ok = choices[i].ok;
+          if (ok) right++;
+          setStatus();
+
+          buttons.forEach((other, j) => {
+            other.setAttribute('aria-disabled', 'true');
+            other.classList.add('is-locked');
+            const mark = choices[j].ok ? 'is-correct' : other === b ? 'is-wrong' : '';
+            if (!mark) return;
+            other.classList.add(mark);
+            other.querySelector('.quiz-icon').textContent = choices[j].ok ? '✓' : '✗';
+            other.querySelector('.quiz-tag').textContent = choices[j].ok ? 'Correct answer' : 'Your answer';
+          });
+
+          const verdict = make('p', 'quiz-verdict ' + (ok ? 'is-correct' : 'is-wrong'), ok ? '✓ Correct' : '✗ Wrong');
+          live.replaceChildren(verdict);
+          if (!ok) live.appendChild(make('p', 'quiz-explain', 'Correct answer: ' + q.c));
+          if (q.e) live.appendChild(make('p', 'quiz-explain', q.e));
+
+          const last = pos === order.length - 1;
+          const next = button(last ? 'See result' : 'Next question', 'quiz-btn--primary', () => {
+            if (last) finish();
+            else { pos++; show(); }
+          });
+          actions.replaceChildren(next, button('Stop', '', finish));
+          next.focus({ preventScroll: true });
+          actions.scrollIntoView({ block: 'nearest' });
+        }));
+
+        body.replaceChildren(status, text, group);
+        live.replaceChildren();
+        actions.replaceChildren();
+        text.focus();
+      }
+
+      intro();
+    }
+
+    quizzes.forEach(initQuiz);
   }
 })();
