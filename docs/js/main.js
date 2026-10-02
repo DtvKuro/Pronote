@@ -105,6 +105,27 @@
   // Keyboard shortcuts
   const searchInput = document.getElementById('searchInput');
 
+  // Phones: the search icon opens the same input as a row under the nav
+  const nav = document.querySelector('.nav');
+  const searchToggle = document.getElementById('searchToggle');
+  function setSearchOpen(open) {
+    if (!nav || !searchToggle) return;
+    nav.classList.toggle('nav--search-open', open);
+    searchToggle.setAttribute('aria-expanded', String(open));
+  }
+  if (searchToggle && searchInput) {
+    searchToggle.addEventListener('click', () => {
+      setSearchOpen(true);
+      searchInput.focus();
+    });
+    document.getElementById('searchClose').addEventListener('click', () => {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+      setSearchOpen(false);
+      searchToggle.focus();
+    });
+  }
+
   document.addEventListener('keydown', (e) => {
     const inInput = document.activeElement &&
       (document.activeElement.tagName === 'INPUT' ||
@@ -113,6 +134,7 @@
 
     if (e.key === 'Escape') {
       closeMenu();
+      setSearchOpen(false);
       if (searchInput) {
         searchInput.value = '';
         searchInput.dispatchEvent(new Event('input'));
@@ -319,7 +341,15 @@
       const headings = noteContent.querySelectorAll('h2, h3');
 
       if (headings.length > 0) {
-        headings.forEach(h => { if (!h.id) h.id = slugify(h.textContent); });
+        // Ids must be unique: the same heading text can repeat within a note
+        const seenIds = new Set();
+        headings.forEach(h => {
+          const base = h.id || slugify(h.textContent) || 'section';
+          let id = base;
+          for (let n = 2; seenIds.has(id); n++) id = base + '-' + n;
+          seenIds.add(id);
+          h.id = id;
+        });
 
         const toc = document.createElement('aside');
         toc.className = 'toc';
@@ -360,10 +390,12 @@
               curH2.appendChild(toggle);
               curH2.appendChild(curSub);
 
+              // Capture this section: curH2 moves on by the time the arrow is clicked
+              const owner = curH2;
               toggle.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                curH2.classList.toggle('toc-item--expanded');
+                owner.classList.toggle('toc-item--expanded');
               });
             }
             li.appendChild(a);
@@ -379,6 +411,31 @@
 
         tocTitle.addEventListener('click', () => toc.classList.toggle('toc--expanded'));
 
+        // Below 1024px the list is a sheet opened from a floating button
+        const tocFab = document.createElement('button');
+        tocFab.className = 'toc-fab';
+        tocFab.setAttribute('aria-label', 'On this page');
+        tocFab.setAttribute('aria-expanded', 'false');
+        tocFab.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>';
+        document.body.appendChild(tocFab);
+        const setTocOpen = (open) => {
+          toc.classList.toggle('toc--open', open);
+          tocFab.setAttribute('aria-expanded', String(open));
+          if (!open) return;
+          // Open with every section collapsed except the one being read
+          toc.querySelectorAll('.toc-item--expanded').forEach(li => li.classList.remove('toc-item--expanded'));
+          const current = toc.querySelector('.toc-link--active');
+          if (!current) return;
+          const section = current.closest('.toc-item--h2');
+          if (section) section.classList.add('toc-item--expanded');
+          current.scrollIntoView({ block: 'center' });
+        };
+        tocFab.addEventListener('click', () => setTocOpen(!toc.classList.contains('toc--open')));
+        document.addEventListener('click', (e) => {
+          if (!toc.contains(e.target) && !tocFab.contains(e.target)) setTocOpen(false);
+        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setTocOpen(false); });
+
         const tocLinks = toc.querySelectorAll('.toc-link');
         let clickedId = null;
 
@@ -386,6 +443,7 @@
         tocLinks.forEach(link => {
           link.addEventListener('click', (e) => {
             e.preventDefault();
+            setTocOpen(false);
             const id = link.getAttribute('href').slice(1);
             const target = document.getElementById(id);
             if (!target) return;
@@ -423,11 +481,13 @@
           let closest = null;
           let minDist = Infinity;
 
-          const firstRect = headings[0].getBoundingClientRect();
+          // Search rebuilds the note markup, so look the headings up fresh
+          const live = noteContent.querySelectorAll('h2, h3');
+          const firstRect = live[0].getBoundingClientRect();
           if (firstRect.top >= 0) {
-            closest = headings[0];
+            closest = live[0];
           } else {
-            headings.forEach(h => {
+            live.forEach(h => {
               const d = Math.abs(h.getBoundingClientRect().top - center);
               if (d < minDist) { minDist = d; closest = h; }
             });
@@ -543,7 +603,15 @@
         }
         curMatch = (index + matches.length) % matches.length;
         matches[curMatch].classList.add('search-highlight--current');
-        matches[curMatch].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (window.matchMedia('(max-width: 767px)').matches) {
+          // Keep the match clear of the nav, the open search row and the on-screen keyboard
+          const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+          const row = nav.querySelector('.nav-search').getBoundingClientRect();
+          const clear = Math.max(nav.getBoundingClientRect().bottom, row.bottom) + 24;
+          window.scrollTo({ top: matches[curMatch].getBoundingClientRect().top + window.scrollY - Math.max(vh * 0.45, clear), behavior: 'smooth' });
+        } else {
+          matches[curMatch].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
         if (matchInfo) matchInfo.textContent = (curMatch + 1) + ' / ' + matches.length;
       }
 

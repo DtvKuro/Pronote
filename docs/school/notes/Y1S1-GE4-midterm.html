@@ -18,12 +18,14 @@
       <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
       <div class="nav-search" id="navSearch">
         <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <button class="nav-search-close" id="searchClose" aria-label="Close search">&times;</button>
         <div class="search-nav-panel" id="searchNavPanel" style="display:none">
           <span id="searchMatchInfo"></span>
           <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
           <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
         </div>
       </div>
+      <button class="nav-search-toggle" id="searchToggle" aria-label="Search" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
       <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
         <span>CySQL</span>
@@ -42,6 +44,7 @@
       <button class="notes-menu-close" aria-label="Close menu">&times;</button>
     </div>
     <div class="notes-menu-body">
+      <a href="../../cysql/index.html" class="notes-menu-cysql" target="_blank">CySQL Playground</a>
       <div class="notes-menu-category">
   <h4 class="notes-menu-category-title">1st Year · 1st Sem</h4>
   <ul class="notes-menu-list">
@@ -86,7 +89,7 @@
   </div>
   <p class="note-eyebrow"><span class="note-code">GE4</span><span class="note-units">1st Year · 1st Sem</span></p>
   <h1 class="note-title">Mathematics in the Modern World</h1>
-  <p class="note-meta">Last updated: September 27, 2026</p>
+  <p class="note-meta">Last updated: October 2, 2026</p>
   <nav class="term-tabs" aria-label="Exam period"><a href="Y1S1-GE4-midterm.html" class="term-tab active" aria-current="page">Midterm</a><span class="term-tab term-tab--empty" title="Not up yet">Finals</span></nav>
   <div class="note-content">
     <p><strong>Covers:</strong> Unit 1 (Nature of Mathematics) · Unit 2 (Logic) · Unit 3 (Problem Solving &amp; Reasoning) · Unit 4 (Mathematical Systems)</p>
@@ -94,8 +97,8 @@
 <p><strong>How to use this:</strong> Every math topic has 3 parts: <strong>① the idea in plain words → ② the rule/formula → ③ a worked example, step by step.</strong> If a practice problem in the slides had no answer, I solved it for you and marked it <strong>✍️ (my solution)</strong>. Check those with your teacher if something looks different.</p>
 </blockquote>
 <hr>
-<h1>UNIT 1 — THE NATURE OF MATHEMATICS</h1>
-<h2>1.1 Introduction</h2>
+<h2>UNIT 1 — THE NATURE OF MATHEMATICS</h2>
+<h3>1.1 Introduction</h3>
 <ul>
 <li>Math is <strong>everywhere</strong>. It <strong>was, is, and will always be</strong> part of daily life.</li>
 <li><strong>Everything around us involves math.</strong></li>
@@ -108,7 +111,7 @@
 <li>Express <strong>appreciation</strong> of mathematics&#39; existence in the environment.</li>
 <li>Identify <strong>patterns in numbers</strong>.</li>
 </ol>
-<h2>1.2 What is Mathematics (as defined in this course)?</h2>
+<h3>1.2 What is Mathematics (as defined in this course)?</h3>
 <table>
 <thead>
 <tr>
@@ -127,14 +130,14 @@
 <td>• What our <strong>eyes can see</strong>, <strong>ears can hear</strong>, and what we <strong>perceive</strong> in our physical environment<br>• A <strong>language</strong> in different forms: <strong>patterns, shapes, music</strong>, etc.<br>• The <strong>unbelievable patterns formed by nature and the universe</strong></td>
 </tr>
 </tbody></table>
-<h2>1.3 Where is Mathematics?</h2>
+<h3>1.3 Where is Mathematics?</h3>
 <p>The slides ask you to look around campus:</p>
 <ul>
 <li>How many <strong>steps</strong> from the New Building lobby (Annex Campus) to the Engineering building? Have you ever <strong>counted your steps</strong>?</li>
 <li>What do you notice in your <strong>physical surroundings</strong>?</li>
 <li>What about the <strong>arrangement of floor tiles, walls, doors, windows, and lights</strong>? → All of these follow <strong>patterns</strong> = math.</li>
 </ul>
-<h2>1.4 What is a Pattern?</h2>
+<h3>1.4 What is a Pattern?</h3>
 <p><strong>Emoji example:</strong> 😊😁😍😕 😊😁😍😕 😊 → the 4 faces repeat (smiling eyes → grinning → heart eyes → confused). The last one typed is 😊, so the <strong>next is 😁 (grinning face with smiling eyes)</strong>.</p>
 <blockquote>
 <p>🔑 <strong>Patterns are regular, repeated, or recurring forms or designs.</strong><br>🔑 <strong>Observing patterns helps us identify relationships and find logical connections to form generalizations.</strong></p>
@@ -144,9 +147,9 @@
 <li><strong>Regularity</strong> = the exact same thing happening in the exact same circumstances (Collins, 2018).</li>
 <li>Quote: <em>&quot;We live in a universe of patterns.&quot;</em> — <strong>Ian Stewart</strong>, <em>Nature by Numbers</em> (1995)</li>
 </ul>
-<h2>1.5 A. Patterns in Nature</h2>
+<h3>1.5 A. Patterns in Nature</h3>
 <p>The module focuses on <strong>4 patterns</strong>: <strong>Symmetry, Fractals, Spirals, Tessellations</strong>.</p>
-<h3>① Symmetry</h3>
+<h4>① Symmetry</h4>
 <ul>
 <li>You can draw an <strong>imaginary line</strong> across an object and the two parts are <strong>mirror images</strong> of each other.</li>
 <li>If it&#39;s symmetric about a line (like the dotted line down a &quot;+&quot; shape), that&#39;s <strong>line symmetry</strong> or <strong>bilateral symmetry</strong>.</li>
@@ -172,20 +175,20 @@
 <td><strong>Five-fold</strong> symmetry</td>
 </tr>
 </tbody></table>
-<h3>② Fractals</h3>
+<h4>② Fractals</h4>
 <ul>
 <li><strong>Irregular patterns made of parts that are in some way similar to the whole.</strong></li>
 <li>A geometric shape that can be split into parts, <strong>each a reduced-scale (smaller) copy of the whole</strong> (Montana State University, 2011).</li>
 <li><strong>Benoit Mandelbrot</strong> was the <strong>first to coin the term &quot;fractals.&quot;</strong></li>
 <li>Examples: <strong>lightning</strong> and <strong>tree branches</strong>. The whole extends into parts, and from a single stem it extends into more stems the same way. Also: <strong>Romanesco broccoli</strong>.</li>
 </ul>
-<h3>③ Spirals</h3>
+<h4>③ Spirals</h4>
 <ul>
 <li>A pattern that <strong>winds around a center or pole</strong> and <strong>gradually recedes from or approaches it</strong> (Merriam-Webster).</li>
 <li>A shape made of <strong>curves, each one above or wider than the one before</strong> (Cambridge Dictionary).</li>
 <li>Examples: <strong>snail&#39;s shell, cabbage</strong> (also galaxies, hurricanes, nautilus shells, sunflowers, pinecones).</li>
 </ul>
-<h3>④ Tessellations</h3>
+<h4>④ Tessellations</h4>
 <ul>
 <li><strong>Tiling</strong> that uses shapes to <strong>cover a surface with NO gaps and NO overlaps</strong>.</li>
 <li>🔑 A pattern is a tessellation <strong>if it can be repeated over and over again</strong> and has <strong>no gaps and no overlaps</strong>.</li>
@@ -218,7 +221,7 @@
 <td>Symmetry (three-fold)</td>
 </tr>
 </tbody></table>
-<h3>Extra slides: Kinds of Patterns</h3>
+<h4>Extra slides: Kinds of Patterns</h4>
 <table>
 <thead>
 <tr>
@@ -244,7 +247,7 @@
 </tr>
 </tbody></table>
 <p><strong>Nature&#39;s Geometry:</strong> Symmetry (butterfly, starfish) · Fractals (Romanesco) · Spirals (galaxy) · <strong>Spots &amp; Stripes</strong> (leopard spots, zebra stripes, cracked earth)</p>
-<h3>Math is a Lens AND an Engine</h3>
+<h4>Math is a Lens AND an Engine</h4>
 <ul>
 <li><strong>The Lens → To Describe:</strong> unlocks the patterns, shapes, and sequences found in nature.</li>
 <li><strong>The Engine → To Construct:</strong> the tool of <strong>measurement and calculation</strong> that <strong>built modern civilization</strong>.</li>
@@ -252,8 +255,8 @@
 <li><strong>From natural to engineered:</strong> nature used math as a <strong>blueprint</strong>; humans learned to use it as an <strong>engine</strong> to build the modern world.</li>
 </ul>
 <hr>
-<h2>1.6 B. Patterns in Numbers — SEQUENCES</h2>
-<h3>What is a Sequence?</h3>
+<h3>1.6 B. Patterns in Numbers — SEQUENCES</h3>
+<h4>What is a Sequence?</h4>
 <ul>
 <li><strong>An ordered list of numbers that follows a certain pattern (a specific rule).</strong></li>
 <li>Example: <strong>1, 3, 5, 7, …</strong> → each time <strong>+2</strong>.</li>
@@ -261,7 +264,7 @@
 <li><em>Note: patterns in numbers are not limited to sequences. <strong>Any rule observed in a set of numbers</strong> counts as a pattern.</em></li>
 <li>This unit covers <strong>2 types: Arithmetic and Geometric</strong>.</li>
 </ul>
-<h3>Series</h3>
+<h4>Series</h4>
 <ul>
 <li><strong>The SUM of the terms of a sequence.</strong></li>
 <li>Sequence 1, 3, 5 → Series is <strong>1 + 3 + 5 = 9</strong>.</li>
@@ -269,7 +272,7 @@
 <blockquote>
 <p>⚠️ <strong>Sequence</strong> = the list (1, 3, 5). <strong>Series</strong> = the list added up (1 + 3 + 5 = 9).</p>
 </blockquote>
-<h3>Arithmetic vs Geometric (the Venn diagram)</h3>
+<h4>Arithmetic vs Geometric (the Venn diagram)</h4>
 <table>
 <thead>
 <tr>
@@ -294,7 +297,7 @@
 <li><strong>Subtract</strong> neighbors: 2nd − 1st, 3rd − 2nd… <strong>Same answer every time? → ARITHMETIC</strong> (that answer is <strong>d</strong>).</li>
 <li><strong>Divide</strong> neighbors: 2nd ÷ 1st, 3rd ÷ 2nd… <strong>Same answer every time? → GEOMETRIC</strong> (that answer is <strong>r</strong>).</li>
 </ul>
-<h3>✅ Worked examples (from the slides)</h3>
+<h4>✅ Worked examples (from the slides)</h4>
 <table>
 <thead>
 <tr>
@@ -338,7 +341,7 @@
 <p>💡 The slide says &quot;subtract <strong>−2</strong>&quot; for 4, 2, 0… It means <strong>subtract 2</strong> (or add −2).<br>💡 Tip for fractions: 1, 3/2, 2, 5/2, 3 = 2/2, 3/2, 4/2, 5/2, 6/2 → the top just goes up by 1!</p>
 </blockquote>
 <hr>
-<h2>1.7 The Fibonacci Sequence (&quot;The Sequence of Life&quot;)</h2>
+<h3>1.7 The Fibonacci Sequence (&quot;The Sequence of Life&quot;)</h3>
 <ul>
 <li><strong>Origin:</strong> brought to <strong>Western Europe in 1202</strong> through the book <em><strong>Liber Abaci</strong></em> (by Leonardo of Pisa, <strong>Fibonacci</strong>).</li>
 <li><strong>The Rule:</strong> <strong>every number is the sum of the two numbers before it.</strong></li>
@@ -348,7 +351,7 @@
 <blockquote>
 <p>In plain words: <strong>&quot;next number = the last number + the one before it.&quot;</strong><br>1+1=2 → 1+2=3 → 2+3=5 → 3+5=8 → 5+8=13 → 8+13=21 …</p>
 </blockquote>
-<h3>The Rabbit Puzzle (Pisa, 1202)</h3>
+<h4>The Rabbit Puzzle (Pisa, 1202)</h4>
 <p><strong>Premise:</strong></p>
 <ul>
 <li>Start with exactly <strong>ONE newborn male-female pair</strong> of rabbits.</li>
@@ -397,7 +400,7 @@
 <li>Why it&#39;s Fibonacci: <strong>F<sub>n</sub> = F<sub>n−1</sub> (existing pairs) + F<sub>n−2</sub> (newborns from mature adults)</strong>.</li>
 <li><strong>Conclusion:</strong> at the <strong>start of the 13th month (exactly one year later)</strong> there are <strong>233 pairs</strong>. This shows how explosive mathematical sequences can be.</li>
 </ul>
-<h3>The Golden Spiral &amp; Golden Ratio</h3>
+<h4>The Golden Spiral &amp; Golden Ratio</h4>
 <ul>
 <li>Count the spirals on a <strong>pinecone</strong> or the petals on a <strong>flower</strong>: often <strong>5, 8, 13, 21, or 34</strong>, which are almost always <strong>Fibonacci numbers</strong>.</li>
 <li>Divide each Fibonacci number by the one before it (F<sub>n</sub> ÷ F<sub>n−1</sub>). The answer gets closer and closer to <strong>1.618…</strong> = the <strong>Golden Ratio (Φ, &quot;phi&quot;) = 1.61803…</strong></li>
@@ -434,8 +437,8 @@
 <li><strong>&quot;The Convergence&quot;:</strong> as the numbers grow toward infinity, their ratio <strong>locks onto 1.618</strong>, the blueprint of biological growth.</li>
 </ul>
 <hr>
-<h1>UNIT 2 — LOGIC</h1>
-<h2>2.1 Introduction &amp; Objectives</h2>
+<h2>UNIT 2 — LOGIC</h2>
+<h3>2.1 Introduction &amp; Objectives</h3>
 <ul>
 <li>Unit 1 = math speaks through <strong>forms and patterns in nature</strong>.</li>
 <li>Unit 2 = math also speaks through <strong>English statements</strong>. We translate them into <strong>symbols</strong>, apply <strong>rules and laws</strong>, and decide if they&#39;re <strong>true or false</strong>.</li>
@@ -447,7 +450,7 @@
 <li>Build a <strong>truth table</strong> and find its <strong>truth values</strong>.</li>
 <li>Translate an <strong>argument</strong> into <strong>logical notation</strong>.</li>
 </ol>
-<h2>2.2 The Language of Mathematics</h2>
+<h3>2.2 The Language of Mathematics</h3>
 <ul>
 <li><strong>The Language, Symbols, Syntax and Rules of Math:</strong> the system mathematicians use to <strong>communicate math ideas</strong> to each other. It&#39;s built on a natural language, using <strong>technical terms and grammar conventions special to math</strong>.</li>
 </ul>
@@ -490,7 +493,7 @@
 </ul>
 </li>
 </ul>
-<h2>2.3 What is Logic?</h2>
+<h3>2.3 What is Logic?</h3>
 <ul>
 <li><p><strong>David W. Kueker (2009):</strong> logic is <strong>the analysis of methods of reasoning</strong>. Logic cares about the <strong>FORM rather than the CONTENT</strong> of an argument. Originally, it&#39;s the <strong>study of reasoning used in mathematics</strong>.</p>
 </li>
@@ -502,7 +505,7 @@
 <p><em>(Same form, different content. Logic looks at the form.)</em></p>
 </li>
 </ul>
-<h2>2.4 Simple vs Compound Statements</h2>
+<h3>2.4 Simple vs Compound Statements</h3>
 <ul>
 <li><strong>Simple statement:</strong> does <strong>NOT contain another statement</strong> inside it.</li>
 <li><strong>Compound statement:</strong> <strong>made of 2+ statements</strong> joined by connectives (and, or, if…then, if and only if, not).</li>
@@ -538,7 +541,7 @@
 <blockquote>
 <p>⚠️ <strong>Take note: a statement does NOT always need to be TRUE.</strong> (That&#39;s why &quot;Leni Robredo is the 16th president&quot; is still a statement.)<br>*The slide lists &quot;Angelica bought a new laptop and a cellphone&quot; as simple: &quot;and&quot; joins two <strong>objects</strong>, not two complete statements.</p>
 </blockquote>
-<h2>2.5 Connectives — THE BIG TABLE (memorize!)</h2>
+<h3>2.5 Connectives — THE BIG TABLE (memorize!)</h3>
 <p>We study 4 connectives (<strong>and, or, if-then, if and only if</strong>) plus <strong>not</strong>.</p>
 <table>
 <thead>
@@ -594,11 +597,11 @@
 <li>&quot;I have read the book <strong>and</strong> I understood it.&quot; → <strong>p ∧ q</strong></li>
 <li>&quot;I will go to church <strong>or</strong> I will watch a movie.&quot; → <strong>p ∨ q</strong></li>
 </ul>
-<h2>2.6 The 5 Truth Tables (the heart of this unit)</h2>
+<h3>2.6 The 5 Truth Tables (the heart of this unit)</h3>
 <blockquote>
 <p>💡 <strong>How to set up ANY 2-variable truth table:</strong> always 4 rows, in this order:<br>p: <strong>T, T, F, F</strong><br>q: <strong>T, F, T, F</strong></p>
 </blockquote>
-<h3>① Negation (~p): <strong>flip it</strong></h3>
+<h4>① Negation (~p): <strong>flip it</strong></h4>
 <table>
 <thead>
 <tr>
@@ -624,7 +627,7 @@
 </ul>
 </li>
 </ul>
-<h3>② Conjunction (p ∧ q): <strong>TRUE only if BOTH are true</strong></h3>
+<h4>② Conjunction (p ∧ q): <strong>TRUE only if BOTH are true</strong></h4>
 <table>
 <thead>
 <tr>
@@ -654,7 +657,7 @@
 <td>F</td>
 </tr>
 </tbody></table>
-<h3>③ Disjunction (p ∨ q): <strong>FALSE only if BOTH are false</strong></h3>
+<h4>③ Disjunction (p ∨ q): <strong>FALSE only if BOTH are false</strong></h4>
 <table>
 <thead>
 <tr>
@@ -687,7 +690,7 @@
 <ul>
 <li>True when <strong>at least one</strong> is true.</li>
 </ul>
-<h3>④ Conditional (p → q): <strong>FALSE only when T → F</strong></h3>
+<h4>④ Conditional (p → q): <strong>FALSE only when T → F</strong></h4>
 <table>
 <thead>
 <tr>
@@ -722,7 +725,7 @@
 <li>Example: &quot;If <strong>it rains</strong> (hypothesis), then <strong>the ground is wet</strong> (conclusion).&quot;</li>
 <li>🧠 Think of it as a <strong>promise</strong>: &quot;If it rains, the ground is wet.&quot; The only way the promise is <strong>broken</strong> is if it rains (T) and the ground is NOT wet (F).</li>
 </ul>
-<h3>⑤ Biconditional (p ↔ q): <strong>TRUE when both are the SAME</strong></h3>
+<h4>⑤ Biconditional (p ↔ q): <strong>TRUE when both are the SAME</strong></h4>
 <table>
 <thead>
 <tr>
@@ -786,7 +789,7 @@
 <td><strong>TRUE</strong> (both F!)</td>
 </tr>
 </tbody></table>
-<h3>🔑 Truth table cheat sheet (one line each)</h3>
+<h4>🔑 Truth table cheat sheet (one line each)</h4>
 <table>
 <thead>
 <tr>
@@ -815,7 +818,7 @@
 <td>T if <strong>same</strong>, F if <strong>different</strong></td>
 </tr>
 </tbody></table>
-<h2>2.7 Worked Examples from the Slides</h2>
+<h3>2.7 Worked Examples from the Slides</h3>
 <p><strong>A. Simple or compound? (If compound, what type?)</strong></p>
 <table>
 <thead>
@@ -1017,7 +1020,7 @@
 <td><strong>T</strong></td>
 </tr>
 </tbody></table>
-<h2>2.8 Unit 2 Problem Set ✍️ (my solutions)</h2>
+<h3>2.8 Unit 2 Problem Set ✍️ (my solutions)</h3>
 <p><strong>I. Write in words</strong> (p = Today is Monday, q = Yesterday was Sunday)</p>
 <table>
 <thead>
@@ -1164,8 +1167,8 @@
 </tr>
 </tbody></table>
 <hr>
-<h1>UNIT 3 — PROBLEM SOLVING AND REASONING</h1>
-<h2>3.1 Introduction &amp; Objectives</h2>
+<h2>UNIT 3 — PROBLEM SOLVING AND REASONING</h2>
+<h3>3.1 Introduction &amp; Objectives</h3>
 <ul>
 <li>A main goal of math is to create <strong>critical thinkers and problem solvers</strong>. Math goes beyond the classroom and makes us <strong>rational individuals</strong>.</li>
 <li>This chapter covers problems with numbers AND <strong>real-life</strong> problems.</li>
@@ -1185,7 +1188,7 @@
 <li><strong>Conjecture</strong> = a <strong>conclusion made from observing data</strong> (an educated guess).</li>
 <li><strong>Reasoning</strong> = stating ideas <strong>clearly and precisely</strong> to arrive at a <strong>conclusion</strong>. We make judgments from facts and observations, so we must know the ways to reach <strong>accurate conclusions</strong>.</li>
 </ul>
-<h2>3.2 Kinds of Reasoning (Zuela et al., 2009)</h2>
+<h3>3.2 Kinds of Reasoning (Zuela et al., 2009)</h3>
 <table>
 <thead>
 <tr>
@@ -1229,12 +1232,12 @@
 <blockquote>
 <p>🧠 <strong>IN</strong>ductive = look <strong>IN</strong>to examples → make a general rule.<br><strong>DE</strong>ductive = start from a rule → <strong>DE</strong>scend to the specific case.</p>
 </blockquote>
-<h2>3.3 Problem Solving</h2>
+<h3>3.3 Problem Solving</h3>
 <ul>
 <li><strong>Reisberg (2013):</strong> problem solving = <strong>cognitive processing aimed at a goal</strong> when the solver <strong>doesn&#39;t yet know a solution method</strong>.</li>
 <li>Methods differ, but here&#39;s one step-by-step procedure:</li>
 </ul>
-<h3>Polya&#39;s Four-Step Problem-Solving Strategy</h3>
+<h4>Polya&#39;s Four-Step Problem-Solving Strategy</h4>
 <p><strong>George Polya (1887–1985):</strong> born in <strong>Hungary</strong>, moved to the <strong>United States in 1940</strong> (Stanford University). Published <strong>10 books</strong> and many articles. His best-known book is <strong><em>How to Solve It</em> (1945)</strong>, which outlines his strategy.</p>
 <table>
 <thead>
@@ -1260,19 +1263,19 @@
 <td>Does my answer make sense? Did I check my work? Could someone see how I found my answer?</td>
 </tr>
 </tbody></table>
-<h3>4 Problem-Solving Strategies</h3>
+<h4>4 Problem-Solving Strategies</h4>
 <ol>
 <li><strong>Searching for Patterns:</strong> recognizing patterns lets you see <strong>order or regularity</strong> and make sense of what&#39;s going on.</li>
 <li><strong>Working Backward:</strong> start at the <strong>end</strong> of the problem and work <strong>backward</strong>.</li>
 <li><strong>Drawing Pictures and Diagrams:</strong> use a <strong>figure, diagram, or graph</strong> to <strong>visualize</strong>, find relevant data, and see connections.</li>
 <li><strong>Making Lists and Tables:</strong> &quot;Make a Table&quot; helps with <strong>numerical relationships</strong>. Organized data makes <strong>patterns easier to spot</strong>.</li>
 </ol>
-<h2>3.4 Recreational Mathematics</h2>
+<h3>3.4 Recreational Mathematics</h3>
 <ul>
 <li>Math done <strong>for recreation or as a hobby</strong>, meant to be <strong>fun</strong>: <strong>games or puzzles</strong> related to math (the term can cover other material too).</li>
 <li>Uses <strong>general logic and lateral thinking</strong>, NOT advanced math, so the <strong>average person</strong> can understand and appreciate the problem and its solution.</li>
 </ul>
-<h2>3.5 Practice Problems ✍️ (my solutions; the slides were blank)</h2>
+<h3>3.5 Practice Problems ✍️ (my solutions; the slides were blank)</h3>
 <p><strong>1. A police station has 25 vehicles (motorcycles and cars). Total wheels = 70. How many of each?</strong></p>
 <ul>
 <li>Motorcycle = 2 wheels, car = 4 wheels.</li>
@@ -1373,7 +1376,7 @@
 <td>?</td>
 </tr>
 </tbody></table>
-<h3>Unit 3 Problem Set ✍️ (my solutions)</h3>
+<h4>Unit 3 Problem Set ✍️ (my solutions)</h4>
 <p><strong>1. J, F, M, A, M, J, J, A, ___?</strong> → months (<strong>J</strong>anuary, <strong>F</strong>ebruary…<strong>A</strong>ugust) → <strong>S</strong> (September)</p>
 <p><strong>2. Kianne, Rona Jane, Clarisse are sisters. Kianne is the oldest. Clarisse is not the oldest. Rona Jane is not the youngest. Who is the youngest?</strong></p>
 <ul>
@@ -1384,8 +1387,8 @@
 <li>Line up: Charlie &gt; Alex &gt; Ban, and Alex &gt; Daniel &gt; Edward → <strong>Charlie is the tallest.</strong></li>
 </ul>
 <hr>
-<h1>UNIT 4 — MATHEMATICAL SYSTEMS (Modular Arithmetic)</h1>
-<h2>4.1 Introduction &amp; Objectives</h2>
+<h2>UNIT 4 — MATHEMATICAL SYSTEMS (Modular Arithmetic)</h2>
+<h3>4.1 Introduction &amp; Objectives</h3>
 <ul>
 <li>Time, day, and date are math. They help track <strong>future and past events</strong>.</li>
 <li>Products have numbers (<strong>barcodes</strong>). Are they <strong>legit or not</strong>?</li>
@@ -1396,7 +1399,7 @@
 <li>Check if a <strong>product is legit</strong> by solving <strong>missing numbers on its barcode</strong>.</li>
 </ol>
 <p><strong>Alarm example:</strong> it&#39;s <strong>10 PM</strong> and the alarm says &quot;will remind in <strong>7 hours</strong>&quot; → count 7 hours after 10 PM = <strong>5 AM</strong>. When counting by hand is too hard, we need <strong>Modular Arithmetic</strong>.</p>
-<h2>4.2 🔑 The ONE idea you need: &quot;mod&quot; = REMAINDER</h2>
+<h3>4.2 🔑 The ONE idea you need: &quot;mod&quot; = REMAINDER</h3>
 <blockquote>
 <p><strong>a mod n = the remainder when you divide a by n.</strong></p>
 <ul>
@@ -1430,7 +1433,7 @@
 <td>digits 0–9</td>
 </tr>
 </tbody></table>
-<h2>4.3 Calculating Time (Time-line method)</h2>
+<h3>4.3 Calculating Time (Time-line method)</h3>
 <p>To add/subtract time, <strong>jump to the next whole hour first</strong>, then add the rest.</p>
 <table>
 <thead>
@@ -1461,7 +1464,7 @@
 <td><strong>8:20 PM</strong></td>
 </tr>
 </tbody></table>
-<h2>4.4 Reading the Calendar</h2>
+<h3>4.4 Reading the Calendar</h3>
 <ol>
 <li><strong>24 hours in a day</strong>, <strong>7 days in a week</strong>: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday.</li>
 <li><strong>12 months</strong>: January to December.</li>
@@ -1474,13 +1477,13 @@
 </ul>
 </li>
 </ol>
-<h2>4.5 Mathematical Systems</h2>
+<h3>4.5 Mathematical Systems</h3>
 <ul>
 <li>We study the <strong>nature and structure</strong> of mathematical systems. Every area of math (sets, logic, etc.) shares some <strong>basic common characteristics</strong>.</li>
 <li>🔑 <strong>A mathematical system = a set of elements + at least one binary operation.</strong></li>
 <li><strong>Binary operation</strong> = an operation applied to <strong>two objects</strong> (e.g., adding any two numbers).</li>
 </ul>
-<h2>4.6 Clock Arithmetic</h2>
+<h3>4.6 Clock Arithmetic</h3>
 <ul>
 <li>An example of a <strong>finite mathematical system</strong>.</li>
 <li>On a 12-hour clock, when you pass 12, you <strong>go back around</strong>:</li>
@@ -1539,11 +1542,11 @@
 <ul>
 <li>You can build a <strong>full addition table</strong> for the 12-hour clock using the set <strong>{1, 2, …, 12}</strong> and <strong>addition</strong>. (Every row just &quot;wraps around&quot; after 12.)</li>
 </ul>
-<h2>4.7 Date (finding the day of the week)</h2>
+<h3>4.7 Date (finding the day of the week)</h3>
 <ul>
 <li>Modular arithmetic helps find the <strong>specific day</strong> for a given date and year.</li>
 </ul>
-<h2>4.8 ✍️ Time &amp; Day Problems (my solutions)</h2>
+<h3>4.8 ✍️ Time &amp; Day Problems (my solutions)</h3>
 <blockquote>
 <p><strong>Recipe:</strong> ① divide by 12 / 24 / 7 → ② keep only the <strong>remainder</strong> → ③ move that many steps forward (after) or backward (before/ago).</p>
 </blockquote>
@@ -1581,13 +1584,13 @@
 <li>Total shift = 15 + 3 = <strong>18</strong> → 18 ÷ 7 = 2 remainder <strong>4</strong>.</li>
 <li>Sunday + 4 = <strong>Thursday</strong>. ✅ (Checked with a real calendar.)</li>
 </ul>
-<h2>4.9 Barcodes (13-digit check digit)</h2>
+<h3>4.9 Barcodes (13-digit check digit)</h3>
 <ul>
 <li>Modular arithmetic can find a digit in a <strong>13-digit barcode</strong> to check if a product is <strong>legit</strong>.</li>
 <li>Barcodes keep products <strong>organized in databases</strong> and <strong>universally recognized</strong> (Smyth, 2019).</li>
 <li>🔑 <strong>&quot;Modular Arithmetic is all about remainder.&quot;</strong></li>
 </ul>
-<h3>The formula</h3>
+<h4>The formula</h4>
 <p><strong>d₁₃ = 10 − (d₁ + 3d₂ + d₃ + 3d₄ + d₅ + 3d₆ + d₇ + 3d₈ + d₉ + 3d₁₀ + d₁₁ + 3d₁₂) mod 10</strong></p>
 <p>What each part means:</p>
 <table>
@@ -1631,7 +1634,7 @@
 <li><strong>10 − that digit</strong> = the check digit.<br><em>(If the sum already ends in 0, the check digit is 0.)</em></li>
 </ol>
 </blockquote>
-<h3>Example 1: Sprite 1.5L → <strong>4 801981 11860X</strong> (find the last digit)</h3>
+<h4>Example 1: Sprite 1.5L → <strong>4 801981 11860X</strong> (find the last digit)</h4>
 <table>
 <thead>
 <tr>
@@ -1702,7 +1705,7 @@
 <li>d₁₃ = 10 − 9 = <strong>1</strong></li>
 <li>✅ <strong>The last digit of the Sprite barcode is 1.</strong></li>
 </ul>
-<h3>Example 2: Oishi Prawn Crackers → <strong>4 80019X 177962</strong> (a middle digit is missing!)</h3>
+<h4>Example 2: Oishi Prawn Crackers → <strong>4 80019X 177962</strong> (a middle digit is missing!)</h4>
 <p>This time the <strong>last digit (2) is given</strong> and the <strong>7th digit</strong> is missing. Use the <strong>same formula</strong> and solve for X with algebra.</p>
 <table>
 <thead>
@@ -1762,7 +1765,7 @@
 <li>✅ <strong>The 7th digit of the Oishi barcode is 4</strong> → full code <strong>4 800194 177962</strong>.</li>
 </ul>
 <hr>
-<h1>⚠️ EXAM TRAPS / EASY-TO-CONFUSE</h1>
+<h2>⚠️ EXAM TRAPS / EASY-TO-CONFUSE</h2>
 <ul>
 <li><strong>Sequence</strong> = list; <strong>Series</strong> = sum of the list.</li>
 <li><strong>Arithmetic</strong> = + or − (<strong>common difference</strong>). <strong>Geometric</strong> = × or ÷ (<strong>common ratio</strong>).</li>
@@ -1786,7 +1789,7 @@
 <li><strong>Barcode:</strong> EVEN positions × 3, ODD × 1; last digit = 10 − (sum mod 10).</li>
 </ul>
 <hr>
-<h1>✅ QUICK SELF-TEST (cover the answers!)</h1>
+<h2>✅ QUICK SELF-TEST (cover the answers!)</h2>
 <ol>
 <li>What are the 4 patterns in nature this module focuses on? → <em>Symmetry, fractals, spirals, tessellations.</em></li>
 <li>Who coined &quot;fractal&quot;? → <em>Benoit Mandelbrot.</em></li>
@@ -1809,6 +1812,9 @@
 <li>What does &quot;mod 10&quot; give you? → <em>The last digit (remainder when divided by 10).</em></li>
 <li>A mathematical system has…? → <em>A set of elements and at least one binary operation.</em></li>
 </ol>
+<hr>
+<h2>📝 PRACTICE QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"Which of these is NOT one of the four patterns in nature this module focuses on?","c":"Parabolas","w":["Symmetry","Fractals","Tessellations"],"e":"The four are symmetry, fractals, spirals, and tessellations."},{"q":"Who was the first to coin the term \"fractals\"?","c":"Benoit Mandelbrot","w":["Ian Stewart","Leonardo of Pisa (Fibonacci)","George Polya"],"e":""},{"q":"What kind of symmetry does a starfish show?","c":"Five-fold symmetry","w":["Bilateral symmetry","Three-fold symmetry","No symmetry"],"e":""},{"q":"What is a tessellation?","c":"A tiling that covers a surface with no gaps and no overlaps","w":["A pattern that winds around a center","A shape made of smaller copies of itself","A mirror image across a line"],"e":""},{"q":"Which shape cannot tessellate on its own?","c":"Circle","w":["Square","Equilateral triangle","Hexagon"],"e":"Circles always leave empty spaces."},{"q":"What is a series?","c":"The sum of the terms of a sequence","w":["An ordered list of numbers that follows a rule","The number added each time in a sequence","The number multiplied each time in a sequence"],"e":""},{"q":"The sequence 1, 5, 9, 13, 17, ... is:","c":"Arithmetic, with common difference 4","w":["Geometric, with common ratio 4","Arithmetic, with common difference 5","Geometric, with common ratio 5"],"e":""},{"q":"The sequence 5, −5, 5, −5, 5, ... is:","c":"Geometric, with common ratio −1","w":["Arithmetic, with common difference −10","Arithmetic, with common difference 10","Neither arithmetic nor geometric"],"e":"Dividing neighbors always gives −1. Subtracting does not give the same answer each time."},{"q":"What is the next term of 4, 2, 0, −2, −4, ...?","c":"−6","w":["−8","−5","6"],"e":""},{"q":"What is the common ratio of 1/2, 1/4, 1/8, 1/16, ...?","c":"1/2","w":["2","1/4","−1/2"],"e":""},{"q":"What is the rule of the Fibonacci sequence?","c":"Every number is the sum of the two numbers before it","w":["Every number is double the one before it","Every number is the one before it plus 2","Every number is the product of the two numbers before it"],"e":""},{"q":"What is the next Fibonacci number after 55 and 89?","c":"144","w":["134","143","154"],"e":"55 + 89 = 144."},{"q":"Which book brought the Fibonacci sequence to Western Europe in 1202?","c":"Liber Abaci","w":["How to Solve It","Nature by Numbers","Elements"],"e":""},{"q":"In the rabbit puzzle, how many pairs are there after one year?","c":"233","w":["144","89","377"],"e":"The count is taken at the start of the 13th month."},{"q":"The ratio of consecutive Fibonacci numbers gets closer and closer to what value?","c":"1.618 (the Golden Ratio)","w":["3.1416 (pi)","2.718 (e)","1.414 (the square root of 2)"],"e":""},{"q":"The language of mathematics is described as:","c":"Precise, concise, and powerful","w":["Simple, short, and symbolic","Exact, formal, and difficult","Logical, numerical, and universal"],"e":""},{"q":"Which part of math language \"dictates the meaning\" and is a usage generally agreed upon by mathematicians?","c":"Math convention","w":["Math syntax","Math symbols","Math expression"],"e":""},{"q":"According to Kueker, logic is concerned with what part of an argument?","c":"Its form rather than its content","w":["Its content rather than its form","Its length","Whether it is written in symbols"],"e":""},{"q":"Which of these is a simple statement?","c":"My friend took his master's degree in Spain.","w":["Roses are red, and violets are blue.","If it rains, then the ground is wet.","Either he watches a movie or dines with his friends."],"e":""},{"q":"What does the symbol ∧ stand for?","c":"Conjunction (and)","w":["Disjunction (or)","Negation (not)","Conditional (if, then)"],"e":""},{"q":"A statement of the form \"p or q\" is called a:","c":"Disjunction","w":["Conjunction","Conditional","Biconditional"],"e":""},{"q":"Which symbol stands for the biconditional (if and only if)?","c":"↔","w":["→","∧","~"],"e":""},{"q":"When is a disjunction p ∨ q false?","c":"Only when both p and q are false","w":["Only when both p and q are true","Whenever p is false","Whenever p and q are different"],"e":""},{"q":"When is a conditional p → q false?","c":"Only when p is true and q is false","w":["Only when p is false and q is true","Whenever q is false","Only when both are false"],"e":"Think of it as a promise: it is broken only when the \"if\" part happens and the \"then\" part does not."},{"q":"If p is false and q is false, which of these is FALSE?","c":"p ∨ q","w":["p → q","p ↔ q","~p"],"e":""},{"q":"If p is true and q is false, which of these is TRUE?","c":"p ∨ q","w":["p ∧ q","p → q","p ↔ q"],"e":""},{"q":"Let p = \"He has green thumb\" and q = \"He is a senior citizen.\" How do you write \"It is not the case that he has green thumb or is a senior citizen\"?","c":"~(p ∨ q)","w":["~p ∨ ~q","~p ∧ q","p → ~q"],"e":"\"It is not the case that\" negates the whole thing, so the ~ goes outside the parentheses."},{"q":"In \"If it rains, then the ground is wet,\" what is \"it rains\"?","c":"The hypothesis","w":["The conclusion","The negation","The conjunction"],"e":""},{"q":"\"You are entitled to a 30% discount if you are a member\" is what type of statement?","c":"Conditional","w":["Conjunction","Disjunction","Simple statement"],"e":"It means \"If you are a member, then you get a discount.\""},{"q":"What is a conjecture?","c":"A conclusion made from observing data","w":["A statement that has already been proven","A rule agreed upon by mathematicians","A problem with no solution"],"e":""},{"q":"Which kind of reasoning works by comparison, like \"hammer is to nail as comb is to hair\"?","c":"Analogy","w":["Intuition","Inductive reasoning","Deductive reasoning"],"e":""},{"q":"Which kind of reasoning is like guessing, using common sense without proof?","c":"Intuition","w":["Analogy","Inductive reasoning","Deductive reasoning"],"e":""},{"q":"Inductive reasoning goes from:","c":"Specific examples to a general conclusion","w":["A general rule to a specific case","A comparison to a conclusion","A guess to a proof"],"e":""},{"q":"\"All men are mortal. Luke is a man. So Luke is mortal.\" What kind of reasoning is this?","c":"Deductive","w":["Inductive","Analogy","Intuition"],"e":""},{"q":"What is the correct order of Polya's four steps?","c":"Understand, Plan, Solve, Review","w":["Plan, Understand, Solve, Review","Understand, Solve, Plan, Review","Review, Understand, Plan, Solve"],"e":""},{"q":"Which book by George Polya outlines his problem-solving strategy?","c":"How to Solve It","w":["Liber Abaci","Nature by Numbers","Mathematics in the Modern World"],"e":""},{"q":"Which problem-solving strategy starts at the end of the problem?","c":"Working Backward","w":["Searching for Patterns","Drawing Pictures and Diagrams","Making Lists and Tables"],"e":""},{"q":"A police station has 25 vehicles, motorcycles and cars, with 70 wheels in total. How many of each?","c":"15 motorcycles and 10 cars","w":["10 motorcycles and 15 cars","20 motorcycles and 5 cars","12 motorcycles and 13 cars"],"e":"If all 25 were motorcycles there would be 50 wheels. The missing 20 wheels come from 10 cars, 2 extra each."},{"q":"What is the next number in 1, 5, 12, 22, 35, ...?","c":"51","w":["48","50","53"],"e":"The differences are 4, 7, 10, 13, so the next difference is 16."},{"q":"What does \"a mod n\" mean?","c":"The remainder when a is divided by n","w":["The quotient when a is divided by n","The product of a and n","The sum of a and n"],"e":""},{"q":"What is 14 mod 12?","c":"2","w":["1","12","26"],"e":""},{"q":"Which modulus do you use for days of the week?","c":"7","w":["12","24","10"],"e":""},{"q":"A mathematical system is made up of:","c":"A set of elements and at least one binary operation","w":["A set of numbers and a formula","A list of rules and a truth table","A sequence and its series"],"e":""},{"q":"What is a binary operation?","c":"An operation applied to two objects","w":["An operation that uses only 0 and 1","An operation that can be done only twice","An operation with two possible answers"],"e":""},{"q":"In 12-hour clock arithmetic, what is 9 + 10?","c":"7","w":["19","1","9"],"e":"19 − 12 = 7."},{"q":"What time is it 14 hours after 4 AM?","c":"6 PM","w":["6 AM","2 PM","8 PM"],"e":""},{"q":"If today is Monday, what day is it 16 days from today?","c":"Wednesday","w":["Tuesday","Thursday","Monday"],"e":"16 mod 7 = 2, and Monday + 2 = Wednesday."},{"q":"If today is Saturday, what day was it 211 days ago?","c":"Friday","w":["Sunday","Thursday","Saturday"],"e":"211 mod 7 = 1, so go back one day."},{"q":"Which of these years is a leap year?","c":"2000","w":["2100","2200","2300"],"e":"A year that is a multiple of 100 must also be a multiple of 400."},{"q":"In a 13-digit barcode, the weighted sum of the first 12 digits is 99. What is the check digit?","c":"1","w":["9","0","10"],"e":"99 mod 10 = 9, and 10 − 9 = 1."}]</script></div>
 <hr>
 <p><em>References (from slides): Aufmann et al. (2018) Mathematics in the Modern World; Daligdig (2019) MMW, LORIMAR; De Castro (2019) MMW, PLV; Gallo &amp; Setek (2005) Fundamentals of Mathematics 10th ed.; &quot;Fibonacci Numbers: Nature, Math, and Social Inquiry&quot; Gemini Notebook; plus image sources (Alamy, Pinterest, Wikimedia, etc.).</em></p>
 

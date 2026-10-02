@@ -17,12 +17,14 @@
       <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="./index.html" class="mode-switch-btn active" data-mode-target="dev">Dev</a><a href="./school/index.html" class="mode-switch-btn" data-mode-target="school">School</a></div>
       <div class="nav-search" id="navSearch">
         <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <button class="nav-search-close" id="searchClose" aria-label="Close search">&times;</button>
         <div class="search-nav-panel" id="searchNavPanel" style="display:none">
           <span id="searchMatchInfo"></span>
           <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
           <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
         </div>
       </div>
+      <button class="nav-search-toggle" id="searchToggle" aria-label="Search" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
       <a href="./cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
         <span>CySQL</span>
@@ -41,6 +43,7 @@
       <button class="notes-menu-close" aria-label="Close menu">&times;</button>
     </div>
     <div class="notes-menu-body">
+      <a href="./cysql/index.html" class="notes-menu-cysql" target="_blank">CySQL Playground</a>
       <div class="notes-menu-category">
   <h4 class="notes-menu-category-title">Frontend</h4>
   <ul class="notes-menu-list">

@@ -5,9 +5,9 @@
 
 ---
 
-# UNIT 1 — THE NATURE OF MATHEMATICS
+## UNIT 1 — THE NATURE OF MATHEMATICS
 
-## 1.1 Introduction
+### 1.1 Introduction
 - Math is **everywhere**. It **was, is, and will always be** part of daily life.
 - **Everything around us involves math.**
 - In this chapter: observe **patterns** and where they appear in **nature**, find out what math **is** and its **role** in the environment, and learn math's basic language: **numbers**.
@@ -18,18 +18,18 @@
 3. Express **appreciation** of mathematics' existence in the environment.
 4. Identify **patterns in numbers**.
 
-## 1.2 What is Mathematics (as defined in this course)?
+### 1.2 What is Mathematics (as defined in this course)?
 | Common notions of Math | → | Mathematics in the Modern World | → | What it REALLY is about |
 |---|---|---|---|---|
 | Numbers, Counting, Shapes, Figures, Mathematical Expressions, Variables, Basic Arithmetic | | | | • What our **eyes can see**, **ears can hear**, and what we **perceive** in our physical environment<br>• A **language** in different forms: **patterns, shapes, music**, etc.<br>• The **unbelievable patterns formed by nature and the universe** |
 
-## 1.3 Where is Mathematics?
+### 1.3 Where is Mathematics?
 The slides ask you to look around campus:
 - How many **steps** from the New Building lobby (Annex Campus) to the Engineering building? Have you ever **counted your steps**?
 - What do you notice in your **physical surroundings**?
 - What about the **arrangement of floor tiles, walls, doors, windows, and lights**? → All of these follow **patterns** = math.
 
-## 1.4 What is a Pattern?
+### 1.4 What is a Pattern?
 **Emoji example:** 😊😁😍😕 😊😁😍😕 😊 → the 4 faces repeat (smiling eyes → grinning → heart eyes → confused). The last one typed is 😊, so the **next is 😁 (grinning face with smiling eyes)**.
 
 > 🔑 **Patterns are regular, repeated, or recurring forms or designs.**
@@ -39,10 +39,10 @@ The slides ask you to look around campus:
 - **Regularity** = the exact same thing happening in the exact same circumstances (Collins, 2018).
 - Quote: *"We live in a universe of patterns."* — **Ian Stewart**, *Nature by Numbers* (1995)
 
-## 1.5 A. Patterns in Nature
+### 1.5 A. Patterns in Nature
 The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellations**.
 
-### ① Symmetry
+#### ① Symmetry
 - You can draw an **imaginary line** across an object and the two parts are **mirror images** of each other.
 - If it's symmetric about a line (like the dotted line down a "+" shape), that's **line symmetry** or **bilateral symmetry**.
 - 🔑 **The type of symmetry depends on the number of sides or faces that are symmetrical.**
@@ -53,18 +53,18 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 | **Spiderwort flower** (3 petals) | **Three-fold** symmetry |
 | **Starfish** (5 arms) | **Five-fold** symmetry |
 
-### ② Fractals
+#### ② Fractals
 - **Irregular patterns made of parts that are in some way similar to the whole.**
 - A geometric shape that can be split into parts, **each a reduced-scale (smaller) copy of the whole** (Montana State University, 2011).
 - **Benoit Mandelbrot** was the **first to coin the term "fractals."**
 - Examples: **lightning** and **tree branches**. The whole extends into parts, and from a single stem it extends into more stems the same way. Also: **Romanesco broccoli**.
 
-### ③ Spirals
+#### ③ Spirals
 - A pattern that **winds around a center or pole** and **gradually recedes from or approaches it** (Merriam-Webster).
 - A shape made of **curves, each one above or wider than the one before** (Cambridge Dictionary).
 - Examples: **snail's shell, cabbage** (also galaxies, hurricanes, nautilus shells, sunflowers, pinecones).
 
-### ④ Tessellations
+#### ④ Tessellations
 - **Tiling** that uses shapes to **cover a surface with NO gaps and NO overlaps**.
 - 🔑 A pattern is a tessellation **if it can be repeated over and over again** and has **no gaps and no overlaps**.
 - Examples: **kitchen floor tiles** (squares with designs), **honeycomb**, **pineapple**.
@@ -79,7 +79,7 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 | Bare tree branches | Fractal |
 | Spiderwort flower | Symmetry (three-fold) |
 
-### Extra slides: Kinds of Patterns
+#### Extra slides: Kinds of Patterns
 | Kind | Meaning |
 |---|---|
 | **Sequential** | The **order of events and numbers** (e.g., calendar, 1, 2, 3…) |
@@ -89,7 +89,7 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 
 **Nature's Geometry:** Symmetry (butterfly, starfish) · Fractals (Romanesco) · Spirals (galaxy) · **Spots & Stripes** (leopard spots, zebra stripes, cracked earth)
 
-### Math is a Lens AND an Engine
+#### Math is a Lens AND an Engine
 - **The Lens → To Describe:** unlocks the patterns, shapes, and sequences found in nature.
 - **The Engine → To Construct:** the tool of **measurement and calculation** that **built modern civilization**.
 - **Nature's mathematical vocabulary:** spots, spirals, stripes. Long before humans invented equations, **nature was speaking math**.
@@ -97,22 +97,22 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 
 ---
 
-## 1.6 B. Patterns in Numbers — SEQUENCES
+### 1.6 B. Patterns in Numbers — SEQUENCES
 
-### What is a Sequence?
+#### What is a Sequence?
 - **An ordered list of numbers that follows a certain pattern (a specific rule).**
 - Example: **1, 3, 5, 7, …** → each time **+2**.
 - To find a missing term, we use the rule.
 - *Note: patterns in numbers are not limited to sequences. **Any rule observed in a set of numbers** counts as a pattern.*
 - This unit covers **2 types: Arithmetic and Geometric**.
 
-### Series
+#### Series
 - **The SUM of the terms of a sequence.**
 - Sequence 1, 3, 5 → Series is **1 + 3 + 5 = 9**.
 
 > ⚠️ **Sequence** = the list (1, 3, 5). **Series** = the list added up (1 + 3 + 5 = 9).
 
-### Arithmetic vs Geometric (the Venn diagram)
+#### Arithmetic vs Geometric (the Venn diagram)
 | **Arithmetic Sequence** | **BOTH** | **Geometric Sequence** |
 |---|---|---|
 | Uses **addition / subtraction** | A group of numbers that follow a pattern based on a specific rule | Uses **multiplication / division** |
@@ -122,7 +122,7 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 - **Subtract** neighbors: 2nd − 1st, 3rd − 2nd… **Same answer every time? → ARITHMETIC** (that answer is **d**).
 - **Divide** neighbors: 2nd ÷ 1st, 3rd ÷ 2nd… **Same answer every time? → GEOMETRIC** (that answer is **r**).
 
-### ✅ Worked examples (from the slides)
+#### ✅ Worked examples (from the slides)
 | Given | Check | Answer |
 |---|---|---|
 | **1, 5, 9, 13, 17, …** | 5−1=4, 9−5=4, 13−9=4 | **Arithmetic**, d = **+4** → next is **21** |
@@ -137,7 +137,7 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 
 ---
 
-## 1.7 The Fibonacci Sequence ("The Sequence of Life")
+### 1.7 The Fibonacci Sequence ("The Sequence of Life")
 - **Origin:** brought to **Western Europe in 1202** through the book ***Liber Abaci*** (by Leonardo of Pisa, **Fibonacci**).
 - **The Rule:** **every number is the sum of the two numbers before it.**
 
@@ -148,7 +148,7 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 > In plain words: **"next number = the last number + the one before it."**
 > 1+1=2 → 1+2=3 → 2+3=5 → 3+5=8 → 5+8=13 → 8+13=21 …
 
-### The Rabbit Puzzle (Pisa, 1202)
+#### The Rabbit Puzzle (Pisa, 1202)
 **Premise:**
 - Start with exactly **ONE newborn male-female pair** of rabbits.
 - They need **ONE month to mature**.
@@ -164,7 +164,7 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 - Why it's Fibonacci: **F<sub>n</sub> = F<sub>n−1</sub> (existing pairs) + F<sub>n−2</sub> (newborns from mature adults)**.
 - **Conclusion:** at the **start of the 13th month (exactly one year later)** there are **233 pairs**. This shows how explosive mathematical sequences can be.
 
-### The Golden Spiral & Golden Ratio
+#### The Golden Spiral & Golden Ratio
 - Count the spirals on a **pinecone** or the petals on a **flower**: often **5, 8, 13, 21, or 34**, which are almost always **Fibonacci numbers**.
 - Divide each Fibonacci number by the one before it (F<sub>n</sub> ÷ F<sub>n−1</sub>). The answer gets closer and closer to **1.618…** = the **Golden Ratio (Φ, "phi") = 1.61803…**
 
@@ -180,9 +180,9 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 
 ---
 
-# UNIT 2 — LOGIC
+## UNIT 2 — LOGIC
 
-## 2.1 Introduction & Objectives
+### 2.1 Introduction & Objectives
 - Unit 1 = math speaks through **forms and patterns in nature**.
 - Unit 2 = math also speaks through **English statements**. We translate them into **symbols**, apply **rules and laws**, and decide if they're **true or false**.
 
@@ -192,7 +192,7 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 3. Build a **truth table** and find its **truth values**.
 4. Translate an **argument** into **logical notation**.
 
-## 2.2 The Language of Mathematics
+### 2.2 The Language of Mathematics
 - **The Language, Symbols, Syntax and Rules of Math:** the system mathematicians use to **communicate math ideas** to each other. It's built on a natural language, using **technical terms and grammar conventions special to math**.
 
 | Part | Meaning |
@@ -215,7 +215,7 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
   - 1 / (x+1) → "1 divided by (x+1)"
   - 1 / x+1 → the system reads it as **(1/x) + 1**, which is DIFFERENT!
 
-## 2.3 What is Logic?
+### 2.3 What is Logic?
 - **David W. Kueker (2009):** logic is **the analysis of methods of reasoning**. Logic cares about the **FORM rather than the CONTENT** of an argument. Originally, it's the **study of reasoning used in mathematics**.
 - Examples:
   1. All men are mortal. Luke is a man. Hence, Luke is mortal.
@@ -223,7 +223,7 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 
   *(Same form, different content. Logic looks at the form.)*
 
-## 2.4 Simple vs Compound Statements
+### 2.4 Simple vs Compound Statements
 - **Simple statement:** does **NOT contain another statement** inside it.
 - **Compound statement:** **made of 2+ statements** joined by connectives (and, or, if…then, if and only if, not).
 
@@ -238,7 +238,7 @@ The module focuses on **4 patterns**: **Symmetry, Fractals, Spirals, Tessellatio
 > ⚠️ **Take note: a statement does NOT always need to be TRUE.** (That's why "Leni Robredo is the 16th president" is still a statement.)
 > *The slide lists "Angelica bought a new laptop and a cellphone" as simple: "and" joins two **objects**, not two complete statements.
 
-## 2.5 Connectives — THE BIG TABLE (memorize!)
+### 2.5 Connectives — THE BIG TABLE (memorize!)
 We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 
 | Statement | Connective | Symbol | Name |
@@ -259,12 +259,12 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 - "I have read the book **and** I understood it." → **p ∧ q**
 - "I will go to church **or** I will watch a movie." → **p ∨ q**
 
-## 2.6 The 5 Truth Tables (the heart of this unit)
+### 2.6 The 5 Truth Tables (the heart of this unit)
 > 💡 **How to set up ANY 2-variable truth table:** always 4 rows, in this order:
 > p: **T, T, F, F**
 > q: **T, F, T, F**
 
-### ① Negation (~p): **flip it**
+#### ① Negation (~p): **flip it**
 | p | ~p |
 |---|---|
 | T | F |
@@ -275,7 +275,7 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
   - Insert *not*: **Her aunt's name is not Lucia.**
   - Prefix "It is not the case that": **It is not the case that her aunt's name is Lucia.**
 
-### ② Conjunction (p ∧ q): **TRUE only if BOTH are true**
+#### ② Conjunction (p ∧ q): **TRUE only if BOTH are true**
 | p | q | p ∧ q |
 |---|---|---|
 | T | T | **T** |
@@ -283,7 +283,7 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 | F | T | F |
 | F | F | F |
 
-### ③ Disjunction (p ∨ q): **FALSE only if BOTH are false**
+#### ③ Disjunction (p ∨ q): **FALSE only if BOTH are false**
 | p | q | p ∨ q |
 |---|---|---|
 | T | T | T |
@@ -292,7 +292,7 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 | F | F | **F** |
 - True when **at least one** is true.
 
-### ④ Conditional (p → q): **FALSE only when T → F**
+#### ④ Conditional (p → q): **FALSE only when T → F**
 | p | q | p → q |
 |---|---|---|
 | T | T | T |
@@ -303,7 +303,7 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 - Example: "If **it rains** (hypothesis), then **the ground is wet** (conclusion)."
 - 🧠 Think of it as a **promise**: "If it rains, the ground is wet." The only way the promise is **broken** is if it rains (T) and the ground is NOT wet (F).
 
-### ⑤ Biconditional (p ↔ q): **TRUE when both are the SAME**
+#### ⑤ Biconditional (p ↔ q): **TRUE when both are the SAME**
 | p | q | p ↔ q |
 |---|---|---|
 | T | T | **T** |
@@ -321,7 +321,7 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 | A polygon has four sides. (F) | It is a triangle. (T) | …has four sides iff it is a triangle | **FALSE** (one T, one F) |
 | A polygon has four sides. (F) | It is not a triangle. (F) | …has four sides iff it is not a triangle | **TRUE** (both F!) |
 
-### 🔑 Truth table cheat sheet (one line each)
+#### 🔑 Truth table cheat sheet (one line each)
 | Connective | Rule |
 |---|---|
 | ~p | Opposite of p |
@@ -330,7 +330,7 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 | → (if-then) | F only if **T → F** |
 | ↔ (iff) | T if **same**, F if **different** |
 
-## 2.7 Worked Examples from the Slides
+### 2.7 Worked Examples from the Slides
 
 **A. Simple or compound? (If compound, what type?)**
 | Statement | Answer |
@@ -390,7 +390,7 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 | F | T | F | F | **T** |
 | F | F | T | F | **T** |
 
-## 2.8 Unit 2 Problem Set ✍️ (my solutions)
+### 2.8 Unit 2 Problem Set ✍️ (my solutions)
 **I. Write in words** (p = Today is Monday, q = Yesterday was Sunday)
 | Symbols | Words |
 |---|---|
@@ -429,9 +429,9 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 
 ---
 
-# UNIT 3 — PROBLEM SOLVING AND REASONING
+## UNIT 3 — PROBLEM SOLVING AND REASONING
 
-## 3.1 Introduction & Objectives
+### 3.1 Introduction & Objectives
 - A main goal of math is to create **critical thinkers and problem solvers**. Math goes beyond the classroom and makes us **rational individuals**.
 - This chapter covers problems with numbers AND **real-life** problems.
 
@@ -448,7 +448,7 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 - **Conjecture** = a **conclusion made from observing data** (an educated guess).
 - **Reasoning** = stating ideas **clearly and precisely** to arrive at a **conclusion**. We make judgments from facts and observations, so we must know the ways to reach **accurate conclusions**.
 
-## 3.2 Kinds of Reasoning (Zuela et al., 2009)
+### 3.2 Kinds of Reasoning (Zuela et al., 2009)
 | # | Kind | Meaning | Example |
 |---|---|---|---|
 | 1 | **Intuition** | Like **guessing**; reasoning by **common sense**. **Less mental activity**. Knowing something **without proof, evidence, or conscious reasoning**. **Highly subjective.** | "I just feel it's the answer." |
@@ -464,11 +464,11 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 > 🧠 **IN**ductive = look **IN**to examples → make a general rule.
 > **DE**ductive = start from a rule → **DE**scend to the specific case.
 
-## 3.3 Problem Solving
+### 3.3 Problem Solving
 - **Reisberg (2013):** problem solving = **cognitive processing aimed at a goal** when the solver **doesn't yet know a solution method**.
 - Methods differ, but here's one step-by-step procedure:
 
-### Polya's Four-Step Problem-Solving Strategy
+#### Polya's Four-Step Problem-Solving Strategy
 **George Polya (1887–1985):** born in **Hungary**, moved to the **United States in 1940** (Stanford University). Published **10 books** and many articles. His best-known book is ***How to Solve It* (1945)**, which outlines his strategy.
 
 | Step | Ask yourself |
@@ -478,17 +478,17 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 | **3. SOLVE** | How do I apply my strategy? Have I shown all my work? Is my voice loud and clear? |
 | **4. REVIEW** (look back) | Does my answer make sense? Did I check my work? Could someone see how I found my answer? |
 
-### 4 Problem-Solving Strategies
+#### 4 Problem-Solving Strategies
 1. **Searching for Patterns:** recognizing patterns lets you see **order or regularity** and make sense of what's going on.
 2. **Working Backward:** start at the **end** of the problem and work **backward**.
 3. **Drawing Pictures and Diagrams:** use a **figure, diagram, or graph** to **visualize**, find relevant data, and see connections.
 4. **Making Lists and Tables:** "Make a Table" helps with **numerical relationships**. Organized data makes **patterns easier to spot**.
 
-## 3.4 Recreational Mathematics
+### 3.4 Recreational Mathematics
 - Math done **for recreation or as a hobby**, meant to be **fun**: **games or puzzles** related to math (the term can cover other material too).
 - Uses **general logic and lateral thinking**, NOT advanced math, so the **average person** can understand and appreciate the problem and its solution.
 
-## 3.5 Practice Problems ✍️ (my solutions; the slides were blank)
+### 3.5 Practice Problems ✍️ (my solutions; the slides were blank)
 
 **1. A police station has 25 vehicles (motorcycles and cars). Total wheels = 70. How many of each?**
 - Motorcycle = 2 wheels, car = 4 wheels.
@@ -537,7 +537,7 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 | Math Teacher | ✗ | **✓** | ✗ |
 | Grandmother | ? | ✗ | ? |
 
-### Unit 3 Problem Set ✍️ (my solutions)
+#### Unit 3 Problem Set ✍️ (my solutions)
 **1. J, F, M, A, M, J, J, A, ___?** → months (**J**anuary, **F**ebruary…**A**ugust) → **S** (September)
 
 **2. Kianne, Rona Jane, Clarisse are sisters. Kianne is the oldest. Clarisse is not the oldest. Rona Jane is not the youngest. Who is the youngest?**
@@ -548,9 +548,9 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 
 ---
 
-# UNIT 4 — MATHEMATICAL SYSTEMS (Modular Arithmetic)
+## UNIT 4 — MATHEMATICAL SYSTEMS (Modular Arithmetic)
 
-## 4.1 Introduction & Objectives
+### 4.1 Introduction & Objectives
 - Time, day, and date are math. They help track **future and past events**.
 - Products have numbers (**barcodes**). Are they **legit or not**?
 
@@ -560,7 +560,7 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 
 **Alarm example:** it's **10 PM** and the alarm says "will remind in **7 hours**" → count 7 hours after 10 PM = **5 AM**. When counting by hand is too hard, we need **Modular Arithmetic**.
 
-## 4.2 🔑 The ONE idea you need: "mod" = REMAINDER
+### 4.2 🔑 The ONE idea you need: "mod" = REMAINDER
 > **a mod n = the remainder when you divide a by n.**
 > - 14 mod 12 = **2** (14 ÷ 12 = 1 remainder **2**)
 > - 16 mod 7 = **2** (16 ÷ 7 = 2 remainder **2**)
@@ -573,7 +573,7 @@ We study 4 connectives (**and, or, if-then, if and only if**) plus **not**.
 | **Days of the week** | **7** | 7 days in a week |
 | **Barcodes** | **10** | digits 0–9 |
 
-## 4.3 Calculating Time (Time-line method)
+### 4.3 Calculating Time (Time-line method)
 To add/subtract time, **jump to the next whole hour first**, then add the rest.
 
 | Problem | Time-line | Answer |
@@ -583,7 +583,7 @@ To add/subtract time, **jump to the next whole hour first**, then add the rest.
 | 2 hr 5 min after 1400 | 1400 —(2 hr)→ 1600 —(5 min)→ 1605 | **1605** (4:05 PM) |
 | 1 hr 30 min after 6:50 PM | 6:50 —(1 hr)→ 7:50 —(10 min)→ 8:00 —(20 min)→ 8:20 | **8:20 PM** |
 
-## 4.4 Reading the Calendar
+### 4.4 Reading the Calendar
 1. **24 hours in a day**, **7 days in a week**: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday.
 2. **12 months**: January to December.
 3. Every month has **at least 28 days**. **February = 28 or 29**; the rest have **30 or 31**.
@@ -593,12 +593,12 @@ To add/subtract time, **jump to the next whole hour first**, then add the rest.
    - ✅ **2000, 2400** → leap years (multiples of 100 AND 400)
    - ❌ **2100, 2200, 2300** → NOT leap years (multiples of 100 but not 400)
 
-## 4.5 Mathematical Systems
+### 4.5 Mathematical Systems
 - We study the **nature and structure** of mathematical systems. Every area of math (sets, logic, etc.) shares some **basic common characteristics**.
 - 🔑 **A mathematical system = a set of elements + at least one binary operation.**
 - **Binary operation** = an operation applied to **two objects** (e.g., adding any two numbers).
 
-## 4.6 Clock Arithmetic
+### 4.6 Clock Arithmetic
 - An example of a **finite mathematical system**.
 - On a 12-hour clock, when you pass 12, you **go back around**:
 
@@ -619,10 +619,10 @@ To add/subtract time, **jump to the next whole hour first**, then add the rest.
 
 - You can build a **full addition table** for the 12-hour clock using the set **{1, 2, …, 12}** and **addition**. (Every row just "wraps around" after 12.)
 
-## 4.7 Date (finding the day of the week)
+### 4.7 Date (finding the day of the week)
 - Modular arithmetic helps find the **specific day** for a given date and year.
 
-## 4.8 ✍️ Time & Day Problems (my solutions)
+### 4.8 ✍️ Time & Day Problems (my solutions)
 > **Recipe:** ① divide by 12 / 24 / 7 → ② keep only the **remainder** → ③ move that many steps forward (after) or backward (before/ago).
 
 **1. What is 14 hours after 4 AM?**
@@ -652,12 +652,12 @@ To add/subtract time, **jump to the next whole hour first**, then add the rest.
 - Total shift = 15 + 3 = **18** → 18 ÷ 7 = 2 remainder **4**.
 - Sunday + 4 = **Thursday**. ✅ (Checked with a real calendar.)
 
-## 4.9 Barcodes (13-digit check digit)
+### 4.9 Barcodes (13-digit check digit)
 - Modular arithmetic can find a digit in a **13-digit barcode** to check if a product is **legit**.
 - Barcodes keep products **organized in databases** and **universally recognized** (Smyth, 2019).
 - 🔑 **"Modular Arithmetic is all about remainder."**
 
-### The formula
+#### The formula
 **d₁₃ = 10 − (d₁ + 3d₂ + d₃ + 3d₄ + d₅ + 3d₆ + d₇ + 3d₈ + d₉ + 3d₁₀ + d₁₁ + 3d₁₂) mod 10**
 
 What each part means:
@@ -677,7 +677,7 @@ What each part means:
 > 4. **10 − that digit** = the check digit.
 > *(If the sum already ends in 0, the check digit is 0.)*
 
-### Example 1: Sprite 1.5L → **4 801981 11860X** (find the last digit)
+#### Example 1: Sprite 1.5L → **4 801981 11860X** (find the last digit)
 | Position | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Digit | 4 | 8 | 0 | 1 | 9 | 8 | 1 | 1 | 1 | 8 | 6 | 0 |
@@ -689,7 +689,7 @@ What each part means:
 - d₁₃ = 10 − 9 = **1**
 - ✅ **The last digit of the Sprite barcode is 1.**
 
-### Example 2: Oishi Prawn Crackers → **4 80019X 177962** (a middle digit is missing!)
+#### Example 2: Oishi Prawn Crackers → **4 80019X 177962** (a middle digit is missing!)
 This time the **last digit (2) is given** and the **7th digit** is missing. Use the **same formula** and solve for X with algebra.
 
 | Position | 1 | 2 | 3 | 4 | 5 | 6 | **7** | 8 | 9 | 10 | 11 | 12 | 13 |
@@ -710,7 +710,7 @@ This time the **last digit (2) is given** and the **7th digit** is missing. Use 
 
 ---
 
-# ⚠️ EXAM TRAPS / EASY-TO-CONFUSE
+## ⚠️ EXAM TRAPS / EASY-TO-CONFUSE
 - **Sequence** = list; **Series** = sum of the list.
 - **Arithmetic** = + or − (**common difference**). **Geometric** = × or ÷ (**common ratio**).
 - **5, −5, 5, −5** is **geometric** (× −1), NOT arithmetic!
@@ -734,7 +734,7 @@ This time the **last digit (2) is given** and the **7th digit** is missing. Use 
 
 ---
 
-# ✅ QUICK SELF-TEST (cover the answers!)
+## ✅ QUICK SELF-TEST (cover the answers!)
 1. What are the 4 patterns in nature this module focuses on? → *Symmetry, fractals, spirals, tessellations.*
 2. Who coined "fractal"? → *Benoit Mandelbrot.*
 3. What is a sequence? A series? → *An ordered list following a rule; the sum of its terms.*
@@ -755,6 +755,327 @@ This time the **last digit (2) is given** and the **7th digit** is missing. Use 
 18. In barcodes, which positions are multiplied by 3? → *Even positions (2, 4, 6, 8, 10, 12).*
 19. What does "mod 10" give you? → *The last digit (remainder when divided by 10).*
 20. A mathematical system has…? → *A set of elements and at least one binary operation.*
+
+---
+
+## 📝 PRACTICE QUIZ
+
+```quiz
+Q: Which of these is NOT one of the four patterns in nature this module focuses on?
+* Parabolas
+- Symmetry
+- Fractals
+- Tessellations
+> The four are symmetry, fractals, spirals, and tessellations.
+
+Q: Who was the first to coin the term "fractals"?
+* Benoit Mandelbrot
+- Ian Stewart
+- Leonardo of Pisa (Fibonacci)
+- George Polya
+
+Q: What kind of symmetry does a starfish show?
+* Five-fold symmetry
+- Bilateral symmetry
+- Three-fold symmetry
+- No symmetry
+
+Q: What is a tessellation?
+* A tiling that covers a surface with no gaps and no overlaps
+- A pattern that winds around a center
+- A shape made of smaller copies of itself
+- A mirror image across a line
+
+Q: Which shape cannot tessellate on its own?
+* Circle
+- Square
+- Equilateral triangle
+- Hexagon
+> Circles always leave empty spaces.
+
+Q: What is a series?
+* The sum of the terms of a sequence
+- An ordered list of numbers that follows a rule
+- The number added each time in a sequence
+- The number multiplied each time in a sequence
+
+Q: The sequence 1, 5, 9, 13, 17, ... is:
+* Arithmetic, with common difference 4
+- Geometric, with common ratio 4
+- Arithmetic, with common difference 5
+- Geometric, with common ratio 5
+
+Q: The sequence 5, −5, 5, −5, 5, ... is:
+* Geometric, with common ratio −1
+- Arithmetic, with common difference −10
+- Arithmetic, with common difference 10
+- Neither arithmetic nor geometric
+> Dividing neighbors always gives −1. Subtracting does not give the same answer each time.
+
+Q: What is the next term of 4, 2, 0, −2, −4, ...?
+* −6
+- −8
+- −5
+- 6
+
+Q: What is the common ratio of 1/2, 1/4, 1/8, 1/16, ...?
+* 1/2
+- 2
+- 1/4
+- −1/2
+
+Q: What is the rule of the Fibonacci sequence?
+* Every number is the sum of the two numbers before it
+- Every number is double the one before it
+- Every number is the one before it plus 2
+- Every number is the product of the two numbers before it
+
+Q: What is the next Fibonacci number after 55 and 89?
+* 144
+- 134
+- 143
+- 154
+> 55 + 89 = 144.
+
+Q: Which book brought the Fibonacci sequence to Western Europe in 1202?
+* Liber Abaci
+- How to Solve It
+- Nature by Numbers
+- Elements
+
+Q: In the rabbit puzzle, how many pairs are there after one year?
+* 233
+- 144
+- 89
+- 377
+> The count is taken at the start of the 13th month.
+
+Q: The ratio of consecutive Fibonacci numbers gets closer and closer to what value?
+* 1.618 (the Golden Ratio)
+- 3.1416 (pi)
+- 2.718 (e)
+- 1.414 (the square root of 2)
+
+Q: The language of mathematics is described as:
+* Precise, concise, and powerful
+- Simple, short, and symbolic
+- Exact, formal, and difficult
+- Logical, numerical, and universal
+
+Q: Which part of math language "dictates the meaning" and is a usage generally agreed upon by mathematicians?
+* Math convention
+- Math syntax
+- Math symbols
+- Math expression
+
+Q: According to Kueker, logic is concerned with what part of an argument?
+* Its form rather than its content
+- Its content rather than its form
+- Its length
+- Whether it is written in symbols
+
+Q: Which of these is a simple statement?
+* My friend took his master's degree in Spain.
+- Roses are red, and violets are blue.
+- If it rains, then the ground is wet.
+- Either he watches a movie or dines with his friends.
+
+Q: What does the symbol ∧ stand for?
+* Conjunction (and)
+- Disjunction (or)
+- Negation (not)
+- Conditional (if, then)
+
+Q: A statement of the form "p or q" is called a:
+* Disjunction
+- Conjunction
+- Conditional
+- Biconditional
+
+Q: Which symbol stands for the biconditional (if and only if)?
+* ↔
+- →
+- ∧
+- ~
+
+Q: When is a disjunction p ∨ q false?
+* Only when both p and q are false
+- Only when both p and q are true
+- Whenever p is false
+- Whenever p and q are different
+
+Q: When is a conditional p → q false?
+* Only when p is true and q is false
+- Only when p is false and q is true
+- Whenever q is false
+- Only when both are false
+> Think of it as a promise: it is broken only when the "if" part happens and the "then" part does not.
+
+Q: If p is false and q is false, which of these is FALSE?
+* p ∨ q
+- p → q
+- p ↔ q
+- ~p
+
+Q: If p is true and q is false, which of these is TRUE?
+* p ∨ q
+- p ∧ q
+- p → q
+- p ↔ q
+
+Q: Let p = "He has green thumb" and q = "He is a senior citizen." How do you write "It is not the case that he has green thumb or is a senior citizen"?
+* ~(p ∨ q)
+- ~p ∨ ~q
+- ~p ∧ q
+- p → ~q
+> "It is not the case that" negates the whole thing, so the ~ goes outside the parentheses.
+
+Q: In "If it rains, then the ground is wet," what is "it rains"?
+* The hypothesis
+- The conclusion
+- The negation
+- The conjunction
+
+Q: "You are entitled to a 30% discount if you are a member" is what type of statement?
+* Conditional
+- Conjunction
+- Disjunction
+- Simple statement
+> It means "If you are a member, then you get a discount."
+
+Q: What is a conjecture?
+* A conclusion made from observing data
+- A statement that has already been proven
+- A rule agreed upon by mathematicians
+- A problem with no solution
+
+Q: Which kind of reasoning works by comparison, like "hammer is to nail as comb is to hair"?
+* Analogy
+- Intuition
+- Inductive reasoning
+- Deductive reasoning
+
+Q: Which kind of reasoning is like guessing, using common sense without proof?
+* Intuition
+- Analogy
+- Inductive reasoning
+- Deductive reasoning
+
+Q: Inductive reasoning goes from:
+* Specific examples to a general conclusion
+- A general rule to a specific case
+- A comparison to a conclusion
+- A guess to a proof
+
+Q: "All men are mortal. Luke is a man. So Luke is mortal." What kind of reasoning is this?
+* Deductive
+- Inductive
+- Analogy
+- Intuition
+
+Q: What is the correct order of Polya's four steps?
+* Understand, Plan, Solve, Review
+- Plan, Understand, Solve, Review
+- Understand, Solve, Plan, Review
+- Review, Understand, Plan, Solve
+
+Q: Which book by George Polya outlines his problem-solving strategy?
+* How to Solve It
+- Liber Abaci
+- Nature by Numbers
+- Mathematics in the Modern World
+
+Q: Which problem-solving strategy starts at the end of the problem?
+* Working Backward
+- Searching for Patterns
+- Drawing Pictures and Diagrams
+- Making Lists and Tables
+
+Q: A police station has 25 vehicles, motorcycles and cars, with 70 wheels in total. How many of each?
+* 15 motorcycles and 10 cars
+- 10 motorcycles and 15 cars
+- 20 motorcycles and 5 cars
+- 12 motorcycles and 13 cars
+> If all 25 were motorcycles there would be 50 wheels. The missing 20 wheels come from 10 cars, 2 extra each.
+
+Q: What is the next number in 1, 5, 12, 22, 35, ...?
+* 51
+- 48
+- 50
+- 53
+> The differences are 4, 7, 10, 13, so the next difference is 16.
+
+Q: What does "a mod n" mean?
+* The remainder when a is divided by n
+- The quotient when a is divided by n
+- The product of a and n
+- The sum of a and n
+
+Q: What is 14 mod 12?
+* 2
+- 1
+- 12
+- 26
+
+Q: Which modulus do you use for days of the week?
+* 7
+- 12
+- 24
+- 10
+
+Q: A mathematical system is made up of:
+* A set of elements and at least one binary operation
+- A set of numbers and a formula
+- A list of rules and a truth table
+- A sequence and its series
+
+Q: What is a binary operation?
+* An operation applied to two objects
+- An operation that uses only 0 and 1
+- An operation that can be done only twice
+- An operation with two possible answers
+
+Q: In 12-hour clock arithmetic, what is 9 + 10?
+* 7
+- 19
+- 1
+- 9
+> 19 − 12 = 7.
+
+Q: What time is it 14 hours after 4 AM?
+* 6 PM
+- 6 AM
+- 2 PM
+- 8 PM
+
+Q: If today is Monday, what day is it 16 days from today?
+* Wednesday
+- Tuesday
+- Thursday
+- Monday
+> 16 mod 7 = 2, and Monday + 2 = Wednesday.
+
+Q: If today is Saturday, what day was it 211 days ago?
+* Friday
+- Sunday
+- Thursday
+- Saturday
+> 211 mod 7 = 1, so go back one day.
+
+Q: Which of these years is a leap year?
+* 2000
+- 2100
+- 2200
+- 2300
+> A year that is a multiple of 100 must also be a multiple of 400.
+
+Q: In a 13-digit barcode, the weighted sum of the first 12 digits is 99. What is the check digit?
+* 1
+- 9
+- 0
+- 10
+> 99 mod 10 = 9, and 10 − 9 = 1.
+```
 
 ---
 *References (from slides): Aufmann et al. (2018) Mathematics in the Modern World; Daligdig (2019) MMW, LORIMAR; De Castro (2019) MMW, PLV; Gallo & Setek (2005) Fundamentals of Mathematics 10th ed.; "Fibonacci Numbers: Nature, Math, and Social Inquiry" Gemini Notebook; plus image sources (Alamy, Pinterest, Wikimedia, etc.).*

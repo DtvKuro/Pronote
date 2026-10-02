@@ -1557,3 +1557,126 @@ code.hljs { padding: 3px 5px; }
   .nav-cysql { padding: 0.375rem 0.5rem; }
   .nav-cysql span { display: none; }
 }
+
+/* Phone nav: search icon opens a row under the bar; CySQL lives in the drawer */
+
+.nav-search-toggle, .nav-search-close, .notes-menu-cysql, .toc-fab { display: none; }
+
+@media (max-width: 767px) {
+  .notes-menu-toggle, .theme-toggle, .nav-search-toggle { width: 40px; height: 40px; }
+  .mode-switch-btn { min-height: 40px; display: inline-flex; align-items: center; }
+  .nav-sticky-title, .nav-cysql { display: none !important; }
+  .nav-logo { display: flex; align-items: center; min-height: 40px; }
+
+  .nav-search-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .nav-search-toggle[aria-expanded="true"] { color: var(--accent); border-color: var(--accent); }
+
+  .nav-search {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav--search-open .nav-search { display: flex; }
+  .nav-search-input { flex: 1 1 0; width: auto; min-width: 0; min-height: 44px; font-size: 1rem; }
+  .nav-search-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .search-nav-panel {
+    position: static;
+    flex: 1 1 100%;
+    margin: 0;
+    padding: 0;
+    gap: 0.5rem;
+    border: 0;
+    background: none;
+    font-size: 0.875rem;
+  }
+  #searchMatchInfo { margin-right: auto; }
+  .search-nav-btn { min-width: 44px; min-height: 44px; font-size: 1rem; }
+
+  .notes-menu-cysql {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    margin-bottom: 0.75rem;
+    padding: 0 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+}
+
+/* Section jump: below 1024px the "On this page" list becomes a sheet */
+
+@media (max-width: 1023px) {
+  .toc-fab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 1rem;
+    right: 4rem;
+    width: 44px;
+    height: 44px;
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    z-index: 90;
+  }
+  .toc-fab[aria-expanded="true"] { color: var(--accent); border-color: var(--accent); }
+  .back-to-top { width: 44px; height: 44px; }
+
+  .toc.toc--open {
+    display: block;
+    top: auto;
+    left: auto;
+    right: 0.5rem;
+    bottom: 4.25rem;
+    width: min(24rem, calc(100vw - 1rem));
+    max-height: 60vh;
+    overscroll-behavior: contain;
+    z-index: 91;
+  }
+  .toc--open .toc-title { cursor: default; }
+  .toc--open .toc-title::after { display: none; }
+  .toc--open .toc-list { display: flex; }
+  .toc-toggle { position: relative; }
+  .toc-toggle::after { content: ''; position: absolute; inset: -10px; }
+  .toc--open .toc-link { display: flex; align-items: center; min-height: 40px; padding: 0.4rem 0.5rem; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .toc-fab { bottom: 2rem; right: 5rem; }
+  .toc.toc--open { right: 2rem; bottom: 5.25rem; }
+}
+
+@media print {
+  .toc-fab { display: none !important; }
+}
