@@ -236,3 +236,321 @@ Movements done on a **stationary base** (you stay in one spot). They move around
 10. All nutrients provide structure, function, or energy; **essential** ones must come from food because the body can't make enough
 
 </details>
+
+---
+
+## Practice Quiz
+
+```quiz
+Q: What are nutrients?
+* Substances that give the body structure, function, or energy
+- Foods that contain no fat
+- Vitamins that come only from fruit
+- Drinks that keep the body hydrated
+
+Q: What makes a nutrient "essential"?
+* It must come from food because the body can't make enough of it
+- It gives the body more energy than other nutrients
+- It is only found in meat
+- It is needed only by athletes
+
+Q: Which food group is the body's main energy source?
+* Carbohydrates
+- Protein
+- Fats
+- Water
+
+Q: Which food group builds and repairs tissue and muscle?
+* Protein
+- Carbohydrates
+- Fats
+- Water
+
+Q: Which kind of fat should you choose?
+* Unsaturated fat
+- Saturated fat
+- Trans fat
+- Fat from fried food
+
+Q: Vitamins and minerals are:
+* Micronutrients that regulate body processes
+- The main source of energy
+- Nutrients that build muscle
+- Fats that protect the organs
+
+Q: A silog breakfast has rice, egg, and oil from frying. Which food groups are missing?
+* Vitamins and minerals, and water
+- Carbohydrates and protein
+- Protein and fats
+- Fats and carbohydrates
+> Rice is carbs, egg is protein, and the frying oil is fat.
+
+Q: What is physical fitness?
+* The body's ability to do daily tasks with vigor and alertness, without excessive fatigue
+- The ability to lift the heaviest weight possible
+- Having a low body weight
+- Being able to run a long distance
+
+Q: How many components does health-related fitness have?
+* 5
+- 6
+- 4
+- 11
+> Skill-related fitness has 6.
+
+Q: What is body composition?
+* The ratio of lean mass to fat mass
+- How tall you are compared to your weight
+- How fast you can move your body
+- How far your joints can move
+
+Q: Which test measures cardiovascular endurance?
+* 3-Minute Step Test
+- Zipper Test
+- Sit-and-Reach
+- Basic Plank
+
+Q: What does the Zipper Test measure?
+* Flexibility
+- Muscular strength
+- Muscular endurance
+- Balance
+> It checks shoulder flexibility.
+
+Q: Push-ups are used to test:
+* Muscular endurance
+- Muscular strength
+- Flexibility
+- Body composition
+
+Q: In the handout, the Basic Plank tests which component?
+* Muscular strength
+- Flexibility
+- Cardiovascular endurance
+- Body composition
+
+Q: What is the formula for BMI?
+* Weight (kg) ÷ height (m)²
+- Height (m) ÷ weight (kg)
+- Weight (kg) × height (m)
+- 220 − age
+
+Q: A person weighs 60 kg and is 1.65 m tall. What is their BMI?
+* 22.0
+- 36.4
+- 27.5
+- 18.2
+> 1.65² = 2.7225, and 60 ÷ 2.7225 = 22.0.
+
+Q: A BMI of 22 falls in which category?
+* Normal
+- Underweight
+- Overweight
+- Obese
+> Normal is 18.5 to 24.9.
+
+Q: Which of these is a skill-related fitness component?
+* Agility
+- Flexibility
+- Body composition
+- Muscular endurance
+
+Q: Power is a combination of:
+* Strength and speed
+- Speed and balance
+- Strength and flexibility
+- Agility and coordination
+
+Q: A runner reacting to the starting pistol shows:
+* Reaction time
+- Speed
+- Agility
+- Coordination
+
+Q: Dribbling a basketball while running shows:
+* Coordination
+- Balance
+- Power
+- Reaction time
+
+Q: A shuttle run tests which component?
+* Agility
+- Speed
+- Power
+- Balance
+
+Q: What is the formula for Personal Maximal Heart Rate (PMHR)?
+* 220 − age
+- 200 − age
+- 220 + age
+- Age × 2
+
+Q: For a moderate workout, Target Heart Rate (THR) is:
+* 65% to 75% of PMHR
+- 50% to 60% of PMHR
+- 85% to 95% of PMHR
+- 100% of PMHR
+
+Q: What is the moderate THR range of a 20-year-old?
+* 130 to 150 bpm
+- 140 to 160 bpm
+- 120 to 140 bpm
+- 150 to 170 bpm
+> PMHR = 220 − 20 = 200. Then 200 × 0.65 = 130 and 200 × 0.75 = 150.
+
+Q: What is the moderate THR range of a 19-year-old?
+* About 131 to 151 bpm
+- 130 to 150 bpm
+- About 142 to 162 bpm
+- About 121 to 141 bpm
+> PMHR = 201. Then 201 × 0.65 = 130.65 and 201 × 0.75 = 150.75.
+
+Q: What is the Rate of Perceived Exertion (RPE)?
+* A subjective scale of how hard you feel you are working
+- Your highest possible heart rate
+- The heart rate range to aim for while exercising
+- The number of exercises in a workout
+
+Q: What does "aerobic" mean?
+* With oxygen
+- Without oxygen
+- With weights
+- Without rest
+
+Q: A 100 m sprint is what type of exercise?
+* Anaerobic
+- Aerobic
+- Isometric
+- Relaxation
+> Anaerobic exercise is high intensity and short duration.
+
+Q: A plank is what type of exercise?
+* Isometric
+- Isotonic
+- Aerobic
+- Therapeutic
+> The muscles tense without moving the joint.
+
+Q: Squats and bicep curls are what type of exercise?
+* Isotonic
+- Isometric
+- Relaxation
+- Low intensity
+
+Q: Who is the Father of Aerobics?
+* Dr. Kenneth H. Cooper
+- George Polya
+- Dr. Joseph Pilates
+- Dr. Jack LaLanne
+
+Q: In what year was Kenneth Cooper's book "Aerobics" published?
+* 1968
+- 1958
+- 1978
+- 1988
+
+Q: How long should a warm-up last?
+* 5 to 10 minutes
+- 1 to 2 minutes
+- 20 to 30 minutes
+- 45 minutes
+
+Q: What is the purpose of the cool-down?
+* To gradually lower heart rate and body temperature
+- To raise body temperature before the workout
+- To reach maximum heart rate
+- To build muscle strength
+
+Q: Physical exercise helps prevent "diseases of affluence" such as:
+* Heart disease, diabetes, and obesity
+- Colds and flu
+- Broken bones
+- Allergies
+
+Q: What does flexion do at a joint?
+* Decreases the angle
+- Increases the angle
+- Rotates the limb
+- Moves the limb in a circle
+> Example: bending the elbow.
+
+Q: Raising your arm out to the side is:
+* Abduction
+- Adduction
+- Flexion
+- Supination
+
+Q: Lowering your arm back to your side is:
+* Adduction
+- Abduction
+- Extension
+- Pronation
+> Adduction = add the limb back to the body.
+
+Q: Turning the forearm so the palm faces up is:
+* Supination
+- Pronation
+- Inversion
+- Eversion
+> Supination = holding a bowl of soup.
+
+Q: Turning the sole of the foot inward is:
+* Inversion
+- Eversion
+- Pronation
+- Adduction
+
+Q: Arm circles are an example of:
+* Circumduction
+- Abduction
+- Twisting
+- Lateral rotation
+
+Q: Rotating the leg so the toes point outward is:
+* Lateral (external) rotation
+- Medial (internal) rotation
+- Inversion
+- Abduction
+
+Q: Axial movements are done:
+* On a stationary base, around the body's central axis
+- Only with the arms and legs
+- While running or jumping
+- Only while lying down
+
+Q: Which of these is an axial movement?
+* Twisting
+- Abduction
+- Pronation
+- Circumduction
+
+Q: How is a V-Step done?
+* Step up wide, step down narrow
+- Step up narrow, step down wide
+- Step one foot back and bend both knees
+- Lift one knee toward the chest
+
+Q: What does a leg curl do?
+* Brings the heel toward the glutes
+- Brings the knee toward the chest
+- Steps one foot back and bends both knees
+- Lifts the leg out to the side
+
+Q: What does a knee lift do?
+* Lifts one knee toward the chest
+- Brings the heel toward the glutes
+- Steps one foot back
+- Turns the sole of the foot inward
+
+Q: How is a lateral raise done?
+* Lift the arms out to the sides to shoulder level
+- Lift the arms straight in front to shoulder level
+- Push the hands straight up overhead
+- Push the hands out in front of the chest
+
+Q: Which body part does the row target?
+* Back
+- Chest
+- Biceps
+- Shoulders
+```
