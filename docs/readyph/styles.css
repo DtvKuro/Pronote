@@ -266,15 +266,17 @@ select, textarea, input[type="number"] { font: inherit; color: var(--text); back
 textarea { resize: vertical; line-height: 1.45; }
 
 /* ---------- hotlines ---------- */
-.emerg { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-bottom: 1rem; }
+.emerg { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11.5rem), 1fr)); gap: .6rem; margin-bottom: 1rem; }
 .emerg-btn { display: flex; flex-direction: column; align-items: center; gap: .15rem; text-align: center; padding: .9rem .5rem; min-height: 6rem; border-radius: 18px; background: var(--navy); color: #fff; box-shadow: var(--shadow); }
-.emerg-btn strong { font-size: 1.3rem; }
+.emerg-btn strong { font-size: 1.3rem; white-space: nowrap; }
 .emerg-btn span { font-size: .78rem; opacity: .95; }
 .emerg-btn em { font-style: normal; font-size: .68rem; font-weight: 800; background: #FFD23F; color: #3a2a00; border-radius: 6px; padding: .05rem .4rem; margin-top: .15rem; }
-.hot-row { display: flex; gap: .7rem; align-items: center; justify-content: space-between; }
+.hot-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .7rem; align-items: center; }
 .hot-info { display: flex; flex-direction: column; gap: .15rem; }
 .hot-info p { color: var(--muted); font-size: .82rem; }
-.hot-info .hot-num { color: var(--text); font-weight: 800; font-size: .95rem; }
+.hot-info .hot-num { color: var(--text); font-weight: 800; font-size: .95rem; white-space: nowrap; }
+.hot-row .btn { white-space: nowrap; min-width: 5.5rem; }
+.hot-info .tag { align-self: flex-start; }
 .tag { font-size: .68rem; font-weight: 800; background: #EEF1F6; border: 1px solid #98A5BD; color: var(--muted); border-radius: 6px; padding: .05rem .35rem; }
 
 /* ---------- alerts ---------- */
@@ -363,3 +365,8 @@ textarea { resize: vertical; line-height: 1.45; }
   .btn-find::after, .you-pulse { display: none; }
   .spinner { animation: none; border-top-color: var(--blue); border-right-color: var(--blue); }
 }
+
+.sim-chip { display: inline-flex; align-items: center; gap: .35rem; margin-bottom: .6rem; padding: .2rem .65rem; border-radius: 99px; border: 2px dashed var(--navy); color: var(--navy); font-size: .78rem; font-weight: 800; }
+.sim-chip .ic { width: .95rem; height: .95rem; }
+.rt-stats { display: flex; justify-content: space-between; margin-top: .45rem; font-size: .9rem; color: var(--muted); }
+.rt-stats strong { color: var(--text); }

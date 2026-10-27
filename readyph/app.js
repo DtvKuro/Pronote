@@ -186,8 +186,8 @@
       const w = walkRoute(pts, o.f || 0);
       const str = (arr) => arr.map((p) => p.x + ',' + p.y).join(' ');
       routeSvg = `<polyline points="${str(pts)}" fill="none" stroke="#0B2A5B" stroke-width="5" stroke-dasharray="2 9" stroke-linecap="round" opacity=".55"/>
-        <polyline points="${str(w.done)}" fill="none" stroke="#1456C9" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-        <g transform="translate(${w.pos.x} ${w.pos.y})"><circle r="13" fill="#1456C9" stroke="#fff" stroke-width="3"/><use href="#i-navigate" x="-8" y="-8" width="16" height="16" class="ic-svg"/></g>`;
+        <polyline id="rt-done" points="${str(w.done)}" fill="none" stroke="#1456C9" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="rt-pos" transform="translate(${w.pos.x} ${w.pos.y})"><circle r="13" fill="#1456C9" stroke="#fff" stroke-width="3"/><use href="#i-navigate" x="-8" y="-8" width="16" height="16" class="ic-svg"/></g>`;
     }
     const pins = (o.pins || []).map((v) => {
       const dim = o.dim && o.dim.has(v.id);
@@ -424,42 +424,89 @@
     };
   };
 
+  const fmtDist = (m) => (m >= 1000 ? (m / 1000).toFixed(1) + ' km' : Math.max(0, Math.round(m / 10) * 10) + ' m');
+  const fmtEta = (c, prog) => { const m = Math.ceil(walkMin(c.km) * (1 - prog)); return m <= 0 ? '< 1 min' : m + ' min'; };
+
   screens.route = function (id) {
     const c = byId(id);
     if (!c) return { redirect: '#/home' };
-    if (!nav || nav.id !== id) { nav = { id, step: 0 }; store.recentId = id; save(); }
+    if (!nav || nav.id !== id) { nav = { id, prog: 0, step: 0, n: 1 }; store.recentId = id; save(); }
     const steps = buildSteps(c);
     const n = steps.length;
+    nav.n = n;
+    nav.step = Math.min(n - 1, Math.floor(nav.prog * n));
     const s = steps[nav.step];
-    const last = nav.step === n - 1;
-    const f = n > 1 ? nav.step / (n - 1) : 1;
-    const pct = Math.round(f * 100);
+    const pct = Math.round(nav.prog * 100);
     const lead = s.icon ? ic(s.icon, 'xl') : `<span class="arrow" style="transform:rotate(${s.deg}deg)">${ic('arrow', 'xl')}</span>`;
     const next = steps[nav.step + 1];
     return {
-      title: t('route.title'), tab: 'map',
+      title: t('route.title'), tab: 'map', startsSim: true,
       html: `${header(t('route.title'), { back: '#/center/' + id })}
-        <p class="route-to">${ic('pin')}<span><strong>${esc(c.name)}</strong><br><small>${c.km} km · ${t('c.walk', { m: walkMin(c.km) })} · ${t('route.safe')}</small></span></p>
-        <div class="map-wrap map-short">${mapSvg({ pins: [c], routeTo: c, f, static: true })}</div>
+        <p class="route-to">${ic('pin')}<span><strong>${esc(c.name)}</strong><br><small>${t('route.safe')}</small></span></p>
+        <p class="sim-chip">${ic('locate')}${t('route.sim')}</p>
+        <div class="map-wrap map-short">${mapSvg({ pins: [c], routeTo: c, f: nav.prog, static: true })}</div>
         <div class="progress-block">
-          <div class="progress-top"><strong>${t('route.step', { a: nav.step + 1, b: n })}</strong><span>${pct}%</span></div>
-          <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="${t('route.title')}"><span class="bar-fill route-fill" style="width:${pct}%"></span></div>
+          <div class="progress-top"><strong>${t('route.step', { a: nav.step + 1, b: n })}</strong><span id="rt-pct">${pct}%</span></div>
+          <div class="bar" id="rt-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="${t('route.title')}"><span class="bar-fill route-fill" id="rt-fill" style="width:${pct}%"></span></div>
+          <p class="rt-stats"><span>${t('route.left')}: <strong id="rt-dist">${fmtDist(c.km * 1000 * (1 - nav.prog))}</strong></span><span>${t('route.eta')}: <strong id="rt-eta">${fmtEta(c, nav.prog)}</strong></span></p>
         </div>
         <section class="card step" aria-live="polite">
           <div class="step-lead">${lead}</div>
           <div class="step-body">${s.kicker ? `<small>${s.kicker}</small>` : ''}<strong>${esc(s.text)}</strong>${s.meters ? `<span>${s.meters} m</span>` : ''}</div>
         </section>
-        ${next ? `<p class="next-up">${ic('chevron')}<span>Then: ${esc(next.text)}</span></p>` : ''}
+        ${next ? `<p class="next-up">${ic('chevron')}<span>${t('route.then')}: ${esc(next.text)}</span></p>` : ''}
         <div class="btn-col">
-          ${last ? `<button class="btn btn-primary btn-lg" data-act="arrive" data-k="arrive">${ic('check-circle')}${t('route.arrive')}</button>`
-            : `<button class="btn btn-primary btn-lg" data-act="step-next" data-k="next">${t('route.next')}${ic('chevron')}</button>`}
-          <div class="btn-row">
-            <button class="btn btn-secondary" data-act="step-prev" data-k="prev" ${nav.step === 0 ? 'disabled' : ''}>${ic('back')}${t('route.prev')}</button>
-            <button class="btn btn-quiet" data-act="stop-nav" data-k="stop">${ic('x')}${t('route.stop')}</button>
-          </div>
+          <button class="btn btn-secondary" data-act="stop-nav" data-k="stop">${ic('x')}${t('route.stop')}</button>
         </div>`
     };
   };
+
+  /* Simulated GPS: the marker advances along the route by itself (no taps), pausing while a dialog is open. */
+  const STEP_MS = 4500; // each direction step takes about 4.5 s, so a 3-4 step demo route lasts 14-18 s
+  const sim = { raf: 0, last: 0, acc: 0 };
+  const reducedMotion = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  function stopSim() { cancelAnimationFrame(sim.raf); sim.raf = 0; }
+
+  function updateLive(c) {
+    const w = walkRoute(routePoints(c), nav.prog);
+    const done = $('#rt-done'), pos = $('#rt-pos');
+    if (done) done.setAttribute('points', w.done.map((p) => p.x + ',' + p.y).join(' '));
+    if (pos) pos.setAttribute('transform', `translate(${w.pos.x} ${w.pos.y})`);
+    const pct = Math.round(nav.prog * 100);
+    const set = (sel, v) => { const el = $(sel); if (el) el.textContent = v; };
+    set('#rt-pct', pct + '%'); set('#rt-dist', fmtDist(c.km * 1000 * (1 - nav.prog))); set('#rt-eta', fmtEta(c, nav.prog));
+    const fill = $('#rt-fill'), bar = $('#rt-bar');
+    if (fill) fill.style.width = pct + '%';
+    if (bar) bar.setAttribute('aria-valuenow', pct);
+  }
+
+  function startSim() {
+    if (sim.raf) return;
+    sim.last = performance.now(); sim.acc = 0;
+    const tick = (now) => {
+      sim.raf = requestAnimationFrame(tick);
+      const dt = Math.max(0, Math.min(now - sim.last, 250)); sim.last = now;
+      if (!nav || dialogOpen()) return; // paused while the leave/stop confirmation is open
+      const c = byId(nav.id);
+      if (!c) return;
+      if (reducedMotion()) {
+        sim.acc += dt;
+        if (sim.acc < STEP_MS) return;
+        sim.acc = 0;
+        nav.prog = Math.min(1, Math.round(nav.prog * nav.n + 1) / nav.n);
+      } else {
+        nav.prog = Math.min(1, nav.prog + dt / (STEP_MS * nav.n));
+      }
+      if (nav.prog >= 1) {
+        const id = nav.id; nav = null; stopSim(); buzz([60, 40, 60]);
+        go('#/arrived/' + id);
+        return;
+      }
+      if (Math.min(nav.n - 1, Math.floor(nav.prog * nav.n)) !== nav.step) { buzz(15); render(); } else updateLive(c);
+    };
+    sim.raf = requestAnimationFrame(tick);
+  }
 
   screens.arrived = function (id) {
     const c = byId(id);
@@ -514,7 +561,7 @@
   screens.hotlines = function () {
     const row = (h) => `<li class="card hot-row">
       <div class="hot-info"><h3>${esc(h.name)}</h3><p>${esc(h.desc)}</p>
-        <p class="hot-num">${esc(h.number)}${h.verified ? '' : ` <span class="tag">${t('hot.sample')}</span>`}</p></div>
+        <p class="hot-num">${esc(h.number)}</p>${h.verified ? '' : `<span class="tag">${t('hot.sample')}</span>`}</div>
       <a class="btn btn-primary" href="tel:${h.tel}" data-act="vibrate" aria-label="${t('hot.call')} ${esc(h.name)} ${esc(h.number)}">${ic('phone')}${t('hot.call')}</a></li>`;
     const emerg = READY.hotlines.filter((h) => h.emergency);
     const rest = READY.hotlines.filter((h) => !h.emergency);
@@ -687,11 +734,14 @@
     const out = sc(r.arg);
     if (out.redirect) { history.replaceState(null, '', out.redirect); render(); return; }
 
+    if (!out.startsSim) stopSim();
     ui.route = r;
     ui.hash = location.hash || '#/home';
     document.title = out.title + ' – ReadyPH';
     view.innerHTML = out.html;
     renderChrome(out, r.name, r.arg);
+
+    if (out.startsSim) startSim();
 
     if (routeChanged) {
       view.scrollTop = 0;
@@ -761,19 +811,13 @@
       const p = $('#preview'); if (p && p.scrollIntoView) p.scrollIntoView({ block: 'nearest' });
     },
     route(el) { startRoute(el.dataset.id); },
-    'step-next'() { nav.step += 1; buzz(15); render(); },
-    'step-prev'() { if (nav.step > 0) { nav.step -= 1; render(); } },
-    arrive() {
-      const id = nav.id; nav = null; buzz([60, 40, 60]);
-      go('#/arrived/' + id);
-    },
     'stop-nav'() {
       const id = nav.id;
       openDialog({
         title: t('route.stop') + '?', body: t('route.leaveBody'), icon: 'navigate',
         actions: [
           { label: t('route.stay'), kind: 'primary' },
-          { label: t('route.stopConfirm'), kind: 'danger', run: () => { nav = null; toast(t('route.stopped')); ui.allowLeave = true; go('#/center/' + id); } }
+          { label: t('route.stopConfirm'), kind: 'danger', run: () => { nav = null; stopSim(); toast(t('route.stopped')); ui.allowLeave = true; go('#/center/' + id); } }
         ]
       });
     },
