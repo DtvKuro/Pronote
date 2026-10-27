@@ -265,6 +265,7 @@ for (const c of collections) {
 }
 
 const CYSQL_SOURCE = path.join(PROJECT_ROOT, 'cysql');
+const READYPH_SOURCE = path.join(PROJECT_ROOT, 'readyph');
 
 // Refuse to touch docs/ if anything is missing — a partial build would
 // silently drop pages from the live site.
@@ -278,6 +279,7 @@ for (const c of collections) {
   }
 }
 if (!fs.existsSync(CYSQL_SOURCE)) missing.push('cysql/ (SQL playground)');
+if (!fs.existsSync(READYPH_SOURCE)) missing.push('readyph/ (ReadyPH prototype)');
 if (missing.length) {
   console.error('MISSING SOURCES — build aborted, docs/ left untouched:');
   for (const m of missing) console.error(`  ${m}`);
@@ -801,6 +803,10 @@ if (broken.length) {
 // Copy CySQL playground
 copyDir(CYSQL_SOURCE, path.join(DIST, 'cysql'));
 console.log('  Copied CySQL playground.');
+
+// Copy ReadyPH prototype (unlisted — reachable by direct URL only)
+copyDir(READYPH_SOURCE, path.join(DIST, 'readyph'));
+console.log('  Copied ReadyPH prototype.');
 
 console.log(`Built ${totalNotes} notes across ${collections.length} collections, output at docs/`);
 
