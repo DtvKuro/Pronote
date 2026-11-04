@@ -58,16 +58,18 @@ window.READY = (function () {
     { id: 'brgy', name: 'Brgy. Malanday Hall', desc: 'Your barangay: tanod and relief goods', number: '(02) 0000-0106', tel: '0200000106', verified: false } // SAMPLE – replace with official numbers
   ];
 
-  /* sev: warning | advisory | info. mins = how long ago. */
+  /* sev: danger | warning | info. title = the signal/alert name only. area = where it applies (shown on its own, smaller line).
+     action = the ONE short reminder line shown on the card. mins = how long ago. */
+  const DANGER_ACTION = 'Leave immediately – go to the nearest evacuation center';
   const alerts = [
-    { id: 'a1', sev: 'warning', mins: 14, title: 'Typhoon Signal No. 3 – Tullahan River rising; residents of low-lying barangays (Tagalag, Coloong, Wawang Pulo, Isla) advised to evacuate',
-      body: 'Strong winds and heavy rain are expected. The Tullahan River is rising.', todo: 'Families in low-lying barangays should go to an evacuation center now. Bring IDs, medicine and water.' },
-    { id: 'a2', sev: 'warning', mins: 40, title: 'Mandatory evacuation: riverside areas of Brgy. Malanday and Brgy. Tagalag',
-      body: 'The city ordered evacuation of homes close to the river.', todo: 'Leave now. Use the Find Nearest button. Seniors and PWD get priority at the gate.' },
-    { id: 'a3', sev: 'advisory', mins: 95, title: 'Classes suspended, all levels',
-      body: 'Classes in public and private schools are suspended until further notice.', todo: 'Some schools are being used as evacuation centers.' },
-    { id: 'a4', sev: 'info', mins: 180, title: 'Relief packs available at Dalandanan National High School',
-      body: 'Food and water packs are given out from 4 PM.', todo: 'Bring a valid ID or your barangay certificate.' }
+    { id: 'a1', sev: 'danger', mins: 14, title: 'Typhoon Signal No. 3',
+      area: 'Tullahan River rising · Low-lying barangays (Tagalag, Coloong, Wawang Pulo, Isla) advised to evacuate', action: DANGER_ACTION },
+    { id: 'a2', sev: 'danger', mins: 40, title: 'Mandatory evacuation',
+      area: 'Riverside areas of Brgy. Malanday and Brgy. Tagalag', action: DANGER_ACTION },
+    { id: 'a3', sev: 'warning', mins: 95, title: 'Classes suspended, all levels',
+      area: 'Public and private schools, until further notice', action: 'Prepare your go-bag and stay alert.' },
+    { id: 'a4', sev: 'info', mins: 180, title: 'Relief packs available',
+      area: 'Dalandanan National High School, from 4 PM', action: 'Bring a valid ID or your barangay certificate.' }
   ];
 
   /* UI strings. Missing Filipino keys fall back to English. */
@@ -113,8 +115,8 @@ window.READY = (function () {
       'share.smsOk': 'Opening your messaging app', 'share.shared': 'Shared. Thank you for letting them know.', 'share.copied': 'Message copied. Paste it in any app.',
       'share.copyFail': 'Could not copy. Select the text and copy it by hand.', 'share.resetOk': 'Message reset',
       'hot.title': 'City hotlines', 'hot.sub': 'Tap Call to dial. Standard call rates may apply.', 'hot.note': 'Numbers shown are for prototype demo.', 'hot.call': 'Call', 'hot.sample': 'Sample number',
-      'alerts.title': 'Disaster alerts', 'alerts.sub': 'From Valenzuela CDRRMO and PAGASA (sample)', 'alerts.todo': 'What to do',
-      'sev.warning': 'Warning', 'sev.advisory': 'Advisory', 'sev.info': 'Info',
+      'alerts.title': 'Disaster alerts', 'alerts.sub': 'From Valenzuela CDRRMO and PAGASA (sample)',
+      'sev.danger': 'Danger', 'sev.warning': 'Warning', 'sev.info': 'Info',
       'set.title': 'Settings', 'set.size': 'Text size', 'set.size.normal': 'Normal', 'set.size.large': 'Large', 'set.size.xl': 'Extra large',
       'set.lang': 'Language', 'set.contrast': 'High contrast', 'set.contrastHelp': 'Darker text and stronger borders',
       'set.offline': 'Offline mode (demo)', 'set.offlineHelp': 'Pretend there is no signal. The app keeps working with saved data.',
@@ -170,8 +172,8 @@ window.READY = (function () {
       'share.smsOk': 'Binubuksan ang messaging app', 'share.shared': 'Naibahagi na. Salamat sa pagpapaalam.', 'share.copied': 'Nakopya. I-paste sa kahit anong app.',
       'share.copyFail': 'Hindi makopya. Piliin ang teksto at kopyahin nang mano-mano.', 'share.resetOk': 'Naibalik ang mensahe',
       'hot.title': 'Mga hotline ng lungsod', 'hot.sub': 'Pindutin ang Tawag para mag-dial.', 'hot.note': 'Numero para sa prototype demo lang.', 'hot.call': 'Tawag', 'hot.sample': 'Sample na numero',
-      'alerts.title': 'Mga babala sa sakuna', 'alerts.sub': 'Mula sa Valenzuela CDRRMO at PAGASA (sample)', 'alerts.todo': 'Ano ang gagawin',
-      'sev.warning': 'Babala', 'sev.advisory': 'Paalala', 'sev.info': 'Impormasyon',
+      'alerts.title': 'Mga babala sa sakuna', 'alerts.sub': 'Mula sa Valenzuela CDRRMO at PAGASA (sample)',
+      'sev.danger': 'Panganib', 'sev.warning': 'Babala', 'sev.info': 'Impormasyon',
       'set.title': 'Setting', 'set.size': 'Laki ng letra', 'set.size.normal': 'Normal', 'set.size.large': 'Malaki', 'set.size.xl': 'Pinakamalaki',
       'set.lang': 'Wika', 'set.contrast': 'Mataas na contrast', 'set.contrastHelp': 'Mas matingkad na letra at gilid',
       'set.offline': 'Offline mode (demo)', 'set.offlineHelp': 'Kunwari walang signal. Gumagana pa rin ang app gamit ang naka-save na datos.',

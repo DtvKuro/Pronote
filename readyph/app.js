@@ -118,27 +118,27 @@
     const xs = [0, 130, 200, 270, 340], ys = [0, 70, 150, 230, 310, 390, 440];
     let blocks = '';
     for (let i = 0; i < xs.length - 1; i++) for (let j = 0; j < ys.length - 1; j++) {
-      blocks += `<rect x="${xs[i] + 8}" y="${ys[j] + 8}" width="${xs[i + 1] - xs[i] - 16}" height="${ys[j + 1] - ys[j] - 16}" rx="6" fill="#DCE5F1"/>`;
+      blocks += `<rect x="${xs[i] + 8}" y="${ys[j] + 8}" width="${xs[i + 1] - xs[i] - 16}" height="${ys[j + 1] - ys[j] - 16}" rx="6" class="m-block"/>`;
     }
     const roadsV = [130, 200, 270].map((x) => `<line x1="${x}" y1="0" x2="${x}" y2="440"/>`).join('');
     const roadsH = [70, 150, 230, 310, 390].map((y) => `<line x1="0" y1="${y}" x2="340" y2="${y}"/>`).join('');
     const north = 'M-10,22 C90,40 210,2 350,26';
     const south = 'M-10,428 C80,408 170,440 350,416';
     const nlex = 'M92,-10 C92,150 110,300 98,450';
-    return `<rect width="340" height="440" fill="#EDF2F9"/>
+    return `<rect width="340" height="440" class="m-land"/>
       ${blocks}
-      <path d="${south}" fill="none" stroke="#C5D9F1" stroke-width="56" stroke-linecap="round" opacity=".75"/>
-      <g stroke="#FFFFFF" stroke-width="9" stroke-linecap="round">${roadsV}${roadsH}</g>
-      <g stroke="#C3CFE0" stroke-width="1" stroke-dasharray="3 5">${roadsV}${roadsH}</g>
-      <path d="${nlex}" fill="none" stroke="#5B6B86" stroke-width="10" stroke-linecap="round"/>
-      <path d="${nlex}" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="6 6"/>
-      <path d="${north}" fill="none" stroke="#8DBBEA" stroke-width="16" stroke-linecap="round"/>
-      <path d="${south}" fill="none" stroke="#8DBBEA" stroke-width="18" stroke-linecap="round"/>
-      <text class="map-label" x="8" y="12" fill="#27528A">Meycauayan / Polo River</text>
-      <text class="map-label" x="150" y="437" fill="#27528A">Tullahan River</text>
-      <text class="map-label" x="8" y="408" fill="#27528A">Flood-prone area</text>
-      <text class="map-label" x="86" y="238" transform="rotate(-90 86 238)" text-anchor="middle" fill="#3A4A66">NLEX</text>
-      <text class="map-label" x="206" y="112" transform="rotate(-90 206 112)" text-anchor="middle" fill="#5A6B88">MacArthur Hwy.</text>`;
+      <path d="${south}" class="m-flood" stroke-width="56" stroke-linecap="round"/>
+      <g class="m-road" stroke-width="9" stroke-linecap="round">${roadsV}${roadsH}</g>
+      <g class="m-dash" stroke-width="1" stroke-dasharray="3 5">${roadsV}${roadsH}</g>
+      <path d="${nlex}" class="m-hwy" stroke-width="10" stroke-linecap="round"/>
+      <path d="${nlex}" class="m-hwy-line" stroke-width="1.5" stroke-dasharray="6 6"/>
+      <path d="${north}" class="m-water" stroke-width="16" stroke-linecap="round"/>
+      <path d="${south}" class="m-water" stroke-width="18" stroke-linecap="round"/>
+      <text class="map-label m-wlabel" x="8" y="12">Meycauayan / Polo River</text>
+      <text class="map-label m-wlabel" x="150" y="437">Tullahan River</text>
+      <text class="map-label m-wlabel" x="8" y="408">Flood-prone area</text>
+      <text class="map-label m-rlabel" x="86" y="238" transform="rotate(-90 86 238)" text-anchor="middle">NLEX</text>
+      <text class="map-label m-rlabel" x="206" y="112" transform="rotate(-90 206 112)" text-anchor="middle">MacArthur Hwy.</text>`;
   })();
 
   function pinShape(st, x, y) {
@@ -185,9 +185,9 @@
       const pts = routePoints(o.routeTo);
       const w = walkRoute(pts, o.f || 0);
       const str = (arr) => arr.map((p) => p.x + ',' + p.y).join(' ');
-      routeSvg = `<polyline points="${str(pts)}" fill="none" stroke="#0B2A5B" stroke-width="5" stroke-dasharray="2 9" stroke-linecap="round" opacity=".55"/>
-        <polyline id="rt-done" points="${str(w.done)}" fill="none" stroke="#1456C9" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-        <g id="rt-pos" transform="translate(${w.pos.x} ${w.pos.y})"><circle r="13" fill="#1456C9" stroke="#fff" stroke-width="3"/><use href="#i-navigate" x="-8" y="-8" width="16" height="16" class="ic-svg"/></g>`;
+      routeSvg = `<polyline points="${str(pts)}" fill="none" class="m-route-rest" stroke-width="5" stroke-dasharray="2 9" stroke-linecap="round" opacity=".55"/>
+        <polyline id="rt-done" points="${str(w.done)}" fill="none" class="m-route" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="rt-pos" transform="translate(${w.pos.x} ${w.pos.y})"><circle r="13" class="m-marker-dot" stroke-width="3"/><use href="#i-navigate" x="-8" y="-8" width="16" height="16" class="ic-svg m-marker-ic"/></g>`;
     }
     const pins = (o.pins || []).map((v) => {
       const dim = o.dim && o.dim.has(v.id);
@@ -201,7 +201,7 @@
       return `<g role="button" ${dim ? 'aria-hidden="true"' : `tabindex="0" aria-label="${esc(label)}"`} data-act="pin" data-id="${v.id}" data-k="pin-${v.id}" class="pin ${dim ? 'pin-dim' : ''}">
         <circle cx="${v.x}" cy="${v.y}" r="26" fill="transparent"/>${ring}${shape}${inner}${text}</g>`;
     }).join('');
-    const me = `<g aria-hidden="true"><circle cx="${you.x}" cy="${you.y}" r="16" class="you-pulse"/><circle cx="${you.x}" cy="${you.y}" r="8" fill="#0B2A5B" stroke="#fff" stroke-width="3"/>
+    const me = `<g aria-hidden="true"><circle cx="${you.x}" cy="${you.y}" r="16" class="you-pulse"/><circle cx="${you.x}" cy="${you.y}" r="8" class="m-me" stroke-width="3"/>
       <text x="${you.x + 13}" y="${you.y - 11}" class="you-label">${t('map.you')}</text></g>`;
     return `<svg class="map" viewBox="${o.routeTo ? routeView(o.routeTo) : '0 0 340 440'}" role="group" aria-label="${esc(t('map.title'))}">${MAP_BASE}${routeSvg}${pins}${me}</svg>`;
   }
@@ -272,6 +272,16 @@
   /* ---------- screens ---------- */
   const screens = {};
 
+  /* Alert card: severity colour + icon + text label; title on its own line, area on a smaller line below, one action line. */
+  const SEV_ICON = { danger: 'alert', warning: 'bell', info: 'shield' };
+  function alertBody(a, withFind) {
+    return `<div class="acard-top"><span class="sev-label">${ic(SEV_ICON[a.sev])}${t('sev.' + a.sev)}</span><span class="acard-when">${ic('clock')}${fmtAge(a.mins + (store.settings.offline ? 120 : 0))}</span></div>
+      <h3 class="acard-title">${esc(a.title)}</h3>
+      <p class="acard-area">${esc(a.area)}</p>
+      <p class="acard-action">${ic('check-circle')}<span>${esc(a.action)}</span></p>
+      ${withFind && a.sev === 'danger' ? `<button class="btn btn-light" data-act="find" data-k="alert-find-${a.id}">${ic('locate')}${t('home.find')}</button>` : ''}`;
+  }
+
   screens.home = function () {
     const a = READY.alerts[0];
     const recent = store.recentId ? byId(store.recentId) : null;
@@ -284,11 +294,7 @@
       title: t('nav.home'), tab: 'home',
       html: `<h1 class="sr-only" tabindex="-1">${t('nav.home')}</h1>
         <p class="loc">${ic('pin')}${t('home.loc')}</p>
-        <a class="alert-banner" href="#/alerts" data-k="banner">
-          <span class="alert-ic">${ic('alert')}</span>
-          <span class="alert-body"><small>${t('home.alert')}</small><strong>${esc(a.title)}</strong></span>
-          ${ic('chevron', 'chev')}
-        </a>
+        <a class="acard sev-${a.sev}" href="#/alerts" data-k="banner" aria-label="${t('home.alert')}: ${esc(a.title)}">${alertBody(a, false)}</a>
         <button class="btn-find" data-act="find" data-k="find">
           <span class="find-ic">${ic('locate')}</span>
           <span class="find-text"><strong>${t('home.find')}</strong><small>${t('home.findSub')}</small></span>
@@ -568,22 +574,17 @@
     return {
       title: t('hot.title'), tab: 'hotlines',
       html: `${header(t('hot.title'))}<p class="sub">${t('hot.sub')}</p>
-        <div class="emerg">${emerg.map((h) => `<a class="emerg-btn" href="tel:${h.tel}" data-act="vibrate" aria-label="${t('hot.call')} ${esc(h.name)}">${ic('phone')}<strong>${esc(h.number)}</strong><span>${esc(h.name.replace(/ \d+$/, ''))}</span>${h.verified ? '' : `<em>${t('hot.sample')}</em>`}</a>`).join('')}</div>
+        <div class="emerg">${emerg.map((h) => `<a class="emerg-btn ${h.id === 'n911' ? 'emerg-911' : ''}" href="tel:${h.tel}" data-act="vibrate" aria-label="${t('hot.call')} ${esc(h.name)}">${ic('phone')}<strong>${esc(h.number)}</strong><span>${esc(h.name.replace(/ \d+$/, ''))}</span>${h.verified ? '' : `<em>${t('hot.sample')}</em>`}</a>`).join('')}</div>
         <ul class="stack plain-list">${rest.map(row).join('')}</ul>
         <p class="foot-note">${ic('alert')}${t('hot.note')}</p>`
     };
   };
 
   screens.alerts = function () {
-    const sevIcon = { warning: 'alert', advisory: 'bell', info: 'shield' };
-    const sevCls = { warning: 'st-bad', advisory: 'st-warn', info: 'st-info' };
     return {
       title: t('alerts.title'), tab: 'alerts',
       html: `${header(t('alerts.title'))}<p class="sub">${t('alerts.sub')}</p>
-        <ul class="stack plain-list">${READY.alerts.map((a) => `<li class="card alert-card">
-          <div class="alert-meta"><span class="badge ${sevCls[a.sev]}">${ic(sevIcon[a.sev])}<span>${t('sev.' + a.sev)}</span></span><span class="when">${ic('clock')}${fmtAge(a.mins + (store.settings.offline ? 120 : 0))}</span></div>
-          <h3>${esc(a.title)}</h3><p>${esc(a.body)}</p>
-          <p class="todo"><strong>${t('alerts.todo')}:</strong> ${esc(a.todo)}</p></li>`).join('')}</ul>`
+        <ul class="stack plain-list">${READY.alerts.map((a) => `<li class="acard sev-${a.sev}">${alertBody(a, true)}</li>`).join('')}</ul>`
     };
   };
 
