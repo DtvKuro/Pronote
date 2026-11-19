@@ -4,7 +4,6 @@
 
   const READY = window.READY;
   const you = READY.you;
-  const streets = READY.streets;
 
   /* ---------- small helpers ---------- */
   const $ = (sel, el) => (el || document).querySelector(sel);
@@ -34,12 +33,12 @@
   /* ---------- session state (not persisted) ---------- */
   const ui = {
     route: null, hash: '', navCount: 0, timers: [], allowLeave: false,
-    filters: new Set(), mapMode: 'map', pinId: null,
-    nearestReady: false,
+    filters: new Set(), mapMode: 'map', pinId: null, sheetAnim: false, mv: null,
+    nearestReady: false, focusOnce: false, originTab: 'home',
     shareId: null, shareText: '', shareDirty: false,
     obStep: 0, loc: false, dl: { state: 'idle', pct: 0 }
   };
-  let nav = null; // active navigation: { id, step }
+  let nav = null; // active navigation: { id, prog, step, n }
   const BOOT = Date.now();
 
   /* ---------- i18n ---------- */
@@ -51,22 +50,37 @@
     if (s === undefined) s = key;
     return vars ? s.replace(/\{(\w+)\}/g, (_, n) => (vars[n] !== undefined ? vars[n] : '')) : s;
   }
+  const L = (obj) => obj[lang()] || obj.en;
+  const tipOf = (c) => (lang() === 'fil' && c.tipFil) || c.tip;
+  const brgyOf = (c) => 'Brgy. ' + c.brgy;
 
   /* ---------- derived center data ---------- */
   const statusOf = (cur, max) => (cur >= max ? 'full' : cur / max >= 0.85 ? 'almost' : 'available');
+  const offline = () => store.settings.offline;
 
   function viewOf(c) {
     const current = c.current;
     const updatedAt = BOOT - c.updatedMins * 60000;
-    const offlineShift = store.settings.offline ? 120 : 0; // the saved copy is about 2h older than live data
+    const offlineShift = offline() ? 120 : 0; // the saved copy is about 2h older than live data
     const age = Math.max(0, Math.round((Date.now() - updatedAt) / 60000)) + offlineShift;
     const pct = Math.min(100, Math.round((current / c.max) * 100));
     return Object.assign({}, c, { current, age, pct, left: Math.max(0, c.max - current), status: statusOf(current, c.max) });
   }
   const all = () => READY.centers.map(viewOf).sort((a, b) => a.km - b.km);
   const byId = (id) => { const c = READY.centers.find((x) => x.id === id); return c ? viewOf(c) : null; };
-  const nearestAvailable = (excludeId) => all().find((v) => v.status !== 'full' && v.id !== excludeId) || null;
   const walkMin = (km) => Math.max(1, Math.round(km * 13));
+
+  /* What the family needs: the facility filters picked on the Map (none by default). */
+  const needs = () => [...ui.filters];
+  /* Nearest center with space that has every needed facility. If none does, fall back to the nearest with space and say so. */
+  function pickSafe(excludeId) {
+    const want = needs();
+    const open = all().filter((v) => v.status !== 'full' && v.id !== excludeId);
+    const strict = want.length ? open.find((v) => want.every((f) => v.fac.includes(f))) : null;
+    if (!want.length) return { v: open[0] || null, want, relaxed: false };
+    if (strict) return { v: strict, want, relaxed: false };
+    return { v: open[0] || null, want, relaxed: true };
+  }
 
   function fmtAge(m) {
     if (m < 1) return t('justNow');
@@ -75,159 +89,606 @@
 
   /* ---------- UI building blocks ---------- */
   const ic = (name, cls) => `<svg class="ic ${cls || ''}" aria-hidden="true" focusable="false"><use href="#i-${name}"/></svg>`;
-  const ST = { available: { icon: 'check-circle', cls: 'st-ok' }, almost: { icon: 'alert', cls: 'st-warn' }, full: { icon: 'ban', cls: 'st-bad' } };
+  const ST = { available: { icon: 'check-circle', cls: 'st-ok', glyph: 'check' }, almost: { icon: 'alert', cls: 'st-warn', glyph: 'alert' }, full: { icon: 'x-circle', cls: 'st-bad', glyph: 'x' } };
   const FAC = { pwd: { icon: 'wheelchair' }, medical: { icon: 'medical' }, pets: { icon: 'paw' }, food: { icon: 'drop' } };
 
-  const badge = (status) => `<span class="badge ${ST[status].cls}">${ic(ST[status].icon)}<span>${t('st.' + status)}</span></span>`;
-
-  function leftText(v) { return v.left === 0 ? t('st.none') : t('st.left', { n: v.left }); }
-
-  function bar(v, big) {
-    return `<div class="cap ${big ? 'cap-big' : ''}">
-      <div class="bar" role="img" aria-label="${v.current} of ${v.max} people, ${v.pct} percent full"><span class="bar-fill ${ST[v.status].cls}" style="width:${v.pct}%"></span></div>
-      <div class="cap-text"><strong>${v.current} / ${v.max}</strong><span>${leftText(v)}</span></div>
-    </div>`;
+  /* Status badge. Offline, capacity is labelled as a stale snapshot ("Had space 2h ago"), never as live fact. */
+  function badge(v) {
+    if (offline()) {
+      return `<span class="badge st-stale">${ic('clock')}<span>${t(v.status === 'full' ? 'st.wasFull' : 'st.hadSpace', { x: fmtAge(v.age) })}</span></span>`;
+    }
+    return `<span class="badge ${ST[v.status].cls}">${ic(ST[v.status].icon)}<span>${t('st.' + v.status)}</span></span>`;
   }
 
-  const facChips = (v) => v.fac.length
-    ? `<ul class="chips">${v.fac.map((f) => `<li class="chip-static">${ic(FAC[f].icon)}${t('fac.' + f)}</li>`).join('')}</ul>` : '';
+  const spacesLeft = (v) => (v.status === 'almost' ? t('st.leftOf', { n: v.left, max: v.max }) : t('st.left', { n: v.left }));
 
-  const updatedLine = (v) => `${ic('clock')}<span>${t('c.updated', { x: fmtAge(v.age) })}${store.settings.offline ? ' (' + t('c.saved') + ')' : ''}</span>`;
+  function bar(v, big) {
+    const cls = offline() ? 'st-stale' : ST[v.status].cls;
+    return `<div class="bar ${big ? 'bar-big' : ''}" role="img" aria-label="${t('bar.aria', { cur: v.current, max: v.max, pct: v.pct })}"><span class="bar-fill ${cls}" style="width:${v.pct}%"></span></div>`;
+  }
 
-  function centerCard(v) {
-    return `<a class="card center-card" href="#/center/${v.id}" data-k="card-${v.id}">
-      <div class="cc-top"><h3>${esc(v.name)}</h3>${badge(v.status)}</div>
-      <p class="cc-meta">${ic('pin')}${v.km} km · ${t('c.walk', { m: walkMin(v.km) })}</p>
-      ${bar(v)}
-      ${facChips(v)}
-      <p class="cc-foot">${updatedLine(v)}</p>
-    </a>`;
+  const freshLine = (list) => {
+    const age = Math.max.apply(null, list.map((v) => v.age));
+    return `<p class="caption">${offline() ? t('list.freshOff', { x: fmtAge(age) }) : t('list.fresh', { x: fmtAge(age) })}</p>`;
+  };
+
+  /* One list row for every center list (Home, List view, Nearest). */
+  function centerRow(v) {
+    const meta = [v.km + ' km', walkMin(v.km) + ' min'];
+    if (!offline() && v.status !== 'full') meta.push(t('st.spaces', { n: v.left }));
+    return `<a class="row center-row" href="#/center/${v.id}" data-k="card-${v.id}">
+      <span class="row-main"><span class="row-title">${esc(v.name)}</span>
+        <span class="row-sub"><span class="meta">${meta.join(' · ')}</span>${badge(v)}</span></span></a>`;
   }
 
   function header(title, opts) {
     const o = opts || {};
-    return `<header class="screen-head">
+    return `<header class="head ${o.cls || ''}">
       ${o.back ? `<button class="icon-btn" data-act="back" data-fallback="${o.back}" aria-label="${t('back')}" data-k="back">${ic('back')}</button>` : ''}
-      <h1 tabindex="-1">${title}</h1>
+      <h1 class="${o.root ? 'h-d' : 'h-t'}" tabindex="-1">${title}</h1>
       ${o.extra || ''}
     </header>`;
   }
 
-  /* ---------- schematic SVG map (no tiles, no network) ---------- */
-  const MAP_BASE = (function () {
-    const xs = [0, 130, 200, 270, 340], ys = [0, 70, 150, 230, 310, 390, 440];
-    let blocks = '';
-    for (let i = 0; i < xs.length - 1; i++) for (let j = 0; j < ys.length - 1; j++) {
-      blocks += `<rect x="${xs[i] + 8}" y="${ys[j] + 8}" width="${xs[i + 1] - xs[i] - 16}" height="${ys[j + 1] - ys[j] - 16}" rx="6" class="m-block"/>`;
+  /* ---------- real map: simplified OpenStreetMap extract (mapdata.js), drawn offline as SVG ---------- */
+  const MD = window.MAPDATA;
+  /* project(lat, lon) -> [x, y] in map meters. The one lat/lon -> map conversion; every position goes through it. */
+  const project = MD.project;
+  const place = (o) => { const p = project(o.lat, o.lon); o.x = p[0]; o.y = p[1]; };
+  place(you); READY.centers.forEach(place);
+
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  const unflat = (a, s) => { const out = [a[s], a[s + 1]]; for (let i = s + 2; i < a.length; i += 2) out.push(out[i - s - 2] + a[i], out[i - s - 1] + a[i + 1]); return out; };
+  const dPath = (f, close) => { let d = 'M' + f[0] + ' ' + f[1]; for (let i = 2; i < f.length; i += 2) d += 'L' + f[i] + ' ' + f[i + 1]; return close ? d + 'Z' : d; };
+  const pathsOf = (list, close) => list.map((a) => dPath(unflat(a, 0), close)).join('');
+
+  const ROADS = MD.roads.map((r) => ({ cls: r[0], name: r[1] ? MD.names[r[1] - 1] : '', pts: unflat(r, 2) }));
+
+  /* Walking graph built from the road polylines: junctions are vertices shared by two roads (motorways excluded). */
+  const GRAPH = (function () {
+    const count = new Map();
+    const key = (x, y) => x + ',' + y;
+    const walk = ROADS.filter((r) => r.cls > 0);
+    walk.forEach((r) => { for (let i = 0; i < r.pts.length; i += 2) { const k = key(r.pts[i], r.pts[i + 1]); count.set(k, (count.get(k) || 0) + 1); } });
+    const ids = new Map(), nodes = [], edges = [];
+    const node = (x, y) => { const k = key(x, y); let i = ids.get(k); if (i === undefined) { i = nodes.length; ids.set(k, i); nodes.push({ x, y, e: [] }); } return i; };
+    walk.forEach((r) => {
+      const n = r.pts.length / 2;
+      let from = 0;
+      for (let i = 1; i < n; i++) {
+        const junction = count.get(key(r.pts[i * 2], r.pts[i * 2 + 1])) > 1;
+        if (!junction && i < n - 1) continue;
+        const pts = r.pts.slice(from * 2, i * 2 + 2);
+        let len = 0;
+        for (let j = 2; j < pts.length; j += 2) len += Math.hypot(pts[j] - pts[j - 2], pts[j + 1] - pts[j - 1]);
+        const a = node(pts[0], pts[1]), b = node(pts[pts.length - 2], pts[pts.length - 1]);
+        if (a !== b) { edges.push({ a, b, pts, len, name: r.name }); nodes[a].e.push(edges.length - 1); nodes[b].e.push(edges.length - 1); }
+        from = i;
+      }
+    });
+    /* Only main roads are mapped, so side streets are missing. Stand in for them with straight links between nearby
+       junctions (cost 1.35x the straight distance) so short trips are not sent on long detours. */
+    const LINK_R = 260, LINK_N = 3, LINK_COST = 1.35;
+    const have = new Set();
+    edges.forEach((e) => have.add(e.a + '-' + e.b));
+    for (let i = 0; i < nodes.length; i++) {
+      const near = [];
+      for (let j = 0; j < nodes.length; j++) {
+        if (j === i || have.has(i + '-' + j) || have.has(j + '-' + i)) continue;
+        const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+        if (d <= LINK_R) near.push([d, j]);
+      }
+      near.sort((p, q) => p[0] - q[0]).slice(0, LINK_N).forEach(([d, j]) => {
+        if (have.has(i + '-' + j) || have.has(j + '-' + i)) return;
+        have.add(i + '-' + j);
+        edges.push({ a: i, b: j, pts: [nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y], len: d * LINK_COST, name: '' });
+        nodes[i].e.push(edges.length - 1); nodes[j].e.push(edges.length - 1);
+      });
     }
-    const roadsV = [130, 200, 270].map((x) => `<line x1="${x}" y1="0" x2="${x}" y2="440"/>`).join('');
-    const roadsH = [70, 150, 230, 310, 390].map((y) => `<line x1="0" y1="${y}" x2="340" y2="${y}"/>`).join('');
-    const north = 'M-10,22 C90,40 210,2 350,26';
-    const south = 'M-10,428 C80,408 170,440 350,416';
-    const nlex = 'M92,-10 C92,150 110,300 98,450';
-    return `<rect width="340" height="440" class="m-land"/>
-      ${blocks}
-      <path d="${south}" class="m-flood" stroke-width="56" stroke-linecap="round"/>
-      <g class="m-road" stroke-width="9" stroke-linecap="round">${roadsV}${roadsH}</g>
-      <g class="m-dash" stroke-width="1" stroke-dasharray="3 5">${roadsV}${roadsH}</g>
-      <path d="${nlex}" class="m-hwy" stroke-width="10" stroke-linecap="round"/>
-      <path d="${nlex}" class="m-hwy-line" stroke-width="1.5" stroke-dasharray="6 6"/>
-      <path d="${north}" class="m-water" stroke-width="16" stroke-linecap="round"/>
-      <path d="${south}" class="m-water" stroke-width="18" stroke-linecap="round"/>
-      <text class="map-label m-wlabel" x="8" y="12">Meycauayan / Polo River</text>
-      <text class="map-label m-wlabel" x="150" y="437">Tullahan River</text>
-      <text class="map-label m-wlabel" x="8" y="408">Flood-prone area</text>
-      <text class="map-label m-rlabel" x="86" y="238" transform="rotate(-90 86 238)" text-anchor="middle">NLEX</text>
-      <text class="map-label m-rlabel" x="206" y="112" transform="rotate(-90 206 112)" text-anchor="middle">MacArthur Hwy.</text>`;
+    // keep only the biggest connected piece so snapping never lands on an island
+    const comp = new Int32Array(nodes.length).fill(-1);
+    let best = -1, bestN = 0;
+    nodes.forEach((_, s) => {
+      if (comp[s] >= 0) return;
+      const stack = [s]; comp[s] = s; let c = 0;
+      while (stack.length) { const u = stack.pop(); c++; nodes[u].e.forEach((ei) => { const v = edges[ei].a === u ? edges[ei].b : edges[ei].a; if (comp[v] < 0) { comp[v] = s; stack.push(v); } }); }
+      if (c > bestN) { bestN = c; best = s; }
+    });
+    return { nodes, edges, main: (i) => comp[i] === best };
   })();
 
-  function pinShape(st, x, y) {
-    if (st === 'available') return `<circle cx="${x}" cy="${y}" r="14" class="pin-${st}"/>`;
-    if (st === 'almost') return `<polygon points="${x},${y - 18} ${x + 18},${y} ${x},${y + 18} ${x - 18},${y}" class="pin-${st}"/>`;
-    return `<rect x="${x - 14}" y="${y - 14}" width="28" height="28" rx="5" class="pin-${st}"/>`;
+  function nearestNode(x, y) {
+    let bi = -1, bd = Infinity;
+    GRAPH.nodes.forEach((n, i) => { if (!GRAPH.main(i)) return; const d = (n.x - x) * (n.x - x) + (n.y - y) * (n.y - y); if (d < bd) { bd = d; bi = i; } });
+    return bi;
+  }
+  let sp = null; // shortest paths from "You" (computed once; "You" does not move)
+  function shortestFrom(src) {
+    const N = GRAPH.nodes.length, dist = new Float64Array(N).fill(Infinity), via = new Int32Array(N).fill(-1), done = new Uint8Array(N);
+    dist[src] = 0;
+    for (;;) {
+      let u = -1, bd = Infinity;
+      for (let i = 0; i < N; i++) if (!done[i] && dist[i] < bd) { bd = dist[i]; u = i; }
+      if (u < 0) break;
+      done[u] = 1;
+      GRAPH.nodes[u].e.forEach((ei) => { const e = GRAPH.edges[ei], v = e.a === u ? e.b : e.a, nd = dist[u] + e.len; if (nd < dist[v]) { dist[v] = nd; via[v] = ei; } });
+    }
+    return { dist, via };
   }
 
-  function routePoints(c) {
-    if (c.x === you.x || c.y === you.y) return [you, { x: c.x, y: c.y }];
-    return [you, { x: you.x, y: c.y }, { x: c.x, y: c.y }];
+  const bearing = (ax, ay, bx, by) => (Math.atan2(bx - ax, ay - by) * 180 / Math.PI + 360) % 360;
+  const segLen = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+  const flatLen = (f) => { let s = 0; for (let i = 2; i < f.length; i += 2) s += Math.hypot(f[i] - f[i - 2], f[i + 1] - f[i - 1]); return s; };
+  const reversePts = (f) => { const o = []; for (let i = f.length - 2; i >= 0; i -= 2) o.push(f[i], f[i + 1]); return o; };
+
+  /* Turn raw road pieces into a few readable steps: name the unnamed stubs, merge same-street pieces and tiny ones. */
+  function tidyLegs(raw) {
+    const legs = raw.map((l) => ({ name: l.name, pts: l.pts.slice(), len: flatLen(l.pts) })).filter((l) => l.len > 0);
+    legs.forEach((l, i) => {
+      for (let j = i + 1; j < legs.length && !l.name; j++) l.name = legs[j].name;
+      for (let j = i - 1; j >= 0 && !l.name; j--) l.name = legs[j].name;
+    });
+    const merge = (i, into) => { // fold leg i into its neighbour `into`
+      const a = Math.min(i, into), b = Math.max(i, into);
+      legs.splice(a, 2, { name: legs[into].name, pts: legs[a].pts.concat(legs[b].pts.slice(2)), len: legs[a].len + legs[b].len });
+    };
+    for (let guard = 0; guard < 500; guard++) {
+      const same = legs.findIndex((l, i) => i > 0 && l.name === legs[i - 1].name);
+      if (same > 0) { merge(same, same - 1); continue; }
+      if (legs.length <= 1) break;
+      let s = 0; legs.forEach((l, i) => { if (l.len < legs[s].len) s = i; });
+      if (legs.length <= 4 && legs[s].len >= 90) break;
+      const into = s === 0 ? 1 : s === legs.length - 1 ? s - 1 : (legs[s - 1].len >= legs[s + 1].len ? s - 1 : s + 1);
+      merge(s, into);
+    }
+    return legs.map((l) => {
+      const f = l.pts; let k = 2, acc = 0;
+      while (k < f.length - 2 && acc < 60) { acc += Math.hypot(f[k] - f[k - 2], f[k + 1] - f[k - 1]); k += 2; }
+      return { name: l.name, len: l.len, bearing: bearing(f[0], f[1], f[k], f[k + 1]) };
+    });
   }
-  const segLen = (a, b) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+
+  /* Route from "You" to a center along the real roads: { pts: [{x,y}], len (m), legs: [{name, len, bearing}] }.
+     The first and last stretches (You -> nearest road, road -> building) are straight stubs. */
+  const routeCache = {};
+  function routeFor(c) {
+    if (routeCache[c.id]) return routeCache[c.id];
+    const A = nearestNode(you.x, you.y), B = nearestNode(c.x, c.y);
+    if (!sp) sp = shortestFrom(A);
+    const mid = [];
+    if (Number.isFinite(sp.dist[B])) {
+      for (let v = B; v !== A;) { const e = GRAPH.edges[sp.via[v]]; const fwd = e.b === v; mid.unshift({ name: e.name, pts: fwd ? e.pts : reversePts(e.pts) }); v = fwd ? e.a : e.b; }
+    }
+    const a = GRAPH.nodes[A], b = GRAPH.nodes[B];
+    const legs = mid.length || A === B
+      ? [{ name: '', pts: [you.x, you.y, a.x, a.y] }].concat(mid, [{ name: '', pts: [b.x, b.y, c.x, c.y] }])
+      : [{ name: '', pts: [you.x, you.y, c.x, c.y] }]; // no road path found: straight line
+    const pts = [];
+    legs.forEach((l) => { for (let i = 0; i < l.pts.length; i += 2) { const p = { x: l.pts[i], y: l.pts[i + 1] }; if (!pts.length || segLen(pts[pts.length - 1], p) > 0.01) pts.push(p); } });
+    let len = 0;
+    for (let i = 1; i < pts.length; i++) len += segLen(pts[i - 1], pts[i]);
+    return (routeCache[c.id] = { pts, len, legs: tidyLegs(legs) });
+  }
+
+  /* km shown in the UI = length of the real road route from "You". */
+  READY.centers.forEach((c) => { c.km = Math.max(0.1, Math.round(routeFor(c).len / 100) / 10); });
+
+  /* ----- static drawing (built once) ----- */
+  const WORLD_SVG = (function () {
+    const g = { 0: '', 1: '', 2: '', 3: '', 4: '' };
+    ROADS.forEach((r) => { g[r.cls] += dPath(r.pts, false); });
+    const city = pathsOf(MD.city, true), flood = pathsOf(MD.flood, true);
+    const [cw, ch] = MD.size;
+    return `<defs><pattern id="m-hatch" width="6" height="6" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" class="m-hatch-ln"/></pattern></defs>
+      <path class="m-outside" d="M-900 -900H${cw + 900}V${ch + 900}H-900Z${city}"/>
+      <path class="m-park" d="${pathsOf(MD.parks, true)}"/>
+      <path class="m-water" d="${pathsOf(MD.water, true)}"/>
+      <path class="m-canal" d="${pathsOf(MD.canals, false)}"/><path class="m-river" d="${pathsOf(MD.rivers, false)}"/>
+      <path class="m-flood" d="${flood}"/><path class="m-flood-h" d="${flood}"/>
+      <path class="m-city" d="${city}"/>
+      <path class="m-t-c" d="${g[4]}"/><path class="m-t" d="${g[4]}"/>
+      <path class="m-s-c" d="${g[3]}"/><path class="m-s" d="${g[3]}"/>
+      <path class="m-p-c" d="${g[2]}"/><path class="m-p" d="${g[2]}"/>
+      <path class="m-x-c" d="${g[1]}${g[0]}"/><path class="m-x" d="${g[1]}${g[0]}"/>`;
+  })();
+  let worldNode = null; // one persistent node, moved into each new map so the big paths are parsed only once
+  function world() {
+    if (!worldNode) { worldNode = document.createElementNS(SVGNS, 'g'); worldNode.setAttribute('class', 'm-w'); worldNode.setAttribute('data-world', ''); worldNode.innerHTML = WORLD_SVG; }
+    return worldNode;
+  }
+
+  /* Labels that stay screen-sized: barangays (CAPS), a few streets, rivers, parks. Lower pr = placed first. */
+  const BRGY_SHOW = { 'general t. de leon': 'GEN. T. DE LEON' };
+  const brgyName = (c) => c.brgy.toLowerCase();
+  const LABELS = (function () {
+    const withCenter = new Set(READY.centers.map(brgyName).concat('malanday'));
+    const hasCenter = (n) => withCenter.has(n.toLowerCase()) || (n === 'General T. de Leon' && withCenter.has('gen. t. de leon'));
+    const L = [];
+    const add = (kind, text, x, y, rot, pr) => L.push({ kind, text, x, y, rot: rot || 0, pr, w: text.length * ({ b: 7.2, s: 5.8, w: 5.6, p: 5.8 }[kind]) });
+    MD.labels.brgy.forEach((b) => add('b', BRGY_SHOW[b[0].toLowerCase()] || b[0].toUpperCase(), b[1], b[2], 0, hasCenter(b[0]) ? 1 : 4));
+    MD.labels.water.forEach((w) => add('w', w[0], w[1], w[2], w[3], 2));
+    MD.labels.streets.forEach((s) => add('s', s[0], s[1], s[2], s[3], 5));
+    MD.labels.parks.forEach((p) => add('p', p[0], p[1], p[2], 0, 5));
+    return L.sort((a, b) => a.pr - b.pr);
+  })();
+  const labelsSvg = () => LABELS.map((l) => `<text class="m-l m-${l.kind}l" data-lbl="${l.kind}" data-wx="${l.x}" data-wy="${l.y}" data-rot="${l.rot}" data-w="${Math.round(l.w)}">${esc(l.text)}</text>`).join('');
+
+  const LABEL_POS = {};
+  function pinShape(st) {
+    if (st === 'available') return `<circle r="13" class="pin-${st}"/>`;
+    if (st === 'almost') return `<polygon points="0,-17 17,0 0,17 -17,0" class="pin-${st}"/>`;
+    return `<rect x="-13" y="-13" width="26" height="26" rx="6" class="pin-${st}"/>`;
+  }
+  function pinLabel(v, active) {
+    const pos = LABEL_POS[v.id] || 'b';
+    const cls = 'pin-label' + (active ? ' pin-label-on' : '');
+    if (pos === 'l') return `<text x="-24" y="4" text-anchor="end" class="${cls}">${esc(v.short)}</text>`;
+    if (pos === 'r') return `<text x="24" y="4" class="${cls}">${esc(v.short)}</text>`;
+    if (pos === 't') return `<text y="-24" text-anchor="middle" class="${cls}">${esc(v.short)}</text>`;
+    return `<text y="34" text-anchor="middle" class="${cls}">${esc(v.short)}</text>`;
+  }
+
+  const DIRS = ['north', 'east', 'south', 'west'];
+  const dir4 = (b) => DIRS[Math.round(b / 90) % 4];
 
   function walkRoute(pts, f) {
     const lens = pts.slice(1).map((p, i) => segLen(pts[i], p));
     let target = lens.reduce((a, b) => a + b, 0) * f;
     const done = [pts[0]];
     for (let i = 0; i < lens.length; i++) {
-      if (target >= lens[i]) { done.push(pts[i + 1]); target -= lens[i]; continue; }
-      const k = target / lens[i];
+      if (target >= lens[i] && i < lens.length - 1) { done.push(pts[i + 1]); target -= lens[i]; continue; }
+      const k = lens[i] ? Math.min(1, target / lens[i]) : 1;
       const p = { x: pts[i].x + (pts[i + 1].x - pts[i].x) * k, y: pts[i].y + (pts[i + 1].y - pts[i].y) * k };
       done.push(p);
-      return { done, pos: p };
+      return { done, pos: p, ang: Math.round(bearing(pts[i].x, pts[i].y, pts[i + 1].x, pts[i + 1].y)) };
     }
-    return { done, pos: pts[pts.length - 1] };
+    return { done, pos: pts[pts.length - 1], ang: 0 };
   }
 
-  function routeView(c) {
-    const pad = 60, ratio = 0.66;
-    let w = Math.max(Math.abs(c.x - you.x) + pad * 2, 220), h = Math.max(Math.abs(c.y - you.y) + pad * 2, w * ratio);
-    w = Math.max(w, h / ratio);
-    w = Math.min(w, 340); h = Math.min(w * ratio, 440);
-    const x = Math.max(0, Math.min(340 - w, (c.x + you.x) / 2 - w / 2));
-    const y = Math.max(0, Math.min(440 - h, (c.y + you.y) / 2 - h / 2));
-    return [x, y, w, h].map((n) => Math.round(n)).join(' ');
-  }
-
-  /* opts: pins (center views), dim (Set of ids), activeId, routeTo (center view) + f (progress 0..1) */
+  /* opts: pins (center views), hidden (Set of ids), activeId, routeTo (center view) + f (progress 0..1),
+     static (no pan/zoom, no tap), plain (onboarding thumbnail: frame all pins). */
   function mapSvg(opts) {
     const o = opts || {};
-    let routeSvg = '';
+    const live = !o.static;
+    let routeSvg = '', startSvg = '';
     if (o.routeTo) {
-      const pts = routePoints(o.routeTo);
-      const w = walkRoute(pts, o.f || 0);
-      const str = (arr) => arr.map((p) => p.x + ',' + p.y).join(' ');
-      routeSvg = `<polyline points="${str(pts)}" fill="none" class="m-route-rest" stroke-width="5" stroke-dasharray="2 9" stroke-linecap="round" opacity=".55"/>
-        <polyline id="rt-done" points="${str(w.done)}" fill="none" class="m-route" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-        <g id="rt-pos" transform="translate(${w.pos.x} ${w.pos.y})"><circle r="13" class="m-marker-dot" stroke-width="3"/><use href="#i-navigate" x="-8" y="-8" width="16" height="16" class="ic-svg m-marker-ic"/></g>`;
+      const r = routeFor(o.routeTo);
+      const w = walkRoute(r.pts, o.f || 0);
+      const str = (arr) => arr.map((p) => p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' ');
+      routeSvg = `<polyline points="${str(r.pts)}" class="m-route-rest" stroke-width="5" stroke-dasharray="1 9"/>
+        <polyline id="rt-done-casing" points="${str(w.done)}" class="m-route-casing" stroke-width="11"/>
+        <polyline id="rt-done" points="${str(w.done)}" class="m-route" stroke-width="6"/>`;
+      startSvg = `<circle data-wx="${you.x}" data-wy="${you.y}" r="6" class="m-start"/>
+        <g id="rt-pos" data-wx="${w.pos.x}" data-wy="${w.pos.y}"><circle r="14" class="m-marker"/><g id="rt-ang" transform="rotate(${w.ang})"><use href="#i-heading" x="-7.5" y="-7.5" width="15" height="15" class="ic-svg m-marker-ic"/></g></g>`;
     }
-    const pins = (o.pins || []).map((v) => {
-      const dim = o.dim && o.dim.has(v.id);
-      const active = o.activeId === v.id;
-      const label = `${v.name}, ${v.km} km, ${t('st.' + v.status)}`;
-      const shape = pinShape(v.status, v.x, v.y);
-      const inner = `<use href="#i-${v.status === 'available' ? 'check' : v.status === 'almost' ? 'alert' : 'x'}" x="${v.x - 8}" y="${v.y - 8}" width="16" height="16" class="ic-svg"/>`;
-      const ring = active ? `<circle cx="${v.x}" cy="${v.y}" r="25" class="pin-ring"/>` : '';
-      const text = `<text x="${v.x}" y="${v.y + 31}" text-anchor="middle" class="pin-label">${esc(v.short)}</text>`;
-      if (o.static) return `<g>${shape}${inner}${text}</g>`;
-      return `<g role="button" ${dim ? 'aria-hidden="true"' : `tabindex="0" aria-label="${esc(label)}"`} data-act="pin" data-id="${v.id}" data-k="pin-${v.id}" class="pin ${dim ? 'pin-dim' : ''}">
-        <circle cx="${v.x}" cy="${v.y}" r="26" fill="transparent"/>${ring}${shape}${inner}${text}</g>`;
+    const shown = (o.pins || []).filter((v) => !(o.hidden && o.hidden.has(v.id)));
+    shown.sort((a, b) => (a.id === o.activeId) - (b.id === o.activeId) || a.y - b.y);
+    const pins = shown.map((v) => {
+      const on = o.activeId === v.id;
+      const label = `${v.name}, ${v.km} km, ${offline() ? t(v.status === 'full' ? 'st.wasFull' : 'st.hadSpace', { x: fmtAge(v.age) }) : t('st.' + v.status)}`;
+      const body = `<g transform="scale(1.12)">${on ? '<circle r="24" class="pin-ring"/>' : ''}${pinShape(v.status)}<use href="#i-${ST[v.status].glyph}" x="-8" y="-8" width="16" height="16" class="ic-svg"/></g>${pinLabel(v, on || (o.static && !o.plain))}`;
+      const pos = `data-pin data-wx="${v.x}" data-wy="${v.y}" data-lw="${Math.round(v.short.length * 6.4)}" data-lp="${LABEL_POS[v.id] || 'b'}"`;
+      if (o.static) return `<g ${pos}>${body}</g>`;
+      return `<g role="button" tabindex="0" aria-label="${esc(label)}" data-act="pin" data-id="${v.id}" data-k="pin-${v.id}" ${pos} class="pin ${on ? 'pin-on' : ''}">
+        <circle r="26" fill="transparent"/>${body}</g>`;
     }).join('');
-    const me = `<g aria-hidden="true"><circle cx="${you.x}" cy="${you.y}" r="16" class="you-pulse"/><circle cx="${you.x}" cy="${you.y}" r="8" class="m-me" stroke-width="3"/>
-      <text x="${you.x + 13}" y="${you.y - 11}" class="you-label">${t('map.you')}</text></g>`;
-    return `<svg class="map" viewBox="${o.routeTo ? routeView(o.routeTo) : '0 0 340 440'}" role="group" aria-label="${esc(t('map.title'))}">${MAP_BASE}${routeSvg}${pins}${me}</svg>`;
+    const me = o.routeTo ? '' : `<g aria-hidden="true" data-me data-wx="${you.x}" data-wy="${you.y}"><circle r="17" class="you-pulse"/><circle r="8" class="m-me" stroke-width="3.5"/>
+      <text x="14" y="-11" class="you-label">${esc(t('map.you'))}</text></g>`;
+    const fit = o.routeTo ? 'data-fit="route"' : o.plain ? 'data-fit="pins"' : '';
+    const ctl = !live ? '' : `<div class="map-ctl">
+        <button type="button" data-act="zoom-in" data-k="z-in" aria-label="${t('map.zoomIn')}">${ic('plus')}</button>
+        <button type="button" data-act="zoom-out" data-k="z-out" aria-label="${t('map.zoomOut')}">${ic('minus')}</button>
+        <button type="button" data-act="recenter" data-k="z-me" aria-label="${t('map.recenter')}">${ic('locate')}</button></div>`;
+    const attrs = live ? 'data-live data-act="unpick"' : '';
+    return `<svg class="map" viewBox="0 0 340 440" role="group" aria-label="${esc(t('map.title'))}" ${attrs} ${fit}>
+      <g data-slot></g><g class="m-w" data-world>${routeSvg}</g>
+      <g class="m-ov">${o.routeTo ? '' : labelsSvg()}${startSvg}${pins}<g data-clusters></g>${me}</g></svg>${ctl}<p class="map-attrib">© OpenStreetMap contributors</p>`;
   }
 
-  /* ---------- generated step-by-step directions ---------- */
-  const DEG = { north: 0, east: 90, south: 180, west: 270 };
-  function heading(a, b) {
-    const dx = b.x - a.x, dy = b.y - a.y;
-    return Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'east' : 'west') : (dy > 0 ? 'south' : 'north');
+  /* ----- viewport: zoom, pan, counter-scaled overlay ----- */
+  let mp = null; // the map on screen: { svg, stage, W, H, s0, b, v: {k, wx, wy}, inset, live, kMin, kMax, ... }
+  const K_MAX = 6;
+  const PAD_M = 350; // how far past the city box you may pan (meters)
+  const reduced = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const lsScale = () => Math.min(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ts')) || 1, 1.3);
+
+  /* The view is {k, wx, wy}: zoom (1 = whole city) and the map point shown at the middle of the stage. */
+  function clampView(v, inset) {
+    const k = Math.min(mp.kMax, Math.max(mp.kMin, v.k)), S = mp.s0 * k;
+    let tx = mp.W / 2 - v.wx * S, ty = mp.H / 2 - v.wy * S;
+    const vw = mp.W, vh = mp.H - inset, b = mp.b;
+    const x0 = b[0] * S, x1 = b[2] * S, y0 = b[1] * S, y1 = b[3] * S;
+    tx = x1 - x0 <= vw ? (vw - (x1 - x0)) / 2 - x0 : Math.min(-x0, Math.max(vw - x1, tx));
+    ty = y1 - y0 <= vh ? (vh - (y1 - y0)) / 2 - y0 : Math.min(-y0, Math.max(vh - y1, ty));
+    return { k, wx: (mp.W / 2 - tx) / S, wy: (mp.H / 2 - ty) / S };
   }
-  function buildSteps(c) {
-    const pts = routePoints(c);
-    const total = pts.slice(1).reduce((s, p, i) => s + segLen(pts[i], p), 0);
-    const steps = [];
-    let prev = null;
-    pts.slice(1).forEach((p, i) => {
-      const a = pts[i];
-      const h = heading(a, p);
-      const street = a.x === p.x ? streets.v[a.x] : streets.h[a.y];
-      const meters = Math.max(10, Math.round(((segLen(a, p) / total) * c.km * 1000) / 10) * 10);
-      const turn = prev ? ((DEG[h] - DEG[prev] + 360) % 360 === 90 ? 'right' : 'left') : null;
-      steps.push({ text: turn ? `Turn ${turn} onto ${street}` : `Head ${h} on ${street}`, deg: DEG[h], meters });
-      prev = h;
+  const toPx = (x, y, v) => { const w = v || mp.v, S = mp.s0 * w.k; return [mp.W / 2 + (x - w.wx) * S, mp.H / 2 + (y - w.wy) * S]; };
+  function zoomedAt(v, f, px, py) {
+    const k = Math.min(mp.kMax, Math.max(mp.kMin, v.k * f)), S0 = mp.s0 * v.k, S1 = mp.s0 * k;
+    const x = v.wx + (px - mp.W / 2) / S0, y = v.wy + (py - mp.H / 2) / S0;
+    return { k, wx: x - (px - mp.W / 2) / S1, wy: y - (py - mp.H / 2) / S1 };
+  }
+
+  /* Pins closer than this on screen (px) merge into one count bubble. The selected pin never merges. */
+  const CLUSTER_PX = 44;
+  function groupPins(pts) {
+    const par = pts.map((_, i) => i);
+    const root = (i) => (par[i] === i ? i : (par[i] = root(par[i])));
+    const solo = (p) => p.el.classList.contains('pin-on');
+    pts.forEach((a, i) => {
+      if (solo(a)) return;
+      for (let j = i + 1; j < pts.length; j++) if (!solo(pts[j]) && Math.hypot(a.x - pts[j].x, a.y - pts[j].y) < CLUSTER_PX) par[root(i)] = root(j);
     });
-    steps.push({ text: c.tip, icon: 'shield', kicker: 'Safety tip' });
-    steps.push({ text: `${c.name} is ahead. Enter through the main gate.`, icon: 'pin', kicker: 'Almost there' });
+    const groups = new Map();
+    pts.forEach((p, i) => { const r = root(i); if (!groups.has(r)) groups.set(r, []); groups.get(r).push(p); });
+    return [...groups.values()];
+  }
+  /* One bubble per group, reused between frames (so keyboard focus survives panning). Green dot = at least one center has space. */
+  function clusterNode(ids) {
+    const key = ids.join(',');
+    let g = mp.cl.get(key);
+    if (!g) {
+      const open = !offline() && ids.some((id) => byId(id).status === 'available');
+      g = document.createElementNS(SVGNS, 'g');
+      g.setAttribute('class', 'cluster'); g.setAttribute('role', 'button'); g.setAttribute('tabindex', '0');
+      g.setAttribute('data-act', 'cluster'); g.setAttribute('data-ids', key); g.setAttribute('data-k', 'cl-' + key);
+      g.setAttribute('aria-label', t('map.cluster', { n: ids.length }) + (open ? ' ' + t('map.clusterOpen') : ''));
+      g.innerHTML = `<circle r="24" fill="transparent"/><circle r="18" class="cl-bg"/><text class="cl-n" y="5.5">${ids.length}</text>${open ? '<circle cx="14" cy="-14" r="6.5" class="cl-open"/>' : ''}`;
+      mp.clLayer.appendChild(g); mp.cl.set(key, g);
+    }
+    return g;
+  }
+
+  /* Overlay: everything here is positioned in screen pixels, so pins and text keep their size at any zoom. */
+  function placeOverlay() {
+    const mls = lsScale(), showSmall = mp.v.k >= 1.8;
+    const at = (el) => { const [x, y] = toPx(+el.dataset.wx, +el.dataset.wy); el.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`); return [x, y]; };
+    const rects = [];
+    const hit = (r) => rects.some((q) => r[0] < q[2] && r[2] > q[0] && r[1] < q[3] && r[3] > q[1]);
+    const box = (x, y, w, h, rot) => { const a = Math.abs(Math.cos(rot * Math.PI / 180)), s = Math.abs(Math.sin(rot * Math.PI / 180)), hw = (w * a + h * s) / 2, hh = (w * s + h * a) / 2; return [x - hw, y - hh, x + hw, y + hh]; };
+    const pts = [...mp.svg.querySelectorAll('[data-pin]')].map((el) => { const [x, y] = at(el); return { el, x, y }; });
+    const me = mp.svg.querySelector('[data-me]');
+    let meXY = null;
+    if (me) { const [x, y] = at(me); meXY = [x, y]; rects.push([x - 16, y - 26, x + 44, y + 16]); }
+    mp.obst.forEach((r) => rects.push(r)); // map buttons, hint, legend and sheet are not for text to sit under
+    const singles = [], used = new Set();
+    (mp.live ? groupPins(pts) : pts.map((p) => [p])).forEach((grp) => { // pins always win over text; groups become one bubble
+      if (grp.length === 1) { singles.push(grp[0]); rects.push([grp[0].x - 20, grp[0].y - 20, grp[0].x + 20, grp[0].y + 20]); return; }
+      let cx = grp.reduce((s, p) => s + p.x, 0) / grp.length, cy = grp.reduce((s, p) => s + p.y, 0) / grp.length;
+      if (meXY) { // keep the bubble off the "You" dot
+        const dx = cx - meXY[0], dy = cy - meXY[1], d = Math.hypot(dx, dy), min = 36;
+        if (d < min) { const ux = d > 0.5 ? dx / d : 0, uy = d > 0.5 ? dy / d : 1; cx = meXY[0] + ux * min; cy = meXY[1] + uy * min; }
+      }
+      const g = clusterNode(grp.map((p) => p.el.dataset.id).sort());
+      g.setAttribute('transform', `translate(${cx.toFixed(1)} ${cy.toFixed(1)})`);
+      g.style.display = '';
+      used.add(g);
+      rects.push([cx - 24, cy - 24, cx + 24, cy + 24]);
+    });
+    pts.forEach((p) => { p.el.style.display = singles.includes(p) ? '' : 'none'; });
+    if (mp.cl) mp.cl.forEach((g, key) => { if (!used.has(g)) { g.remove(); mp.cl.delete(key); } });
+    singles.forEach(({ el }) => { // then their names, unless they would sit on top of something
+      const lab = el.querySelector('.pin-label');
+      if (!lab) return;
+      const [x, y] = toPx(+el.dataset.wx, +el.dataset.wy), w = (+el.dataset.lw) * mls, p = el.dataset.lp;
+      const r = p === 'l' ? [x - 24 - w, y - 9, x - 24, y + 9] : p === 'r' ? [x + 24, y - 9, x + 24 + w, y + 9] : p === 't' ? [x - w / 2, y - 38, x + w / 2, y - 22] : [x - w / 2, y + 24, x + w / 2, y + 42];
+      const on = el.classList.contains('pin-on') || !el.hasAttribute('data-act');
+      const ok = on || !hit(r);
+      if (ok) rects.push(r);
+      lab.style.display = ok ? '' : 'none';
+    });
+    mp.svg.querySelectorAll('[data-wx]:not([data-pin]):not([data-me]):not([data-lbl])').forEach(at);
+    mp.labels.forEach((el) => {
+      const kind = el.dataset.lbl, rot = kind === 's' || kind === 'w' ? +el.dataset.rot : 0;
+      const [x, y] = toPx(+el.dataset.wx, +el.dataset.wy);
+      const half = (+el.dataset.w * mls) / 2;
+      let ok = (kind === 'b' || kind === 'w' || showSmall) && x - half > 8 && x + half < mp.W - 8 && y > 12 && y < mp.H - 12;
+      let dy = 0;
+      if (ok) {
+        const tries = kind === 'b' ? [0, -30, 30, -52] : [0]; // a barangay name may slide above or below its spot
+        const hitAt = tries.find((d) => !hit(box(x, y + d, (+el.dataset.w) * mls + 6, 13 * mls, rot)));
+        if (hitAt === undefined) ok = false; else { dy = hitAt; rects.push(box(x, y + dy, (+el.dataset.w) * mls + 6, 13 * mls, rot)); }
+      }
+      if (ok) el.setAttribute('transform', `translate(${x.toFixed(1)} ${(y + dy).toFixed(1)})${rot ? ` rotate(${rot})` : ''}`);
+      el.style.display = ok ? '' : 'none';
+    });
+  }
+
+  function draw() {
+    const v = mp.v, S = mp.s0 * v.k, tx = mp.W / 2 - v.wx * S, ty = mp.H / 2 - v.wy * S;
+    mp.svg.style.setProperty('--k', Math.min(v.k, 7).toFixed(3));
+    const tr = `translate(${tx.toFixed(2)} ${ty.toFixed(2)}) scale(${S})`;
+    mp.worlds.forEach((g) => g.setAttribute('transform', tr));
+    if (mp.hatch) mp.hatch.setAttribute('patternTransform', `rotate(45) scale(${1 / S})`);
+    placeOverlay();
+    if (mp.live) {
+      const set = (k, off) => { const b = mp.stage.querySelector(`[data-k="${k}"]`); if (b) b.setAttribute('aria-disabled', off ? 'true' : 'false'); };
+      set('z-in', v.k >= mp.kMax - 0.01); set('z-out', v.k <= mp.kMin + 0.01);
+    }
+  }
+  function setView(v) { mp.v = v; if (mp.live) ui.mv = { k: v.k, wx: v.wx, wy: v.wy }; draw(); }
+  function animateTo(target, done) {
+    cancelAnimationFrame(mp.anim);
+    const from = mp.v, m = mp;
+    if (reduced() || (Math.abs(from.k - target.k) < 1e-3 && Math.hypot(from.wx - target.wx, from.wy - target.wy) < 0.5)) { setView(target); if (done) done(); return; }
+    const t0 = performance.now(), D = 260;
+    const step = (now) => {
+      if (mp !== m) return;
+      const p = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - p, 3);
+      setView({ k: from.k + (target.k - from.k) * e, wx: from.wx + (target.wx - from.wx) * e, wy: from.wy + (target.wy - from.wy) * e });
+      if (p < 1) m.anim = requestAnimationFrame(step); else if (done) done();
+    };
+    m.anim = requestAnimationFrame(step);
+  }
+
+  /* Where the view should rest: clamped to the city, and with the selected pin visible above the sheet. */
+  function settledView(v) {
+    let t = clampView(v, mp.inset);
+    const c = ui.pinId && mp.inset ? byId(ui.pinId) : null;
+    if (c) {
+      const [px, py] = toPx(c.x, c.y, t);
+      const lo = 64, hi = mp.H - mp.inset - 56;
+      if (py < lo || py > hi || px < 28 || px > mp.W - 28) {
+        const S = mp.s0 * t.k, cx = Math.min(mp.W - 28, Math.max(28, px));
+        t = clampView({ k: t.k, wx: c.x - (cx - mp.W / 2) / S, wy: c.y - ((lo + hi) / 2 - mp.H / 2) / S }, mp.inset);
+      }
+    }
+    return t;
+  }
+
+  const bboxOfPts = (pts) => pts.reduce((b, p) => [Math.min(b[0], p.x), Math.min(b[1], p.y), Math.max(b[2], p.x), Math.max(b[3], p.y)], [1e9, 1e9, -1e9, -1e9]);
+
+  function setupMap(svg) {
+    const stage = svg.parentElement;
+    const live = svg.hasAttribute('data-live');
+    const W = svg.clientWidth || 340, H = svg.clientHeight || 440;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.querySelector('[data-slot]').replaceWith(world());
+    const [cw, ch] = MD.size;
+    const b = [-PAD_M, -PAD_M, cw + PAD_M, ch + PAD_M];
+    const s0 = Math.min(W / (b[2] - b[0]), H / (b[3] - b[1]));
+    if (mp) cancelAnimationFrame(mp.anim);
+    mp = { svg, stage, W, H, s0, b, live, kMin: 1, kMax: K_MAX, inset: 0, anim: 0, v: null,
+      clLayer: svg.querySelector('[data-clusters]'), cl: new Map(), obst: [],
+      worlds: [...svg.querySelectorAll('[data-world]')], hatch: svg.querySelector('#m-hatch'), labels: [...svg.querySelectorAll('[data-lbl]')] };
+    if (!live) { // static maps frame what they show and do not move
+      const fit = svg.dataset.fit;
+      const bb = fit === 'route' ? bboxOfPts(routeFor(byId(ui.route.arg)).pts)
+        : bboxOfPts([...svg.querySelectorAll('[data-pin]')].map((el) => ({ x: +el.dataset.wx, y: +el.dataset.wy })));
+      const pad = fit === 'route' ? 54 : 34;
+      const S = Math.min((W - pad * 2) / Math.max(bb[2] - bb[0], 200), (H - pad * 2) / Math.max(bb[3] - bb[1], 200));
+      mp.kMin = 0.1; mp.kMax = 40;
+      mp.v = { k: S / s0, wx: (bb[0] + bb[2]) / 2, wy: (bb[1] + bb[3]) / 2 };
+      draw();
+      return;
+    }
+    const sr = svg.getBoundingClientRect();
+    mp.obst = [...stage.querySelectorAll('.map-ctl, .map-hint, .legend')].map((el) => { const r = el.getBoundingClientRect(); return [r.left - sr.left - 4, r.top - sr.top - 4, r.right - sr.left + 4, r.bottom - sr.top + 4]; });
+    const sh = stage.querySelector('.sheet');
+    mp.inset = sh ? sh.offsetHeight : 0;
+    if (mp.inset) mp.obst.push([0, H - mp.inset, W, H]);
+    mp.v = ui.mv || clampView({ k: 1, wx: (b[0] + b[2]) / 2, wy: (b[1] + b[3]) / 2 }, 0);
+    draw();
+    animateTo(settledView(mp.v));
+  }
+
+  function positionMap() {
+    const svg = $('svg.map');
+    if (!svg) { mp = null; return; }
+    setupMap(svg);
+  }
+
+  /* Pointer, wheel and keyboard input on the live map. Pan and zoom never re-render the screen. */
+  const gest = { ptrs: new Map(), drag: false, suppress: false };
+  const liveSvg = (e) => { const s = e.target && e.target.closest ? e.target.closest('svg.map[data-live]') : null; return s && mp && mp.svg === s ? s : null; };
+  const panned = (v, dx, dy) => { const S = mp.s0 * v.k; return { k: v.k, wx: v.wx - dx / S, wy: v.wy - dy / S }; };
+  const settle = (v) => setView(clampView(v, mp.inset));
+
+  function bindMapInput() {
+    const view = $('#view');
+    view.addEventListener('pointerdown', (e) => {
+      const svg = liveSvg(e);
+      if (!svg || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      cancelAnimationFrame(mp.anim);
+      gest.ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY });
+      if (gest.ptrs.size === 2) { gest.drag = true; svg.classList.add('is-drag'); }
+    });
+    view.addEventListener('pointermove', (e) => {
+      const p = gest.ptrs.get(e.pointerId);
+      if (!p || !mp) return;
+      const r = mp.svg.getBoundingClientRect(), sx = mp.W / r.width;
+      if (gest.ptrs.size >= 2) {
+        const [a, b] = [...gest.ptrs.values()];
+        const d0 = Math.hypot(a.x - b.x, a.y - b.y), m0 = [(a.x + b.x) / 2, (a.y + b.y) / 2];
+        p.x = e.clientX; p.y = e.clientY;
+        const d1 = Math.hypot(a.x - b.x, a.y - b.y), m1 = [(a.x + b.x) / 2, (a.y + b.y) / 2];
+        if (d0 < 1) return;
+        const v = zoomedAt(mp.v, d1 / d0, (m0[0] - r.left) * sx, (m0[1] - r.top) * sx);
+        settle(panned(v, (m1[0] - m0[0]) * sx, (m1[1] - m0[1]) * sx));
+        return;
+      }
+      if (!gest.drag) {
+        if (Math.hypot(e.clientX - p.sx, e.clientY - p.sy) < 6) return;
+        gest.drag = true; mp.svg.classList.add('is-drag');
+        try { mp.svg.setPointerCapture(e.pointerId); } catch (err) { /* capture is only a nicety */ }
+      }
+      const dx = (e.clientX - p.x) * sx, dy = (e.clientY - p.y) * sx;
+      p.x = e.clientX; p.y = e.clientY;
+      settle(panned(mp.v, dx, dy));
+    });
+    const up = (e) => {
+      if (!gest.ptrs.delete(e.pointerId)) return;
+      gest.ptrs.forEach((p) => { p.sx = p.x; p.sy = p.y; });
+      if (!gest.ptrs.size) {
+        if (gest.drag) { gest.suppress = true; setTimeout(() => { gest.suppress = false; }, 80); }
+        gest.drag = false;
+        if (mp) mp.svg.classList.remove('is-drag');
+      }
+    };
+    view.addEventListener('pointerup', up);
+    view.addEventListener('pointercancel', up);
+    view.addEventListener('click', (e) => { if (gest.suppress && e.target.closest('svg.map')) { e.stopPropagation(); e.preventDefault(); } }, true);
+    view.addEventListener('wheel', (e) => {
+      if (!liveSvg(e)) return;
+      e.preventDefault();
+      cancelAnimationFrame(mp.anim);
+      const r = mp.svg.getBoundingClientRect(), sx = mp.W / r.width;
+      settle(zoomedAt(mp.v, Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0022)), (e.clientX - r.left) * sx, (e.clientY - r.top) * sx));
+    }, { passive: false });
+    view.addEventListener('focusin', (e) => { // keyboard focus on a pin brings it into view
+      const pin = e.target.closest && e.target.closest('[data-pin]');
+      if (!pin || !mp || !mp.live) return;
+      const [x, y] = toPx(+pin.dataset.wx, +pin.dataset.wy);
+      if (x < 24 || x > mp.W - 24 || y < 60 || y > mp.H - mp.inset - 40) {
+        const S = mp.s0 * mp.v.k;
+        animateTo(clampView({ k: mp.v.k, wx: +pin.dataset.wx, wy: +pin.dataset.wy + mp.inset / (2 * S) }, mp.inset));
+      }
+    });
+  }
+  window.addEventListener('resize', () => { if (mp && document.body.contains(mp.svg)) setupMap(mp.svg); });
+
+  function zoomBy(f) {
+    if (!mp || !mp.live) return;
+    animateTo(clampView(zoomedAt(mp.v, f, mp.W / 2, (mp.H - mp.inset) / 2), mp.inset));
+  }
+  /* Tapping a count bubble zooms to fit the centers inside it (at least 1.8x), so the bubble splits. */
+  function zoomToCluster(ids, byKeyboard) {
+    if (!mp || !mp.live) return;
+    const list = ids.map(byId).filter(Boolean);
+    const bb = bboxOfPts(list);
+    const fit = Math.min((mp.W - 110) / (Math.max(bb[2] - bb[0], 1) * mp.s0), (mp.H - mp.inset - 190) / (Math.max(bb[3] - bb[1], 1) * mp.s0));
+    const k = Math.min(mp.kMax, Math.max(mp.v.k * 1.8, Math.min(fit, mp.v.k * 6)));
+    const m = mp;
+    animateTo(clampView({ k, wx: (bb[0] + bb[2]) / 2, wy: (bb[1] + bb[3]) / 2 + mp.inset / (2 * mp.s0 * k) }, mp.inset), () => {
+      if (mp !== m || !byKeyboard) return; // keyboard users land on the first pin that split off
+      const first = list.map((c) => m.svg.querySelector(`[data-pin][data-id="${c.id}"]`)).find((el) => el && el.style.display !== 'none');
+      if (first) first.focus({ preventScroll: true });
+    });
+  }
+  function recenter() {
+    if (!mp || !mp.live) return;
+    const k = Math.max(mp.v.k, 2.5), S = mp.s0 * k;
+    animateTo(clampView({ k, wx: you.x, wy: you.y + mp.inset / (2 * S) }, mp.inset));
+  }
+
+  /* ---------- generated step-by-step directions (translated), from the real road route ---------- */
+  function buildSteps(c) {
+    const legs = routeFor(c).legs;
+    const total = legs.reduce((s, l) => s + l.len, 0) || 1;
+    const steps = [];
+    legs.forEach((l, i) => {
+      const street = l.name || t('step.road');
+      const meters = Math.max(10, Math.round(((l.len / total) * c.km * 1000) / 10) * 10);
+      let text;
+      if (i === 0) text = t('step.head', { dir: t('dir.' + dir4(l.bearing)), street });
+      else {
+        const d = ((l.bearing - legs[i - 1].bearing + 540) % 360) - 180;
+        text = Math.abs(d) < 20 ? t('step.head', { dir: t('dir.' + dir4(l.bearing)), street }) : t(d > 0 ? 'step.turnRight' : 'step.turnLeft', { street });
+      }
+      steps.push({ kind: 'dir', text, deg: Math.round(l.bearing), meters });
+    });
+    steps.push({ kind: 'tip', text: tipOf(c), icon: 'shield' });
+    steps.push({ kind: 'arrive', text: t('step.arrive', { name: c.name }), icon: 'pin' });
     return steps;
   }
 
@@ -238,6 +699,7 @@
     clearTimeout(toastTimer);
     el.innerHTML = `<span>${esc(msg)}</span>` + (action ? `<button class="toast-btn" data-act="toast-action">${ic('undo')}${esc(action.label)}</button>` : '');
     el.classList.add('show');
+    toast.at = Date.now();
     toast.action = action ? action.fn : null;
     toastTimer = setTimeout(() => { el.classList.remove('show'); }, action ? 7000 : 3800);
   }
@@ -250,7 +712,7 @@
     const actions = d.actions.filter(Boolean);
     root.innerHTML = `<div class="scrim" data-act="dialog-dismiss"></div>
       <div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-body">
-        <div class="dialog-icon">${ic(d.icon || 'alert')}</div>
+        <div class="dialog-icon tone-${d.tone || 'info'}">${ic(d.icon || 'alert')}</div>
         <h2 id="dlg-title">${esc(d.title)}</h2>
         <p id="dlg-body">${esc(d.body)}</p>
         <div class="dialog-actions">${actions.map((a, i) => a.href
@@ -258,7 +720,6 @@
           : `<button class="btn btn-${a.kind || 'secondary'}" data-act="dialog-action" data-i="${i}">${esc(a.label)}</button>`).join('')}</div>
       </div>`;
     openDialog.actions = actions;
-    openDialog.onDismiss = d.onDismiss || null;
     const first = root.querySelector('.btn');
     if (first) first.focus();
   }
@@ -271,43 +732,54 @@
 
   /* ---------- screens ---------- */
   const screens = {};
+  const originTab = () => ui.originTab;
 
-  /* Alert card: severity colour + icon + text label; title on its own line, area on a smaller line below, one action line. */
+  /* Alert card: faded severity tint + 4px stripe; only the pill is solid. compact = Home version (headline + places). */
   const SEV_ICON = { danger: 'alert', warning: 'bell', info: 'shield' };
-  function alertBody(a, withFind) {
-    return `<div class="acard-top"><span class="sev-label">${ic(SEV_ICON[a.sev])}${t('sev.' + a.sev)}</span><span class="acard-when">${ic('clock')}${fmtAge(a.mins + (store.settings.offline ? 120 : 0))}</span></div>
-      <h3 class="acard-title">${esc(a.title)}</h3>
-      <p class="acard-area">${esc(a.area)}</p>
-      <p class="acard-action">${ic('check-circle')}<span>${esc(a.action)}</span></p>
-      ${withFind && a.sev === 'danger' ? `<button class="btn btn-light" data-act="find" data-k="alert-find-${a.id}">${ic('locate')}${t('home.find')}</button>` : ''}`;
+  function alertCard(a, compact, tag) {
+    const x = L(a);
+    const mins = a.mins + (offline() ? 120 : 0);
+    const inner = `<div class="acard-top"><span class="pill">${ic(SEV_ICON[a.sev])}${t('sev.' + a.sev)}</span><span class="acard-when">${fmtAge(mins)}</span></div>
+      <h3 class="acard-title">${esc(x.title)}</h3>
+      <p class="acard-area">${esc(compact ? x.where : x.area)}</p>
+      ${!compact && x.action ? `<p class="acard-action">${esc(x.action)}</p>` : ''}`;
+    return tag === 'a'
+      ? `<a class="acard sev-${a.sev}" href="#/alerts" data-k="banner" aria-label="${t('home.alert')}: ${esc(x.title)}">${inner}</a>`
+      : `<li class="acard sev-${a.sev}">${inner}</li>`;
+  }
+
+  function switchRow(name, label, help, on, icon) {
+    return `<label class="row switch-row">${icon ? ic(icon, 'row-ic') : ''}<span class="row-main"><span class="row-title">${label}</span><span class="row-help">${help}</span></span>
+      <input type="checkbox" role="switch" data-set="${name}" data-k="sw-${name}" ${on ? 'checked' : ''}><span class="sw" aria-hidden="true"></span></label>`;
   }
 
   screens.home = function () {
     const a = READY.alerts[0];
     const recent = store.recentId ? byId(store.recentId) : null;
     const near = all().slice(0, 3);
-    const recentCard = recent ? `<a class="card recent" href="${nav && nav.id === recent.id ? '#/route/' + recent.id : '#/center/' + recent.id}" data-k="recent">
-        <span class="recent-ic">${ic('clock')}</span>
-        <span class="recent-body"><small>${nav && nav.id === recent.id ? t('home.resume') : t('home.recent')}</small><strong>${esc(recent.name)}</strong>${badge(recent.status)}</span>
-        ${ic('chevron', 'chev')}</a>` : '';
+    const resuming = recent && nav && nav.id === recent.id;
+    const recentRow = recent ? `<div class="list recent">
+        <div class="row recent-row"><a class="row-link" href="${resuming ? '#/route/' + recent.id : '#/center/' + recent.id}" data-k="recent">
+          <span class="row-main"><span class="row-cap">${resuming ? t('home.resume') : t('home.recent')}</span><span class="row-title">${esc(recent.name)}</span></span>
+          ${resuming ? ic('navigate', 'row-ic-brand') : badge(recent)}</a>
+          ${resuming ? '' : `<button class="icon-btn" data-act="unpin" aria-label="${t('home.remove')}" data-k="unpin">${ic('x')}</button>`}
+        </div></div>` : '';
     return {
       title: t('nav.home'), tab: 'home',
-      html: `<h1 class="sr-only" tabindex="-1">${t('nav.home')}</h1>
-        <p class="loc">${ic('pin')}${t('home.loc')}</p>
-        <a class="acard sev-${a.sev}" href="#/alerts" data-k="banner" aria-label="${t('home.alert')}: ${esc(a.title)}">${alertBody(a, false)}</a>
-        <button class="btn-find" data-act="find" data-k="find">
-          <span class="find-ic">${ic('locate')}</span>
-          <span class="find-text"><strong>${t('home.find')}</strong><small>${t('home.findSub')}</small></span>
-        </button>
-        ${recentCard}
-        <div class="quick">
-          <a class="tile" href="#/map" data-k="q-map">${ic('map')}<span>${t('home.qmap')}</span></a>
-          <a class="tile" href="tel:911" data-act="vibrate" data-k="q-call">${ic('phone')}<span>${t('home.qcall')}</span></a>
-          <a class="tile" href="#/share" data-k="q-share">${ic('share')}<span>${t('home.qshare')}</span></a>
-        </div>
-        <div class="section-head"><h2>${t('home.nearby')}</h2><a class="link" href="#/map" data-act="show-list">${t('home.seeAll')}</a></div>
-        <div class="stack">${near.map(centerCard).join('')}</div>
-        <p class="foot-note">${ic('shield')}${t('home.managed')}</p>`
+      html: `<div class="ribbon" aria-hidden="true"></div>
+        <div class="pg pg-home">
+          <div class="logo" aria-hidden="true">${ic('shield', 'logo-ic')}<span class="logo-word">ReadyPH</span></div>
+          <h1 class="sr-only" tabindex="-1">${t('nav.home')}</h1>
+          <p class="loc">${ic('pin')}${t('home.loc')}</p>
+          ${alertCard(a, true, 'a')}
+          <button class="btn btn-primary btn-find" data-act="find" data-k="find">${ic('find', 'ic-lg')}<span>${t('home.find')}</span>${ic('chevron', 'find-go')}</button>
+          ${recentRow}
+          <section aria-labelledby="near-h">
+            <div class="sec-head"><h2 id="near-h" class="h-s">${t('home.nearby')}</h2><a class="link" href="#/map" data-act="show-list">${t('home.seeAll')}${ic('chevron')}</a></div>
+            <div class="list">${near.map(centerRow).join('')}</div>
+            ${freshLine(near)}
+          </section>
+        </div>`
     };
   };
 
@@ -316,117 +788,146 @@
     const facs = Object.keys(FAC);
     const match = (v) => [...ui.filters].every((f) => v.fac.includes(f));
     const shown = list.filter(match);
-    const dim = new Set(list.filter((v) => !match(v)).map((v) => v.id));
-    const sel = ui.pinId && !dim.has(ui.pinId) ? byId(ui.pinId) : null;
+    const hidden = new Set(list.filter((v) => !match(v)).map((v) => v.id));
+    const sel = ui.pinId && !hidden.has(ui.pinId) ? byId(ui.pinId) : null;
     const isMap = ui.mapMode === 'map';
+    const filtered = ui.filters.size > 0;
 
-    const filterBar = `<fieldset class="filters"><legend>${t('map.filter')}</legend>
-      <div class="chips">${facs.map((f) => `<button class="chip ${ui.filters.has(f) ? 'on' : ''}" aria-pressed="${ui.filters.has(f)}" data-act="filter" data-f="${f}" data-k="f-${f}">${ic(FAC[f].icon)}${t('fac.' + f)}</button>`).join('')}</div>
-      ${ui.filters.size ? `<button class="link-btn" data-act="clear-filters" data-k="clear">${ic('x')}${t('map.clear')}</button>` : ''}
-    </fieldset>`;
+    const chips = `<div class="filters" role="group" aria-label="${t('map.filters')}">
+      ${filtered ? `<button class="chip chip-clear" data-act="clear-filters" data-k="clear">${ic('x')}${t('map.clear')}</button>` : ''}
+      ${facs.map((f) => `<button class="chip ${ui.filters.has(f) ? 'on' : ''}" aria-pressed="${ui.filters.has(f)}" data-act="filter" data-f="${f}" data-k="f-${f}">${ic(FAC[f].icon)}${t('fac.' + f)}</button>`).join('')}
+    </div>`;
 
-    const legend = `<ul class="legend" aria-label="Legend">
-      ${['available', 'almost', 'full'].map((s) => `<li><svg class="ic lg lg-${s}" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-${s === 'available' ? 'check' : s === 'almost' ? 'alert' : 'x'}"/></svg>${t('st.' + s)}</li>`).join('')}
+    const legend = `<ul class="legend" aria-label="${t('map.legend')}">
+      ${['available', 'almost', 'full'].map((s) => `<li><svg class="lg lg-${s}" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-${ST[s].glyph}"/></svg>${t('st.' + s)}</li>`).join('')}
+      <li><span class="lg-flood" aria-hidden="true"></span>${t('map.flood')}</li>
     </ul>`;
 
-    let body;
-    if (!shown.length) {
-      body = `<div class="empty card"><h2>${t('map.none')}</h2><p>${t('map.noneHelp')}</p><button class="btn btn-secondary" data-act="clear-filters">${t('map.clear')}</button></div>`;
+    const pwdUnverified = ui.filters.has('pwd') && !READY.centers.some((c) => c.fac.includes('pwd'));
+    let body, cls = '';
+    if (!shown.length && pwdUnverified) {
+      body = `<div class="pg"><div class="empty empty-pwd">${ic('wheelchair', 'ic-lg')}<p class="body" role="status">${t('map.pwdNone')}</p><button class="btn btn-secondary" data-act="clear-filters" data-k="show-all">${t('map.showAll')}</button></div></div>`;
+    } else if (!shown.length) {
+      body = `<div class="pg"><div class="empty"><h2 class="h-s">${t('map.none')}</h2><p>${t('map.noneHelp')}</p><button class="btn btn-secondary" data-act="clear-filters">${t('map.clear')}</button></div></div>`;
     } else if (isMap) {
-      body = `<div class="map-wrap">${mapSvg({ pins: list, dim, activeId: sel && sel.id })}</div>${legend}
-        <div class="preview" id="preview">${sel ? previewCard(sel) : `<p class="hint">${ic('pin')}${t('map.tapPin')}</p>`}</div>`;
+      cls = 'is-map';
+      body = `<div class="map-stage is-pan" id="stage">${mapSvg({ pins: list, hidden, activeId: sel && sel.id })}
+        ${sel ? sheet(sel) : `<p class="map-hint">${ic('pin')}${t('map.tapPin')}</p>${legend}`}</div>`;
     } else {
-      body = `<div class="stack">${shown.map(centerCard).join('')}</div>`;
+      body = `<div class="pg"><div class="list">${shown.map(centerRow).join('')}</div>${freshLine(shown)}</div>`;
     }
 
     return {
-      title: t('map.title'), tab: 'map',
-      html: `${header(t('map.title'), { extra: `<div class="seg-toggle" role="group" aria-label="${t('map.title')}">
-          <button data-act="mode" data-mode="map" aria-pressed="${isMap}" data-k="m-map">${ic('map')}${t('map.map')}</button>
-          <button data-act="mode" data-mode="list" aria-pressed="${!isMap}" data-k="m-list">${ic('list')}${t('map.list')}</button></div>` })}
-        ${filterBar}
-        <p class="count" role="status">${t('map.count', { n: shown.length })}</p>
-        ${body}`
+      title: t('map.title'), tab: 'map', cls,
+      html: `<header class="head head-split"><h1 class="h-d" tabindex="-1">${t('map.title')}</h1>
+          ${filtered ? `<span class="head-count" role="status">${t('map.of', { n: shown.length, total: list.length })}</span>` : ''}
+          <div class="seg-toggle" role="group" aria-label="${t('map.title')}">
+            <button data-act="mode" data-mode="map" aria-pressed="${isMap}" data-k="m-map">${ic('map')}${t('map.map')}</button>
+            <button data-act="mode" data-mode="list" aria-pressed="${!isMap}" data-k="m-list">${ic('list')}${t('map.list')}</button></div></header>
+        ${chips}${body}`
     };
   };
 
-  function previewCard(v) {
-    return `<div class="card preview-card">
-      <div class="cc-top"><h3>${esc(v.name)}</h3>${badge(v.status)}</div>
-      <p class="cc-meta">${ic('pin')}${v.km} km · ${t('c.walk', { m: walkMin(v.km) })}</p>
-      ${bar(v)}
+  /* Bottom sheet over the map for the selected center. */
+  function sheet(v) {
+    const anim = ui.sheetAnim;
+    ui.sheetAnim = false;
+    return `<section class="sheet ${anim ? 'sheet-in' : ''}" aria-labelledby="sheet-t">
+      <div class="sheet-grab" aria-hidden="true"></div>
+      <div class="sheet-top"><h2 class="sheet-title" id="sheet-t" tabindex="-1">${esc(v.name)}</h2>
+        <button class="icon-btn" data-act="unpick" aria-label="${t('close')}" data-k="sheet-x">${ic('x')}</button></div>
+      <p class="sheet-meta">${badge(v)}<span class="meta">${v.km} km · ${t('c.walk', { m: walkMin(v.km) })}</span></p>
+      <div class="sheet-cap">${bar(v)}<p class="cap-line"><strong>${v.current} / ${v.max}</strong>${offline() || v.status === 'full' ? '' : `<span>${t('st.left', { n: v.left })}</span>`}</p>${sampleNote()}</div>
       <div class="btn-row">
-        <a class="btn btn-secondary" href="#/center/${v.id}">${t('c.details')}</a>
-        <button class="btn btn-primary" data-act="route" data-id="${v.id}">${ic('navigate')}${t('c.route')}</button>
-      </div></div>`;
+        <a class="btn btn-secondary" href="#/center/${v.id}" data-k="sheet-details">${t('c.details')}</a>
+        <button class="btn btn-primary" data-act="route" data-id="${v.id}" data-k="sheet-route">${ic('navigate')}${t('c.route')}</button>
+      </div></section>`;
   }
+
+  const sampleNote = () => `<p class="caption">${t('c.sample')}</p>`;
+  const confirmNote = () => `<p class="confirm">${ic('alert')}<span>${t('c.confirm')}</span><a class="btn btn-quiet btn-sm" href="tel:0200000101" data-act="vibrate">${ic('phone')}${t('c.call')}</a></p>`;
 
   screens.nearest = function () {
     if (!ui.nearestReady) {
       if (!ui.timers.length) {
-        ui.timers.push(setTimeout(() => { ui.nearestReady = true; if (ui.route && ui.route.name === 'nearest') render(); }, store.settings.offline ? 1300 : 1000));
+        ui.timers.push(setTimeout(() => { ui.nearestReady = true; ui.focusOnce = true; if (ui.route && ui.route.name === 'nearest') render(); }, offline() ? 1300 : 1000));
       }
-      const msg = store.settings.offline ? t('near.loadingOff', { x: fmtAge(120) }) : t('near.loading');
-      return { title: t('near.title'), tab: 'home', html: `${header(t('near.title'), { back: '#/home' })}
-        <div class="loading" role="status"><span class="spinner" aria-hidden="true"></span><p>${msg}</p></div>` };
+      const msg = offline() ? t('near.loadingOff', { x: fmtAge(120) }) : t('near.loading');
+      return { title: t('near.title'), tab: originTab(), html: `${header(t('near.title'), { back: '#/home' })}
+        <div class="pg"><p class="loading" role="status"><span class="spinner" aria-hidden="true"></span>${msg}</p>
+        <div class="skel" aria-hidden="true"><i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i></div></div>` };
     }
     const list = all();
     const closest = list[0];
-    const best = nearestAvailable();
-    const others = list.filter((v) => v.status !== 'full' && (!best || v.id !== best.id)).slice(0, 2);
-    const skipped = closest.status === 'full' ? `<section class="notice notice-bad" aria-labelledby="sk-h">
-        <div class="notice-head">${ic('ban')}<h2 id="sk-h">${t('near.closestFull')}</h2></div>
-        <p class="notice-line"><strong>${esc(closest.name)}</strong> · ${closest.km} km ${badge('full')}</p>
-        <p>${t('near.skipped')}</p></section>` : '';
+    const pick = pickSafe();
+    const best = pick.v;
+    const wantList = pick.want.map((f) => t('fac.' + f)).join(', ');
+    const skipped = closest.status === 'full' ? `<p class="skipped">${ic('x-circle')}<span>${t('near.skipped', { name: esc(closest.short), km: closest.km })}</span></p>` : '';
     let main;
     if (best) {
-      main = `<section aria-labelledby="best-h"><h2 id="best-h" class="kicker">${ic('check-circle')}${t('near.best')}</h2>
-        <div class="card best-card">
-          <div class="cc-top"><h3>${esc(best.name)}</h3>${badge(best.status)}</div>
-          <p class="cc-meta">${ic('pin')}${best.km} km · ${t('c.walk', { m: walkMin(best.km) })}</p>
-          ${bar(best, true)}${facChips(best)}
-          <p class="cc-foot">${updatedLine(best)}</p>
-          <div class="btn-col">
-            <button class="btn btn-primary btn-lg" data-act="route" data-id="${best.id}" data-k="go-best">${ic('navigate')}${t('c.route')}</button>
-            <a class="btn btn-secondary" href="#/center/${best.id}">${t('c.details')}</a>
-          </div></div></section>
-        ${others.length ? `<h2 class="kicker plain">${t('near.others')}</h2><div class="stack">${others.map(centerCard).join('')}</div>` : ''}`;
+      const others = list.filter((v) => v.status !== 'full' && v.id !== best.id && (pick.relaxed || pick.want.every((f) => v.fac.includes(f)))).slice(0, 2);
+      const facs = Object.keys(FAC).filter((f) => best.fac.includes(f));
+      main = `${pick.relaxed ? `<p class="skipped skipped-warn">${ic('alert')}<span>${t('near.relaxed', { list: wantList })}</span></p>` : ''}
+        <section class="result" aria-labelledby="best-h">
+          <p class="row-cap" id="best-h">${t('near.best')}</p>
+          <h2 class="result-name">${esc(best.name)}</h2>
+          <p class="sheet-meta">${badge(best)}<span class="meta">${best.km} km · ${t('c.walk', { m: walkMin(best.km) })}</span></p>
+          ${bar(best, true)}
+          <p class="cap-line"><strong>${best.current} / ${best.max}</strong>${offline() ? '' : `<span>${spacesLeft(best)}</span>`}</p>
+          ${facs.length ? `<ul class="fac-inline" aria-label="${t('c.facilities')}">${facs.map((f) => `<li>${ic(FAC[f].icon)}${t('fac.' + f)}</li>`).join('')}</ul>` : ''}
+          ${pick.want.length && !pick.relaxed ? `<p class="match">${ic('check')}${t('near.matches', { list: wantList })}</p>` : ''}
+          ${offline() ? confirmNote() : ''}
+          <button class="btn btn-primary btn-lg" data-act="route" data-id="${best.id}" data-k="go-best">${ic('navigate')}${t('c.route')}</button>
+          <a class="btn btn-quiet" href="#/center/${best.id}" data-k="best-details">${t('c.details')}</a>
+        </section>
+        ${others.length ? `<h2 class="h-s">${t('near.others')}</h2><div class="list">${others.map(centerRow).join('')}</div>` : ''}`;
     } else {
-      main = `<section class="notice notice-bad"><div class="notice-head">${ic('ban')}<h2>${t('near.allFull')}</h2></div><p>${t('near.allFullHelp')}</p>
-        <a class="btn btn-primary btn-lg" href="tel:911">${ic('phone')}${t('home.qcall')}</a></section>`;
+      main = `<section class="result"><h2 class="result-name">${t('near.allFull')}</h2><p class="body">${t('near.allFullHelp')}</p>
+        <a class="btn btn-primary btn-lg" href="tel:911" data-act="vibrate">${ic('phone')}911</a></section>`;
     }
-    return { title: t('near.title'), tab: 'home', html: `${header(t('near.title'), { back: '#/home' })}${skipped}${main}` };
+    return { title: t('near.title'), tab: originTab(), html: `${header(t('near.title'), { back: '#/home' })}<div class="pg">${skipped}${main}</div>` };
   };
 
   screens.center = function (id) {
     const v = byId(id);
     if (!v) return { redirect: '#/map' };
-    const alt = v.status === 'full' ? nearestAvailable(v.id) : null;
+    const alt = v.status === 'full' ? pickSafe(v.id).v : null;
+    const stale = offline();
+    const stateLabel = stale ? `${ic('clock')}${t(v.status === 'full' ? 'st.wasFull' : 'st.hadSpace', { x: fmtAge(v.age) })}` : `${ic(ST[v.status].icon)}${t('st.' + v.status)}`;
+    let note = '';
+    if (stale) note = t('c.confirm');
+    else if (v.status === 'full') note = alt ? t('c.tryOther', { name: esc(alt.short), km: alt.km }) : t('near.allFull');
+    else note = spacesLeft(v);
     const facList = Object.keys(FAC).map((f) => {
       const has = v.fac.includes(f);
-      return `<li class="${has ? 'has' : 'no'}">${ic(FAC[f].icon)}<span class="fl">${t('fac.' + f)}</span><span class="fs">${ic(has ? 'check' : 'x')}${t(has ? 'fac.yes' : 'fac.no')}</span></li>`;
+      if (f === 'pwd' && !has) return `<li class="no unv">${ic(FAC[f].icon)}<span>${t('fac.pwd')}: ${t('c.pwdUnverified')}</span></li>`;
+      return `<li class="${has ? 'has' : 'no'}">${ic(FAC[f].icon)}<span>${t('fac.' + f)}</span>${has ? '' : `<span class="sr-only">${t('fac.no')}</span>`}</li>`;
     }).join('');
+    const walk = walkMin(v.km);
+    const actions = alt
+      ? `<button class="btn btn-primary btn-lg" data-act="route" data-id="${alt.id}" data-k="route-btn">${ic('navigate')}${t('c.goTo', { name: esc(alt.short), km: alt.km })}</button>
+         <button class="btn btn-quiet" data-act="route" data-id="${v.id}" data-k="route-anyway">${t('c.anyway')}</button>`
+      : `<button class="btn btn-primary btn-lg" data-act="route" data-id="${v.id}" data-k="route-btn">${ic('navigate')}${t('c.route')}</button>`;
     return {
-      title: v.name, tab: 'map',
+      title: v.name, tab: originTab(),
       html: `${header(esc(v.name), { back: '#/map' })}
-        <section class="status-panel ${ST[v.status].cls}" aria-label="${t('st.' + v.status)}">
-          <div class="sp-top">${ic(ST[v.status].icon, 'xl')}<div><strong>${t('st.' + v.status)}</strong><span>${leftText(v)}</span></div></div>
-          ${bar(v, true)}
-        </section>
-        ${alt ? `<section class="notice notice-bad"><div class="notice-head">${ic('alert')}<h2>${t('c.fullWarn')}</h2></div>
-          <p>${t('c.fullWarnBody', { name: esc(alt.name), km: alt.km })}</p>
-          <button class="btn btn-primary" data-act="route" data-id="${alt.id}">${ic('navigate')}${t('c.pick', { name: esc(alt.short) })}</button></section>` : ''}
-        <section class="card info" aria-label="${t('c.info')}">
-          <p>${ic('pin')}<span><strong>${v.km} km</strong> · ${t('c.walk', { m: walkMin(v.km) })}<br><small>${t('c.walkSenior', { m: Math.round(walkMin(v.km) * 1.5) })}</small></span></p>
-          <p>${ic('map')}<span>${esc(v.address)}, Valenzuela City</span></p>
-          <p class="upd">${updatedLine(v)}</p>
-        </section>
-        <h2 class="kicker plain">${t('c.facilities')}</h2>
-        <ul class="fac-list">${facList}</ul>
-        <div class="sticky-actions">
-          <button class="btn btn-primary btn-lg" data-act="route" data-id="${v.id}" data-k="route-btn">${ic('navigate')}${t('c.route')}</button>
-          <a class="btn btn-secondary" href="#/share/${v.id}">${ic('share')}${t('c.share')}</a>
-        </div>`
+        <div class="pg">
+          <section class="panel ${stale ? 'st-stale' : ST[v.status].cls}" aria-label="${t('st.' + v.status)}">
+            <div class="panel-top"><span class="panel-state">${stateLabel}</span><span class="panel-num">${v.current} / ${v.max}</span></div>
+            ${bar(v, true)}
+            <p class="panel-note">${note}</p>
+            ${sampleNote()}
+            ${stale ? `<a class="btn btn-secondary" href="tel:0200000101" data-act="vibrate">${ic('phone')}${t('c.call')}</a>` : ''}
+          </section>
+          <ul class="facts">
+            <li>${ic('pin')}<span>${esc(brgyOf(v))}, Valenzuela${v.approx ? `<br><strong>${t('c.approx')}</strong>` : ''}</span></li>
+            <li>${ic('clock')}<span>${t('c.walk', { m: walk })} · ${t('c.walkSenior', { m: Math.round(walk * 1.5) })}</span></li>
+            <li>${ic('shield')}<span><strong>${t('c.tip')}:</strong> ${esc(tipOf(v))}</span></li>
+          </ul>
+          <section aria-labelledby="fac-h"><h2 class="h-s" id="fac-h">${t('c.facilities')}</h2><ul class="fac-grid">${facList}</ul></section>
+          <p class="caption">${t('c.updated', { x: fmtAge(v.age) })}</p>
+        </div>
+        <div class="actions">${actions}</div>`
     };
   };
 
@@ -442,28 +943,25 @@
     nav.n = n;
     nav.step = Math.min(n - 1, Math.floor(nav.prog * n));
     const s = steps[nav.step];
-    const pct = Math.round(nav.prog * 100);
-    const lead = s.icon ? ic(s.icon, 'xl') : `<span class="arrow" style="transform:rotate(${s.deg}deg)">${ic('arrow', 'xl')}</span>`;
     const next = steps[nav.step + 1];
+    const pct = Math.round(nav.prog * 100);
+    const lead = s.kind === 'dir' ? `<span class="arrow" style="transform:rotate(${s.deg}deg)">${ic('arrow', 'ic-xl')}</span>` : ic(s.icon, 'ic-xl');
     return {
-      title: t('route.title'), tab: 'map', startsSim: true,
-      html: `${header(t('route.title'), { back: '#/center/' + id })}
-        <p class="route-to">${ic('pin')}<span><strong>${esc(c.name)}</strong><br><small>${t('route.safe')}</small></span></p>
-        <p class="sim-chip">${ic('locate')}${t('route.sim')}</p>
-        <div class="map-wrap map-short">${mapSvg({ pins: [c], routeTo: c, f: nav.prog, static: true })}</div>
-        <div class="progress-block">
-          <div class="progress-top"><strong>${t('route.step', { a: nav.step + 1, b: n })}</strong><span id="rt-pct">${pct}%</span></div>
-          <div class="bar" id="rt-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="${t('route.title')}"><span class="bar-fill route-fill" id="rt-fill" style="width:${pct}%"></span></div>
-          <p class="rt-stats"><span>${t('route.left')}: <strong id="rt-dist">${fmtDist(c.km * 1000 * (1 - nav.prog))}</strong></span><span>${t('route.eta')}: <strong id="rt-eta">${fmtEta(c, nav.prog)}</strong></span></p>
-        </div>
-        <section class="card step" aria-live="polite">
-          <div class="step-lead">${lead}</div>
-          <div class="step-body">${s.kicker ? `<small>${s.kicker}</small>` : ''}<strong>${esc(s.text)}</strong>${s.meters ? `<span>${s.meters} m</span>` : ''}</div>
+      title: t('route.to', { name: c.short }), tab: null, startsSim: true, cls: 'is-route',
+      html: `${header(t('route.to', { name: esc(c.short) }), { back: '#/center/' + id })}
+        <section class="instr" aria-live="polite">
+          <div class="instr-main"><span class="instr-ic">${lead}</span>
+            <div><p class="instr-text">${s.kind === 'tip' ? `<span class="instr-tag">${t('step.tip')}</span>` : ''}${esc(s.text)}</p>${s.kind === 'dir' ? `<p class="instr-dist">${s.meters} m</p>` : ''}</div></div>
+          ${next && next.kind === 'dir' ? `<p class="instr-next">${esc(t('step.then', { text: next.text }))}</p>` : ''}
+          <p class="instr-safe">${ic('shield')}${t('route.safe')}</p>
+          <div class="instr-bar" id="rt-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="${t('route.progress')}"><span id="rt-fill" style="width:${pct}%"></span></div>
         </section>
-        ${next ? `<p class="next-up">${ic('chevron')}<span>${t('route.then')}: ${esc(next.text)}</span></p>` : ''}
-        <div class="btn-col">
+        <div class="map-stage map-route">${mapSvg({ pins: [c], routeTo: c, f: nav.prog, static: true })}</div>
+        <div class="route-foot">
+          <p class="route-stats" id="rt-stats">${t('route.stats', { d: `<strong id="rt-dist">${fmtDist(c.km * 1000 * (1 - nav.prog))}</strong>`, m: `<span id="rt-eta">${fmtEta(c, nav.prog)}</span>` })}</p>
           <button class="btn btn-secondary" data-act="stop-nav" data-k="stop">${ic('x')}${t('route.stop')}</button>
-        </div>`
+        </div>
+        <p class="sim-note">${ic('locate')}${t('route.sim')}</p>`
     };
   };
 
@@ -475,13 +973,16 @@
   function stopSim() { cancelAnimationFrame(sim.raf); sim.raf = 0; }
 
   function updateLive(c) {
-    const w = walkRoute(routePoints(c), nav.prog);
-    const done = $('#rt-done'), pos = $('#rt-pos');
-    if (done) done.setAttribute('points', w.done.map((p) => p.x + ',' + p.y).join(' '));
-    if (pos) pos.setAttribute('transform', `translate(${w.pos.x} ${w.pos.y})`);
+    const w = walkRoute(routeFor(c).pts, nav.prog);
+    const pts = w.done.map((p) => p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' ');
+    const done = $('#rt-done'), casing = $('#rt-done-casing'), pos = $('#rt-pos'), ang = $('#rt-ang');
+    if (done) done.setAttribute('points', pts);
+    if (casing) casing.setAttribute('points', pts);
+    if (pos && mp) { const [x, y] = toPx(w.pos.x, w.pos.y); pos.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`); }
+    if (ang) ang.setAttribute('transform', `rotate(${w.ang})`);
     const pct = Math.round(nav.prog * 100);
     const set = (sel, v) => { const el = $(sel); if (el) el.textContent = v; };
-    set('#rt-pct', pct + '%'); set('#rt-dist', fmtDist(c.km * 1000 * (1 - nav.prog))); set('#rt-eta', fmtEta(c, nav.prog));
+    set('#rt-dist', fmtDist(c.km * 1000 * (1 - nav.prog))); set('#rt-eta', fmtEta(c, nav.prog));
     const fill = $('#rt-fill'), bar = $('#rt-bar');
     if (fill) fill.style.width = pct + '%';
     if (bar) bar.setAttribute('aria-valuenow', pct);
@@ -519,25 +1020,24 @@
     if (!c) return { redirect: '#/home' };
     if (store.recentId !== id) { store.recentId = id; save(); }
     return {
-      title: t('arr.title'), tab: 'map',
-      html: `<h1 class="sr-only" tabindex="-1">${t('arr.title')}</h1>
+      title: t('arr.title'), tab: null,
+      html: `<div class="pg pg-arrived">
         <section class="arrived">
-          <div class="big-check" aria-hidden="true">${ic('check', 'xxl')}</div>
-          <h2>${t('arr.title')}</h2>
-          <p>${t('arr.sub', { name: esc(c.name) })}</p>
+          <div class="big-check" aria-hidden="true">${ic('check', 'ic-xl')}</div>
+          <h1 class="h-d" tabindex="-1">${t('arr.title')}</h1>
+          <p class="arrived-name">${esc(c.name)}</p>
         </section>
-        <h2 class="kicker plain">${t('arr.next')}</h2>
-        <ol class="next-steps">${[1, 2, 3, 4].map((i) => `<li>${t('arr.n' + i)}</li>`).join('')}</ol>
+        <section aria-labelledby="next-h"><h2 class="h-s" id="next-h">${t('arr.next')}</h2>
+          <ol class="next-steps">${[1, 2, 3, 4].map((i) => `<li>${t('arr.n' + i)}</li>`).join('')}</ol></section>
         <div class="btn-col">
           <a class="btn btn-primary btn-lg" href="#/share/${c.id}" data-k="share-now">${ic('share')}${t('share.title')}</a>
-          <a class="btn btn-secondary" href="#/hotlines">${ic('phone')}${t('nav.hotlines')}</a>
-          <a class="btn btn-quiet" href="#/home">${ic('home')}${t('arr.home')}</a>
-        </div>`
+          <a class="btn btn-quiet" href="#/home">${t('arr.home')}</a>
+        </div></div>`
     };
   };
 
-  const defaultShareId = () => store.recentId || (nearestAvailable() || all()[0]).id;
-  const shareMessage = (v) => `I'm safe at ${v.name}, ${v.address}, Valenzuela City. – sent via ReadyPH`;
+  const defaultShareId = () => store.recentId || (pickSafe().v || all()[0]).id;
+  const shareMessage = (v) => t('share.default', { name: v.name, brgy: brgyOf(v) });
 
   screens.share = function (arg) {
     if (arg && byId(arg) && arg !== ui.shareId) { ui.shareId = arg; ui.shareDirty = false; }
@@ -546,45 +1046,59 @@
     if (!ui.shareDirty) ui.shareText = shareMessage(v);
     const canShare = typeof navigator.share === 'function';
     return {
-      title: t('share.title'), tab: 'home',
+      title: t('share.title'), tab: originTab(),
       html: `${header(t('share.title'), { back: '#/home' })}
-        <div class="field"><label for="share-center">${t('share.where')}</label>
-          <select id="share-center" data-set="shareCenter" data-k="share-center">${all().map((c) => `<option value="${c.id}" ${c.id === v.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></div>
-        <div class="field"><label for="share-text">${t('share.msg')}</label>
-          <textarea id="share-text" rows="5" data-k="share-text">${esc(ui.shareText)}</textarea></div>
-        <div class="btn-col">
-          <a class="btn btn-primary btn-lg" id="sms-link" href="sms:?body=${encodeURIComponent(ui.shareText)}" data-act="sms" data-k="sms">${ic('sms')}${t('share.sms')}</a>
-          <div class="btn-row">
-            <button class="btn btn-secondary" data-act="share-native" data-k="share-native">${ic('share')}${canShare ? t('share.share') : t('share.copy')}</button>
-            ${canShare ? `<button class="btn btn-secondary" data-act="share-copy" data-k="share-copy">${ic('copy')}${t('share.copy')}</button>` : ''}
-            <button class="btn btn-quiet" data-act="share-reset" data-k="share-reset">${ic('refresh')}${t('share.reset')}</button>
-          </div>
-        </div>
-        <p class="foot-note">${ic('lock')}${t('share.note')}</p>`
+        <div class="pg">
+          <div class="field"><label for="share-center">${t('share.where')}</label>
+            <select id="share-center" data-set="shareCenter" data-k="share-center">${all().map((c) => `<option value="${c.id}" ${c.id === v.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></div>
+          <div class="field"><label for="share-text">${t('share.msg')}</label>
+            <div class="ta-wrap"><textarea id="share-text" rows="5" data-k="share-text">${esc(ui.shareText)}</textarea>
+              <button class="icon-btn ta-reset" data-act="share-reset" aria-label="${t('share.reset')}" data-k="share-reset">${ic('refresh')}</button></div></div>
+          <div class="btn-col">
+            <a class="btn btn-primary btn-lg" id="sms-link" href="sms:?body=${encodeURIComponent(ui.shareText)}" data-act="sms" data-k="sms">${ic('sms')}${t('share.sms')}</a>
+            <button class="btn btn-secondary" data-act="share-native" data-k="share-native">${ic(canShare ? 'share' : 'copy')}${canShare ? t('share.more') : t('share.copy')}</button>
+          </div></div>`
     };
   };
 
   screens.hotlines = function () {
-    const row = (h) => `<li class="card hot-row">
-      <div class="hot-info"><h3>${esc(h.name)}</h3><p>${esc(h.desc)}</p>
-        <p class="hot-num">${esc(h.number)}</p>${h.verified ? '' : `<span class="tag">${t('hot.sample')}</span>`}</div>
-      <a class="btn btn-primary" href="tel:${h.tel}" data-act="vibrate" aria-label="${t('hot.call')} ${esc(h.name)} ${esc(h.number)}">${ic('phone')}${t('hot.call')}</a></li>`;
-    const emerg = READY.hotlines.filter((h) => h.emergency);
-    const rest = READY.hotlines.filter((h) => !h.emergency);
+    const sos = READY.hotlines.find((h) => h.id === 'n911');
+    const rest = READY.hotlines.filter((h) => h.id !== 'n911');
+    const num = (h, n) => `<li><a class="row hot-num" href="tel:${n.tel}" data-act="vibrate" aria-label="${t('hot.call')} ${esc(h.name)} ${esc(n.number)}${n.carrier ? ' ' + esc(n.carrier) : ''}">
+        <span class="row-main"><span class="hot-n">${esc(n.number)}${n.carrier ? ` <b class="carrier">(${esc(n.carrier)})</b>` : ''}</span></span>
+        <span class="call-ic">${ic('phone')}</span></a></li>`;
+    const row = (h) => h.more ? `<li class="hot-group">
+        <div class="hot-head"><span class="row-title">${esc(h.name)}</span></div>
+        <ul class="hot-nums">${[h].concat(h.more).map((n) => num(h, n)).join('')}</ul>
+        ${h.desc ? `<p class="row-help hot-foot">${esc(L(h.desc))}</p>` : ''}</li>`
+      : `<li><a class="row hot-row" href="tel:${h.tel}" data-act="vibrate" aria-label="${t('hot.call')} ${esc(h.name)} ${esc(h.number)}">
+        <span class="row-main"><span class="row-title">${esc(h.name)}</span>
+          <span class="row-sub"><span class="meta">${esc(h.number)}</span>${h.verified ? '' : `<span class="tag">${t('hot.sample')}</span>`}</span>
+          ${h.desc ? `<span class="row-help">${esc(L(h.desc))}</span>` : ''}</span>
+        <span class="call-ic">${ic('phone')}</span></a></li>`;
     return {
       title: t('hot.title'), tab: 'hotlines',
-      html: `${header(t('hot.title'))}<p class="sub">${t('hot.sub')}</p>
-        <div class="emerg">${emerg.map((h) => `<a class="emerg-btn ${h.id === 'n911' ? 'emerg-911' : ''}" href="tel:${h.tel}" data-act="vibrate" aria-label="${t('hot.call')} ${esc(h.name)}">${ic('phone')}<strong>${esc(h.number)}</strong><span>${esc(h.name.replace(/ \d+$/, ''))}</span>${h.verified ? '' : `<em>${t('hot.sample')}</em>`}</a>`).join('')}</div>
-        <ul class="stack plain-list">${rest.map(row).join('')}</ul>
-        <p class="foot-note">${ic('alert')}${t('hot.note')}</p>`
+      html: `${header(t('hot.title'), { root: true })}
+        <div class="pg">
+          <a class="sos" href="tel:${sos.tel}" data-act="vibrate" aria-label="${t('hot.call')} ${esc(sos.number)}, ${t('hot.n911')}">
+            <span class="sos-text"><span class="sos-num">${esc(sos.number)}</span><span class="sos-sub">${t('hot.n911')}</span></span>
+            <span class="sos-call">${ic('phone', 'ic-lg')}</span></a>
+          <ul class="list">${rest.map(row).join('')}</ul>
+          <p class="caption">${t('hot.note')}</p>
+        </div>`
     };
   };
 
   screens.alerts = function () {
+    const anyDanger = READY.alerts.some((a) => a.sev === 'danger');
     return {
       title: t('alerts.title'), tab: 'alerts',
-      html: `${header(t('alerts.title'))}<p class="sub">${t('alerts.sub')}</p>
-        <ul class="stack plain-list">${READY.alerts.map((a) => `<li class="acard sev-${a.sev}">${alertBody(a, true)}</li>`).join('')}</ul>`
+      html: `${header(t('alerts.title'), { root: true })}
+        <div class="pg">
+          ${anyDanger ? `<button class="btn btn-primary btn-lg" data-act="find" data-k="alerts-find">${ic('find')}${t('home.find')}</button>` : ''}
+          <ul class="alert-list">${READY.alerts.map((a) => alertCard(a, false, 'li')).join('')}</ul>
+          <p class="caption">${t('alerts.source')}</p>
+        </div>`
     };
   };
 
@@ -592,27 +1106,26 @@
     return `<fieldset class="set-group"><legend>${label}</legend><div class="seg">${options.map((o) => `<label class="seg-opt">
       <input type="radio" name="${name}" value="${o.value}" data-set="${name}" data-k="${name}-${o.value}" ${current === o.value ? 'checked' : ''}><span>${o.label}</span></label>`).join('')}</div></fieldset>`;
   }
-  function switchRow(name, label, help, on) {
-    return `<label class="switch-row"><span class="sw-text"><strong>${label}</strong><small>${help}</small></span>
-      <span class="sw"><input type="checkbox" role="switch" data-set="${name}" data-k="sw-${name}" ${on ? 'checked' : ''}><span class="sw-track" aria-hidden="true"></span><span class="sw-state">${t(on ? 'set.on' : 'set.off')}</span></span></label>`;
-  }
 
   screens.settings = function () {
     const s = store.settings;
     return {
       title: t('set.title'), tab: 'settings',
-      html: `${header(t('set.title'))}
-        <section class="card set-card" aria-label="${t('set.display')}">
-          ${radioGroup('textSize', t('set.size'), [{ value: 'normal', label: t('set.size.normal') }, { value: 'large', label: t('set.size.large') }, { value: 'xl', label: t('set.size.xl') }], s.textSize)}
-          ${radioGroup('lang', t('set.lang'), [{ value: 'en', label: 'English' }, { value: 'fil', label: 'Filipino' }], s.lang)}
-          ${switchRow('contrast', t('set.contrast'), t('set.contrastHelp'), s.contrast)}
-        </section>
-        <h2 class="kicker plain">${t('set.demoTools')}</h2>
-        <section class="card set-card">
-          ${switchRow('offline', t('set.offline'), t('set.offlineHelp'), s.offline)}
-          <button class="row-btn" data-act="replay" data-k="replay">${ic('refresh')}<span>${t('set.replay')}</span>${ic('chevron', 'chev')}</button>
-        </section>
-        <p class="foot-note">${ic('shield')}${t('set.demo')}</p>`
+      html: `${header(t('set.title'), { root: true })}
+        <div class="pg">
+          <section aria-labelledby="disp-h"><h2 class="h-s" id="disp-h">${t('set.display')}</h2>
+            <div class="list list-pad">
+              ${radioGroup('textSize', t('set.size'), [{ value: 'normal', label: t('set.size.normal') }, { value: 'large', label: t('set.size.large') }, { value: 'xl', label: t('set.size.xl') }], s.textSize)}
+              ${radioGroup('lang', t('set.lang'), [{ value: 'en', label: 'English' }, { value: 'fil', label: 'Filipino' }], s.lang)}
+              ${switchRow('contrast', t('set.contrast'), t('set.contrastHelp'), s.contrast)}
+            </div></section>
+          <section aria-labelledby="proto-h"><h2 class="h-s" id="proto-h">${t('set.proto')}</h2>
+            <div class="list">
+              ${switchRow('offline', t('set.offline'), t('set.offlineHelp'), s.offline)}
+              <button class="row row-btn" data-act="replay" data-k="replay"><span class="row-main"><span class="row-title">${t('set.replay')}</span></span>${ic('chevron', 'row-chev')}</button>
+              <div class="row"><span class="row-main"><span class="row-title">${t('set.about')}</span><span class="row-help">${t('set.aboutBody')}</span></span></div>
+            </div></section>
+        </div>`
     };
   };
 
@@ -620,66 +1133,63 @@
     const total = 3;
     const step = ui.obStep;
     const dl = ui.dl;
-    let body;
+    let body, foot;
     if (step === 0) {
-      body = `<h2>${t('ob.cityTitle')}</h2><p>${t('ob.cityBody')}</p>
+      body = `<h1 class="h-d" tabindex="-1">${t('ob.cityTitle')}</h1>
         <fieldset class="city-list"><legend class="sr-only">${t('ob.cityTitle')}</legend>
-          <label class="city on"><input type="radio" name="city" checked><span><strong>Valenzuela City</strong><small>CDRRMO Valenzuela</small></span>${ic('check-circle')}</label>
-          <label class="city off"><input type="radio" name="city" disabled><span><strong>Caloocan City</strong><small>${t('ob.soon')}</small></span></label>
-          <label class="city off"><input type="radio" name="city" disabled><span><strong>Marikina City</strong><small>${t('ob.soon')}</small></span></label>
-        </fieldset>`;
+          <label class="row city"><input type="radio" name="city" checked><span class="row-main"><span class="row-title">Valenzuela City</span><span class="row-help">CDRRMO Valenzuela</span></span>${ic('check-circle', 'city-ok')}</label>
+        </fieldset>
+        <p class="caption">${t('ob.more')}</p>
+        <div class="ob-map" aria-hidden="true">${mapSvg({ pins: all(), static: true, plain: true })}</div>`;
+      foot = `<button class="btn btn-primary btn-lg" data-act="ob-next" data-k="ob-next">${t('ob.next')}</button>`;
     } else if (step === 1) {
-      body = `<div class="ob-art">${ic('locate', 'xxl')}</div><h2>${t('ob.locTitle')}</h2><p>${t('ob.locBody')}</p>
-        ${ui.loc ? `<p class="ok-line" role="status">${ic('check-circle')}${t('ob.locOk')}</p>`
-          : `<div class="btn-col"><button class="btn btn-primary btn-lg" data-act="ob-loc" data-k="ob-loc">${ic('locate')}${t('ob.locAllow')}</button><button class="btn btn-quiet" data-act="ob-next">${t('ob.locLater')}</button></div>`}`;
+      body = `<div class="ob-art">${ic('find', 'ic-art')}</div><h1 class="h-d" tabindex="-1">${t('ob.locTitle')}</h1><p class="body">${t('ob.locBody')}</p>
+        ${ui.loc ? `<p class="ok-line" role="status">${ic('check-circle')}${t('ob.locOk')}</p>` : ''}`;
+      foot = ui.loc
+        ? `<button class="btn btn-primary btn-lg" data-act="ob-next" data-k="ob-next">${t('ob.next')}</button>`
+        : `<button class="btn btn-primary btn-lg" data-act="ob-loc" data-k="ob-loc">${t('ob.locAllow')}</button><button class="btn btn-quiet" data-act="ob-next" data-k="ob-later">${t('ob.locLater')}</button>`;
     } else {
-      body = `<div class="ob-art">${ic('download', 'xxl')}</div><h2>${t('ob.dlTitle')}</h2><p>${t('ob.dlBody')}</p>
-        ${dl.state === 'idle' ? `<button class="btn btn-primary btn-lg" data-act="ob-dl" data-k="ob-dl">${ic('download')}${t('ob.dl')}</button>` : ''}
-        ${dl.state === 'run' ? `<div class="progress-block"><div class="progress-top"><strong>${t('ob.dlTitle')}</strong><span id="dl-pct">${dl.pct}%</span></div>
-            <div class="bar" id="dl-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${dl.pct}" aria-label="${t('ob.dlTitle')}"><span class="bar-fill route-fill" id="dl-fill" style="width:${dl.pct}%"></span></div></div>
-            <button class="btn btn-secondary" data-act="ob-dl-cancel" data-k="ob-dl-cancel">${ic('x')}${t('ob.dlCancel')}</button>` : ''}
-        ${dl.state === 'done' ? `<p class="ok-line" role="status">${ic('check-circle')}${t('ob.dlDone')}</p>
-            <button class="btn btn-primary btn-lg" data-act="ob-finish" data-k="ob-finish">${t('ob.start')}</button>` : ''}`;
+      body = `<div class="ob-art">${ic('download', 'ic-art')}</div><h1 class="h-d" tabindex="-1">${t('ob.dlTitle')}</h1><p class="body">${t('ob.dlBody')}</p>
+        ${dl.state === 'run' ? `<div class="dl"><div class="bar bar-big" id="dl-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${dl.pct}" aria-label="${t('ob.dlTitle')}"><span class="bar-fill bar-brand" id="dl-fill" style="width:${dl.pct}%"></span></div>
+            <p class="cap-line" id="dl-pct">${t('ob.dlRun', { n: dl.pct })}</p></div>` : ''}
+        ${dl.state === 'done' ? `<p class="ok-line" role="status">${ic('check-circle')}${t('ob.dlDone')}</p>` : ''}`;
+      foot = dl.state === 'idle' ? `<button class="btn btn-primary btn-lg" data-act="ob-dl" data-k="ob-dl">${t('ob.dl')}</button>`
+        : dl.state === 'run' ? `<button class="btn btn-secondary" data-act="ob-dl-cancel" data-k="ob-dl-cancel">${t('ob.dlCancel')}</button>`
+          : `<button class="btn btn-primary btn-lg" data-act="ob-finish" data-k="ob-finish">${t('ob.start')}</button>`;
     }
-    const next = step < total - 1 && !(step === 1 && !ui.loc)
-      ? `<button class="btn btn-primary" data-act="ob-next" data-k="ob-next">${t('ob.next')}${ic('chevron')}</button>` : '';
+    const canBack = step > 0 && dl.state !== 'done';
     return {
-      title: 'Welcome', tab: null, noNav: true,
-      html: `<header class="ob-head"><span class="ob-step">${t('ob.step', { a: step + 1, b: total })}</span>
-          <button class="btn btn-quiet btn-sm" data-act="ob-skip" data-k="ob-skip">${t('ob.skip')}</button></header>
-        <div class="dots" aria-hidden="true">${[0, 1, 2].map((i) => `<i class="${i <= step ? 'on' : ''}"></i>`).join('')}</div>
-        <h1 class="sr-only" tabindex="-1">ReadyPH</h1>
+      title: 'ReadyPH', tab: null, noNav: true, cls: 'is-ob',
+      html: `<div class="ribbon" aria-hidden="true"></div>
+        <header class="ob-head">
+          ${canBack ? `<button class="icon-btn" data-act="ob-back" aria-label="${t('back')}" data-k="ob-back">${ic('back')}</button>` : ''}
+          <span class="wordmark"><i aria-hidden="true"></i>ReadyPH</span>
+          <button class="btn btn-quiet btn-sm" data-act="ob-skip" data-k="ob-skip">${t('ob.skip')}</button>
+        </header>
+        <div class="steps" role="img" aria-label="${t('ob.step', { a: step + 1, b: total })}">${[0, 1, 2].map((i) => `<i class="${i <= step ? 'on' : ''}"></i>`).join('')}</div>
         <section class="ob-body">${body}</section>
-        <div class="ob-foot">${step > 0 ? `<button class="btn btn-secondary" data-act="ob-back" data-k="ob-back">${ic('back')}${t('back')}</button>` : '<span></span>'}${next}</div>`
+        <div class="ob-foot">${foot}</div>`
     };
   };
 
-  /* ---------- chrome (connection chip, pinned center, tab bar) ---------- */
-  const TABS = [['home', 'home'], ['map', 'map'], ['hotlines', 'phone'], ['alerts', 'bell'], ['settings', 'gear']];
+  /* ---------- chrome (offline strip, navigating bar, tab bar) ---------- */
+  const TABS = [['home', 'home'], ['map', 'map'], ['hotlines', 'phone'], ['alerts', 'bell'], ['settings', 'sliders']];
 
-  function renderChrome(out, routeName, routeArg) {
-    const off = store.settings.offline;
+  function renderChrome(out, routeName) {
     const conn = $('#conn');
-    conn.className = 'conn ' + (off ? 'conn-off' : 'conn-on');
-    conn.innerHTML = off ? `${ic('wifi-off')}<span>${t('conn.offline', { x: fmtAge(120) })}</span>` : `${ic('wifi')}<span>${t('conn.online')}</span>`;
+    conn.className = 'conn' + (offline() ? ' conn-off' : '');
+    conn.innerHTML = offline() ? `${ic('wifi-off')}<span>${t('conn.offline', { x: fmtAge(120) })}</span>` : '';
 
-    const showPin = ['map', 'hotlines', 'alerts', 'settings', 'nearest', 'share'].includes(routeName) || (routeName === 'center' && routeArg !== store.recentId);
     const pinHost = $('#pinbar');
-    const pc = store.recentId ? byId(store.recentId) : null;
-    if (pc && showPin && !out.noNav) {
-      const navigating = nav && nav.id === pc.id;
-      pinHost.innerHTML = `<div class="pinbar ${navigating ? 'pinbar-nav' : ''}">
-        <a class="pin-main" href="${navigating ? '#/route/' + pc.id : '#/center/' + pc.id}" data-k="pinbar">
-          ${ic(navigating ? 'navigate' : 'pin')}
-          <span class="pin-text"><small>${navigating ? t('route.resume') : t('pin.label')}</small><strong>${esc(pc.name)}</strong></span>
-          ${navigating ? '' : badge(pc.status)}
-        </a>
-        ${navigating ? '' : `<button class="icon-btn pin-x" data-act="unpin" aria-label="${t('pin.remove')}" data-k="unpin">${ic('x')}</button>`}</div>`;
+    const pc = nav ? byId(nav.id) : null;
+    if (pc && !out.noNav && !['route', 'arrived', 'home'].includes(routeName)) {
+      pinHost.innerHTML = `<a class="navbar" href="#/route/${pc.id}" data-k="pinbar">${ic('navigate')}<span class="navbar-text">${esc(t('route.paused', { name: pc.short }))}</span><span class="navbar-go">${t('route.resume')}${ic('chevron')}</span></a>`;
     } else pinHost.innerHTML = '';
 
     const tabbar = $('#tabbar');
     tabbar.hidden = !!out.noNav;
     tabbar.innerHTML = TABS.map(([k, icon]) => `<a href="#/${k}" class="${out.tab === k ? 'on' : ''}" ${out.tab === k ? 'aria-current="page"' : ''} data-k="tab-${k}">${ic(icon)}<span>${t('nav.' + k)}</span></a>`).join('');
+    $('#skip').textContent = t('skip');
   }
 
   function applySettings() {
@@ -714,7 +1224,7 @@
 
   function confirmLeave(target) {
     openDialog({
-      title: t('route.leaveTitle'), body: t('route.leaveBody'), icon: 'navigate',
+      title: t('route.leaveTitle'), body: t('route.leaveBody'), icon: 'navigate', tone: 'info',
       actions: [
         { label: t('route.stay'), kind: 'primary' },
         { label: t('route.keep'), kind: 'secondary', run: () => { ui.allowLeave = true; go(target); } },
@@ -738,13 +1248,18 @@
     if (!out.startsSim) stopSim();
     ui.route = r;
     ui.hash = location.hash || '#/home';
-    document.title = out.title + ' – ReadyPH';
+    if (['home', 'map', 'hotlines', 'alerts', 'settings'].includes(out.tab)) ui.originTab = out.tab;
+    document.title = out.title + ' · ReadyPH';
+    if (routeChanged && toast.at && Date.now() - toast.at > 400) hideToast(); // a toast must not linger over the next screen's actions
+    view.className = 'view' + (out.cls ? ' ' + out.cls : '') + (routeChanged ? ' enter' : '');
     view.innerHTML = out.html;
-    renderChrome(out, r.name, r.arg);
+    renderChrome(out, r.name);
+    positionMap();
 
     if (out.startsSim) startSim();
 
-    if (routeChanged) {
+    if (routeChanged || ui.focusOnce) {
+      ui.focusOnce = false;
       view.scrollTop = 0;
       const h1 = $('h1', view);
       if (h1) h1.focus({ preventScroll: true });
@@ -762,12 +1277,12 @@
     const c = byId(id);
     if (!c) return;
     if (c.status === 'full') {
-      const alt = nearestAvailable(c.id);
+      const alt = pickSafe(c.id).v;
       openDialog({
-        title: t('c.fullWarn'), icon: 'ban',
-        body: alt ? t('c.fullWarnBody', { name: alt.name, km: alt.km }) : t('near.allFull') + ' ' + t('near.allFullHelp'),
+        title: t('c.fullTitle', { name: c.short }), icon: 'alert', tone: 'bad',
+        body: alt ? t('c.fullBody', { alt: alt.short, km: alt.km }) : t('near.allFull') + ' ' + t('near.allFullHelp'),
         actions: [
-          alt ? { label: t('c.pick', { name: alt.name }), kind: 'primary', run: () => go('#/route/' + alt.id) } : { label: t('home.qcall'), kind: 'primary', href: 'tel:911', icon: 'phone' },
+          alt ? { label: t('c.goTo', { name: alt.short, km: alt.km }), kind: 'primary', run: () => go('#/route/' + alt.id) } : { label: '911', kind: 'primary', href: 'tel:911', icon: 'phone' },
           { label: t('c.goAnyway'), kind: 'secondary', run: () => go('#/route/' + c.id) },
           { label: t('cancel'), kind: 'quiet' }
         ]
@@ -790,7 +1305,7 @@
   }
   async function copyWithToast() { toast((await copyText(ui.shareText)) ? t('share.copied') : t('share.copyFail')); }
 
-    const acts = {
+  const acts = {
     skip(el, e) { e.preventDefault(); $('#view').focus(); },
     vibrate() { buzz(30); },
     back(el) { if (ui.navCount > 0) history.back(); else go(el.dataset.fallback || '#/home'); },
@@ -808,14 +1323,25 @@
       toast(t('map.cleared'), { label: t('undo'), fn: () => { before.forEach((f) => ui.filters.add(f)); render(); } });
     },
     pin(el) {
+      ui.sheetAnim = !ui.pinId;
       ui.pinId = el.dataset.id; buzz(10); render();
-      const p = $('#preview'); if (p && p.scrollIntoView) p.scrollIntoView({ block: 'nearest' });
+      const h = $('.sheet-title'); if (h) h.focus({ preventScroll: true });
     },
+    unpick() {
+      if (!ui.pinId) return;
+      const was = ui.pinId;
+      ui.pinId = null; render();
+      const p = document.querySelector(`[data-k="pin-${was}"]`); if (p) p.focus({ preventScroll: true });
+    },
+    'zoom-in'(el) { if (el.getAttribute('aria-disabled') !== 'true') zoomBy(2); },
+    'zoom-out'(el) { if (el.getAttribute('aria-disabled') !== 'true') zoomBy(0.5); },
+    recenter() { recenter(); },
+    cluster(el, e) { buzz(10); zoomToCluster(el.dataset.ids.split(','), e.detail === 0); },
     route(el) { startRoute(el.dataset.id); },
     'stop-nav'() {
       const id = nav.id;
       openDialog({
-        title: t('route.stop') + '?', body: t('route.leaveBody'), icon: 'navigate',
+        title: t('route.stop') + '?', body: t('route.leaveBody'), icon: 'navigate', tone: 'info',
         actions: [
           { label: t('route.stay'), kind: 'primary' },
           { label: t('route.stopConfirm'), kind: 'danger', run: () => { nav = null; stopSim(); toast(t('route.stopped')); ui.allowLeave = true; go('#/center/' + id); } }
@@ -834,11 +1360,10 @@
         try { await navigator.share({ text: ui.shareText }); toast(t('share.shared')); } catch (e) { if (e && e.name !== 'AbortError') await copyWithToast(); }
       } else await copyWithToast();
     },
-    'share-copy'() { return copyWithToast(); },
     'share-reset'() { ui.shareDirty = false; render(); toast(t('share.resetOk')); },
     replay() { ui.obStep = 0; ui.loc = false; ui.dl = { state: 'idle', pct: 0 }; go('#/onboarding'); },
-    'ob-next'() { ui.obStep = Math.min(2, ui.obStep + 1); render(); },
-    'ob-back'() { ui.obStep = Math.max(0, ui.obStep - 1); render(); },
+    'ob-next'() { ui.obStep = Math.min(2, ui.obStep + 1); render(); const h = $('h1', $('#view')); if (h) h.focus({ preventScroll: true }); },
+    'ob-back'() { ui.obStep = Math.max(0, ui.obStep - 1); render(); const h = $('h1', $('#view')); if (h) h.focus({ preventScroll: true }); },
     'ob-loc'() { ui.loc = true; buzz(20); render(); },
     'ob-skip'() { store.onboarded = true; save(); go('#/home'); toast(t('ob.skipped')); },
     'ob-finish'() { store.onboarded = true; save(); buzz([40, 30, 40]); go('#/home'); },
@@ -848,7 +1373,7 @@
         ui.dl.pct = Math.min(100, ui.dl.pct + 4 + Math.floor(Math.random() * 7));
         if (ui.dl.pct >= 100) { clearInterval(timer); ui.dl.state = 'done'; render(); return; }
         const fill = $('#dl-fill'), pct = $('#dl-pct'), b = $('#dl-bar');
-        if (fill) { fill.style.width = ui.dl.pct + '%'; pct.textContent = ui.dl.pct + '%'; b.setAttribute('aria-valuenow', ui.dl.pct); }
+        if (fill) { fill.style.width = ui.dl.pct + '%'; pct.textContent = t('ob.dlRun', { n: ui.dl.pct }); b.setAttribute('aria-valuenow', ui.dl.pct); }
       }, 140);
       ui.timers.push(timer);
     },
@@ -871,6 +1396,7 @@
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && dialogOpen()) { e.preventDefault(); closeDialog(); return; }
+    if (e.key === 'Escape' && ui.pinId && ui.route && ui.route.name === 'map') { e.preventDefault(); acts.unpick(); return; }
     if (e.key === 'Tab' && dialogOpen()) {
       const items = [...document.querySelectorAll('#modal-root .btn')];
       if (!items.length) return;
@@ -911,6 +1437,7 @@
 
   /* ---------- boot ---------- */
   applySettings();
+  bindMapInput();
   if (!location.hash) history.replaceState(null, '', '#/home');
   route();
 })();
