@@ -241,24 +241,43 @@
       searchInput.addEventListener('input', applyFilters);
     }
 
-    // School: pick a year and semester to see its subjects
+    // School: pick a year, semester and exam period to see its subjects
     const termPicker = document.querySelector('.term-picker');
     if (termPicker) {
       const semSections = document.querySelectorAll('.term-section');
       const empty = document.querySelector('.term-empty');
       let year = termPicker.dataset.year;
       let sem = termPicker.dataset.sem;
+      let term = termPicker.dataset.term;
 
       termPicker.addEventListener('click', (e) => {
         const btn = e.target.closest('.term-picker-btn');
         if (!btn) return;
         if (btn.dataset.year) year = btn.dataset.year;
         if (btn.dataset.sem) sem = btn.dataset.sem;
+        if (btn.dataset.term) term = btn.dataset.term;
 
         termPicker.querySelectorAll('.term-picker-btn').forEach(b => {
-          const on = b.dataset.year ? b.dataset.year === year : b.dataset.sem === sem;
+          const on = b.dataset.year ? b.dataset.year === year
+            : b.dataset.sem ? b.dataset.sem === sem : b.dataset.term === term;
           b.classList.toggle('active', on);
           b.setAttribute('aria-pressed', String(on));
+        });
+
+        // Same subjects in the same order; only the live link changes.
+        const termBtn = termPicker.querySelector('[data-term="' + term + '"]');
+        document.querySelectorAll('.term-section .card').forEach(card => {
+          const href = card.dataset[term];
+          const label = card.querySelector('.card-units');
+          card.classList.toggle('card--soon', !href);
+          if (href) {
+            card.setAttribute('href', href);
+            card.removeAttribute('aria-disabled');
+          } else {
+            card.removeAttribute('href');
+            card.setAttribute('aria-disabled', 'true');
+          }
+          if (label) label.textContent = href ? termBtn.textContent : 'No notes yet';
         });
 
         const id = 'Y' + year + 'S' + sem;

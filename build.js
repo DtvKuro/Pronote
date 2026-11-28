@@ -422,7 +422,7 @@ function buildSubjectCollection(collection) {
     }
   }
 
-  // Home: year + semester pickers, opening on the latest semester with notes.
+  // Home: year + semester + exam period pickers, opening on the latest semester with notes.
   const withNotes = subjects.filter(defaultTerm);
   const current = withNotes.length ? withNotes[withNotes.length - 1] : subjects[0];
 
@@ -433,9 +433,14 @@ function buildSubjectCollection(collection) {
     }).join('');
     return `<div class="term-picker-row" role="group" aria-label="${kind === 'year' ? 'Year' : 'Semester'}">${btns}</div>`;
   };
-  const picker = `<div class="term-picker" data-year="${current.year}" data-sem="${current.sem}">`
+  const termBtns = EXAM_TERMS.map((t, n) => {
+    const on = n === 0;
+    return `<button type="button" class="term-picker-btn${on ? ' active' : ''}" data-term="${t.key}" aria-pressed="${on}">${t.label}</button>`;
+  }).join('');
+  const picker = `<div class="term-picker" data-year="${current.year}" data-sem="${current.sem}" data-term="${EXAM_TERMS[0].key}">`
     + pickerRow('year', YEAR_LABELS, current.year)
     + pickerRow('sem', SEM_LABELS, current.sem)
+    + `<div class="term-picker-row" role="group" aria-label="Exam period">${termBtns}</div>`
     + '</div>';
 
   const bySem = new Map();
@@ -448,9 +453,14 @@ function buildSubjectCollection(collection) {
   for (const [sem, list] of bySem) {
     const rows = list.map((s) => {
       const inner = (note) => `<div class="card-code">${s.code}</div><div class="card-body"><h3>${s.title}</h3></div><div class="card-badges"><span class="card-units">${note}</span></div>`;
-      const periods = EXAM_TERMS.filter((t) => s.terms && s.terms[t.key]).map((t) => t.label);
-      if (!periods.length) return `<div class="card card--soon" data-title="${s.title}">${inner('Coming soon')}</div>`;
-      return `<a href="notes/${subjectPage(s, defaultTerm(s))}.html" class="card" data-title="${s.title}">${inner(periods.join(' · '))}</a>`;
+      // One link per exam period; the term picker swaps which one is live.
+      const hrefs = EXAM_TERMS.filter((t) => s.terms && s.terms[t.key])
+        .map((t) => ` data-${t.key}="notes/${subjectPage(s, t.key)}.html"`).join('');
+      const first = EXAM_TERMS[0];
+      if (!(s.terms && s.terms[first.key])) {
+        return `<a class="card card--soon" aria-disabled="true" data-title="${s.title}"${hrefs}>${inner('No notes yet')}</a>`;
+      }
+      return `<a href="notes/${subjectPage(s, first.key)}.html" class="card" data-title="${s.title}"${hrefs}>${inner(first.label)}</a>`;
     }).join('\n        ');
 
     panels += `

@@ -175,12 +175,14 @@
 
 [data-mode="school"] .card-category { align-self: center; }
 
-/* Subjects without notes yet stay listed but inert. */
-[data-mode="school"] .card--soon { opacity: 0.5; cursor: default; }
+/* Subjects without notes for the picked period stay listed but inert. */
+[data-mode="school"] .card--soon { opacity: 0.5; cursor: not-allowed; }
+[data-mode="school"] .card--soon .card-code,
+[data-mode="school"] .card--soon h3 { color: var(--text-secondary); }
 [data-mode="school"] .card--soon:hover { background-color: transparent; padding-left: 1rem; }
 [data-mode="school"] .card--soon:hover::after { transform: scaleY(0); }
 
-/* --- Year / semester picker --------------------------------------------- */
+/* --- Year / semester / exam period picker ------------------------------ */
 
 .term-picker {
   display: flex;
