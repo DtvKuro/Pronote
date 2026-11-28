@@ -1,0 +1,2654 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | CC1 Introduction to Computing — Finals</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <button class="nav-search-close" id="searchClose" aria-label="Close search">&times;</button>
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <button class="nav-search-toggle" id="searchToggle" aria-label="Search" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+      <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <a href="../../cysql/index.html" class="notes-menu-cysql" target="_blank">CySQL Playground</a>
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">1st Year · 1st Sem</h4>
+  <ul class="notes-menu-list">
+        <li><a href="Y1S1-CC1-finals.html" class="notes-menu-link active"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="Y1S1-CC2-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="Y1S1-HCI101-midterm.html" class="notes-menu-link"><span class="notes-menu-code">HCI101</span> Introduction to Human-Computer Interaction</a></li>
+        <li><a href="Y1S1-GE4-finals.html" class="notes-menu-link"><span class="notes-menu-code">GE4</span> Mathematics in the Modern World</a></li>
+        <li><a href="Y1S1-GE5-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="Y1S1-GE6-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE6</span> Art Appreciation</a></li>
+        <li><a href="Y1S1-GE9-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE9</span> Readings in Philippine History</a></li>
+        <li><a href="Y1S1-PATHFIT1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">PATHFIT1</span> Physical Activity Towards Health and Fitness 1</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>1st Year · 1st Sem</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Introduction to Computing</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">CC1</span><span class="note-units">1st Year · 1st Sem</span></p>
+  <h1 class="note-title">Introduction to Computing</h1>
+  <p class="note-meta">Last updated: November 28, 2026</p>
+  <nav class="term-tabs" aria-label="Exam period"><a href="Y1S1-CC1-midterm.html" class="term-tab">Midterm</a><a href="Y1S1-CC1-finals.html" class="term-tab active" aria-current="page">Finals</a></nav>
+  <div class="note-content">
+    <p><strong>Covers:</strong> MS Word (Exercises #1–#9: editing, font &amp; paragraph formatting, drop cap, tabs, bullets, borders &amp; shading, mail merge, tables) · MS Excel (Exercise #10 Employees Profile + Excel Quiz MP1–MP4: formulas, functions, IF / nested IF, VLOOKUP / HLOOKUP, conditional formatting, filter, subtotal, chart, print setup) · MS PowerPoint (Exercise #11: themes, layouts, pictures, transitions, plus the animation and interactive tools the final project needs) · Final Project requirements</p>
+<blockquote>
+<p><strong>How to use this:</strong> This is the <strong>hands-on</strong> half of CC1. The midterm theory (hardware, CPU, memory, I/O devices) is in the Midterm reviewer. Every skill here has 4 parts: <strong>① what it is → ② exact ribbon path / steps → ③ keyboard shortcut → ④ exam traps (⚠️)</strong>. The Excel Quiz problems (MP1–MP4) are worked out in full and marked <strong>📌 (exam item)</strong>, because similar problems are likely on the finals. Each part ends with a practice quiz, and there is a mixed <strong>Mock Exam</strong> at the very end. Ribbon paths are for <strong>Microsoft 365 / Office 2016+</strong>.</p>
+</blockquote>
+<hr>
+<h2>PART 1 — WORD: EDITING &amp; FONT FORMATTING (Exercises #1–#2)</h2>
+<h3>1.1 Typing &amp; Editing Basics (Exercise #1 &quot;Follow your heart&quot;)</h3>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Select a <strong>word</strong></td>
+<td><strong>Double-click</strong> it</td>
+</tr>
+<tr>
+<td>Select a <strong>paragraph</strong></td>
+<td><strong>Triple-click</strong> inside it</td>
+</tr>
+<tr>
+<td>Select <strong>everything</strong></td>
+<td><strong>Ctrl + A</strong></td>
+</tr>
+<tr>
+<td>Select with keyboard</td>
+<td><strong>Shift + arrow keys</strong> (Ctrl + Shift + arrow = word by word)</td>
+</tr>
+<tr>
+<td>Delete character <strong>left</strong> of cursor</td>
+<td><strong>Backspace</strong></td>
+</tr>
+<tr>
+<td>Delete character <strong>right</strong> of cursor</td>
+<td><strong>Delete</strong></td>
+</tr>
+<tr>
+<td><strong>Undo / Redo</strong></td>
+<td><strong>Ctrl + Z / Ctrl + Y</strong></td>
+</tr>
+<tr>
+<td>Cut / Copy / Paste</td>
+<td><strong>Ctrl + X / Ctrl + C / Ctrl + V</strong></td>
+</tr>
+<tr>
+<td>Save / Save As</td>
+<td><strong>Ctrl + S / F12</strong></td>
+</tr>
+<tr>
+<td>New line in same paragraph (soft return)</td>
+<td><strong>Shift + Enter</strong></td>
+</tr>
+<tr>
+<td>New paragraph</td>
+<td><strong>Enter</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🔑 Press <strong>Enter only at the end of a paragraph</strong>, never at the end of each line. Word wraps lines by itself (<strong>word wrap</strong>).</p>
+</blockquote>
+<h3>1.2 Proofreading: Spelling, Grammar, Find &amp; Replace</h3>
+<ul>
+<li><strong>Spelling &amp; Grammar check:</strong> <strong>Review › Proofing › Spelling &amp; Grammar</strong> (<strong>F7</strong>). In M365 it is called <strong>Editor</strong>.<ul>
+<li><strong>Red wavy underline</strong> = possible <strong>spelling</strong> error.</li>
+<li><strong>Blue double underline</strong> = possible <strong>grammar / style</strong> error.</li>
+<li>Right-click the underlined word to see suggestions.</li>
+</ul>
+</li>
+<li><strong>Find:</strong> <strong>Home › Editing › Find</strong> (<strong>Ctrl + F</strong>). This opens the Navigation Pane.</li>
+<li><strong>Replace:</strong> <strong>Home › Editing › Replace</strong> (<strong>Ctrl + H</strong>). Type <em>Find what</em> and <em>Replace with</em>, then <strong>Replace</strong> (one at a time) or <strong>Replace All</strong>.</li>
+<li><strong>Go To:</strong> <strong>Ctrl + G</strong> (or F5) jumps to a page, line, or footnote.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Replace All</strong> can change words you did not mean to change (replacing &quot;in&quot; also hits &quot;begin&quot;, &quot;inside&quot;). Use <strong>More › Find whole words only</strong> and <strong>Match case</strong> to be safe.</p>
+</blockquote>
+<h3>1.3 Changing Case (the ALL CAPS words: FRIENDS, HUSBAND, WIFE)</h3>
+<ul>
+<li><strong>Home › Font › Change Case (Aa ▾)</strong>: Sentence case · lowercase · <strong>UPPERCASE</strong> · Capitalize Each Word · tOGGLE cASE.</li>
+<li><strong>Shift + F3</strong> cycles: lowercase → UPPERCASE → Capitalize Each Word.</li>
+<li><strong>Ctrl + Shift + A</strong> = <strong>All Caps</strong> font effect.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Change Case › UPPERCASE</strong> actually retypes the letters as capitals. The <strong>All caps</strong> effect (Font dialog) only <em>displays</em> them as capitals; the real letters stay lowercase. Both look the same on screen.</p>
+</blockquote>
+<h3>1.4 The Font Group (Home › Font) — Exercise #2 &quot;Font Formatting&quot;</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Button / Path</th>
+<th>Shortcut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Font face</strong> (Courier New, Georgia, Comic Sans MS…)</td>
+<td>Font box</td>
+<td>Ctrl + Shift + F</td>
+</tr>
+<tr>
+<td><strong>Font size</strong></td>
+<td>Size box</td>
+<td><strong>Ctrl + Shift + &gt;</strong> grow · <strong>Ctrl + Shift + &lt;</strong> shrink · Ctrl + ] / Ctrl + [ = ±1 pt</td>
+</tr>
+<tr>
+<td><strong>Bold</strong></td>
+<td><strong>B</strong></td>
+<td><strong>Ctrl + B</strong></td>
+</tr>
+<tr>
+<td><strong>Italic</strong></td>
+<td><em>I</em></td>
+<td><strong>Ctrl + I</strong></td>
+</tr>
+<tr>
+<td><strong>Underline</strong> (single)</td>
+<td>U</td>
+<td><strong>Ctrl + U</strong></td>
+</tr>
+<tr>
+<td><strong>Double underline</strong></td>
+<td>U ▾ › double</td>
+<td><strong>Ctrl + Shift + D</strong></td>
+</tr>
+<tr>
+<td><strong>Words only</strong> underline (no line under spaces)</td>
+<td>Font dialog › Underline style › Words only</td>
+<td><strong>Ctrl + Shift + W</strong></td>
+</tr>
+<tr>
+<td><strong>Strikethrough</strong></td>
+<td>ab̶c</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Subscript</strong> (H₂O)</td>
+<td>x₂</td>
+<td><strong>Ctrl + =</strong></td>
+</tr>
+<tr>
+<td><strong>Superscript</strong> (x², melodious¹)</td>
+<td>x²</td>
+<td><strong>Ctrl + Shift + =</strong> (Ctrl + Shift + +)</td>
+</tr>
+<tr>
+<td><strong>Font color</strong></td>
+<td>A ▾ (red bar)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Text highlight color</strong></td>
+<td>ab ▾ (yellow marker)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Clear All Formatting</strong></td>
+<td>A with eraser</td>
+<td><strong>Ctrl + Space</strong> (character formatting)</td>
+</tr>
+<tr>
+<td><strong>Font dialog box</strong> (all options)</td>
+<td>Font group launcher ↘</td>
+<td><strong>Ctrl + D</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Underline styles used in Exercise #2:</strong> single, <strong>words only</strong>, <strong>thick</strong>, <strong>dotted</strong>, <strong>dash</strong>, double. All are in <strong>Ctrl + D › Font tab › Underline style</strong>, or in the <strong>U ▾</strong> drop-down.</p>
+<h3>1.5 Font Effects (Font dialog, Ctrl + D › Font tab › Effects)</h3>
+<table>
+<thead>
+<tr>
+<th>Effect</th>
+<th>Looks like</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Strikethrough</strong></td>
+<td><del>text</del></td>
+<td>One line through the text</td>
+</tr>
+<tr>
+<td><strong>Double strikethrough</strong></td>
+<td>text with <strong>two</strong> lines through</td>
+<td><strong>Only in the Font dialog</strong>, no ribbon button</td>
+</tr>
+<tr>
+<td><strong>Superscript</strong></td>
+<td>text <strong>raised</strong> and smaller (x²)</td>
+<td>Exponents, footnote marks, 1st</td>
+</tr>
+<tr>
+<td><strong>Subscript</strong></td>
+<td>text <strong>lowered</strong> and smaller (H₂O)</td>
+<td>Chemical formulas</td>
+</tr>
+<tr>
+<td><strong>Small caps</strong></td>
+<td>SMALL CAPITALS for lowercase letters</td>
+<td>Ctrl + Shift + K</td>
+</tr>
+<tr>
+<td><strong>All caps</strong></td>
+<td>ALL CAPITALS</td>
+<td>Ctrl + Shift + A</td>
+</tr>
+<tr>
+<td><strong>Hidden</strong></td>
+<td>invisible text</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Shadow / Outline</strong></td>
+<td>text with a shadow, or hollow outlined letters</td>
+<td>M365: <strong>Home › Font › Text Effects and Typography (A with glow)</strong> › Shadow / Outline. Exercise #2 used both</td>
+</tr>
+</tbody></table>
+<h3>1.6 Character Spacing (Font dialog › Advanced tab)</h3>
+<ul>
+<li><strong>Spacing:</strong> Normal / <strong>Expanded</strong> / <strong>Condensed</strong>, <strong>By:</strong> ___ pt. Exercise #2 used <strong>Expanded</strong> spacing (about <strong>1.5–2 pt</strong>).</li>
+<li><strong>Scale:</strong> stretches letters wider (e.g. 150%).</li>
+<li><strong>Position:</strong> <strong>Raised / Lowered</strong> by ___ pt. This moves text up or down <strong>without</strong> shrinking it, unlike superscript and subscript.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Character spacing</strong> (space <em>between letters</em>, Font dialog) is NOT <strong>line spacing</strong> (space <em>between lines</em>, Paragraph dialog).</p>
+</blockquote>
+<h3>1.7 Footnotes vs a Typed Superscript</h3>
+<ul>
+<li><strong>Footnote:</strong> <strong>References › Footnotes › Insert Footnote</strong> (<strong>Alt + Ctrl + F</strong>). Word puts an automatic superscript number (¹) in the text <strong>and</strong> the matching note at the <strong>bottom of the page</strong>. It renumbers itself if you add more.</li>
+<li><strong>Endnote:</strong> <strong>References › Insert Endnote</strong> (<strong>Alt + Ctrl + D</strong>). The note goes at the <strong>end of the document</strong>.</li>
+<li>Typing &quot;1&quot; and clicking Superscript only <em>looks</em> like a footnote. It does not create the note or renumber itself.</li>
+</ul>
+<blockquote>
+<p>🔑 <strong>Foot</strong>note = <strong>foot</strong> (bottom) of the <strong>page</strong>. <strong>End</strong>note = <strong>end</strong> of the <strong>document</strong>.</p>
+</blockquote>
+<hr>
+<h2>📝 PART 1 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"Which shortcut opens the Find and Replace box on the Replace tab?","c":"Ctrl + H","w":["Ctrl + F","Ctrl + R","Ctrl + E"],"e":"Ctrl + F = Find (Navigation pane). Ctrl + H = Replace. Ctrl + R = align right, Ctrl + E = center."},{"q":"The \"2\" in H₂O is formatted as:","c":"Subscript","w":["Superscript","Small caps","Raised position"],"e":"Subscript is lowered and smaller (Ctrl + =). Superscript is raised (Ctrl + Shift + =)."},{"q":"Which underline style puts a line under the words but NOT under the spaces between them?","c":"Words only","w":["Single","Dotted","Dash"],"e":"Words only (Ctrl + Shift + W) skips the spaces."},{"q":"Double strikethrough can be applied from:","c":"The Font dialog box (Ctrl + D) only","w":["A button in the Home › Font group","Insert › Symbol","Review › Track Changes"],"e":"The ribbon only has single Strikethrough. Double strikethrough is a checkbox in the Font dialog."},{"q":"A red wavy underline under a word usually means:","c":"A possible spelling error","w":["A grammar error","A hyperlink","A tracked change"],"e":"Red wavy = spelling. Blue double line = grammar/style. Run the full check with F7."},{"q":"Pressing Shift + F3 on selected text will:","c":"Cycle the case between lowercase, UPPERCASE and Capitalize Each Word","w":["Open the Font dialog","Apply bold","Insert a footnote"],"e":"Shift + F3 is Change Case. Ctrl + D opens the Font dialog."},{"q":"You want to add a note that appears at the bottom of the SAME page, with an automatic superscript number. Use:","c":"References › Insert Footnote","w":["References › Insert Endnote","Home › Superscript","Insert › Header"],"e":"Footnote = bottom of the page (Alt + Ctrl + F). Endnote = end of the document."},{"q":"To put more space BETWEEN THE LETTERS of a title, use:","c":"Font dialog › Advanced › Spacing: Expanded","w":["Paragraph › Line spacing: Double","Layout › Spacing After","Home › Increase Indent"],"e":"This is character spacing. Line spacing is about the space between lines."}]</script></div>
+<hr>
+<h2>PART 2 — WORD: PARAGRAPH FORMATTING, DROP CAP, COLUMNS, TABS (Exercises #3–#5)</h2>
+<h3>2.1 Paragraph Alignment (Home › Paragraph) — Exercise #3</h3>
+<table>
+<thead>
+<tr>
+<th>Alignment</th>
+<th>Shortcut</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Align Left</strong></td>
+<td><strong>Ctrl + L</strong></td>
+<td>Straight left edge, ragged right (default)</td>
+</tr>
+<tr>
+<td><strong>Center</strong></td>
+<td><strong>Ctrl + E</strong></td>
+<td>Centered between margins (titles)</td>
+</tr>
+<tr>
+<td><strong>Align Right</strong></td>
+<td><strong>Ctrl + R</strong></td>
+<td>Straight right edge (dates, signatures)</td>
+</tr>
+<tr>
+<td><strong>Justify</strong></td>
+<td><strong>Ctrl + J</strong></td>
+<td>Straight on <strong>both</strong> edges. Word stretches the spaces (newspaper look)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ <strong>Center = Ctrl + E</strong>, not Ctrl + C (that&#39;s Copy). <strong>Justify = Ctrl + J</strong>.<br>⚠️ Alignment applies to the <strong>whole paragraph</strong>, even if you only select one word.</p>
+</blockquote>
+<h3>2.2 Indents — Exercise #3 used all four kinds</h3>
+<p>Path: <strong>Home › Paragraph launcher ↘ › Indents and Spacing › Indentation</strong> (or <strong>Layout › Paragraph › Indent</strong>), or drag the markers on the <strong>ruler</strong> (<strong>View › Ruler</strong>).</p>
+<table>
+<thead>
+<tr>
+<th>Indent</th>
+<th>What moves</th>
+<th>Exercise #3 value</th>
+<th>Ruler marker</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Left indent</strong></td>
+<td>Whole paragraph moves in from the left margin</td>
+<td>0.5&quot; and 1&quot;</td>
+<td>Bottom rectangle ▭</td>
+</tr>
+<tr>
+<td><strong>Right indent</strong></td>
+<td>Whole paragraph moves in from the right margin</td>
+<td>0.5&quot; and 1&quot;</td>
+<td>Right triangle</td>
+</tr>
+<tr>
+<td><strong>First line</strong></td>
+<td><strong>Only the first line</strong> moves in</td>
+<td>0.5&quot;</td>
+<td>Top triangle ▽</td>
+</tr>
+<tr>
+<td><strong>Hanging</strong></td>
+<td>First line stays out, <strong>all the OTHER lines</strong> move in</td>
+<td>0.5&quot;</td>
+<td>Bottom triangle △</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Ctrl + M</strong> = increase left indent · <strong>Ctrl + Shift + M</strong> = decrease.</li>
+<li><strong>Ctrl + T</strong> = hanging indent · <strong>Ctrl + Shift + T</strong> = remove it.</li>
+<li>Home › <strong>Increase / Decrease Indent</strong> buttons move the left indent 0.5&quot; at a time.</li>
+</ul>
+<blockquote>
+<p>🔑 <strong>Hanging</strong> = the first line &quot;hangs out&quot; to the left, like a hanger. It is used in <strong>bibliographies / references</strong> and numbered lists.<br>⚠️ <strong>First-line indent ≠ pressing Tab</strong>. Both look similar, but the indent is a paragraph setting, so every new paragraph gets it automatically.</p>
+</blockquote>
+<h3>2.3 Line &amp; Paragraph Spacing</h3>
+<ul>
+<li><strong>Line spacing</strong> = space <strong>between lines inside</strong> a paragraph. <strong>Home › Line and Paragraph Spacing (↕)</strong> › 1.0 / 1.15 / 1.5 / 2.0, or the Paragraph dialog › Line spacing: Single, 1.5 lines, <strong>Double</strong>, At least, <strong>Exactly</strong>, Multiple.<ul>
+<li><strong>Ctrl + 1</strong> single · <strong>Ctrl + 5</strong> 1.5 lines · <strong>Ctrl + 2</strong> double. Exercise #3 used <strong>1.5</strong> and <strong>double</strong>.</li>
+</ul>
+</li>
+<li><strong>Paragraph spacing</strong> = space <strong>before / after</strong> a paragraph. <strong>Layout › Paragraph › Spacing Before / After</strong> (in pt). <strong>Ctrl + 0</strong> adds or removes 12 pt before.</li>
+</ul>
+<h3>2.4 Drop Cap — Exercise #4 (the file says &quot;Drop <strong>Crop</strong>&quot;, but the feature is <strong>Drop Cap</strong>)</h3>
+<ul>
+<li><strong>What:</strong> a big first letter at the start of a paragraph, like in storybooks and magazines.</li>
+<li><strong>Path:</strong> click in the paragraph → <strong>Insert › Text › Drop Cap</strong> › <strong>Dropped</strong> or <strong>In margin</strong> › <strong>Drop Cap Options…</strong></li>
+<li><strong>Drop Cap Options:</strong><ul>
+<li><strong>Position:</strong> None · <strong>Dropped</strong> (letter sits <em>inside</em> the text, the lines wrap around it) · <strong>In margin</strong> (letter sits <em>outside</em>, in the left margin)</li>
+<li><strong>Font:</strong> you can give the big letter a different font (Exercise #7 used <strong>Matura MT Script Capitals</strong>)</li>
+<li><strong>Lines to drop:</strong> how many lines tall the letter is. <strong>Default = 3</strong>. Exercise #4 used <strong>3 and 4</strong>; #7 used 2 and 3.</li>
+<li><strong>Distance from text:</strong> gap between the letter and the paragraph</li>
+</ul>
+</li>
+<li>Word turns the letter into a <strong>frame</strong>. To remove it, use <strong>Drop Cap › None</strong>.</li>
+</ul>
+<blockquote>
+<p>⚠️ The drop cap applies to the <strong>first letter of the paragraph the cursor is in</strong>. Don&#39;t select the whole paragraph.<br>⚠️ The ribbon is under <strong>Insert</strong>, not Home or Layout.</p>
+</blockquote>
+<h3>2.5 Columns (Exercise #4 had a 2-column section; the final project requires columns)</h3>
+<ul>
+<li><strong>Layout › Page Setup › Columns</strong> › One / <strong>Two</strong> / Three / Left / Right / <strong>More Columns…</strong> (number, width, spacing, <strong>Line between</strong>, <strong>Apply to: Selected text / This point forward / Whole document</strong>).</li>
+<li>To put only part of the page in columns, <strong>select that text first</strong>. Word adds <strong>section breaks</strong> around it automatically.</li>
+<li><strong>Column break:</strong> <strong>Layout › Breaks › Column</strong> (<strong>Ctrl + Shift + Enter</strong>) forces the text to the next column.</li>
+<li><strong>Page break:</strong> <strong>Ctrl + Enter</strong>.</li>
+</ul>
+<h3>2.6 Inserting Pictures (Exercises #4 and #9)</h3>
+<ul>
+<li><strong>Insert › Illustrations › Pictures › This Device…</strong> (or Stock Images / Online Pictures).</li>
+<li><strong>Picture Format</strong> tab (appears when the picture is selected): <strong>Wrap Text</strong> (In Line with Text, <strong>Square</strong>, <strong>Tight</strong>, Behind Text, In Front of Text, Top and Bottom), <strong>Crop</strong>, <strong>Picture Styles</strong>, <strong>Picture Border</strong>, <strong>Corrections / Color / Artistic Effects</strong>, <strong>Remove Background</strong>, <strong>Size</strong> (height / width).</li>
+<li>Drag a <strong>corner</strong> handle to resize <strong>without distorting</strong>. Hold <strong>Shift</strong> to keep proportions.</li>
+</ul>
+<blockquote>
+<p>⚠️ A new picture is <strong>In Line with Text</strong> by default, so it acts like one big letter and won&#39;t move freely. Change <strong>Wrap Text</strong> to <em>Square</em> or <em>Tight</em> first.</p>
+</blockquote>
+<h3>2.7 Tab Stops — Exercise #5 &quot;Tab Stop Position&quot;</h3>
+<p><strong>What:</strong> a tab stop is a position on the ruler where the cursor jumps when you press <strong>Tab</strong>. Use tabs (not spaces) to line up columns of text.</p>
+<p><strong>The 5 tab types</strong> (click the <strong>tab selector</strong> at the left end of the ruler to switch):</p>
+<table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Symbol</th>
+<th>Text lines up…</th>
+<th>Use for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Left</strong></td>
+<td>└</td>
+<td>starting <strong>at</strong> the stop, going right</td>
+<td>Normal columns</td>
+</tr>
+<tr>
+<td><strong>Center</strong></td>
+<td>┴</td>
+<td><strong>centered</strong> on the stop</td>
+<td>Centered headings in a column</td>
+</tr>
+<tr>
+<td><strong>Right</strong></td>
+<td>┘</td>
+<td><strong>ending</strong> at the stop</td>
+<td><strong>Page numbers in a table of contents</strong>, prices</td>
+</tr>
+<tr>
+<td><strong>Decimal</strong></td>
+<td>┴·</td>
+<td>on the <strong>decimal point</strong></td>
+<td>Money (1,950.00 / 3,910.00)</td>
+</tr>
+<tr>
+<td><strong>Bar</strong></td>
+<td>│</td>
+<td>draws a <strong>vertical line</strong> at the stop</td>
+<td>Separating columns</td>
+</tr>
+</tbody></table>
+<p>Exercise #5 used <strong>left, center, right, and bar</strong> tabs, plus a <strong>right tab at 5.5&quot; with a DOT LEADER</strong>.</p>
+<p><strong>Leader</strong> = the characters that fill the gap before the tab stop:<br><code>1 None</code> · <code>2 ........</code> (<strong>dots</strong>) · <code>3 --------</code> (dashes) · <code>4 ________</code> (solid line)</p>
+<p><strong>Steps — table-of-contents style (&quot;Introduction to Computer ……… i&quot;):</strong></p>
+<ol>
+<li>Select the lines (or click on an empty line before typing).</li>
+<li><strong>Home › Paragraph launcher ↘ › Tabs…</strong> (button at the bottom-left of the Paragraph dialog). Shortcut: <strong>double-click any tab stop on the ruler</strong>.</li>
+<li><strong>Tab stop position:</strong> <code>5.5&quot;</code> → <strong>Alignment: Right</strong> → <strong>Leader: 2 .......</strong> → click <strong>Set</strong> → <strong>OK</strong>.</li>
+<li>Type <code>Introduction to Computer</code>, press <strong>Tab</strong>, type <code>i</code>. The dots fill in by themselves.</li>
+</ol>
+<p><strong>Price list (&quot;Windows, MS Word, Excel ……… 1,950.00&quot;):</strong> same steps. Use a <strong>right</strong> (or <strong>decimal</strong>) tab with a <strong>dot leader</strong> so the amounts line up on the right.</p>
+<blockquote>
+<p>⚠️ In the Tabs dialog you must click <strong>Set</strong> before <strong>OK</strong>, or the tab isn&#39;t saved.<br>⚠️ Never line up columns with the <strong>spacebar</strong>. They will never line up exactly.<br>⚠️ To remove a tab stop, <strong>drag it off the ruler</strong>, or use Tabs dialog › <strong>Clear</strong> / <strong>Clear All</strong>.<br>🔑 A leader is <strong>set on the tab stop</strong>, not typed. If you type dots by hand, it&#39;s wrong.</p>
+</blockquote>
+<hr>
+<h2>📝 PART 2 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"Which shortcut makes a paragraph JUSTIFIED (straight on both left and right edges)?","c":"Ctrl + J","w":["Ctrl + E","Ctrl + L","Ctrl + R"],"e":"J = Justify, E = cEnter, L = Left, R = Right."},{"q":"A paragraph where the FIRST line starts at the margin and all the OTHER lines are pushed in has a:","c":"Hanging indent","w":["First-line indent","Right indent","Left indent"],"e":"Hanging indent (Ctrl + T) is used in references and bibliographies."},{"q":"Where do you find the Drop Cap command?","c":"Insert › Text › Drop Cap","w":["Home › Font › Drop Cap","Layout › Page Setup › Drop Cap","Design › Page Background › Drop Cap"],"e":"Drop Cap is on the Insert tab, in the Text group."},{"q":"In Drop Cap Options, the default \"Lines to drop\" is:","c":"3","w":["1","2","5"],"e":"The default is 3 lines. Exercise #4 used 3 and 4."},{"q":"Which drop cap position places the big letter OUTSIDE the paragraph, in the left margin?","c":"In margin","w":["Dropped","None","Hanging"],"e":"Dropped = inside the text block. In margin = out in the margin."},{"q":"For a table of contents where the page numbers line up on the right edge with dots before them, set a:","c":"Right tab with a dot leader","w":["Left tab with no leader","Center tab with a line leader","Bar tab"],"e":"The right tab makes the numbers end at the stop. Leader option 2 makes the dots."},{"q":"You set a tab position and leader in the Tabs dialog, then clicked OK, but nothing happened. What did you most likely forget?","c":"To click Set before OK","w":["To press Ctrl + T","To turn on the ruler","To save the document"],"e":"The Set button adds the tab stop to the list. OK only closes the box."},{"q":"Shortcut for double line spacing:","c":"Ctrl + 2","w":["Ctrl + D","Ctrl + 5","Ctrl + Shift + D"],"e":"Ctrl + 1 single, Ctrl + 5 = 1.5 lines, Ctrl + 2 double. Ctrl + Shift + D is double UNDERLINE."},{"q":"Which tab type lines up numbers on their decimal point?","c":"Decimal tab","w":["Right tab","Center tab","Bar tab"],"e":"The decimal tab aligns 1,950.00 and 3,910.00 at the period."},{"q":"To force text to continue at the top of the NEXT column, insert a:","c":"Column break (Ctrl + Shift + Enter)","w":["Page break (Ctrl + Enter)","Line break (Shift + Enter)","Section break (Continuous)"],"e":"Layout › Breaks › Column."}]</script></div>
+<hr>
+<h2>PART 3 — WORD: BULLETS, NUMBERING, BORDERS &amp; SHADING (Exercises #6–#7)</h2>
+<h3>3.1 Bullets and Numbering — Exercise #6 &quot;The Ten Commandments of Love&quot;</h3>
+<ul>
+<li><strong>Bullets:</strong> <strong>Home › Paragraph › Bullets ▾</strong> (• ○ ▪ ◆ ✓ …).</li>
+<li><strong>Numbering:</strong> <strong>Home › Paragraph › Numbering ▾</strong> (1. 2. 3. / a) b) c) / i. ii. iii. / A. B. C.).</li>
+<li><strong>Multilevel List:</strong> <strong>Home › Paragraph › Multilevel List</strong> (1. → a. → i.).<ul>
+<li><strong>Tab</strong> (or Increase Indent) = demote to the <strong>next lower level</strong> (1. → a.)</li>
+<li><strong>Shift + Tab</strong> (or Decrease Indent) = promote to a <strong>higher level</strong></li>
+<li>Exercise #6 used levels with <strong>•</strong>, <strong>o</strong>, and <strong>▪</strong> bullets.</li>
+</ul>
+</li>
+<li><strong>Custom bullet:</strong> <strong>Bullets ▾ › Define New Bullet…</strong> › <strong>Symbol…</strong> (Wingdings / Symbol fonts) · <strong>Picture…</strong> (a <strong>picture bullet</strong>: Exercise #6 used a small <strong>.gif</strong> image) · <strong>Font…</strong> (bullet color / size) · <strong>Alignment</strong>.</li>
+<li><strong>Custom number:</strong> <strong>Numbering ▾ › Define New Number Format</strong> (style, format like &quot;Rule 1:&quot;, font).</li>
+<li><strong>Restart / continue numbering:</strong> right-click the number › <strong>Restart at 1</strong> / <strong>Continue Numbering</strong> / <strong>Set Numbering Value…</strong></li>
+<li>Quick auto-list: type <code>1.</code> or <code>*</code> + space at the start of a line (AutoFormat As You Type).</li>
+</ul>
+<blockquote>
+<p>⚠️ Press <strong>Enter twice</strong> (or Backspace on the empty bullet) to end a list.<br>⚠️ A <strong>picture bullet</strong> comes from <strong>Define New Bullet › Picture</strong>, NOT from Insert › Pictures.</p>
+</blockquote>
+<h3>3.2 Borders and Shading — Exercise #7</h3>
+<p><strong>Three different kinds of border. Know where each one lives:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Path</th>
+<th>Applies to</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Text / paragraph border</strong></td>
+<td><strong>Home › Paragraph › Borders ▾ › Borders and Shading…</strong> › <strong>Borders</strong> tab</td>
+<td><strong>Apply to: Text</strong> (box around the words only) or <strong>Paragraph</strong> (box from margin to margin)</td>
+</tr>
+<tr>
+<td><strong>Page border</strong></td>
+<td><strong>Design › Page Background › Page Borders</strong> (opens Borders and Shading on the <strong>Page Border</strong> tab)</td>
+<td><strong>Whole document</strong> / This section / This section – first page only</td>
+</tr>
+<tr>
+<td><strong>Table / cell border</strong></td>
+<td><strong>Table Design › Borders</strong></td>
+<td>Cells you selected</td>
+</tr>
+</tbody></table>
+<p><strong>Borders tab settings:</strong> <strong>Setting</strong> (None, <strong>Box</strong>, <strong>Shadow</strong>, <strong>3-D</strong>, Custom) · <strong>Style</strong> (solid, dotted, double, wavy…) · <strong>Color</strong> · <strong>Width</strong> (½ pt … 6 pt) · <strong>Preview</strong> (click the sides to turn each line on or off) · <strong>Options</strong> (distance from text).</p>
+<p><strong>Page Border extra:</strong> <strong>Art ▾</strong>. These are picture borders (apples, hearts, stars, trees…). Exercise #7 used the <strong>apples</strong> art border on the whole page.</p>
+<p><strong>Shading tab:</strong> <strong>Fill</strong> (background color; Exercise #7 used <strong>blue</strong> fill) · <strong>Pattern Style / Color</strong> (dots, stripes) · <strong>Apply to: Text / Paragraph</strong>.</p>
+<ul>
+<li>Quick shading: <strong>Home › Paragraph › Shading (paint bucket)</strong>.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Page Border is on the DESIGN tab</strong> (Page Background group), not Layout and not Insert. In Word 2010 it was on Page Layout, so old handouts may say &quot;Page Layout&quot;.<br>⚠️ <strong>Shading ≠ Highlight.</strong> Highlight (Home › Font, marker icon) colors behind text only. Shading can fill the whole paragraph width.<br>⚠️ &quot;Apply to: Text&quot; vs &quot;Paragraph&quot; gives a different box. Text = one box per line around the words. Paragraph = one rectangle margin to margin.</p>
+</blockquote>
+<h3>3.3 Decorative Fonts &amp; Frames</h3>
+<ul>
+<li>Exercise #7 combined <strong>drop caps</strong> in a fancy font (<strong>Matura MT Script Capitals</strong>), <strong>font colors</strong>, <strong>paragraph borders + shading</strong>, and a <strong>page border</strong>.</li>
+<li>A drop cap is stored as a <strong>frame</strong> (a small box that text wraps around). That&#39;s why it can sit in the margin.</li>
+</ul>
+<hr>
+<h2>📝 PART 3 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"Where is the Page Borders command in Word 2016 / Microsoft 365?","c":"Design › Page Background › Page Borders","w":["Insert › Header & Footer › Page Borders","Home › Font › Page Borders","References › Page Borders"],"e":"It moved to the Design tab in Word 2013+. Older versions had it on Page Layout."},{"q":"Decorative picture borders such as apples, hearts, or stars around the whole page come from:","c":"The Art drop-down on the Page Border tab","w":["Insert › Pictures","Picture Format › Picture Border","Home › Shading"],"e":"Page Border tab › Art. Exercise #7 used the apples border."},{"q":"In a multilevel list, which key moves an item DOWN one level (1. becomes a.)?","c":"Tab","w":["Shift + Tab","Enter","Ctrl + Enter"],"e":"Tab demotes to a lower level. Shift + Tab promotes it back."},{"q":"How do you use a small image (like a .gif) as the bullet symbol?","c":"Bullets › Define New Bullet › Picture","w":["Insert › Pictures › This Device","Numbering › Set Numbering Value","Home › Shading › Picture"],"e":"A picture bullet is set through Define New Bullet."},{"q":"In Borders and Shading, \"Apply to: Paragraph\" produces:","c":"One box that stretches from the left margin to the right margin around the paragraph","w":["A box around each word only","A border around the whole page","A border only around table cells"],"e":"\"Apply to: Text\" boxes only the words."},{"q":"The background fill color behind a paragraph is set on which tab of the Borders and Shading dialog?","c":"Shading","w":["Borders","Page Border","Fill Effects"],"e":"Shading tab › Fill."},{"q":"Your numbered list continues as 4, 5, 6 but you want it to start at 1 again. You should:","c":"Right-click the number and choose Restart at 1","w":["Press Ctrl + Z","Delete and retype the numbers manually","Change the font"],"e":"Restart at 1 / Continue Numbering / Set Numbering Value are on the right-click menu."}]</script></div>
+<hr>
+<h2>PART 4 — WORD: MAIL MERGE, TABLES, TOC, HEADERS &amp; FOOTERS (Exercises #8–#9 + Final Project)</h2>
+<h3>4.1 Mail Merge — Exercise #8 (memo &quot;CALL CENTER LAUNCHED&quot;)</h3>
+<p><strong>What:</strong> making <strong>many personalized copies</strong> of one document (letters, memos, invitations, certificates, envelopes, labels) by combining:</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+<th>In Exercise #8</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Main document</strong></td>
+<td>The text that is the <strong>same for everyone</strong>, with placeholders</td>
+<td>The memo: TO / FROM / DATE / SUBJECT + body</td>
+</tr>
+<tr>
+<td><strong>Data source</strong></td>
+<td>The <strong>list of recipients</strong> (table: 1 row = 1 person, 1 column = 1 field)</td>
+<td><strong>Excel file</strong> <em>Exercise #8 – Mail Merge Data Source.xlsx</em> (an Access <strong>.mdb</strong> was also made)</td>
+</tr>
+<tr>
+<td><strong>Merge fields</strong></td>
+<td>Placeholders shown in <strong>«chevrons»</strong> that get replaced by data</td>
+<td><strong>«Title» «Name» «Designation» «Address»</strong></td>
+</tr>
+<tr>
+<td><strong>Merged document</strong></td>
+<td>The final output: one copy per record</td>
+<td>One memo per recipient</td>
+</tr>
+</tbody></table>
+<p><strong>Steps (Mailings tab):</strong></p>
+<ol>
+<li><strong>Mailings › Start Mail Merge › Start Mail Merge ▾</strong> › <strong>Letters</strong> (also: E-mail Messages, Envelopes, Labels, Directory, <strong>Step-by-Step Mail Merge Wizard</strong>).</li>
+<li><strong>Select Recipients ▾</strong> › <strong>Use an Existing List…</strong> → browse to the Excel file → choose the <strong>sheet</strong> (e.g. <em>Sheet1$</em>) → tick <strong>&quot;First row of data contains column headers&quot;</strong> → OK. (Or <strong>Type a New List…</strong> to create one inside Word.)</li>
+<li><em>(Optional)</em> <strong>Edit Recipient List</strong> to <strong>sort, filter, or untick</strong> people.</li>
+<li>Put the cursor where each field goes → <strong>Insert Merge Field ▾</strong> › <strong>Title</strong>, <strong>Name</strong>, <strong>Designation</strong>, <strong>Address</strong>. (<em>Address Block</em> and <em>Greeting Line</em> are ready-made combos.)</li>
+<li><strong>Preview Results</strong> → use the <strong>◀ ▶ arrows</strong> to check each record.</li>
+<li><strong>Finish &amp; Merge ▾</strong> › <strong>Edit Individual Documents…</strong> (makes a new document with all the letters, e.g. <em>Letters1</em>) / <strong>Print Documents…</strong> / <strong>Send E-mail Messages…</strong> → <strong>All</strong> → OK.</li>
+</ol>
+<blockquote>
+<p>⚠️ <strong>You can&#39;t type « » yourself.</strong> Typed chevrons are plain text. Fields must come from <strong>Insert Merge Field</strong>. (<strong>Alt + F9</strong> shows the real field codes: <code>{ MERGEFIELD Name }</code>.)<br>⚠️ The Excel data source needs <strong>column headers in row 1</strong>. Those headers become the field names.<br>⚠️ Close the Excel file before connecting, or Word may not be able to open it.<br>🔑 Final project: mail merge with <strong>at least 20 recipients</strong>, producing a <strong>letter, invitation, or certificate</strong>.</p>
+</blockquote>
+<h3>4.2 Tables — Exercise #9 (Sales Invoice form + real-estate price table)</h3>
+<p><strong>Insert:</strong> <strong>Insert › Tables › Table ▾</strong> › drag the grid · <strong>Insert Table…</strong> (number of columns / rows) · <strong>Draw Table</strong> · <strong>Convert Text to Table</strong> (text separated by tabs or commas) · Excel Spreadsheet · Quick Tables.</p>
+<p>Two contextual tabs appear when the cursor is in a table: <strong>Table Design</strong> (looks) and <strong>Layout</strong> (structure).</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Merge cells</strong> (combine several cells into one)</td>
+<td>Select cells → <strong>Layout › Merge › Merge Cells</strong> (or right-click › Merge Cells)</td>
+</tr>
+<tr>
+<td><strong>Split cells</strong></td>
+<td><strong>Layout › Merge › Split Cells</strong> → number of columns / rows</td>
+</tr>
+<tr>
+<td>Split table into two</td>
+<td><strong>Layout › Split Table</strong></td>
+</tr>
+<tr>
+<td>Insert rows / columns</td>
+<td><strong>Layout › Rows &amp; Columns › Insert Above / Below / Left / Right</strong></td>
+</tr>
+<tr>
+<td>Delete cells / rows / columns / table</td>
+<td><strong>Layout › Delete ▾</strong></td>
+</tr>
+<tr>
+<td><strong>Cell alignment</strong> (vertical + horizontal)</td>
+<td><strong>Layout › Alignment</strong> › 9 buttons (Top/Center/Bottom × Left/Center/Right). Exercise #9 used <strong>center</strong> and <strong>bottom</strong> vertical alignment</td>
+</tr>
+<tr>
+<td>Text direction (vertical text)</td>
+<td><strong>Layout › Text Direction</strong></td>
+</tr>
+<tr>
+<td>Column width / row height</td>
+<td><strong>Layout › Cell Size</strong>, or drag the borders. <strong>AutoFit › Contents / Window / Fixed</strong></td>
+</tr>
+<tr>
+<td>Distribute evenly</td>
+<td><strong>Layout › Distribute Rows / Distribute Columns</strong></td>
+</tr>
+<tr>
+<td>Repeat header row on every page</td>
+<td><strong>Layout › Repeat Header Rows</strong></td>
+</tr>
+<tr>
+<td><strong>Cell shading</strong></td>
+<td><strong>Table Design › Shading</strong> (Exercise #9 used <strong>light gray</strong>)</td>
+</tr>
+<tr>
+<td><strong>Borders</strong></td>
+<td><strong>Table Design › Borders ▾</strong> (All, Outside, Inside, No Border…), <strong>Border Painter</strong>, pen style / weight / color</td>
+</tr>
+<tr>
+<td>Table styles</td>
+<td><strong>Table Design › Table Styles</strong> gallery</td>
+</tr>
+<tr>
+<td>Sort / formula in a table</td>
+<td><strong>Layout › Data › Sort / Formula</strong> (=SUM(ABOVE))</td>
+</tr>
+</tbody></table>
+<p><strong>Moving inside a table:</strong></p>
+<ul>
+<li><strong>Tab</strong> = next cell · <strong>Shift + Tab</strong> = previous cell.</li>
+<li><strong>Tab in the last cell</strong> = adds a <strong>new row</strong>.</li>
+<li><strong>Ctrl + Tab</strong> = inserts a real <strong>tab character inside a cell</strong>. Exercise #9 used right tabs inside cells to line up amounts.</li>
+</ul>
+<blockquote>
+<p>🔑 An <strong>invoice / application form</strong> is built by inserting a plain grid, then <strong>merging</strong> cells for long labels (SOLD TO:, ADDRESS:, DELIVER TO:), <strong>splitting</strong> cells for small boxes (DATE, TERMS, P.O. NO.), and <strong>shading</strong> the header row.<br>⚠️ Pressing <strong>Tab</strong> inside a table moves to the next cell. Use <strong>Ctrl + Tab</strong> to type a tab.<br>⚠️ <strong>Delete</strong> key on a selected table only clears the <strong>contents</strong>. To remove the table itself: <strong>Layout › Delete › Delete Table</strong> (or Backspace with the whole table selected).<br>🔑 Final project: <strong>at least one application form designed using a table</strong>.</p>
+</blockquote>
+<h3>4.3 Table of Contents (Final Project requirement)</h3>
+<ol>
+<li>Format each heading with a <strong>Heading style</strong>: <strong>Home › Styles › Heading 1</strong> (main), <strong>Heading 2</strong> (sub-heading).</li>
+<li>Click where the TOC should go (usually its own page) → <strong>References › Table of Contents ▾</strong> › <strong>Automatic Table 1</strong> (or Custom Table of Contents… to choose the <strong>tab leader</strong> and levels).</li>
+<li>After editing → <strong>References › Update Table</strong> (or click the TOC and press <strong>F9</strong>) › Update page numbers only / Update entire table.</li>
+</ol>
+<blockquote>
+<p>⚠️ An automatic TOC only lists text that uses <strong>Heading styles</strong>. Bold, big text is not enough.<br>🔑 The automatic TOC uses the same <strong>right tab + dot leader</strong> you set by hand in Exercise #5.</p>
+</blockquote>
+<h3>4.4 Headers, Footers, Page Numbers (Final Project: letterhead, logo, page number)</h3>
+<ul>
+<li><strong>Insert › Header &amp; Footer › Header / Footer / Page Number</strong>, or <strong>double-click</strong> the top/bottom margin.</li>
+<li>The <strong>Header &amp; Footer</strong> tab appears: <strong>Different First Page</strong>, <strong>Different Odd &amp; Even Pages</strong>, <strong>Insert › Pictures</strong> (logo), <strong>Page Number › Format Page Numbers</strong> (start at…), <strong>Close Header and Footer</strong> (or double-click the body).</li>
+<li><strong>Letterhead</strong> = school/company name + logo + address in the <strong>header</strong>.</li>
+</ul>
+<blockquote>
+<p>🔑 Final project rule: <strong>page numbering begins on the first printed page</strong>. So <em>don&#39;t</em> tick &quot;Different First Page&quot; if it would hide page 1&#39;s number.</p>
+</blockquote>
+<hr>
+<h2>📝 PART 4 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"In mail merge, the file that holds the list of recipients (names, addresses) is the:","c":"Data source","w":["Main document","Merge field","Template"],"e":"Exercise #8 used an Excel file as the data source."},{"q":"What is the correct order of the main Mail Merge steps?","c":"Start Mail Merge › Select Recipients › Insert Merge Field › Preview Results › Finish & Merge","w":["Select Recipients › Finish & Merge › Insert Merge Field › Start Mail Merge › Preview Results","Insert Merge Field › Start Mail Merge › Preview Results › Select Recipients › Finish & Merge","Preview Results › Select Recipients › Start Mail Merge › Finish & Merge › Insert Merge Field"],"e":"Start → Recipients → Fields → Preview → Finish. All are on the Mailings tab."},{"q":"To put every merged letter into ONE new Word document that you can still edit, choose:","c":"Finish & Merge › Edit Individual Documents","w":["Finish & Merge › Print Documents","Preview Results","Edit Recipient List"],"e":"Edit Individual Documents creates a new document (Letters1) with one letter per record."},{"q":"A student typed «Name» using Insert › Symbol. When merged, every letter says «Name». Why?","c":"Typed chevrons are plain text. Fields must be added with Insert Merge Field","w":["The data source has no rows","Preview Results was turned off","The font does not support chevrons"],"e":"Real merge fields are field codes, not characters."},{"q":"In a Word table, how do you type a TAB character inside a cell?","c":"Ctrl + Tab","w":["Tab","Shift + Tab","Alt + Tab"],"e":"Tab alone jumps to the next cell. In the last cell it adds a new row."},{"q":"To combine 3 selected cells into one long cell (like \"SOLD TO:\" in the invoice), use:","c":"Layout › Merge Cells","w":["Layout › Split Cells","Table Design › Shading","Layout › Distribute Columns"],"e":"Merge = many into one. Split = one into many."},{"q":"An automatic Table of Contents only picks up text that is formatted with:","c":"Heading styles (Heading 1, Heading 2…)","w":["Bold and a bigger font size","All caps","A dot leader"],"e":"References › Table of Contents builds the list from Heading styles."},{"q":"After adding pages, the TOC page numbers are wrong. What do you do?","c":"References › Update Table","w":["Delete the TOC and type it again","Press Ctrl + Z","Insert › Page Number"],"e":"Update Table (or F9) refreshes the page numbers or the entire table."},{"q":"To vertically center text inside a table cell, go to:","c":"Layout › Alignment (Align Center button)","w":["Home › Center (Ctrl + E)","Table Design › Borders","Layout › Text Direction"],"e":"Home › Center only centers text horizontally. The 9 buttons in Layout › Alignment set both directions."}]</script></div>
+<hr>
+<h2>PART 5 — EXCEL BASICS: EDITING, FORMATTING, SIMPLE FORMULAS (Exercise #10, part 1)</h2>
+<p>Exercise #10 &quot;Employees Profile&quot; had these sheets: <strong>Menu · Editing Worksheet · Formatting Worksheet · Simple Operation · Functions · Lookup · Filtering · Print Output · Sub Total · Chart</strong>.</p>
+<h3>5.1 Excel Vocabulary</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Workbook</strong></td>
+<td>The Excel <strong>file</strong> (.xlsx)</td>
+</tr>
+<tr>
+<td><strong>Worksheet</strong></td>
+<td>One <strong>sheet / tab</strong> in the workbook</td>
+</tr>
+<tr>
+<td><strong>Cell</strong></td>
+<td>The box where a column meets a row</td>
+</tr>
+<tr>
+<td><strong>Cell address / reference</strong></td>
+<td>Column letter + row number, e.g. <strong>J5</strong></td>
+</tr>
+<tr>
+<td><strong>Range</strong></td>
+<td>A block of cells, written <strong>first:last</strong>, e.g. <strong>J5:J24</strong></td>
+</tr>
+<tr>
+<td><strong>Active cell</strong></td>
+<td>The selected cell (green border)</td>
+</tr>
+<tr>
+<td><strong>Name Box</strong></td>
+<td>Left of the formula bar. Shows the active cell&#39;s address</td>
+</tr>
+<tr>
+<td><strong>Formula Bar</strong></td>
+<td>Shows the <strong>real content / formula</strong> of the active cell</td>
+</tr>
+<tr>
+<td><strong>Fill handle</strong></td>
+<td>The small <strong>square at the bottom-right corner</strong> of the selected cell</td>
+</tr>
+<tr>
+<td><strong>Sheet tabs</strong></td>
+<td>Bottom of the window. Right-click › Insert / Delete / <strong>Rename</strong> / Move or Copy / Tab Color</td>
+</tr>
+</tbody></table>
+<h3>5.2 Entering &amp; Editing Data (Editing Worksheet)</h3>
+<ul>
+<li>Type, then <strong>Enter</strong> (go down) or <strong>Tab</strong> (go right). <strong>Esc</strong> cancels.</li>
+<li><strong>F2</strong> = edit the active cell in place. Double-clicking the cell also works.</li>
+<li><strong>Alt + Enter</strong> = new line <strong>inside</strong> a cell.</li>
+<li><strong>Ctrl + Enter</strong> = put the same entry into <strong>all selected cells</strong>.</li>
+<li><strong>Fill handle:</strong> drag down / right to <strong>copy</strong> a formula or continue a <strong>series</strong> (1, 2, 3 · Jan, Feb · 13-001, 13-002). <strong>Double-click</strong> the fill handle to fill down to the end of the data.</li>
+<li><strong>Ctrl + D</strong> = fill <strong>down</strong> · <strong>Ctrl + R</strong> = fill <strong>right</strong>.</li>
+<li><strong>Insert / delete rows &amp; columns:</strong> right-click the row number or column letter › Insert / Delete (or <strong>Home › Cells › Insert / Delete</strong>).</li>
+<li><strong>Column width:</strong> drag the border between column letters, or <strong>double-click</strong> it to <strong>AutoFit</strong>.</li>
+<li><strong>Clear:</strong> <strong>Delete</strong> key clears <strong>contents only</strong>. <strong>Home › Editing › Clear ▾</strong> › Clear All / Formats / Contents.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>#####</strong> in a cell is not an error. The <strong>column is too narrow</strong> to show the number or date. Widen it.</p>
+</blockquote>
+<h3>5.3 Formatting (Formatting Worksheet)</h3>
+<ul>
+<li><strong>Format Cells dialog: Ctrl + 1.</strong> Tabs: <strong>Number · Alignment · Font · Border · Fill · Protection</strong>.</li>
+<li><strong>Title across columns:</strong> select D1:J1 → <strong>Home › Alignment › Merge &amp; Center</strong>.</li>
+<li><strong>Wrap Text</strong> (Home › Alignment) = long headings show on several lines inside the cell.</li>
+<li><strong>Borders:</strong> Home › Font › Borders ▾ (All Borders, Thick Box Border…). <strong>Fill color:</strong> paint bucket.</li>
+</ul>
+<p><strong>Number formats (Home › Number):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Example</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>General</strong></td>
+<td>8000</td>
+<td>Default</td>
+</tr>
+<tr>
+<td><strong>Number</strong></td>
+<td>8,000.00</td>
+<td>Choose decimals + thousands separator</td>
+</tr>
+<tr>
+<td><strong>Currency</strong></td>
+<td>₱8,000.00</td>
+<td>Symbol <strong>right next to</strong> the number</td>
+</tr>
+<tr>
+<td><strong>Accounting</strong></td>
+<td>₱   8,000.00</td>
+<td>Symbol <strong>lined up at the left edge</strong> of the cell. Zero shows as <strong>&quot;-&quot;</strong></td>
+</tr>
+<tr>
+<td><strong>Comma Style</strong> ( <strong>,</strong> button)</td>
+<td>8,000.00</td>
+<td>Accounting format <strong>without</strong> the symbol. Exercise #10 salaries used Comma Style with 0 decimals (8,000)</td>
+</tr>
+<tr>
+<td><strong>Percentage</strong></td>
+<td>10%</td>
+<td><strong>Ctrl + Shift + %</strong></td>
+</tr>
+<tr>
+<td><strong>Increase / Decrease Decimal</strong></td>
+<td>.0→.00</td>
+<td>Changes only how it <strong>looks</strong>, not the stored value</td>
+</tr>
+<tr>
+<td><strong>Date</strong></td>
+<td>8-Apr-95</td>
+<td>Exercise #10 <em>Date Employed</em> used <strong>d-mmm-yy</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Date format codes (Ctrl + 1 › Number › Custom):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Shows</th>
+<th></th>
+<th>Code</th>
+<th>Shows</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>d</code></td>
+<td>8</td>
+<td></td>
+<td><code>m</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>08</td>
+<td></td>
+<td><code>mm</code></td>
+<td>04</td>
+</tr>
+<tr>
+<td><code>ddd</code></td>
+<td>Sat</td>
+<td></td>
+<td><code>mmm</code></td>
+<td>Apr</td>
+</tr>
+<tr>
+<td><code>dddd</code></td>
+<td>Saturday</td>
+<td></td>
+<td><code>mmmm</code></td>
+<td>April</td>
+</tr>
+<tr>
+<td><code>yy</code></td>
+<td>95</td>
+<td></td>
+<td><code>yyyy</code></td>
+<td>1995</td>
+</tr>
+</tbody></table>
+<p>So <code>d-mmm-yy</code> → <strong>8-Apr-95</strong>, <code>mm/dd/yyyy</code> → <strong>04/08/1995</strong>, <code>mmmm d, yyyy</code> → <strong>April 8, 1995</strong>.</p>
+<ul>
+<li><strong>Ctrl + ;</strong> = insert <strong>today&#39;s date</strong> (fixed). <code>=TODAY()</code> = a date that updates.</li>
+</ul>
+<blockquote>
+<p>🔑 Excel stores a date as a <strong>serial number</strong> (1 = Jan 1, 1900). That&#39;s why you can subtract two dates to get the number of days.<br>⚠️ Formatting changes the <strong>look</strong>, not the <strong>value</strong>. 8,000.456 shown as 8,000 is still 8,000.456 in formulas.</p>
+</blockquote>
+<h3>5.4 Formulas: The Basics (Simple Operation sheet)</h3>
+<ul>
+<li>Every formula <strong>starts with <code>=</code></strong>. Without it, Excel treats it as text.</li>
+<li>Use <strong>cell references</strong> (J5), not typed numbers (8000), so results update when the data changes.</li>
+</ul>
+<p><strong>Operators:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>+</code> <code>-</code></td>
+<td>add, subtract</td>
+<td><code>=K5+L5+M5</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>multiply</td>
+<td><code>=J5*10%</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>divide</td>
+<td><code>=C5/24/8</code></td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>power</td>
+<td><code>=2^3</code> → 8</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>percent</td>
+<td><code>10%</code> = 0.10</td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td>join text</td>
+<td><code>=E5&amp;&quot;, &quot;&amp;F5</code> → Santos, Evangeline</td>
+</tr>
+<tr>
+<td><code>=</code> <code>&lt;&gt;</code> <code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code></td>
+<td>compare (used in IF)</td>
+<td><code>=J5&gt;=4500</code></td>
+</tr>
+</tbody></table>
+<p><strong>Order of operations (Excel):</strong> <strong>( )</strong> → negation (-) → <strong>%</strong> → <strong>^</strong> → <strong>* and /</strong> (left to right) → <strong>+ and -</strong> (left to right) → <strong>&amp;</strong> → comparisons.</p>
+<blockquote>
+<p>🔑 PEMDAS. Parentheses first, then multiply/divide, then add/subtract.<br>⚠️ <code>=A1+B1/2</code> divides <strong>only B1</strong> by 2. To average two cells, write <code>=(A1+B1)/2</code>.</p>
+</blockquote>
+<p><strong>📌 (exam item) Exercise #10 Simple Operation sheet, row 5 (Santos, Starting Salary J5 = 8,000):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Formula</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Withholding Tax (10%)</td>
+<td><code>=J5*10%</code></td>
+<td>800</td>
+</tr>
+<tr>
+<td>SSS (3%)</td>
+<td><code>=J5*3%</code></td>
+<td>240</td>
+</tr>
+<tr>
+<td>Pag-IBIG (1%)</td>
+<td><code>=J5*1%</code></td>
+<td>80</td>
+</tr>
+<tr>
+<td>Total Deductions</td>
+<td><code>=K5+L5+M5</code> (same as <code>=SUM(K5:M5)</code>)</td>
+<td>1,120</td>
+</tr>
+<tr>
+<td>Net Salary</td>
+<td><code>=J5-N5</code></td>
+<td><strong>6,880</strong></td>
+</tr>
+</tbody></table>
+<p>Then <strong>select K5:O5 and double-click the fill handle</strong> to copy the formulas down to row 24.</p>
+<h3>5.5 Relative vs Absolute vs Mixed References</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Written</th>
+<th>When copied down/right…</th>
+<th>Use for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Relative</strong></td>
+<td><code>J5</code></td>
+<td><strong>changes</strong> (J6, J7…)</td>
+<td>Normal row-by-row formulas</td>
+</tr>
+<tr>
+<td><strong>Absolute</strong></td>
+<td><code>$J$5</code></td>
+<td><strong>never changes</strong></td>
+<td>A single fixed cell (tax rate cell, <strong>lookup table</strong>)</td>
+</tr>
+<tr>
+<td><strong>Mixed</strong></td>
+<td><code>$J5</code> / <code>J$5</code></td>
+<td>only the part <strong>without $</strong> changes</td>
+<td>Locks only the column or only the row</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Press <strong>F4</strong> while the cursor is on a reference to cycle: <code>J5</code> → <code>$J$5</code> → <code>J$5</code> → <code>$J5</code> → <code>J5</code>.</li>
+<li><strong>$ = &quot;lock&quot;</strong>. The <code>$</code> goes <strong>in front of</strong> whatever must not move.</li>
+</ul>
+<p><strong>Example:</strong> the tax rate 10% is in cell <strong>B1</strong>. In row 5 write <code>=J5*$B$1</code>, then fill down. Row 6 becomes <code>=J6*$B$1</code> (J changed, B1 stayed).<br>If you forgot the $: row 6 becomes <code>=J6*B2</code> → B2 is empty → the result is <strong>0</strong>. Wrong!</p>
+<blockquote>
+<p>⚠️ Lookup tables <strong>must be absolute</strong>: <code>Lookup!$B$2:$C$12</code>. Without $, the table range slides down as you copy and the bottom rows give <strong>#N/A</strong> or wrong answers.</p>
+</blockquote>
+<hr>
+<h2>📝 PART 5 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"Every Excel formula must begin with:","c":"=","w":["+","@","#"],"e":"Without =, Excel stores the entry as text."},{"q":"Write the formula for SSS at 3% of the Starting Salary in J5.","c":"=J5*3%","w":["=J5+3%","=J5/3%","=3%J5"],"e":"Multiply the salary by the rate. =J5*0.03 gives the same result."},{"q":"Total Deductions are in N5 and Starting Salary in J5. Write the Net Salary formula.","c":"=J5-N5","w":["=N5-J5","=J5+N5","=SUM(J5:N5)"],"e":"Net = gross minus deductions."},{"q":"What is the result of =2+3*4?","c":"14","w":["20","24","9"],"e":"Multiplication first: 3*4 = 12, then +2 = 14."},{"q":"You copy =J5*$B$1 from row 5 down to row 6. Row 6 becomes:","c":"=J6*$B$1","w":["=J6*$B$2","=J5*$B$1","=J6*B2"],"e":"The relative J5 changes to J6. The absolute $B$1 stays locked."},{"q":"Which key toggles a reference between J5, $J$5, J$5 and $J5?","c":"F4","w":["F2","F5","F9"],"e":"F2 edits the cell. F4 cycles the $ signs."},{"q":"A cell shows ##### after you type a date. The most likely reason is:","c":"The column is too narrow","w":["The formula has an error","The date is invalid","The cell is protected"],"e":"Widen the column (double-click the column border)."},{"q":"Which date format code displays 8-Apr-95?","c":"d-mmm-yy","w":["dd-mm-yyyy","mmmm d, yyyy","d-mm-yy"],"e":"mmm = 3-letter month name, yy = 2-digit year."},{"q":"Which shortcut opens the Format Cells dialog box?","c":"Ctrl + 1","w":["Ctrl + F","Ctrl + Shift + F","Alt + F1"],"e":"Ctrl + 1 opens the Number, Alignment, Font, Border, Fill and Protection tabs."},{"q":"The small square at the bottom-right corner of the selected cell, used to copy formulas down, is the:","c":"Fill handle","w":["Name box","Sizing tab","Formula bar"],"e":"Drag it, or double-click it to fill to the end of the data."}]</script></div>
+<hr>
+<h2>PART 6 — EXCEL FUNCTIONS: SUM…MAX, IF, NESTED IF, VLOOKUP / HLOOKUP (Exercise #10, part 2)</h2>
+<h3>6.1 Function Syntax</h3>
+<p><code>=FUNCTION(argument1, argument2, …)</code></p>
+<ul>
+<li><strong>Colon <code>:</code></strong> = a <strong>range</strong>, &quot;from…to&quot;: <code>SUM(J5:J9)</code> = J5+J6+J7+J8+J9.</li>
+<li><strong>Comma <code>,</code></strong> = <strong>separate</strong> items: <code>SUM(J5,P5,Q5)</code> = only those 3 cells.</li>
+<li><strong>AutoSum: Alt + =</strong> (Home › Editing › AutoSum ▾ or Formulas › AutoSum ▾ › Sum / Average / Count Numbers / Max / Min).</li>
+<li><strong>Insert Function: Shift + F3</strong> (the <strong>fx</strong> button).</li>
+</ul>
+<h3>6.2 The Basic Statistical Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Returns</th>
+<th>Example (Exercise #10 Functions sheet)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SUM(range)</code></td>
+<td>Total</td>
+<td>Gross Salary <code>=SUM(J5,P5,Q5)</code> (Oct + Nov + Dec)</td>
+</tr>
+<tr>
+<td><code>AVERAGE(range)</code></td>
+<td>Arithmetic mean</td>
+<td>Average Salary <code>=AVERAGE(J5,P5,Q5)</code></td>
+</tr>
+<tr>
+<td><code>MIN(range)</code></td>
+<td>Smallest value</td>
+<td>Minimum Salary <code>=MIN(J5,P5,Q5)</code></td>
+</tr>
+<tr>
+<td><code>MAX(range)</code></td>
+<td>Largest value</td>
+<td>Maximum Salary <code>=MAX(J5,P5,Q5)</code></td>
+</tr>
+<tr>
+<td><code>COUNT(range)</code></td>
+<td>How many cells have <strong>numbers</strong></td>
+<td><code>=COUNT(J5:J24)</code></td>
+</tr>
+<tr>
+<td><code>COUNTA(range)</code></td>
+<td>How many cells are <strong>not empty</strong> (text too)</td>
+<td><code>=COUNTA(E5:E24)</code></td>
+</tr>
+<tr>
+<td><code>COUNTIF(range, criteria)</code></td>
+<td>Count cells that match</td>
+<td><code>=COUNTIF(V5:V24,&quot;Fulltime&quot;)</code></td>
+</tr>
+<tr>
+<td><code>SUMIF(range, criteria, sum_range)</code></td>
+<td>Sum cells that match</td>
+<td><code>=SUMIF(G5:G24,&quot;ADMIN&quot;,J5:J24)</code></td>
+</tr>
+<tr>
+<td><code>ROUND(number, digits)</code></td>
+<td>Rounds</td>
+<td><code>=ROUND(H5,2)</code></td>
+</tr>
+<tr>
+<td><code>TODAY()</code> / <code>NOW()</code></td>
+<td>Current date / date + time</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>📌 (exam item) Salary increases (Functions sheet):</strong> November = October + 5%: <code>=(J5*5%)+J5</code> → 8,000 → <strong>8,400</strong>. December = November + 5%: <code>=(P5*5%)+P5</code> → <strong>8,820</strong>. (Shorter version: <code>=J5*105%</code> or <code>=J5*1.05</code>.)<br>Then Gross <code>=SUM(J5,P5,Q5)</code> = 8,000 + 8,400 + 8,820 = <strong>25,220</strong>. Average = <strong>8,406.67</strong>. Min = <strong>8,000</strong>. Max = <strong>8,820</strong>.</p>
+<blockquote>
+<p>⚠️ <code>=SUM(J5:Q5)</code> would add <strong>every</strong> column from J to Q, including the deduction columns K–O. Use commas when the cells are <strong>not next to each other</strong>.<br>⚠️ AVERAGE <strong>skips empty cells</strong> but <strong>counts zeros</strong>.</p>
+</blockquote>
+<h3>6.3 IF — Making a Decision</h3>
+<p><strong>Syntax:</strong> <code>=IF(logical_test, value_if_true, value_if_false)</code></p>
+<p><strong>📌 (exam item) Exercise #10 Employee Salary (Part-time / Fulltime):</strong><br><code>=IF(J5&lt;4500,&quot;Part-time&quot;,&quot;Fulltime&quot;)</code><br>→ J5 = 8,000 → is 8000 &lt; 4500? <strong>No</strong> → <strong>Fulltime</strong>. J5 = 4,300 → <strong>Part-time</strong>.</p>
+<p>Rules:</p>
+<ul>
+<li><strong>Text results go in &quot;double quotes&quot;</strong>: <code>&quot;PASSED&quot;</code>. Numbers and cell references don&#39;t: <code>15%</code>, <code>H6</code>.</li>
+<li>The result can be a <strong>number or a formula</strong>: <code>=IF(F6&gt;100000,15%,10%)</code>.</li>
+<li>Comparison operators: <code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code> <code>=</code> <code>&lt;&gt;</code> (not equal).</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong><code>&gt;</code> vs <code>&gt;=</code>:</strong> &quot;75 and above passes&quot; means <code>&gt;=75</code>. Writing <code>&gt;75</code> makes a student with exactly 75 FAIL.<br>⚠️ Forgetting the quotes (<code>=IF(I5&gt;=75,PASSED,FAILED)</code>) gives <strong>#NAME?</strong>.</p>
+</blockquote>
+<h3>6.4 Nested IF — More Than Two Outcomes</h3>
+<p>Put another IF in the <strong>value_if_false</strong> slot. With <strong>n</strong> outcomes you need <strong>n − 1 IFs</strong>, and the formula ends with <strong>that many closing parentheses</strong>.</p>
+<p><strong>📌 (exam item) MP4 Final Grade:</strong> A ≥ 98, B ≥ 90, C ≥ 85, D ≥ 80, E ≥ 75, else F</p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">=<span class="hljs-built_in">IF</span>(<span class="hljs-symbol">G6</span>&gt;=<span class="hljs-number">98</span>,<span class="hljs-string">&quot;A&quot;</span>,<span class="hljs-built_in">IF</span>(<span class="hljs-symbol">G6</span>&gt;=<span class="hljs-number">90</span>,<span class="hljs-string">&quot;B&quot;</span>,<span class="hljs-built_in">IF</span>(<span class="hljs-symbol">G6</span>&gt;=<span class="hljs-number">85</span>,<span class="hljs-string">&quot;C&quot;</span>,<span class="hljs-built_in">IF</span>(<span class="hljs-symbol">G6</span>&gt;=<span class="hljs-number">80</span>,<span class="hljs-string">&quot;D&quot;</span>,<span class="hljs-built_in">IF</span>(<span class="hljs-symbol">G6</span>&gt;=<span class="hljs-number">75</span>,<span class="hljs-string">&quot;E&quot;</span>,<span class="hljs-string">&quot;F&quot;</span>)))))</code></pre></div>
+<p>6 grades → <strong>5 IFs → 5 closing &quot;)))))&quot;</strong>.</p>
+<p><strong>How Excel reads it (G6 = 92):</strong> ≥98? no → ≥90? <strong>yes</strong> → &quot;B&quot;. It <strong>stops at the first TRUE</strong>.</p>
+<blockquote>
+<p>⚠️ <strong>Order matters.</strong> With <code>&gt;=</code>, test from the <strong>HIGHEST down</strong>. If you test <code>G6&gt;=75</code> first, a 99 would be labelled &quot;E&quot;, because 99 ≥ 75 is already TRUE.<br>(If you test from the lowest up, use <code>&lt;</code> instead: <code>=IF(G6&lt;75,&quot;F&quot;,IF(G6&lt;80,&quot;E&quot;,…))</code>.)</p>
+</blockquote>
+<h3>6.5 VLOOKUP and HLOOKUP</h3>
+<p><strong>VLOOKUP</strong> = <strong>V</strong>ertical lookup. The table is arranged in <strong>columns</strong>, and the lookup value is searched <strong>down the first column</strong>.<br><code>=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])</code></p>
+<p><strong>HLOOKUP</strong> = <strong>H</strong>orizontal lookup. The table is arranged in <strong>rows</strong>, and the lookup value is searched <strong>across the first row</strong>.<br><code>=HLOOKUP(lookup_value, table_array, row_index_num, [range_lookup])</code></p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>lookup_value</strong></td>
+<td>What you are looking for (the salary, the score)</td>
+</tr>
+<tr>
+<td><strong>table_array</strong></td>
+<td>The lookup table. <strong>Lock it with $</strong></td>
+</tr>
+<tr>
+<td><strong>col_index_num / row_index_num</strong></td>
+<td><strong>Which column (or row) of the table</strong> to return. Count from <strong>1 = the first column/row of the table</strong>, not column A</td>
+</tr>
+<tr>
+<td><strong>range_lookup</strong></td>
+<td><strong>TRUE</strong> (or omitted) = <strong>approximate</strong> match · <strong>FALSE</strong> (or 0) = <strong>exact</strong> match</td>
+</tr>
+</tbody></table>
+<p><strong>📌 (exam item) Exercise #10 Lookup sheet:</strong></p>
+<ul>
+<li>Salary Level table (vertical, Lookup!B: Salary 1,000 / 2,000 / … / 10,000, C: SL-1 … SL-10)<br><code>=VLOOKUP(J5,Lookup!$B$2:$C$12,2)</code> → J5 = 8,000 → <strong>SL-8</strong>. J5 = 5,500 → <strong>SL-5</strong> (largest value ≤ 5,500 is 5,000).</li>
+<li>Bonus table (horizontal, Lookup!F2:O2 salaries 1,000 … 10,000; F3:O3 bonus 100 … 1,000)<br><code>=HLOOKUP(J5,Lookup!$F$2:$O$3,2)</code> → 8,000 → <strong>800</strong>. 5,500 → <strong>500</strong>.</li>
+<li><code>Lookup!</code> = the cell is on <strong>another sheet</strong> named <em>Lookup</em>. If the sheet name has spaces: <code>&#39;Sub Total&#39;!A1</code>.</li>
+</ul>
+<h3>6.6 Exact vs Approximate Match (and why the table must be SORTED)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Approximate — TRUE / 1 / omitted</strong></th>
+<th><strong>Exact — FALSE / 0</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Finds</td>
+<td>The <strong>largest value ≤ the lookup value</strong></td>
+<td>Only an <strong>identical</strong> match</td>
+</tr>
+<tr>
+<td>Table order</td>
+<td><strong>MUST be sorted ASCENDING</strong> (smallest → largest) in the first column/row</td>
+<td>Any order</td>
+</tr>
+<tr>
+<td>If not found</td>
+<td>Returns the closest lower bracket. If the value is <strong>smaller than the first entry</strong> → <strong>#N/A</strong></td>
+<td><strong>#N/A</strong></td>
+</tr>
+<tr>
+<td>Use for</td>
+<td><strong>Ranges / brackets:</strong> score→grade, salary→level, tax tables</td>
+<td><strong>IDs / codes / names:</strong> Employee No. → name, product code → price</td>
+</tr>
+</tbody></table>
+<p><strong>Why sorted ascending?</strong> Approximate mode doesn&#39;t check every row. It does a fast search that <strong>assumes the numbers go up</strong>, and it stops where the next value would be too big. If the table is out of order, Excel stops in the wrong place and returns a <strong>wrong answer with no error message</strong>.</p>
+<blockquote>
+<p>⚠️ <strong>VLOOKUP with the 4th argument left out = TRUE (approximate).</strong> Exercise #10 left it out, which works only because the tables were sorted ascending.<br>⚠️ Approximate: a salary <strong>below the first value</strong> (e.g. 500 when the table starts at 1,000) → <strong>#N/A</strong>. That&#39;s why MP2&#39;s table starts at <strong>0</strong>.<br>⚠️ <strong>col_index_num larger than the number of columns</strong> in the table → <strong>#REF!</strong>. <strong>Less than 1</strong> → <strong>#VALUE!</strong>.<br>⚠️ VLOOKUP can only look <strong>to the right</strong> of the first column. The lookup column must be the <strong>leftmost</strong> column of table_array.</p>
+</blockquote>
+<h3>6.7 Common Error Values</h3>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Meaning</th>
+<th>Typical cause</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>#N/A</strong></td>
+<td>Value <strong>not available / not found</strong></td>
+<td>VLOOKUP/HLOOKUP can&#39;t find the value (exact mode), or value below the first entry (approximate)</td>
+</tr>
+<tr>
+<td><strong>#DIV/0!</strong></td>
+<td><strong>Divided by zero</strong></td>
+<td><code>=A1/B1</code> where B1 is 0 or empty</td>
+</tr>
+<tr>
+<td><strong>#VALUE!</strong></td>
+<td><strong>Wrong type</strong> of value</td>
+<td>Doing math on text: <code>=&quot;abc&quot;*2</code>, or a space typed in a &quot;number&quot; cell</td>
+</tr>
+<tr>
+<td><strong>#REF!</strong></td>
+<td><strong>Invalid reference</strong></td>
+<td>You <strong>deleted</strong> a row/column/sheet the formula used, or the lookup index is too big</td>
+</tr>
+<tr>
+<td><strong>#NAME?</strong></td>
+<td>Excel <strong>doesn&#39;t recognize a name</strong></td>
+<td>Misspelled function (<code>=SUMM(…)</code>, <code>=VLOKUP</code>), <strong>text without quotes</strong>, a missing colon in a range</td>
+</tr>
+<tr>
+<td><strong>#NUM!</strong></td>
+<td>Invalid number</td>
+<td><code>=SQRT(-1)</code>, or a result too large</td>
+</tr>
+<tr>
+<td><strong>#NULL!</strong></td>
+<td>Ranges don&#39;t intersect</td>
+<td>A space instead of a comma/colon: <code>=SUM(A1 B1)</code></td>
+</tr>
+<tr>
+<td><strong>#####</strong></td>
+<td>Not an error. <strong>Column too narrow</strong></td>
+<td>Widen the column</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📝 PART 6 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"Write the IF formula: if Starting Salary in J5 is less than 4,500 show \"Part-time\", otherwise \"Fulltime\".","c":"=IF(J5\u003c4500,\"Part-time\",\"Fulltime\")","w":["=IF(J5>4500,\"Part-time\",\"Fulltime\")","=IF(J5\u003c4500,Part-time,Fulltime)","=IF(\"J5\u003c4500\",\"Part-time\",\"Fulltime\")"],"e":"The text results need quotes. The test J5\u003c4500 must not be in quotes."},{"q":"=SUM(J5,P5,Q5) adds:","c":"Only J5, P5 and Q5","w":["Every cell from J5 to Q5","J5 to P5, then multiplies by Q5","J5, P5 and Q5, then divides by 3"],"e":"Commas separate individual cells. A colon would mean the whole range."},{"q":"In VLOOKUP, what does the col_index_num 2 mean?","c":"Return the value from the 2nd column of the lookup table","w":["Return the value from column B of the worksheet","Search the 2nd row","Use approximate match"],"e":"It counts from the first column of table_array, not from column A."},{"q":"VLOOKUP's last argument is left out, as in =VLOOKUP(J5,Lookup!$B$2:$C$12,2). Which match type is used?","c":"Approximate match (TRUE)","w":["Exact match (FALSE)","No match. It gives an error","It depends on the cell format"],"e":"Omitted = TRUE = approximate. The table must be sorted ascending."},{"q":"For an approximate-match VLOOKUP to work correctly, the first column of the lookup table must be:","c":"Sorted in ascending order (smallest to largest)","w":["Sorted in descending order","Formatted as text","Bold"],"e":"Approximate mode assumes ascending order. If the table is unsorted it can return wrong answers with no error."},{"q":"The lookup table is arranged in ROWS (values across the top row). Which function should you use?","c":"HLOOKUP","w":["VLOOKUP","SUMIF","COUNTIF"],"e":"H = horizontal (rows). V = vertical (columns)."},{"q":"A VLOOKUP with FALSE cannot find the employee number you typed. The result is:","c":"#N/A","w":["#REF!","#DIV/0!","#NAME?"],"e":"#N/A = not available / not found."},{"q":"=AVERAGE(D5:F5)/C5 shows #DIV/0!. Why?","c":"C5 is zero or empty","w":["D5:F5 contains text","The function name is misspelled","A referenced column was deleted"],"e":"You cannot divide by zero."},{"q":"=AVRAGE(D5,F5,H5) shows which error?","c":"#NAME?","w":["#VALUE!","#N/A","#REF!"],"e":"The function name is misspelled, so Excel does not recognize it."},{"q":"A nested IF gives 6 possible grades (A–F). How many IF functions does it need?","c":"5","w":["6","4","3"],"e":"n outcomes need n − 1 IFs. The last outcome (\"F\") is the final value_if_false."},{"q":"A student wrote =IF(G6>=75,\"E\",IF(G6>=80,\"D\",IF(G6>=98,\"A\",\"F\"))). A score of 99 gets:","c":"E","w":["A","D","F"],"e":"99 >= 75 is TRUE at the first test, so Excel stops there. Test from the highest value down."}]</script></div>
+<hr>
+<h2>PART 7 — EXCEL DATA TOOLS &amp; OUTPUT: CONDITIONAL FORMATTING, FILTER, SUBTOTAL, CHART, PRINT (Exercise #10, part 3)</h2>
+<h3>7.1 Conditional Formatting (CF)</h3>
+<p><strong>What:</strong> formatting (fill, font color, border) that is applied <strong>automatically when a condition is true</strong>, and changes when the value changes.<br><strong>Path:</strong> select the cells → <strong>Home › Styles › Conditional Formatting ▾</strong></p>
+<table>
+<thead>
+<tr>
+<th>Menu</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Highlight Cells Rules</strong></td>
+<td>Greater Than · Less Than · Between · <strong>Equal To</strong> · <strong>Text that Contains</strong> · A Date Occurring · Duplicate Values</td>
+</tr>
+<tr>
+<td><strong>Top/Bottom Rules</strong></td>
+<td>Top 10 Items · Top 10% · Bottom 10 · <strong>Above Average</strong> · Below Average</td>
+</tr>
+<tr>
+<td><strong>Data Bars / Color Scales / Icon Sets</strong></td>
+<td>Bars, color gradients, arrows/traffic lights based on size</td>
+</tr>
+<tr>
+<td><strong>New Rule…</strong></td>
+<td>Includes <strong>&quot;Use a formula to determine which cells to format&quot;</strong></td>
+</tr>
+<tr>
+<td><strong>Clear Rules</strong></td>
+<td>from Selected Cells / Entire Sheet</td>
+</tr>
+<tr>
+<td><strong>Manage Rules…</strong></td>
+<td>Edit, delete, reorder rules, change <strong>Applies to</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Walkthrough A — Text rule (Exercise #10 Employee Salary column, V5:V24):</strong></p>
+<ol>
+<li>Select <strong>V5:V24</strong>.</li>
+<li><strong>Home › Conditional Formatting › Highlight Cells Rules › Equal To…</strong> (or <strong>Text that Contains…</strong>).</li>
+<li>Type <strong>Fulltime</strong> → choose a format (e.g. <em>Green Fill with Dark Green Text</em>, or <strong>Custom Format…</strong> › Fill tab) → <strong>OK</strong>.</li>
+<li>Repeat for <strong>Part-time</strong> with a different color.</li>
+</ol>
+<p><strong>Walkthrough B — Formula rule (Excel Quiz MP2 / MP3 / MP4):</strong></p>
+<ol>
+<li>Select the range, <strong>starting from the top-left cell</strong>: e.g. <strong>J5:J19</strong> (MP2 Remarks).</li>
+<li><strong>Home › Conditional Formatting › New Rule…</strong></li>
+<li>Choose <strong>&quot;Use a formula to determine which cells to format.&quot;</strong></li>
+<li>In <em>Format values where this formula is true</em>, type the rule <strong>for the top-left cell only</strong>:<br><code>=J5=&quot;PASSED&quot;</code></li>
+<li>Click <strong>Format…</strong> › <strong>Fill</strong> tab: <strong>blue</strong> · <strong>Font</strong> tab: <strong>white</strong> → OK → OK.</li>
+<li>New Rule again: <code>=J5=&quot;FAILED&quot;</code> → <strong>red</strong> fill, white font.</li>
+<li>Check <strong>Conditional Formatting › Manage Rules</strong> (Show formatting rules for: <em>This Worksheet</em>) to see both rules and their <em>Applies to</em> ranges.</li>
+</ol>
+<p><strong>Formula rule coloring a whole row (MP4):</strong> select <strong>H6:I15</strong> (Final Grade <strong>and</strong> Evaluation), then use <code>=$H6=&quot;A&quot;</code> (blue), <code>=$H6=&quot;E&quot;</code> (yellow), <code>=$H6=&quot;F&quot;</code> (red).<br>The <strong>$ before H</strong> locks the column, so the Evaluation cell (column I) also checks <strong>column H</strong> of its own row. The row (6) is left relative so each row checks itself.</p>
+<blockquote>
+<p>⚠️ A formula rule <strong>must start with <code>=</code></strong> and <strong>must be TRUE/FALSE</strong>. Text needs <strong>quotes</strong>: <code>=J5=&quot;PASSED&quot;</code>, not <code>=J5=PASSED</code>.<br>⚠️ Write the formula for the <strong>first (top-left) cell</strong> of the selection. Don&#39;t lock the row (<code>=$J$5</code> would make every cell check J5 only).<br>⚠️ <strong>Highlight Cells Rules › Equal To</strong> only formats the cell itself. To color <strong>other</strong> cells (the whole row) based on one column, you need a <strong>formula rule with $</strong>.<br>🔑 Easy version for exams: <em>Highlight Cells Rules › Text that Contains › &quot;FAILED&quot;</em> → Light Red Fill. Use this if the question doesn&#39;t ask for a formula rule.</p>
+</blockquote>
+<h3>7.2 Sort &amp; Filter (Filtering sheet)</h3>
+<ul>
+<li><strong>Sort:</strong> <strong>Data › Sort &amp; Filter › A→Z / Z→A</strong>, or <strong>Sort…</strong> for several levels (e.g. Department, then Family Name). Home › Editing › Sort &amp; Filter has the same commands.</li>
+<li><strong>AutoFilter:</strong> click inside the table → <strong>Data › Filter</strong> (<strong>Ctrl + Shift + L</strong>). Drop-down arrows appear on the header row (Exercise #10: D4:J4).<ul>
+<li>Tick or untick values (show only <strong>ADMIN</strong>).</li>
+<li><strong>Text Filters</strong> (Contains, Begins With…) · <strong>Number Filters</strong> (Greater Than, <strong>Top 10</strong>, Above Average, Between…) · <strong>Date Filters</strong>.</li>
+<li>A <strong>funnel icon</strong> on the arrow = that column is filtered. Row numbers turn <strong>blue</strong>.</li>
+<li><strong>Clear:</strong> Data › Clear · Turn off: click <strong>Filter</strong> again.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>⚠️ Filtering <strong>hides</strong> rows. It doesn&#39;t delete them.<br>⚠️ Select the whole table (or one cell inside it) <strong>with headers</strong>. Blank rows/columns break the table into pieces.</p>
+</blockquote>
+<h3>7.3 Subtotal (Sub Total sheet)</h3>
+<p><strong>What:</strong> automatic <strong>group totals</strong>, e.g. total salary <strong>per Department</strong>, plus a <strong>Grand Total</strong> and an <strong>outline</strong> (1 2 3 buttons).<br><strong>Steps:</strong></p>
+<ol>
+<li><strong>SORT FIRST</strong> by the grouping column (<strong>Department</strong>): Data › Sort A→Z.</li>
+<li>Click inside the data → <strong>Data › Outline › Subtotal</strong>.</li>
+<li><strong>At each change in:</strong> <em>Department</em> · <strong>Use function:</strong> <em>Sum</em> (or Average, Count, Max, Min…) · <strong>Add subtotal to:</strong> tick <em>Gross Salary, Average, Minimum, Maximum, Bonus…</em> → OK.</li>
+<li>Excel inserts rows like <strong>&quot;ACCTG Total&quot;</strong> with <code>=SUBTOTAL(9,R5:R7)</code> and a <strong>Grand Total</strong> at the bottom.</li>
+<li>Outline buttons: <strong>1</strong> = grand total only · <strong>2</strong> = subtotals + grand total · <strong>3</strong> = all details.</li>
+<li>To undo: <strong>Data › Subtotal › Remove All</strong>.</li>
+</ol>
+<p><strong>SUBTOTAL function numbers:</strong> <code>1</code> AVERAGE · <code>2</code> COUNT · <code>3</code> COUNTA · <code>4</code> MAX · <code>5</code> MIN · <strong><code>9</code> SUM</strong>. (101–111 = the same, but they also ignore rows you hid by hand.)</p>
+<blockquote>
+<p>⚠️ If you skip <strong>sorting</strong>, the same department appears in several groups (e.g. ADMIN Total appears 3 times).<br>🔑 SUBTOTAL ignores other SUBTOTAL rows, so the Grand Total doesn&#39;t double-count.</p>
+</blockquote>
+<h3>7.4 Charts (Chart sheet)</h3>
+<p><strong>Steps:</strong> select the <strong>labels + numbers</strong> (e.g. Family Name + Gross Salary; use <strong>Ctrl</strong> to select columns that aren&#39;t next to each other) → <strong>Insert › Charts</strong> › choose a type → edit with the <strong>Chart Design</strong> and <strong>Format</strong> tabs.</p>
+<ul>
+<li>Exercise #10 used a <strong>3-D Clustered Column</strong> chart titled <strong>&quot;PLV Employee&#39;s Profile&quot;</strong>.</li>
+<li><strong>Alt + F1</strong> = instant chart on the same sheet · <strong>F11</strong> = instant chart on a <strong>new chart sheet</strong>.</li>
+<li><strong>Chart Design:</strong> Add Chart Element (<strong>Chart Title, Axis Titles, Data Labels, Legend, Gridlines</strong>) · Quick Layout · Change Colors · Chart Styles · <strong>Switch Row/Column</strong> · <strong>Select Data</strong> · <strong>Change Chart Type</strong> · <strong>Move Chart</strong> (to a new sheet).</li>
+<li>The <strong>+ / brush / funnel</strong> buttons next to a selected chart = elements, styles, filters.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Chart type</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Column / Bar</strong></td>
+<td><strong>Comparing</strong> amounts between items (salaries per employee)</td>
+</tr>
+<tr>
+<td><strong>Line</strong></td>
+<td><strong>Trends over time</strong> (monthly sales)</td>
+</tr>
+<tr>
+<td><strong>Pie / Doughnut</strong></td>
+<td><strong>Parts of a whole / percentages</strong>. Only <strong>one</strong> data series</td>
+</tr>
+<tr>
+<td><strong>Scatter (XY)</strong></td>
+<td>Relationship between two number sets</td>
+</tr>
+<tr>
+<td><strong>Area</strong></td>
+<td>Totals over time</td>
+</tr>
+</tbody></table>
+<h3>7.5 Print Setup (Print Output sheet)</h3>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Print Area</strong> (print only part of the sheet)</td>
+<td>Select range → <strong>Page Layout › Page Setup › Print Area › Set Print Area</strong></td>
+</tr>
+<tr>
+<td><strong>Print Titles</strong> (repeat the header rows on every page)</td>
+<td><strong>Page Layout › Print Titles</strong> › <em>Rows to repeat at top:</em> <strong>$1:$4</strong> (Exercise #10 used rows 1–4)</td>
+</tr>
+<tr>
+<td><strong>Orientation</strong></td>
+<td>Page Layout › Orientation › Portrait / <strong>Landscape</strong> (wide tables)</td>
+</tr>
+<tr>
+<td><strong>Paper size</strong></td>
+<td>Page Layout › Size › Letter (8.5×11, &quot;short&quot;) / <strong>Legal</strong> (8.5×13 or 8.5×14, &quot;long&quot;) / A4. Exercise #10 used <strong>Legal</strong></td>
+</tr>
+<tr>
+<td><strong>Margins / Center on page</strong></td>
+<td>Page Layout › Margins › Custom Margins › <strong>Center on page: Horizontally / Vertically</strong></td>
+</tr>
+<tr>
+<td><strong>Fit to one page</strong></td>
+<td>Page Layout › Scale to Fit › Width: <strong>1 page</strong>, Height: 1 page (or Print › <strong>Fit Sheet on One Page</strong>)</td>
+</tr>
+<tr>
+<td><strong>Gridlines / headings</strong></td>
+<td>Page Layout › Sheet Options › Gridlines › <strong>Print</strong></td>
+</tr>
+<tr>
+<td><strong>Header / Footer</strong></td>
+<td>Insert › Header &amp; Footer, or Page Setup › Header/Footer (page number, file name, date)</td>
+</tr>
+<tr>
+<td><strong>Page breaks</strong></td>
+<td>View › <strong>Page Break Preview</strong> (drag the blue lines) · Page Layout › Breaks</td>
+</tr>
+<tr>
+<td><strong>Print / Preview</strong></td>
+<td><strong>File › Print</strong> (<strong>Ctrl + P</strong>)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ Print <strong>Titles</strong> ≠ print <strong>Area</strong>. <em>Titles</em> = the headings that repeat on each page. <em>Area</em> = which cells are printed.<br>⚠️ Gridlines <strong>don&#39;t print</strong> by default. Add borders, or tick Gridlines › Print.</p>
+</blockquote>
+<h3>7.6 Menu Sheet, Navigation Buttons &amp; Links Between Sheets</h3>
+<ul>
+<li><strong>Navigation button:</strong> <strong>Insert › Illustrations › Shapes</strong> → draw a rounded rectangle → type the label (&quot;Functions&quot;) → right-click › <strong>Link…</strong> (<strong>Ctrl + K</strong>) → <strong>Place in This Document</strong> → choose the sheet (and cell, e.g. A1) → OK. Add a &quot;Back to Menu&quot; button on each sheet the same way.</li>
+<li><strong>Hyperlink to a website / file:</strong> Ctrl + K › <strong>Existing File or Web Page</strong>.</li>
+<li><strong>Link a value from another sheet:</strong> type <code>=</code> then click the other sheet&#39;s cell → <code>=Lookup!B3</code> or <code>=&#39;Simple Operation&#39;!O5</code>. When the source changes, the linked cell updates.</li>
+<li>Switch sheets: <strong>Ctrl + Page Down / Ctrl + Page Up</strong>. New sheet: <strong>Shift + F11</strong>.</li>
+</ul>
+<h3>7.7 Final Project extras: Data Validation, PivotTable, Macros</h3>
+<ul>
+<li><strong>Data Validation</strong> (controls what can be typed): select cells → <strong>Data › Data Tools › Data Validation</strong> › <em>Allow:</em> <strong>List</strong> (Source: <code>ADMIN,ACCTG,R &amp; D</code> or a range) / Whole number between 0 and 100 / Date… → <strong>Input Message</strong> and <strong>Error Alert</strong> tabs. A <strong>List</strong> makes a drop-down in the cell.</li>
+<li><strong>PivotTable</strong> (summarize a big table by dragging fields): click in the data → <strong>Insert › PivotTable</strong> → New Worksheet → drag <em>Department</em> to <strong>Rows</strong>, <em>Salary</em> to <strong>Values</strong> (Sum). Change the calculation in <em>Value Field Settings</em>. Refresh with <strong>PivotTable Analyze › Refresh</strong>.</li>
+<li><strong>Macro</strong> (records your steps to replay them): turn on the <strong>Developer</strong> tab (File › Options › Customize Ribbon › tick Developer) → <strong>Developer › Record Macro</strong> (name, shortcut) → do the steps → <strong>Stop Recording</strong>. Run it with <strong>View › Macros</strong> (<strong>Alt + F8</strong>). Save as <strong>.xlsm</strong> (Macro-Enabled Workbook), because a plain .xlsx drops the macros.</li>
+</ul>
+<hr>
+<h2>📝 PART 7 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"In a conditional formatting formula rule applied to J5:J19, which formula colors the cells that say PASSED?","c":"=J5=\"PASSED\"","w":["=J5=PASSED","J5=\"PASSED\"","=$J$5=\"PASSED\""],"e":"Starts with =, text in quotes, written for the top-left cell. Don't lock the row, or every cell checks J5 only."},{"q":"You select H6:I15 and want BOTH the grade and evaluation cells blue when the grade in column H is \"A\". Which rule?","c":"=$H6=\"A\"","w":["=H6=\"A\"","=$H$6=\"A\"","=H$6=\"A\""],"e":"$H locks the column so column I also checks H. The row stays relative."},{"q":"Before using Data › Subtotal \"At each change in: Department\", you must first:","c":"Sort the data by Department","w":["Filter the data by Department","Delete the header row","Create a chart"],"e":"Without sorting, each department is split into several groups."},{"q":"In =SUBTOTAL(9,R5:R7), the number 9 means:","c":"SUM","w":["AVERAGE","COUNT","MAX"],"e":"1 AVERAGE, 2 COUNT, 3 COUNTA, 4 MAX, 5 MIN, 9 SUM."},{"q":"Shortcut to turn AutoFilter on or off:","c":"Ctrl + Shift + L","w":["Ctrl + Shift + F","Alt + =","Ctrl + L"],"e":"Data › Filter. Alt + = is AutoSum."},{"q":"A 5-page employee list must show the column headings (rows 1–4) at the top of EVERY printed page. Use:","c":"Page Layout › Print Titles › Rows to repeat at top","w":["Page Layout › Print Area › Set Print Area","View › Freeze Panes","Insert › Header"],"e":"Freeze Panes only works on screen. Print Titles repeats the rows on paper."},{"q":"Which chart type is best for showing each department's share (percentage) of the total payroll?","c":"Pie chart","w":["Line chart","Scatter chart","Clustered column chart"],"e":"Pie = parts of a whole (one data series)."},{"q":"To make a shape on the Menu sheet jump to the Functions sheet when clicked:","c":"Right-click the shape › Link › Place in This Document › Functions","w":["Right-click the shape › Format Shape › Fill","Data › Data Validation › List","Formulas › Name Manager"],"e":"Ctrl + K opens the same Insert Hyperlink dialog."},{"q":"To make a cell show a drop-down list of allowed choices, use:","c":"Data › Data Validation › Allow: List","w":["Home › Conditional Formatting","Data › Filter","Insert › PivotTable"],"e":"Data Validation is one of the final project requirements."},{"q":"A workbook with a recorded macro must be saved as:","c":".xlsm (Excel Macro-Enabled Workbook)","w":[".xlsx",".csv",".pdf"],"e":"A plain .xlsx cannot store macros."}]</script></div>
+<hr>
+<h2>PART 8 — 📌 EXCEL QUIZ WORKED EXAMPLES (Finals MP1–MP4)</h2>
+<p>These are the actual Excel Quiz problems. Expect the same patterns on the finals: <strong>percent formulas, IF, nested IF, VLOOKUP with an equivalence table, SUM/AVERAGE/MAX/MIN rows, conditional formatting.</strong></p>
+<h3>8.1 📌 MP1 — ABC Company Monthly Payroll (percent chains, hourly rate, overtime)</h3>
+<p>Columns: C <strong>Basic</strong> · D <strong>SSS</strong> · E <strong>Tax</strong> · F <strong>Pag-IBIG</strong> · G <strong>OT Hours</strong> · H <strong>Rate</strong> · I <strong>OT Pay</strong> · J <strong>Deductions</strong> · K <strong>Net</strong></p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Rule</th>
+<th>Formula (row 5)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SSS</td>
+<td>1% of Basic</td>
+<td><code>=C5*1%</code></td>
+</tr>
+<tr>
+<td>Tax</td>
+<td>half of SSS</td>
+<td><code>=D5/2</code></td>
+</tr>
+<tr>
+<td>Pag-IBIG</td>
+<td>10% of Tax</td>
+<td><code>=E5*10%</code></td>
+</tr>
+<tr>
+<td>Rate (per hour)</td>
+<td>Basic ÷ 24 days ÷ 8 hours</td>
+<td><code>=C5/24/8</code></td>
+</tr>
+<tr>
+<td>Overtime Pay</td>
+<td>2 × (Rate × OT hours)</td>
+<td><code>=2*(H5*G5)</code></td>
+</tr>
+<tr>
+<td>Deductions</td>
+<td>SSS + Tax + Pag-IBIG</td>
+<td><code>=SUM(D5:F5)</code></td>
+</tr>
+<tr>
+<td>Net</td>
+<td>Basic − Deductions + OT Pay</td>
+<td><code>=C5-J5+I5</code></td>
+</tr>
+</tbody></table>
+<p><strong>Worked row (EN-001, Basic 10,000, OT 5 hrs):</strong></p>
+<ul>
+<li>SSS = 10,000 × 1% = <strong>100</strong> · Tax = 100 / 2 = <strong>50</strong> · Pag-IBIG = 50 × 10% = <strong>5</strong></li>
+<li>Rate = 10,000 / 24 / 8 = <strong>52.08</strong> per hour</li>
+<li>OT Pay = 2 × (52.08 × 5) = <strong>520.83</strong></li>
+<li>Deductions = 100 + 50 + 5 = <strong>155</strong></li>
+<li>Net = 10,000 − 155 + 520.83 = <strong>10,365.83</strong></li>
+</ul>
+<blockquote>
+<p>⚠️ <code>=C5/24/8</code> divides left to right: (10,000 ÷ 24) ÷ 8. It is the same as <code>=C5/(24*8)</code> but <strong>not</strong> <code>=C5/24*8</code>, which <strong>multiplies</strong> by 8.<br>⚠️ Net <strong>adds</strong> overtime pay and <strong>subtracts</strong> deductions. Read the word problem carefully.</p>
+</blockquote>
+<h3>8.2 📌 MP2 — Summary of Grades (VLOOKUP + equivalence table + AVERAGE + IF + CF)</h3>
+<p><strong>Table of Equivalence (L5:N15)</strong> — <em>Score From</em> (L) · Range (M) · <strong>Equiv.</strong> (N):</p>
+<table>
+<thead>
+<tr>
+<th>Score From (L)</th>
+<th>Range</th>
+<th>Equiv. (N)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>50</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1–5</td>
+<td>55</td>
+</tr>
+<tr>
+<td>6</td>
+<td>6–10</td>
+<td>60</td>
+</tr>
+<tr>
+<td>11</td>
+<td>11–15</td>
+<td>65</td>
+</tr>
+<tr>
+<td>16</td>
+<td>16–20</td>
+<td>70</td>
+</tr>
+<tr>
+<td>21</td>
+<td>21–25</td>
+<td>75</td>
+</tr>
+<tr>
+<td>26</td>
+<td>26–30</td>
+<td>80</td>
+</tr>
+<tr>
+<td>31</td>
+<td>31–35</td>
+<td>85</td>
+</tr>
+<tr>
+<td>36</td>
+<td>36–40</td>
+<td>90</td>
+</tr>
+<tr>
+<td>41</td>
+<td>41–45</td>
+<td>95</td>
+</tr>
+<tr>
+<td>46</td>
+<td>46–50</td>
+<td>98</td>
+</tr>
+</tbody></table>
+<p>Formulas (row 5):</p>
+<ul>
+<li>1st Quiz Equiv: <code>=VLOOKUP(C5,$L$5:$N$15,3,TRUE)</code> (3 = the 3rd column of the table, <strong>Equiv.</strong>). Same for E5 → F5 and G5 → H5.</li>
+<li>Average: <code>=AVERAGE(D5,F5,H5)</code></li>
+<li>Remarks: <code>=IF(I5&gt;=75,&quot;PASSED&quot;,&quot;FAILED&quot;)</code></li>
+<li>CF on J5:J19: <code>=J5=&quot;PASSED&quot;</code> → <strong>blue fill, white text</strong> · <code>=J5=&quot;FAILED&quot;</code> → <strong>red fill, white text</strong></li>
+</ul>
+<p><strong>Worked rows:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Student</th>
+<th>Quiz scores</th>
+<th>Lookups (largest &quot;Score From&quot; ≤ score)</th>
+<th>Equivs</th>
+<th>Average</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sumner</td>
+<td>25, 12, 47</td>
+<td>21, 11, 46</td>
+<td>75, 65, 98</td>
+<td>(75+65+98)/3 = <strong>79.33</strong></td>
+<td><strong>PASSED</strong></td>
+</tr>
+<tr>
+<td>McCartney</td>
+<td>5, 22, 27</td>
+<td>1, 21, 26</td>
+<td>55, 75, 80</td>
+<td>(55+75+80)/3 = <strong>70.00</strong></td>
+<td><strong>FAILED</strong></td>
+</tr>
+<tr>
+<td>Lennon</td>
+<td>45, 37, 45</td>
+<td>41, 36, 41</td>
+<td>95, 90, 95</td>
+<td><strong>93.33</strong></td>
+<td><strong>PASSED</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🔑 <strong>TRUE</strong> here is correct because the table holds <strong>ranges</strong> and column L is sorted <strong>ascending</strong> (0, 1, 6, 11…). Approximate match finds the largest &quot;Score From&quot; that is ≤ the score. With <strong>FALSE</strong>, a score of 25 would give <strong>#N/A</strong>, because 25 isn&#39;t in column L.<br>⚠️ The table range must be <strong>$L$5:$N$15</strong> (absolute), and the lookup column (<strong>L</strong>, the lower bounds) must be the <strong>first</strong> column of the range. Don&#39;t start the range at M (text like &quot;1-5&quot;).</p>
+</blockquote>
+<h3>8.3 📌 MP3 — Jhem&#39;s Softlink Ventures Monthly Commissions (IF with % result, IF with text, summary rows)</h3>
+<p>Sales columns C (Word Pro), D (Spreadsheets), E (Databases):</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Formula (row 6)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Total Sales</td>
+<td><code>=SUM(C6:E6)</code></td>
+</tr>
+<tr>
+<td>Commission (%)</td>
+<td><code>=IF(F6&gt;100000,15%,10%)</code></td>
+</tr>
+<tr>
+<td>Total Commission</td>
+<td><code>=F6*G6</code></td>
+</tr>
+<tr>
+<td>Net Pay</td>
+<td><code>=I6+H6</code> (Gross Pay + Total Commission)</td>
+</tr>
+<tr>
+<td>Remarks</td>
+<td><code>=IF(H6&gt;10000,&quot;Good Job&quot;,&quot;Do Better Next Time&quot;)</code></td>
+</tr>
+<tr>
+<td>TOTAL row</td>
+<td><code>=SUM(C6:C15)</code></td>
+</tr>
+<tr>
+<td>AVERAGE row</td>
+<td><code>=AVERAGE(C6:C15)</code></td>
+</tr>
+<tr>
+<td>MAXIMUM row</td>
+<td><code>=MAX(C6:C15)</code></td>
+</tr>
+<tr>
+<td>MINIMUM row</td>
+<td><code>=MIN(C6:C15)</code></td>
+</tr>
+<tr>
+<td>CF on K6:K15</td>
+<td><code>=K6=&quot;Good Job&quot;</code> → blue/white · <code>=K6=&quot;Do Better Next Time&quot;</code> → red/white</td>
+</tr>
+</tbody></table>
+<p><strong>Worked rows:</strong></p>
+<ul>
+<li><strong>Reeves:</strong> 20,000 + 45,000 + 12,345 = <strong>77,345</strong> → not &gt; 100,000 → <strong>10%</strong> → commission <strong>7,734.50</strong> → net = 6,000 + 7,734.50 = <strong>13,734.50</strong> → 7,734.50 &gt; 10,000? No → <strong>&quot;Do Better Next Time&quot;</strong> (red).</li>
+<li><strong>Gere:</strong> 25,000 + 12,500 + 65,412 = <strong>102,912</strong> → <strong>15%</strong> → <strong>15,436.80</strong> → net = 5,000 + 15,436.80 = <strong>20,436.80</strong> → <strong>&quot;Good Job&quot;</strong> (blue).</li>
+</ul>
+<blockquote>
+<p>🔑 IF can return a <strong>number</strong> (15%) that another formula then uses (<code>=F6*G6</code>). Format column G as <strong>Percentage</strong>.<br>⚠️ The summary rows go <strong>down a column</strong> (C6:C15). Don&#39;t include the TOTAL row in the AVERAGE/MAX/MIN range.</p>
+</blockquote>
+<h3>8.4 📌 MP4 — Nested IFs and Cell Formatting (weighted score + letter grade + evaluation)</h3>
+<p><strong>Score (weighted):</strong> quizzes average = 60%, project = 40%:<br><code>=((C6+D6+E6)/3*60%)+(F6*40%)</code></p>
+<p><strong>Final Grade:</strong> <code>=IF(G6&gt;=98,&quot;A&quot;,IF(G6&gt;=90,&quot;B&quot;,IF(G6&gt;=85,&quot;C&quot;,IF(G6&gt;=80,&quot;D&quot;,IF(G6&gt;=75,&quot;E&quot;,&quot;F&quot;)))))</code><br><strong>Evaluation:</strong> <code>=IF(G6&gt;=98,&quot;Excellent&quot;,IF(G6&gt;=90,&quot;Very Good&quot;,IF(G6&gt;=85,&quot;Good&quot;,IF(G6&gt;=80,&quot;Satisfactory&quot;,IF(G6&gt;=75,&quot;Probation&quot;,&quot;Failed&quot;)))))</code></p>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>Evaluation</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>Excellent</td>
+<td>98–100</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Very Good</td>
+<td>90–97</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Good</td>
+<td>85–89</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Satisfactory</td>
+<td>80–84</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Probation</td>
+<td>75–79</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Failed</td>
+<td>0–74</td>
+</tr>
+</tbody></table>
+<p>CF on <strong>H6:I15</strong>: <code>=$H6=&quot;A&quot;</code> → blue fill/white text · <code>=$H6=&quot;E&quot;</code> → yellow fill · <code>=$H6=&quot;F&quot;</code> → red fill/white text.</p>
+<p><strong>Worked rows:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Student</th>
+<th>Q1, Q2, Q3</th>
+<th>Project</th>
+<th>Quiz avg × 60%</th>
+<th>Project × 40%</th>
+<th>Score</th>
+<th>Grade / Eval</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>James</td>
+<td>89, 87, 88</td>
+<td>98</td>
+<td>88 × .6 = 52.8</td>
+<td>39.2</td>
+<td><strong>92.0</strong></td>
+<td><strong>B / Very Good</strong></td>
+</tr>
+<tr>
+<td>Liza Mae</td>
+<td>98, 99, 99</td>
+<td>99</td>
+<td>98.67 × .6 = 59.2</td>
+<td>39.6</td>
+<td><strong>98.8</strong></td>
+<td><strong>A / Excellent</strong> (blue)</td>
+</tr>
+<tr>
+<td>Kinabe</td>
+<td>75, 79, 79</td>
+<td>75</td>
+<td>77.67 × .6 = 46.6</td>
+<td>30.0</td>
+<td><strong>76.6</strong></td>
+<td><strong>E / Probation</strong> (yellow)</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>77, 77, 70</td>
+<td>70</td>
+<td>74.67 × .6 = 44.8</td>
+<td>28.0</td>
+<td><strong>72.8</strong></td>
+<td><strong>F / Failed</strong> (red)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ <code>=(C6+D6+E6)/3*60%+F6*40%</code> gives the same answer, because ×/÷ come before +. But <strong><code>=C6+D6+E6/3*60%…</code> is WRONG</strong>. Only E6 gets divided. <strong>Always put the sum in parentheses.</strong><br>⚠️ A score of <strong>97.5</strong> is <strong>not ≥ 98</strong> → <strong>B</strong>. The ranges in the table (97–90) are whole numbers, but the formula decides using <strong>&gt;=</strong>.<br>🔑 Count the parentheses: <strong>5 IFs → &quot;)))))&quot;</strong>. Excel colors each matching pair while you type.</p>
+</blockquote>
+<hr>
+<h2>📝 PART 8 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"MP1: The hourly rate is Basic (C5) divided by 24 working days and 8 hours. Write the formula.","c":"=C5/24/8","w":["=C5/24*8","=C5*24*8","=24/8/C5"],"e":"Divide by 24, then by 8. /24*8 would multiply by 8."},{"q":"MP1: Overtime pay is twice the hourly rate (H5) times the overtime hours (G5). Write the formula.","c":"=2*(H5*G5)","w":["=2+(H5*G5)","=(H5+G5)*2","=H5*G5/2"],"e":"Double time = 2 × rate × hours."},{"q":"MP1: Basic 10,000, Deductions 155, OT Pay 520.83. Net = Basic − Deductions + OT Pay = ?","c":"10,365.83","w":["9,324.17","10,675.83","9,845.00"],"e":"10,000 − 155 + 520.83 = 10,365.83."},{"q":"MP2: The equivalence table is L5:N15, and the equivalent grade is in its 3rd column. Write the lookup for the score in C5.","c":"=VLOOKUP(C5,$L$5:$N$15,3,TRUE)","w":["=VLOOKUP(C5,L5:N15,3,FALSE)","=HLOOKUP(C5,$L$5:$N$15,3,TRUE)","=VLOOKUP($L$5:$N$15,C5,3,TRUE)"],"e":"The table holds ranges, so use TRUE (approximate). Lock the table with $."},{"q":"MP2: Using the equivalence table (21→75, 26→80, 46→98…), a quiz score of 27 converts to:","c":"80","w":["75","85","#N/A"],"e":"The largest \"Score From\" ≤ 27 is 26, which gives 80."},{"q":"MP3: Commission is 15% if Total Sales (F6) is over 100,000, otherwise 10%. Write the formula.","c":"=IF(F6>100000,15%,10%)","w":["=IF(F6>100000,\"15%\",\"10%\")","=IF(F6\u003c100000,15%,10%)","=IF(F6>=100000,10%,15%)"],"e":"Return numbers (no quotes) so =F6*G6 can calculate with them."},{"q":"MP3: Total Sales = 77,345. Commission rate and Total Commission?","c":"10% and 7,734.50","w":["15% and 11,601.75","10% and 77,345","15% and 7,734.50"],"e":"77,345 is not over 100,000, so 10%. 77,345 × 10% = 7,734.50."},{"q":"MP4: Score = average of 3 quizzes (C6:E6) at 60% plus Project (F6) at 40%. Write the formula.","c":"=((C6+D6+E6)/3*60%)+(F6*40%)","w":["=(C6+D6+E6/3*60%)+(F6*40%)","=(C6+D6+E6)*60%/3+F6","=AVERAGE(C6:F6)*60%"],"e":"The parentheses around the sum come first. Without them, only E6 is divided by 3."},{"q":"MP4: Quizzes 89, 87, 88 and Project 98. What are the score and the letter grade?","c":"92.0 and B","w":["90.5 and B","92.0 and A","88.0 and C"],"e":"Average 88 × 60% = 52.8, plus 98 × 40% = 39.2, gives 92.0. That is ≥ 90 but \u003c 98, so B."},{"q":"MP4: Which score gets \"E / Probation\"?","c":"76.6","w":["74.9","80.0","85.0"],"e":"E = 75 to below 80. 74.9 is F, 80 is D, 85 is C."}]</script></div>
+<hr>
+<h2>PART 9 — 📋 EXCEL FORMULA CHEAT SHEET</h2>
+<h3>9.1 Operators &amp; Order</h3>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Operator</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>( )</code> parentheses</td>
+<td><code>=(C6+D6+E6)/3</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>-</code> negation</td>
+<td><code>=-A1</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>%</code> percent</td>
+<td><code>10%</code> = 0.10</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>^</code> power</td>
+<td><code>=2^3</code> = 8</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>*</code> <code>/</code> (left → right)</td>
+<td><code>=C5/24/8</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>+</code> <code>-</code> (left → right)</td>
+<td><code>=C5-J5+I5</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>&amp;</code> join text</td>
+<td><code>=E5&amp;&quot; &quot;&amp;F5</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>=</code> <code>&lt;&gt;</code> <code>&lt;</code> <code>&gt;</code> <code>&lt;=</code> <code>&gt;=</code></td>
+<td><code>=I5&gt;=75</code> → TRUE/FALSE</td>
+</tr>
+</tbody></table>
+<h3>9.2 Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Syntax</th>
+<th>Exercise example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SUM</td>
+<td><code>=SUM(number1, [number2], …)</code></td>
+<td><code>=SUM(D5:F5)</code> · <code>=SUM(J5,P5,Q5)</code></td>
+</tr>
+<tr>
+<td>AVERAGE</td>
+<td><code>=AVERAGE(range)</code></td>
+<td><code>=AVERAGE(D5,F5,H5)</code></td>
+</tr>
+<tr>
+<td>MIN / MAX</td>
+<td><code>=MIN(range)</code> / <code>=MAX(range)</code></td>
+<td><code>=MAX(C6:C15)</code></td>
+</tr>
+<tr>
+<td>COUNT / COUNTA</td>
+<td><code>=COUNT(range)</code> / <code>=COUNTA(range)</code></td>
+<td>numbers only / non-empty</td>
+</tr>
+<tr>
+<td>COUNTIF</td>
+<td><code>=COUNTIF(range, criteria)</code></td>
+<td><code>=COUNTIF(J5:J19,&quot;PASSED&quot;)</code></td>
+</tr>
+<tr>
+<td>SUMIF</td>
+<td><code>=SUMIF(range, criteria, [sum_range])</code></td>
+<td><code>=SUMIF(G5:G24,&quot;ADMIN&quot;,J5:J24)</code></td>
+</tr>
+<tr>
+<td>IF</td>
+<td><code>=IF(test, if_true, if_false)</code></td>
+<td><code>=IF(J5&lt;4500,&quot;Part-time&quot;,&quot;Fulltime&quot;)</code></td>
+</tr>
+<tr>
+<td>Nested IF</td>
+<td><code>=IF(t1,r1,IF(t2,r2,IF(t3,r3,r4)))</code></td>
+<td>MP4 grade (5 IFs)</td>
+</tr>
+<tr>
+<td>AND / OR</td>
+<td><code>=IF(AND(A1&gt;=75,B1&gt;=75),&quot;PASS&quot;,&quot;FAIL&quot;)</code></td>
+<td>Both / either condition</td>
+</tr>
+<tr>
+<td>VLOOKUP</td>
+<td><code>=VLOOKUP(value, table, col_index, [TRUE/FALSE])</code></td>
+<td><code>=VLOOKUP(C5,$L$5:$N$15,3,TRUE)</code></td>
+</tr>
+<tr>
+<td>HLOOKUP</td>
+<td><code>=HLOOKUP(value, table, row_index, [TRUE/FALSE])</code></td>
+<td><code>=HLOOKUP(J5,Lookup!$F$2:$O$3,2)</code></td>
+</tr>
+<tr>
+<td>SUBTOTAL</td>
+<td><code>=SUBTOTAL(function_num, range)</code></td>
+<td><code>=SUBTOTAL(9,R5:R7)</code></td>
+</tr>
+<tr>
+<td>ROUND</td>
+<td><code>=ROUND(number, num_digits)</code></td>
+<td><code>=ROUND(C5/24/8,2)</code></td>
+</tr>
+<tr>
+<td>TODAY / NOW</td>
+<td><code>=TODAY()</code> / <code>=NOW()</code></td>
+<td>Date that updates</td>
+</tr>
+</tbody></table>
+<h3>9.3 Percent Patterns</h3>
+<table>
+<thead>
+<tr>
+<th>Problem says</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10% <strong>of</strong> salary</td>
+<td><code>=J5*10%</code></td>
+</tr>
+<tr>
+<td>salary <strong>plus</strong> 5% (increase)</td>
+<td><code>=(J5*5%)+J5</code> or <code>=J5*105%</code></td>
+</tr>
+<tr>
+<td>salary <strong>less</strong> 20% (discount)</td>
+<td><code>=J5-(J5*20%)</code> or <code>=J5*80%</code></td>
+</tr>
+<tr>
+<td>what <strong>percent</strong> is A of B</td>
+<td><code>=A1/B1</code> → format as %</td>
+</tr>
+<tr>
+<td>weighted: 60% quizzes + 40% project</td>
+<td><code>=(avg*60%)+(project*40%)</code></td>
+</tr>
+</tbody></table>
+<h3>9.4 VLOOKUP vs HLOOKUP · TRUE vs FALSE</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>VLOOKUP</th>
+<th>HLOOKUP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Table layout</td>
+<td><strong>Vertical</strong>, keys <strong>down</strong> the first <strong>column</strong></td>
+<td><strong>Horizontal</strong>, keys <strong>across</strong> the first <strong>row</strong></td>
+</tr>
+<tr>
+<td>3rd argument</td>
+<td><strong>col</strong>_index_num</td>
+<td><strong>row</strong>_index_num</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>TRUE / omitted (approximate)</th>
+<th>FALSE / 0 (exact)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Use with</td>
+<td><strong>brackets / ranges</strong> (grades, salary levels)</td>
+<td><strong>IDs / codes / names</strong></td>
+</tr>
+<tr>
+<td>Needs sorting?</td>
+<td><strong>YES, ascending</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Not found</td>
+<td>next lower value. Below the first value → #N/A</td>
+<td><strong>#N/A</strong></td>
+</tr>
+</tbody></table>
+<h3>9.5 References</h3>
+<p><code>A1</code> relative · <code>$A$1</code> absolute · <code>$A1</code> column locked · <code>A$1</code> row locked · <strong>F4</strong> cycles · <code>Sheet2!A1</code> other sheet · <code>&#39;Sheet Name&#39;!A1</code> sheet name with spaces</p>
+<h3>9.6 Errors</h3>
+<p><strong>#N/A</strong> not found · <strong>#DIV/0!</strong> ÷ 0 · <strong>#VALUE!</strong> wrong type (text in math) · <strong>#REF!</strong> deleted/invalid reference · <strong>#NAME?</strong> misspelled function or text without quotes · <strong>#NUM!</strong> bad number · <strong>#NULL!</strong> space instead of , or : · <strong>#####</strong> column too narrow</p>
+<hr>
+<h2>PART 10 — POWERPOINT (Exercise #11 + Final Project)</h2>
+<h3>10.1 What Exercise #11 Used (from the actual file)</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>In the file</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Slides</strong></td>
+<td><strong>4</strong></td>
+</tr>
+<tr>
+<td><strong>Slide size</strong></td>
+<td><strong>Widescreen 16:9</strong> (13.333&quot; × 7.5&quot;)</td>
+</tr>
+<tr>
+<td><strong>Theme</strong></td>
+<td><strong>Film Burn</strong> (Design tab theme)</td>
+</tr>
+<tr>
+<td><strong>Layout</strong></td>
+<td>Every slide uses the theme&#39;s <strong>Title Slide</strong> layout. The title/subtitle/picture <strong>placeholders were left empty</strong></td>
+</tr>
+<tr>
+<td><strong>Pictures</strong></td>
+<td>Each slide has <strong>one full-slide picture</strong> (stretched edge to edge): a scene in <strong>black-and-white / grayscale</strong> (slides 1 and 3), then the <strong>same scene in color</strong> (slides 2 and 4). Slides 3–4 picture named <strong>&quot;Multiverse&quot;</strong>. The source files included a <strong>transparent PNG cut-out</strong> of a character (background removed)</td>
+</tr>
+<tr>
+<td><strong>Transitions</strong></td>
+<td><strong>Fade</strong> on slides 2, 3 and 4, speed <strong>slow</strong> (slide 4 duration <strong>1.5 s</strong>). Slide 1 has none</td>
+</tr>
+<tr>
+<td><strong>Animations</strong></td>
+<td><strong>None</strong></td>
+</tr>
+<tr>
+<td><strong>Text, hyperlinks, audio, video</strong></td>
+<td>None</td>
+</tr>
+</tbody></table>
+<p>So the effect is a <strong>&quot;black-and-white to color&quot; reveal</strong>: the gray picture is shown, then the <strong>Fade</strong> transition dissolves into the identical color picture.</p>
+<h3>10.2 Basics: Themes, Layouts, Placeholders, Slide Size</h3>
+<ul>
+<li><strong>New slide:</strong> <strong>Home › New Slide ▾</strong> (pick a layout), <strong>Ctrl + M</strong>. <strong>Duplicate slide:</strong> <strong>Ctrl + D</strong> (right-click thumbnail › Duplicate Slide).</li>
+<li><strong>Layout</strong> (arrangement of placeholders): <strong>Home › Slides › Layout</strong> › Title Slide · Title and Content · Section Header · Two Content · Comparison · Title Only · <strong>Blank</strong> · Picture with Caption.</li>
+<li><strong>Placeholder</strong> = the dotted box on a layout (&quot;Click to add title&quot;). An <strong>empty placeholder doesn&#39;t show in Slide Show</strong> or print.</li>
+<li><strong>Theme</strong> (colors + fonts + effects + background together): <strong>Design › Themes</strong> gallery (Film Burn, Ion, Facet…) · <strong>Variants</strong> (color/font/background versions of the theme).</li>
+<li><strong>Background:</strong> <strong>Design › Format Background</strong> › Solid / Gradient / <strong>Picture or texture fill</strong> / Pattern › <strong>Apply to All</strong>.</li>
+<li><strong>Slide size:</strong> <strong>Design › Customize › Slide Size</strong> › <strong>Widescreen (16:9)</strong> / Standard (4:3) / Custom.</li>
+<li><strong>Slide Master</strong> (change the layout/fonts for ALL slides): <strong>View › Slide Master</strong>.</li>
+</ul>
+<h3>10.3 Pictures (the main skill in Exercise #11)</h3>
+<ul>
+<li><strong>Insert › Images › Pictures › This Device…</strong> (or click the picture icon inside a picture placeholder).</li>
+<li><strong>Full-slide (full-bleed) picture:</strong> drag the corners to the slide edges, or <strong>Picture Format › Size</strong> = slide width × height (13.333&quot; × 7.5&quot;), then <strong>Arrange › Align › Align Center / Align Middle</strong>.</li>
+<li><strong>Picture Format</strong> tab:<ul>
+<li><strong>Remove Background</strong> → mark areas to keep / remove → Keep Changes (makes a cut-out, like the transparent character PNG)</li>
+<li><strong>Color › Recolor › Grayscale</strong> (or Black and White / Washout) → the <strong>black-and-white version</strong></li>
+<li><strong>Corrections</strong> (brightness / contrast / sharpness) · <strong>Artistic Effects</strong> · <strong>Transparency</strong></li>
+<li><strong>Crop</strong> (also Crop to Shape, Aspect Ratio) · <strong>Picture Styles</strong> · <strong>Picture Border / Effects</strong></li>
+<li><strong>Arrange:</strong> <strong>Bring Forward / Send Backward</strong>, <strong>Selection Pane</strong> (rename and hide objects, like &quot;Multiverse&quot;), <strong>Group</strong> (Ctrl + G)</li>
+</ul>
+</li>
+<li><strong>Reset Picture</strong> undoes all the picture formatting.</li>
+</ul>
+<blockquote>
+<p>🔑 To make a gray→color reveal yourself: insert the color picture → <strong>Duplicate Slide</strong> (Ctrl + D) → on the first copy set <strong>Color › Grayscale</strong> → give the second slide a <strong>Fade</strong> transition.</p>
+</blockquote>
+<h3>10.4 Transitions (effects BETWEEN slides)</h3>
+<ul>
+<li><strong>Transitions</strong> tab › gallery: <strong>Subtle</strong> (Fade, Push, Wipe, Split, Reveal, Cut, Random Bars, Shape, Uncover, Cover, Flash, <strong>Morph</strong>) · <strong>Exciting</strong> (Curtains, Wind, Prestige, Fracture, Crush, Peel Off, Page Curl, Airplane, Origami, Dissolve, Checkerboard, Blinds, Clock, Ripple, Honeycomb, Glitter, Vortex, Shred, Switch, Flip, Gallery, Cube, Doors, Box, Comb, Zoom, Random) · <strong>Dynamic Content</strong> (Pan, Ferris Wheel, Conveyor, Rotate, Window, Orbit, Fly Through).</li>
+<li><strong>Effect Options</strong> (direction / variant) · <strong>Sound</strong> · <strong>Duration</strong> (seconds, e.g. <strong>01.50</strong>) · <strong>Apply To All</strong>.</li>
+<li><strong>Advance Slide:</strong> <strong>On Mouse Click</strong> and/or <strong>After: 00:05.00</strong> (automatic timing).</li>
+<li>The <strong>transition belongs to the slide it goes INTO</strong>. Exercise #11&#39;s slide 1 had none; slides 2–4 had Fade.</li>
+<li><strong>Morph</strong> (M365 / 2019+): duplicate a slide, move or resize objects on the copy, apply <strong>Morph</strong> to the copy, and the objects glide smoothly between positions.</li>
+</ul>
+<h3>10.5 Animations (effects on OBJECTS inside a slide)</h3>
+<p>Select an object → <strong>Animations</strong> tab.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Color</th>
+<th>Meaning</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Entrance</strong></td>
+<td><strong>Green</strong></td>
+<td>Object <strong>appears</strong></td>
+<td>Appear, Fade, Fly In, Float In, Split, Wipe, Zoom, Bounce</td>
+</tr>
+<tr>
+<td><strong>Emphasis</strong></td>
+<td><strong>Yellow/Gold</strong></td>
+<td>Object <strong>draws attention</strong> while already on screen</td>
+<td>Pulse, Spin, Grow/Shrink, Teeter, Color Pulse</td>
+</tr>
+<tr>
+<td><strong>Exit</strong></td>
+<td><strong>Red</strong></td>
+<td>Object <strong>leaves</strong></td>
+<td>Disappear, Fade, Fly Out, Zoom</td>
+</tr>
+<tr>
+<td><strong>Motion Paths</strong></td>
+<td>(lines)</td>
+<td>Object <strong>moves along a path</strong></td>
+<td>Lines, Arcs, Turns, Loops, <strong>Custom Path</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Effect Options</strong> (direction, by paragraph) · <strong>Animation Pane</strong> (list + order of all animations, Play From) · <strong>Add Animation</strong> (adds a <strong>second</strong> effect to the same object; picking from the gallery instead <strong>replaces</strong> it) · <strong>Animation Painter</strong> (copy an animation to another object, like Format Painter).</li>
+<li><strong>Timing group:</strong><ul>
+<li><strong>Start:</strong> <strong>On Click</strong> · <strong>With Previous</strong> (same time as the one before) · <strong>After Previous</strong> (right after the one before finishes)</li>
+<li><strong>Duration</strong> (speed) · <strong>Delay</strong> · <strong>Reorder: Move Earlier / Move Later</strong></li>
+<li><strong>Trigger</strong> › On Click of <em>[object]</em>: the animation plays when you click a <strong>specific object</strong>. This is how an <strong>interactive</strong> slide is built (click a planet → its info box appears).</li>
+</ul>
+</li>
+<li>The <strong>numbers 1, 2, 3</strong> beside objects in Normal view = the click order.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Transition = between slides (Transitions tab). Animation = an object inside a slide (Animations tab).</strong> This is the #1 PowerPoint exam trap.<br>⚠️ Choosing a new effect from the gallery <strong>replaces</strong> the old one. Use <strong>Add Animation</strong> to stack effects.</p>
+</blockquote>
+<h3>10.6 Interactive Presentation (Final Project topic option)</h3>
+<ul>
+<li><strong>Hyperlink to another slide:</strong> select text/shape/picture → <strong>Insert › Links › Link</strong> (<strong>Ctrl + K</strong>) › <strong>Place in This Document</strong> → pick the slide. Hyperlinks only work in <strong>Slide Show</strong> view.</li>
+<li><strong>Action</strong> (Insert › Links › Action) › <strong>Mouse Click / Mouse Over</strong> › Hyperlink to: Next / Previous / First / Last slide / a specific slide / URL / Run program, plus sound.</li>
+<li><strong>Action Buttons:</strong> <strong>Insert › Shapes › Action Buttons</strong> (◀ Back, ▶ Next, 🏠 Home, ⏮ Beginning, ⏭ End, ↩ Return). The Action Settings box opens automatically.</li>
+<li><strong>Zoom:</strong> <strong>Insert › Links › Zoom</strong> › Summary Zoom / Section Zoom / <strong>Slide Zoom</strong> (a clickable thumbnail menu).</li>
+<li><strong>Triggers</strong> (10.5) + <strong>Morph</strong> (10.4) = animated, interactive feel.</li>
+<li><strong>Media:</strong> <strong>Insert › Media › Video › This Device</strong> / Online Video · <strong>Audio › Audio on My PC</strong> → <strong>Playback</strong> tab: Start <strong>Automatically / When Clicked On</strong>, <strong>Play Across Slides</strong>, Loop until Stopped, Hide During Show, Trim.</li>
+</ul>
+<h3>10.7 Views &amp; Slide Show</h3>
+<table>
+<thead>
+<tr>
+<th>View / action</th>
+<th>Path / shortcut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Normal</strong> (edit)</td>
+<td>View › Normal</td>
+</tr>
+<tr>
+<td><strong>Slide Sorter</strong> (rearrange thumbnails)</td>
+<td>View › Slide Sorter</td>
+</tr>
+<tr>
+<td><strong>Notes Page</strong> / <strong>Reading View</strong></td>
+<td>View tab</td>
+</tr>
+<tr>
+<td><strong>Start from beginning</strong></td>
+<td><strong>F5</strong> (Slide Show › From Beginning)</td>
+</tr>
+<tr>
+<td><strong>Start from current slide</strong></td>
+<td><strong>Shift + F5</strong></td>
+</tr>
+<tr>
+<td><strong>Presenter View</strong></td>
+<td><strong>Alt + F5</strong></td>
+</tr>
+<tr>
+<td>Next / previous slide</td>
+<td><strong>Enter, Space, N, →</strong> / <strong>Backspace, P, ←</strong></td>
+</tr>
+<tr>
+<td>Black / white screen</td>
+<td><strong>B</strong> / <strong>W</strong></td>
+</tr>
+<tr>
+<td>Go to slide number</td>
+<td>type the number + <strong>Enter</strong></td>
+</tr>
+<tr>
+<td><strong>End show</strong></td>
+<td><strong>Esc</strong></td>
+</tr>
+<tr>
+<td>Rehearse Timings / Record</td>
+<td>Slide Show tab</td>
+</tr>
+<tr>
+<td>Hide a slide</td>
+<td>Slide Show › Hide Slide</td>
+</tr>
+</tbody></table>
+<h3>10.8 Printing Handouts (Final Project: 6 slides per page)</h3>
+<p><strong>File › Print (Ctrl + P)</strong> › Settings › <strong>Full Page Slides ▾</strong> › <strong>Handouts › 6 Slides Horizontal</strong> (or 6 Slides Vertical) › choose the printer › Print.<br>Other options: Notes Pages · Outline · Frame Slides · Scale to Fit Paper · Color / Grayscale / Pure Black and White.</p>
+<blockquote>
+<p>⚠️ &quot;6 slides per page&quot; is set in <strong>Print › Handouts</strong>, not by resizing the slides.</p>
+</blockquote>
+<hr>
+<h2>📝 PART 10 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"Exercise #11's slides change with a gentle dissolve from one to the next. Which tab and effect was used?","c":"Transitions tab › Fade","w":["Animations tab › Fade","Design tab › Variants","Picture Format › Artistic Effects"],"e":"The effect is between slides, so it is a transition. Exercise #11 used Fade (slow)."},{"q":"Which Picture Format command turns a color photo into a black-and-white version?","c":"Color › Recolor › Grayscale","w":["Remove Background","Crop","Picture Border"],"e":"Color › Recolor has Grayscale, Black and White, Washout, and more."},{"q":"An Entrance animation is shown in the gallery with which color?","c":"Green","w":["Yellow","Red","Blue"],"e":"Entrance = green, Emphasis = yellow, Exit = red, Motion Path = lines."},{"q":"You want an animation to play automatically right after the previous one finishes. Set Start to:","c":"After Previous","w":["On Click","With Previous","Trigger"],"e":"With Previous = at the same time. After Previous = once the previous one ends."},{"q":"Which shortcut starts the slide show from the CURRENT slide?","c":"Shift + F5","w":["F5","Ctrl + F5","Alt + F5"],"e":"F5 starts from the beginning. Alt + F5 opens Presenter View."},{"q":"To make clicking a picture of Mars show the Mars info box on the same slide, use:","c":"An animation Trigger (On Click of the Mars picture)","w":["A Fade transition","Slide Sorter view","Design › Variants"],"e":"Animations › Trigger › On Click of [object] makes a slide interactive."},{"q":"The final project requires printing 6 slides on each page. Where is this set?","c":"File › Print › Handouts › 6 Slides","w":["Design › Slide Size › Custom","View › Slide Sorter › Print","Home › Layout › Six Content"],"e":"Handouts print several slide thumbnails per page."},{"q":"Which feature makes objects smoothly glide from their position on one slide to their new position on the next slide?","c":"Morph transition","w":["Fly In animation","Action button","Slide Master"],"e":"Duplicate the slide, move the objects, then apply Morph to the second slide."},{"q":"To add a second animation to an object that already has one, click:","c":"Add Animation","w":["A new effect in the Animation gallery","Animation Painter","Reorder › Move Earlier"],"e":"Picking from the gallery replaces the existing effect. Add Animation stacks a new one."}]</script></div>
+<hr>
+<h2>PART 11 — FINAL PROJECT REQUIREMENTS (ICC Final Project, A.Y. 2026–2027)</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Weight</th>
+<th>Must include</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>MS Word</strong></td>
+<td><strong>30%</strong></td>
+<td><strong>Table of Contents</strong> · <strong>Mail Merge with ≥ 20 recipients</strong> (letter, invitation, or certificate) · at least <strong>one application form made with a table</strong> · a <strong>Software Categories Research</strong> paper formatted with <strong>headers &amp; footers (letterhead, logo, page number)</strong>, <strong>columns</strong>, <strong>drop cap</strong>, <strong>images</strong>, <strong>bullets or numbering</strong>, <strong>borders and shading</strong></td>
+</tr>
+<tr>
+<td><strong>MS Excel</strong></td>
+<td><strong>30%</strong></td>
+<td>A <strong>Basic Information System</strong> on a business/institutional topic (POS, accounting, sales summaries, inventory, school registration, enrollment, or grading) with <strong>≥ 2 computation worksheets</strong>. Features: <strong>business formulas</strong>, <strong>links between worksheets</strong>, <strong>conditional formatting</strong>, <strong>lookup &amp; reference functions</strong>, <strong>charts</strong>, <strong>subtotals</strong>, <strong>filtering</strong>, <strong>data validation</strong>, <strong>macros and/or PivotTable</strong></td>
+</tr>
+<tr>
+<td><strong>MS PowerPoint</strong></td>
+<td><strong>30%</strong></td>
+<td>Topic: <strong>Beauty of the Night</strong>, <strong>The Solar System</strong>, <strong>interactive slide (animated)</strong>, or <strong>interactive presentation</strong>. Use <strong>animations, transitions, images, graphics, interactive elements</strong>. Electronic + printed copy, <strong>6 slides per page</strong></td>
+</tr>
+<tr>
+<td><strong>Printed &amp; electronic copies</strong></td>
+<td><strong>10%</strong></td>
+<td><strong>8.5 × 11&quot; short bond paper</strong> · page numbering <strong>starts on the first printed page</strong> · <strong>color-coded folder</strong> (1-12 Blue, 1-13 Orange, 1-14 Red, 1-15 Yellow), <strong>no sliding folders</strong> · clamp or paper binder · PPT in soft copy and hard copy</td>
+</tr>
+</tbody></table>
+<p><strong>Deadlines:</strong> BSIT 1-15 → <strong>Dec 2</strong> · BSIT 1-12 → <strong>Dec 4</strong> · BSIT 1-13 &amp; 1-14 → <strong>Dec 5</strong>. Projects that don&#39;t meet the requirements <strong>will not be accepted</strong>.</p>
+<blockquote>
+<p>🔑 Almost every requirement is something you already practiced: TOC = Ex #5 tabs + Heading styles · Mail Merge = Ex #8 · table form = Ex #9 · drop cap = Ex #4/#7 · borders = Ex #7 · bullets = Ex #6 · Excel = Ex #10 + MP1–MP4 · PowerPoint = Ex #11 plus animations, triggers and hyperlinks.</p>
+</blockquote>
+<hr>
+<h2>⌨️ KEYBOARD SHORTCUTS TABLE</h2>
+<h3>Common to Word, Excel, PowerPoint</h3>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+<th></th>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl + N</td>
+<td>New file</td>
+<td></td>
+<td>Ctrl + Z / Ctrl + Y</td>
+<td>Undo / Redo</td>
+</tr>
+<tr>
+<td>Ctrl + O</td>
+<td>Open</td>
+<td></td>
+<td>Ctrl + X / C / V</td>
+<td>Cut / Copy / Paste</td>
+</tr>
+<tr>
+<td>Ctrl + S</td>
+<td>Save</td>
+<td></td>
+<td>Ctrl + A</td>
+<td>Select all</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>Save As</td>
+<td></td>
+<td>Ctrl + B / I / U</td>
+<td>Bold / Italic / Underline</td>
+</tr>
+<tr>
+<td>Ctrl + P</td>
+<td>Print</td>
+<td></td>
+<td>Ctrl + F / Ctrl + H</td>
+<td>Find / Replace</td>
+</tr>
+<tr>
+<td>Ctrl + K</td>
+<td>Insert hyperlink</td>
+<td></td>
+<td>F7</td>
+<td>Spelling check</td>
+</tr>
+<tr>
+<td>Ctrl + W</td>
+<td>Close file</td>
+<td></td>
+<td>Alt (then letters)</td>
+<td>Ribbon KeyTips</td>
+</tr>
+</tbody></table>
+<h3>Word</h3>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+<th></th>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl + L / E / R / J</td>
+<td>Left / Center / Right / Justify</td>
+<td></td>
+<td>Ctrl + 1 / 5 / 2</td>
+<td>Single / 1.5 / Double spacing</td>
+</tr>
+<tr>
+<td>Ctrl + M / Ctrl + Shift + M</td>
+<td>Indent / un-indent</td>
+<td></td>
+<td>Ctrl + T</td>
+<td>Hanging indent</td>
+</tr>
+<tr>
+<td>Ctrl + D</td>
+<td>Font dialog</td>
+<td></td>
+<td>Shift + F3</td>
+<td>Change case</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + D</td>
+<td>Double underline</td>
+<td></td>
+<td>Ctrl + Shift + W</td>
+<td>Words-only underline</td>
+</tr>
+<tr>
+<td>Ctrl + =</td>
+<td>Subscript</td>
+<td></td>
+<td>Ctrl + Shift + =</td>
+<td>Superscript</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + A</td>
+<td>All caps</td>
+<td></td>
+<td>Ctrl + Shift + K</td>
+<td>Small caps</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + &gt; / &lt;</td>
+<td>Bigger / smaller font</td>
+<td></td>
+<td>Ctrl + Space</td>
+<td>Remove character formatting</td>
+</tr>
+<tr>
+<td>Ctrl + Enter</td>
+<td>Page break</td>
+<td></td>
+<td>Ctrl + Shift + Enter</td>
+<td>Column break</td>
+</tr>
+<tr>
+<td>Shift + Enter</td>
+<td>Line break</td>
+<td></td>
+<td>Alt + Ctrl + F / D</td>
+<td>Footnote / Endnote</td>
+</tr>
+<tr>
+<td>Ctrl + Tab</td>
+<td>Tab inside a table cell</td>
+<td></td>
+<td>Alt + F9</td>
+<td>Show/hide field codes</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>Update field / TOC</td>
+<td></td>
+<td>Ctrl + G</td>
+<td>Go To</td>
+</tr>
+</tbody></table>
+<h3>Excel</h3>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+<th></th>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>Start a formula</td>
+<td></td>
+<td>F2</td>
+<td>Edit cell</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Toggle $ (absolute)</td>
+<td></td>
+<td>Alt + =</td>
+<td>AutoSum</td>
+</tr>
+<tr>
+<td>Ctrl + 1</td>
+<td>Format Cells</td>
+<td></td>
+<td>Shift + F3</td>
+<td>Insert Function</td>
+</tr>
+<tr>
+<td>Ctrl + D / Ctrl + R</td>
+<td>Fill down / right</td>
+<td></td>
+<td>Ctrl + Enter</td>
+<td>Fill selection</td>
+</tr>
+<tr>
+<td>Alt + Enter</td>
+<td>New line in cell</td>
+<td></td>
+<td>Ctrl + ;</td>
+<td>Today&#39;s date</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + L</td>
+<td>Filter on/off</td>
+<td></td>
+<td><code>Ctrl + `</code></td>
+<td>Show formulas</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + %</td>
+<td>Percent format</td>
+<td></td>
+<td>Ctrl + Shift + $</td>
+<td>Currency format</td>
+</tr>
+<tr>
+<td>Alt + F1</td>
+<td>Chart on same sheet</td>
+<td></td>
+<td>F11</td>
+<td>Chart on new sheet</td>
+</tr>
+<tr>
+<td>Ctrl + PgDn / PgUp</td>
+<td>Next / previous sheet</td>
+<td></td>
+<td>Shift + F11</td>
+<td>New worksheet</td>
+</tr>
+<tr>
+<td>Ctrl + Home</td>
+<td>Go to A1</td>
+<td></td>
+<td>Ctrl + Arrow</td>
+<td>Jump to edge of data</td>
+</tr>
+<tr>
+<td>Alt + F8</td>
+<td>Macros</td>
+<td></td>
+<td>Ctrl + Space / Shift + Space</td>
+<td>Select column / row</td>
+</tr>
+</tbody></table>
+<h3>PowerPoint</h3>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+<th></th>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl + M</td>
+<td>New slide</td>
+<td></td>
+<td>Ctrl + D</td>
+<td>Duplicate slide/object</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Show from beginning</td>
+<td></td>
+<td>Shift + F5</td>
+<td>Show from current slide</td>
+</tr>
+<tr>
+<td>Alt + F5</td>
+<td>Presenter View</td>
+<td></td>
+<td>Esc</td>
+<td>End show</td>
+</tr>
+<tr>
+<td>B / W</td>
+<td>Black / white screen</td>
+<td></td>
+<td>Number + Enter</td>
+<td>Jump to slide</td>
+</tr>
+<tr>
+<td>Ctrl + G / Ctrl + Shift + G</td>
+<td>Group / ungroup</td>
+<td></td>
+<td>Ctrl + K</td>
+<td>Hyperlink</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>⚠️ EXAM TRAPS / EASY-TO-CONFUSE</h2>
+<table>
+<thead>
+<tr>
+<th>Confusing pair</th>
+<th>How to tell them apart</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Drop <strong>Cap</strong> vs &quot;Drop Crop&quot;</td>
+<td>The feature is <strong>Drop Cap</strong> (Insert › Text). &quot;Crop&quot; is cutting a picture (Picture Format › Crop)</td>
+</tr>
+<tr>
+<td>Footnote vs Endnote</td>
+<td><strong>Foot</strong> = bottom of the <strong>page</strong> · <strong>End</strong> = end of the <strong>document</strong></td>
+</tr>
+<tr>
+<td>Superscript vs Subscript</td>
+<td><strong>Super = up</strong> (x², ¹) Ctrl + Shift + = · <strong>Sub = down</strong> (H₂O) Ctrl + =</td>
+</tr>
+<tr>
+<td>Character spacing vs Line spacing</td>
+<td>Between <strong>letters</strong> (Font › Advanced) vs between <strong>lines</strong> (Paragraph)</td>
+</tr>
+<tr>
+<td>First-line vs Hanging indent</td>
+<td>First line <strong>in</strong> vs first line <strong>out</strong> (all other lines in)</td>
+</tr>
+<tr>
+<td>Right tab vs Decimal tab</td>
+<td>Right = text <strong>ends</strong> at the stop · Decimal = lines up the <strong>decimal point</strong></td>
+</tr>
+<tr>
+<td>Page border vs Paragraph border</td>
+<td>Page border = <strong>Design</strong> tab, whole page, Art borders · Paragraph border = Home › Borders</td>
+</tr>
+<tr>
+<td>Shading vs Highlight</td>
+<td>Shading = paragraph background (Borders and Shading) · Highlight = marker behind text (Home › Font)</td>
+</tr>
+<tr>
+<td>Main document vs Data source</td>
+<td>Main = the letter with «fields» · Data source = the Excel/Access <strong>list</strong></td>
+</tr>
+<tr>
+<td>Merge Cells vs Split Cells</td>
+<td>Merge = <strong>many → one</strong> · Split = <strong>one → many</strong></td>
+</tr>
+<tr>
+<td>Tab vs Ctrl + Tab in a table</td>
+<td>Tab = <strong>next cell</strong> · Ctrl + Tab = <strong>tab character</strong></td>
+</tr>
+<tr>
+<td>Colon vs Comma in functions</td>
+<td><code>J5:Q5</code> = <strong>range</strong> (all cells) · <code>J5,P5,Q5</code> = <strong>only those</strong> cells</td>
+</tr>
+<tr>
+<td>Relative vs Absolute</td>
+<td><code>J5</code> <strong>moves</strong> when copied · <code>$J$5</code> <strong>stays</strong> (F4)</td>
+</tr>
+<tr>
+<td><code>&gt;</code> vs <code>&gt;=</code></td>
+<td>&quot;75 <strong>and above</strong>&quot; = <code>&gt;=75</code>. <code>&gt;75</code> fails a 75</td>
+</tr>
+<tr>
+<td>Text in IF</td>
+<td>Text needs <strong>&quot;quotes&quot;</strong>. Numbers (15%) don&#39;t</td>
+</tr>
+<tr>
+<td>Nested IF order</td>
+<td>With <code>&gt;=</code>, test from <strong>highest to lowest</strong></td>
+</tr>
+<tr>
+<td>VLOOKUP vs HLOOKUP</td>
+<td><strong>V</strong> = table in <strong>columns</strong> · <strong>H</strong> = table in <strong>rows</strong></td>
+</tr>
+<tr>
+<td>TRUE vs FALSE in lookup</td>
+<td>TRUE/omitted = <strong>approximate</strong>, table <strong>sorted ascending</strong>, for <strong>ranges</strong> · FALSE = <strong>exact</strong>, for <strong>IDs</strong></td>
+</tr>
+<tr>
+<td>col_index_num</td>
+<td>Counts from the <strong>table&#39;s first column</strong>, not from column A</td>
+</tr>
+<tr>
+<td>#N/A vs #NAME? vs #REF!</td>
+<td>Not found · misspelled / missing quotes · deleted reference</td>
+</tr>
+<tr>
+<td>#####</td>
+<td>Not an error. <strong>Widen the column</strong></td>
+</tr>
+<tr>
+<td>Filter vs Subtotal</td>
+<td>Filter <strong>hides</strong> rows · Subtotal <strong>adds</strong> total rows (<strong>sort first!</strong>)</td>
+</tr>
+<tr>
+<td>Print Area vs Print Titles</td>
+<td>Area = <strong>what</strong> prints · Titles = header rows <strong>repeated on every page</strong></td>
+</tr>
+<tr>
+<td>Freeze Panes vs Print Titles</td>
+<td>Freeze = <strong>screen</strong> only · Print Titles = <strong>paper</strong></td>
+</tr>
+<tr>
+<td>CF &quot;Equal To&quot; vs formula rule</td>
+<td>Equal To colors <strong>only that cell</strong> · formula with <code>$H6</code> can color <strong>the whole row</strong></td>
+</tr>
+<tr>
+<td>Transition vs Animation</td>
+<td><strong>Between slides</strong> (Transitions tab) vs <strong>objects on a slide</strong> (Animations tab)</td>
+</tr>
+<tr>
+<td>With Previous vs After Previous</td>
+<td><strong>Same time</strong> vs <strong>right after</strong></td>
+</tr>
+<tr>
+<td>F5 vs Shift + F5</td>
+<td>From <strong>beginning</strong> vs from <strong>current slide</strong></td>
+</tr>
+<tr>
+<td>Gallery effect vs Add Animation</td>
+<td>Gallery <strong>replaces</strong> · Add Animation <strong>adds</strong></td>
+</tr>
+<tr>
+<td>.xlsx vs .xlsm</td>
+<td>Macros need <strong>.xlsm</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📝 MOCK EXAM (MIXED)</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"Which Word command lines up \"Introduction to Computer ......... i\" with dots and the page number at the right margin?","c":"Tabs dialog: right tab stop with leader 2 (dots), then Set","w":["Insert › Symbol › dots","Paragraph › Justify","Home › Bullets"],"e":"Right tab + dot leader. Click Set before OK."},{"q":"Shortcut to center a paragraph in Word:","c":"Ctrl + E","w":["Ctrl + C","Ctrl + Shift + C","Ctrl + M"],"e":"Ctrl + C is Copy."},{"q":"The \"1\" in \"melodious¹\" that marks a note at the bottom of the page is best made with:","c":"References › Insert Footnote","w":["Insert › Header","Home › Subscript","Insert › Symbol"],"e":"A footnote inserts the superscript number and the note itself, and renumbers automatically."},{"q":"Which option makes a drop cap sit in the left margin instead of inside the paragraph?","c":"In margin","w":["Dropped","Lines to drop: 1","Distance from text: 0"],"e":"Insert › Drop Cap › In margin."},{"q":"The Page Borders command in Word 2016/365 is on which tab?","c":"Design","w":["Layout","Insert","Home"],"e":"Design › Page Background › Page Borders."},{"q":"In Mail Merge, «Title» «Name» «Designation» «Address» are called:","c":"Merge fields","w":["Data sources","Main documents","Content controls"],"e":"Insert them with Mailings › Insert Merge Field."},{"q":"Which Word table command turns one cell into several smaller cells?","c":"Split Cells","w":["Merge Cells","Distribute Rows","AutoFit"],"e":"Layout › Merge › Split Cells."},{"q":"Which text will an automatic Table of Contents include?","c":"Paragraphs formatted with Heading 1, Heading 2… styles","w":["Any bold text","Text in a larger font","Text with a border"],"e":"References › Table of Contents reads Heading styles."},{"q":"Starting salary in J5. Withholding tax is 10%. Write the formula.","c":"=J5*10%","w":["=J5+10%","=J5/10%","=10%-J5"],"e":"Rate × salary."},{"q":"Salary in J5. Write the formula for the salary increased by 5%.","c":"=(J5*5%)+J5","w":["=J5*5%","=J5+5","=J5-(J5*5%)"],"e":"Increase = salary plus 5% of the salary (same as =J5*105%)."},{"q":"K5 = tax, L5 = SSS, M5 = Pag-IBIG. Write the Total Deductions formula.","c":"=K5+L5+M5","w":["=K5*L5*M5","=SUM(K5,M5)","=K5+L5-M5"],"e":"=SUM(K5:M5) works too."},{"q":"Write the formula for the AVERAGE of the October (J5), November (P5) and December (Q5) salaries.","c":"=AVERAGE(J5,P5,Q5)","w":["=AVERAGE(J5:Q5)","=SUM(J5,P5,Q5)/2","=AVG(J5,P5,Q5)"],"e":"J5:Q5 would include the deduction columns. AVG is not an Excel function (#NAME?)."},{"q":"Write the formula to show \"PASSED\" if the average in I5 is 75 or higher, otherwise \"FAILED\".","c":"=IF(I5>=75,\"PASSED\",\"FAILED\")","w":["=IF(I5>75,\"PASSED\",\"FAILED\")","=IF(I5>=75,PASSED,FAILED)","=IF(I5=>75,\"FAILED\",\"PASSED\")"],"e":"75 and above means >=. Text needs quotes."},{"q":"Commission is 15% when total sales (F6) exceed 100,000, otherwise 10%. Total sales = 102,912. What is the commission amount?","c":"15,436.80","w":["10,291.20","15,000.00","102,912.00"],"e":"102,912 > 100,000, so 15%. 102,912 × 15% = 15,436.80."},{"q":"Write the weighted score: average of Q1–Q3 (C6:E6) × 60% + Project (F6) × 40%.","c":"=((C6+D6+E6)/3*60%)+(F6*40%)","w":["=C6+D6+E6/3*60%+F6*40%","=(C6+D6+E6+F6)/4","=((C6+D6+E6)*60%)+(F6/40%)"],"e":"Sum first (parentheses), divide by 3, then apply the weights."},{"q":"Using A≥98, B≥90, C≥85, D≥80, E≥75, else F, a score of 85 gets:","c":"C","w":["B","D","E"],"e":"85 is not ≥ 90 but is ≥ 85."},{"q":"Which nested IF correctly gives \"A\" for 98+, \"B\" for 90+, otherwise \"C\"?","c":"=IF(G6>=98,\"A\",IF(G6>=90,\"B\",\"C\"))","w":["=IF(G6>=90,\"B\",IF(G6>=98,\"A\",\"C\"))","=IF(G6>=98,\"A\"),IF(G6>=90,\"B\",\"C\")","=IF(G6>=98,A,IF(G6>=90,B,C))"],"e":"Highest first, the second IF goes inside value_if_false, and the text is in quotes."},{"q":"The salary level table is in Lookup!B2:C12 (salary in column B, level in column C). Write the lookup for J5.","c":"=VLOOKUP(J5,Lookup!$B$2:$C$12,2)","w":["=HLOOKUP(J5,Lookup!$B$2:$C$12,2)","=VLOOKUP(J5,Lookup!$B$2:$C$12,3)","=VLOOKUP(Lookup!$B$2:$C$12,J5,2)"],"e":"Vertical table, return the 2nd column, lock the table with $."},{"q":"The bonus table is horizontal: salaries in Lookup!F2:O2, bonuses in F3:O3. Write the lookup for J5.","c":"=HLOOKUP(J5,Lookup!$F$2:$O$3,2)","w":["=VLOOKUP(J5,Lookup!$F$2:$O$3,2)","=HLOOKUP(J5,Lookup!$F$2:$O$3,3)","=HLOOKUP(Lookup!$F$2:$O$3,J5,2)"],"e":"Row 2 of the table = the bonus row."},{"q":"Salary level table: 1,000→SL-1, 2,000→SL-2 … 10,000→SL-10 (approximate match). A salary of 5,500 returns:","c":"SL-5","w":["SL-6","#N/A","SL-55"],"e":"The largest value ≤ 5,500 is 5,000, which is SL-5."},{"q":"Using the same approximate-match table (which starts at 1,000), a salary of 500 returns:","c":"#N/A","w":["SL-1","0","#REF!"],"e":"Nothing in the table is ≤ 500."},{"q":"Why must the first column be sorted ascending for an approximate-match VLOOKUP?","c":"Approximate mode assumes ascending order to find the largest value ≤ the lookup value. If unsorted, it returns wrong results","w":["Excel cannot read descending numbers","Sorting turns on exact match","It only matters for HLOOKUP"],"e":"An unsorted table often gives a wrong answer with no error message."},{"q":"You need to look up a product's price by its exact product code. Which range_lookup should you use?","c":"FALSE","w":["TRUE","Omit it","1"],"e":"IDs and codes need an exact match. Omitted means TRUE."},{"q":"You copy =J5*B1 down one row, but B1 holds the tax rate for every row. Row 6 shows 0. Fix the original formula to:","c":"=J5*$B$1","w":["=$J$5*B1","=J5*B$2","=J$5*$B1"],"e":"Lock the fixed rate cell. J5 must stay relative."},{"q":"A formula shows #REF! after you deleted column K. This means:","c":"The formula refers to a cell that no longer exists","w":["A value was not found","Text was used in math","A function name is misspelled"],"e":"#REF! = invalid reference."},{"q":"=IF(A1>=75,PASSED,FAILED) returns which error?","c":"#NAME?","w":["#VALUE!","#N/A","#DIV/0!"],"e":"Without quotes, Excel reads PASSED as an unknown name."},{"q":"In a CF formula rule for J5:J19, which formula highlights the FAILED cells?","c":"=J5=\"FAILED\"","w":["=J5=FAILED","=\"FAILED\"","=$J$5=\"FAILED\""],"e":"Use the top-left cell, keep the row relative, and put the text in quotes."},{"q":"Which is the correct order for creating department totals with Data › Subtotal?","c":"Sort by Department › Data › Subtotal › At each change in: Department, Use function: Sum","w":["Data › Subtotal › then sort by Department","Filter by Department › Insert › Chart","Insert › PivotTable › Subtotal"],"e":"Always sort the grouping column first."},{"q":"Which feature HIDES rows that don't meet a condition, without deleting them?","c":"AutoFilter (Data › Filter)","w":["Subtotal","Conditional formatting","Data validation"],"e":"Ctrl + Shift + L. A funnel icon shows which column is filtered."},{"q":"The column headings in rows 1–4 must print on every page. Use:","c":"Page Layout › Print Titles","w":["Page Layout › Print Area","View › Freeze Panes","Page Layout › Breaks"],"e":"Rows to repeat at top: $1:$4."},{"q":"Exercise #10's chart compares each employee's salary side by side as 3-D vertical bars. This chart type is:","c":"3-D Clustered Column","w":["Pie","Line","Scatter"],"e":"Column charts compare amounts between items."},{"q":"In PowerPoint, the effect applied to a picture so it flies in when clicked is:","c":"An Entrance animation (Animations tab)","w":["A transition (Transitions tab)","A theme variant","A slide layout"],"e":"Objects get animations. Slides get transitions."},{"q":"Exercise #11 used which theme?","c":"Film Burn","w":["Office Theme only","Ion","Facet"],"e":"Design › Themes › Film Burn, with full-slide pictures and Fade transitions."},{"q":"To make every slide advance automatically after 5 seconds:","c":"Transitions › Advance Slide › After: 00:05.00 › Apply To All","w":["Animations › Delay 5 › Apply To All","Slide Show › Hide Slide","Design › Slide Size"],"e":"Untick On Mouse Click if it must be fully automatic."},{"q":"Which PowerPoint feature adds a clickable \"Home\" button that jumps to the first slide?","c":"Insert › Shapes › Action Buttons","w":["Insert › SmartArt","Design › Format Background","View › Slide Master"],"e":"The Action Settings box opens so you can choose Hyperlink to: First Slide."},{"q":"The final project PowerPoint printout must use:","c":"Handouts, 6 slides per page","w":["Full Page Slides","Notes Pages","Outline"],"e":"File › Print › Handouts › 6 Slides Horizontal."},{"q":"How many recipients must the final project's mail merge have at minimum?","c":"20","w":["10","15","50"],"e":"At least 20 recipients, producing a letter, invitation, or certificate."},{"q":"Which group of Excel features is ALL required in the final project?","c":"Conditional formatting, lookup functions, charts, subtotals, filtering, data validation","w":["Only SUM and AVERAGE","Mail merge and drop caps","Transitions and animations"],"e":"Plus business formulas, links between sheets, and macros and/or a PivotTable."}]</script></div>
+
+  </div>
+  <div class="note-nav">
+    
+    <a href="Y1S1-CC2-midterm.html" class="note-nav-next">CC2 →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

@@ -39,7 +39,7 @@
       "homeTemplate": "home-school.html",
       "sourceDirs": ["content/school"],
       "subjects": [
-        { "code": "CC1", "title": "Introduction to Computing", "year": 1, "sem": 1, "order": 1, "terms": { "midterm": "Y1S1/CC1_Midterm.md" } },
+        { "code": "CC1", "title": "Introduction to Computing", "year": 1, "sem": 1, "order": 1, "terms": { "midterm": "Y1S1/CC1_Midterm.md", "finals": "Y1S1/CC1_Finals.md" } },
         { "code": "CC2", "title": "Fundamentals of Programming", "year": 1, "sem": 1, "order": 2, "terms": { "midterm": "Y1S1/CC2_Midterm.md" } },
         { "code": "HCI101", "title": "Introduction to Human-Computer Interaction", "year": 1, "sem": 1, "order": 3, "terms": { "midterm": "Y1S1/HCI101_Midterm.md" } },
         { "code": "GE4", "title": "Mathematics in the Modern World", "year": 1, "sem": 1, "order": 4, "terms": { "midterm": "Y1S1/GE4_Midterm.md", "finals": "Y1S1/GE4_Finals.md" } },
