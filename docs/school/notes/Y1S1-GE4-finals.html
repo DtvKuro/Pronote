@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-mode="school">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>P</text></svg>">
+  <title>Pronote | GE4 Mathematics in the Modern World — Finals</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/school.css">
+</head>
+<body data-page-type="note">
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav">
+    <div class="nav-container">
+      <button class="notes-menu-toggle" aria-label="Browse notes" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="../index.html" class="nav-logo">Pronote</a>
+      <div class="mode-switch" role="group" aria-label="Switch notes collection"><a href="../../index.html" class="mode-switch-btn" data-mode-target="dev">Dev</a><a href="../../school/index.html" class="mode-switch-btn active" data-mode-target="school">School</a></div>
+      <div class="nav-search" id="navSearch">
+        <input type="text" class="nav-search-input" id="searchInput" placeholder="Search..." aria-label="Search">
+        <button class="nav-search-close" id="searchClose" aria-label="Close search">&times;</button>
+        <div class="search-nav-panel" id="searchNavPanel" style="display:none">
+          <span id="searchMatchInfo"></span>
+          <button class="search-nav-btn" id="searchPrevBtn" aria-label="Previous match">&uarr;</button>
+          <button class="search-nav-btn" id="searchNextBtn" aria-label="Next match">&darr;</button>
+        </div>
+      </div>
+      <button class="nav-search-toggle" id="searchToggle" aria-label="Search" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+      <a href="../../cysql/index.html" class="nav-cysql" title="CySQL Playground" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        <span>CySQL</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="notes-menu-overlay"></div>
+  <aside class="notes-menu">
+    <div class="notes-menu-header">
+      <h3>All Notes</h3>
+      <button class="notes-menu-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="notes-menu-body">
+      <a href="../../cysql/index.html" class="notes-menu-cysql" target="_blank">CySQL Playground</a>
+      <div class="notes-menu-category">
+  <h4 class="notes-menu-category-title">1st Year · 1st Sem</h4>
+  <ul class="notes-menu-list">
+        <li><a href="Y1S1-CC1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC1</span> Introduction to Computing</a></li>
+        <li><a href="Y1S1-CC2-midterm.html" class="notes-menu-link"><span class="notes-menu-code">CC2</span> Fundamentals of Programming</a></li>
+        <li><a href="Y1S1-HCI101-midterm.html" class="notes-menu-link"><span class="notes-menu-code">HCI101</span> Introduction to Human-Computer Interaction</a></li>
+        <li><a href="Y1S1-GE4-finals.html" class="notes-menu-link active"><span class="notes-menu-code">GE4</span> Mathematics in the Modern World</a></li>
+        <li><a href="Y1S1-GE5-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE5</span> Purposive Communication</a></li>
+        <li><a href="Y1S1-GE6-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE6</span> Art Appreciation</a></li>
+        <li><a href="Y1S1-GE9-midterm.html" class="notes-menu-link"><span class="notes-menu-code">GE9</span> Readings in Philippine History</a></li>
+        <li><a href="Y1S1-PATHFIT1-midterm.html" class="notes-menu-link"><span class="notes-menu-code">PATHFIT1</span> Physical Activity Towards Health and Fitness 1</a></li>
+  </ul>
+</div>
+
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="skeleton-loader" id="skeletonLoader">
+      <div class="skeleton-bar skeleton-bar--title"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+      <div class="skeleton-bar skeleton-bar--text skeleton-bar--short"></div>
+      <div class="skeleton-bar skeleton-bar--text"></div>
+    </div>
+    <article class="note-page">
+  <div class="note-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span>1st Year · 1st Sem</span>
+      <span class="breadcrumb-sep">&rsaquo;</span>
+      <span class="breadcrumb-current">Mathematics in the Modern World</span>
+    </nav>
+    <div class="note-actions">
+      <button class="note-action-btn" id="shareBtn" aria-label="Copy link" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </button>
+      <button class="note-action-btn" id="exportPdfBtn" aria-label="Export PDF" title="Export PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+    </div>
+  </div>
+  <p class="note-eyebrow"><span class="note-code">GE4</span><span class="note-units">1st Year · 1st Sem</span></p>
+  <h1 class="note-title">Mathematics in the Modern World</h1>
+  <p class="note-meta">Last updated: November 28, 2026</p>
+  <nav class="term-tabs" aria-label="Exam period"><a href="Y1S1-GE4-midterm.html" class="term-tab">Midterm</a><a href="Y1S1-GE4-finals.html" class="term-tab active" aria-current="page">Finals</a></nav>
+  <div class="note-content">
+    <p><strong>Covers:</strong> Unit 5 (Statistics Basics &amp; Levels of Measurement) · Unit 6 (Measures of Central Tendency, Ungrouped Data) · Unit 7 (Grouped Data) · Unit 8 (Graph Theory) · Unit 9 (Linear Programming, Corner-Point Method)</p>
+<blockquote>
+<p><strong>How to use this:</strong> Every math topic has 3 parts: <strong>① the idea in plain words → ② the rule/formula → ③ a worked example, step by step.</strong> The actual exam items are worked out in full and marked <strong>📌 (exam item)</strong>. Each unit ends with a practice quiz, and there is a mixed <strong>Mock Exam</strong> at the very end. Do the quizzes without looking, then read the explanations for the ones you missed.</p>
+</blockquote>
+<hr>
+<h2>UNIT 5 — STATISTICS BASICS</h2>
+<h3>5.1 What is Statistics?</h3>
+<ul>
+<li><strong>Statistics</strong> = the science of <strong>collecting, organizing, analyzing, and interpreting data</strong> to make decisions.</li>
+<li><strong>Data</strong> = the facts or numbers we collect (scores, heights, shoe sizes, answers to a survey).</li>
+</ul>
+<h3>5.2 Population vs Sample</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Population</strong></td>
+<td>The <strong>WHOLE group</strong> you want to study</td>
+<td><strong>All</strong> first-year students of the university</td>
+</tr>
+<tr>
+<td><strong>Sample</strong></td>
+<td>A <strong>PART (subset)</strong> of the population that you actually measure</td>
+<td><strong>50</strong> first-year students picked from the list</td>
+</tr>
+</tbody></table>
+<h3>5.3 Parameter vs Statistic</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Describes the…</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Parameter</strong></td>
+<td><strong>POPULATION</strong></td>
+<td>The average age of <strong>all</strong> first-year students is 18.4</td>
+</tr>
+<tr>
+<td><strong>Statistic</strong></td>
+<td><strong>SAMPLE</strong></td>
+<td>The average age of the <strong>50 students surveyed</strong> is 18.6</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🔑 Memory trick: <strong>P</strong>arameter → <strong>P</strong>opulation. <strong>S</strong>tatistic → <strong>S</strong>ample.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ &quot;Statistics&quot; (the subject) and &quot;a statistic&quot; (a number that describes a sample) are different things. In exam items, &quot;statistic&quot; usually means the second one.</p>
+</blockquote>
+<h3>5.4 Levels of Measurement (lowest → highest)</h3>
+<p>Data can be measured at 4 levels. Each level has <strong>everything the level below it has, plus one more feature</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>What you can do</th>
+<th>Has a true zero?</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>① Nominal</strong></td>
+<td><strong>Names / labels / categories only</strong>. No order.</td>
+<td>No</td>
+<td>Gender, religion, blood type, jersey number, civil status, course (BSIT, BSN)</td>
+</tr>
+<tr>
+<td><strong>② Ordinal</strong></td>
+<td>Categories <strong>with a specific ORDER / RANK</strong>, but the gaps between ranks are not equal</td>
+<td>No</td>
+<td>Class rank (1st, 2nd, 3rd), satisfaction (poor, fair, good, excellent), year level, military rank, Likert scale</td>
+</tr>
+<tr>
+<td><strong>③ Interval</strong></td>
+<td>Ordered, <strong>equal gaps</strong> between values, but <strong>NO true zero</strong> (zero does not mean &quot;nothing&quot;)</td>
+<td>No</td>
+<td>Temperature in °C or °F, IQ score, calendar year</td>
+</tr>
+<tr>
+<td><strong>④ Ratio</strong></td>
+<td>Ordered, equal gaps, <strong>AND a TRUE zero</strong> (zero means &quot;none&quot;)</td>
+<td><strong>Yes</strong></td>
+<td>Height, weight, age, income, number of children, distance, time to finish a race</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🔑 <strong>Ordinal = the values have a specific order.</strong> If the question says &quot;ranked&quot; or &quot;in order&quot; but you cannot measure the exact gap, it&#39;s <strong>ordinal</strong>.<br>🔑 <strong>Interval vs Ratio test:</strong> ask &quot;Does 0 mean NONE?&quot; 0 kg = no weight → <strong>ratio</strong>. 0 °C is not &quot;no temperature&quot; → <strong>interval</strong>.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ A jersey number (#23) is a <strong>number</strong> but it is <strong>nominal</strong>. It is only a label. You can&#39;t say #23 is &quot;better&quot; than #10.<br>⚠️ 20 °C is NOT &quot;twice as hot&quot; as 10 °C (interval: no true zero, so ratios mean nothing). But 20 kg IS twice 10 kg (ratio).</p>
+</blockquote>
+<hr>
+<h2>📝 UNIT 5 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"The whole group of people or things you want to study is called the:","c":"Population","w":["Sample","Parameter","Statistic"],"e":""},{"q":"A number that describes a SAMPLE is called a:","c":"Statistic","w":["Parameter","Population","Variable"],"e":"Parameter goes with Population; Statistic goes with Sample."},{"q":"\"The average allowance of ALL 3,000 students in the school is ₱150.\" The ₱150 is a:","c":"Parameter","w":["Statistic","Sample","Nominal value"],"e":"It describes the whole population, so it is a parameter."},{"q":"A researcher surveys 100 out of 3,000 students. The 100 students are the:","c":"Sample","w":["Population","Parameter","Statistic"],"e":""},{"q":"Which level of measurement has values with a specific order but unequal gaps?","c":"Ordinal","w":["Nominal","Interval","Ratio"],"e":""},{"q":"Blood type (A, B, AB, O) is measured at what level?","c":"Nominal","w":["Ordinal","Interval","Ratio"],"e":"Labels only, no order."},{"q":"Temperature in degrees Celsius is measured at what level?","c":"Interval","w":["Ratio","Ordinal","Nominal"],"e":"Equal gaps, but 0 °C does not mean \"no temperature.\""},{"q":"Weight in kilograms is measured at what level?","c":"Ratio","w":["Interval","Ordinal","Nominal"],"e":"0 kg means no weight at all, so it has a true zero."},{"q":"A customer rates service as poor, fair, good, or excellent. This is:","c":"Ordinal","w":["Nominal","Interval","Ratio"],"e":""},{"q":"A basketball player's jersey number is measured at what level?","c":"Nominal","w":["Ordinal","Interval","Ratio"],"e":"It is a number, but only a label."},{"q":"Which level is the ONLY one with a true zero?","c":"Ratio","w":["Interval","Ordinal","Nominal"],"e":""}]</script></div>
+<hr>
+<h2>UNIT 6 — MEASURES OF CENTRAL TENDENCY (UNGROUPED DATA)</h2>
+<p>A <strong>measure of central tendency</strong> is <strong>one number that represents the &quot;center&quot; or typical value</strong> of a data set. The three main ones are the <strong>mean, median, and mode</strong>.</p>
+<h3>6.1 The Mean (average)</h3>
+<ul>
+<li><strong>Idea:</strong> add everything up, then divide by how many there are.</li>
+<li><strong>Formula:</strong> <strong>x̄ = Σx / n</strong> (Σ = &quot;sum of&quot;, n = number of values)</li>
+</ul>
+<p><strong>📌 Worked example (exam item):</strong> Find the mean of <strong>70, 72, 77, 78, 86, 84, 79</strong>.</p>
+<ul>
+<li><strong>Step 1:</strong> add → 70 + 72 + 77 + 78 + 86 + 84 + 79 = <strong>546</strong></li>
+<li><strong>Step 2:</strong> count → n = <strong>7</strong></li>
+<li><strong>Step 3:</strong> divide → 546 / 7 = <strong>78</strong></li>
+<li>✅ <strong>Mean = 78</strong></li>
+</ul>
+<blockquote>
+<p>🔑 <strong>The mean is the measure that is GREATLY AFFECTED BY EXTREME SCORES (outliers).</strong> One very high or very low value pulls it up or down.</p>
+</blockquote>
+<h3>6.2 The Median (middle value)</h3>
+<ul>
+<li><strong>Idea:</strong> the value in the <strong>middle</strong> after you <strong>sort</strong> the data.</li>
+<li><strong>Step 1 is ALWAYS: arrange from lowest to highest.</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>n is…</th>
+<th>Median is…</th>
+<th>Position</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Odd</strong></td>
+<td>the <strong>single middle</strong> value</td>
+<td>position (n + 1)/2</td>
+</tr>
+<tr>
+<td><strong>Even</strong></td>
+<td>the <strong>average of the 2 middle</strong> values</td>
+<td>average of positions n/2 and n/2 + 1</td>
+</tr>
+</tbody></table>
+<p><strong>📌 Worked example (exam item):</strong> Blood pressure readings <strong>135, 121, 119, 116, 130, 121, 131</strong>. Find the median.</p>
+<ul>
+<li><strong>Step 1:</strong> sort → <strong>116, 119, 121, 121, 130, 131, 135</strong></li>
+<li><strong>Step 2:</strong> n = 7 (odd), middle position = (7 + 1)/2 = <strong>4th</strong></li>
+<li><strong>Step 3:</strong> the 4th value is <strong>121</strong></li>
+<li>✅ <strong>Median = 121</strong></li>
+</ul>
+<p><strong>Worked example (even n):</strong> 4, 8, 10, 12</p>
+<ul>
+<li>Already sorted, n = 4 (even) → the 2 middle values are <strong>8 and 10</strong></li>
+<li>Median = (8 + 10)/2 = <strong>9</strong></li>
+</ul>
+<blockquote>
+<p>⚠️ The #1 median mistake: <strong>forgetting to sort first.</strong> In the BP example, the unsorted middle value is 116, which is wrong.</p>
+</blockquote>
+<h3>6.3 The Mode (most frequent)</h3>
+<ul>
+<li><strong>Idea:</strong> the value that appears <strong>most often</strong>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>No mode</strong></td>
+<td>No value repeats (or all appear equally often)</td>
+<td>2, 4, 6, 8 → no mode</td>
+</tr>
+<tr>
+<td><strong>Unimodal</strong></td>
+<td><strong>One</strong> mode</td>
+<td>5, 7, 7, 9, 12 → mode <strong>7</strong></td>
+</tr>
+<tr>
+<td><strong>Bimodal</strong></td>
+<td><strong>Two</strong> modes</td>
+<td>8, 8, 9, 10, 10 → modes <strong>8 and 10</strong></td>
+</tr>
+<tr>
+<td><strong>Multimodal</strong></td>
+<td>More than two modes</td>
+<td>1, 1, 2, 2, 3, 3, 4 → modes 1, 2, 3</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🔑 The mode is the <strong>only</strong> measure you can use for <strong>nominal</strong> data (e.g., the most common blood type, the most saleable shoe size).</p>
+</blockquote>
+<p><strong>📌 Worked example (exam item):</strong> <strong>8, 8, 9, 10, 10</strong></p>
+<ul>
+<li><strong>Mean:</strong> (8 + 8 + 9 + 10 + 10)/5 = 45/5 = <strong>9</strong></li>
+<li><strong>Median:</strong> already sorted, n = 5 (odd) → 3rd value = <strong>9</strong></li>
+<li><strong>Mode:</strong> 8 appears twice, 10 appears twice → <strong>bimodal: 8 and 10</strong></li>
+<li>✅ <strong>Mean = Median (both 9)</strong>, and the data is bimodal.</li>
+</ul>
+<p><strong>Worked example:</strong> <strong>5, 7, 7, 9, 12</strong> → Mean = 40/5 = <strong>8</strong> · Median = 3rd value = <strong>7</strong> · Mode = <strong>7</strong></p>
+<h3>6.4 The Weighted Mean</h3>
+<ul>
+<li><strong>Idea:</strong> use when the values <strong>do not count equally</strong>. Each value has a <strong>weight</strong> (how many units, how many items, how many hours).</li>
+<li><strong>Formula:</strong> <strong>x̄w = Σ(w·x) / Σw</strong></li>
+</ul>
+<p><strong>📌 Worked example (exam item):</strong> A store sold <strong>1,000 items at ₱10, 500 at ₱20, 500 at ₱25, and 100 at ₱30</strong>. Find the weighted mean price.</p>
+<table>
+<thead>
+<tr>
+<th>Price (x)</th>
+<th>Quantity (w)</th>
+<th>w·x</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>1,000</td>
+<td>10,000</td>
+</tr>
+<tr>
+<td>20</td>
+<td>500</td>
+<td>10,000</td>
+</tr>
+<tr>
+<td>25</td>
+<td>500</td>
+<td>12,500</td>
+</tr>
+<tr>
+<td>30</td>
+<td>100</td>
+<td>3,000</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>Σw = 2,100</strong></td>
+<td><strong>Σwx = 35,500</strong></td>
+</tr>
+</tbody></table>
+<ul>
+<li>35,500 / 2,100 = 16.904… ✅ <strong>Weighted mean ≈ ₱16.90</strong></li>
+</ul>
+<blockquote>
+<p>⚠️ Do NOT just average the 4 prices: (10 + 20 + 25 + 30)/4 = 21.25 is wrong because most items were sold at ₱10.</p>
+</blockquote>
+<p><strong>Worked example (grades):</strong> 3 units with grade 90, 2 units with 85, 1 unit with 80.</p>
+<ul>
+<li>Σwx = 3(90) + 2(85) + 1(80) = 270 + 170 + 80 = <strong>520</strong>; Σw = <strong>6</strong></li>
+<li>520 / 6 = 86.666… ✅ <strong>≈ 86.67</strong></li>
+</ul>
+<h3>6.5 📌 The &quot;Jabez&quot; item: what extreme scores do to the mean</h3>
+<p><strong>The item:</strong> Jabez&#39;s scores are 70, 72, 77, 78, 86, 84, 79 (mean = 78). If his <strong>lowest</strong> score is replaced with <strong>20</strong> and his <strong>highest</strong> with <strong>100</strong>, what is the new mean? Choices: <strong>78.00 / 77.91 / 74.70 / 73.86</strong>.</p>
+<p><strong>Doing it strictly as worded:</strong></p>
+<ul>
+<li>Lowest = 70 → becomes 20. Highest = 86 → becomes 100.</li>
+<li>New sum = 546 − 70 + 20 − 86 + 100 = <strong>510</strong></li>
+<li>510 / 7 = <strong>72.86</strong>, which is <strong>NOT one of the choices.</strong></li>
+</ul>
+<p><strong>The closest choice (and likely answer key): 73.86</strong></p>
+<ul>
+<li>73.86 × 7 = <strong>517</strong>. That happens if 70 → 20 and <strong>79</strong> (not 86) → 100: 546 − 70 + 20 − 79 + 100 = 517.</li>
+<li>So the key most likely replaced the <strong>last</strong> score (79) instead of the true highest (86), or the item has a typo.</li>
+<li><strong>Honest answer:</strong> the strict math gives 72.86. On the exam, pick <strong>73.86</strong> (closest, and the only choice that comes from a &quot;replace one low, one high&quot; calculation). If you can, ask your teacher about it.</li>
+</ul>
+<blockquote>
+<p>🔑 <strong>The lesson the item is testing:</strong> the mean dropped from <strong>78</strong> to the low 70s. One <strong>extreme low score (20)</strong> dragged the whole mean down, even though a higher score was also added. <strong>The mean is greatly affected by extreme scores.</strong> The median would barely move.</p>
+</blockquote>
+<h3>6.6 When to use which?</h3>
+<table>
+<thead>
+<tr>
+<th>Use the…</th>
+<th>When…</th>
+<th>Exam example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Mode</strong></td>
+<td>You want the <strong>most common / most popular</strong> item, or the data is <strong>nominal</strong></td>
+<td><strong>The most saleable shoe size</strong> → <strong>mode</strong></td>
+</tr>
+<tr>
+<td><strong>Median</strong></td>
+<td>The data has <strong>outliers / extreme values</strong> (skewed)</td>
+<td>Household income in a barangay with one billionaire → <strong>median</strong></td>
+</tr>
+<tr>
+<td><strong>Mean</strong></td>
+<td>The data is <strong>fairly even, no outliers</strong>, and you want to use every value</td>
+<td>Average quiz score of a class</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🔑 Exam one-liners: <strong>most saleable shoe size → MODE.</strong> <strong>Greatly affected by extreme scores → MEAN.</strong> <strong>Outliers present → use the MEDIAN.</strong></p>
+</blockquote>
+<hr>
+<h2>📝 UNIT 6 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"A shoe store wants to know which shoe size to stock the most. Which measure should it use?","c":"Mode","w":["Mean","Median","Weighted mean"],"e":"The most saleable size is the one that appears most often."},{"q":"Which measure of central tendency is greatly affected by extreme scores?","c":"Mean","w":["Median","Mode","None of them"],"e":"Every value is added into the mean, so one extreme value pulls it."},{"q":"What is the mean of 70, 72, 77, 78, 86, 84, 79?","c":"78","w":["77","79","78.5"],"e":"546 / 7 = 78."},{"q":"What is the median of 135, 121, 119, 116, 130, 121, 131?","c":"121","w":["116","130","125"],"e":"Sorted: 116, 119, 121, 121, 130, 131, 135. The 4th value is 121."},{"q":"For the data 8, 8, 9, 10, 10, which statement is true?","c":"The mean equals the median","w":["The mean is greater than the median","The mode is 9","There is no mode"],"e":"Mean = 9, median = 9, modes = 8 and 10."},{"q":"What is the median of 4, 8, 10, 12?","c":"9","w":["8","10","8.5"],"e":"Even count: (8 + 10) / 2 = 9."},{"q":"For 5, 7, 7, 9, 12, what are the mean, median, and mode?","c":"Mean 8, median 7, mode 7","w":["Mean 7, median 7, mode 7","Mean 8, median 8, mode 7","Mean 8, median 7, mode 12"],"e":""},{"q":"A student has 3 units with a grade of 90, 2 units with 85, and 1 unit with 80. What is the weighted mean?","c":"86.67","w":["85.00","87.50","86.00"],"e":"520 / 6 = 86.67. The plain average of 90, 85, 80 is 85, which ignores the units."},{"q":"A store sold 1,000 items at ₱10, 500 at ₱20, 500 at ₱25, and 100 at ₱30. What is the weighted mean price?","c":"₱16.90","w":["₱21.25","₱17.75","₱15.50"],"e":"35,500 / 2,100 = 16.90."},{"q":"The data set 3, 6, 6, 8, 8, 11 is:","c":"Bimodal","w":["Unimodal","Has no mode","Multimodal with three modes"],"e":""},{"q":"Which measure is best for a data set with an extreme outlier?","c":"Median","w":["Mean","Weighted mean","Range"],"e":""},{"q":"What is the median of 12, 5, 9, 20, 3?","c":"9","w":["5","12","9.8"],"e":"Sorted: 3, 5, 9, 12, 20. The middle value is 9. 9.8 is the mean."}]</script></div>
+<hr>
+<h2>UNIT 7 — GROUPED DATA (FREQUENCY DISTRIBUTION)</h2>
+<p>When there are many values, we group them into <strong>classes</strong> in a <strong>frequency distribution table</strong>.</p>
+<h3>7.1 Parts of a Frequency Table</h3>
+<p>Using the class <strong>39–41</strong> as an example:</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>How to get it</th>
+<th>For 39–41</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Class limits</strong></td>
+<td>The numbers you see written</td>
+<td>lower limit and upper limit</td>
+<td>LL = 39, UL = 41</td>
+</tr>
+<tr>
+<td><strong>Class boundaries</strong></td>
+<td>The &quot;real&quot; limits with no gaps between classes</td>
+<td>LL − 0.5 and UL + 0.5</td>
+<td><strong>38.5 – 41.5</strong></td>
+</tr>
+<tr>
+<td><strong>Class size (i)</strong></td>
+<td>The width of a class</td>
+<td>difference between two consecutive lower limits (or UB − LB)</td>
+<td>42 − 39 = <strong>3</strong></td>
+</tr>
+<tr>
+<td><strong>Class mark (x)</strong></td>
+<td>The midpoint of the class</td>
+<td>(LL + UL)/2</td>
+<td>(39 + 41)/2 = <strong>40</strong></td>
+</tr>
+<tr>
+<td><strong>Frequency (f)</strong></td>
+<td>How many values fall in the class</td>
+<td>given</td>
+<td>8</td>
+</tr>
+<tr>
+<td><strong>Less-than cumulative frequency (&lt;cf)</strong></td>
+<td>Running total of f, <strong>starting from the LOWEST class</strong></td>
+<td>add f&#39;s from the bottom class up</td>
+<td>23</td>
+</tr>
+<tr>
+<td><strong>N (= Σf)</strong></td>
+<td>Total number of values</td>
+<td>add all f</td>
+<td>40</td>
+</tr>
+<tr>
+<td><strong>Σfx</strong></td>
+<td>Sum of f × x</td>
+<td>multiply each f by its x, then add</td>
+<td>1,624</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ Class size is <strong>NOT</strong> UL − LL. For 39–41, 41 − 39 = 2 is <strong>wrong</strong>. The class covers 39, 40, 41 = <strong>3</strong> values.</p>
+</blockquote>
+<h3>7.2 Formulas for Grouped Data</h3>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Formula</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Mean</strong></td>
+<td><strong>x̄ = Σfx / N</strong></td>
+<td>x = class mark</td>
+</tr>
+<tr>
+<td><strong>Modal class</strong></td>
+<td>the class with the <strong>highest frequency</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Mode</strong></td>
+<td><strong>Mo = L + [d1 / (d1 + d2)] · i</strong></td>
+<td>L = lower boundary of the modal class; d1 = f(modal) − f(class just <strong>below</strong> it in value); d2 = f(modal) − f(class just <strong>above</strong> it in value)</td>
+</tr>
+<tr>
+<td><strong>Median</strong></td>
+<td><strong>Md = L + [(N/2 − cf) / f] · i</strong></td>
+<td>L = lower boundary of the median class; cf = &lt;cf of the class <strong>just before</strong> (below) the median class; f = frequency of the median class</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🔑 <strong>The median class</strong> is the first class (counting from the lowest) whose <strong>&lt;cf reaches or passes N/2</strong>.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>cf is ALWAYS counted from the LOWEST class, even when the table is listed highest-first.</strong> Many teachers list the table from the highest class at the top. If you add from the top, you will get the wrong median class.</p>
+</blockquote>
+<h3>7.3 📌 Full Worked Example (exam item)</h3>
+<p>The table is given <strong>highest-first</strong>. N = 40, i = 3.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>f</th>
+<th>x (class mark)</th>
+<th>fx</th>
+<th>Class boundaries</th>
+<th>&lt;cf (from the bottom)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>54–56</td>
+<td>3</td>
+<td>55</td>
+<td>165</td>
+<td>53.5–56.5</td>
+<td>40</td>
+</tr>
+<tr>
+<td>51–53</td>
+<td>2</td>
+<td>52</td>
+<td>104</td>
+<td>50.5–53.5</td>
+<td>37</td>
+</tr>
+<tr>
+<td>48–50</td>
+<td>1</td>
+<td>49</td>
+<td>49</td>
+<td>47.5–50.5</td>
+<td>35</td>
+</tr>
+<tr>
+<td>45–47</td>
+<td>5</td>
+<td>46</td>
+<td>230</td>
+<td>44.5–47.5</td>
+<td>34</td>
+</tr>
+<tr>
+<td>42–44</td>
+<td>6</td>
+<td>43</td>
+<td>258</td>
+<td>41.5–44.5</td>
+<td>29</td>
+</tr>
+<tr>
+<td><strong>39–41</strong></td>
+<td><strong>8</strong></td>
+<td><strong>40</strong></td>
+<td><strong>320</strong></td>
+<td><strong>38.5–41.5</strong></td>
+<td><strong>23</strong> ← median class</td>
+</tr>
+<tr>
+<td>36–38</td>
+<td>4</td>
+<td>37</td>
+<td>148</td>
+<td>35.5–38.5</td>
+<td>15</td>
+</tr>
+<tr>
+<td>33–35</td>
+<td>6</td>
+<td>34</td>
+<td>204</td>
+<td>32.5–35.5</td>
+<td>11</td>
+</tr>
+<tr>
+<td>30–32</td>
+<td>2</td>
+<td>31</td>
+<td>62</td>
+<td>29.5–32.5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>27–29</td>
+<td>3</td>
+<td>28</td>
+<td>84</td>
+<td>26.5–29.5</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>N = 40</strong></td>
+<td></td>
+<td><strong>Σfx = 1,624</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>① Mean</strong></p>
+<ul>
+<li>x̄ = Σfx / N = 1,624 / 40 = ✅ <strong>40.6</strong></li>
+</ul>
+<p><strong>② Mode</strong></p>
+<ul>
+<li><strong>Step 1:</strong> modal class = highest f = <strong>39–41</strong> (f = 8). Its class mark is <strong>40</strong>.</li>
+<li><strong>Step 2:</strong> L = lower boundary = <strong>38.5</strong></li>
+<li><strong>Step 3:</strong> d1 = 8 − (f of the class below, 36–38) = 8 − 4 = <strong>4</strong></li>
+<li><strong>Step 4:</strong> d2 = 8 − (f of the class above, 42–44) = 8 − 6 = <strong>2</strong></li>
+<li><strong>Step 5:</strong> Mo = 38.5 + [4 / (4 + 2)] · 3 = 38.5 + (0.6667)(3) = 38.5 + 2 = ✅ <strong>40.5</strong></li>
+</ul>
+<p><strong>③ Median</strong></p>
+<ul>
+<li><strong>Step 1:</strong> N/2 = 40/2 = <strong>20</strong></li>
+<li><strong>Step 2:</strong> build &lt;cf <strong>from the bottom</strong>: 27–29 → <strong>3</strong>, 30–32 → <strong>5</strong>, 33–35 → <strong>11</strong>, 36–38 → <strong>15</strong>, 39–41 → <strong>23</strong></li>
+<li><strong>Step 3:</strong> first &lt;cf that reaches 20 is <strong>23</strong> → median class = <strong>39–41</strong></li>
+<li><strong>Step 4:</strong> L = <strong>38.5</strong>, cf (of the class before, 36–38) = <strong>15</strong>, f = <strong>8</strong>, i = <strong>3</strong></li>
+<li><strong>Step 5:</strong> Md = 38.5 + [(20 − 15) / 8] · 3 = 38.5 + (0.625)(3) = 38.5 + 1.875 = ✅ <strong>40.375 ≈ 40.38</strong></li>
+</ul>
+<blockquote>
+<p>⚠️ If you count cf from the <strong>top</strong> (3, 5, 6, 11, 17, 25…), you&#39;d land on 42–44 and get a wrong median. Always start from the lowest class.</p>
+</blockquote>
+<h3>7.4 Second Worked Example (practice)</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>f</th>
+<th>x</th>
+<th>fx</th>
+<th>Boundaries</th>
+<th>&lt;cf</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10–14</td>
+<td>2</td>
+<td>12</td>
+<td>24</td>
+<td>9.5–14.5</td>
+<td>2</td>
+</tr>
+<tr>
+<td>15–19</td>
+<td>5</td>
+<td>17</td>
+<td>85</td>
+<td>14.5–19.5</td>
+<td>7</td>
+</tr>
+<tr>
+<td><strong>20–24</strong></td>
+<td><strong>8</strong></td>
+<td><strong>22</strong></td>
+<td><strong>176</strong></td>
+<td><strong>19.5–24.5</strong></td>
+<td><strong>15</strong></td>
+</tr>
+<tr>
+<td>25–29</td>
+<td>4</td>
+<td>27</td>
+<td>108</td>
+<td>24.5–29.5</td>
+<td>19</td>
+</tr>
+<tr>
+<td>30–34</td>
+<td>1</td>
+<td>32</td>
+<td>32</td>
+<td>29.5–34.5</td>
+<td>20</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>N = 20</strong></td>
+<td></td>
+<td><strong>Σfx = 425</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>i = 5</strong></li>
+<li><strong>Mean</strong> = 425 / 20 = <strong>21.25</strong></li>
+<li><strong>Median:</strong> N/2 = 10 → median class 20–24 (&lt;cf 15 is the first ≥ 10). Md = 19.5 + [(10 − 7)/8] · 5 = 19.5 + 1.875 = <strong>21.375 ≈ 21.38</strong></li>
+<li><strong>Mode:</strong> modal class 20–24. d1 = 8 − 5 = 3, d2 = 8 − 4 = 4. Mo = 19.5 + [3/7] · 5 = 19.5 + 2.14 = <strong>≈ 21.64</strong></li>
+</ul>
+<hr>
+<h2>📝 UNIT 7 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"What is the class mark of the class 39–41?","c":"40","w":["39.5","41.5","3"],"e":"(39 + 41) / 2 = 40."},{"q":"What are the class boundaries of the class 39–41?","c":"38.5 – 41.5","w":["39 – 41","39.5 – 40.5","38 – 42"],"e":"Subtract 0.5 from the lower limit and add 0.5 to the upper limit."},{"q":"What is the class size of a table with classes 27–29, 30–32, 33–35, ...?","c":"3","w":["2","2.5","30"],"e":"30 − 27 = 3. Using 29 − 27 = 2 is the common mistake."},{"q":"What is the formula for the mean of grouped data?","c":"Σfx / N","w":["Σx / N","Σf / n","Σfx / i"],"e":""},{"q":"In a grouped table, the modal class is the class with the:","c":"Highest frequency","w":["Highest class mark","Highest cumulative frequency","Middle position"],"e":""},{"q":"A table is listed from the highest class at the top to the lowest at the bottom. Where do you start counting the less-than cumulative frequency?","c":"From the lowest class","w":["From the highest class","From the middle class","From the modal class"],"e":""},{"q":"In the exam table (N = 40, Σfx = 1,624), what is the mean?","c":"40.6","w":["40.5","40.38","41.6"],"e":"1,624 / 40 = 40.6."},{"q":"In the exam table, the modal class 39–41 has f = 8. The class below it (36–38) has f = 4 and the class above it (42–44) has f = 6. What is the mode?","c":"40.5","w":["40.0","40.6","41.0"],"e":"38.5 + (4 / 6)(3) = 40.5."},{"q":"In the exam table, N/2 = 20, the median class is 39–41, the cf before it is 15, and f = 8. What is the median?","c":"40.38","w":["40.50","40.60","39.88"],"e":"38.5 + ((20 − 15) / 8)(3) = 40.375."},{"q":"For the table 10–14:2, 15–19:5, 20–24:8, 25–29:4, 30–34:1, what is the mean?","c":"21.25","w":["22.00","21.38","20.00"],"e":"Σfx = 425, N = 20, so 425 / 20 = 21.25."},{"q":"For the same table (10–14:2, 15–19:5, 20–24:8, 25–29:4, 30–34:1), what is the median?","c":"21.38","w":["21.25","22.00","21.64"],"e":"19.5 + ((10 − 7) / 8)(5) = 21.375."},{"q":"For the same table, which is the modal class, and about what is the mode?","c":"20–24, about 21.64","w":["20–24, exactly 22","15–19, about 18.5","25–29, about 26.2"],"e":"19.5 + (3 / 7)(5) ≈ 21.64."}]</script></div>
+<hr>
+<h2>UNIT 8 — GRAPH THEORY</h2>
+<blockquote>
+<p>⚠️ In this unit, a <strong>graph</strong> is NOT a bar graph or line graph. It is a set of <strong>dots (vertices)</strong> connected by <strong>lines (edges)</strong>.</p>
+</blockquote>
+<h3>8.1 Definition of a Graph</h3>
+<p>A <strong>graph</strong> G is a <strong>triple</strong> made of:</p>
+<ol>
+<li><strong>V(G)</strong>, a <strong>vertex set</strong> (the dots),</li>
+<li><strong>E(G)</strong>, an <strong>edge set</strong> (the lines), and</li>
+<li>a <strong>relation</strong> that links <strong>each edge to a pair of vertices</strong> (its <strong>endpoints</strong>).</li>
+</ol>
+<h3>8.2 Basic Terms</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Vertex</strong> (plural: vertices)</td>
+<td>A point / dot / node</td>
+</tr>
+<tr>
+<td><strong>Edge</strong></td>
+<td>A line connecting two vertices</td>
+</tr>
+<tr>
+<td><strong>Endpoints</strong></td>
+<td>The two vertices an edge connects</td>
+</tr>
+<tr>
+<td><strong>Adjacent</strong></td>
+<td>Two vertices are adjacent if an <strong>edge joins them</strong> (they are &quot;neighbors&quot;)</td>
+</tr>
+<tr>
+<td><strong>Loop</strong></td>
+<td>An edge whose <strong>two endpoints are the same</strong> vertex (it goes back to itself)</td>
+</tr>
+<tr>
+<td><strong>Multiple edges</strong></td>
+<td>Two or more edges with the <strong>same pair of endpoints</strong></td>
+</tr>
+<tr>
+<td><strong>Simple graph</strong></td>
+<td>A graph with <strong>no loops and no multiple edges</strong></td>
+</tr>
+<tr>
+<td><strong>Degree of a vertex</strong></td>
+<td>The number of edges touching it (a <strong>loop counts 2</strong>)</td>
+</tr>
+<tr>
+<td><strong>Null graph</strong></td>
+<td>A graph whose <strong>vertex set and edge set are both empty</strong></td>
+</tr>
+<tr>
+<td><strong>Finite graph</strong></td>
+<td>Finite vertex set and finite edge set</td>
+</tr>
+<tr>
+<td><strong>Infinite graph</strong></td>
+<td>Has infinitely many vertices or edges</td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs">   <span class="hljs-selector-tag">Loop</span> <span class="hljs-selector-tag">at</span> <span class="hljs-selector-tag">A</span>          <span class="hljs-selector-tag">Multiple</span> <span class="hljs-selector-tag">edges</span> <span class="hljs-selector-tag">A</span>–<span class="hljs-selector-tag">B</span>        <span class="hljs-selector-tag">Simple</span> <span class="hljs-selector-tag">graph</span>
+     <span class="hljs-selector-tag">_</span>                     <span class="hljs-selector-tag">___</span>                  <span class="hljs-selector-tag">A</span> —— <span class="hljs-selector-tag">B</span>
+    ( )                   /   \                 |    |
+     <span class="hljs-selector-tag">A</span>                   <span class="hljs-selector-tag">A</span>     <span class="hljs-selector-tag">B</span>                <span class="hljs-selector-tag">D</span> —— <span class="hljs-selector-tag">C</span>
+                          \<span class="hljs-selector-tag">___</span>/</code></pre></div>
+<h3>8.3 Degree and the Handshake Theorem</h3>
+<blockquote>
+<p>🔑 <strong>Handshake Theorem:</strong> the <strong>sum of the degrees of all vertices = 2 × (number of edges)</strong>. Each edge has 2 ends, so it adds 2 to the total.</p>
+</blockquote>
+<p><strong>Worked example:</strong> the square A–B–C–D–A has 4 edges. Each vertex has degree 2, so the sum = 2 + 2 + 2 + 2 = <strong>8 = 2 × 4</strong> ✅</p>
+<ul>
+<li>Consequence: the sum of degrees is <strong>always even</strong>, so the number of odd-degree vertices is <strong>always even</strong>.</li>
+</ul>
+<h3>8.4 Paths, Cycles, and Connectedness</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Example (square A–B–C–D–A)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Path</strong></td>
+<td>A list of <strong>distinct</strong> vertices where <strong>consecutive ones are adjacent</strong></td>
+<td>A, B, C</td>
+</tr>
+<tr>
+<td><strong>Cycle</strong></td>
+<td>A path that <strong>comes back to its start</strong> (closed), with no repeated vertices except start = end</td>
+<td>A, B, C, D, A</td>
+</tr>
+<tr>
+<td><strong>Connected graph</strong></td>
+<td>There is a <strong>path between ANY two vertices</strong></td>
+<td>The square is connected</td>
+</tr>
+<tr>
+<td><strong>Disconnected graph</strong></td>
+<td>At least one pair of vertices has <strong>no path</strong> between them</td>
+<td>A–B and C–D with no edge between the pairs</td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"> Connected:           Disconnected:
+ A —— B               A —— B      C —— D
+ |    |               (<span class="hljs-literal">no</span> way <span class="hljs-keyword">to</span> <span class="hljs-built_in">get</span> <span class="hljs-keyword">from</span> A <span class="hljs-keyword">to</span> C)
+ D —— C</code></pre></div>
+<h3>8.5 Cliques and Independent Sets</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Memory trick</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Clique</strong></td>
+<td>A set of vertices that are <strong>pairwise adjacent</strong> (every pair is joined by an edge)</td>
+<td>A group of friends where <strong>everyone knows everyone</strong></td>
+</tr>
+<tr>
+<td><strong>Independent set</strong></td>
+<td>A set of vertices that are <strong>pairwise NON-adjacent</strong> (no edge between any two of them)</td>
+<td>A group of <strong>total strangers</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Example:</strong> in the square A–B–C–D–A, {A, B} is a clique (an edge joins them). {A, C} is an independent set (no edge A–C).</p>
+<ul>
+<li><strong>K_n (complete graph)</strong> = n vertices, <strong>every pair</strong> joined. The whole K_n is a clique.</li>
+</ul>
+<h3>8.6 Graph Coloring and Chromatic Number</h3>
+<ul>
+<li><strong>Coloring:</strong> give each vertex a color so that <strong>adjacent vertices have different colors</strong>.</li>
+<li><strong>Chromatic number χ(G):</strong> the <strong>minimum number of colors</strong> needed.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Graph</th>
+<th>Chromatic number</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>K_n</strong> (complete graph)</td>
+<td><strong>n</strong></td>
+<td>Every vertex touches every other, so all need different colors</td>
+</tr>
+<tr>
+<td><strong>Even cycle</strong> (C4, C6, …)</td>
+<td><strong>2</strong></td>
+<td>Alternate red, blue, red, blue… it closes evenly</td>
+</tr>
+<tr>
+<td><strong>Odd cycle</strong> (C3, C5, …)</td>
+<td><strong>3</strong></td>
+<td>Alternating fails at the last vertex, so a 3rd color is needed</td>
+</tr>
+<tr>
+<td>Graph with at least 1 edge, no odd cycles</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Graph with no edges</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody></table>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"> Even cycle <span class="hljs-built_in">C4</span> (<span class="hljs-number">2</span> colors)     Odd cycle <span class="hljs-built_in">C3</span> / triangle (<span class="hljs-number">3</span> colors)
+  R —— <span class="hljs-keyword">B</span>                            R
+  <span class="hljs-title">|    |</span>                           / \
+  <span class="hljs-keyword">B</span> —— R                          <span class="hljs-keyword">B</span> — G</code></pre></div>
+<h3>8.7 Maps and the Four-Color Theorem</h3>
+<ul>
+<li>A <strong>map</strong> is a <strong>partition of the plane into connected regions</strong> (like the provinces on a map of the Philippines).</li>
+<li>To color a map, regions that <strong>share a border</strong> must get different colors. Turn each region into a vertex and each shared border into an edge, then color the graph.</li>
+<li>🔑 <strong>Four-Color Theorem:</strong> <strong>every map can be colored with at most 4 colors</strong> so that no two neighboring regions share a color.</li>
+</ul>
+<blockquote>
+<p>⚠️ Regions that only touch at a <strong>single point</strong> (a corner) are NOT considered adjacent.</p>
+</blockquote>
+<hr>
+<h2>📝 UNIT 8 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"A graph is defined as a triple consisting of:","c":"A vertex set, an edge set, and a relation linking each edge to a pair of vertices","w":["A vertex set, a color set, and a region set","An x-axis, a y-axis, and plotted points","A set of numbers, an operation, and an identity"],"e":""},{"q":"An edge whose two endpoints are the same vertex is called a:","c":"Loop","w":["Multiple edge","Cycle","Path"],"e":""},{"q":"A simple graph is a graph with:","c":"No loops and no multiple edges","w":["No edges at all","Exactly one cycle","All vertices adjacent to each other"],"e":""},{"q":"A graph whose vertex set and edge set are both empty is called a:","c":"Null graph","w":["Simple graph","Disconnected graph","Finite graph"],"e":""},{"q":"A graph has 6 edges. What is the sum of the degrees of all its vertices?","c":"12","w":["6","3","36"],"e":"Handshake theorem: sum of degrees = 2 × edges."},{"q":"A list of distinct vertices in which consecutive vertices are adjacent is called a:","c":"Path","w":["Clique","Loop","Map"],"e":""},{"q":"A graph is connected if:","c":"There is a path between any two vertices","w":["Every vertex has a loop","Every pair of vertices is adjacent","It has no edges"],"e":""},{"q":"A set of vertices that are pairwise adjacent is called a:","c":"Clique","w":["Independent set","Null graph","Cycle"],"e":""},{"q":"A set of vertices where no two are adjacent is called a(n):","c":"Independent set","w":["Clique","Path","Complete graph"],"e":""},{"q":"What is the chromatic number of the complete graph K5?","c":"5","w":["4","3","2"],"e":"In K_n every vertex touches every other, so it needs n colors."},{"q":"What is the chromatic number of a cycle with 6 vertices (C6)?","c":"2","w":["3","6","4"],"e":"Even cycles alternate two colors."},{"q":"What is the chromatic number of a cycle with 5 vertices (C5)?","c":"3","w":["2","5","4"],"e":"Odd cycles need a third color."},{"q":"According to the Four-Color Theorem, what is the most number of colors needed to color any map?","c":"4","w":["3","5","It depends on the number of regions"],"e":""}]</script></div>
+<hr>
+<h2>UNIT 9 — LINEAR PROGRAMMING (CORNER-POINT METHOD)</h2>
+<p><strong>Linear programming (LP)</strong> finds the <strong>best</strong> (maximum or minimum) value of something, like profit or cost, when you have <strong>limits</strong> (constraints).</p>
+<h3>9.1 Parts of an LP Problem</h3>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Objective function</strong></td>
+<td>What you want to <strong>maximize or minimize</strong></td>
+<td>Maximize P = 4x + 2y</td>
+</tr>
+<tr>
+<td><strong>Constraints</strong></td>
+<td>The <strong>limits</strong>, written as inequalities</td>
+<td>x + y ≤ 5, x − y ≤ 1</td>
+</tr>
+<tr>
+<td><strong>Non-negativity constraints</strong></td>
+<td>You can&#39;t make negative products</td>
+<td>x ≥ 0, y ≥ 0</td>
+</tr>
+<tr>
+<td><strong>Feasible region</strong></td>
+<td>The area on the graph where <strong>ALL constraints are true at the same time</strong></td>
+<td>The shaded polygon</td>
+</tr>
+<tr>
+<td><strong>Corner points (vertices)</strong></td>
+<td>The <strong>corners</strong> of the feasible region</td>
+<td>(0,0), (1,0), (3,2), (0,5)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🔑 <strong>Corner-Point Theorem:</strong> the maximum or minimum of the objective function always happens at a <strong>corner point</strong> of the feasible region. So you only need to test the corners.</p>
+</blockquote>
+<h3>9.2 The Steps</h3>
+<ol>
+<li><strong>Write</strong> the objective function and constraints.</li>
+<li><strong>Graph</strong> each constraint as a line using its <strong>intercepts</strong> (set x = 0 to find y, set y = 0 to find x).</li>
+<li><strong>Shade</strong> the feasible region (for &quot;≤&quot; with x, y ≥ 0, it&#39;s usually the side <strong>toward the origin</strong>; test (0,0) if unsure).</li>
+<li><strong>Find the corner points.</strong> Intercepts give some; where two lines cross, solve the two equations by <strong>elimination</strong>.</li>
+<li><strong>Evaluate</strong> the objective function at every corner.</li>
+<li><strong>Pick</strong> the largest value (maximize) or the smallest value (minimize).</li>
+</ol>
+<h3>9.3 📌 Worked Example 1</h3>
+<p><strong>Maximize P = 4x + 2y</strong> subject to x ≥ 0, y ≥ 0, <strong>x + y ≤ 5</strong>, <strong>x − y ≤ 1</strong>.</p>
+<p><strong>Step 1: intercepts</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>x = 0</th>
+<th>y = 0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x + y = 5</td>
+<td>(0, 5)</td>
+<td>(5, 0)</td>
+</tr>
+<tr>
+<td>x − y = 1</td>
+<td>(0, −1)</td>
+<td>(1, 0)</td>
+</tr>
+</tbody></table>
+<p><strong>Step 2: shade.</strong> Test (0,0): 0 + 0 ≤ 5 ✔, 0 − 0 ≤ 1 ✔ → the region contains the origin.</p>
+<p><strong>Step 3: intersection by elimination</strong></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-code">  x + y = 5</span>
+<span class="hljs-section">+ x − y = 1
+-----------</span>
+<span class="hljs-code"> 2x     = 6   →  x = 3</span>
+<span class="hljs-code"> 3 + y  = 5   →  y = 2      →  (3, 2)</span></code></pre></div>
+<p><strong>Step 4: corner points and evaluation</strong></p>
+<table>
+<thead>
+<tr>
+<th>Corner</th>
+<th>P = 4x + 2y</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(0, 0)</td>
+<td>4(0) + 2(0)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>(1, 0)</td>
+<td>4(1) + 2(0)</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>(3, 2)</strong></td>
+<td>4(3) + 2(2)</td>
+<td><strong>16</strong> ← max</td>
+</tr>
+<tr>
+<td>(0, 5)</td>
+<td>4(0) + 2(5)</td>
+<td>10</td>
+</tr>
+</tbody></table>
+<p>✅ <strong>Maximum P = 16 at (3, 2).</strong></p>
+<blockquote>
+<p>⚠️ (5, 0) is NOT a corner: it breaks x − y ≤ 1 (5 − 0 = 5 &gt; 1). Always check each point against <strong>every</strong> constraint.</p>
+</blockquote>
+<h3>9.4 📌 Worked Example 2</h3>
+<p><strong>Maximize P = 4x + 3y</strong> subject to x ≥ 0, y ≥ 0, <strong>2x + y ≤ 12</strong>, <strong>x + y ≤ 7</strong>.</p>
+<p><strong>Step 1: intercepts</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>x = 0</th>
+<th>y = 0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2x + y = 12</td>
+<td>(0, 12)</td>
+<td>(6, 0)</td>
+</tr>
+<tr>
+<td>x + y = 7</td>
+<td>(0, 7)</td>
+<td>(7, 0)</td>
+</tr>
+</tbody></table>
+<p>The feasible region stays <strong>under both lines</strong>, so on the x-axis use the smaller intercept <strong>(6, 0)</strong>, and on the y-axis use the smaller intercept <strong>(0, 7)</strong>.</p>
+<p><strong>Step 2: intersection by elimination</strong></p>
+<div class="code-block-wrapper"><button class="code-copy-btn" aria-label="Copy code" title="Copy"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre><code class="hljs"><span class="hljs-code">  2x + y = 12</span>
+<span class="hljs-section">− ( x + y = 7 )
+---------------</span>
+<span class="hljs-code">   x     = 5</span>
+<span class="hljs-code">   5 + y = 7   →  y = 2      →  (5, 2)</span></code></pre></div>
+<p><strong>Step 3: corner points and evaluation</strong></p>
+<table>
+<thead>
+<tr>
+<th>Corner</th>
+<th>P = 4x + 3y</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(0, 0)</td>
+<td>0 + 0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>(6, 0)</td>
+<td>24 + 0</td>
+<td>24</td>
+</tr>
+<tr>
+<td><strong>(5, 2)</strong></td>
+<td>20 + 6</td>
+<td><strong>26</strong> ← max</td>
+</tr>
+<tr>
+<td>(0, 7)</td>
+<td>0 + 21</td>
+<td>21</td>
+</tr>
+</tbody></table>
+<p>✅ <strong>Maximum P = 26 at (5, 2).</strong></p>
+<blockquote>
+<p>⚠️ (7, 0) and (0, 12) are intercepts but NOT corners. (7, 0) breaks 2x + y ≤ 12 (14 &gt; 12), and (0, 12) breaks x + y ≤ 7.</p>
+</blockquote>
+<h3>9.5 Practice Examples (solved)</h3>
+<p><strong>A. Maximize P = 3x + 2y</strong>, x, y ≥ 0, x + y ≤ 4, x + 3y ≤ 6.</p>
+<ul>
+<li>Intersection: subtract → 2y = 2 → y = 1, x = 3 → <strong>(3, 1)</strong></li>
+<li>Corners: (0,0) → 0 · <strong>(4,0) → 12</strong> · (3,1) → 11 · (0,2) → 4</li>
+<li>✅ <strong>Max P = 12 at (4, 0)</strong> (the max can be at an intercept corner, not always at the crossing point!)</li>
+</ul>
+<p><strong>B. Maximize P = 5x + 4y</strong>, x, y ≥ 0, 2x + y ≤ 8, x + 2y ≤ 10.</p>
+<ul>
+<li>Intersection: multiply the 1st by 2 → 4x + 2y = 16; subtract x + 2y = 10 → 3x = 6 → x = 2, y = 4 → <strong>(2, 4)</strong></li>
+<li>Corners: (0,0) → 0 · (4,0) → 20 · <strong>(2,4) → 26</strong> · (0,5) → 20</li>
+<li>✅ <strong>Max P = 26 at (2, 4)</strong></li>
+</ul>
+<p><strong>Minimizing:</strong> do the exact same steps, then pick the <strong>smallest</strong> value. For Example 1, the minimum of P = 4x + 2y is <strong>0 at (0, 0)</strong>.</p>
+<hr>
+<h2>📝 UNIT 9 QUIZ</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"In linear programming, the function you want to maximize or minimize is called the:","c":"Objective function","w":["Constraint","Feasible region","Corner point"],"e":""},{"q":"The region on the graph where all constraints are satisfied at the same time is the:","c":"Feasible region","w":["Objective region","Null region","Infinite region"],"e":""},{"q":"According to the corner-point method, the maximum or minimum value is found at:","c":"A corner point of the feasible region","w":["The center of the feasible region","Any point outside the feasible region","The origin only"],"e":""},{"q":"What are the intercepts of the line 2x + y = 12?","c":"(6, 0) and (0, 12)","w":["(12, 0) and (0, 6)","(2, 0) and (0, 1)","(6, 0) and (0, 6)"],"e":"Set y = 0: x = 6. Set x = 0: y = 12."},{"q":"Where do the lines x + y = 5 and x − y = 1 intersect?","c":"(3, 2)","w":["(2, 3)","(5, 1)","(4, 1)"],"e":"Add them: 2x = 6, so x = 3 and y = 2."},{"q":"Maximize P = 4x + 2y subject to x, y ≥ 0, x + y ≤ 5, x − y ≤ 1. What is the maximum?","c":"16 at (3, 2)","w":["20 at (5, 0)","10 at (0, 5)","4 at (1, 0)"],"e":"(5, 0) is not feasible because 5 − 0 > 1."},{"q":"Maximize P = 4x + 3y subject to x, y ≥ 0, 2x + y ≤ 12, x + y ≤ 7. What is the maximum?","c":"26 at (5, 2)","w":["28 at (7, 0)","24 at (6, 0)","21 at (0, 7)"],"e":"(7, 0) breaks 2x + y ≤ 12."},{"q":"Maximize P = 3x + 2y subject to x, y ≥ 0, x + y ≤ 4, x + 3y ≤ 6. What is the maximum?","c":"12 at (4, 0)","w":["11 at (3, 1)","18 at (6, 0)","8 at (0, 4)"],"e":"Corners: (0,0)=0, (4,0)=12, (3,1)=11, (0,2)=4."},{"q":"Maximize P = 5x + 4y subject to x, y ≥ 0, 2x + y ≤ 8, x + 2y ≤ 10. What is the maximum?","c":"26 at (2, 4)","w":["20 at (4, 0)","20 at (0, 5)","40 at (0, 10)"],"e":"The lines cross at (2, 4): 5(2) + 4(4) = 26."},{"q":"Which point is NOT in the feasible region of x, y ≥ 0, x + y ≤ 5, x − y ≤ 1?","c":"(4, 1)","w":["(3, 2)","(1, 0)","(0, 5)"],"e":"4 − 1 = 3, which is greater than 1."},{"q":"For P = 4x + 2y with corners (0,0), (1,0), (3,2), (0,5), what is the MINIMUM value?","c":"0 at (0, 0)","w":["4 at (1, 0)","10 at (0, 5)","16 at (3, 2)"],"e":""}]</script></div>
+<hr>
+<h2>⚠️ EXAM TRAPS / EASY-TO-CONFUSE</h2>
+<table>
+<thead>
+<tr>
+<th>Confusing pair</th>
+<th>How to tell them apart</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Parameter vs Statistic</td>
+<td><strong>P</strong>arameter = <strong>P</strong>opulation · <strong>S</strong>tatistic = <strong>S</strong>ample</td>
+</tr>
+<tr>
+<td>Ordinal vs Nominal</td>
+<td>Ordinal has <strong>order</strong> (rank). Nominal is <strong>labels only</strong></td>
+</tr>
+<tr>
+<td>Interval vs Ratio</td>
+<td>Ratio has a <strong>true zero</strong> (0 = none). °C is interval, kg is ratio</td>
+</tr>
+<tr>
+<td>Mean vs Median with outliers</td>
+<td>Mean is <strong>pulled</strong> by extreme scores; median is <strong>resistant</strong></td>
+</tr>
+<tr>
+<td>Median of even n</td>
+<td><strong>Average the two middle</strong> values (after sorting!)</td>
+</tr>
+<tr>
+<td>Bimodal vs no mode</td>
+<td>Bimodal = <strong>two</strong> values tie for most frequent; no mode = <strong>nothing repeats</strong></td>
+</tr>
+<tr>
+<td>Weighted mean vs plain mean</td>
+<td>Weighted divides by <strong>Σw</strong>, not by the number of categories</td>
+</tr>
+<tr>
+<td>Class size</td>
+<td>Difference of consecutive <strong>lower limits</strong> (3 for 27–29, 30–32), not UL − LL</td>
+</tr>
+<tr>
+<td>Class boundary vs class limit</td>
+<td>Boundary = limit <strong>± 0.5</strong></td>
+</tr>
+<tr>
+<td>&lt;cf in a highest-first table</td>
+<td><strong>Always count from the LOWEST class</strong></td>
+</tr>
+<tr>
+<td>d1 and d2 in the mode formula</td>
+<td>d1 = modal f − f of the class <strong>below</strong> (lower values); d2 = modal f − f of the class <strong>above</strong></td>
+</tr>
+<tr>
+<td>Clique vs independent set</td>
+<td>Clique: <strong>all</strong> pairs adjacent. Independent: <strong>no</strong> pairs adjacent</td>
+</tr>
+<tr>
+<td>Even vs odd cycle coloring</td>
+<td>Even cycle <strong>2</strong>, odd cycle <strong>3</strong>, K_n <strong>n</strong></td>
+</tr>
+<tr>
+<td>Loop vs cycle</td>
+<td>A loop is <strong>one edge</strong> from a vertex to itself; a cycle is a <strong>closed path</strong></td>
+</tr>
+<tr>
+<td>LP intercepts vs corners</td>
+<td>An intercept is a corner only if it satisfies <strong>every</strong> constraint</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📝 MOCK EXAM (MIXED)</h2>
+<div class="quiz" data-quiz><script type="application/json" class="quiz-data">[{"q":"The owner of a shoe store wants to know the most saleable shoe size. Which measure should be used?","c":"Mode","w":["Mean","Median","Range"],"e":""},{"q":"Which measure of central tendency is greatly affected by extreme scores?","c":"Mean","w":["Median","Mode","Class mark"],"e":""},{"q":"Which level of measurement has values with a specific order?","c":"Ordinal","w":["Nominal","Interval","Ratio"],"e":""},{"q":"Find the mean of 70, 72, 77, 78, 86, 84, 79.","c":"78","w":["77.91","79","74.70"],"e":""},{"q":"For 8, 8, 9, 10, 10, which is true?","c":"Mean = median","w":["Mean > median","Mean \u003c median","The mode is 9"],"e":""},{"q":"A store sold 1,000 items at ₱10, 500 at ₱20, 500 at ₱25, and 100 at ₱30. What is the weighted mean?","c":"16.90","w":["21.25","18.00","16.00"],"e":""},{"q":"In Jabez's scores 70, 72, 77, 78, 86, 84, 79, the lowest score is replaced with 20 and a high score with 100. Choices are 78.00, 77.91, 74.70, 73.86. Which is the best answer?","c":"73.86","w":["78.00","77.91","74.70"],"e":"Strictly replacing 70 and 86 gives 72.86, which is not a choice. 73.86 is closest and matches 517 / 7. The extreme low score drags the mean down."},{"q":"Find the median of the blood pressure readings 135, 121, 119, 116, 130, 121, 131.","c":"121","w":["116","124.7","130"],"e":""},{"q":"In the grouped exam table, N = 40 and Σfx = 1,624. What is the mean?","c":"40.6","w":["40.5","40.38","40"],"e":""},{"q":"In the grouped exam table, what is the class mark of the modal class 39–41?","c":"40","w":["39","41","38.5"],"e":""},{"q":"Using Mo = L + [d1 / (d1 + d2)] · i with L = 38.5, d1 = 4, d2 = 2, i = 3, what is the mode?","c":"40.5","w":["40.0","39.5","41.5"],"e":""},{"q":"Using Md = L + [(N/2 − cf) / f] · i with L = 38.5, N = 40, cf = 15, f = 8, i = 3, what is the median?","c":"40.38","w":["40.50","40.60","41.00"],"e":""},{"q":"A survey of 200 voters finds that 58% support a candidate. The 58% is a:","c":"Statistic","w":["Parameter","Population","Nominal value"],"e":""},{"q":"What is the median of 6, 2, 9, 4?","c":"5","w":["4","5.25","6.5"],"e":"Sorted: 2, 4, 6, 9. (4 + 6) / 2 = 5. 5.25 is the mean."},{"q":"In graph theory, two vertices joined by an edge are called:","c":"Adjacent","w":["Independent","Isolated","Parallel"],"e":""},{"q":"A graph has vertices with degrees 3, 3, 2, 2, 2. How many edges does it have?","c":"6","w":["12","5","10"],"e":"Sum of degrees = 12, and 12 / 2 = 6."},{"q":"What is the chromatic number of a triangle (K3)?","c":"3","w":["2","4","1"],"e":""},{"q":"A map is a partition of the plane into:","c":"Connected regions","w":["Vertices","Straight lines","Equal squares"],"e":""},{"q":"Maximize P = 4x + 3y subject to x, y ≥ 0, 2x + y ≤ 12, x + y ≤ 7.","c":"26","w":["28","24","21"],"e":""},{"q":"Maximize P = 4x + 2y subject to x, y ≥ 0, x + y ≤ 5, x − y ≤ 1.","c":"16","w":["20","10","18"],"e":""},{"q":"Maximize P = 2x + 5y subject to x, y ≥ 0, x + y ≤ 6, y ≤ 4.","c":"24 at (2, 4)","w":["20 at (0, 4)","12 at (6, 0)","30 at (0, 6)"],"e":"Corners: (0,0)=0, (6,0)=12, (2,4)=24, (0,4)=20. (0, 6) breaks y ≤ 4."}]</script></div>
+
+  </div>
+  <div class="note-nav">
+    <a href="Y1S1-HCI101-midterm.html" class="note-nav-prev">← HCI101</a>
+    <a href="Y1S1-GE5-midterm.html" class="note-nav-next">GE5 →</a>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 DtvKuro, Tarub Corp.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dtvkuroo/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/DtvKuro?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://www.facebook.com/joachimjade.japos" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>
