@@ -1680,3 +1680,23 @@ code.hljs { padding: 3px 5px; }
 @media print {
   .toc-fab { display: none !important; }
 }
+
+/* Teleporter: jump between a lesson part and its quiz */
+
+.jump-anchor { display: block; height: 0; scroll-margin-top: 5rem; }
+
+.teleporter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent-glow);
+  color: var(--text-primary, inherit);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.teleporter:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+.teleporter-back { padding: 0.4rem 0.9rem; font-size: 0.9rem; font-weight: 500; border-style: dashed; }

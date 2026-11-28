@@ -98,7 +98,10 @@
     if (!target) return;
 
     e.preventDefault();
-    const y = target.getBoundingClientRect().top + window.scrollY - (window.innerHeight / 2) + (target.offsetHeight / 2);
+    // Teleporter anchors land at the top (below the fixed nav); everything else is centered.
+    const y = target.classList.contains('jump-anchor')
+      ? target.getBoundingClientRect().top + window.scrollY - 80
+      : target.getBoundingClientRect().top + window.scrollY - (window.innerHeight / 2) + (target.offsetHeight / 2);
     window.scrollTo({ top: y, behavior: 'smooth' });
   });
 

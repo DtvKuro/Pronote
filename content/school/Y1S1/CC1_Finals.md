@@ -1,9 +1,13 @@
 # CC1 Introduction to Computing — Finals
 **Covers:** MS Word (Exercises #1–#9: editing, font & paragraph formatting, drop cap, tabs, bullets, borders & shading, mail merge, tables) · MS Excel (Exercise #10 Employees Profile + Excel Quiz MP1–MP4: formulas, functions, IF / nested IF, VLOOKUP / HLOOKUP, conditional formatting, filter, subtotal, chart, print setup) · MS PowerPoint (Exercise #11: themes, layouts, pictures, transitions, plus the animation and interactive tools the final project needs) · Final Project requirements
 
-> **How to use this:** This is the **hands-on** half of CC1. The midterm theory (hardware, CPU, memory, I/O devices) is in the Midterm reviewer. Every skill here has 4 parts: **① what it is → ② exact ribbon path / steps → ③ keyboard shortcut → ④ exam traps (⚠️)**. The Excel Quiz problems (MP1–MP4) are worked out in full and marked **📌 (exam item)**, because similar problems are likely on the finals. Each part ends with a practice quiz, and there is a mixed **Mock Exam** at the very end. Ribbon paths are for **Microsoft 365 / Office 2016+**.
+> **How to use this:** This is the **hands-on** half of CC1. The midterm theory (hardware, CPU, memory, I/O devices) is in the Midterm reviewer. Every skill here has 4 parts: **① what it is → ② exact ribbon path / steps → ③ keyboard shortcut → ④ exam traps (⚠️)**. The Excel Quiz problems (MP1–MP4) are worked out in full and marked **📌 (exam item)**, because similar problems are likely on the finals. Each part ends with a **🌀 teleporter** that jumps to its practice quiz. All quizzes, plus a mixed **Mock Exam**, are together at the very bottom. Ribbon paths are for **Microsoft 365 / Office 2016+**.
 
 ---
+
+<a class="teleporter" href="#all-quizzes">🌀 Teleport to All Quizzes</a>
+
+<a id="part-1" class="jump-anchor"></a>
 
 ## PART 1 — WORD: EDITING & FONT FORMATTING (Exercises #1–#2)
 
@@ -90,67 +94,11 @@
 
 ---
 
-## 📝 PART 1 QUIZ
-
-```quiz
-Q: Which shortcut opens the Find and Replace box on the Replace tab?
-* Ctrl + H
-- Ctrl + F
-- Ctrl + R
-- Ctrl + E
-> Ctrl + F = Find (Navigation pane). Ctrl + H = Replace. Ctrl + R = align right, Ctrl + E = center.
-
-Q: The "2" in H₂O is formatted as:
-* Subscript
-- Superscript
-- Small caps
-- Raised position
-> Subscript is lowered and smaller (Ctrl + =). Superscript is raised (Ctrl + Shift + =).
-
-Q: Which underline style puts a line under the words but NOT under the spaces between them?
-* Words only
-- Single
-- Dotted
-- Dash
-> Words only (Ctrl + Shift + W) skips the spaces.
-
-Q: Double strikethrough can be applied from:
-* The Font dialog box (Ctrl + D) only
-- A button in the Home › Font group
-- Insert › Symbol
-- Review › Track Changes
-> The ribbon only has single Strikethrough. Double strikethrough is a checkbox in the Font dialog.
-
-Q: A red wavy underline under a word usually means:
-* A possible spelling error
-- A grammar error
-- A hyperlink
-- A tracked change
-> Red wavy = spelling. Blue double line = grammar/style. Run the full check with F7.
-
-Q: Pressing Shift + F3 on selected text will:
-* Cycle the case between lowercase, UPPERCASE and Capitalize Each Word
-- Open the Font dialog
-- Apply bold
-- Insert a footnote
-> Shift + F3 is Change Case. Ctrl + D opens the Font dialog.
-
-Q: You want to add a note that appears at the bottom of the SAME page, with an automatic superscript number. Use:
-* References › Insert Footnote
-- References › Insert Endnote
-- Home › Superscript
-- Insert › Header
-> Footnote = bottom of the page (Alt + Ctrl + F). Endnote = end of the document.
-
-Q: To put more space BETWEEN THE LETTERS of a title, use:
-* Font dialog › Advanced › Spacing: Expanded
-- Paragraph › Line spacing: Double
-- Layout › Spacing After
-- Home › Increase Indent
-> This is character spacing. Line spacing is about the space between lines.
-```
+<a class="teleporter" href="#quiz-part-1">🌀 Teleport to the Part 1 Quiz</a>
 
 ---
+
+<a id="part-2" class="jump-anchor"></a>
 
 ## PART 2 — WORD: PARAGRAPH FORMATTING, DROP CAP, COLUMNS, TABS (Exercises #3–#5)
 
@@ -246,81 +194,11 @@ Exercise #5 used **left, center, right, and bar** tabs, plus a **right tab at 5.
 
 ---
 
-## 📝 PART 2 QUIZ
-
-```quiz
-Q: Which shortcut makes a paragraph JUSTIFIED (straight on both left and right edges)?
-* Ctrl + J
-- Ctrl + E
-- Ctrl + L
-- Ctrl + R
-> J = Justify, E = cEnter, L = Left, R = Right.
-
-Q: A paragraph where the FIRST line starts at the margin and all the OTHER lines are pushed in has a:
-* Hanging indent
-- First-line indent
-- Right indent
-- Left indent
-> Hanging indent (Ctrl + T) is used in references and bibliographies.
-
-Q: Where do you find the Drop Cap command?
-* Insert › Text › Drop Cap
-- Home › Font › Drop Cap
-- Layout › Page Setup › Drop Cap
-- Design › Page Background › Drop Cap
-> Drop Cap is on the Insert tab, in the Text group.
-
-Q: In Drop Cap Options, the default "Lines to drop" is:
-* 3
-- 1
-- 2
-- 5
-> The default is 3 lines. Exercise #4 used 3 and 4.
-
-Q: Which drop cap position places the big letter OUTSIDE the paragraph, in the left margin?
-* In margin
-- Dropped
-- None
-- Hanging
-> Dropped = inside the text block. In margin = out in the margin.
-
-Q: For a table of contents where the page numbers line up on the right edge with dots before them, set a:
-* Right tab with a dot leader
-- Left tab with no leader
-- Center tab with a line leader
-- Bar tab
-> The right tab makes the numbers end at the stop. Leader option 2 makes the dots.
-
-Q: You set a tab position and leader in the Tabs dialog, then clicked OK, but nothing happened. What did you most likely forget?
-* To click Set before OK
-- To press Ctrl + T
-- To turn on the ruler
-- To save the document
-> The Set button adds the tab stop to the list. OK only closes the box.
-
-Q: Shortcut for double line spacing:
-* Ctrl + 2
-- Ctrl + D
-- Ctrl + 5
-- Ctrl + Shift + D
-> Ctrl + 1 single, Ctrl + 5 = 1.5 lines, Ctrl + 2 double. Ctrl + Shift + D is double UNDERLINE.
-
-Q: Which tab type lines up numbers on their decimal point?
-* Decimal tab
-- Right tab
-- Center tab
-- Bar tab
-> The decimal tab aligns 1,950.00 and 3,910.00 at the period.
-
-Q: To force text to continue at the top of the NEXT column, insert a:
-* Column break (Ctrl + Shift + Enter)
-- Page break (Ctrl + Enter)
-- Line break (Shift + Enter)
-- Section break (Continuous)
-> Layout › Breaks › Column.
-```
+<a class="teleporter" href="#quiz-part-2">🌀 Teleport to the Part 2 Quiz</a>
 
 ---
+
+<a id="part-3" class="jump-anchor"></a>
 
 ## PART 3 — WORD: BULLETS, NUMBERING, BORDERS & SHADING (Exercises #6–#7)
 
@@ -366,60 +244,11 @@ Q: To force text to continue at the top of the NEXT column, insert a:
 
 ---
 
-## 📝 PART 3 QUIZ
-
-```quiz
-Q: Where is the Page Borders command in Word 2016 / Microsoft 365?
-* Design › Page Background › Page Borders
-- Insert › Header & Footer › Page Borders
-- Home › Font › Page Borders
-- References › Page Borders
-> It moved to the Design tab in Word 2013+. Older versions had it on Page Layout.
-
-Q: Decorative picture borders such as apples, hearts, or stars around the whole page come from:
-* The Art drop-down on the Page Border tab
-- Insert › Pictures
-- Picture Format › Picture Border
-- Home › Shading
-> Page Border tab › Art. Exercise #7 used the apples border.
-
-Q: In a multilevel list, which key moves an item DOWN one level (1. becomes a.)?
-* Tab
-- Shift + Tab
-- Enter
-- Ctrl + Enter
-> Tab demotes to a lower level. Shift + Tab promotes it back.
-
-Q: How do you use a small image (like a .gif) as the bullet symbol?
-* Bullets › Define New Bullet › Picture
-- Insert › Pictures › This Device
-- Numbering › Set Numbering Value
-- Home › Shading › Picture
-> A picture bullet is set through Define New Bullet.
-
-Q: In Borders and Shading, "Apply to: Paragraph" produces:
-* One box that stretches from the left margin to the right margin around the paragraph
-- A box around each word only
-- A border around the whole page
-- A border only around table cells
-> "Apply to: Text" boxes only the words.
-
-Q: The background fill color behind a paragraph is set on which tab of the Borders and Shading dialog?
-* Shading
-- Borders
-- Page Border
-- Fill Effects
-> Shading tab › Fill.
-
-Q: Your numbered list continues as 4, 5, 6 but you want it to start at 1 again. You should:
-* Right-click the number and choose Restart at 1
-- Press Ctrl + Z
-- Delete and retype the numbers manually
-- Change the font
-> Restart at 1 / Continue Numbering / Set Numbering Value are on the right-click menu.
-```
+<a class="teleporter" href="#quiz-part-3">🌀 Teleport to the Part 3 Quiz</a>
 
 ---
+
+<a id="part-4" class="jump-anchor"></a>
 
 ## PART 4 — WORD: MAIL MERGE, TABLES, TOC, HEADERS & FOOTERS (Exercises #8–#9 + Final Project)
 
@@ -495,74 +324,11 @@ Two contextual tabs appear when the cursor is in a table: **Table Design** (look
 
 ---
 
-## 📝 PART 4 QUIZ
-
-```quiz
-Q: In mail merge, the file that holds the list of recipients (names, addresses) is the:
-* Data source
-- Main document
-- Merge field
-- Template
-> Exercise #8 used an Excel file as the data source.
-
-Q: What is the correct order of the main Mail Merge steps?
-* Start Mail Merge › Select Recipients › Insert Merge Field › Preview Results › Finish & Merge
-- Select Recipients › Finish & Merge › Insert Merge Field › Start Mail Merge › Preview Results
-- Insert Merge Field › Start Mail Merge › Preview Results › Select Recipients › Finish & Merge
-- Preview Results › Select Recipients › Start Mail Merge › Finish & Merge › Insert Merge Field
-> Start → Recipients → Fields → Preview → Finish. All are on the Mailings tab.
-
-Q: To put every merged letter into ONE new Word document that you can still edit, choose:
-* Finish & Merge › Edit Individual Documents
-- Finish & Merge › Print Documents
-- Preview Results
-- Edit Recipient List
-> Edit Individual Documents creates a new document (Letters1) with one letter per record.
-
-Q: A student typed «Name» using Insert › Symbol. When merged, every letter says «Name». Why?
-* Typed chevrons are plain text. Fields must be added with Insert Merge Field
-- The data source has no rows
-- Preview Results was turned off
-- The font does not support chevrons
-> Real merge fields are field codes, not characters.
-
-Q: In a Word table, how do you type a TAB character inside a cell?
-* Ctrl + Tab
-- Tab
-- Shift + Tab
-- Alt + Tab
-> Tab alone jumps to the next cell. In the last cell it adds a new row.
-
-Q: To combine 3 selected cells into one long cell (like "SOLD TO:" in the invoice), use:
-* Layout › Merge Cells
-- Layout › Split Cells
-- Table Design › Shading
-- Layout › Distribute Columns
-> Merge = many into one. Split = one into many.
-
-Q: An automatic Table of Contents only picks up text that is formatted with:
-* Heading styles (Heading 1, Heading 2…)
-- Bold and a bigger font size
-- All caps
-- A dot leader
-> References › Table of Contents builds the list from Heading styles.
-
-Q: After adding pages, the TOC page numbers are wrong. What do you do?
-* References › Update Table
-- Delete the TOC and type it again
-- Press Ctrl + Z
-- Insert › Page Number
-> Update Table (or F9) refreshes the page numbers or the entire table.
-
-Q: To vertically center text inside a table cell, go to:
-* Layout › Alignment (Align Center button)
-- Home › Center (Ctrl + E)
-- Table Design › Borders
-- Layout › Text Direction
-> Home › Center only centers text horizontally. The 9 buttons in Layout › Alignment set both directions.
-```
+<a class="teleporter" href="#quiz-part-4">🌀 Teleport to the Part 4 Quiz</a>
 
 ---
+
+<a id="part-5" class="jump-anchor"></a>
 
 ## PART 5 — EXCEL BASICS: EDITING, FORMATTING, SIMPLE FORMULAS (Exercise #10, part 1)
 
@@ -676,81 +442,11 @@ If you forgot the $: row 6 becomes `=J6*B2` → B2 is empty → the result is **
 
 ---
 
-## 📝 PART 5 QUIZ
-
-```quiz
-Q: Every Excel formula must begin with:
-* =
-- +
-- @
-- #
-> Without =, Excel stores the entry as text.
-
-Q: Write the formula for SSS at 3% of the Starting Salary in J5.
-* =J5*3%
-- =J5+3%
-- =J5/3%
-- =3%J5
-> Multiply the salary by the rate. =J5*0.03 gives the same result.
-
-Q: Total Deductions are in N5 and Starting Salary in J5. Write the Net Salary formula.
-* =J5-N5
-- =N5-J5
-- =J5+N5
-- =SUM(J5:N5)
-> Net = gross minus deductions.
-
-Q: What is the result of =2+3*4?
-* 14
-- 20
-- 24
-- 9
-> Multiplication first: 3*4 = 12, then +2 = 14.
-
-Q: You copy =J5*$B$1 from row 5 down to row 6. Row 6 becomes:
-* =J6*$B$1
-- =J6*$B$2
-- =J5*$B$1
-- =J6*B2
-> The relative J5 changes to J6. The absolute $B$1 stays locked.
-
-Q: Which key toggles a reference between J5, $J$5, J$5 and $J5?
-* F4
-- F2
-- F5
-- F9
-> F2 edits the cell. F4 cycles the $ signs.
-
-Q: A cell shows ##### after you type a date. The most likely reason is:
-* The column is too narrow
-- The formula has an error
-- The date is invalid
-- The cell is protected
-> Widen the column (double-click the column border).
-
-Q: Which date format code displays 8-Apr-95?
-* d-mmm-yy
-- dd-mm-yyyy
-- mmmm d, yyyy
-- d-mm-yy
-> mmm = 3-letter month name, yy = 2-digit year.
-
-Q: Which shortcut opens the Format Cells dialog box?
-* Ctrl + 1
-- Ctrl + F
-- Ctrl + Shift + F
-- Alt + F1
-> Ctrl + 1 opens the Number, Alignment, Font, Border, Fill and Protection tabs.
-
-Q: The small square at the bottom-right corner of the selected cell, used to copy formulas down, is the:
-* Fill handle
-- Name box
-- Sizing tab
-- Formula bar
-> Drag it, or double-click it to fill to the end of the data.
-```
+<a class="teleporter" href="#quiz-part-5">🌀 Teleport to the Part 5 Quiz</a>
 
 ---
+
+<a id="part-6" class="jump-anchor"></a>
 
 ## PART 6 — EXCEL FUNCTIONS: SUM…MAX, IF, NESTED IF, VLOOKUP / HLOOKUP (Exercise #10, part 2)
 
@@ -860,88 +556,11 @@ Put another IF in the **value_if_false** slot. With **n** outcomes you need **n 
 
 ---
 
-## 📝 PART 6 QUIZ
-
-```quiz
-Q: Write the IF formula: if Starting Salary in J5 is less than 4,500 show "Part-time", otherwise "Fulltime".
-* =IF(J5<4500,"Part-time","Fulltime")
-- =IF(J5>4500,"Part-time","Fulltime")
-- =IF(J5<4500,Part-time,Fulltime)
-- =IF("J5<4500","Part-time","Fulltime")
-> The text results need quotes. The test J5<4500 must not be in quotes.
-
-Q: =SUM(J5,P5,Q5) adds:
-* Only J5, P5 and Q5
-- Every cell from J5 to Q5
-- J5 to P5, then multiplies by Q5
-- J5, P5 and Q5, then divides by 3
-> Commas separate individual cells. A colon would mean the whole range.
-
-Q: In VLOOKUP, what does the col_index_num 2 mean?
-* Return the value from the 2nd column of the lookup table
-- Return the value from column B of the worksheet
-- Search the 2nd row
-- Use approximate match
-> It counts from the first column of table_array, not from column A.
-
-Q: VLOOKUP's last argument is left out, as in =VLOOKUP(J5,Lookup!$B$2:$C$12,2). Which match type is used?
-* Approximate match (TRUE)
-- Exact match (FALSE)
-- No match. It gives an error
-- It depends on the cell format
-> Omitted = TRUE = approximate. The table must be sorted ascending.
-
-Q: For an approximate-match VLOOKUP to work correctly, the first column of the lookup table must be:
-* Sorted in ascending order (smallest to largest)
-- Sorted in descending order
-- Formatted as text
-- Bold
-> Approximate mode assumes ascending order. If the table is unsorted it can return wrong answers with no error.
-
-Q: The lookup table is arranged in ROWS (values across the top row). Which function should you use?
-* HLOOKUP
-- VLOOKUP
-- SUMIF
-- COUNTIF
-> H = horizontal (rows). V = vertical (columns).
-
-Q: A VLOOKUP with FALSE cannot find the employee number you typed. The result is:
-* #N/A
-- #REF!
-- #DIV/0!
-- #NAME?
-> #N/A = not available / not found.
-
-Q: =AVERAGE(D5:F5)/C5 shows #DIV/0!. Why?
-* C5 is zero or empty
-- D5:F5 contains text
-- The function name is misspelled
-- A referenced column was deleted
-> You cannot divide by zero.
-
-Q: =AVRAGE(D5,F5,H5) shows which error?
-* #NAME?
-- #VALUE!
-- #N/A
-- #REF!
-> The function name is misspelled, so Excel does not recognize it.
-
-Q: A nested IF gives 6 possible grades (A–F). How many IF functions does it need?
-* 5
-- 6
-- 4
-- 3
-> n outcomes need n − 1 IFs. The last outcome ("F") is the final value_if_false.
-
-Q: A student wrote =IF(G6>=75,"E",IF(G6>=80,"D",IF(G6>=98,"A","F"))). A score of 99 gets:
-* E
-- A
-- D
-- F
-> 99 >= 75 is TRUE at the first test, so Excel stops there. Test from the highest value down.
-```
+<a class="teleporter" href="#quiz-part-6">🌀 Teleport to the Part 6 Quiz</a>
 
 ---
+
+<a id="part-7" class="jump-anchor"></a>
 
 ## PART 7 — EXCEL DATA TOOLS & OUTPUT: CONDITIONAL FORMATTING, FILTER, SUBTOTAL, CHART, PRINT (Exercise #10, part 3)
 
@@ -1053,81 +672,11 @@ The **$ before H** locks the column, so the Evaluation cell (column I) also chec
 
 ---
 
-## 📝 PART 7 QUIZ
-
-```quiz
-Q: In a conditional formatting formula rule applied to J5:J19, which formula colors the cells that say PASSED?
-* =J5="PASSED"
-- =J5=PASSED
-- J5="PASSED"
-- =$J$5="PASSED"
-> Starts with =, text in quotes, written for the top-left cell. Don't lock the row, or every cell checks J5 only.
-
-Q: You select H6:I15 and want BOTH the grade and evaluation cells blue when the grade in column H is "A". Which rule?
-* =$H6="A"
-- =H6="A"
-- =$H$6="A"
-- =H$6="A"
-> $H locks the column so column I also checks H. The row stays relative.
-
-Q: Before using Data › Subtotal "At each change in: Department", you must first:
-* Sort the data by Department
-- Filter the data by Department
-- Delete the header row
-- Create a chart
-> Without sorting, each department is split into several groups.
-
-Q: In =SUBTOTAL(9,R5:R7), the number 9 means:
-* SUM
-- AVERAGE
-- COUNT
-- MAX
-> 1 AVERAGE, 2 COUNT, 3 COUNTA, 4 MAX, 5 MIN, 9 SUM.
-
-Q: Shortcut to turn AutoFilter on or off:
-* Ctrl + Shift + L
-- Ctrl + Shift + F
-- Alt + =
-- Ctrl + L
-> Data › Filter. Alt + = is AutoSum.
-
-Q: A 5-page employee list must show the column headings (rows 1–4) at the top of EVERY printed page. Use:
-* Page Layout › Print Titles › Rows to repeat at top
-- Page Layout › Print Area › Set Print Area
-- View › Freeze Panes
-- Insert › Header
-> Freeze Panes only works on screen. Print Titles repeats the rows on paper.
-
-Q: Which chart type is best for showing each department's share (percentage) of the total payroll?
-* Pie chart
-- Line chart
-- Scatter chart
-- Clustered column chart
-> Pie = parts of a whole (one data series).
-
-Q: To make a shape on the Menu sheet jump to the Functions sheet when clicked:
-* Right-click the shape › Link › Place in This Document › Functions
-- Right-click the shape › Format Shape › Fill
-- Data › Data Validation › List
-- Formulas › Name Manager
-> Ctrl + K opens the same Insert Hyperlink dialog.
-
-Q: To make a cell show a drop-down list of allowed choices, use:
-* Data › Data Validation › Allow: List
-- Home › Conditional Formatting
-- Data › Filter
-- Insert › PivotTable
-> Data Validation is one of the final project requirements.
-
-Q: A workbook with a recorded macro must be saved as:
-* .xlsm (Excel Macro-Enabled Workbook)
-- .xlsx
-- .csv
-- .pdf
-> A plain .xlsx cannot store macros.
-```
+<a class="teleporter" href="#quiz-part-7">🌀 Teleport to the Part 7 Quiz</a>
 
 ---
+
+<a id="part-8" class="jump-anchor"></a>
 
 ## PART 8 — 📌 EXCEL QUIZ WORKED EXAMPLES (Finals MP1–MP4)
 
@@ -1243,81 +792,11 @@ CF on **H6:I15**: `=$H6="A"` → blue fill/white text · `=$H6="E"` → yellow f
 
 ---
 
-## 📝 PART 8 QUIZ
-
-```quiz
-Q: MP1: The hourly rate is Basic (C5) divided by 24 working days and 8 hours. Write the formula.
-* =C5/24/8
-- =C5/24*8
-- =C5*24*8
-- =24/8/C5
-> Divide by 24, then by 8. /24*8 would multiply by 8.
-
-Q: MP1: Overtime pay is twice the hourly rate (H5) times the overtime hours (G5). Write the formula.
-* =2*(H5*G5)
-- =2+(H5*G5)
-- =(H5+G5)*2
-- =H5*G5/2
-> Double time = 2 × rate × hours.
-
-Q: MP1: Basic 10,000, Deductions 155, OT Pay 520.83. Net = Basic − Deductions + OT Pay = ?
-* 10,365.83
-- 9,324.17
-- 10,675.83
-- 9,845.00
-> 10,000 − 155 + 520.83 = 10,365.83.
-
-Q: MP2: The equivalence table is L5:N15, and the equivalent grade is in its 3rd column. Write the lookup for the score in C5.
-* =VLOOKUP(C5,$L$5:$N$15,3,TRUE)
-- =VLOOKUP(C5,L5:N15,3,FALSE)
-- =HLOOKUP(C5,$L$5:$N$15,3,TRUE)
-- =VLOOKUP($L$5:$N$15,C5,3,TRUE)
-> The table holds ranges, so use TRUE (approximate). Lock the table with $.
-
-Q: MP2: Using the equivalence table (21→75, 26→80, 46→98…), a quiz score of 27 converts to:
-* 80
-- 75
-- 85
-- #N/A
-> The largest "Score From" ≤ 27 is 26, which gives 80.
-
-Q: MP3: Commission is 15% if Total Sales (F6) is over 100,000, otherwise 10%. Write the formula.
-* =IF(F6>100000,15%,10%)
-- =IF(F6>100000,"15%","10%")
-- =IF(F6<100000,15%,10%)
-- =IF(F6>=100000,10%,15%)
-> Return numbers (no quotes) so =F6*G6 can calculate with them.
-
-Q: MP3: Total Sales = 77,345. Commission rate and Total Commission?
-* 10% and 7,734.50
-- 15% and 11,601.75
-- 10% and 77,345
-- 15% and 7,734.50
-> 77,345 is not over 100,000, so 10%. 77,345 × 10% = 7,734.50.
-
-Q: MP4: Score = average of 3 quizzes (C6:E6) at 60% plus Project (F6) at 40%. Write the formula.
-* =((C6+D6+E6)/3*60%)+(F6*40%)
-- =(C6+D6+E6/3*60%)+(F6*40%)
-- =(C6+D6+E6)*60%/3+F6
-- =AVERAGE(C6:F6)*60%
-> The parentheses around the sum come first. Without them, only E6 is divided by 3.
-
-Q: MP4: Quizzes 89, 87, 88 and Project 98. What are the score and the letter grade?
-* 92.0 and B
-- 90.5 and B
-- 92.0 and A
-- 88.0 and C
-> Average 88 × 60% = 52.8, plus 98 × 40% = 39.2, gives 92.0. That is ≥ 90 but < 98, so B.
-
-Q: MP4: Which score gets "E / Probation"?
-* 76.6
-- 74.9
-- 80.0
-- 85.0
-> E = 75 to below 80. 74.9 is F, 80 is D, 85 is C.
-```
+<a class="teleporter" href="#quiz-part-8">🌀 Teleport to the Part 8 Quiz</a>
 
 ---
+
+<a id="part-9" class="jump-anchor"></a>
 
 ## PART 9 — 📋 EXCEL FORMULA CHEAT SHEET
 
@@ -1379,6 +858,8 @@ Q: MP4: Which score gets "E / Probation"?
 **#N/A** not found · **#DIV/0!** ÷ 0 · **#VALUE!** wrong type (text in math) · **#REF!** deleted/invalid reference · **#NAME?** misspelled function or text without quotes · **#NUM!** bad number · **#NULL!** space instead of , or : · **#####** column too narrow
 
 ---
+
+<a id="part-10" class="jump-anchor"></a>
 
 ## PART 10 — POWERPOINT (Exercise #11 + Final Project)
 
@@ -1476,74 +957,11 @@ Other options: Notes Pages · Outline · Frame Slides · Scale to Fit Paper · C
 
 ---
 
-## 📝 PART 10 QUIZ
-
-```quiz
-Q: Exercise #11's slides change with a gentle dissolve from one to the next. Which tab and effect was used?
-* Transitions tab › Fade
-- Animations tab › Fade
-- Design tab › Variants
-- Picture Format › Artistic Effects
-> The effect is between slides, so it is a transition. Exercise #11 used Fade (slow).
-
-Q: Which Picture Format command turns a color photo into a black-and-white version?
-* Color › Recolor › Grayscale
-- Remove Background
-- Crop
-- Picture Border
-> Color › Recolor has Grayscale, Black and White, Washout, and more.
-
-Q: An Entrance animation is shown in the gallery with which color?
-* Green
-- Yellow
-- Red
-- Blue
-> Entrance = green, Emphasis = yellow, Exit = red, Motion Path = lines.
-
-Q: You want an animation to play automatically right after the previous one finishes. Set Start to:
-* After Previous
-- On Click
-- With Previous
-- Trigger
-> With Previous = at the same time. After Previous = once the previous one ends.
-
-Q: Which shortcut starts the slide show from the CURRENT slide?
-* Shift + F5
-- F5
-- Ctrl + F5
-- Alt + F5
-> F5 starts from the beginning. Alt + F5 opens Presenter View.
-
-Q: To make clicking a picture of Mars show the Mars info box on the same slide, use:
-* An animation Trigger (On Click of the Mars picture)
-- A Fade transition
-- Slide Sorter view
-- Design › Variants
-> Animations › Trigger › On Click of [object] makes a slide interactive.
-
-Q: The final project requires printing 6 slides on each page. Where is this set?
-* File › Print › Handouts › 6 Slides
-- Design › Slide Size › Custom
-- View › Slide Sorter › Print
-- Home › Layout › Six Content
-> Handouts print several slide thumbnails per page.
-
-Q: Which feature makes objects smoothly glide from their position on one slide to their new position on the next slide?
-* Morph transition
-- Fly In animation
-- Action button
-- Slide Master
-> Duplicate the slide, move the objects, then apply Morph to the second slide.
-
-Q: To add a second animation to an object that already has one, click:
-* Add Animation
-- A new effect in the Animation gallery
-- Animation Painter
-- Reorder › Move Earlier
-> Picking from the gallery replaces the existing effect. Add Animation stacks a new one.
-```
+<a class="teleporter" href="#quiz-part-10">🌀 Teleport to the Part 10 Quiz</a>
 
 ---
+
+<a id="part-11" class="jump-anchor"></a>
 
 ## PART 11 — FINAL PROJECT REQUIREMENTS (ICC Final Project, A.Y. 2026–2027)
 
@@ -1651,7 +1069,677 @@ Q: To add a second animation to an object that already has one, click:
 
 ---
 
-## 📝 MOCK EXAM (MIXED)
+<a id="all-quizzes" class="jump-anchor"></a>
+
+## 📝 ALL QUIZZES
+
+> Every practice quiz is here in one place. The 🌀 button at the end of each part teleports you to its quiz, and **↑ Back** takes you back to the lesson. Jump to:
+
+<a href="#quiz-part-1">Part 1</a> · <a href="#quiz-part-2">Part 2</a> · <a href="#quiz-part-3">Part 3</a> · <a href="#quiz-part-4">Part 4</a> · <a href="#quiz-part-5">Part 5</a> · <a href="#quiz-part-6">Part 6</a> · <a href="#quiz-part-7">Part 7</a> · <a href="#quiz-part-8">Part 8</a> · <a href="#quiz-part-10">Part 10</a> · <a href="#quiz-mock">Mock Exam</a>
+
+<a id="quiz-part-1" class="jump-anchor"></a>
+
+### 📝 Part 1 Quiz — Word: Editing & Font Formatting
+
+```quiz
+Q: Which shortcut opens the Find and Replace box on the Replace tab?
+* Ctrl + H
+- Ctrl + F
+- Ctrl + R
+- Ctrl + E
+> Ctrl + F = Find (Navigation pane). Ctrl + H = Replace. Ctrl + R = align right, Ctrl + E = center.
+
+Q: The "2" in H₂O is formatted as:
+* Subscript
+- Superscript
+- Small caps
+- Raised position
+> Subscript is lowered and smaller (Ctrl + =). Superscript is raised (Ctrl + Shift + =).
+
+Q: Which underline style puts a line under the words but NOT under the spaces between them?
+* Words only
+- Single
+- Dotted
+- Dash
+> Words only (Ctrl + Shift + W) skips the spaces.
+
+Q: Double strikethrough can be applied from:
+* The Font dialog box (Ctrl + D) only
+- A button in the Home › Font group
+- Insert › Symbol
+- Review › Track Changes
+> The ribbon only has single Strikethrough. Double strikethrough is a checkbox in the Font dialog.
+
+Q: A red wavy underline under a word usually means:
+* A possible spelling error
+- A grammar error
+- A hyperlink
+- A tracked change
+> Red wavy = spelling. Blue double line = grammar/style. Run the full check with F7.
+
+Q: Pressing Shift + F3 on selected text will:
+* Cycle the case between lowercase, UPPERCASE and Capitalize Each Word
+- Open the Font dialog
+- Apply bold
+- Insert a footnote
+> Shift + F3 is Change Case. Ctrl + D opens the Font dialog.
+
+Q: You want to add a note that appears at the bottom of the SAME page, with an automatic superscript number. Use:
+* References › Insert Footnote
+- References › Insert Endnote
+- Home › Superscript
+- Insert › Header
+> Footnote = bottom of the page (Alt + Ctrl + F). Endnote = end of the document.
+
+Q: To put more space BETWEEN THE LETTERS of a title, use:
+* Font dialog › Advanced › Spacing: Expanded
+- Paragraph › Line spacing: Double
+- Layout › Spacing After
+- Home › Increase Indent
+> This is character spacing. Line spacing is about the space between lines.
+```
+
+<a class="teleporter teleporter-back" href="#part-1">↑ Back to Part 1</a>
+
+<a id="quiz-part-2" class="jump-anchor"></a>
+
+### 📝 Part 2 Quiz — Word: Paragraph Formatting, Drop Cap, Columns, Tabs
+
+```quiz
+Q: Which shortcut makes a paragraph JUSTIFIED (straight on both left and right edges)?
+* Ctrl + J
+- Ctrl + E
+- Ctrl + L
+- Ctrl + R
+> J = Justify, E = cEnter, L = Left, R = Right.
+
+Q: A paragraph where the FIRST line starts at the margin and all the OTHER lines are pushed in has a:
+* Hanging indent
+- First-line indent
+- Right indent
+- Left indent
+> Hanging indent (Ctrl + T) is used in references and bibliographies.
+
+Q: Where do you find the Drop Cap command?
+* Insert › Text › Drop Cap
+- Home › Font › Drop Cap
+- Layout › Page Setup › Drop Cap
+- Design › Page Background › Drop Cap
+> Drop Cap is on the Insert tab, in the Text group.
+
+Q: In Drop Cap Options, the default "Lines to drop" is:
+* 3
+- 1
+- 2
+- 5
+> The default is 3 lines. Exercise #4 used 3 and 4.
+
+Q: Which drop cap position places the big letter OUTSIDE the paragraph, in the left margin?
+* In margin
+- Dropped
+- None
+- Hanging
+> Dropped = inside the text block. In margin = out in the margin.
+
+Q: For a table of contents where the page numbers line up on the right edge with dots before them, set a:
+* Right tab with a dot leader
+- Left tab with no leader
+- Center tab with a line leader
+- Bar tab
+> The right tab makes the numbers end at the stop. Leader option 2 makes the dots.
+
+Q: You set a tab position and leader in the Tabs dialog, then clicked OK, but nothing happened. What did you most likely forget?
+* To click Set before OK
+- To press Ctrl + T
+- To turn on the ruler
+- To save the document
+> The Set button adds the tab stop to the list. OK only closes the box.
+
+Q: Shortcut for double line spacing:
+* Ctrl + 2
+- Ctrl + D
+- Ctrl + 5
+- Ctrl + Shift + D
+> Ctrl + 1 single, Ctrl + 5 = 1.5 lines, Ctrl + 2 double. Ctrl + Shift + D is double UNDERLINE.
+
+Q: Which tab type lines up numbers on their decimal point?
+* Decimal tab
+- Right tab
+- Center tab
+- Bar tab
+> The decimal tab aligns 1,950.00 and 3,910.00 at the period.
+
+Q: To force text to continue at the top of the NEXT column, insert a:
+* Column break (Ctrl + Shift + Enter)
+- Page break (Ctrl + Enter)
+- Line break (Shift + Enter)
+- Section break (Continuous)
+> Layout › Breaks › Column.
+```
+
+<a class="teleporter teleporter-back" href="#part-2">↑ Back to Part 2</a>
+
+<a id="quiz-part-3" class="jump-anchor"></a>
+
+### 📝 Part 3 Quiz — Word: Bullets, Numbering, Borders & Shading
+
+```quiz
+Q: Where is the Page Borders command in Word 2016 / Microsoft 365?
+* Design › Page Background › Page Borders
+- Insert › Header & Footer › Page Borders
+- Home › Font › Page Borders
+- References › Page Borders
+> It moved to the Design tab in Word 2013+. Older versions had it on Page Layout.
+
+Q: Decorative picture borders such as apples, hearts, or stars around the whole page come from:
+* The Art drop-down on the Page Border tab
+- Insert › Pictures
+- Picture Format › Picture Border
+- Home › Shading
+> Page Border tab › Art. Exercise #7 used the apples border.
+
+Q: In a multilevel list, which key moves an item DOWN one level (1. becomes a.)?
+* Tab
+- Shift + Tab
+- Enter
+- Ctrl + Enter
+> Tab demotes to a lower level. Shift + Tab promotes it back.
+
+Q: How do you use a small image (like a .gif) as the bullet symbol?
+* Bullets › Define New Bullet › Picture
+- Insert › Pictures › This Device
+- Numbering › Set Numbering Value
+- Home › Shading › Picture
+> A picture bullet is set through Define New Bullet.
+
+Q: In Borders and Shading, "Apply to: Paragraph" produces:
+* One box that stretches from the left margin to the right margin around the paragraph
+- A box around each word only
+- A border around the whole page
+- A border only around table cells
+> "Apply to: Text" boxes only the words.
+
+Q: The background fill color behind a paragraph is set on which tab of the Borders and Shading dialog?
+* Shading
+- Borders
+- Page Border
+- Fill Effects
+> Shading tab › Fill.
+
+Q: Your numbered list continues as 4, 5, 6 but you want it to start at 1 again. You should:
+* Right-click the number and choose Restart at 1
+- Press Ctrl + Z
+- Delete and retype the numbers manually
+- Change the font
+> Restart at 1 / Continue Numbering / Set Numbering Value are on the right-click menu.
+```
+
+<a class="teleporter teleporter-back" href="#part-3">↑ Back to Part 3</a>
+
+<a id="quiz-part-4" class="jump-anchor"></a>
+
+### 📝 Part 4 Quiz — Word: Mail Merge, Tables, TOC, Headers & Footers
+
+```quiz
+Q: In mail merge, the file that holds the list of recipients (names, addresses) is the:
+* Data source
+- Main document
+- Merge field
+- Template
+> Exercise #8 used an Excel file as the data source.
+
+Q: What is the correct order of the main Mail Merge steps?
+* Start Mail Merge › Select Recipients › Insert Merge Field › Preview Results › Finish & Merge
+- Select Recipients › Finish & Merge › Insert Merge Field › Start Mail Merge › Preview Results
+- Insert Merge Field › Start Mail Merge › Preview Results › Select Recipients › Finish & Merge
+- Preview Results › Select Recipients › Start Mail Merge › Finish & Merge › Insert Merge Field
+> Start → Recipients → Fields → Preview → Finish. All are on the Mailings tab.
+
+Q: To put every merged letter into ONE new Word document that you can still edit, choose:
+* Finish & Merge › Edit Individual Documents
+- Finish & Merge › Print Documents
+- Preview Results
+- Edit Recipient List
+> Edit Individual Documents creates a new document (Letters1) with one letter per record.
+
+Q: A student typed «Name» using Insert › Symbol. When merged, every letter says «Name». Why?
+* Typed chevrons are plain text. Fields must be added with Insert Merge Field
+- The data source has no rows
+- Preview Results was turned off
+- The font does not support chevrons
+> Real merge fields are field codes, not characters.
+
+Q: In a Word table, how do you type a TAB character inside a cell?
+* Ctrl + Tab
+- Tab
+- Shift + Tab
+- Alt + Tab
+> Tab alone jumps to the next cell. In the last cell it adds a new row.
+
+Q: To combine 3 selected cells into one long cell (like "SOLD TO:" in the invoice), use:
+* Layout › Merge Cells
+- Layout › Split Cells
+- Table Design › Shading
+- Layout › Distribute Columns
+> Merge = many into one. Split = one into many.
+
+Q: An automatic Table of Contents only picks up text that is formatted with:
+* Heading styles (Heading 1, Heading 2…)
+- Bold and a bigger font size
+- All caps
+- A dot leader
+> References › Table of Contents builds the list from Heading styles.
+
+Q: After adding pages, the TOC page numbers are wrong. What do you do?
+* References › Update Table
+- Delete the TOC and type it again
+- Press Ctrl + Z
+- Insert › Page Number
+> Update Table (or F9) refreshes the page numbers or the entire table.
+
+Q: To vertically center text inside a table cell, go to:
+* Layout › Alignment (Align Center button)
+- Home › Center (Ctrl + E)
+- Table Design › Borders
+- Layout › Text Direction
+> Home › Center only centers text horizontally. The 9 buttons in Layout › Alignment set both directions.
+```
+
+<a class="teleporter teleporter-back" href="#part-4">↑ Back to Part 4</a>
+
+<a id="quiz-part-5" class="jump-anchor"></a>
+
+### 📝 Part 5 Quiz — Excel Basics: Editing, Formatting, Simple Formulas
+
+```quiz
+Q: Every Excel formula must begin with:
+* =
+- +
+- @
+- #
+> Without =, Excel stores the entry as text.
+
+Q: Write the formula for SSS at 3% of the Starting Salary in J5.
+* =J5*3%
+- =J5+3%
+- =J5/3%
+- =3%J5
+> Multiply the salary by the rate. =J5*0.03 gives the same result.
+
+Q: Total Deductions are in N5 and Starting Salary in J5. Write the Net Salary formula.
+* =J5-N5
+- =N5-J5
+- =J5+N5
+- =SUM(J5:N5)
+> Net = gross minus deductions.
+
+Q: What is the result of =2+3*4?
+* 14
+- 20
+- 24
+- 9
+> Multiplication first: 3*4 = 12, then +2 = 14.
+
+Q: You copy =J5*$B$1 from row 5 down to row 6. Row 6 becomes:
+* =J6*$B$1
+- =J6*$B$2
+- =J5*$B$1
+- =J6*B2
+> The relative J5 changes to J6. The absolute $B$1 stays locked.
+
+Q: Which key toggles a reference between J5, $J$5, J$5 and $J5?
+* F4
+- F2
+- F5
+- F9
+> F2 edits the cell. F4 cycles the $ signs.
+
+Q: A cell shows ##### after you type a date. The most likely reason is:
+* The column is too narrow
+- The formula has an error
+- The date is invalid
+- The cell is protected
+> Widen the column (double-click the column border).
+
+Q: Which date format code displays 8-Apr-95?
+* d-mmm-yy
+- dd-mm-yyyy
+- mmmm d, yyyy
+- d-mm-yy
+> mmm = 3-letter month name, yy = 2-digit year.
+
+Q: Which shortcut opens the Format Cells dialog box?
+* Ctrl + 1
+- Ctrl + F
+- Ctrl + Shift + F
+- Alt + F1
+> Ctrl + 1 opens the Number, Alignment, Font, Border, Fill and Protection tabs.
+
+Q: The small square at the bottom-right corner of the selected cell, used to copy formulas down, is the:
+* Fill handle
+- Name box
+- Sizing tab
+- Formula bar
+> Drag it, or double-click it to fill to the end of the data.
+```
+
+<a class="teleporter teleporter-back" href="#part-5">↑ Back to Part 5</a>
+
+<a id="quiz-part-6" class="jump-anchor"></a>
+
+### 📝 Part 6 Quiz — Excel Functions: SUM…MAX, IF, Nested IF, VLOOKUP / HLOOKUP
+
+```quiz
+Q: Write the IF formula: if Starting Salary in J5 is less than 4,500 show "Part-time", otherwise "Fulltime".
+* =IF(J5<4500,"Part-time","Fulltime")
+- =IF(J5>4500,"Part-time","Fulltime")
+- =IF(J5<4500,Part-time,Fulltime)
+- =IF("J5<4500","Part-time","Fulltime")
+> The text results need quotes. The test J5<4500 must not be in quotes.
+
+Q: =SUM(J5,P5,Q5) adds:
+* Only J5, P5 and Q5
+- Every cell from J5 to Q5
+- J5 to P5, then multiplies by Q5
+- J5, P5 and Q5, then divides by 3
+> Commas separate individual cells. A colon would mean the whole range.
+
+Q: In VLOOKUP, what does the col_index_num 2 mean?
+* Return the value from the 2nd column of the lookup table
+- Return the value from column B of the worksheet
+- Search the 2nd row
+- Use approximate match
+> It counts from the first column of table_array, not from column A.
+
+Q: VLOOKUP's last argument is left out, as in =VLOOKUP(J5,Lookup!$B$2:$C$12,2). Which match type is used?
+* Approximate match (TRUE)
+- Exact match (FALSE)
+- No match. It gives an error
+- It depends on the cell format
+> Omitted = TRUE = approximate. The table must be sorted ascending.
+
+Q: For an approximate-match VLOOKUP to work correctly, the first column of the lookup table must be:
+* Sorted in ascending order (smallest to largest)
+- Sorted in descending order
+- Formatted as text
+- Bold
+> Approximate mode assumes ascending order. If the table is unsorted it can return wrong answers with no error.
+
+Q: The lookup table is arranged in ROWS (values across the top row). Which function should you use?
+* HLOOKUP
+- VLOOKUP
+- SUMIF
+- COUNTIF
+> H = horizontal (rows). V = vertical (columns).
+
+Q: A VLOOKUP with FALSE cannot find the employee number you typed. The result is:
+* #N/A
+- #REF!
+- #DIV/0!
+- #NAME?
+> #N/A = not available / not found.
+
+Q: =AVERAGE(D5:F5)/C5 shows #DIV/0!. Why?
+* C5 is zero or empty
+- D5:F5 contains text
+- The function name is misspelled
+- A referenced column was deleted
+> You cannot divide by zero.
+
+Q: =AVRAGE(D5,F5,H5) shows which error?
+* #NAME?
+- #VALUE!
+- #N/A
+- #REF!
+> The function name is misspelled, so Excel does not recognize it.
+
+Q: A nested IF gives 6 possible grades (A–F). How many IF functions does it need?
+* 5
+- 6
+- 4
+- 3
+> n outcomes need n − 1 IFs. The last outcome ("F") is the final value_if_false.
+
+Q: A student wrote =IF(G6>=75,"E",IF(G6>=80,"D",IF(G6>=98,"A","F"))). A score of 99 gets:
+* E
+- A
+- D
+- F
+> 99 >= 75 is TRUE at the first test, so Excel stops there. Test from the highest value down.
+```
+
+<a class="teleporter teleporter-back" href="#part-6">↑ Back to Part 6</a>
+
+<a id="quiz-part-7" class="jump-anchor"></a>
+
+### 📝 Part 7 Quiz — Excel Data Tools & Output: Conditional Formatting, Filter, Subtotal, Chart, Print
+
+```quiz
+Q: In a conditional formatting formula rule applied to J5:J19, which formula colors the cells that say PASSED?
+* =J5="PASSED"
+- =J5=PASSED
+- J5="PASSED"
+- =$J$5="PASSED"
+> Starts with =, text in quotes, written for the top-left cell. Don't lock the row, or every cell checks J5 only.
+
+Q: You select H6:I15 and want BOTH the grade and evaluation cells blue when the grade in column H is "A". Which rule?
+* =$H6="A"
+- =H6="A"
+- =$H$6="A"
+- =H$6="A"
+> $H locks the column so column I also checks H. The row stays relative.
+
+Q: Before using Data › Subtotal "At each change in: Department", you must first:
+* Sort the data by Department
+- Filter the data by Department
+- Delete the header row
+- Create a chart
+> Without sorting, each department is split into several groups.
+
+Q: In =SUBTOTAL(9,R5:R7), the number 9 means:
+* SUM
+- AVERAGE
+- COUNT
+- MAX
+> 1 AVERAGE, 2 COUNT, 3 COUNTA, 4 MAX, 5 MIN, 9 SUM.
+
+Q: Shortcut to turn AutoFilter on or off:
+* Ctrl + Shift + L
+- Ctrl + Shift + F
+- Alt + =
+- Ctrl + L
+> Data › Filter. Alt + = is AutoSum.
+
+Q: A 5-page employee list must show the column headings (rows 1–4) at the top of EVERY printed page. Use:
+* Page Layout › Print Titles › Rows to repeat at top
+- Page Layout › Print Area › Set Print Area
+- View › Freeze Panes
+- Insert › Header
+> Freeze Panes only works on screen. Print Titles repeats the rows on paper.
+
+Q: Which chart type is best for showing each department's share (percentage) of the total payroll?
+* Pie chart
+- Line chart
+- Scatter chart
+- Clustered column chart
+> Pie = parts of a whole (one data series).
+
+Q: To make a shape on the Menu sheet jump to the Functions sheet when clicked:
+* Right-click the shape › Link › Place in This Document › Functions
+- Right-click the shape › Format Shape › Fill
+- Data › Data Validation › List
+- Formulas › Name Manager
+> Ctrl + K opens the same Insert Hyperlink dialog.
+
+Q: To make a cell show a drop-down list of allowed choices, use:
+* Data › Data Validation › Allow: List
+- Home › Conditional Formatting
+- Data › Filter
+- Insert › PivotTable
+> Data Validation is one of the final project requirements.
+
+Q: A workbook with a recorded macro must be saved as:
+* .xlsm (Excel Macro-Enabled Workbook)
+- .xlsx
+- .csv
+- .pdf
+> A plain .xlsx cannot store macros.
+```
+
+<a class="teleporter teleporter-back" href="#part-7">↑ Back to Part 7</a>
+
+<a id="quiz-part-8" class="jump-anchor"></a>
+
+### 📝 Part 8 Quiz — Excel Quiz Worked Examples
+
+```quiz
+Q: MP1: The hourly rate is Basic (C5) divided by 24 working days and 8 hours. Write the formula.
+* =C5/24/8
+- =C5/24*8
+- =C5*24*8
+- =24/8/C5
+> Divide by 24, then by 8. /24*8 would multiply by 8.
+
+Q: MP1: Overtime pay is twice the hourly rate (H5) times the overtime hours (G5). Write the formula.
+* =2*(H5*G5)
+- =2+(H5*G5)
+- =(H5+G5)*2
+- =H5*G5/2
+> Double time = 2 × rate × hours.
+
+Q: MP1: Basic 10,000, Deductions 155, OT Pay 520.83. Net = Basic − Deductions + OT Pay = ?
+* 10,365.83
+- 9,324.17
+- 10,675.83
+- 9,845.00
+> 10,000 − 155 + 520.83 = 10,365.83.
+
+Q: MP2: The equivalence table is L5:N15, and the equivalent grade is in its 3rd column. Write the lookup for the score in C5.
+* =VLOOKUP(C5,$L$5:$N$15,3,TRUE)
+- =VLOOKUP(C5,L5:N15,3,FALSE)
+- =HLOOKUP(C5,$L$5:$N$15,3,TRUE)
+- =VLOOKUP($L$5:$N$15,C5,3,TRUE)
+> The table holds ranges, so use TRUE (approximate). Lock the table with $.
+
+Q: MP2: Using the equivalence table (21→75, 26→80, 46→98…), a quiz score of 27 converts to:
+* 80
+- 75
+- 85
+- #N/A
+> The largest "Score From" ≤ 27 is 26, which gives 80.
+
+Q: MP3: Commission is 15% if Total Sales (F6) is over 100,000, otherwise 10%. Write the formula.
+* =IF(F6>100000,15%,10%)
+- =IF(F6>100000,"15%","10%")
+- =IF(F6<100000,15%,10%)
+- =IF(F6>=100000,10%,15%)
+> Return numbers (no quotes) so =F6*G6 can calculate with them.
+
+Q: MP3: Total Sales = 77,345. Commission rate and Total Commission?
+* 10% and 7,734.50
+- 15% and 11,601.75
+- 10% and 77,345
+- 15% and 7,734.50
+> 77,345 is not over 100,000, so 10%. 77,345 × 10% = 7,734.50.
+
+Q: MP4: Score = average of 3 quizzes (C6:E6) at 60% plus Project (F6) at 40%. Write the formula.
+* =((C6+D6+E6)/3*60%)+(F6*40%)
+- =(C6+D6+E6/3*60%)+(F6*40%)
+- =(C6+D6+E6)*60%/3+F6
+- =AVERAGE(C6:F6)*60%
+> The parentheses around the sum come first. Without them, only E6 is divided by 3.
+
+Q: MP4: Quizzes 89, 87, 88 and Project 98. What are the score and the letter grade?
+* 92.0 and B
+- 90.5 and B
+- 92.0 and A
+- 88.0 and C
+> Average 88 × 60% = 52.8, plus 98 × 40% = 39.2, gives 92.0. That is ≥ 90 but < 98, so B.
+
+Q: MP4: Which score gets "E / Probation"?
+* 76.6
+- 74.9
+- 80.0
+- 85.0
+> E = 75 to below 80. 74.9 is F, 80 is D, 85 is C.
+```
+
+<a class="teleporter teleporter-back" href="#part-8">↑ Back to Part 8</a>
+
+<a id="quiz-part-10" class="jump-anchor"></a>
+
+### 📝 Part 10 Quiz — Powerpoint
+
+```quiz
+Q: Exercise #11's slides change with a gentle dissolve from one to the next. Which tab and effect was used?
+* Transitions tab › Fade
+- Animations tab › Fade
+- Design tab › Variants
+- Picture Format › Artistic Effects
+> The effect is between slides, so it is a transition. Exercise #11 used Fade (slow).
+
+Q: Which Picture Format command turns a color photo into a black-and-white version?
+* Color › Recolor › Grayscale
+- Remove Background
+- Crop
+- Picture Border
+> Color › Recolor has Grayscale, Black and White, Washout, and more.
+
+Q: An Entrance animation is shown in the gallery with which color?
+* Green
+- Yellow
+- Red
+- Blue
+> Entrance = green, Emphasis = yellow, Exit = red, Motion Path = lines.
+
+Q: You want an animation to play automatically right after the previous one finishes. Set Start to:
+* After Previous
+- On Click
+- With Previous
+- Trigger
+> With Previous = at the same time. After Previous = once the previous one ends.
+
+Q: Which shortcut starts the slide show from the CURRENT slide?
+* Shift + F5
+- F5
+- Ctrl + F5
+- Alt + F5
+> F5 starts from the beginning. Alt + F5 opens Presenter View.
+
+Q: To make clicking a picture of Mars show the Mars info box on the same slide, use:
+* An animation Trigger (On Click of the Mars picture)
+- A Fade transition
+- Slide Sorter view
+- Design › Variants
+> Animations › Trigger › On Click of [object] makes a slide interactive.
+
+Q: The final project requires printing 6 slides on each page. Where is this set?
+* File › Print › Handouts › 6 Slides
+- Design › Slide Size › Custom
+- View › Slide Sorter › Print
+- Home › Layout › Six Content
+> Handouts print several slide thumbnails per page.
+
+Q: Which feature makes objects smoothly glide from their position on one slide to their new position on the next slide?
+* Morph transition
+- Fly In animation
+- Action button
+- Slide Master
+> Duplicate the slide, move the objects, then apply Morph to the second slide.
+
+Q: To add a second animation to an object that already has one, click:
+* Add Animation
+- A new effect in the Animation gallery
+- Animation Painter
+- Reorder › Move Earlier
+> Picking from the gallery replaces the existing effect. Add Animation stacks a new one.
+```
+
+<a class="teleporter teleporter-back" href="#part-10">↑ Back to Part 10</a>
+
+<a id="quiz-mock" class="jump-anchor"></a>
+
+### 📝 MOCK EXAM (MIXED)
 
 ```quiz
 Q: Which Word command lines up "Introduction to Computer ......... i" with dots and the page number at the right margin?
@@ -1920,3 +2008,5 @@ Q: Which group of Excel features is ALL required in the final project?
 - Transitions and animations
 > Plus business formulas, links between sheets, and macros and/or a PivotTable.
 ```
+
+<a class="teleporter teleporter-back" href="#all-quizzes">↑ Back to the quiz list</a>
