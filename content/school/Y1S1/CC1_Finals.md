@@ -1,11 +1,11 @@
 # CC1 Introduction to Computing — Finals
 **Covers:** MS Word (Exercises #1–#9: editing, font & paragraph formatting, drop cap, tabs, bullets, borders & shading, mail merge, tables) · MS Excel (Exercise #10 Employees Profile + Excel Quiz MP1–MP4: formulas, functions, IF / nested IF, VLOOKUP / HLOOKUP, conditional formatting, filter, subtotal, chart, print setup) · MS PowerPoint (Exercise #11: themes, layouts, pictures, transitions, plus the animation and interactive tools the final project needs) · Final Project requirements
 
-> **How to use this:** This is the **hands-on** half of CC1. The midterm theory (hardware, CPU, memory, I/O devices) is in the Midterm reviewer. Every skill here has 4 parts: **① what it is → ② exact ribbon path / steps → ③ keyboard shortcut → ④ exam traps (⚠️)**. The Excel Quiz problems (MP1–MP4) are worked out in full and marked **📌 (exam item)**, because similar problems are likely on the finals. Each part ends with a **🌀 teleporter** that jumps to its practice quiz. All quizzes, plus a mixed **Mock Exam**, are together at the very bottom. Ribbon paths are for **Microsoft 365 / Office 2016+**.
+> **How to use this:** This is the **hands-on** half of CC1. The midterm theory (hardware, CPU, memory, I/O devices) is in the Midterm reviewer. Every skill here has 4 parts: **① what it is → ② exact ribbon path / steps → ③ keyboard shortcut → ④ exam traps (⚠️)**. The Excel Quiz problems (MP1–MP4) are worked out in full and marked **📌 (exam item)**, because similar problems are likely on the finals. Each part ends with a **Take the Quiz ↓** button that jumps to its practice quiz. All quizzes, plus a mixed **Mock Exam**, are together at the very bottom. Ribbon paths are for **Microsoft 365 / Office 2016+**.
 
 ---
 
-<a class="teleporter" href="#all-quizzes">🌀 Teleport to All Quizzes</a>
+<a class="jump-link" href="#all-quizzes">Go to All Quizzes ↓</a>
 
 <a id="part-1" class="jump-anchor"></a>
 
@@ -94,7 +94,7 @@
 
 ---
 
-<a class="teleporter" href="#quiz-part-1">🌀 Teleport to the Part 1 Quiz</a>
+<a class="jump-link" href="#quiz-part-1">Take the Part 1 Quiz ↓</a>
 
 ---
 
@@ -194,7 +194,7 @@ Exercise #5 used **left, center, right, and bar** tabs, plus a **right tab at 5.
 
 ---
 
-<a class="teleporter" href="#quiz-part-2">🌀 Teleport to the Part 2 Quiz</a>
+<a class="jump-link" href="#quiz-part-2">Take the Part 2 Quiz ↓</a>
 
 ---
 
@@ -244,7 +244,7 @@ Exercise #5 used **left, center, right, and bar** tabs, plus a **right tab at 5.
 
 ---
 
-<a class="teleporter" href="#quiz-part-3">🌀 Teleport to the Part 3 Quiz</a>
+<a class="jump-link" href="#quiz-part-3">Take the Part 3 Quiz ↓</a>
 
 ---
 
@@ -324,7 +324,7 @@ Two contextual tabs appear when the cursor is in a table: **Table Design** (look
 
 ---
 
-<a class="teleporter" href="#quiz-part-4">🌀 Teleport to the Part 4 Quiz</a>
+<a class="jump-link" href="#quiz-part-4">Take the Part 4 Quiz ↓</a>
 
 ---
 
@@ -442,7 +442,7 @@ If you forgot the $: row 6 becomes `=J6*B2` → B2 is empty → the result is **
 
 ---
 
-<a class="teleporter" href="#quiz-part-5">🌀 Teleport to the Part 5 Quiz</a>
+<a class="jump-link" href="#quiz-part-5">Take the Part 5 Quiz ↓</a>
 
 ---
 
@@ -556,7 +556,7 @@ Put another IF in the **value_if_false** slot. With **n** outcomes you need **n 
 
 ---
 
-<a class="teleporter" href="#quiz-part-6">🌀 Teleport to the Part 6 Quiz</a>
+<a class="jump-link" href="#quiz-part-6">Take the Part 6 Quiz ↓</a>
 
 ---
 
@@ -672,7 +672,7 @@ The **$ before H** locks the column, so the Evaluation cell (column I) also chec
 
 ---
 
-<a class="teleporter" href="#quiz-part-7">🌀 Teleport to the Part 7 Quiz</a>
+<a class="jump-link" href="#quiz-part-7">Take the Part 7 Quiz ↓</a>
 
 ---
 
@@ -792,7 +792,7 @@ CF on **H6:I15**: `=$H6="A"` → blue fill/white text · `=$H6="E"` → yellow f
 
 ---
 
-<a class="teleporter" href="#quiz-part-8">🌀 Teleport to the Part 8 Quiz</a>
+<a class="jump-link" href="#quiz-part-8">Take the Part 8 Quiz ↓</a>
 
 ---
 
@@ -957,7 +957,7 @@ Other options: Notes Pages · Outline · Frame Slides · Scale to Fit Paper · C
 
 ---
 
-<a class="teleporter" href="#quiz-part-10">🌀 Teleport to the Part 10 Quiz</a>
+<a class="jump-link" href="#quiz-part-10">Take the Part 10 Quiz ↓</a>
 
 ---
 
@@ -1073,7 +1073,7 @@ Other options: Notes Pages · Outline · Frame Slides · Scale to Fit Paper · C
 
 ## 📝 ALL QUIZZES
 
-> Every practice quiz is here in one place. The 🌀 button at the end of each part teleports you to its quiz, and **↑ Back** takes you back to the lesson. Jump to:
+> Every practice quiz is here in one place. The **Take the Quiz ↓** button at the end of each part jumps you to its quiz, and **↑ Back** takes you back to the lesson. Jump to:
 
 <a href="#quiz-part-1">Part 1</a> · <a href="#quiz-part-2">Part 2</a> · <a href="#quiz-part-3">Part 3</a> · <a href="#quiz-part-4">Part 4</a> · <a href="#quiz-part-5">Part 5</a> · <a href="#quiz-part-6">Part 6</a> · <a href="#quiz-part-7">Part 7</a> · <a href="#quiz-part-8">Part 8</a> · <a href="#quiz-part-10">Part 10</a> · <a href="#quiz-mock">Mock Exam</a>
 
@@ -1139,7 +1139,7 @@ Q: To put more space BETWEEN THE LETTERS of a title, use:
 > This is character spacing. Line spacing is about the space between lines.
 ```
 
-<a class="teleporter teleporter-back" href="#part-1">↑ Back to Part 1</a>
+<a class="jump-link jump-link--back" href="#part-1">↑ Back to Part 1</a>
 
 <a id="quiz-part-2" class="jump-anchor"></a>
 
@@ -1217,7 +1217,7 @@ Q: To force text to continue at the top of the NEXT column, insert a:
 > Layout › Breaks › Column.
 ```
 
-<a class="teleporter teleporter-back" href="#part-2">↑ Back to Part 2</a>
+<a class="jump-link jump-link--back" href="#part-2">↑ Back to Part 2</a>
 
 <a id="quiz-part-3" class="jump-anchor"></a>
 
@@ -1274,7 +1274,7 @@ Q: Your numbered list continues as 4, 5, 6 but you want it to start at 1 again. 
 > Restart at 1 / Continue Numbering / Set Numbering Value are on the right-click menu.
 ```
 
-<a class="teleporter teleporter-back" href="#part-3">↑ Back to Part 3</a>
+<a class="jump-link jump-link--back" href="#part-3">↑ Back to Part 3</a>
 
 <a id="quiz-part-4" class="jump-anchor"></a>
 
@@ -1345,7 +1345,7 @@ Q: To vertically center text inside a table cell, go to:
 > Home › Center only centers text horizontally. The 9 buttons in Layout › Alignment set both directions.
 ```
 
-<a class="teleporter teleporter-back" href="#part-4">↑ Back to Part 4</a>
+<a class="jump-link jump-link--back" href="#part-4">↑ Back to Part 4</a>
 
 <a id="quiz-part-5" class="jump-anchor"></a>
 
@@ -1423,7 +1423,7 @@ Q: The small square at the bottom-right corner of the selected cell, used to cop
 > Drag it, or double-click it to fill to the end of the data.
 ```
 
-<a class="teleporter teleporter-back" href="#part-5">↑ Back to Part 5</a>
+<a class="jump-link jump-link--back" href="#part-5">↑ Back to Part 5</a>
 
 <a id="quiz-part-6" class="jump-anchor"></a>
 
@@ -1508,7 +1508,7 @@ Q: A student wrote =IF(G6>=75,"E",IF(G6>=80,"D",IF(G6>=98,"A","F"))). A score of
 > 99 >= 75 is TRUE at the first test, so Excel stops there. Test from the highest value down.
 ```
 
-<a class="teleporter teleporter-back" href="#part-6">↑ Back to Part 6</a>
+<a class="jump-link jump-link--back" href="#part-6">↑ Back to Part 6</a>
 
 <a id="quiz-part-7" class="jump-anchor"></a>
 
@@ -1586,7 +1586,7 @@ Q: A workbook with a recorded macro must be saved as:
 > A plain .xlsx cannot store macros.
 ```
 
-<a class="teleporter teleporter-back" href="#part-7">↑ Back to Part 7</a>
+<a class="jump-link jump-link--back" href="#part-7">↑ Back to Part 7</a>
 
 <a id="quiz-part-8" class="jump-anchor"></a>
 
@@ -1664,7 +1664,7 @@ Q: MP4: Which score gets "E / Probation"?
 > E = 75 to below 80. 74.9 is F, 80 is D, 85 is C.
 ```
 
-<a class="teleporter teleporter-back" href="#part-8">↑ Back to Part 8</a>
+<a class="jump-link jump-link--back" href="#part-8">↑ Back to Part 8</a>
 
 <a id="quiz-part-10" class="jump-anchor"></a>
 
@@ -1735,7 +1735,7 @@ Q: To add a second animation to an object that already has one, click:
 > Picking from the gallery replaces the existing effect. Add Animation stacks a new one.
 ```
 
-<a class="teleporter teleporter-back" href="#part-10">↑ Back to Part 10</a>
+<a class="jump-link jump-link--back" href="#part-10">↑ Back to Part 10</a>
 
 <a id="quiz-mock" class="jump-anchor"></a>
 
@@ -2009,4 +2009,4 @@ Q: Which group of Excel features is ALL required in the final project?
 > Plus business formulas, links between sheets, and macros and/or a PivotTable.
 ```
 
-<a class="teleporter teleporter-back" href="#all-quizzes">↑ Back to the quiz list</a>
+<a class="jump-link jump-link--back" href="#all-quizzes">↑ Back to the quiz list</a>

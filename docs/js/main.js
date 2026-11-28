@@ -98,7 +98,7 @@
     if (!target) return;
 
     e.preventDefault();
-    // Teleporter anchors land at the top (below the fixed nav); everything else is centered.
+    // Jump-link anchors land at the top (below the fixed nav); everything else is centered.
     const y = target.classList.contains('jump-anchor')
       ? target.getBoundingClientRect().top + window.scrollY - 80
       : target.getBoundingClientRect().top + window.scrollY - (window.innerHeight / 2) + (target.offsetHeight / 2);

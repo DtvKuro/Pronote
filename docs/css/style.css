@@ -1681,22 +1681,20 @@ code.hljs { padding: 3px 5px; }
   .toc-fab { display: none !important; }
 }
 
-/* Teleporter: jump between a lesson part and its quiz */
+/* Jump links: lesson part <-> its quiz at the bottom */
 
 .jump-anchor { display: block; height: 0; scroll-margin-top: 5rem; }
 
-.teleporter {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.6rem 1.1rem;
-  border: 1px solid var(--accent);
-  border-radius: 999px;
-  background: var(--accent-glow);
-  color: var(--text-primary, inherit);
+.note-content a.jump-link {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
   font-weight: 600;
+  color: var(--bg-primary);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
   text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
 }
-.teleporter:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
-.teleporter-back { padding: 0.4rem 0.9rem; font-size: 0.9rem; font-weight: 500; border-style: dashed; }
+.note-content a.jump-link:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.note-content a.jump-link--back { color: var(--text-primary); background: var(--bg-tertiary); border-color: var(--border); font-size: 0.9rem; }
+.note-content a.jump-link--back:hover { background: var(--bg-tertiary); border-color: var(--accent); }
